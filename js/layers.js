@@ -58,4 +58,19 @@ addLayer("p", {
             done() { return player.p.points >= (35) }
         },
     },
-})
+}),
+
+	addLayer("R", {
+    name: "rebirth",
+    softcap: new Decimal("1e17"),
+    softcapPower: new Decimal(0.25),
+    symbol: "R",
+    row: "1",
+    type: "normal",
+    baseResource: "$",
+    resource: "Rebirth Points",
+    baseAmount() { return player.points },
+    onPrestige() {
+
+    },
+    requires() {
