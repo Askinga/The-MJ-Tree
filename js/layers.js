@@ -51,11 +51,4 @@ addLayer("p", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
     },
-    milestones: {
-        0: {
-            requirementDescription: "35 MJs",
-            effectDescription: "Quadruple MJ Gain",
-            done() { return player.p.points >= (20) }
-        },
-    },
 })
