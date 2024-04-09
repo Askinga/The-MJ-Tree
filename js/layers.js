@@ -27,5 +27,7 @@ addLayer("MJ", {
     layerShown(){return true}
 }),
 	    upgrades: {
+11: {
 
+}
     },
