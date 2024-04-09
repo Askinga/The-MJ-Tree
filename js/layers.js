@@ -58,6 +58,4 @@ addLayer("p", {
             done() { return player.p.points >= (35) }
         },
     },
-}),
-
-	
+})
