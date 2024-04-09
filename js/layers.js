@@ -49,7 +49,10 @@ addLayer("p", {
                 return player.points.add(1).pow(0.075)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-        },
+	21: {
+            title: "MJ swarm",
+            description: "×10 your MJ gain.",
+            cost: new Decimal(135),
     },
     milestones: {
         0: {
