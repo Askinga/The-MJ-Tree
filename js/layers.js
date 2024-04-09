@@ -30,32 +30,32 @@ addLayer("p", {
         11: {
             title: "MJ Doubler",
             description: "Double your MJ gain.",
-            cost: new Decimal(1),
+            cost: new Decimal(0),
         },
         12: {
-            title: "MJ points have a effect!",
-            description: "Increases MJ gain based on MJ points.",
-            cost: new Decimal(3),
+            title: "Big MJ Boost",
+            description: "Increases MJ gain based on MJ Points.",
+            cost: new Decimal(0),
             effect(){
                 return player[this.layer].points.add(1).pow(0.5)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         13: {
-            title: "Super MJs",
-            description: "Increase MJ gain based on MJs.",
-            cost: new Decimal(15),
+            title: "MJs boost MJs",
+            description: "MJ gain is boosted by MJs.",
+            cost: new Decimal(0),
             effect(){
-                return player.points.add(1).pow(0.075)
+                return player.points.add(1).pow(0.15)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-	},
-    },    
+        },
+    },
     milestones: {
         0: {
-            requirementDescription: "35 MJ Points",
-            effectDescription: "Quadruple MJ Gain.",
-            done() { return player.p.points >= (35) }
+            requirementDescription: "20 Matter",
+            effectDescription: "Increase Cosmic Potential gain by 1.5, unlock 3 new Matter upgrades.",
+            done() { return player.p.points >= (20) }
         },
     },
 })
