@@ -43,7 +43,7 @@ addLayer("p", {
         },
         13: {
             title: "Super MJs",
-            description: "Increase MJ gain based on MJ points with a reduced effect.",
+            description: "Increase MJ gain based on MJs.",
             cost: new Decimal(15),
             effect(){
                 return player.points.add(1).pow(0.20)
