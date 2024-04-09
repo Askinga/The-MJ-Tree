@@ -19,8 +19,8 @@ let VERSION = {
 
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.0</h3><br>
-		- 0.0 has 1 layer, no upgrades.<br>
-                - 0.1 has 1 layer, 3 upgrades and 1 milestone.
+		- No changelog because of galaxy.click sorry.<br>
+  
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
