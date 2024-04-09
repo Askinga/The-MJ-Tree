@@ -25,11 +25,11 @@ addLayer("MJ", {
         {key: "m", description: "M: Reset for MJ points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
-
-	upgrades: {
+	
+    upgrades: {
         11: {
             title: "MJ Doubler",
-            description: "Double your MJ gain.",
+            description: "Double your MJ Gain.",
             cost: new Decimal(1),
-		}
+	}
 		
