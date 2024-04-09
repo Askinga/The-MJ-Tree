@@ -74,3 +74,51 @@ addLayer("p", {
 
     },
     requires() {
+        let requirement = new Decimal(0)
+        if(!inChallenge('SR', 11)) requirement = requirement.add(100000)
+        if(inChallenge('SR', 11)) requirement = requirement.add("eeeeeeeee10")
+        if(hasChallenge('SR', 12)) requirement = requirement.div(10)
+        if(inChallenge('SR', 12)) requirement = requirement.times(10)
+        return requirement
+    },
+    gainMult() {
+        let remult = new Decimal(1)
+        if (getClickableState('U', 11)) remult = remult.times(2)
+        if (getClickableState('U', 12)) remult = remult.times(3)
+        if (getClickableState('U', 13)) remult = remult.times(4)
+        if (hasUpgrade('U', 43) && !hasMilestone('P', 8)) remult = remult.times(player.points.add(10).log(10).add(10).log(10))
+        if (hasUpgrade('U', 43) && hasMilestone('P', 8)) remult = remult.times(player.points.add(9).log(9).add(8).log(8))
+        remult = remult.times(layers.R.buyables[11].effect())
+        if (hasUpgrade('R', 32)) remult = remult.times(1.3)
+        remult = remult.times(layers.SR.effect()[0])
+        remult = remult.times(layers.U.buyables[11].effect())
+        remult = remult.times(layers.P.effect())
+        if (hasUpgrade('U', 52)) remult = remult.times(player.P.points.add(3).log(3))
+        return remult
+    },
+    exponent() {
+        let power = new Decimal(0.5)
+        if (hasUpgrade('U', 32)) power = power.add(0.2)
+        if (hasMilestone('P', 8) && hasUpgrade('U', 32)) power = power.add(0.1)
+        return power
+    },
+    gainExp() {
+        let expo = new Decimal(1)
+        if(hasUpgrade('SR', 11)) expo = expo.times(1.1)
+        return expo
+    },
+    color: "#ba0022",
+    branches: ['U'],
+    effect() {
+        let power = new Decimal(0.6)
+        if (hasUpgrade('U', 33)) power = power.add(0.1)
+        if (hasUpgrade('U', 42)) power = power.add(0.1)
+        if (hasUpgrade('R', 33)) power = power.add(0.2)
+        if (hasMilestone('P', 8) && hasUpgrade('U', 33)) power = power.add(0.1)
+        if (hasMilestone('P', 8) && hasUpgrade('U', 42)) power = power.add(0.1)
+        return player.R.points.pow(power).add(1)
+    },
+    layerShown() { return hasAchievement('A', 12) },
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
