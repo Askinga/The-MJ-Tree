@@ -29,7 +29,33 @@ addLayer("MJ", {
     upgrades: {
         11: {
             title: "MJ Doubler",
-            description: "Double your MJ Gain.",
+            description: "Double your MJ gain.",
             cost: new Decimal(1),
-	}
-		
+        },
+        12: {
+            title: "MJ points have a effect!",
+            description: "Increases MJ gain based on MJ points.",
+            cost: new Decimal(3),
+            effect(){
+                return player[this.layer].points.add(1).pow(0.5)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        13: {
+            title: "Super MJs",
+            description: "MJ point gain is boosted by MJs.",
+            cost: new Decimal(15),
+            effect(){
+                return player.points.add(1).pow(0.15)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+    },
+    milestones: {
+        0: {
+            requirementDescription: "35 MJ Points",
+            effectDescription: "Quadruple MJ Gain.",
+            done() { return player.p.points >= (35) }
+        },
+    },
+})
