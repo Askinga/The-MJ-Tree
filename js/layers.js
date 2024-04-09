@@ -53,8 +53,8 @@ addLayer("p", {
     },
     milestones: {
         0: {
-            requirementDescription: "20 Matter",
-            effectDescription: "Increase Cosmic Potential gain by 1.5, unlock 3 new Matter upgrades.",
+            requirementDescription: "35 MJs",
+            effectDescription: "Quadruple MJ Gain",
             done() { return player.p.points >= (20) }
         },
     },
