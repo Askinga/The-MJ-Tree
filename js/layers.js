@@ -26,10 +26,7 @@ addLayer("MJ", {
     hotkeys: [
         {key: "m", description: "M: Reset for MJ points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true},
-
-		  upgrades: {
-        11: {
-            title: "More MJs",
-            description: "Double MJ gain.",
-            cost: new Decimal(1)
+    layerShown(){return true}, 
+ )}
+	 
+	 
