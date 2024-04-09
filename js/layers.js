@@ -25,4 +25,9 @@ addLayer("MJ", {
         {key: "m", description: "M: Reset for MJ points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
-})
+}),
+	    upgrades: {11: {
+
+        },
+
+    }
