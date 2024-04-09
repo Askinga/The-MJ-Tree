@@ -6,8 +6,6 @@ addLayer("MJ", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-	upgrades: {
-        11: {,
     color: "#a0a0a0",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "MJ points", // Name of prestige currency
@@ -27,5 +25,9 @@ addLayer("MJ", {
         {key: "m", description: "M: Reset for MJ points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
-
+upgrades: {
+        11: {
+            title: "MJ Doubler",
+            description: "Double your MJ gain.",
+            cost: new Decimal(1),
 	 
