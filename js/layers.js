@@ -50,11 +50,7 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
-	21: {
-            title: "MJ swarm",
-            description: "×10 your MJ gain.",
-            cost: new Decimal(135),
-            },
+	    
     milestones: {
         0: {
             requirementDescription: "35 MJ Points",
