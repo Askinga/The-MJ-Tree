@@ -43,10 +43,10 @@ addLayer("p", {
         },
         13: {
             title: "Super MJs",
-            description: "MJ point gain is boosted by MJs.",
+            description: "Increase MJ gain based on MJ points with a reduced effect.",
             cost: new Decimal(15),
             effect(){
-                return player.points.add(1).pow(0.15)
+                return player.points.add(1).pow(0.20)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
