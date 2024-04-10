@@ -76,6 +76,11 @@ addLayer("p", {
             effectDescription: "Multiply MJ gain by 15.",
             done() { return player.p.points >= (1000) }
         },
+        2: {
+            requirementDescription: "1,000,000 MJ Points",
+            effectDescription: "Multiply MJ gain by 250.",
+            done() { return player.p.points >= (1000000) }
+        },
     },
 })
 
