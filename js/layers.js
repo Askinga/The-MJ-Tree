@@ -113,7 +113,7 @@ addLayer("q", {
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "m", description: "M: Reset for MJ points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "E", description: "E: Reset for Mega MJ points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    if (hasUpgrade('p', 23)) layerShown(){return true}
+    layerShown(){return true}
 })
