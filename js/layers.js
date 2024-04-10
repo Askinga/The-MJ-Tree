@@ -58,7 +58,7 @@ addLayer("p", {
 	22: {
             title: "MJ Boost but nerfed",
             description: "Multiply MJ gain based on MJ points with a reduced effect.",
-            cost: new Decimal(4),
+            cost: new Decimal(13000),
             effect(){
                 return player[this.layer].points.add(1).pow(0.33)
             },
