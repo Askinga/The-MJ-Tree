@@ -60,7 +60,7 @@ function addedPlayerData() { return {
 }}
 
 // Display extra things at the top of the page
-var displayThings = [
+var displayThings = [Endgame 5e21 MJs
 ]
 
 // Determines when the game "ends"
