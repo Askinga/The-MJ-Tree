@@ -55,7 +55,7 @@ addLayer("p", {
             description: "×10 MJ gain.",
             cost: new Decimal(150),
 	},
-        21: {
+        22: {
             title: "Running MJ",
             description: "^1.075 MJ gain.",
             cost: new Decimal(12500),
