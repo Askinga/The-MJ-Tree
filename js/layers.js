@@ -30,7 +30,7 @@ addLayer("p", {
         11: {
             title: "MJ Doubler",
             description: "Double your MJ gain.",
-            cost: new Decimal(0),
+            cost: new Decimal(1),
         },
         12: {
             title: "MJ Boost",
@@ -49,7 +49,12 @@ addLayer("p", {
                 return player.points.add(1).pow(0.15)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-        },
+	},
+	21: {
+            title: "MJ Swarm",
+            description: "×10 MJ gain.",
+            cost: new Decimal(150),
+	},
     },
     milestones: {
         0: {
