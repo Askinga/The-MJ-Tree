@@ -55,7 +55,7 @@ addLayer("p", {
             description: "×10 MJ gain.",
             cost: new Decimal(150),
 	},
-	12: {
+	22: {
             title: "MJ Boost but nerfed",
             description: "Multiply MJ gain based on MJ points with a reduced effect.",
             cost: new Decimal(4),
