@@ -115,5 +115,5 @@ addLayer("q", {
     hotkeys: [
         {key: "m", description: "M: Reset for MJ points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true}
+    if (hasUpgrade('p', 23)) layerShown(){return true}
 })
