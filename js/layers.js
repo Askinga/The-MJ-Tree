@@ -64,7 +64,7 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
-        21: {
+        23: {
             title: "Last upgrade until the next layer!",
             description: "×1000 MJ gain.",
             cost: new Decimal(550000000),
