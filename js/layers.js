@@ -28,7 +28,7 @@ addLayer("p", {
 
     upgrades: {
         11: {
-            title: "Double MJs",
+            title: "MJ Doubler",
             description: "Double your MJ gain.",
             cost: new Decimal(0),
         },
