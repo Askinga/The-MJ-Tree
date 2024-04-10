@@ -25,4 +25,38 @@ addLayer("p", {
         {key: "m", description: "M: Reset for MJ points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
+
+    upgrades: {
+        11: {
+            title: "Double MJs",
+            description: "Double your MJ gain.",
+            cost: new Decimal(0),
+        },
+        12: {
+            title: "MJ Boost",
+            description: "Multiply MJ gain based on MJ points.",
+            cost: new Decimal(4),
+            effect(){
+                return player[this.layer].points.add(1).pow(0.5)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        13: {
+            title: "MJs boost MJs",
+            description: "MJ gain is boosted by MJs.",
+            cost: new Decimal(18),
+            effect(){
+                return player.points.add(1).pow(0.15)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+    },
+    milestones: {
+        0: {
+            requirementDescription: "40 MJ Points",
+            effectDescription: "Multiply MJ gain by 4.",
+            done() { return player.p.points >= (40) }
+        },
+    },
 })
+
