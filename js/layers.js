@@ -43,7 +43,7 @@ addLayer("p", {
         },
         13: {
             title: "MJs boost MJs",
-            description: "MJ gain is boosted by MJs.",
+            description: "MJ gain is boosted by MJs but reduced.",
             cost: new Decimal(18),
             effect(){
                 return player.points.add(1).pow(0.15)
@@ -55,11 +55,15 @@ addLayer("p", {
             description: "×10 MJ gain.",
             cost: new Decimal(150),
 	},
-        22: {
-            title: "Running MJ",
-            description: "^1.075 MJ gain.",
-            cost: new Decimal(12500),
-	},
+	12: {
+            title: "MJ Boost but nerfed",
+            description: "Multiply MJ gain based on MJ points with a reduced effect.",
+            cost: new Decimal(4),
+            effect(){
+                return player[this.layer].points.add(1).pow(0.33)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
     },
     milestones: {
         0: {
