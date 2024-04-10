@@ -55,9 +55,9 @@ addLayer("p", {
             description: "×10 MJ gain.",
             cost: new Decimal(150),
 	},
-        21: {
-            title: "MOAR MJs",
-            description: "×100 MJ gain.",
+        22: {
+            title: "POWERS!!",
+            description: "^1.075 MJ gain.",
             cost: new Decimal(12000),
     },
     milestones: {
