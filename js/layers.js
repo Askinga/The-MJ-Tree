@@ -43,7 +43,7 @@ addLayer("p", {
         },
         13: {
             title: "MJs boost MJs",
-            description: "MJ gain is boosted by MJs but reduced.",
+            description: "MJ gain is boosted by MJs.",
             cost: new Decimal(18),
             effect(){
                 return player.points.add(1).pow(0.15)
