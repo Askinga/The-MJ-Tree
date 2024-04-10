@@ -6,7 +6,7 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    color: "#a0a0a0",
+    color: "#141aba",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "MJ points", // Name of prestige currency
     baseResource: "MJs", // Name of resource prestige is based on
@@ -53,6 +53,11 @@ addLayer("p", {
 	21: {
             title: "MJ Swarm",
             description: "×10 MJ gain.",
+            cost: new Decimal(150),
+	},
+        21: {
+            title: "Running MJ",
+            description: "^1.075 MJ gain.",
             cost: new Decimal(150),
 	},
     },
