@@ -58,7 +58,7 @@ addLayer("p", {
         21: {
             title: "Running MJ",
             description: "^1.075 MJ gain.",
-            cost: new Decimal(150),
+            cost: new Decimal(12500),
 	},
     },
     milestones: {
