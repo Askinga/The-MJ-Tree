@@ -1,3 +1,4 @@
+
 addLayer("p", {
     name: "MJ points", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "MJ", // This appears on the layer's node. Default is the id with the first letter capitalized
@@ -6,12 +7,6 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    let keptUpgrades = [];
-        for(i=1;i<2;i++){ //rows
-            for(v=1;v<3;v++){ //columns
-              if ((hasUpgrade('S', 14)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
-	    },
-
     color: "#141aba",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "MJ points", // Name of prestige currency
@@ -31,7 +26,8 @@ addLayer("p", {
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        if (hasChallenge('S', 11)) exp = exp.mul(1.1)
+	return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -170,6 +166,15 @@ addLayer("S", {
             requirementDescription: "100 Super MJ Points",
             effectDescription: "Passively gain 100% of MJ Points per second!",
             done() { return player.S.points >= (100) }
+        },
+    },
+    challenges: {
+        11: {
+            name: "Super MJ Challenge",
+            challengeDescription: "^0.5 MJ Points",
+            canComplete: function() {return player.points.gte("1e26")},
+            goalDescription: "Get e26 MJs.",
+            rewardDescription: "^1.1 MJ Points"
         },
     },
 })
