@@ -145,7 +145,7 @@ addLayer("S", {
             description: "Multiply MJ Point gain based on Super MJ points.",
             cost: new Decimal(10),
             effect(){
-                return player[this.layer].points.add(1).pow(1.05)
+                return player[this.layer].points.add(2).pow(1.33)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
