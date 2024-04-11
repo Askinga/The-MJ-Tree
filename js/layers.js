@@ -16,7 +16,8 @@ addLayer("p", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('S', 11)) mult = mult.times(10)
-	return mult
+	if (hasUpgrade('S', 12)) mult = mult.times(upgradeEffect('S', 11))
+        return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
@@ -128,6 +129,15 @@ addLayer("S", {
             title: "SUPER MJ?",
             description: "×10 MJ & MJ Point Gain.",
             cost: new Decimal(1),
+	},
+        12: {
+            title: "You need more MJs? Then here you go!",
+            description: "Multiply MJ Point gain based on points.",
+            cost: new Decimal(1),
+            effect(){
+                return player.points.add(1).pow(0.08)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
     },
 })
