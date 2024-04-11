@@ -157,8 +157,8 @@ addLayer("S", {
     milestones: {
         0: {
             requirementDescription: "100 Super MJ Points",
-            effectDescription: "???.",
-            done() { return player.p.points >= (100) }
+            effectDescription: "Passively gain 100% of MJ Points per second!",
+            done() { return player.S.points >= (100) }
         },
     },
 })
