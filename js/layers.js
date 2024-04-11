@@ -133,7 +133,7 @@ addLayer("S", {
         12: {
             title: "You need more MJs? Then here you go!",
             description: "Multiply MJ Point gain based on points.",
-            cost: new Decimal(2),
+            cost: new Decimal(3),
             effect(){
                 return player.points.add(1).pow(0.08)
             },
