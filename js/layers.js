@@ -17,7 +17,8 @@ addLayer("p", {
         mult = new Decimal(1)
         if (hasUpgrade('S', 11)) mult = mult.times(10)
 	if (hasUpgrade('S', 12)) mult = mult.times(upgradeEffect('S', 12))
-        return mult
+        if (hasUpgrade('S', 13)) mult = mult.times(upgradeEffect('S', 13))
+	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
@@ -139,5 +140,14 @@ addLayer("S", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
+        13: { 
+	    title: "Super MJ Boost",
+            description: "Multiply MJ Point gain based on Super MJ points.",
+            cost: new Decimal(10),
+            effect(){
+                return player[this.layer].points.add(1).pow(1.05)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
     },
 })
