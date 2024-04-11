@@ -89,9 +89,9 @@ addLayer("p", {
     },
 })
 
-addLayer("f", {
-    name: "formation",
-    symbol: "f",
+addLayer("S", {
+    name: "Super MJ Points",
+    symbol: "SMJ",
     position: 1,
     startData() { return {
         unlocked: false,
