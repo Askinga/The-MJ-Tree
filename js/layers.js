@@ -25,7 +25,8 @@ addLayer("p", {
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        if (hasChallenge('S', 11)) exp = exp.mul(1.1)
+        if (inChallenge('S', 11)) exp = exp.mul(0.5)
+	if (hasChallenge('S', 11)) exp = exp.add(0.05)
 	return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
@@ -173,7 +174,7 @@ addLayer("S", {
             challengeDescription: "^0.5 MJ Points",
             canComplete: function() {return player.points.gte("1e26")},
             goalDescription: "Get e26 MJs.",
-            rewardDescription: "^1.1 MJ Points"
+            rewardDescription: "+^0.05 MJ Points"
         },
     },
 })
