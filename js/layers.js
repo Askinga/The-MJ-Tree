@@ -6,6 +6,12 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     }},
+    let keptUpgrades = [];
+        for(i=1;i<2;i++){ //rows
+            for(v=1;v<3;v++){ //columns
+              if ((hasMilestone('rebirth', 3)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+	    }
+
     color: "#141aba",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "MJ points", // Name of prestige currency
@@ -154,9 +160,10 @@ addLayer("S", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         14: { 
-	    title: "???",
-            description: "???.",
-            cost: new Decimal(1000),
+	    title: "YAAAAY",
+            description: "?????.",
+            cost: new Decimal(10),
+	},
     },
     milestones: {
         0: {
