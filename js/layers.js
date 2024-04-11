@@ -98,7 +98,7 @@ addLayer("S", {
 		points: new Decimal(0),
     }},
     color: "#0ec466",
-    requires: new Decimal(3e10), // Can be a function that takes requirement increases into account
+    requires: new Decimal(1e11), // Can be a function that takes requirement increases into account
     resource: "Super MJ Points", // Name of prestige currency
     baseResource: "MJ Points", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
