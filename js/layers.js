@@ -9,7 +9,7 @@ addLayer("p", {
     let keptUpgrades = [];
         for(i=1;i<2;i++){ //rows
             for(v=1;v<3;v++){ //columns
-              if ((hasUpgrade('S', 3)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+              if ((hasUpgrade('S', 14)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
 	    }
     
     color: "#141aba",
@@ -159,6 +159,10 @@ addLayer("S", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
+        14: { 
+	    title: "???",
+            description: "???.",
+            cost: new Decimal(1000),
     },
     milestones: {
         0: {
