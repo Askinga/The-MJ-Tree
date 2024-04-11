@@ -128,4 +128,6 @@ addLayer("S", {
             title: "SUPER MJ?",
             description: "×10 MJ & MJ Point Gain.",
             cost: new Decimal(1),
+	},
+    },
 })
