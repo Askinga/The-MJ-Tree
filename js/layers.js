@@ -87,24 +87,4 @@ addLayer("p", {
             done() { return player.p.points >= (1000000) }
         },
     },
-}),
-
-addLayer("q", {
-    name: "Super MJ Points",
-    symbol: "SMJ",
-    row: "1",
-    resource: "Super MJ Points",
-    color: "#850101",
-    type: "custom",
-    baseAmount() { return player.SR.points },
-    baseResource: "MJ Points",
-    resetsNothing: false,
-    requires: new Decimal(e10),
-    getResetGain() { return new Decimal(1) },
-    getNextAt() { return new Decimal(25) },
-    canReset() { return if (hasUpgrade('p', 23))
-    tooltip() { return coolDynamicFormat(player.P.points, 2) + " Power" },
-    prestigeButtonText() {
-        return "Unlock Super MJ Points"
-    layerShown(){return true}
 })
