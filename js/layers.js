@@ -102,9 +102,9 @@ addLayer("q", {
     requires: new Decimal(e10),
     getResetGain() { return new Decimal(1) },
     getNextAt() { return new Decimal(25) },
-    canReset() { return 
+    canReset() { return if (hasUpgrade('p', 23))
     tooltip() { return coolDynamicFormat(player.P.points, 2) + " Power" },
     prestigeButtonText() {
-        return "Unlock "
+        return "Unlock Super MJ Points"
     layerShown(){return true}
 })
