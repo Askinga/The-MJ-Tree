@@ -10,7 +10,7 @@ addLayer("p", {
         for(i=1;i<2;i++){ //rows
             for(v=1;v<3;v++){ //columns
               if ((hasUpgrade('S', 14)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
-	    }
+	    },
     
     color: "#141aba",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
