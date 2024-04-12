@@ -284,4 +284,12 @@ addLayer("G", {
 
     layerShown(){return true},
     branches: ["S", "C"],
+
+    upgrades: {
+        11: {
+            title: "This is OP!?",
+            description: "×1M MJs, ×1000 MJ Points and ×10 Super MJ Points .",
+            cost: new Decimal(1),
+	},
+    },
 })
