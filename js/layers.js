@@ -164,7 +164,7 @@ addLayer("S", {
             description: "^1.05 MJ Gain.",
             cost: new Decimal(250),
 	},
-        14: { 
+        15: { 
 	    title: "Passive Generation",
             description: "Gain 1% of Super MJ Points per second.",
             cost: new Decimal(2000),
