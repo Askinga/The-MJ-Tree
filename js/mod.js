@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.3, Hard Work",
-	name: "Layer 2 work",
+	num: "0.4, Hard Work",
+	name: "Layer 3 work",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -51,6 +51,7 @@ function getPointGen() {
 	if (hasUpgrade('p', 23)) gain = gain.times(1000)
 	if (hasUpgrade('S', 11)) gain = gain.times(10)
 	if (hasUpgrade('S', 14)) gain = gain.pow(1.05)
+	if (hasUpgrade('G', 11)) gain = gain.times(1e6)
 	if (hasMilestone('p', 0)) gain = gain.times(4)
 	if (hasMilestone('p', 1)) gain = gain.times(15)
 	if (hasMilestone('p', 2)) gain = gain.times(250)
