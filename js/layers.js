@@ -102,7 +102,7 @@ addLayer("p", {
 addLayer("S", {
     name: "Super MJ Points",
     symbol: "SMJ",
-    position: 1,
+    position: 0,
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
@@ -214,4 +214,42 @@ addLayer("S", {
             rewardDescription: "^1.1 MJ Points"
         },
     },
+})
+
+addLayer("C", {
+    name: "Scaler MJs",
+    symbol: "SC",
+    position: 1,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#0ec466",
+    requires: new Decimal(1e115), // Can be a function that takes requirement increases into account
+    resource: "Scaler MJs", // Name of prestige currency
+    baseResource: "MJ Points", // Name of resource prestige is based on
+    baseAmount() {return player.p.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.3, // Prestige currency exponent
+    passiveGeneration() {
+        if (hasUpgrade('S', 15)) return 0.075
+        return 0
+    },
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "S", description: "S: Reset for Super MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+
+    layerShown(){return true},
+    branches:[['p', 23]],
 })
