@@ -144,7 +144,7 @@ addLayer("S", {
 	},
         12: {
             title: "You need more MJs? Then here you go!",
-            description: "Multiply MJ Point gain based on points.",
+            description: "Multiply MJ Point gain based on MJs.",
             cost: new Decimal(3),
             effect(){
                 return player.points.add(1).pow(0.08)
@@ -174,6 +174,15 @@ addLayer("S", {
 	    title: "BIG BOOST",
             description: "×10 Super MJ Point Gain.",
             cost: new Decimal(250000),
+	},
+        12: {
+            title: "BIG LAYER 2 BOOST!",
+            description: "Multiply Super MJ Point gain based on MJs.",
+            cost: new Decimal(2.5e7),
+            effect(){
+                return player.points.add(1).pow(0.035)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
     },
     milestones: {
