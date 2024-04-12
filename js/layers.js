@@ -25,6 +25,7 @@ addLayer("p", {
 	if (hasUpgrade('S', 23)) mult = mult.pow(1.08)
 	if (inChallenge('S', 11)) mult = mult.pow(0.3)
 	if (hasChallenge('S', 11)) mult = mult.pow(1.1)
+	if (inChallenge('G', 11)) mult = mult.pow(0.8)
 	if (hasUpgrade('G', 11)) mult = mult.times(1000)
 	return mult
     },
@@ -125,6 +126,8 @@ addLayer("S", {
 	if (hasUpgrade('S', 22)) mult = mult.times(upgradeEffect('S', 22))
 	if (hasMilestone('S', 1)) mult = mult.times(10)
 	if (hasMilestone('S', 2)) mult = mult.times(20)
+	if (inChallenge('G', 11)) mult = mult.pow(0.8)
+	if (hasChallenge('G', 11)) mult = mult.pow(1.05)
 	if (hasUpgrade('G', 11)) mult = mult.times(10)
 	return mult
     },
@@ -222,29 +225,7 @@ addLayer("S", {
             rewardDescription: "^1.1 MJ Points"
         },
     },
-    buyables: {
-        11: {
-            title: "Super MJ Buyable 1: Super Insanity",
-            cost(x) {
-                let exp2 = 1.01
-                return new Decimal(1e19).mul(Decimal.pow(1.3, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
-            },
-            display() {
-                return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " S" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Super MJ Point gain by x" + format(buyableEffect(this.layer, this.id))
-            },
-            canAfford() {
-                return player[this.layer].points.gte(this.cost())
-            },
-            buy() {
-                let cost = new Decimal (1)
-                player[this.layer].points = player[this.layer].points.sub(this.cost().mul(cost))
-                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
-            },
-            effect(x) {
-                let base1 = new Decimal(1.1)
-                return eff
-            },
-        },
+    
 })
 
 addLayer("C", {
@@ -320,6 +301,15 @@ addLayer("G", {
             title: "This is OP!?",
             description: "×1M MJs, ×1000 MJ Points and ×10 Super MJ Points .",
             cost: new Decimal(1),
+	},
+    },
+    challenges: {
+        11: {
+            name: "Exponential Downgrade",
+            challengeDescription: "^0.8 all layers except Scaler MJs and this layer.",
+            canComplete: function() {return player.points.gte("1e65")},
+            goalDescription: "Get e65 MJs.",
+            rewardDescription: "^1.05 Super MJ Points"
 	},
     },
 })
