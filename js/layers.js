@@ -6,7 +6,7 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    color: "#141aba",
+    color: "#05199c",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "MJ points", // Name of prestige currency
     baseResource: "MJs", // Name of resource prestige is based on
@@ -224,7 +224,7 @@ addLayer("C", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#0ec466",
+    color: "#9c5005",
     requires: new Decimal(1e115), // Can be a function that takes requirement increases into account
     resource: "Scaler MJs", // Name of prestige currency
     baseResource: "MJ Points", // Name of resource prestige is based on
