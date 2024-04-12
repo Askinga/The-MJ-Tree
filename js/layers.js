@@ -222,6 +222,29 @@ addLayer("S", {
             rewardDescription: "^1.1 MJ Points"
         },
     },
+    buyables: {
+        11: {
+            title: "Super MJ Buyable 1: Super Insanity",
+            cost(x) {
+                let exp2 = 1.01
+                return new Decimal(1e19).mul(Decimal.pow(1.3, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
+            },
+            display() {
+                return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " S" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Super MJ Point gain by x" + format(buyableEffect(this.layer, this.id))
+            },
+            canAfford() {
+                return player[this.layer].points.gte(this.cost())
+            },
+            buy() {
+                let cost = new Decimal (1)
+                player[this.layer].points = player[this.layer].points.sub(this.cost().mul(cost))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            effect(x) {
+                let base1 = new Decimal(1.1)
+                return eff
+            },
+        },
 })
 
 addLayer("C", {
