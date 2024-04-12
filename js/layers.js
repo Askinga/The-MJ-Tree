@@ -250,9 +250,6 @@ addLayer("C", {
         {key: "S", description: "S: Reset for Super MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){
-    let visible = false
-        if (hasUpgrade('S', 23) || player.C.unlocked || player["C"].points.gte(1)) visible = true
-       return visible
+    layerShown(){return true},
     branches:[["p"]],
 })
