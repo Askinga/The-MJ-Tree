@@ -254,5 +254,5 @@ addLayer("C", {
     let visible = false
         if (hasUpgrade('S', 23) || player.C.unlocked || player["C"].points.gte(1)) visible = true
        return visible
-    branches:[[white]],
+    branches:[["p"]],
 })
