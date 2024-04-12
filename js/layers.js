@@ -244,12 +244,13 @@ addLayer("C", {
         return new Decimal(1)
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
+    displayRow: 2,
     hotkeys: [
         {key: "S", description: "S: Reset for Super MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
     layerShown(){return true},
-    branches:["p"],
+    branches:["S"],
 })
 
 addLayer("G", {
