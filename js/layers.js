@@ -119,7 +119,8 @@ addLayer("S", {
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        return mult
+	if (hasUpgrade('S', 21)) mult = mult.times(10)
+	return mult
     },
 
 
@@ -168,6 +169,11 @@ addLayer("S", {
 	    title: "Passive Generation",
             description: "Gain 7.5% of Super MJ Points per second.",
             cost: new Decimal(2000),
+	},
+        21: { 
+	    title: "BIG BOOST",
+            description: "×10 Super MJ Point Gain.",
+            cost: new Decimal(60000),
 	},
     },
     milestones: {
