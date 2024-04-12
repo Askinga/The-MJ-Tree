@@ -302,10 +302,14 @@ addLayer("G", {
             description: "×1M MJs, ×1000 MJ Points and ×10 Super MJ Points.",
             cost: new Decimal(1),
 	},
-        12: {
-            title: "This is OP!?",
-            description: ".",
-            cost: new Decimal(1),
+        13: {
+            title: "MJs boost MJs but massively buffed",
+            description: "MJ gain is boosted by MJs.",
+            cost: new Decimal(50),
+            effect(){
+                return player.points.add(1).pow(0.5)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
     },
     challenges: {
