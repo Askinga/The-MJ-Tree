@@ -176,7 +176,7 @@ addLayer("S", {
             description: "×10 Super MJ Point Gain.",
             cost: new Decimal(250000),
 	},
-        12: {
+        22: {
             title: "BIG LAYER 2 BOOST!",
             description: "Multiply Super MJ Point gain based on MJs.",
             cost: new Decimal(2.5e7),
