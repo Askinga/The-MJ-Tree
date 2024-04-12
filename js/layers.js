@@ -302,7 +302,7 @@ addLayer("G", {
             description: "×1M MJs, ×1000 MJ Points and ×10 Super MJ Points.",
             cost: new Decimal(1),
 	},
-        13: {
+        12: {
             title: "MJs boost MJs but massively buffed",
             description: "MJ gain is boosted by MJs.",
             cost: new Decimal(50),
