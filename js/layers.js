@@ -156,9 +156,9 @@ addLayer("S", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         14: { 
-	    title: "YAAAAY",
-            description: "?????.",
-            cost: new Decimal(10),
+	    title: "YEEEEEES!!!",
+            description: "^1.05 MJ Gain.",
+            cost: new Decimal(250),
 	},
     },
     milestones: {
