@@ -307,8 +307,8 @@ addLayer("G", {
         11: {
             name: "Exponential Downgrade",
             challengeDescription: "^0.8 all layers except Scaler MJs and this layer.",
-            canComplete: function() {return player.points.gte("1e65")},
-            goalDescription: "Get e65 MJs.",
+            canComplete: function() {return player.points.gte("1e100")},
+            goalDescription: "Get e100 MJs.",
             rewardDescription: "^1.05 Super MJ Points"
 	},
     },
