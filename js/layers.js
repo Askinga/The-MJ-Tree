@@ -281,5 +281,5 @@ addLayer("G", {
     ],
 
     layerShown(){return true},
-    branches:[["S", "C"]],
+    branches: ["S", "C", "p"],
 })
