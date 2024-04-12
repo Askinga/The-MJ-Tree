@@ -22,7 +22,7 @@ addLayer("p", {
         if (hasUpgrade('S', 11)) mult = mult.times(10)
 	if (hasUpgrade('S', 12)) mult = mult.times(upgradeEffect('S', 12))
         if (hasUpgrade('S', 13)) mult = mult.times(upgradeEffect('S', 13))
-	if (inChallenge('S', 11)) mult = mult.pow(0.5)
+	if (inChallenge('S', 11)) mult = mult.pow(0.3)
 	if (hasChallenge('S', 11)) mult = mult.pow(1.1)
 	return mult
     },
@@ -171,9 +171,9 @@ addLayer("S", {
     challenges: {
         11: {
             name: "Super MJ Challenge",
-            challengeDescription: "^0.5 MJ Points",
-            canComplete: function() {return player.points.gte("1e26")},
-            goalDescription: "Get e26 MJs.",
+            challengeDescription: "^0.3 MJ Points",
+            canComplete: function() {return player.points.gte("1e29")},
+            goalDescription: "Get e29 MJs.",
             rewardDescription: "^1.1 MJ Points"
         },
     },
