@@ -22,6 +22,7 @@ addLayer("p", {
         if (hasUpgrade('S', 11)) mult = mult.times(10)
 	if (hasUpgrade('S', 12)) mult = mult.times(upgradeEffect('S', 12))
         if (hasUpgrade('S', 13)) mult = mult.times(upgradeEffect('S', 13))
+	if (hasUpgrade('S', 11)) mult = mult.pow(1.08)
 	if (inChallenge('S', 11)) mult = mult.pow(0.3)
 	if (hasChallenge('S', 11)) mult = mult.pow(1.1)
 	return mult
@@ -185,6 +186,11 @@ addLayer("S", {
                 return player.points.add(1).pow(0.035)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        23: {
+            title: "Almost as strong as the challenge",
+            description: "^1.08 MJ Point gain.",
+            cost: new Decimal(1e12),
 	},
     },
     milestones: {
