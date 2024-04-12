@@ -22,7 +22,7 @@ addLayer("p", {
         if (hasUpgrade('S', 11)) mult = mult.times(10)
 	if (hasUpgrade('S', 12)) mult = mult.times(upgradeEffect('S', 12))
         if (hasUpgrade('S', 13)) mult = mult.times(upgradeEffect('S', 13))
-	if (hasUpgrade('S', 11)) mult = mult.pow(1.08)
+	if (hasUpgrade('S', 23)) mult = mult.pow(1.08)
 	if (inChallenge('S', 11)) mult = mult.pow(0.3)
 	if (hasChallenge('S', 11)) mult = mult.pow(1.1)
 	return mult
