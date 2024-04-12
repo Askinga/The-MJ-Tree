@@ -123,7 +123,8 @@ addLayer("S", {
         mult = new Decimal(1)
 	if (hasUpgrade('S', 21)) mult = mult.times(10)
 	if (hasUpgrade('S', 22)) mult = mult.times(upgradeEffect('S', 22))
-	if (hasMilestone('S', 1)) mult = mult.times(20)
+	if (hasMilestone('S', 1)) mult = mult.times(10)
+	if (hasMilestone('S', 2)) mult = mult.times(20)
 	if (hasUpgrade('G', 11)) mult = mult.times(10)
 	return mult
     },
@@ -202,6 +203,11 @@ addLayer("S", {
             done() { return player.S.points >= (100) }
         },
         1: {
+            requirementDescription: "10000 Super MJ Points",
+            effectDescription: "×10 Super MJ Point gain",
+            done() { return player.S.points >= (10000) }
+        },
+        2: {
             requirementDescription: "2e14 Super MJ Points",
             effectDescription: "×20 Super MJ Point gain",
             done() { return player.S.points >= (2e14) }
