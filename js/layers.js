@@ -173,7 +173,7 @@ addLayer("S", {
         21: { 
 	    title: "BIG BOOST",
             description: "×10 Super MJ Point Gain.",
-            cost: new Decimal(60000),
+            cost: new Decimal(250000),
 	},
     },
     milestones: {
