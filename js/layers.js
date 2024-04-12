@@ -25,6 +25,7 @@ addLayer("p", {
 	if (hasUpgrade('S', 23)) mult = mult.pow(1.08)
 	if (inChallenge('S', 11)) mult = mult.pow(0.3)
 	if (hasChallenge('S', 11)) mult = mult.pow(1.1)
+	if (hasUpgrade('G', 11)) mult = mult.times(1000)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -123,6 +124,7 @@ addLayer("S", {
 	if (hasUpgrade('S', 21)) mult = mult.times(10)
 	if (hasUpgrade('S', 22)) mult = mult.times(upgradeEffect('S', 22))
 	if (hasMilestone('S', 1)) mult = mult.times(20)
+	if (hasUpgrade('G', 11)) mult = mult.times(10)
 	return mult
     },
 
