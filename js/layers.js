@@ -113,6 +113,10 @@ addLayer("S", {
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.125, // Prestige currency exponent
+    passiveGeneration() {
+        if (hasUpgrade('S', 15)) return 0.01
+        return 0
+    },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -159,6 +163,11 @@ addLayer("S", {
 	    title: "YEEEEEES!!!",
             description: "^1.05 MJ Gain.",
             cost: new Decimal(250),
+	},
+        14: { 
+	    title: "Passive Generation",
+            description: "Gain 1% of Super MJ Points per second.",
+            cost: new Decimal(2000),
 	},
     },
     milestones: {
