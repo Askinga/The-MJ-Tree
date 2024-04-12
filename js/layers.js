@@ -121,6 +121,7 @@ addLayer("S", {
         mult = new Decimal(1)
 	if (hasUpgrade('S', 21)) mult = mult.times(10)
 	if (hasUpgrade('S', 22)) mult = mult.times(upgradeEffect('S', 22))
+	if (hasMilestone('S', 1)) mult = mult.times(20)
 	return mult
     },
 
@@ -191,6 +192,11 @@ addLayer("S", {
             requirementDescription: "100 Super MJ Points",
             effectDescription: "Passively gain 100% of MJ Points per second!",
             done() { return player.S.points >= (100) }
+        },
+        1: {
+            requirementDescription: "2e14 Super MJ Points",
+            effectDescription: "×20 Super MJ Point gain",
+            done() { return player.S.points >= (2e14) }
         },
     },
     challenges: {
