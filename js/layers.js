@@ -137,7 +137,7 @@ addLayer("S", {
     ],
 
     layerShown(){return true},
-    branches:[['p', 23]],
+    branches:[['p']],
 	
     upgrades: {
         11: {
