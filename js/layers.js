@@ -400,6 +400,7 @@ addLayer("H", {
         mult = new Decimal(1)
 	if (hasMilestone('C', 1)) mult = mult.times(10)
 	if (hasUpgrade('L', 13)) mult = mult.times(3)
+	if (hasUpgrade('L', 22)) mult = mult.times(upgradeEffect('L', 22))
 	return mult
     },
 
@@ -461,6 +462,8 @@ addLayer("L", {
 	if (hasUpgrade('L', 13)) mult = mult.times(5)
 	if (hasUpgrade('L', 14)) mult = mult.times(upgradeEffect('L', 14))
 	if (hasMilestone('L', 0)) mult = mult.times(10)
+	if (hasUpgrade('L', 21)) mult = mult.times(4)
+        if (hasMilestone('L', 1)) mult = mult.times(10)
 	return mult
     },
 
@@ -503,9 +506,23 @@ addLayer("L", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
         15: {
-            title: "SUPER OP UPGRADE! Also don't reset for the other layers if you have this upgrade!",
+            title: "SUPER OP UPGRADE!!",
             description: "Passivley gain 10% of Hyper MJ Point gain per second, 25% of Giga MJ Points per second and 100% of Super MJ Points per second!.",
             cost: new Decimal(5e6),
+	},
+        21: {
+            title: "Click boost!",
+            description: "×4 MJ Clicks.",
+            cost: new Decimal(6e6),
+	},
+        22: {
+            title: "Even MORE CLICKS!",
+            description: "Multiply Hyper MJ Point gain based on MJ Clicks.",
+            cost: new Decimal(2e7),
+            effect(){
+                return player.L.points.add(1).pow(0.4)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
     },
     milestones: {
@@ -513,6 +530,11 @@ addLayer("L", {
             requirementDescription: "2e5 MJ Clicks",
             effectDescription: "×10 MJ Clicks",
             done() { return player.L.points >= (200000) }
+        },
+        1: {
+            requirementDescription: "3e6 MJ Clicks",
+            effectDescription: "×6 MJ Clicks",
+            done() { return player.L.points >= (3e6) }
         },
     },
 })
