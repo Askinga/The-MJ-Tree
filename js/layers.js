@@ -478,12 +478,7 @@ addLayer("a", {
                 "achievements",
                 "blank",
                 ],
-        },
-        "Savebank": {
-            content: [
-                ["clickables", [1, 2, 3, 4, 5, 6]],
-            ],
-        },
+        },  
     },
     achievements: {
         rows: 25,
@@ -517,6 +512,16 @@ addLayer("a", {
             name: "About to reset",
             done() { return (hasUpgrade('p', 23)) },
             tooltip: "Get MJ Upgrade 23.",	   
+        },
+        21: {
+            name: "SUPER MJ!",
+            done() { return player.S.gte(1) },
+            tooltip: "Get a Super MJ Point",	   
+        },
+        22: {
+            name: "MJs boost MJ Points",
+            done() { return (hasUpgrade('S', 12)) },
+            tooltip: "Get Super MJ Upgrade 12.",	   
         },
 },
 })
