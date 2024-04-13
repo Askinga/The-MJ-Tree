@@ -407,7 +407,7 @@ addLayer("H", {
 	},
         12: {
             title: "Important for the challenge",
-            description: "×1e20 MJs.",
+            description: "×1e10 MJs.",
             cost: new Decimal(1000),
 	}
     },
