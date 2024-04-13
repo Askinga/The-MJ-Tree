@@ -401,7 +401,23 @@ addLayer("H", {
     tooltip: "Achievements",
     startData() { return {
         unlocked: true,
-	    
+    }},
+    tabFormat: {
+        "Achievements": {
+            content: [
+                "achievements"
+            ]
+        },
+        "Secrets": {
+            content: [
+                ["layer-proxy", ["SA", [
+                    ["display-text", "sorry no secret achievements"],
+                    ["display-text", "sorry no secret achievements"],
+                    "h-line",
+                    "achievements"]]]
+            ]
+        }
+    },
     achievements: {
         11: {
             name: "Double!",
