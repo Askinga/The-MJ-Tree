@@ -337,6 +337,15 @@ addLayer("G", {
             description: "×5 Giga MJ Points and ×25 Super MJ Points.",
             cost: new Decimal(350),
 	},
+        14: {
+            title: "Super MJs boost Super MJs",
+            description: "Multiply Giga MJ Point gain based on Scaler MJs.",
+            cost: new Decimal(2e16),
+	    effect(){
+                return player.S.points.add(1).pow(0.05)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
     },
     challenges: {
         11: {
