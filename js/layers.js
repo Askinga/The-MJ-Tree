@@ -421,3 +421,37 @@ addLayer("H", {
 	},
     },
 })
+
+addLayer("U", {
+    name: "Universal MJs",
+    symbol: "UNI",
+    position: 1,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#ad03fc",
+    requires: new Decimal(10000), // Can be a function that takes requirement increases into account
+    resource: "Universal MJs", // Name of prestige currency
+    baseResource: "Hyper MJ Points", // Name of resource prestige is based on
+    baseAmount() {return player.H.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.08, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 3, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "H", description: "H: Reset for Hyper MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+
+    layerShown(){return true},
+    branches: ["H", "G"],
+})
