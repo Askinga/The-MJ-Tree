@@ -450,6 +450,7 @@ addLayer("L", {
 	if (hasUpgrade('L', 11)) mult = mult.times(3)
 	if (hasUpgrade('L', 12)) mult = mult.times(4)
 	if (hasUpgrade('L', 13)) mult = mult.times(5)
+	if (hasUpgrade('L', 14)) mult = mult.times(upgradeEffect('L', 14))
 	return mult
     },
 
@@ -482,6 +483,15 @@ addLayer("L", {
             title: "boost boost boost",
             description: "×5 MJ Clicks, ×3 Hyper MJ Points and ×1000 MJ Points.",
             cost: new Decimal(500),
+	},
+        14: {
+            title: "MOAR CLICKS!",
+            description: "Multiply MJ Click gain based on MJ Clicks.",
+            cost: new Decimal(10000),
+            effect(){
+                return player.points.add(1).pow(0.225)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
     },
 })
