@@ -226,7 +226,6 @@ addLayer("S", {
             rewardDescription: "^1.1 MJ Points"
         },
     },
-    
 })
 
 addLayer("C", {
@@ -238,12 +237,12 @@ addLayer("C", {
 		points: new Decimal(0),
     }},
     color: "#9c5005",
-    requires: new Decimal(1e755), // Can be a function that takes requirement increases into account
+    requires: new Decimal(1e130), // Can be a function that takes requirement increases into account
     resource: "Scaler MJs", // Name of prestige currency
-    baseResource: "MJ Points", // Name of resource prestige is based on
-    baseAmount() {return player.p.points}, // Get the current amount of baseResource
+    baseResource: "Super MJ Points", // Name of resource prestige is based on
+    baseAmount() {return player.S.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1.5, // Prestige currency exponent
+    exponent: 1.2, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
