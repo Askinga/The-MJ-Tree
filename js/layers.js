@@ -268,7 +268,7 @@ addLayer("C", {
             description: "Multiply Giga MJ Point gain based on Scaler MJs.",
             cost: new Decimal(1),
 	    effect(){
-                return player.C.points.add(2).pow(2.2)
+                return player.C.points.add(2).pow(1.3)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
