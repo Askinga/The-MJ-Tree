@@ -485,38 +485,6 @@ addLayer("a", {
             ],
         },
     },
-    clickables: {
-        11: {
-            title: "no",
-            display: "Layer Finished",
-            canClick: true,
-            onClick() {
-	    },
-            style() {return{
-                'background-color': tmp.p.color,
-            }},
-        },
-        12: {
-            title: "no",
-            display: "Layer Finished",
-            canClick: true,
-            onClick() {
-	    },
-            style() {return{
-                'background-color': tmp.S.color,
-            }},
-        },
-        21: {
-            title: "no",
-            display: "Layer Finished",
-            canClick: true,
-            onClick() {
-	    },
-            style() {return{
-                'background-color': tmp.G.color,
-            }},
-        },
-    },
     achievements: {
         rows: 25,
         cols: 6,
