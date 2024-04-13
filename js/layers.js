@@ -492,6 +492,31 @@ addLayer("a", {
             name: "Double!",
             done() { return (hasUpgrade('p', 11)) },
             tooltip: "Get MJ Upgrade 11.",	   
-    },
+        },
+        12: {
+            name: "MJ Boost!",
+            done() { return (hasUpgrade('p', 12)) },
+            tooltip: "Get MJ Upgrade 12.",	   
+        },
+        13: {
+            name: "MJ boosts MJs!!",
+            done() { return (hasUpgrade('p', 13)) },
+            tooltip: "Get MJ Upgrade 13.",	   
+        },
+        14: {
+            name: "Swarm of MJs",
+            done() { return (hasUpgrade('p', 21)) },
+            tooltip: "Get MJ Upgrade 21.",	   
+        },
+        15: {
+            name: "The same as MJ upgrade 12 but nerfed",
+            done() { return (hasUpgrade('p', 22)) },
+            tooltip: "Get MJ Upgrade 22.",	   
+        },
+        16: {
+            name: "About to reset",
+            done() { return (hasUpgrade('p', 23)) },
+            tooltip: "Get MJ Upgrade 23.",	   
+        },
 },
 })
