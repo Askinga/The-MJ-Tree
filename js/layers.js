@@ -15,7 +15,8 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     passiveGeneration() {
         if (hasMilestone('S', 0)) return 1
-        return 0
+        if (hasMilestone('C', 0)) return 1
+	return 0
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -270,6 +271,13 @@ addLayer("C", {
                 return player.C.points.add(2).pow(2.2)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+    },
+    milestones: {
+        0: {
+            requirementDescription: "3 Scaler MJs",
+            effectDescription: "Passively gain 100% of MJ Points per second regardless of the first Super MJ Milestone!",
+            done() { return player.S.points >= (3) }
 	},
     },
 })
