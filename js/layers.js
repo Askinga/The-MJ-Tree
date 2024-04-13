@@ -27,6 +27,7 @@ addLayer("p", {
 	if (inChallenge('S', 11)) mult = mult.pow(0.3)
 	if (hasChallenge('S', 11)) mult = mult.pow(1.1)
 	if (inChallenge('G', 11)) mult = mult.pow(0.8)
+	if (inChallenge('H', 11)) mult = mult.pow(0.5)
 	if (hasUpgrade('G', 11)) mult = mult.times(1000)
 	if (hasUpgrade('H', 11)) mult = mult.times(1e20)
 	return mult
@@ -129,6 +130,7 @@ addLayer("S", {
 	if (hasMilestone('S', 1)) mult = mult.times(10)
 	if (hasMilestone('S', 2)) mult = mult.times(20)
 	if (inChallenge('G', 11)) mult = mult.pow(0.8)
+	if (inChallenge('H', 11)) mult = mult.pow(0.5)
 	if (hasChallenge('G', 11)) mult = mult.pow(1.05)
 	if (hasUpgrade('G', 11)) mult = mult.times(10)
 	if (hasUpgrade('G', 13)) mult = mult.times(25)
@@ -304,6 +306,8 @@ addLayer("G", {
 	if (hasUpgrade('G', 13)) mult = mult.times(5)
 	if (hasUpgrade('C', 11)) mult = mult.times(upgradeEffect('C', 11))
 	if (hasUpgrade('H', 11)) mult = mult.times(1000)
+	if (inChallenge('H', 11)) mult = mult.pow(0.5)
+	if (hasChallenge('H', 11)) mult = mult.pow(1.1)
 	return mult
     },
 
@@ -399,6 +403,15 @@ addLayer("H", {
             title: "Hyper MJs are SUPER OP!!!!!!!!",
             description: "×1e50 MJs, ×1e20 MJ Points, ×1e6 Super MJ Points and ×1000 Giga MJ Points.",
             cost: new Decimal(1),
+	},
+    },
+    challenges: {
+        11: {
+            name: "The hardest challenge in this game",
+            challengeDescription: "^0.5 all layers except this layer.",
+            canComplete: function() {return player.points.gte("1e1500")},
+            goalDescription: "Get e1500 MJs.",
+            rewardDescription: "^1.1 Giga MJ Points"
 	},
     },
 })
