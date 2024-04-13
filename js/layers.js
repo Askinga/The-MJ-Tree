@@ -409,8 +409,8 @@ addLayer("H", {
         11: {
             name: "The hardest challenge in this game",
             challengeDescription: "^0.5 all layers except this layer.",
-            canComplete: function() {return player.points.gte("1e1500")},
-            goalDescription: "Get e1500 MJs.",
+            canComplete: function() {return player.points.gte("1e500")},
+            goalDescription: "Get e500 MJs.",
             rewardDescription: "^1.1 Giga MJ Points"
 	},
     },
