@@ -472,14 +472,7 @@ addLayer("a", {
     tooltip() { // Optional, tooltip displays when the layer is locked
         return ("Achievements")
     },
-    tabFormat: {
-        "Achievements": {
-            content: [
-                "achievements",
-                "blank",
-                ],
-        },  
-    },
+    
     achievements: {
         rows: 25,
         cols: 6,
