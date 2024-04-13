@@ -13,14 +13,14 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.4, Hard Work",
-	name: "Layer 3 work",
+	num: "0.5, Hard Work",
+	name: "More Suoer MJ Points!",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.3. Hard Work</h3><br>
-		- Working on layer 2.<br>
-		- You can get a ton more MJs.`
+		- Made a change on the exponent on layer 2.<br>
+		- You can get a ton more Super MJ Points.`
   
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
