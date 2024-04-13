@@ -258,7 +258,7 @@ addLayer("C", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 2, // Row the layer is in on the tree (0 is the first row
+    row: 1, // Row the layer is in on the tree (0 is the first row
     hotkeys: [
         {key: "A", description: "A: Reset for Scaler MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
