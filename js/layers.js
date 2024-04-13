@@ -455,6 +455,10 @@ addLayer("L", {
     baseAmount() {return player.H.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.08, // Prestige currency exponent
+    passiveGeneration() {
+        if (hasUpgrade('L', 23)) return 3
+        return 0
+    },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('L', 11)) mult = mult.times(3)
@@ -463,7 +467,9 @@ addLayer("L", {
 	if (hasUpgrade('L', 14)) mult = mult.times(upgradeEffect('L', 14))
 	if (hasMilestone('L', 0)) mult = mult.times(10)
 	if (hasUpgrade('L', 21)) mult = mult.times(4)
-        if (hasMilestone('L', 1)) mult = mult.times(10)
+        if (hasUpgrade('L', 24)) mult = mult.times(5)
+	if (hasMilestone('L', 1)) mult = mult.times(10)
+	if (hasMilestone('L', 2)) mult = mult.times(7.5)
 	return mult
     },
 
@@ -524,6 +530,21 @@ addLayer("L", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
+        23: {
+            title: "PASSIVE CLICKS",
+            description: "Passively gain 300% of MJ Clicks per second!.",
+            cost: new Decimal(3e8),
+	},
+        24: {
+            title: "More click boosts!",
+            description: "×5 MJ Clicks.",
+            cost: new Decimal(4e8),
+	},
+        25: {
+            title: "Milestone!!",
+            description: "Get a milestone.",
+            cost: new Decimal(3e9),
+	},
     },
     milestones: {
         0: {
@@ -535,6 +556,11 @@ addLayer("L", {
             requirementDescription: "3e6 MJ Clicks",
             effectDescription: "×6 MJ Clicks",
             done() { return player.L.points >= (3e6) }
+        },
+        2: {
+            requirementDescription: "Upgrade 25",
+            effectDescription: "×7.5 MJ Clicks",
+            done() { return (hasUpgrade('L', 25)) }
         },
     },
 })
