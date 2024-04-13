@@ -122,7 +122,8 @@ addLayer("S", {
     exponent: 0.1425, // Prestige currency exponent
     passiveGeneration() {
         if (hasUpgrade('S', 15)) return 0.075
-        return 0
+        if (hasUpgrade('L', 15)) return 1
+	return 0
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -308,6 +309,9 @@ addLayer("G", {
     baseAmount() {return player.S.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.115, // Prestige currency exponent
+    passiveGeneration() {
+        if (hasUpgrade('L', 15)) return 0.25
+        return 0
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('G', 13)) mult = mult.times(5)
@@ -387,6 +391,9 @@ addLayer("H", {
     baseAmount() {return player.G.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.045, // Prestige currency exponent
+    passiveGeneration() {
+        if (hasUpgrade('L', 15)) return 0.1
+        return 0
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasMilestone('C', 1)) mult = mult.times(10)
@@ -451,6 +458,7 @@ addLayer("L", {
 	if (hasUpgrade('L', 12)) mult = mult.times(4)
 	if (hasUpgrade('L', 13)) mult = mult.times(5)
 	if (hasUpgrade('L', 14)) mult = mult.times(upgradeEffect('L', 14))
+	if (hasMilestone('L', 0)) mult = mult.times(10)
 	return mult
     },
 
@@ -493,6 +501,18 @@ addLayer("L", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
+        15: {
+            title: "SUPER OP UPGRADE! Also don't reset for the other layers if you have this upgrade!",
+            description: "Passivley gain 10% of Hyper MJ Point gain per second, 25% of Giga MJ Points per second and 100% of Super MJ Points per second!.",
+            cost: new Decimal(5e6),
+	},
+    },
+    milestones: {
+        0: {
+            requirementDescription: "2e5 MJ Clicks",
+            effectDescription: "×10 MJ Clicks",
+            done() { return player.L.points >= (200000) }
+        },
     },
 })
 
