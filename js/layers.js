@@ -508,8 +508,8 @@ addLayer("a", {
         },
         21: {
             name: "SUPER MJ!",
-            done() { return player.S.gte(1) },
-            tooltip: "Get a Super MJ Point",	   
+            done() { return (hasUpgrade('S', 11)) },
+            tooltip: "Get Super MJ Upgrade 11.",
         },
         22: {
             name: "MJs boost MJ Points",
