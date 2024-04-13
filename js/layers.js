@@ -339,7 +339,7 @@ addLayer("G", {
 	},
         14: {
             title: "Super MJs boost Super MJs",
-            description: "Multiply Giga MJ Point gain based on Scaler MJs.",
+            description: "Multiply Super MJ Point gain based on Super MJ Points.",
             cost: new Decimal(2e16),
 	    effect(){
                 return player.S.points.add(1).pow(0.05)
