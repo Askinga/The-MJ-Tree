@@ -391,38 +391,3 @@ addLayer("H", {
     layerShown(){return true},
     branches: ["G", "C"],
 })
-
-    name: "achievements",
-    symbol: "🏆",
-    row: "side",
-    type: "none",
-    resource: "achievements",
-    color: "#FFEE88",
-    tooltip: "Achievements",
-    startData() { return {
-        unlocked: true,
-    }},
-    tabFormat: {
-        "Achievements": {
-            content: [
-                "achievements"
-            ]
-        },
-        "Secrets": {
-            content: [
-                ["layer-proxy", ["SA", [
-                    ["display-text", "sorry no secret achievements"],
-                    ["display-text", "sorry no secret achievements"],
-                    "h-line",
-                    "achievements"]]]
-            ]
-        }
-    },
-    achievements: {
-        11: {
-            name: "Double!",
-            tooltip: "Buy MJ Upgrade 11",
-            done() {
-                if (hasUpgrade('p', 11)) return true
-            },
-        },
