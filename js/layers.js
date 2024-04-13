@@ -129,6 +129,7 @@ addLayer("S", {
 	if (inChallenge('G', 11)) mult = mult.pow(0.8)
 	if (hasChallenge('G', 11)) mult = mult.pow(1.05)
 	if (hasUpgrade('G', 11)) mult = mult.times(10)
+	if (hasUpgrade('G', 13)) mult = mult.times(25)
 	return mult
     },
 
@@ -280,6 +281,7 @@ addLayer("G", {
     exponent: 0.115, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('G', 13)) mult = mult.times(5)
 	return mult
     },
 
@@ -310,6 +312,11 @@ addLayer("G", {
                 return player.points.add(1).pow(0.08)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        13: {
+	title: "Double Layer Boost",
+            description: "×5 Giga MJ Points and ×25 Super MJ Points.",
+            cost: new Decimal(350),
 	},
     },
     challenges: {
