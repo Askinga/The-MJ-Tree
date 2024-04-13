@@ -391,3 +391,22 @@ addLayer("H", {
     layerShown(){return true},
     branches: ["G", "C"],
 })
+
+    name: "achievements",
+    symbol: "🏆",
+    row: "side",
+    type: "none",
+    resource: "achievements",
+    color: "#FFEE88",
+    tooltip: "Achievements",
+    startData() { return {
+        unlocked: true,
+	    
+    achievements: {
+        11: {
+            name: "Double!",
+            tooltip: "Buy MJ Upgrade 11",
+            done() {
+                if (hasUpgrade('p', 11)) return true
+            },
+        },
