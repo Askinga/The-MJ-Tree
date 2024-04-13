@@ -304,10 +304,10 @@ addLayer("G", {
 	},
         12: {
             title: "MJs boost MJs but nerfed",
-            description: "MJ gain is boosted by MJs.",
+            description: "MJ gain is boosted by MJs but nerfed.",
             cost: new Decimal(50),
             effect(){
-                return player.points.add(1).pow(0.8)
+                return player.points.add(1).pow(0.08)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
