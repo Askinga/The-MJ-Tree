@@ -28,6 +28,7 @@ addLayer("p", {
 	if (hasChallenge('S', 11)) mult = mult.pow(1.1)
 	if (inChallenge('G', 11)) mult = mult.pow(0.8)
 	if (hasUpgrade('G', 11)) mult = mult.times(1000)
+	if (hasUpgrade('H', 11)) mult = mult.times(1e20)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -131,6 +132,7 @@ addLayer("S", {
 	if (hasChallenge('G', 11)) mult = mult.pow(1.05)
 	if (hasUpgrade('G', 11)) mult = mult.times(10)
 	if (hasUpgrade('G', 13)) mult = mult.times(25)
+	if (hasUpgrade('H', 11)) mult = mult.times(1e6)
 	return mult
     },
 
@@ -301,6 +303,7 @@ addLayer("G", {
         mult = new Decimal(1)
 	if (hasUpgrade('G', 13)) mult = mult.times(5)
 	if (hasUpgrade('C', 11)) mult = mult.times(upgradeEffect('C', 11))
+	if (hasUpgrade('H', 11)) mult = mult.times(1000)
 	return mult
     },
 
@@ -390,4 +393,12 @@ addLayer("H", {
 
     layerShown(){return true},
     branches: ["G", "C"],
+ 
+    upgrades: {
+        11: {
+            title: "Hyper MJs are SUPER OP!!!!!!!!",
+            description: "×1e50 MJs, ×1e20 MJ Points, ×1e6 Super MJ Points and ×1000 Giga MJ Points.",
+            cost: new Decimal(1),
+	},
+    },
 })
