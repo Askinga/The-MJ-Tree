@@ -18,7 +18,7 @@ let VERSION = {
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.3. Hard Work</h3><br>
+	<h3>v0.5. Hard Work</h3><br>
 		- Made a change on the exponent on layer 2.<br>
 		- You can get a ton more Super MJ Points.`
   
