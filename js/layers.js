@@ -469,8 +469,7 @@ addLayer("L", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
-    displayRow: 3,
+    row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "H", description: "H: Reset for Hyper MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
