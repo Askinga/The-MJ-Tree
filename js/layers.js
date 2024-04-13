@@ -307,7 +307,7 @@ addLayer("G", {
             description: "MJ gain is boosted by MJs.",
             cost: new Decimal(50),
             effect(){
-                return player.points.add(1).pow(0.5)
+                return player.points.add(1).pow(0.25)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
