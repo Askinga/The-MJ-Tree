@@ -238,12 +238,12 @@ addLayer("C", {
 		points: new Decimal(0),
     }},
     color: "#9c5005",
-    requires: new Decimal(1e115), // Can be a function that takes requirement increases into account
+    requires: new Decimal(1e755), // Can be a function that takes requirement increases into account
     resource: "Scaler MJs", // Name of prestige currency
     baseResource: "MJ Points", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1.2, // Prestige currency exponent
+    exponent: 1.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
@@ -254,14 +254,25 @@ addLayer("C", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 1, // Row the layer is in on the tree (0 is the first row)
-    displayRow: 2,
+    row: 2, // Row the layer is in on the tree (0 is the first row
     hotkeys: [
-        {key: "S", description: "S: Reset for Super MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "A", description: "A: Reset for Scaler MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
     layerShown(){return true},
     branches:["S"],
+
+    upgrades: {
+        11: {
+            title: "Scaler Boost",
+            description: "Multiply Giga MJ Point gain based on Scaler MJs.",
+            cost: new Decimal(1),
+	    effect(){
+                return player.points.add(2).pow(2.2)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+    },
 })
 
 addLayer("G", {
@@ -282,6 +293,7 @@ addLayer("G", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('G', 13)) mult = mult.times(5)
+	if (hasUpgrade('C', 11)) mult = mult.times(upgradeEffect('C', 11))
 	return mult
     },
 
