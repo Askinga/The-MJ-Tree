@@ -524,3 +524,6 @@ addLayer("a", {
             name: "Double!",
             done() { return (hasUpgrade('p', 11)) },
             tooltip: "Get MJ Upgrade 11.",	   
+    }
+},
+})
