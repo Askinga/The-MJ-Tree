@@ -13,14 +13,14 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.6, Hard Work",
+	num: "0.7, Hard Work",
 	name: "Hyper!!!",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.5. Hard Work</h3><br>
-		- Made a change on the exponent on layer 2.<br>
-		- You can get a ton more Super MJ Points.`
+	<h3>v0.7. Hard Work</h3><br>
+		- Added more layers.<br>
+		- Added more layers.`
   
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -71,7 +71,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e100"))
+	return player.points.gte(new Decimal("e4800"))
 }
 
 
