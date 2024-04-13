@@ -489,7 +489,7 @@ addLayer("L", {
             description: "Multiply MJ Click gain based on MJ Clicks.",
             cost: new Decimal(10000),
             effect(){
-                return player.points.add(1).pow(0.225)
+                return player.L.points.add(1).pow(0.225)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
