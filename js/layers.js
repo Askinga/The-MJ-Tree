@@ -404,6 +404,11 @@ addLayer("H", {
             description: "×1e50 MJs, ×1e20 MJ Points, ×1e6 Super MJ Points and ×1000 Giga MJ Points.",
             cost: new Decimal(1),
 	},
+        12: {
+            title: "Important for the challenge",
+            description: "×1e20 MJs.",
+            cost: new Decimal(1000),
+	}
     },
     challenges: {
         11: {
