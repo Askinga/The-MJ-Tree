@@ -277,7 +277,7 @@ addLayer("C", {
         0: {
             requirementDescription: "3 Scaler MJs",
             effectDescription: "Passively gain 100% of MJ Points per second regardless of the first Super MJ Milestone!",
-            done() { return player.S.points >= (3) }
+            done() { return player.C.points >= (3) }
 	},
     },
 })
