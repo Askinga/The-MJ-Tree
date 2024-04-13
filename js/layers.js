@@ -24,6 +24,7 @@ addLayer("p", {
 	if (hasUpgrade('S', 12)) mult = mult.times(upgradeEffect('S', 12))
         if (hasUpgrade('S', 13)) mult = mult.times(upgradeEffect('S', 13))
 	if (hasUpgrade('S', 23)) mult = mult.pow(1.08)
+        if (hasUpgrade('L', 11)) mult = mult.times(1000)
 	if (inChallenge('S', 11)) mult = mult.pow(0.3)
 	if (hasChallenge('S', 11)) mult = mult.pow(1.1)
 	if (inChallenge('G', 11)) mult = mult.pow(0.8)
@@ -389,6 +390,7 @@ addLayer("H", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasMilestone('C', 1)) mult = mult.times(10)
+	if (hasUpgrade('L', 13)) mult = mult.times(3)
 	return mult
     },
 
@@ -428,23 +430,26 @@ addLayer("H", {
     },
 })
 
-addLayer("U", {
-    name: "Universal MJs",
-    symbol: "UNI",
+addLayer("L", {
+    name: "MJ Clicks",
+    symbol: "CLI",
     position: 1,
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#ad03fc",
+    color: "#911f82",
     requires: new Decimal(10000), // Can be a function that takes requirement increases into account
-    resource: "Universal MJs", // Name of prestige currency
+    resource: "MJ Clicks", // Name of prestige currency
     baseResource: "Hyper MJ Points", // Name of resource prestige is based on
     baseAmount() {return player.H.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.08, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('L', 11)) mult = mult.times(3)
+	if (hasUpgrade('L', 12)) mult = mult.times(4)
+	if (hasUpgrade('L', 13)) mult = mult.times(5)
 	return mult
     },
 
@@ -453,13 +458,32 @@ addLayer("U", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 3, // Row the layer is in on the tree (0 is the first row)
+    row: 0, // Row the layer is in on the tree (0 is the first row)
+    displayRow: 3,
     hotkeys: [
         {key: "H", description: "H: Reset for Hyper MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
     layerShown(){return true},
     branches: ["H", "G"],
+
+    upgrades: {
+        11: {
+            title: "Clickable MJs?",
+            description: "×3 MJ Clicks.",
+            cost: new Decimal(20),
+	},
+        12: {
+            title: " Clicking Boost",
+            description: "×4 MJ Clicks.",
+            cost: new Decimal(100),
+	},
+        13: {
+            title: "boost boost boost",
+            description: "×5 MJ Clicks, ×3 Hyper MJ Points and ×1000 MJ Points.",
+            cost: new Decimal(500),
+	},
+    },
 })
 
 addLayer("a", {
