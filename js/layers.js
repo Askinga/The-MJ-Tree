@@ -312,6 +312,7 @@ addLayer("G", {
     passiveGeneration() {
         if (hasUpgrade('L', 15)) return 0.25
         return 0
+    },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('G', 13)) mult = mult.times(5)
@@ -394,6 +395,7 @@ addLayer("H", {
     passiveGeneration() {
         if (hasUpgrade('L', 15)) return 0.1
         return 0
+    },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasMilestone('C', 1)) mult = mult.times(10)
