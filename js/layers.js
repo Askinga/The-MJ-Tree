@@ -743,5 +743,40 @@ addLayer("a", {
             done() { return (hasUpgrade('S', 15)) },
             tooltip: "Get Super MJ Upgrade 15.",	   
         },
+        31: {
+            name: "FINALLY!!",
+            done() { return (hasUpgrade('S', 23)) },
+            tooltip: "Get Super MJ Upgrade 23.",	   
+        },
+        32: {
+            name: "Giga?",
+            done() { return (hasUpgrade('G', 11)) },
+            tooltip: "Get Giga MJ Upgrade 11.",	   
+        }, 	   
+        33: {
+            name: "You need this!",
+            done() { return (hasUpgrade('G', 12)) },
+            tooltip: "Get Giga MJ Upgrade 12.",	   
+        }, 	
+        34: {
+            name: "Layer boost",
+            done() { return (hasUpgrade('G', 13)) },
+            tooltip: "Get Giga MJ Upgrade 13.",	   
+        }, 
+        35: {
+            name: "The challenge is done!",
+            done() { return (hasChallenge('G', 11)) },
+            tooltip: "Beat Exponential Downgrade.",	   
+        }, 
+        36: {
+            name: "Hyper is coming!!",
+            done() { return (hasUpgrade('G', 14)) },
+            tooltip: "Get Giga MJ Upgrade 14.",	   
+        }, 
+        41: {
+            name: "HYPER!!!",
+            done() { return (hasUpgrade('H', 11)) },
+            tooltip: "Get Hyper MJ Upgrade 11.",	   
+        }, 
 },
 })
