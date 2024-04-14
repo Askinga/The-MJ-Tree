@@ -723,5 +723,25 @@ addLayer("a", {
             done() { return (hasUpgrade('S', 12)) },
             tooltip: "Get Super MJ Upgrade 12.",	   
         },
+        23: {
+            name: "Big MJ Point Boost",
+            done() { return (hasUpgrade('S', 13)) },
+            tooltip: "Get Super MJ Upgrade 13.",	   
+        },
+        24: {
+            name: "That was a grind",
+            done() { return (hasChallenge('S', 11)) },
+            tooltip: "Beat the Super MJ Challenge.",	   
+        },
+        25: {
+            name: "EXPONENT!!!",
+            done() { return (hasUpgrade('S', 14)) },
+            tooltip: "Get Super MJ Upgrade 14.",	   
+        },
+	26: {
+            name: "More grinding, great",
+            done() { return (hasUpgrade('S', 15)) },
+            tooltip: "Get Super MJ Upgrade 15.",	   
+        },
 },
 })
