@@ -593,17 +593,17 @@ addLayer("L", {
 	},
         42: {
             title: "Power 2",
-            description: "^1.015 MJs.",
+            description: "^1.011 MJs.",
             cost: new Decimal(1.5e14),
 	},
         43: {
             title: "Power 3",
-            description: "^1.02 MJs.",
+            description: "^1.012 MJs.",
             cost: new Decimal(2e14),
 	},
         44: {
             title: "Power 4",
-            description: "^1.025 MJs.",
+            description: "^1.013 MJs.",
             cost: new Decimal(2.5e14),
 	}, 
         45: {
