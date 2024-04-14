@@ -473,7 +473,7 @@ addLayer("L", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.08, // Prestige currency exponent
     passiveGeneration() {
-        if (hasUpgrade('L', 55)) return 100
+        if (hasUpgrade('L', 54)) return 100
 	if (hasUpgrade('L', 23)) return 3
 	return 0
     },
