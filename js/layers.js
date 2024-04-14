@@ -281,6 +281,15 @@ addLayer("C", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
+        12: {
+            title: "MJ Click Boost",
+            description: "Multiply MJ Click gain based on Scaler MJs.",
+            cost: new Decimal(42),
+	    effect(){
+                return player.C.points.add(2).pow(0.9)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
     },
     milestones: {
         0: {
@@ -475,6 +484,7 @@ addLayer("L", {
 	if (hasMilestone('L', 1)) mult = mult.times(10)
 	if (hasMilestone('L', 2)) mult = mult.times(7.5)
 	if (hasUpgrade('L', 31)) mult = mult.times(1.5)
+	if (hasUpgrade('C', 12)) mult = mult.times(upgradeEffect('C', 12))
 	return mult
     },
 
