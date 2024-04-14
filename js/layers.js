@@ -32,6 +32,7 @@ addLayer("p", {
 	if (hasUpgrade('G', 11)) mult = mult.times(1000)
 	if (hasUpgrade('H', 11)) mult = mult.times(1e20)
 	if (hasUpgrade('L', 35)) mult = mult.times(1e25)
+	if (hasUpgrade('L', 42)) mult = mult.pow(1.011)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -139,6 +140,7 @@ addLayer("S", {
 	if (hasUpgrade('G', 13)) mult = mult.times(25)
 	if (hasUpgrade('H', 11)) mult = mult.times(1e6)
 	if (hasUpgrade('L', 34)) mult = mult.times(1e10)
+	if (hasUpgrade('L', 43)) mult = mult.pow(1.012)
 	return mult
     },
 
@@ -331,6 +333,7 @@ addLayer("G", {
 	if (hasUpgrade('H', 11)) mult = mult.times(1000)
 	if (inChallenge('H', 11)) mult = mult.pow(0.5)
 	if (hasChallenge('H', 11)) mult = mult.pow(1.1)
+	if (hasUpgrade('L', 44)) mult = mult.pow(1.013)
 	if (hasUpgrade('L', 32)) mult = mult.times(1e6)
 	return mult
     },
@@ -593,17 +596,17 @@ addLayer("L", {
 	},
         42: {
             title: "Power 2",
-            description: "^1.011 MJs.",
+            description: "^1.011 MJ Points.",
             cost: new Decimal(1.5e14),
 	},
         43: {
             title: "Power 3",
-            description: "^1.012 MJs.",
+            description: "^1.012 Super MJ Points.",
             cost: new Decimal(2e14),
 	},
         44: {
             title: "Power 4",
-            description: "^1.013 MJs.",
+            description: "^1.013 Giga MJ Points.",
             cost: new Decimal(2.5e14),
 	}, 
         45: {
