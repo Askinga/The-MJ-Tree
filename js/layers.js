@@ -495,7 +495,7 @@ addLayer("L", {
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "H", description: "H: Reset for Hyper MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "C", description: "C: Reset for Hyper MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
     layerShown(){return true},
