@@ -141,6 +141,7 @@ addLayer("S", {
 	if (hasUpgrade('H', 11)) mult = mult.times(1e6)
 	if (hasUpgrade('L', 34)) mult = mult.times(1e10)
 	if (hasUpgrade('L', 43)) mult = mult.pow(1.012)
+	if (hasUpgrade('L', 55)) mult = mult.times(upgradeEffect('L', 55))
 	return mult
     },
 
@@ -473,7 +474,8 @@ addLayer("L", {
     exponent: 0.08, // Prestige currency exponent
     passiveGeneration() {
         if (hasUpgrade('L', 23)) return 3
-        return 0
+        if (hasUpgrade('L', 55)) return 100
+	return 0
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -489,6 +491,10 @@ addLayer("L", {
 	if (hasUpgrade('L', 31)) mult = mult.times(1.5)
 	if (hasUpgrade('C', 12)) mult = mult.times(upgradeEffect('C', 12))
 	if (hasUpgrade('L', 45)) mult = mult.pow(1.5)
+	if (hasUpgrade('L', 51)) mult = mult.times(100)
+	if (hasUpgrade('L', 52)) mult = mult.times(1000)
+	if (hasUpgrade('L', 53)) mult = mult.times(1e5)
+	if (hasUpgrade('L', 55)) mult = mult.times(1e6)
 	return mult
     },
 
@@ -613,6 +619,35 @@ addLayer("L", {
             title: "SUPER OP!!!",
             description: "^1.5 MJ Clicks.",
             cost: new Decimal(3e14),
+	},
+        51: {
+            title: "Big click boost! Click row",
+            description: "×100 MJ Clicks.",
+            cost: new Decimal(2e22),
+	},
+        52: {
+            title: "The click row is op!",
+            description: "×1000 MJ Clicks.",
+            cost: new Decimal(4e25),
+	},
+        53: {
+            title: "Huge click boost",
+            description: "×1e5 MJ Clicks.",
+            cost: new Decimal(8e29),
+	},
+        54: {
+            title: "More passive gain",
+            description: "Now gain 10000% of MJ Click gain per second.",
+            cost: new Decimal(5e35),
+	},
+        55: {
+            title: "The last upgrade is this layer",
+            description: "×1e6 MJ Clicks and boost Super MJ Point gain based on MJ Clicks.",
+            cost: new Decimal(3e37),
+	    effect(){
+                return player.L.points.add(1).pow(0.3)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
     },
     milestones: {
