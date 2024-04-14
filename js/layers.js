@@ -31,6 +31,7 @@ addLayer("p", {
 	if (inChallenge('H', 11)) mult = mult.pow(0.5)
 	if (hasUpgrade('G', 11)) mult = mult.times(1000)
 	if (hasUpgrade('H', 11)) mult = mult.times(1e20)
+	if (hasUpgrade('L', 35)) mult = mult.times(1e25)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -137,6 +138,7 @@ addLayer("S", {
 	if (hasUpgrade('G', 11)) mult = mult.times(10)
 	if (hasUpgrade('G', 13)) mult = mult.times(25)
 	if (hasUpgrade('H', 11)) mult = mult.times(1e6)
+	if (hasUpgrade('L', 34)) mult = mult.times(1e10)
 	return mult
     },
 
@@ -320,6 +322,7 @@ addLayer("G", {
 	if (hasUpgrade('H', 11)) mult = mult.times(1000)
 	if (inChallenge('H', 11)) mult = mult.pow(0.5)
 	if (hasChallenge('H', 11)) mult = mult.pow(1.1)
+	if (hasUpgrade('L', 32)) mult = mult.times(1e6)
 	return mult
     },
 
@@ -401,6 +404,7 @@ addLayer("H", {
 	if (hasMilestone('C', 1)) mult = mult.times(10)
 	if (hasUpgrade('L', 13)) mult = mult.times(3)
 	if (hasUpgrade('L', 22)) mult = mult.times(upgradeEffect('L', 22))
+	if (hasUpgrade('L', 32)) mult = mult.times(20)
 	return mult
     },
 
@@ -470,6 +474,7 @@ addLayer("L", {
         if (hasUpgrade('L', 24)) mult = mult.times(5)
 	if (hasMilestone('L', 1)) mult = mult.times(10)
 	if (hasMilestone('L', 2)) mult = mult.times(7.5)
+	if (hasUpgrade('L', 31)) mult = mult.times(1.5)
 	return mult
     },
 
@@ -544,6 +549,31 @@ addLayer("L", {
             title: "Milestone!!",
             description: "Get a milestone.",
             cost: new Decimal(3e9),
+	},
+	31: {
+            title: "Little click boost",
+            description: "×1.5 MJ Clicks.",
+            cost: new Decimal(1e11),
+	},
+        32: {
+            title: "Hyper Boost",
+            description: "×20 Hyper MJ Points.",
+            cost: new Decimal(2e11),
+	},
+        33: {
+            title: "Giga Boost",
+            description: "×1e6 Giga MJ Points.",
+            cost: new Decimal(3e11),
+	},
+        34: {
+            title: "Super Boost",
+            description: "×1e10 Super MJ Points.",
+            cost: new Decimal(5e11),
+	},
+        35: {
+            title: "Normal Boost",
+            description: "×1e25 MJ Points.",
+            cost: new Decimal(7e11),
 	},
     },
     milestones: {
