@@ -778,5 +778,60 @@ addLayer("a", {
             done() { return (hasUpgrade('H', 11)) },
             tooltip: "Get Hyper MJ Upgrade 11.",	   
         }, 
+        42: {
+            name: "Challenge soon!",
+            done() { return (hasUpgrade('H', 12)) },
+            tooltip: "Get Hyper MJ Upgrade 12.",	   
+        }, 
+        43: {
+            name: "Hyper is done!?",
+            done() { return (hasChallenge('H', 11)) },
+            tooltip: "Beat the Hyper MJ Challenge.",	   
+        }, 
+        44: {
+            name: "Clicker?",
+            done() { return (hasUpgrade('L', 11)) },
+            tooltip: "Get MJ Click Upgrade 11.",	   
+        }, 
+        45: {
+            name: "Layer boost 2",
+            done() { return (hasUpgrade('L', 13)) },
+            tooltip: "Get MJ Click Upgrade 13.",	   
+        }, 
+        46: {
+            name: "OP UPGRADE",
+            done() { return (hasUpgrade('L', 15)) },
+            tooltip: "Get MJ Click Upgrade 15.",	   
+        }, 
+        51: {
+            name: "Passive Clicks",
+            done() { return (hasUpgrade('L', 23)) },
+            tooltip: "Get MJ Click Upgrade 23.",	   
+        }, 
+        52: {
+            name: "More powers!",
+            done() { return (hasUpgrade('L', 41)) },
+            tooltip: "Get MJ Click Upgrade 41.",	   
+        }, 
+        53: {
+            name: "Big power boost",
+            done() { return (hasUpgrade('L', 42)) },
+            tooltip: "Get MJ Click Upgrade 42.",	   
+        }, 
+        54: {
+            name: "Super MJ Power Boost. Finally!!!",
+            done() { return (hasUpgrade('L', 43)) },
+            tooltip: "Get MJ Click Upgrade 43.",	   
+        }, 
+        55: {
+            name: "MJ Click Power Boost",
+            done() { return (hasUpgrade('L', 45)) },
+            tooltip: "Get MJ Click Upgrade 45.",	   
+        }, 
+        56: {
+            name: "The last upgrade in this version",
+            done() { return (hasUpgrade('L', 55)) },
+            tooltip: "Get MJ Click Upgrade 55.",	   
+        }, 
 },
 })
