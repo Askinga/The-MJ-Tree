@@ -485,6 +485,7 @@ addLayer("L", {
 	if (hasMilestone('L', 2)) mult = mult.times(7.5)
 	if (hasUpgrade('L', 31)) mult = mult.times(1.5)
 	if (hasUpgrade('C', 12)) mult = mult.times(upgradeEffect('C', 12))
+	if (hasUpgrade('L', 45)) mult = mult.pow(1.5)
 	return mult
     },
 
@@ -584,6 +585,31 @@ addLayer("L", {
             title: "Normal Boost",
             description: "×1e25 MJ Points.",
             cost: new Decimal(7e11),
+	},
+        41: {
+            title: "The POWER row!!!",
+            description: "^1.01 MJs.",
+            cost: new Decimal(1e14),
+	},
+        42: {
+            title: "Power 2",
+            description: "^1.015 MJs.",
+            cost: new Decimal(1.5e14),
+	},
+        43: {
+            title: "Power 3",
+            description: "^1.02 MJs.",
+            cost: new Decimal(2e14),
+	},
+        44: {
+            title: "Power 4",
+            description: "^1.025 MJs.",
+            cost: new Decimal(2.5e14),
+	}, 
+        45: {
+            title: "SUPER OP!!!",
+            description: "^1.5 MJ Clicks.",
+            cost: new Decimal(3e14),
 	},
     },
     milestones: {
