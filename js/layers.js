@@ -507,7 +507,7 @@ addLayer("L", {
 
     upgrades: {
         11: {
-            title: "Clickable MJs?",
+            title: "Clicker in The Modding Tree?",
             description: "×3 MJ Clicks.",
             cost: new Decimal(20),
 	},
