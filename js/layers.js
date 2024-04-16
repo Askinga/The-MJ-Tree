@@ -138,7 +138,7 @@ addLayer("S", {
 	if (hasChallenge('G', 11)) mult = mult.pow(1.05)
 	if (hasUpgrade('G', 11)) mult = mult.times(10)
 	if (hasUpgrade('G', 13)) mult = mult.times(25)
-	if (hasUpgrade('G', 14)) mult = mult.times(upgradeEffect('G', 14))
+	if (hasUpgrade('G', 14)) mult = mult.times(10)
 	if (hasUpgrade('H', 11)) mult = mult.times(1e6)
 	if (hasUpgrade('L', 34)) mult = mult.times(1e10)
 	if (hasUpgrade('L', 43)) mult = mult.pow(1.012)
@@ -374,13 +374,9 @@ addLayer("G", {
             cost: new Decimal(350),
 	},
         14: {
-            title: "Super MJs boost Super MJs",
-            description: "Multiply Super MJ Point gain based on Super MJ Points.",
+            title: "×10 Boost to Super MJ Points",
+            description: "Exactly what the title says.",
             cost: new Decimal(2e16),
-	    effect(){
-                return player.S.points.add(1).pow(0.02)
-            },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
     },
     challenges: {
