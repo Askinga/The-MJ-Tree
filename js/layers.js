@@ -138,7 +138,7 @@ addLayer("S", {
 	if (hasChallenge('G', 11)) mult = mult.pow(1.05)
 	if (hasUpgrade('G', 11)) mult = mult.times(10)
 	if (hasUpgrade('G', 13)) mult = mult.times(25)
-	if (hasUpgrade('G', 14)) mult = mult.times(10)
+	if (hasUpgrade('G', 14)) mult = mult.times(100)
 	if (hasUpgrade('H', 11)) mult = mult.times(1e6)
 	if (hasUpgrade('L', 34)) mult = mult.times(1e10)
 	if (hasUpgrade('L', 43)) mult = mult.pow(1.012)
@@ -374,7 +374,7 @@ addLayer("G", {
             cost: new Decimal(350),
 	},
         14: {
-            title: "×10 Boost to Super MJ Points",
+            title: "×100 Boost to Super MJ Points",
             description: "Exactly what the title says.",
             cost: new Decimal(2e16),
 	},
