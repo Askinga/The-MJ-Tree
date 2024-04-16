@@ -138,6 +138,7 @@ addLayer("S", {
 	if (hasChallenge('G', 11)) mult = mult.pow(1.05)
 	if (hasUpgrade('G', 11)) mult = mult.times(10)
 	if (hasUpgrade('G', 13)) mult = mult.times(25)
+	if (hasUpgrade('G', 14)) mult = mult.times(upgradeEffect('G', 14))
 	if (hasUpgrade('H', 11)) mult = mult.times(1e6)
 	if (hasUpgrade('L', 34)) mult = mult.times(1e10)
 	if (hasUpgrade('L', 43)) mult = mult.pow(1.012)
