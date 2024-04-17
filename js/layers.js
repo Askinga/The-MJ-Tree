@@ -15,7 +15,6 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     passiveGeneration() {
         if (hasMilestone('S', 0)) return 1
-        if (hasMilestone('C', 0)) return 1
 	return 0
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -25,6 +24,7 @@ addLayer("p", {
         if (hasUpgrade('S', 13)) mult = mult.times(upgradeEffect('S', 13))
 	if (hasUpgrade('S', 23)) mult = mult.pow(1.08)
         if (hasUpgrade('L', 13)) mult = mult.times(1000)
+	if (hasUpgrade('p', 23)) mult = mult.times(6)
 	if (inChallenge('S', 11)) mult = mult.pow(0.3)
 	if (hasChallenge('S', 11)) mult = mult.pow(1.1)
 	if (inChallenge('G', 11)) mult = mult.pow(0.8)
@@ -83,6 +83,11 @@ addLayer("p", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
         },
         23: {
+            title: "MJ Point Boost to speed up this layer",
+            description: "×6 MJ Point gain.",
+            cost: new Decimal(100000),
+	},
+	24: {
             title: "Last upgrade until the next layer!",
             description: "×1000 MJ gain.",
             cost: new Decimal(550000000),
@@ -123,8 +128,8 @@ addLayer("S", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.1425, // Prestige currency exponent
     passiveGeneration() {
-        if (hasUpgrade('S', 15)) return 0.075
         if (hasUpgrade('L', 15)) return 1
+	if (hasUpgrade('S', 15)) return 0.075
 	return 0
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -138,6 +143,7 @@ addLayer("S", {
 	if (hasChallenge('G', 11)) mult = mult.pow(1.05)
 	if (hasUpgrade('G', 11)) mult = mult.times(10)
 	if (hasUpgrade('G', 13)) mult = mult.times(25)
+	if (hasMilestone('C', 0)) mult = mult.times(5)
 	if (hasUpgrade('G', 14)) mult = mult.times(100)
 	if (hasUpgrade('H', 11)) mult = mult.times(1e6)
 	if (hasUpgrade('L', 34)) mult = mult.times(1e10)
@@ -298,7 +304,7 @@ addLayer("C", {
     milestones: {
         0: {
             requirementDescription: "3 Scaler MJs",
-            effectDescription: "Passively gain 100% of MJ Points per second regardless of the first Super MJ Milestone!",
+            effectDescription: "×5 Super MJ Points",
             done() { return player.C.points >= (3) }
 	},
         1: {
