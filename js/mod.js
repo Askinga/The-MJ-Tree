@@ -13,12 +13,12 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.0.2.1 Release",
+	num: "1.0.3 Release",
 	name: "Release",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v1.0.2.1 Release</h3><br>
+	<h3>v1.0.3 Release</h3><br>
 		- More updates soon! Endgame e16100 MJs.<br>
 		- Check back here for more updates!.`
   
@@ -59,6 +59,7 @@ function getPointGen() {
 	if (hasMilestone('p', 0)) gain = gain.times(4)
 	if (hasMilestone('p', 1)) gain = gain.times(15)
 	if (hasMilestone('p', 2)) gain = gain.times(250)
+        if (hasUpgrade('b', 11)) gain = gain.times(upgradeEffect('b', 11))
 	return gain
 }
 
