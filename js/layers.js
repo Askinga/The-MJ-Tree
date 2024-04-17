@@ -895,7 +895,7 @@ addLayer("B", {
 		points: new Decimal(0),
     }},
     color: "#570a0a",
-    requires: new Decimal(1e50), // Can be a function that takes requirement increases into account
+    requires: new Decimal(1e38), // Can be a function that takes requirement increases into account
     resource: "Ultra Scalers", // Name of prestige currency
     baseResource: "Hyper MJ Points", // Name of resource prestige is based on
     baseAmount() {return player.H.points}, // Get the current amount of baseResource
