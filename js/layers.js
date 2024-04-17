@@ -421,6 +421,7 @@ addLayer("H", {
 	if (hasUpgrade('L', 13)) mult = mult.times(3)
 	if (hasUpgrade('L', 22)) mult = mult.times(upgradeEffect('L', 22))
 	if (hasUpgrade('L', 32)) mult = mult.times(20)
+	if (hasUpgrade('B', 11)) mult = mult.times(upgradeEffect('B', 11))
 	return mult
     },
 
@@ -879,6 +880,53 @@ addLayer("b", {
             cost: new Decimal(1),
 	    effect(){
                 return player.b.points.add(1).pow(0.9)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+    },
+})
+
+addLayer("B", {
+    name: "Ultra Scalers",
+    symbol: "USC",
+    position: 0,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#570a0a",
+    requires: new Decimal(1e50), // Can be a function that takes requirement increases into account
+    resource: "Ultra Scalers", // Name of prestige currency
+    baseResource: "Hyper MJ Points", // Name of resource prestige is based on
+    baseAmount() {return player.H.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 2, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 0, // Row the layer is in on the tree (0 is the first row)
+    displayRow: 4,
+    hotkeys: [
+        {key: "U", description: "U: Reset for Ultra Scalers", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+
+    layerShown(){return true},
+    branches:["L", "G"],
+
+    upgrades: {
+        11: {
+            title: "INSANE HYPER BOOST!!",
+            description: "Multiply Hyper MJ Point gain based on Ultra Scalers.",
+            cost: new Decimal(1),
+	    effect(){
+                return player.B.points.add(1).pow(4)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
