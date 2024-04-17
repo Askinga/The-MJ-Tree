@@ -878,7 +878,7 @@ addLayer("b", {
             description: "Multiply MJ gain based on Layer 1 Speeders.",
             cost: new Decimal(1),
 	    effect(){
-                return player.b.points.add(1).pow(0.5)
+                return player.b.points.add(1).pow(0.9)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
