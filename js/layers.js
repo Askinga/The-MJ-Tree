@@ -854,11 +854,6 @@ addLayer("b", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 1.3, // Prestige currency exponent
-    passiveGeneration() {
-        if (hasUpgrade('L', 15)) return 1
-	if (hasUpgrade('S', 15)) return 0.075
-	return 0
-    },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
@@ -883,7 +878,7 @@ addLayer("b", {
             description: "Multiply MJ gain based on Layer 1 Speeders.",
             cost: new Decimal(1),
 	    effect(){
-                return player.points.add(1).pow(0.5)
+                return player.b.points.add(1).pow(0.5)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
