@@ -838,3 +838,54 @@ addLayer("a", {
         }, 
 },
 })
+
+addLayer("b", {
+    name: "Layer 1 Speeders",
+    symbol: "SPE",
+    position: 1,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#6bb012",
+    requires: new Decimal(100), // Can be a function that takes requirement increases into account
+    resource: "Layer 1 Speeders", // Name of prestige currency
+    baseResource: "MJs", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1.3, // Prestige currency exponent
+    passiveGeneration() {
+        if (hasUpgrade('L', 15)) return 1
+	if (hasUpgrade('S', 15)) return 0.075
+	return 0
+    },
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 0, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "B", description: "B: Reset for Layer 1 Speeders", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+
+    layerShown(){return true},
+    branches:["p"],
+
+    upgrades: {
+        11: {
+            title: "More MJs!",
+            description: "Multiply MJ gain based on Layer 1 Speeders.",
+            cost: new Decimal(1),
+	    effect(){
+                return player.points.add(1).pow(0.5)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+    },
+})
