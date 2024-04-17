@@ -18,7 +18,7 @@ let VERSION = {
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v1.0.0 Release</h3><br>
+	<h3>v1.0.2 Release</h3><br>
 		- More updates soon! Endgame e16100 MJs.<br>
 		- Check back here for more updates!.`
   
