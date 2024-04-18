@@ -499,6 +499,7 @@ addLayer("L", {
 	if (hasUpgrade('L', 52)) mult = mult.times(1000)
 	if (hasUpgrade('L', 53)) mult = mult.times(1e5)
 	if (hasUpgrade('L', 55)) mult = mult.times(1e6)
+	if (hasUpgrade('B', 12)) mult = mult.times(upgradeEffect('B', 12))
 	return mult
     },
 
@@ -918,7 +919,7 @@ addLayer("B", {
     ],
 
     layerShown(){return true},
-    branches:["L", "G"],
+    branches:["L", "H"],
 
     upgrades: {
         11: {
@@ -927,6 +928,15 @@ addLayer("B", {
             cost: new Decimal(1),
 	    effect(){
                 return player.B.points.add(1).pow(4)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        12: {
+            title: "Each ultra scaler is multplying MJ Click gain by 10!",
+            description: "Exactly what the title says.",
+            cost: new Decimal(4),
+	    effect(){
+                return player.B.points.add(1).pow(10)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
