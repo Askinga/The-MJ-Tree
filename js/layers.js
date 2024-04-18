@@ -932,8 +932,8 @@ addLayer("B", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
         12: {
-            title: "Each ultra scaler is multplying MJ Click gain by 10!",
-            description: "Exactly what the title says.",
+            title: "This boost will boost Hyper a lot!!",
+            description: "MASSIVLEY boost MJ Click gain based on Ultra Scalers.",
             cost: new Decimal(4),
 	    effect(){
                 return player.B.points.add(1).pow(10)
