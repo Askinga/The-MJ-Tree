@@ -343,6 +343,7 @@ addLayer("G", {
 	if (hasChallenge('H', 11)) mult = mult.pow(1.1)
 	if (hasUpgrade('L', 44)) mult = mult.pow(1.013)
 	if (hasUpgrade('L', 32)) mult = mult.times(1e6)
+	if (hasUpgrade('B', 14)) mult = mult.times(upgradeEffect('B', 14))
 	return mult
     },
 
@@ -422,6 +423,7 @@ addLayer("H", {
 	if (hasUpgrade('L', 22)) mult = mult.times(upgradeEffect('L', 22))
 	if (hasUpgrade('L', 32)) mult = mult.times(20)
 	if (hasUpgrade('B', 11)) mult = mult.times(upgradeEffect('B', 11))
+	if (hasUpgrade('B', 13)) mult = mult.times(upgradeEffect('B', 13))
 	return mult
     },
 
@@ -834,10 +836,25 @@ addLayer("a", {
             tooltip: "Get MJ Click Upgrade 45.",	   
         }, 
         56: {
-            name: "The last upgrade in this version",
+            name: "The last upgrade in the click layer",
             done() { return (hasUpgrade('L', 55)) },
             tooltip: "Get MJ Click Upgrade 55.",	   
         }, 
+        61: {
+            name: "The ULTRA SCALER layer",
+            done() { return (hasUpgrade('B', 11)) },
+            tooltip: "Get Ultra Scaler Upgrade 11.",	   
+        },
+        62: {
+            name: "MJ Click Swarm",
+            done() { return (hasUpgrade('B', 12)) },
+            tooltip: "Get Ultra Scaler Upgrade 12.",	   
+        },
+        63: {
+            name: "The last upgrade in this version",
+            done() { return (hasUpgrade('B', 14)) },
+            tooltip: "Get Ultra Scaler Upgrade 14.",	   
+        },
 },
 })
 
@@ -937,6 +954,24 @@ addLayer("B", {
             cost: new Decimal(4),
 	    effect(){
                 return player.B.points.add(1).pow(10)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        13: {
+            title: "Hyper boosts Hyper",
+            description: "Boost Hyper MJ Point gain based on Hyper MJs.",
+            cost: new Decimal(6),
+	    effect(){
+                return player.H.points.add(1).pow(0.075)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        14: {
+            title: "MORE GIGA!!!!!",
+            description: "Multiply Giga MJ Point gain based on Giga MJ Points.",
+            cost: new Decimal(9),
+	    effect(){
+                return player.G.points.add(1).pow(0.15)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
