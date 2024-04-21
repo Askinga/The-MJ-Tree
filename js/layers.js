@@ -977,3 +977,46 @@ addLayer("B", {
 	},
     },
 })
+
+addLayer("Ge", {
+    name: "Generator MJs",
+    symbol: "GEN",
+    position: 2,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#9c5005",
+    requires: new Decimal(9), // Can be a function that takes requirement increases into account
+    resource: "Generator MJs", // Name of prestige currency
+    baseResource: "Ultra Scalers", // Name of resource prestige is based on
+    baseAmount() {return player.B.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1e-6, // Prestige currency exponent
+    passiveGeneration() {
+	if (hasUpgrade('Ge', 11)) return 1
+	return 0
+    },
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row
+    hotkeys: [
+        {key: "e", description: "E: Get Generator MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+
+    layerShown(){return true},
+    branches:["p"],
+
+    upgrades: {
+        11: {
+            title: "Start generating MJs",
+            description: "Get 1 Generator MJ per second if you have 9 Ultra Scalers",
+            cost: new Decimal(1),
