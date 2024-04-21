@@ -1020,3 +1020,6 @@ addLayer("Ge", {
             title: "Start generating MJs",
             description: "Get 1 Generator MJ per second if you have 9 Ultra Scalers",
             cost: new Decimal(1),
+	},
+    },
+})
