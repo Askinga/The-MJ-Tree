@@ -968,7 +968,7 @@ addLayer("B", {
 	},
         14: {
             title: "MORE GIGA!!!!!",
-            description: "Multiply Giga MJ Point gain based on Giga MJ Points.",
+            description: "Multiply Giga MJ Point gain based on Giga MJ Points. Also unlock a new layer",
             cost: new Decimal(9),
 	    effect(){
                 return player.G.points.add(1).pow(0.15)
@@ -976,4 +976,43 @@ addLayer("B", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
     },
+})
+
+addLayer("G", {
+    name: "Generator MJs",
+    symbol: "GEN",
+    position: 1,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#32a889",
+    requires: new Decimal(9), // Can be a function that takes requirement increases into account
+    resource: "Generator MJs", // Name of prestige currency
+    baseResource: "Ultra Scalers", // Name of resource prestige is based on
+    baseAmount() {return player.B.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1e-6, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    displayRow: 4,
+    hotkeys: [
+        {key: "q", description: "Q: Reset for Generator MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+
+    layerShown(){
+        let visible = false
+        if ((hasUpgrade('B', 14)) || (inChallenge("G", 11))) visible = true
+       return visible
+    },
+    branches:["L", "H"],
 })
