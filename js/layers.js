@@ -994,6 +994,7 @@ addLayer("Ge", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 1e-6, // Prestige currency exponent
     passiveGeneration() {
+	if (hasUpgrade('Ge', 17)) return 20
 	if (hasUpgrade('Ge', 14)) return 10
 	if (hasUpgrade('Ge', 13)) return 5
 	if (hasUpgrade('Ge', 12)) return 2
@@ -1003,6 +1004,8 @@ addLayer("Ge", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasMilestone('Ge', 0)) mult = mult.times(4)
+        if (hasUpgrade('Ge', 15)) mult = mult.times(1.5)
+	if (hasUpgrade('Ge', 16)) mult = mult.times(2)
 	return mult
     },
 
@@ -1021,24 +1024,39 @@ addLayer("Ge", {
 
     upgrades: {
         11: {
-            title: "Start generating MJs",
-            description: "Get 1 Generator MJ per second if you have 9 Ultra Scalers",
+            title: "Start generating generator MJs",
+            description: "Get 1 base Generator MJ per second if you have 9 Ultra Scalers",
             cost: new Decimal(1),
 	},
         12: {
             title: "More generating MJs",
-            description: "Now get 2 Generator MJ per second",
+            description: "Now get 2 base Generator MJs per second",
             cost: new Decimal(10),
 	},
         13: {
             title: "Even more generating MJs",
-            description: "Now get 5 Generator MJs per second!",
+            description: "Now get 5 base Generator MJs per second!",
             cost: new Decimal(25),
 	},
         14: {
             title: "10 per second?",
-            description: "Get 10 Generator MJs per second!",
+            description: "Get 10 base Generator MJs per second!",
             cost: new Decimal(100),
+	},
+        15: {
+            title: "Generator Boost",
+            description: "×1.5 Gernerator MJs",
+            cost: new Decimal(1000),
+	},
+        16: {
+            title: "More boosts",
+            description: "×2 Generator MJs",
+            cost: new Decimal(1750),
+	},
+        17: {
+            title: "Increasing the base to 20",
+            description: "Base gain is 20 per second",
+            cost: new Decimal(4000),
 	},
     },
     milestones: {
