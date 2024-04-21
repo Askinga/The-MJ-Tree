@@ -986,7 +986,7 @@ addLayer("Ge", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#9c5005",
+    color: "#f542dd",
     requires: new Decimal(9), // Can be a function that takes requirement increases into account
     resource: "Generator MJs", // Name of prestige currency
     baseResource: "Ultra Scalers", // Name of resource prestige is based on
