@@ -423,6 +423,7 @@ addLayer("H", {
 	if (hasUpgrade('L', 22)) mult = mult.times(upgradeEffect('L', 22))
 	if (hasUpgrade('L', 32)) mult = mult.times(20)
 	if (hasUpgrade('B', 11)) mult = mult.times(upgradeEffect('B', 11))
+	if (hasUpgrade('B', 14)) mult = mult.times(30)
 	if (hasUpgrade('B', 13)) mult = mult.times(upgradeEffect('B', 13))
 	if (hasUpgrade('Ge', 23)) mult = mult.times(upgradeEffect('Ge', 23))
 	return mult
@@ -853,8 +854,8 @@ addLayer("a", {
         },
         63: {
             name: "The last upgrade in this layer",
-            done() { return (hasUpgrade('B', 14)) },
-            tooltip: "Get Ultra Scaler Upgrade 14.",	   
+            done() { return (hasUpgrade('B', 15)) },
+            tooltip: "Get Ultra Scaler Upgrade 15.",	   
         },
 },
 })
@@ -967,7 +968,7 @@ addLayer("B", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
-        14: {
+        15: {
             title: "MORE GIGA!!!!!",
             description: "Multiply Giga MJ Point gain based on Giga MJ Points. Also unlock a new layer",
             cost: new Decimal(9),
@@ -975,6 +976,11 @@ addLayer("B", {
                 return player.G.points.add(1).pow(0.15)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        14: {
+            title: "Speed up",
+            description: "×30 Hyper MJ Points.",
+            cost: new Decimal(8),
 	},
     },
 })
