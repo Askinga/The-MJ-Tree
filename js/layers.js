@@ -994,6 +994,7 @@ addLayer("Ge", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 1e-6, // Prestige currency exponent
     passiveGeneration() {
+	if (hasUpgrade('Ge', 12)) return 2
 	if (hasUpgrade('Ge', 11)) return 1
 	return 0
     },
@@ -1013,13 +1014,18 @@ addLayer("Ge", {
     ],
 
     layerShown(){return true},
-    branches:["p"],
+    branches:["p", "G"],
 
     upgrades: {
         11: {
             title: "Start generating MJs",
             description: "Get 1 Generator MJ per second if you have 9 Ultra Scalers",
             cost: new Decimal(1),
+	},
+        12: {
+            title: "More generating MJs",
+            description: "Now get 2 Generator MJ per second",
+            cost: new Decimal(10),
 	},
     },
 })
