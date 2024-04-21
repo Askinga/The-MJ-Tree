@@ -424,6 +424,7 @@ addLayer("H", {
 	if (hasUpgrade('L', 32)) mult = mult.times(20)
 	if (hasUpgrade('B', 11)) mult = mult.times(upgradeEffect('B', 11))
 	if (hasUpgrade('B', 13)) mult = mult.times(upgradeEffect('B', 13))
+	if (hasUpgrade('Ge', 23)) mult = mult.times(upgradeEffect('Ge', 23))
 	return mult
     },
 
@@ -851,7 +852,7 @@ addLayer("a", {
             tooltip: "Get Ultra Scaler Upgrade 12.",	   
         },
         63: {
-            name: "The last upgrade in this version",
+            name: "The last upgrade in this layer",
             done() { return (hasUpgrade('B', 14)) },
             tooltip: "Get Ultra Scaler Upgrade 14.",	   
         },
@@ -994,6 +995,7 @@ addLayer("Ge", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 1e-6, // Prestige currency exponent
     passiveGeneration() {
+	if (hasUpgrade('Ge', 21)) return 30
 	if (hasUpgrade('Ge', 17)) return 20
 	if (hasUpgrade('Ge', 14)) return 10
 	if (hasUpgrade('Ge', 13)) return 5
@@ -1006,6 +1008,7 @@ addLayer("Ge", {
 	if (hasMilestone('Ge', 0)) mult = mult.times(4)
         if (hasUpgrade('Ge', 15)) mult = mult.times(1.5)
 	if (hasUpgrade('Ge', 16)) mult = mult.times(2)
+	if (hasUpgrade('Ge', 22)) mult = mult.times(2)
 	return mult
     },
 
@@ -1057,6 +1060,25 @@ addLayer("Ge", {
             title: "Increasing the base to 20",
             description: "Base gain is 20 per second",
             cost: new Decimal(4000),
+	},
+        21: {
+            title: "Now 30 per second",
+            description: "Get 30 base Generator MJ per second",
+            cost: new Decimal(6000),
+	},
+        22: {
+            title: "×2 Boost",
+            description: "What the title says",
+            cost: new Decimal(10000),
+	},
+        23: {
+            title: "More Hyper",
+            description: "Multiply Hyper MJ Point gain based on Generator MJs",
+            cost: new Decimal(22500),
+	    effect(){
+                return player.Ge.points.add(1).pow(0.80)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
     },
     milestones: {
