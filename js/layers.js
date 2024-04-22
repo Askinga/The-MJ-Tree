@@ -1015,6 +1015,7 @@ addLayer("Ge", {
         if (hasUpgrade('Ge', 15)) mult = mult.times(1.5)
 	if (hasUpgrade('Ge', 16)) mult = mult.times(2)
 	if (hasUpgrade('Ge', 22)) mult = mult.times(2)
+	if (hasUpgrade('Ge', 24)) mult = mult.times(upgradeEffect('Ge', 24))
 	return mult
     },
 
@@ -1083,6 +1084,15 @@ addLayer("Ge", {
             cost: new Decimal(22500),
 	    effect(){
                 return player.Ge.points.add(1).pow(0.80)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        24: {
+            title: "Generation Speed Up",
+            description: "Multiply Generator MJs based on Generatir MJs.",
+            cost: new Decimal(20),
+	    effect(){
+                return player.Ge.points.add(1).pow(0.1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
