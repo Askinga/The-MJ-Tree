@@ -1001,6 +1001,7 @@ addLayer("Ge", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 1e-6, // Prestige currency exponent
     passiveGeneration() {
+	if (hasMilestone('Ge', 1)) return 100
 	if (hasUpgrade('Ge', 21)) return 30
 	if (hasUpgrade('Ge', 17)) return 20
 	if (hasUpgrade('Ge', 14)) return 10
@@ -1102,6 +1103,11 @@ addLayer("Ge", {
             requirementDescription: "250 Generator MJs",
             effectDescription: "×4 Generator MJs which boosts generation",
             done() { return player.Ge.points >= (250) }
+        },
+        1: {
+            requirementDescription: "250K Generator MJs",
+            effectDescription: "Base gain is increased to 100 per second",
+            done() { return player.Ge.points >= (250000) }
         },
     },
 })
