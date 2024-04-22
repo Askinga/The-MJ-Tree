@@ -1090,7 +1090,7 @@ addLayer("Ge", {
         24: {
             title: "Generation Speed Up",
             description: "Multiply Generator MJs based on Generatir MJs.",
-            cost: new Decimal(20),
+            cost: new Decimal(50000),
 	    effect(){
                 return player.Ge.points.add(1).pow(0.1)
             },
