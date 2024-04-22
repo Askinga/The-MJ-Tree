@@ -423,7 +423,7 @@ addLayer("H", {
 	if (hasUpgrade('L', 22)) mult = mult.times(upgradeEffect('L', 22))
 	if (hasUpgrade('L', 32)) mult = mult.times(20)
 	if (hasUpgrade('B', 11)) mult = mult.times(upgradeEffect('B', 11))
-	if (hasUpgrade('B', 14)) mult = mult.times(30)
+	if (hasUpgrade('B', 14)) mult = mult.times(300)
 	if (hasUpgrade('B', 13)) mult = mult.times(upgradeEffect('B', 13))
 	if (hasUpgrade('Ge', 23)) mult = mult.times(upgradeEffect('Ge', 23))
 	return mult
@@ -979,7 +979,7 @@ addLayer("B", {
 	},
         14: {
             title: "Speed up",
-            description: "×30 Hyper MJ Points.",
+            description: "×300 Hyper MJ Points.",
             cost: new Decimal(8),
 	},
     },
