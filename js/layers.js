@@ -877,6 +877,7 @@ addLayer("b", {
     exponent: 1.3, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('Ge', 26)) mult = mult.times(20)
 	return mult
     },
 
@@ -1017,7 +1018,8 @@ addLayer("Ge", {
 	if (hasUpgrade('Ge', 16)) mult = mult.times(2)
 	if (hasUpgrade('Ge', 22)) mult = mult.times(2)
 	if (hasUpgrade('Ge', 24)) mult = mult.times(upgradeEffect('Ge', 24))
-	if (hasUpgrade('Ge', 25)) mult = mult.times(3)
+	if (hasUpgrade('Ge', 25)) mult = mult.times(10)
+	if (hasUpgrade('Ge', 26)) mult = mult.times(2)
 	return mult
     },
 
@@ -1100,8 +1102,13 @@ addLayer("Ge", {
 	},
         25: {
             title: "😱😱😱",
-            description: "×3 Generator MJs",
+            description: "×10 Generator MJs",
             cost: new Decimal(1e6),
+	},
+        26: {
+            title: "😊😊😊",
+            description: "×2 Generator MJs & Get 20 Layer 1 Speeders per Layer 1 Speeder reset",
+            cost: new Decimal(2e7),
 	},
     },
     milestones: {
