@@ -1017,6 +1017,7 @@ addLayer("Ge", {
 	if (hasUpgrade('Ge', 16)) mult = mult.times(2)
 	if (hasUpgrade('Ge', 22)) mult = mult.times(2)
 	if (hasUpgrade('Ge', 24)) mult = mult.times(upgradeEffect('Ge', 24))
+	if (hasUpgrade('Ge', 25)) mult = mult.times(3)
 	return mult
     },
 
@@ -1096,6 +1097,11 @@ addLayer("Ge", {
                 return player.Ge.points.add(1).pow(0.1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        25: {
+            title: "😱😱😱",
+            description: "×3 Generator MJs",
+            cost: new Decimal(1e6),
 	},
     },
     milestones: {
