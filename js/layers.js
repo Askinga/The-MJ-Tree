@@ -1110,7 +1110,7 @@ addLayer("Ge", {
             description: "×2 Generator MJs & Boost Generator MJ gain based on Generator MJs again -nerfed-",
             cost: new Decimal(2e7),
 	    effect(){
-                return player.Ge.points.add(1).pow(0.750)
+                return player.Ge.points.add(1).pow(0.0750)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
