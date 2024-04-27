@@ -427,6 +427,7 @@ addLayer("H", {
 	if (hasUpgrade('B', 13)) mult = mult.times(upgradeEffect('B', 13))
 	if (hasUpgrade('Ge', 23)) mult = mult.times(upgradeEffect('Ge', 23))
 	if (hasUpgrade('Ge', 27)) mult = mult.times(0.1)
+	if (hasAchievement('a', 64)) mult = mult.times(20)
 	return mult
     },
 
@@ -858,6 +859,11 @@ addLayer("a", {
             done() { return (hasUpgrade('B', 15)) },
             tooltip: "Get Ultra Scaler Upgrade 15.",	   
         },
+        64: {
+            name: "Generator MJs!",
+            done() { return (hasUpgrade('Ge', 11)) },
+            tooltip: "Get Generator MJ Upgrade 11. Reward: ×20 Hyper MJ Points",	   
+        },
 },
 })
 
@@ -1120,6 +1126,11 @@ addLayer("Ge", {
             title: "A boost but a nerf",
             description: "×7.5 Generator MJs but /10 Hyper MJ Points.",
             cost: new Decimal(3e8),
+	},
+        31: {
+            title: "Generator Power!",
+            description: "^1.02 Generator MJs.",
+            cost: new Decimal(4e9),
 	},
     },
     milestones: {
