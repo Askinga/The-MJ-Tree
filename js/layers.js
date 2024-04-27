@@ -344,7 +344,6 @@ addLayer("G", {
 	if (hasUpgrade('L', 44)) mult = mult.pow(1.013)
 	if (hasUpgrade('L', 32)) mult = mult.times(1e6)
 	if (hasUpgrade('B', 14)) mult = mult.times(upgradeEffect('B', 14))
-	if (hasUpgrade('Ge', 27)) mult = mult.times(0.1)
 	return mult
     },
 
@@ -427,6 +426,7 @@ addLayer("H", {
 	if (hasUpgrade('B', 14)) mult = mult.times(300)
 	if (hasUpgrade('B', 13)) mult = mult.times(upgradeEffect('B', 13))
 	if (hasUpgrade('Ge', 23)) mult = mult.times(upgradeEffect('Ge', 23))
+	if (hasUpgrade('Ge', 27)) mult = mult.times(0.1)
 	return mult
     },
 
