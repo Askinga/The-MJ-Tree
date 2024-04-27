@@ -344,6 +344,7 @@ addLayer("G", {
 	if (hasUpgrade('L', 44)) mult = mult.pow(1.013)
 	if (hasUpgrade('L', 32)) mult = mult.times(1e6)
 	if (hasUpgrade('B', 14)) mult = mult.times(upgradeEffect('B', 14))
+	if (hasUpgrade('Ge', 27)) mult = mult.times(0.1)
 	return mult
     },
 
@@ -1020,6 +1021,7 @@ addLayer("Ge", {
 	if (hasUpgrade('Ge', 25)) mult = mult.times(10)
 	if (hasUpgrade('Ge', 26)) mult = mult.times(2)
 	if (hasUpgrade('Ge', 26)) mult = mult.times(upgradeEffect('Ge', 26))
+	if (hasUpgrade('Ge', 27)) mult = mult.times(7.5)
 	return mult
     },
 
@@ -1113,6 +1115,11 @@ addLayer("Ge", {
                 return player.Ge.points.add(1).pow(0.0750)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        27: {
+            title: "A boost but a nerf",
+            description: "×7.5 Generator MJs but /10 Hyper MJ Points.",
+            cost: new Decimal(3e8),
 	},
     },
     milestones: {
