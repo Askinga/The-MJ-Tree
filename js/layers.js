@@ -149,6 +149,7 @@ addLayer("S", {
 	if (hasUpgrade('L', 34)) mult = mult.times(1e10)
 	if (hasUpgrade('L', 43)) mult = mult.pow(1.012)
 	if (hasUpgrade('L', 55)) mult = mult.times(upgradeEffect('L', 55))
+	if (hasAchievement('a', 64)) mult = mult.times(2)
 	return mult
     },
 
@@ -344,6 +345,7 @@ addLayer("G", {
 	if (hasUpgrade('L', 44)) mult = mult.pow(1.013)
 	if (hasUpgrade('L', 32)) mult = mult.times(1e6)
 	if (hasUpgrade('B', 14)) mult = mult.times(upgradeEffect('B', 14))
+	if (hasAchievement('a', 35)) mult = mult.times(1.2)
 	return mult
     },
 
@@ -390,8 +392,8 @@ addLayer("G", {
         11: {
             name: "Exponential Downgrade",
             challengeDescription: "^0.8 all layers except Scaler MJs and this layer.",
-            canComplete: function() {return player.points.gte("1e100")},
-            goalDescription: "Get e100 MJs.",
+            canComplete: function() {return player.points.gte("1e175")},
+            goalDescription: "Get e175 MJs.",
             rewardDescription: "^1.05 Super MJ Points"
 	},
     },
@@ -428,6 +430,7 @@ addLayer("H", {
 	if (hasUpgrade('Ge', 23)) mult = mult.times(upgradeEffect('Ge', 23))
 	if (hasUpgrade('Ge', 27)) mult = mult.times(0.1)
 	if (hasAchievement('a', 64)) mult = mult.times(20)
+	if (hasAchievement('a', 43)) mult = mult.times(1.1)
 	return mult
     },
 
@@ -460,8 +463,8 @@ addLayer("H", {
         11: {
             name: "The hardest challenge in this game",
             challengeDescription: "^0.5 all layers except this layer.",
-            canComplete: function() {return player.points.gte("1e500")},
-            goalDescription: "Get e500 MJs.",
+            canComplete: function() {return player.points.gte("1e550")},
+            goalDescription: "Get e550 MJs.",
             rewardDescription: "^1.1 Giga MJ Points"
 	},
     },
@@ -722,12 +725,12 @@ addLayer("a", {
         16: {
             name: "About to reset",
             done() { return (hasUpgrade('p', 23)) },
-            tooltip: "Get MJ Upgrade 23.",	   
+            tooltip: "Get MJ Upgrade 11",	   
         },
         21: {
             name: "SUPER MJ!",
-            done() { return (hasUpgrade('S', 11)) },
-            tooltip: "Get Super MJ Upgrade 11.",
+            done() { return player.S.points.gte(1) },
+            tooltip: "Get a Super MJ Point. Reward: ×1.5 MJs",
         },
         22: {
             name: "MJs boost MJ Points",
@@ -742,7 +745,7 @@ addLayer("a", {
         24: {
             name: "That was a grind",
             done() { return (hasChallenge('S', 11)) },
-            tooltip: "Beat the Super MJ Challenge.",	   
+            tooltip: "Beat the Super MJ Challenge. Reward: ×2 Super MJ Points",	   
         },
         25: {
             name: "EXPONENT!!!",
@@ -761,8 +764,8 @@ addLayer("a", {
         },
         32: {
             name: "Giga?",
-            done() { return (hasUpgrade('G', 11)) },
-            tooltip: "Get Giga MJ Upgrade 11.",	   
+            done() { return player.G.points.gte(1) },
+            tooltip: "Reset for a Giga MJ Point.",	   
         }, 	   
         33: {
             name: "You need this!",
@@ -777,7 +780,7 @@ addLayer("a", {
         35: {
             name: "The challenge is done!",
             done() { return (hasChallenge('G', 11)) },
-            tooltip: "Beat Exponential Downgrade.",	   
+            tooltip: "Beat Exponential Downgrade. Reward: ×1.2 Giga MJ Points",	   
         }, 
         36: {
             name: "Hyper is coming!!",
@@ -786,8 +789,8 @@ addLayer("a", {
         }, 
         41: {
             name: "HYPER!!!",
-            done() { return (hasUpgrade('H', 11)) },
-            tooltip: "Get Hyper MJ Upgrade 11.",	   
+            done() { return player.H.points.gte(1) },
+            tooltip: "Get a Hyper MJ Point",	   
         }, 
         42: {
             name: "Challenge soon!",
@@ -797,12 +800,12 @@ addLayer("a", {
         43: {
             name: "Hyper is done!?",
             done() { return (hasChallenge('H', 11)) },
-            tooltip: "Beat the Hyper MJ Challenge.",	   
+            tooltip: "Beat the Hyper MJ Challenge. Reward: ×1.1 Hyper MJ Points",	   
         }, 
         44: {
             name: "Clicker?",
-            done() { return (hasUpgrade('L', 11)) },
-            tooltip: "Get MJ Click Upgrade 11.",	   
+            done() { return player.L.points.gte(1) },
+            tooltip: "Get a MJ Click.",	   
         }, 
         45: {
             name: "Layer boost 2",
@@ -861,9 +864,14 @@ addLayer("a", {
         },
         64: {
             name: "Generator MJs!",
-            done() { return (hasUpgrade('Ge', 11)) },
-            tooltip: "Get Generator MJ Upgrade 11. Reward: ×20 Hyper MJ Points",	   
+            done() { return player.Ge.points.gte(1) },
+            tooltip: "Get a Generator MJ. Reward: ×20 Hyper MJ Points",	   
         },
+        65: {
+            name: "The grind of generator MJs",
+            done() { return player.Ge.points.gte(10000) },
+            tooltip: "Get 10000 Generator MJs",	   
+        }, 
 },
 })
 
