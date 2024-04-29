@@ -60,7 +60,8 @@ function getPointGen() {
 	if (hasMilestone('p', 1)) gain = gain.times(15)
 	if (hasMilestone('p', 2)) gain = gain.times(250)
         if (hasUpgrade('b', 11)) gain = gain.times(upgradeEffect('b', 11))
-	return gain
+	if (hasAchievement('a', 21)) mult = mult.times(1.5)
+        return gain
 }
 
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
