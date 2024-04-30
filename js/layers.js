@@ -866,7 +866,7 @@ addLayer("a", {
         64: {
             name: "Generator MJs!",
             done() { return player.Ge.points.gte(1) },
-            tooltip: "Get a Generator MJ. Reward: ×20 Hyper MJ Points",	   
+            tooltip: "Get a Generator MJ. Reward: ×20 Hyper MJ Points",	
         },
         65: {
             name: "The grind of generator MJs",
@@ -874,6 +874,36 @@ addLayer("a", {
             tooltip: "Get 10000 Generator MJs",	   
         }, 
         66: {
+            name: "The overpowered Hyper boost",
+            done() { return (hasUpgrade('Ge', 23)) },
+            tooltip: "Get Generatir MJ Upgrade 23",	   
+        }, 
+	71: {
+            name: "The generator speed up",
+            done() { return (hasUpgrade('Ge', 24)) },
+            tooltip: "Get Generatir MJ Upgrade 24",	   
+        }, 
+	72: {
+            name: "1M Generator MJs!",
+            done() { return player.Ge.points.gte(1000000) },
+            tooltip: "Get 1000000 Generator MJs",	   
+        }, 
+	73: {
+            name: "A long wait",
+            done() { return player.Ge.points.gte(4e6) },
+            tooltip: "Get 4e6 Generator MJs",	   
+        }, 
+	74: {
+            name: "Almost there",
+            done() { return player.Ge.points.gte(1.75e7) },
+            tooltip: "Get 1.75e7 Generator MJs",	   
+        }, 
+	75: {
+            name: "FINALLY!!!",
+            done() { return (hasUpgrade('Ge', 26)) },
+            tooltip: "Get Generatir MJ Upgrade 26",	   
+        }, 
+	76: {
             name: "1e9 Generator MJs",
             done() { return player.Ge.points.gte(1e9) },
             tooltip: "Get 1e9 Generator MJs",	   
