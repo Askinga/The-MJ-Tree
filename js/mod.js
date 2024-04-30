@@ -13,13 +13,13 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.1.4 5th row",
+	num: "1.1.5 5th row",
 	name: "The 5th row",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v1.1.4 5th row</h3><br>
-		- More updates soon! Endgame e17000 MJs.<br>
+	<h3>v1.1.5 5th row</h3><br>
+		- More updates soon! Endgame e18300 MJs.<br>
 		- Check back here for more updates!.`
   
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
@@ -74,7 +74,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e17000"))
+	return player.points.gte(new Decimal("e18300"))
 }
 
 
