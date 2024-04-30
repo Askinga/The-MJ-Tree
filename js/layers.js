@@ -431,6 +431,7 @@ addLayer("H", {
 	if (hasUpgrade('Ge', 27)) mult = mult.times(0.1)
 	if (hasAchievement('a', 64)) mult = mult.times(20)
 	if (hasAchievement('a', 43)) mult = mult.times(1.1)
+	if (hasUpgrade('Ge', 32)) mult = mult.times(1000)
 	return mult
     },
 
@@ -872,6 +873,11 @@ addLayer("a", {
             done() { return player.Ge.points.gte(10000) },
             tooltip: "Get 10000 Generator MJs",	   
         }, 
+        66: {
+            name: "1e9 Generator MJs",
+            done() { return player.Ge.points.gte(1e9) },
+            tooltip: "Get 1e9 Generator MJs",	   
+        }, 
 },
 })
 
@@ -1140,6 +1146,11 @@ addLayer("Ge", {
             title: "Generator Power!",
             description: "^1.02 Generator MJs.",
             cost: new Decimal(4e9),
+	},
+        32: {
+            title: "Revival",
+            description: "×1000 Hyper MJ Points.",
+            cost: new Decimal(6e9),
 	},
     },
     milestones: {
