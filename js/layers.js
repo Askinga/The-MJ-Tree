@@ -881,7 +881,7 @@ addLayer("a", {
 	71: {
             name: "The generator speed up",
             done() { return (hasUpgrade('Ge', 24)) },
-            tooltip: "Get Generatir MJ Upgrade 24",	   
+            tooltip: "Get Generator MJ Upgrade 24",	   
         }, 
 	72: {
             name: "1M Generator MJs!",
@@ -901,7 +901,7 @@ addLayer("a", {
 	75: {
             name: "FINALLY!!!",
             done() { return (hasUpgrade('Ge', 26)) },
-            tooltip: "Get Generatir MJ Upgrade 26",	   
+            tooltip: "Get Generator MJ Upgrade 26",	   
         }, 
 	76: {
             name: "1e9 Generator MJs",
