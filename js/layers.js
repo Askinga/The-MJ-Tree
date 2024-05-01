@@ -432,6 +432,7 @@ addLayer("H", {
 	if (hasAchievement('a', 64)) mult = mult.times(20)
 	if (hasAchievement('a', 43)) mult = mult.times(1.1)
 	if (hasUpgrade('Ge', 32)) mult = mult.times(1000)
+	if (hasUpgrade('H', 13)) mult = mult.times(100)
 	return mult
     },
 
@@ -458,7 +459,12 @@ addLayer("H", {
             title: "Important for the challenge",
             description: "×1e10 MJs.",
             cost: new Decimal(1000),
-	}
+	},
+        13: {
+            title: "GET THAT 13th ULTRA SCALER!",
+            description: "×100 Hyper MJ Points.",
+            cost: new Decimal(3e80),
+        },
     },
     challenges: {
         11: {
@@ -900,7 +906,7 @@ addLayer("a", {
         }, 
 	75: {
             name: "FINALLY!!!",
-            done() { return (hasUpgrade('Ge', 26)) },
+            done() { return (hasUpgrade('Ge', 26)) },q
             tooltip: "Get Generator MJ Upgrade 26",	   
         }, 
 	76: {
@@ -1033,6 +1039,11 @@ addLayer("B", {
             description: "×300 Hyper MJ Points.",
             cost: new Decimal(8),
 	},
+        16: {
+            title: "Generator Multi",
+            description: "×20 Generator MJs",
+            cost: new Decimal(13),
+	},
     },
 })
 
@@ -1074,6 +1085,7 @@ addLayer("Ge", {
 	if (hasUpgrade('Ge', 26)) mult = mult.times(upgradeEffect('Ge', 26))
 	if (hasUpgrade('Ge', 27)) mult = mult.times(7.5)
 	if (hasUpgrade('Ge', 31)) mult = mult.pow(1.02)
+	mult = mult.times(buyableEffect('Ge', 11))
 	return mult
     },
 
@@ -1188,6 +1200,11 @@ addLayer("Ge", {
             description: "×1000 Hyper MJ Points.",
             cost: new Decimal(6e9),
 	},
+        34: {
+            title: "A BUYABLE!!!",
+            description: "Unlock a buyable",
+            cost: new Decimal(2e11),
+	},
     },
     milestones: {
         0: {
@@ -1201,4 +1218,32 @@ addLayer("Ge", {
             done() { return player.Ge.points >= (250000) }
         },
     },
+    buyables: {
+        11: {
+        title: "Generator Multi",
+        unlocked() { return (hasUpgrade('Ge', 34)) },
+        cost(x) {
+            let exp2 = 1.1
+            return new Decimal("1e12").mul(Decimal.pow(1.75, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
+        },
+        display() {
+            return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " generator MJs." + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: ×" + format(buyableEffect(this.layer, this.id)) + " Generator MJs."
+        },
+        canAfford() {
+            return player[this.layer].points.gte(this.cost())
+        },
+        buy() {
+            let cost = new Decimal (1)
+            player[this.layer].points = player[this.layer].points.sub(this.cost().mul(cost))
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+        effect(x) {
+            let base1 = new Decimal(1.5)
+            let base2 = x
+            let expo = new Decimal(1.004)
+            let eff = base1.pow(Decimal.pow(base2, expo))
+            return eff
+        },
+    },
+},
 })
