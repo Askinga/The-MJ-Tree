@@ -731,8 +731,8 @@ addLayer("a", {
         },
         16: {
             name: "About to reset",
-            done() { return (hasUpgrade('p', 23)) },
-            tooltip: "Get MJ Upgrade 11",	   
+            done() { return (hasUpgrade('p', 24)) },
+            tooltip: "Get MJ Upgrade 24",	   
         },
         21: {
             name: "SUPER MJ!",
