@@ -906,7 +906,7 @@ addLayer("a", {
         }, 
 	75: {
             name: "FINALLY!!!",
-            done() { return (hasUpgrade('Ge', 26)) },q
+            done() { return (hasUpgrade('Ge', 26)) },
             tooltip: "Get Generator MJ Upgrade 26",	   
         }, 
 	76: {
