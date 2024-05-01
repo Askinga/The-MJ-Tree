@@ -1075,6 +1075,7 @@ addLayer("Ge", {
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	mult = mult.times(buyableEffect('Ge', 11))
 	if (hasMilestone('Ge', 0)) mult = mult.times(4)
         if (hasUpgrade('Ge', 15)) mult = mult.times(1.5)
 	if (hasUpgrade('Ge', 16)) mult = mult.times(2)
@@ -1085,7 +1086,6 @@ addLayer("Ge", {
 	if (hasUpgrade('Ge', 26)) mult = mult.times(upgradeEffect('Ge', 26))
 	if (hasUpgrade('Ge', 27)) mult = mult.times(7.5)
 	if (hasUpgrade('Ge', 31)) mult = mult.pow(1.02)
-	mult = mult.times(buyableEffect('Ge', 11))
 	return mult
     },
 
