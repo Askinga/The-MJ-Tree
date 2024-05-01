@@ -1086,6 +1086,7 @@ addLayer("Ge", {
 	if (hasUpgrade('Ge', 26)) mult = mult.times(upgradeEffect('Ge', 26))
 	if (hasUpgrade('Ge', 27)) mult = mult.times(7.5)
 	if (hasUpgrade('Ge', 31)) mult = mult.pow(1.02)
+	if (hasUpgrade('B', 16)) mult = mult.times(20)
 	return mult
     },
 
