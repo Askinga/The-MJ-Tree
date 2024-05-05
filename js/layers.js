@@ -3,7 +3,7 @@ addLayer("p", {
     symbol: "MJ", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
-        unlocked: true,
+        unlocked: false,
 		points: new Decimal(0),
     }},
     color: "#05199c",
@@ -68,6 +68,11 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
+	14: {
+            title: "speeding through this layer",
+            description: "Unlock Layer 1 Speeders.",
+            cost: new Decimal(20),
+	},
 	21: {
             title: "MJ Swarm",
             description: "×10 MJ gain.",
@@ -89,7 +94,7 @@ addLayer("p", {
 	},
 	24: {
             title: "Last upgrade until the next layer!",
-            description: "×1000 MJ gain.",
+            description: "×1000 MJ gain and unlock a new layer.",
             cost: new Decimal(550000000),
 	},
     },
@@ -163,7 +168,7 @@ addLayer("S", {
         {key: "s", description: "S: Reset for Super MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return true},
+    layerShown(){return (hasUpgrade('p', 24)) },
     branches:["p"],
 	
     upgrades: {
@@ -219,6 +224,11 @@ addLayer("S", {
             description: "^1.08 MJ Point gain.",
             cost: new Decimal(1e12),
 	},
+        24: {
+            title: "A scaling layer",
+            description: "Unlock Scaler MJs.",
+            cost: new Decimal(1e100),
+	},
     },
     milestones: {
         0: {
@@ -233,7 +243,7 @@ addLayer("S", {
         },
         2: {
             requirementDescription: "2e14 Super MJ Points",
-            effectDescription: "×20 Super MJ Point gain",
+            effectDescription: "×20 Super MJ Point gain and unlock a new layer",
             done() { return player.S.points >= (2e14) }
         },
     },
@@ -241,8 +251,8 @@ addLayer("S", {
         11: {
             name: "Super MJ Challenge",
             challengeDescription: "^0.3 MJ Points",
-            canComplete: function() {return player.points.gte("1e29")},
-            goalDescription: "Get e29 MJs.",
+            canComplete: function() {return player.points.gte("1e32")},
+            goalDescription: "Get e32 MJs.",
             rewardDescription: "^1.1 MJ Points"
         },
     },
@@ -279,7 +289,7 @@ addLayer("C", {
         {key: "a", description: "A: Reset for Scaler MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return true},
+    layerShown(){return (hasUpgrade('S', 24)) },
     branches:["S"],
 
     upgrades: {
@@ -359,7 +369,7 @@ addLayer("G", {
         {key: "g", description: "G: Reset for Giga MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return true},
+    layerShown(){return (hasMilestone('S', 2)) },
     branches: ["S", "C"],
 
     upgrades: {
@@ -383,7 +393,7 @@ addLayer("G", {
             cost: new Decimal(350),
 	},
         14: {
-            title: "×100 Boost to Super MJ Points",
+            title: "×100 Boost to Super MJ Points and unlock Hyper MJs",
             description: "Exactly what the title says.",
             cost: new Decimal(2e16),
 	},
@@ -446,7 +456,7 @@ addLayer("H", {
         {key: "h", description: "H: Reset for Hyper MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return true},
+    layerShown(){return (hasUpgrade('G', 14)) },
     branches: ["G", "C"],
  
     upgrades: {
@@ -472,7 +482,7 @@ addLayer("H", {
             challengeDescription: "^0.5 all layers except this layer.",
             canComplete: function() {return player.points.gte("1e550")},
             goalDescription: "Get e550 MJs.",
-            rewardDescription: "^1.1 Giga MJ Points"
+            rewardDescription: "^1.1 Giga MJ Points and unlock MJ Clicks"
 	},
     },
 })
@@ -529,7 +539,7 @@ addLayer("L", {
         {key: "c", description: "C: Reset for MJ Clicks", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return true},
+    layerShown(){return (hasChallenge('H', 11)) },
     branches: ["H", "G"],
 
     upgrades: {
@@ -663,7 +673,7 @@ addLayer("L", {
 	},
         55: {
             title: "The last upgrade is this layer",
-            description: "×1e6 MJ Clicks and boost Super MJ Point gain based on MJ Clicks.",
+            description: "×1e6 MJ Clicks and boost Super MJ Point gain based on MJ Clicks and unlock Ultra Scalers.",
             cost: new Decimal(3e37),
 	    effect(){
                 return player.L.points.add(1).pow(0.3)
@@ -947,7 +957,7 @@ addLayer("b", {
         {key: "b", description: "B: Reset for Layer 1 Speeders", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return true},
+    layerShown(){return (hasUpgrade('p', 14)) },
     branches:["p"],
 
     upgrades: {
@@ -994,7 +1004,7 @@ addLayer("B", {
         {key: "u", description: "U: Reset for Ultra Scalers", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return true},
+    layerShown(){return (hasUpgrade('L', 55)) },
     branches:["L", "H"],
 
     upgrades: {
