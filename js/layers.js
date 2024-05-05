@@ -1335,10 +1335,10 @@ addLayer("Gb", {
 
     layerShown(){
         let visible = false
-        if (hasUpgrade('Ge', 35) || player.Gb	.unlocked) visible = true
+        if (hasUpgrade('Ge', 35) || player.Gb.unlocked) visible = true
        return visible
      },
-    branches:["p", "G"],
+    branches:["Ge"],
     effect(){
     let enpow = 5
         let eff = player.Gb.points.add(1).pow(enpow)
