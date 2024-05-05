@@ -1297,7 +1297,7 @@ addLayer("Ge", {
         effect(x) {
             let base1 = new Decimal(1.5)
             let base2 = x
-            if (hasUpgrade('Gb', 12)) base2 = x.mul(new Decimal(2))
+            if (hasUpgrade('Gb', 12)) base2 = x.mul(new Decimal(1.33))
 	    let expo = new Decimal(1.001)
             let eff = base1.pow(Decimal.pow(base2, expo))
             return eff
@@ -1351,7 +1351,7 @@ addLayer("Gb", {
 	},
         12: {
             title: "Buyable improving",
-            description: "Improve Generator MJ Compounder effect to ×3 instead of ×1.5.",
+            description: "Improve Generator MJ Compounder effect.",
             cost: new Decimal(4),
 	},
     },
