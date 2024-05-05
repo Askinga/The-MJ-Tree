@@ -1131,7 +1131,8 @@ addLayer("Ge", {
 	if (hasUpgrade('Ge', 26)) mult = mult.times(upgradeEffect('Ge', 26))
 	if (hasUpgrade('Ge', 27)) mult = mult.times(7.5)
 	if (hasUpgrade('Ge', 31)) mult = mult.pow(1.02)
-	if (hasUpgrade('B', 16)) mult = mult.times(20)
+	if (hasUpgrade('B', 17)) mult = mult.times(20)
+	if (hasUpgrade('Gb', 11)) mult = mult.times(10)
 	return mult
     },
 
@@ -1344,7 +1345,7 @@ addLayer("Gb", {
     upgrades: {
         11: {
             title: "Stronger boost",
-            description: "Improve the Generator Accelerator effect.",
+            description: "Improve the Generator Accelerator effect and ×10 Generator MJs.",
             cost: new Decimal(3),
 	},
     },
