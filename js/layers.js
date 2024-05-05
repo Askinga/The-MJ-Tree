@@ -1340,9 +1340,18 @@ addLayer("Gb", {
        return visible
      },
     branches:["Ge"],
+    
+    upgrades: {
+        11: {
+            title: "Stronger boost",
+            description: "Improve the Generator Accelerator effect.",
+            cost: new Decimal(3),
+	},
+    },
     effect(){
-    let enpow = 5
-        let eff = player.Gb.points.add(1).pow(enpow)
+    let enpow = 2
+    if (hasUpgrade('Gb', 1)) enpow = 2.2
+	let eff = player.Gb.points.add(1).pow(enpow)
        return eff
        },
         effectDescription() {
