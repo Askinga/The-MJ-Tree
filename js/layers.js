@@ -1256,7 +1256,7 @@ addLayer("Ge", {
 	},
         35: {
             title: "The OP Upgrade",
-            description: "×1e5 Hyper MJ Points.",
+            description: "×1e5 Hyper MJ Points and a new layer.",
             cost: new Decimal(1e12),
 	    unlocked() { return (hasUpgrade('B', 16)) },
 	},
@@ -1302,3 +1302,49 @@ addLayer("Ge", {
     },
 },
 })
+
+addLayer("Gb", {
+    name: "Generator Accelerators",
+    symbol: "Acc",
+    position: 1,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#00fbff",
+    requires: new Decimal(4e14), // Can be a function that takes requirement increases into account
+    resource: "Generator Accelerators", // Name of prestige currency
+    baseResource: "Generator MJs", // Name of resource prestige is based on
+    baseAmount() {return player.B.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1.3, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 2, // Row the layer is in on the tree (0 is the first row
+    hotkeys: [
+        {key: "o", description: "O: Get Generator Accelerators", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('Ge', 35) || player.Gb	.unlocked) visible = true
+       return visible
+     },
+    branches:["p", "G"],
+    effect(){
+    let enpow = 5
+        let eff = player.Gb.points.add(1).pow(enpow)
+       return eff
+       },
+        effectDescription() {
+            let desc = "which is boosting Generator MJs by x" + format(tmp[this.layer].effect);
+            return desc;
+        },
