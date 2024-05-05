@@ -1297,7 +1297,8 @@ addLayer("Ge", {
         effect(x) {
             let base1 = new Decimal(1.5)
             let base2 = x
-            let expo = new Decimal(1.001)
+            if (hasUpgrade('Gb', 12)) base2 = x.add(new Decimal(0.05))
+	    let expo = new Decimal(1.001)
             let eff = base1.pow(Decimal.pow(base2, expo))
             return eff
         },
@@ -1345,13 +1346,18 @@ addLayer("Gb", {
     upgrades: {
         11: {
             title: "Stronger boost",
-            description: "Improve the Generator Accelerator effect and ×10 Generator MJs.",
+            description: "Improve the Generator Accelerator effect to ^2.2 instead of ^2 and ×10 Generator MJs.",
             cost: new Decimal(3),
+	},
+        12: {
+            title: "Buyable improving",
+            description: "Improve Generator MJ Compounder effect to ×1.55 instead of ×1.5.",
+            cost: new Decimal(4),
 	},
     },
     effect(){
     let enpow = 2
-    if (hasUpgrade('Gb', 1)) enpow = 2.2
+    if (hasUpgrade('Gb', 11)) enpow = 2.2
 	let eff = player.Gb.points.add(1).pow(enpow)
        return eff
        },
