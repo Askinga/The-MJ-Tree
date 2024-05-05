@@ -455,6 +455,7 @@ addLayer("H", {
 	if (hasAchievement('a', 43)) mult = mult.times(1.1)
 	if (hasUpgrade('Ge', 32)) mult = mult.times(1000)
 	if (hasUpgrade('H', 13)) mult = mult.times(100)
+	if (hasUpgrade('Ge', 35)) mult = mult.times(1e5)
 	return mult
     },
 
@@ -1078,6 +1079,11 @@ addLayer("B", {
             cost: new Decimal(8),
 	},
         16: {
+            title: "Unlock something OP",
+            description: "Unlock a upgrade in Generator layer.",
+            cost: new Decimal(12),
+	},
+	17: {
             title: "Generator Multi",
             description: "×20 Generator MJs",
             cost: new Decimal(13),
@@ -1247,6 +1253,12 @@ addLayer("Ge", {
             title: "A BUYABLE!!!",
             description: "Unlock a buyable",
             cost: new Decimal(2e11),
+	},
+        35: {
+            title: "The OP Upgrade",
+            description: "×1e5 Hyper MJ Points.",
+            cost: new Decimal(1e12),
+	    unlocked() { return (hasUpgrade('B', 16)) },
 	},
     },
     milestones: {
