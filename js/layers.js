@@ -1120,6 +1120,7 @@ addLayer("Ge", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	mult = mult.times(buyableEffect('Ge', 11))
+	if (layers.Gb.effect().gte(1)) mult = mult.times(layers.Gb.effect())
 	if (hasMilestone('Ge', 0)) mult = mult.times(4)
         if (hasUpgrade('Ge', 15)) mult = mult.times(1.5)
 	if (hasUpgrade('Ge', 16)) mult = mult.times(2)
@@ -1315,7 +1316,7 @@ addLayer("Gb", {
     requires: new Decimal(4e14), // Can be a function that takes requirement increases into account
     resource: "Generator Accelerators", // Name of prestige currency
     baseResource: "Generator MJs", // Name of resource prestige is based on
-    baseAmount() {return player.B.points}, // Get the current amount of baseResource
+    baseAmount() {return player.Ge.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 1.3, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
