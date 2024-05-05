@@ -1348,3 +1348,4 @@ addLayer("Gb", {
             let desc = "which is boosting Generator MJs by x" + format(tmp[this.layer].effect);
             return desc;
         },
+})
