@@ -1351,7 +1351,7 @@ addLayer("Gb", {
 	},
         12: {
             title: "Buyable improving",
-            description: "Improve Generator MJ Compounder effect by ×1.5.",
+            description: "Improve Generator MJ Compounder effect to ×3 instead of ×1.5.",
             cost: new Decimal(4),
 	},
     },
