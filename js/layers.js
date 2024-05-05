@@ -1100,7 +1100,7 @@ addLayer("Ge", {
         {key: "e", description: "E: Get Generator MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return true},
+    layerShown(){return (hasUpgrade('B', 15)) },
     branches:["p", "G"],
 
     upgrades: {
