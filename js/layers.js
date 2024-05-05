@@ -168,7 +168,11 @@ addLayer("S", {
         {key: "s", description: "S: Reset for Super MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return (hasUpgrade('p', 24)) },
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('p', 24) || player.S.unlocked) visible = true
+       return visible
+    },
     branches:["p"],
 	
     upgrades: {
@@ -289,7 +293,11 @@ addLayer("C", {
         {key: "a", description: "A: Reset for Scaler MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return (hasUpgrade('S', 24)) },
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('S', 24) || player.C.unlocked) visible = true
+       return visible
+     },
     branches:["S"],
 
     upgrades: {
@@ -335,7 +343,7 @@ addLayer("G", {
 		points: new Decimal(0),
     }},
     color: "#fcd303",
-    requires: new Decimal(1e21), // Can be a function that takes requirement increases into account
+    requires: new Decimal(1e25), // Can be a function that takes requirement increases into account
     resource: "Giga MJ Points", // Name of prestige currency
     baseResource: "Super MJ Points", // Name of resource prestige is based on
     baseAmount() {return player.S.points}, // Get the current amount of baseResource
@@ -369,7 +377,11 @@ addLayer("G", {
         {key: "g", description: "G: Reset for Giga MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return (hasMilestone('S', 2)) },
+    layerShown(){
+        let visible = false
+        if (hasMilestone('S', 2) || player.G.unlocked) visible = true
+       return visible
+     },
     branches: ["S", "C"],
 
     upgrades: {
@@ -456,7 +468,11 @@ addLayer("H", {
         {key: "h", description: "H: Reset for Hyper MJ Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return (hasUpgrade('G', 14)) },
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('G', 14) || player.H.unlocked) visible = true
+       return visible
+     },
     branches: ["G", "C"],
  
     upgrades: {
@@ -539,7 +555,11 @@ addLayer("L", {
         {key: "c", description: "C: Reset for MJ Clicks", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return (hasChallenge('H', 11)) },
+    layerShown(){
+        let visible = false
+        if (hasChallenge('H', 11) || player.L.unlocked) visible = true
+       return visible
+     },
     branches: ["H", "G"],
 
     upgrades: {
@@ -957,7 +977,11 @@ addLayer("b", {
         {key: "b", description: "B: Reset for Layer 1 Speeders", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return (hasUpgrade('p', 14)) },
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('p', 14) || player.b.unlocked) visible = true
+       return visible
+     },
     branches:["p"],
 
     upgrades: {
@@ -1004,7 +1028,11 @@ addLayer("B", {
         {key: "u", description: "U: Reset for Ultra Scalers", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return (hasUpgrade('L', 55)) },
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('L', 55) || player.B.unlocked) visible = true
+       return visible
+     },
     branches:["L", "H"],
 
     upgrades: {
@@ -1110,7 +1138,11 @@ addLayer("Ge", {
         {key: "e", description: "E: Get Generator MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
-    layerShown(){return (hasUpgrade('B', 15)) },
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('B', 15) || player.Ge.unlocked) visible = true
+       return visible
+     },
     branches:["p", "G"],
 
     upgrades: {
