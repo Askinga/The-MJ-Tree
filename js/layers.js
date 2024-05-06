@@ -115,18 +115,6 @@ addLayer("p", {
             done() { return player.p.points >= (1000000) }
         },
     },
-    automate() {
-            if(hasUpgrade('G', 11) {
-                buyUpgrade('p', 11)
-                buyUpgrade('p', 12)
-                buyUpgrade('p', 13)
-                buyUpgrade('p', 14)
-                buyUpgrade('p', 21)
-                buyUpgrade('p', 22)
-                buyUpgrade('p', 23)
-                buyUpgrade('p', 24)
-	    };
-     }
 })
 
 addLayer("S", {
@@ -399,7 +387,7 @@ addLayer("G", {
     upgrades: {
         11: {
             title: "This is OP!?",
-            description: "×1M MJs, ×1000 MJ Points and ×10 Super MJ Points and automate MJ upgrades!.",
+            description: "×1M MJs, ×1000 MJ Points and ×10 Super MJ Points.",
             cost: new Decimal(1),
 	},
         12: {
