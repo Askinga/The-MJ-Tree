@@ -116,7 +116,7 @@ addLayer("p", {
         },
     },
     automate() {
-            if(hasUpgrade('G', 11)) || hasUpgrade('H', 11)) {
+            if(hasUpgrade('G', 12) || hasUpgrade('H', 11)) {
                 buyUpgrade('p', 11)
                 buyUpgrade('p', 12)
                 buyUpgrade('p', 13)
