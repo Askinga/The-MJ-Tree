@@ -125,7 +125,7 @@ addLayer("p", {
                 buyUpgrade('p', 22)
                 buyUpgrade('p', 23)
                 buyUpgrade('p', 24)
-	    }
+	    };
      }
 })
 
