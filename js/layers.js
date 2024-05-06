@@ -91,7 +91,7 @@ addLayer("p", {
             title: "MJ Point Boost to speed up this layer",
             description: "×6 MJ Point gain.",
             cost: new Decimal(100000),
-	}, 
+	},
 	24: {
             title: "Last upgrade until the next layer!",
             description: "×1000 MJ gain and unlock a new layer.",
