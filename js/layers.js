@@ -116,7 +116,7 @@ addLayer("p", {
         },
     },
     automate() {
-            if(hasUpgrade('G', 11)) {
+            if(hasUpgrade('G', 11)) || hasUpgrade('H', 11)) {
                 buyUpgrade('p', 11)
                 buyUpgrade('p', 12)
                 buyUpgrade('p', 13)
@@ -271,6 +271,19 @@ addLayer("S", {
             goalDescription: "Get e32 MJs.",
             rewardDescription: "^1.1 MJ Points"
         },
+    },
+    automate() {
+            if(hasUpgrade('H', 11)) {
+                buyUpgrade('S', 11)
+                buyUpgrade('S', 12)
+                buyUpgrade('S', 13)
+                buyUpgrade('S', 14)
+                buyUpgrade('S', 15)
+                buyUpgrade('S', 21)
+                buyUpgrade('S', 22)
+                buyUpgrade('S', 23)
+                buyUpgrade('S', 24)
+	}
     },
 })
 
@@ -491,7 +504,7 @@ addLayer("H", {
     upgrades: {
         11: {
             title: "Hyper MJs are SUPER OP!!!!!!!!",
-            description: "×1e50 MJs, ×1e20 MJ Points, ×1e6 Super MJ Points and ×1000 Giga MJ Points.",
+            description: "×1e50 MJs, ×1e20 MJ Points, ×1e6 Super MJ Points and ×1000 Giga MJ Points and automate MJ and Super MJ Upgrades.",
             cost: new Decimal(1),
 	},
         12: {
@@ -1035,7 +1048,7 @@ addLayer("B", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 3, // Row the layer is in on the tree (0 is the first row)
     displayRow: 4,
     hotkeys: [
         {key: "u", description: "U: Reset for Ultra Scalers", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -1101,6 +1114,18 @@ addLayer("B", {
             cost: new Decimal(13),
 	},
     },
+    automate() {
+            if(hasUpgrade('Gb', 13)) {
+                buyUpgrade('B', 11)
+                buyUpgrade('B', 12)
+                buyUpgrade('B', 13)
+                buyUpgrade('B', 14)
+                buyUpgrade('B', 15)
+                buyUpgrade('B', 16)
+                buyUpgrade('B', 17)
+        }
+    },
+})
 })
 
 addLayer("Ge", {
@@ -1332,7 +1357,7 @@ addLayer("Gb", {
     baseResource: "Generator MJs", // Name of resource prestige is based on
     baseAmount() {return player.Ge.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1.3, // Prestige currency exponent
+    exponent: 1.425, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
@@ -1365,6 +1390,11 @@ addLayer("Gb", {
             title: "Buyable improving",
             description: "Improve Generator MJ Compounder effect.",
             cost: new Decimal(4),
+	},
+        13: {
+            title: "Automation Ultra Scaler",
+            description: "Autobuy Ultra Scaler upgrades!.",
+            cost: new Decimal(5),
 	},
     },
     effect(){
