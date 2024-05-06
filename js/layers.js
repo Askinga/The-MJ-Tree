@@ -43,7 +43,18 @@ addLayer("p", {
         {key: "m", description: "M: Reset for MJ points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
-
+    automate() {
+            if(hasUpgrade('G', 11) || hasUpgrade('H', 11)) {
+                buyUpgrade('p', 11)
+                buyUpgrade('p', 12)
+                buyUpgrade('p', 13)
+                buyUpgrade('p', 14)
+                buyUpgrade('p', 21)
+                buyUpgrade('p', 22)
+                buyUpgrade('p', 23)
+	        buyUpgrade('p', 24)
+	    },
+	},
     upgrades: {
         11: {
             title: "MJ Doubler",
@@ -91,7 +102,7 @@ addLayer("p", {
             title: "MJ Point Boost to speed up this layer",
             description: "×6 MJ Point gain.",
             cost: new Decimal(100000),
-	},
+	}, 
 	24: {
             title: "Last upgrade until the next layer!",
             description: "×1000 MJ gain and unlock a new layer.",
@@ -174,7 +185,19 @@ addLayer("S", {
        return visible
     },
     branches:["p"],
-	
+    automate() {
+            if(hasUpgrade('H', 11) {
+                buyUpgrade('S', 11)
+                buyUpgrade('S', 12)
+                buyUpgrade('S', 13)
+                buyUpgrade('S', 14)
+                buyUpgrade('S', 15)
+                buyUpgrade('S', 21)
+                buyUpgrade('S', 22)
+	        buyUpgrade('S', 23)
+	        buyUpgrade('S', 24)
+	    },
+	},
     upgrades: {
         11: {
             title: "SUPER MJ?",
@@ -387,7 +410,7 @@ addLayer("G", {
     upgrades: {
         11: {
             title: "This is OP!?",
-            description: "×1M MJs, ×1000 MJ Points and ×10 Super MJ Points.",
+            description: "×1M MJs, ×1000 MJ Points and ×10 Super MJ Points and autobuy MJ upgrades.",
             cost: new Decimal(1),
 	},
         12: {
@@ -479,7 +502,7 @@ addLayer("H", {
     upgrades: {
         11: {
             title: "Hyper MJs are SUPER OP!!!!!!!!",
-            description: "×1e50 MJs, ×1e20 MJ Points, ×1e6 Super MJ Points and ×1000 Giga MJ Points.",
+            description: "×1e50 MJs, ×1e20 MJ Points, ×1e6 Super MJ Points and ×1000 Giga MJ Points and automate MJ and Super MJ Upgrades.",
             cost: new Decimal(1),
 	},
         12: {
@@ -1034,6 +1057,17 @@ addLayer("B", {
         if (hasUpgrade('L', 55) || player.B.unlocked) visible = true
        return visible
      },
+     automate() {
+            if(hasUpgrade('Gb', 13) {
+                buyUpgrade('B', 11)
+                buyUpgrade('B', 12)
+                buyUpgrade('B', 13)
+                buyUpgrade('B', 14)
+                buyUpgrade('B', 15)
+                buyUpgrade('B', 16)
+                buyUpgrade('B', 17)
+	    },
+	},
     branches:["L", "H"],
 
     upgrades: {
@@ -1353,6 +1387,11 @@ addLayer("Gb", {
             title: "Buyable improving",
             description: "Improve Generator MJ Compounder effect.",
             cost: new Decimal(4),
+	},
+        13: {
+            title: "Automation Ultra Scalers",
+            description: "Autobuy Ultra Scaler Upgrade.",
+            cost: new Decimal(5),
 	},
     },
     effect(){
