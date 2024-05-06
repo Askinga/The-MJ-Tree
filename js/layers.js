@@ -1035,17 +1035,7 @@ addLayer("B", {
        return visible
      },
     branches:["L", "H"],
-    automate() {
-            if(hasUpgrade('Gb', 13) {
-                buyUpgrade('B', 11)
-                buyUpgrade('B', 12)
-                buyUpgrade('B', 13)
-                buyUpgrade('B', 14)
-                buyUpgrade('B', 15)
-                buyUpgrade('B', 16)
-                buyUpgrade('B', 17)
-	    },
-	},
+    
     upgrades: {
         11: {
             title: "INSANE HYPER BOOST!!",
@@ -1099,6 +1089,17 @@ addLayer("B", {
             cost: new Decimal(13),
 	},
     },
+    automate() {
+            if(hasUpgrade('Gb', 13) {
+                buyUpgrade('B', 11)
+                buyUpgrade('B', 12)
+                buyUpgrade('B', 13)
+                buyUpgrade('B', 14)
+                buyUpgrade('B', 15)
+                buyUpgrade('B', 16)
+                buyUpgrade('B', 17)
+	    },
+	},
 })
 
 addLayer("Ge", {
