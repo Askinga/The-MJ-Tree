@@ -97,18 +97,7 @@ addLayer("p", {
             description: "×1000 MJ gain and unlock a new layer.",
             cost: new Decimal(550000000),
 	},
-        automate() {
-            if(hasUpgrade('G', 11) {
-                buyUpgrade('p', 11)
-                buyUpgrade('p', 12)
-                buyUpgrade('p', 13)
-                buyUpgrade('p', 14)
-                buyUpgrade('p', 21)
-                buyUpgrade('p', 22)
-                buyUpgrade('p', 23)
-                buyUpgrade('p', 24)
-	    };
-    },
+    }, 
     milestones: {
         0: {
             requirementDescription: "40 MJ Points",
@@ -126,6 +115,18 @@ addLayer("p", {
             done() { return player.p.points >= (1000000) }
         },
     },
+    automate() {
+            if(hasUpgrade('G', 11) {
+                buyUpgrade('p', 11)
+                buyUpgrade('p', 12)
+                buyUpgrade('p', 13)
+                buyUpgrade('p', 14)
+                buyUpgrade('p', 21)
+                buyUpgrade('p', 22)
+                buyUpgrade('p', 23)
+                buyUpgrade('p', 24)
+	    };
+     },
 })
 
 addLayer("S", {
