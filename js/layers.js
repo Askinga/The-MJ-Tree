@@ -115,18 +115,6 @@ addLayer("p", {
             done() { return player.p.points >= (1000000) }
         },
     },
-    automate() {
-            if(hasUpgrade('G', 11) {
-                buyUpgrade('p', 11)
-                buyUpgrade('p', 12)
-                buyUpgrade('p', 13)
-                buyUpgrade('p', 14)
-                buyUpgrade('p', 21)
-                buyUpgrade('p', 22)
-                buyUpgrade('p', 23)
-                buyUpgrade('p', 24)
-	    };
-     },
 })
 
 addLayer("S", {
