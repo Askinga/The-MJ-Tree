@@ -97,6 +97,17 @@ addLayer("p", {
             description: "×1000 MJ gain and unlock a new layer.",
             cost: new Decimal(550000000),
 	},
+        automate() {
+            if(hasUpgrade('G', 11) {
+                buyUpgrade('p', 11)
+                buyUpgrade('p', 12)
+                buyUpgrade('p', 13)
+                buyUpgrade('p', 14)
+                buyUpgrade('p', 21)
+                buyUpgrade('p', 22)
+                buyUpgrade('p', 23)
+                buyUpgrade('p', 24)
+	    };
     },
     milestones: {
         0: {
@@ -303,7 +314,7 @@ addLayer("C", {
     upgrades: {
         11: {
             title: "Scaler Boost",
-            description: "Multiply Giga MJ Point gain based on Scaler MJs.",
+            description: "Multiply Giga MJ Point gain based on Scaler MJs and automate MJ upgrades.",
             cost: new Decimal(1),
 	    effect(){
                 return player.C.points.add(2).pow(1.3)
