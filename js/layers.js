@@ -1126,7 +1126,6 @@ addLayer("B", {
         }
     },
 })
-})
 
 addLayer("Ge", {
     name: "Generator MJs",
@@ -1393,7 +1392,7 @@ addLayer("Gb", {
 	},
         13: {
             title: "Automation Ultra Scaler",
-            description: "Autobuy Ultra Scaler upgrades!.",
+            description: "Autobuy Ultra Scaler upgrades!",
             cost: new Decimal(5),
 	},
     },
