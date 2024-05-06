@@ -1035,7 +1035,17 @@ addLayer("B", {
        return visible
      },
     branches:["L", "H"],
-
+    automate() {
+            if(hasUpgrade('Gb', 13) {
+                buyUpgrade('B', 11)
+                buyUpgrade('B', 12)
+                buyUpgrade('B', 13)
+                buyUpgrade('B', 14)
+                buyUpgrade('B', 15)
+                buyUpgrade('B', 16)
+                buyUpgrade('B', 17)
+	    },
+	},
     upgrades: {
         11: {
             title: "INSANE HYPER BOOST!!",
@@ -1353,6 +1363,11 @@ addLayer("Gb", {
             title: "Buyable improving",
             description: "Improve Generator MJ Compounder effect.",
             cost: new Decimal(4),
+	},
+        13: {
+            title: "Ultra Scaler Automation",
+            description: "Autobuy Ultra Scaler Upgrades.",
+            cost: new Decimal(5),
 	},
     },
     effect(){
