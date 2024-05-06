@@ -1114,17 +1114,6 @@ addLayer("B", {
             cost: new Decimal(13),
 	},
     },
-    automate() {
-            if(hasUpgrade('Gb', 13)) {
-                buyUpgrade('B', 11)
-                buyUpgrade('B', 12)
-                buyUpgrade('B', 13)
-                buyUpgrade('B', 14)
-                buyUpgrade('B', 15)
-                buyUpgrade('B', 16)
-                buyUpgrade('B', 17)
-        }
-    },
 })
 
 addLayer("Ge", {
@@ -1389,11 +1378,6 @@ addLayer("Gb", {
             title: "Buyable improving",
             description: "Improve Generator MJ Compounder effect.",
             cost: new Decimal(4),
-	},
-        13: {
-            title: "Automation Ultra Scaler",
-            description: "Autobuy Ultra Scaler upgrades!",
-            cost: new Decimal(5),
 	},
     },
     effect(){
