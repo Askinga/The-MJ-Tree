@@ -303,7 +303,7 @@ addLayer("C", {
     upgrades: {
         11: {
             title: "Scaler Boost",
-            description: "Multiply Giga MJ Point gain based on Scaler MJs and automate MJ upgrades.",
+            description: "Multiply Giga MJ Point gain based on Scaler MJs.",
             cost: new Decimal(1),
 	    effect(){
                 return player.C.points.add(2).pow(1.3)
