@@ -362,7 +362,7 @@ addLayer("G", {
 	if (hasChallenge('H', 11)) mult = mult.pow(1.1)
 	if (hasUpgrade('L', 44)) mult = mult.pow(1.013)
 	if (hasUpgrade('L', 32)) mult = mult.times(1e6)
-	if (hasUpgrade('B', 14)) mult = mult.times(upgradeEffect('B', 14))
+	if (hasUpgrade('B', 15)) mult = mult.times(upgradeEffect('B', 15))
 	if (hasAchievement('a', 35)) mult = mult.times(1.2)
 	return mult
     },
