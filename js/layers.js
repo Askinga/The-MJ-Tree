@@ -1048,8 +1048,7 @@ addLayer("B", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 3, // Row the layer is in on the tree (0 is the first row)
-    displayRow: 4,
+    row: 4, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "u", description: "U: Reset for Ultra Scalers", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -1166,7 +1165,7 @@ addLayer("Ge", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 1, // Row the layer is in on the tree (0 is the first row
+    row: 3, // Row the layer is in on the tree (0 is the first row
     hotkeys: [
         {key: "e", description: "E: Get Generator MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -1176,7 +1175,7 @@ addLayer("Ge", {
         if (hasUpgrade('B', 15) || player.Ge.unlocked) visible = true
        return visible
      },
-    branches:["p", "G"],
+    branches:["G"],
 
     upgrades: {
         11: {
@@ -1345,7 +1344,7 @@ automate() {
 addLayer("Gb", {
     name: "Generator Accelerators",
     symbol: "Ge⏩",
-    position: 1,
+    position: 0,
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
@@ -1367,7 +1366,8 @@ addLayer("Gb", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 2, // Row the layer is in on the tree (0 is the first row
+    row: 4, // Row the layer is in on the tree (0 is the first row
+    displayRow: 5,
     hotkeys: [
         {key: "o", description: "O: Get Generator Accelerators", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -1377,7 +1377,7 @@ addLayer("Gb", {
         if (hasUpgrade('Ge', 35) || player.Gb.unlocked) visible = true
        return visible
      },
-    branches:["Ge"],
+    branches:["B"],
     
     upgrades: {
         11: {
