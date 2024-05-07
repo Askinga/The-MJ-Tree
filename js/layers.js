@@ -1344,7 +1344,7 @@ automate() {
 
 addLayer("Gb", {
     name: "Generator Accelerators",
-    symbol: "Acc",
+    symbol: "Ge⏩",
     position: 1,
     startData() { return {
         unlocked: false,
