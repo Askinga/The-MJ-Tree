@@ -14,7 +14,8 @@ addLayer("p", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     passiveGeneration() {
-        if (hasMilestone('S', 0)) return 1
+        if (hasUpgrade('B', 11)) return 10
+	if (hasMilestone('S', 0)) return 1
 	return 0
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -145,7 +146,8 @@ addLayer("S", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.1425, // Prestige currency exponent
     passiveGeneration() {
-        if (hasUpgrade('L', 15)) return 1
+        if (hasUpgrade('B', 11)) return 2
+	if (hasUpgrade('L', 15)) return 1
 	if (hasUpgrade('S', 15)) return 0.075
 	return 0
     },
@@ -375,7 +377,8 @@ addLayer("G", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.115, // Prestige currency exponent
     passiveGeneration() {
-        if (hasUpgrade('L', 15)) return 0.25
+        if (hasUpgrade('B', 11)) return 1
+	if (hasUpgrade('L', 15)) return 0.25
         return 0
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -444,6 +447,14 @@ addLayer("G", {
             rewardDescription: "^1.05 Super MJ Points"
 	},
     },
+    automate() {
+            if(hasUpgrade('B', 11)) {
+                buyUpgrade('G', 11)
+                buyUpgrade('G', 12)
+                buyUpgrade('G', 13)
+                buyUpgrade('G', 14)
+	}
+    },
 })
 
 addLayer("H", {
@@ -462,7 +473,8 @@ addLayer("H", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.045, // Prestige currency exponent
     passiveGeneration() {
-        if (hasUpgrade('L', 15)) return 0.1
+        if (hasUpgrade('B', 11)) return 0.5
+	if (hasUpgrade('L', 15)) return 0.1
         return 0
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -527,6 +539,13 @@ addLayer("H", {
             rewardDescription: "^1.1 Giga MJ Points and unlock MJ Clicks"
 	},
     },
+    automate() {
+            if(hasUpgrade('B', 11)) {
+                buyUpgrade('H', 11)
+                buyUpgrade('H', 12)
+                buyUpgrade('H', 13)
+	}
+    },
 })
 
 addLayer("L", {
@@ -545,7 +564,8 @@ addLayer("L", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.08, // Prestige currency exponent
     passiveGeneration() {
-        if (hasUpgrade('L', 54)) return 100
+        if (hasUpgrade('B', 11)) return 200
+	if (hasUpgrade('L', 54)) return 100
 	if (hasUpgrade('L', 23)) return 3
 	return 0
     },
@@ -1062,8 +1082,8 @@ addLayer("B", {
     
     upgrades: {
         11: {
-            title: "INSANE HYPER BOOST!!",
-            description: "Multiply Hyper MJ Point gain based on Ultra Scalers.",
+            title: "SUPER OP GENERATION AND INSANE HYPER BOOST!!",
+            description: "Multiply Hyper MJ Point gain based on Ultra Scalers and get 1000% of MJ Point gain per second, 200% of Super MJ Points per second, 100% of Giga MJ Points per second, 50% of Hyper MJ Points per second and 20000% of MJ Click gain per second and also automate Hyper and Giga MJ upgrades!.",
             cost: new Decimal(1),
 	    effect(){
                 return player.B.points.add(1).pow(4)
