@@ -1329,6 +1329,17 @@ addLayer("Ge", {
         },
     },
 },
+automate() {
+            if(hasUpgrade('Gb', 13)) {
+                buyUpgrade('Ge', 11)
+                buyUpgrade('Ge', 12)
+                buyUpgrade('Ge', 13)
+                buyUpgrade('Ge', 14)
+                buyUpgrade('Ge', 15)
+                buyUpgrade('Ge', 16)
+                buyUpgrade('Ge', 17)
+	}
+    },
 })
 
 addLayer("Gb", {
@@ -1378,6 +1389,11 @@ addLayer("Gb", {
             title: "Buyable improving",
             description: "Improve Generator MJ Compounder effect.",
             cost: new Decimal(4),
+	},
+        13: {
+            title: "Generator Automation 1",
+            description: "Autobuy the first row of Generator MJs.",
+            cost: new Decimal(5),
 	},
     },
     effect(){
