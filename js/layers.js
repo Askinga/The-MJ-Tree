@@ -6,6 +6,11 @@ addLayer("p", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+    nodeStyle: {
+	"border-radius": "10% / 10%",
+	"width": "125px",
+	"height": "125px"
+    },
     color: "#05199c",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "MJ points", // Name of prestige currency
@@ -138,6 +143,11 @@ addLayer("S", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+    nodeStyle: {
+	"border-radius": "100% / 10%",
+	"width": "69px",
+	"height": "50px"
+    },
     color: "#0ec466",
     requires: new Decimal(1e11), // Can be a function that takes requirement increases into account
     resource: "Super MJ Points", // Name of prestige currency
@@ -297,6 +307,11 @@ addLayer("C", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+    nodeStyle: {
+	"border-radius": "10% / 10%",
+	"width": "125px",
+	"height": "125px"
+    },
     color: "#9c5005",
     requires: new Decimal(1e130), // Can be a function that takes requirement increases into account
     resource: "Scaler MJs", // Name of prestige currency
@@ -369,6 +384,11 @@ addLayer("G", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+    nodeStyle: {
+	"border-radius": "25% / 10%",
+	"width": "100px",
+	"height": "125px"
+    },
     color: "#fcd303",
     requires: new Decimal(1e25), // Can be a function that takes requirement increases into account
     resource: "Giga MJ Points", // Name of prestige currency
@@ -556,6 +576,11 @@ addLayer("L", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+    nodeStyle: {
+	"border-radius": "50% / 10%",
+	"width": "60px",
+	"height": "100px"
+    },
     color: "#911f82",
     requires: new Decimal(10000), // Can be a function that takes requirement increases into account
     resource: "MJ Clicks", // Name of prestige currency
