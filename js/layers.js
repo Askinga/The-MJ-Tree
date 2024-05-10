@@ -11,6 +11,7 @@ addLayer("p", {
 	"width": "125px",
 	"height": "125px"
     },
+    image: "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWNhd3I4cGF1eWR3dHU5YnkxYTNkMjliOW5nMnBwMDF3NWJ3eGc2eiZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/aDMqVYIgfWRer9bwkE/giphy.webp",
     color: "#05199c",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "MJ points", // Name of prestige currency
