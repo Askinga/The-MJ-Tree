@@ -313,6 +313,7 @@ addLayer("C", {
 	"width": "125px",
 	"height": "125px"
     },
+    image: "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWNhd3I4cGF1eWR3dHU5YnkxYTNkMjliOW5nMnBwMDF3NWJ3eGc2eiZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/xTiTntKyFNFbCNuqkw/200.webp",
     color: "#9c5005",
     requires: new Decimal(1e130), // Can be a function that takes requirement increases into account
     resource: "Scaler MJs", // Name of prestige currency
