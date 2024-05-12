@@ -323,7 +323,7 @@ addLayer("C", {
 		points: new Decimal(0),
     }},
     nodeStyle: {
-	"border-radius": "10% / 10%",
+	"border-radius": "20% / 10%",
 	"width": "125px",
 	"height": "125px"
     },
@@ -463,16 +463,19 @@ addLayer("G", {
                 return player.points.add(1).pow(0.08)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('G', 11)) },
 	},
         13: {
-	title: "Double Layer Boost",
+	    title: "Double Layer Boost",
             description: "×5 Giga MJ Points and ×25 Super MJ Points.",
             cost: new Decimal(350),
+	    unlocked() { return (hasUpgrade('G', 12)) },
 	},
         14: {
             title: "×100 Boost to Super MJ Points and unlock Hyper MJs",
             description: "Exactly what the title says.",
             cost: new Decimal(2e16),
+	    unlocked() { return (hasChallenge('G', 11)) },
 	},
         15: {
             title: "Giga MJ Power",
@@ -482,6 +485,7 @@ addLayer("G", {
                 return player.points.add(1).pow(0.000004)
             },
             effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id))}, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('G', 14)) },
 	},
     },
     challenges: {
@@ -490,7 +494,7 @@ addLayer("G", {
             challengeDescription: "^0.8 all layers except Scaler MJs and this layer.",
             canComplete: function() {return player.points.gte("1e175")},
             goalDescription: "Get e175 MJs.",
-            rewardDescription: "^1.05 Super MJ Points"
+            rewardDescription: "^1.05 Super MJ Points and unlocka upgrade"
 	},
     },
     automate() {
@@ -570,12 +574,14 @@ addLayer("H", {
             title: "Important for the challenge",
             description: "×1e10 MJs.",
             cost: new Decimal(1000),
+	    unlocked() { return (hasUpgrade('H', 11)) },
 	},
         13: {
             title: "GET THAT 13th ULTRA SCALER!",
             description: "×100 Hyper MJ Points.",
             cost: new Decimal(3e80),
-        },
+            unlocked() { return (hasUpgrade('H', 12)) },
+	},
     },
     challenges: {
         11: {
@@ -585,13 +591,6 @@ addLayer("H", {
             goalDescription: "Get e550 MJs.",
             rewardDescription: "^1.1 Giga MJ Points and unlock MJ Clicks"
 	},
-    },
-    automate() {
-            if(hasUpgrade('B', 11)) {
-                buyUpgrade('H', 11)
-                buyUpgrade('H', 12)
-                buyUpgrade('H', 13)
-	}
     },
 })
 
