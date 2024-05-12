@@ -1491,7 +1491,7 @@ addLayer("Gc", {
 		points: new Decimal(0),
     }},
     color: "#0f6a94",
-    requires: new Decimal(7e20), // Can be a function that takes requirement increases into account
+    requires: new Decimal(7e22), // Can be a function that takes requirement increases into account
     resource: "Generator Raisers", // Name of prestige currency
     baseResource: "Generator MJs", // Name of resource prestige is based on
     baseAmount() {return player.Ge.points}, // Get the current amount of baseResource
@@ -1523,7 +1523,7 @@ addLayer("Gc", {
     upgrades: {
         11: {
             title: "Stronger raising",
-            description: "Improve the Generator Raiser effect to ^0.012",
+            description: "Improve the Generator Raiser effect to ^0.029",
             cost: new Decimal(2),
 	},
         12: {
@@ -1533,9 +1533,9 @@ addLayer("Gc", {
 	},
     },
     effect(){
-    let rapow = 0.01
-    if (hasUpgrade('Gc', 11)) rapow = 0.012
-	let eff = player.Gb.points.add(1).pow(rapow)
+    let rapow = 0.025
+    if (hasUpgrade('Gc', 11)) rapow = 0.029
+	let eff = player.Gc.points.add(1).pow(rapow)
        return eff
        },
         effectDescription() {
