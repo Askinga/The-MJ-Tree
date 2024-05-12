@@ -30,7 +30,7 @@ addLayer("p", {
         if (hasUpgrade('S', 13)) mult = mult.times(upgradeEffect('S', 13))
 	if (hasUpgrade('S', 23)) mult = mult.pow(1.08)
         if (hasUpgrade('L', 13)) mult = mult.times(1000)
-	if (hasUpgrade('p', 23)) mult = mult.times(6)
+	if (hasUpgrade('p', 23)) mult = mult.times(1.4)
 	if (inChallenge('S', 11)) mult = mult.pow(0.3)
 	if (hasChallenge('S', 11)) mult = mult.pow(1.1)
 	if (inChallenge('G', 11)) mult = mult.pow(0.8)
@@ -100,7 +100,7 @@ addLayer("p", {
 	},
         23: {
             title: "MJ Point Boost to speed up this layer",
-            description: "×6 MJ Point gain.",
+            description: "×1.4 MJ Point gain.",
             cost: new Decimal(100000),
 	    unlocked() { return (hasUpgrade('p', 22)) },
 	},
@@ -108,6 +108,7 @@ addLayer("p", {
             title: "Last upgrade until the next layer!",
             description: "×1000 MJ gain and unlock a new layer.",
             cost: new Decimal(550000000),
+	    unlocked() { return (hasUpgrade('p', 23)) },
 	},
     }, 
     milestones: {
