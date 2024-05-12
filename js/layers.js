@@ -11,7 +11,6 @@ addLayer("p", {
 	"width": "125px",
 	"height": "125px"
     },
-    image: "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWNhd3I4cGF1eWR3dHU5YnkxYTNkMjliOW5nMnBwMDF3NWJ3eGc2eiZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/xTiTntKyFNFbCNuqkw/200.webp",
     color: "#05199c",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "MJ points", // Name of prestige currency
@@ -65,6 +64,7 @@ addLayer("p", {
                 return player[this.layer].points.add(1).pow(0.5)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            unlocked() { return (hasUpgrade('p', 11)) },
         },
         13: {
             title: "MJs boost MJs",
@@ -74,16 +74,19 @@ addLayer("p", {
                 return player.points.add(1).pow(0.15)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('p', 12)) },
 	},
 	14: {
             title: "speeding through this layer",
             description: "Unlock Layer 1 Speeders.",
             cost: new Decimal(20),
+	    unlocked() { return (hasUpgrade('p', 13)) },
 	},
 	21: {
             title: "MJ Swarm",
             description: "×10 MJ gain.",
             cost: new Decimal(150),
+	    unlocked() { return (hasUpgrade('p', 14)) },
 	},
 	22: {
             title: "MJ Boost but nerfed",
@@ -93,11 +96,13 @@ addLayer("p", {
                 return player[this.layer].points.add(1).pow(0.33)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-        },
+            unlocked() { return (hasUpgrade('p', 21)) },
+	},
         23: {
             title: "MJ Point Boost to speed up this layer",
             description: "×6 MJ Point gain.",
             cost: new Decimal(100000),
+	    unlocked() { return (hasUpgrade('p', 22)) },
 	},
 	24: {
             title: "Last upgrade until the next layer!",
@@ -145,9 +150,9 @@ addLayer("S", {
 		points: new Decimal(0),
     }},
     nodeStyle: {
-	"border-radius": "100% / 10%",
-	"width": "69px",
-	"height": "50px"
+	"border-radius": "100%",
+	"width": "120px",
+	"height": "100px"
     },
     color: "#0ec466",
     requires: new Decimal(1e11), // Can be a function that takes requirement increases into account
@@ -214,6 +219,7 @@ addLayer("S", {
                 return player.points.add(1).pow(0.08)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('S', 11)) },
 	},
         13: { 
 	    title: "Super MJ Boost",
@@ -223,21 +229,25 @@ addLayer("S", {
                 return player[this.layer].points.add(2).pow(1.33)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-        },
+            unlocked() { return (hasUpgrade('S', 12)) },
+	},
         14: { 
 	    title: "YEEEEEES!!!",
             description: "^1.05 MJ Gain.",
             cost: new Decimal(250),
+	    unlocked() { return (hasChallenge('S', 11)) },
 	},
         15: { 
 	    title: "Passive Generation",
             description: "Gain 7.5% of Super MJ Points per second.",
             cost: new Decimal(2000),
+	    unlocked() { return (hasUpgrade('S', 14)) },
 	},
         21: { 
 	    title: "BIG BOOST",
             description: "×10 Super MJ Point Gain.",
             cost: new Decimal(250000),
+	    unlocked() { return (hasUpgrade('S', 15)) },
 	},
         22: {
             title: "BIG LAYER 2 BOOST!",
@@ -247,16 +257,19 @@ addLayer("S", {
                 return player.points.add(1).pow(0.035)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('S', 21)) },
 	},
         23: {
             title: "Almost as strong as the challenge",
             description: "^1.08 MJ Point gain.",
             cost: new Decimal(1e12),
+	    unlocked() { return (hasUpgrade('S', 22)) },
 	},
         24: {
             title: "A scaling layer",
             description: "Unlock Scaler MJs.",
             cost: new Decimal(1e100),
+	    unlocked() { return (hasUpgrade('S', 23)) },
 	},
     },
     milestones: {
@@ -280,9 +293,9 @@ addLayer("S", {
         11: {
             name: "Super MJ Challenge",
             challengeDescription: "^0.3 MJ Points",
-            canComplete: function() {return player.points.gte("1e32")},
-            goalDescription: "Get e32 MJs.",
-            rewardDescription: "^1.1 MJ Points"
+            canComplete: function() {return player.points.gte("1e34")},
+            goalDescription: "Get e34 MJs.",
+            rewardDescription: "^1.1 MJ Points and unlock a new upgrade"
         },
     },
     automate() {
