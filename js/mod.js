@@ -18,7 +18,7 @@ let VERSION = {
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v1.3.0 Raising update ^</h3><br>
+	<h3>v1.4.0 Raising update ^</h3><br>
 		- More updates soon! Endgame 5 Generator Raisers.<br>
 		- Added more upgrades, more achievements and new layer! Generator Accelerators and Raisers.<br>
                 - Check back here for more updates!.`
