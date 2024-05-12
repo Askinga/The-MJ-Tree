@@ -20,7 +20,7 @@ let VERSION = {
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v1.4.0 Raising update ^</h3><br>
 		- More updates soon! Endgame 5 Generator Raisers.<br>
-		- Added more upgrades, more achievements and new layer! Generator Accelerators and Raisers.<br>
+		- Added more upgrades, more achievements and new layers! Generator Accelerators and Raisers.<br>
                 - Check back here for more updates!.`
   
 let winText = `Congratulations! You have reached the end and beaten The MJ Tree, but for now...`
