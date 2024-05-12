@@ -428,6 +428,7 @@ addLayer("G", {
 	if (hasUpgrade('L', 32)) mult = mult.times(1e6)
 	if (hasUpgrade('B', 15)) mult = mult.times(upgradeEffect('B', 15))
 	if (hasAchievement('a', 35)) mult = mult.times(1.2)
+	if (hasUpgrade('G', 15)) mult = mult.pow(upgradeEffect('G', 15))
 	return mult
     },
 
@@ -472,6 +473,15 @@ addLayer("G", {
             title: "×100 Boost to Super MJ Points and unlock Hyper MJs",
             description: "Exactly what the title says.",
             cost: new Decimal(2e16),
+	},
+        15: {
+            title: "Giga MJ Power",
+            description: "Raise Giga MJ point gain based on MJs.",
+            cost: new Decimal(1e400),
+            effect(){
+                return player.points.add(1).pow(0.000004)
+            },
+            effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id))}, // Add formatting to the effect
 	},
     },
     challenges: {
@@ -1109,7 +1119,7 @@ addLayer("B", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 4, // Row the layer is in on the tree (0 is the first row)
+    row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "u", description: "U: Reset for Ultra Scalers", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -1226,7 +1236,7 @@ addLayer("Ge", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 4, // Row the layer is in on the tree (0 is the first row
+    row: 3, // Row the layer is in on the tree (0 is the first row
     hotkeys: [
         {key: "e", description: "E: Get Generator MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -1427,7 +1437,7 @@ addLayer("Gb", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 4, // Row the layer is in on the tree (0 is the first row
+    row: 3, // Row the layer is in on the tree (0 is the first row
     displayRow: 5,
     hotkeys: [
         {key: "o", description: "O: Get Generator Accelerators", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
