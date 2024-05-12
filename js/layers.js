@@ -1217,6 +1217,7 @@ addLayer("Ge", {
         mult = new Decimal(1)
 	mult = mult.times(buyableEffect('Ge', 11))
 	if (layers.Gb.effect().gte(1)) mult = mult.times(layers.Gb.effect())
+	if (layers.Gc.effect().gte(1)) mult = mult.pow(layers.Gc.effect())
 	if (hasMilestone('Ge', 0)) mult = mult.times(4)
         if (hasUpgrade('Ge', 15)) mult = mult.times(1.5)
 	if (hasUpgrade('Ge', 16)) mult = mult.times(2)
@@ -1394,6 +1395,7 @@ addLayer("Ge", {
             let base1 = new Decimal(1.5)
             let base2 = x
             if (hasUpgrade('Gb', 12)) base2 = x.mul(new Decimal(1.33))
+	    if (hasUpgrade('Gc', 12)) base2 = x.mul(new Decimal(1.2))
 	    let expo = new Decimal(1.001)
             let eff = base1.pow(Decimal.pow(base2, expo))
             return eff
@@ -1463,8 +1465,8 @@ addLayer("Gb", {
             cost: new Decimal(4),
 	},
         13: {
-            title: "Generator Automation 1",
-            description: "Autobuy the first row of Generator MJs.",
+            title: "It's time to raise generator MJ MORE!",
+            description: "Unlock a new layer.",
             cost: new Decimal(5),
 	},
     },
@@ -1476,6 +1478,68 @@ addLayer("Gb", {
        },
         effectDescription() {
             let desc = "which is boosting Generator MJs by x" + format(tmp[this.layer].effect);
+            return desc;
+        },
+})
+
+addLayer("Gc", {
+    name: "Generator Raisers",
+    symbol: "Ge^",
+    position: 1,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#0f6a94",
+    requires: new Decimal(7e20), // Can be a function that takes requirement increases into account
+    resource: "Generator Raisers", // Name of prestige currency
+    baseResource: "Generator MJs", // Name of resource prestige is based on
+    baseAmount() {return player.Ge.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1.46, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 3, // Row the layer is in on the tree (0 is the first row
+    displayRow: 5,
+    hotkeys: [
+        {key: "r", description: "R: Get Generator Raisers", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('Gb', 13) || player.Gc.unlocked) visible = true
+       return visible
+     },
+    branches:["Ge"],
+    
+    upgrades: {
+        11: {
+            title: "Stronger raising",
+            description: "Improve the Generator Raiser effect to ^0.012",
+            cost: new Decimal(2),
+	},
+        12: {
+            title: "Buyable improving 2",
+            description: "Improve Generator MJ Compounder effect again.",
+            cost: new Decimal(3),
+	},
+    },
+    effect(){
+    let rapow = 0.01
+    if (hasUpgrade('Gc', 11)) rapow = 0.012
+	let eff = player.Gb.points.add(1).pow(rapow)
+       return eff
+       },
+        effectDescription() {
+            let desc = "which is raising Generator MJs by ^" + format(tmp[this.layer].effect);
             return desc;
         },
 })
