@@ -13,14 +13,14 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.3.0 ⚙️Automation⚙️",
-	name: "The Automation Update",
+	num: "1.4.0 Raising update ^",
+	name: "The Raising Update",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v1.3.0 ⚙️Automation⚙️</h3><br>
-		- More updates soon! Endgame e18300 MJs.<br>
-		- Added automation to speed up progression and less clicks, yay! And some other things<br>
+	<h3>v1.3.0 Raising update ^</h3><br>
+		- More updates soon! Endgame 5 Generator Raisers.<br>
+		- Added more upgrades, more achievements and new layer! Generator Accelerators and Raisers.<br>
                 - Check back here for more updates!.`
   
 let winText = `Congratulations! You have reached the end and beaten The MJ Tree, but for now...`
@@ -75,7 +75,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e18300"))
+	return player.Gc.points.gte(new Decimal("5"))
 }
 
 
