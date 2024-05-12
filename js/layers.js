@@ -1395,7 +1395,7 @@ addLayer("Ge", {
             let base1 = new Decimal(1.5)
             let base2 = x
             if (hasUpgrade('Gb', 12)) base2 = x.mul(new Decimal(1.33))
-	    if (hasUpgrade('Gc', 12)) base2 = x.mul(new Decimal(1.2))
+	    if (hasUpgrade('Gc', 12)) base2 = x.mul(new Decimal(1.42))
 	    let expo = new Decimal(1.001)
             let eff = base1.pow(Decimal.pow(base2, expo))
             return eff
