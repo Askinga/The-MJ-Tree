@@ -1134,7 +1134,7 @@ addLayer("B", {
     upgrades: {
         11: {
             title: "SUPER OP GENERATION AND INSANE HYPER BOOST!!",
-            description: "Multiply Hyper MJ Point gain based on Ultra Scalers and get 1000% of MJ Point gain per second, 200% of Super MJ Points per second, 100% of Giga MJ Points per second, 50% of Hyper MJ Points per second and 20000% of MJ Click gain per second and also automate Hyper and Giga MJ upgrades!.",
+            description: "Multiply Hyper MJ Point gain based on Ultra Scalers and get 1000% of MJ Point gain per second, 200% of Super MJ Points per second, 100% of Giga MJ Points per second, 50% of Hyper MJ Points per second and 20000% of MJ Click gain per second and also automate Giga MJ upgrades!.",
             cost: new Decimal(1),
 	    effect(){
                 return player.B.points.add(1).pow(4)
@@ -1254,46 +1254,55 @@ addLayer("Ge", {
             title: "Start generating generator MJs",
             description: "Get 1 base Generator MJ per second if you have 9 Ultra Scalers",
             cost: new Decimal(1),
+	    unlocked() { return (hasUpgrade('Ge', 11)) },
 	},
         12: {
             title: "More generating MJs",
             description: "Now get 2 base Generator MJs per second",
             cost: new Decimal(10),
+	    unlocked() { return (hasUpgrade('Ge', 12)) },
 	},
         13: {
             title: "Even more generating MJs",
             description: "Now get 5 base Generator MJs per second!",
             cost: new Decimal(25),
+	    unlocked() { return (hasUpgrade('Ge', 12)) },
 	},
         14: {
             title: "10 per second?",
             description: "Get 10 base Generator MJs per second!",
             cost: new Decimal(100),
+	    unlocked() { return (hasUpgrade('Ge', 13)) },
 	},
         15: {
             title: "Generator Boost",
             description: "×1.5 Gernerator MJs",
             cost: new Decimal(1000),
+	    unlocked() { return (hasUpgrade('Ge', 14)) },
 	},
         16: {
             title: "More boosts",
             description: "×2 Generator MJs",
             cost: new Decimal(1750),
+	    unlocked() { return (hasUpgrade('Ge', 15)) },
 	},
         17: {
             title: "Increasing the base to 20",
             description: "Base gain is 20 per second",
             cost: new Decimal(4000),
+	    unlocked() { return (hasUpgrade('Ge', 16)) },
 	},
         21: {
             title: "Now 30 per second",
             description: "Get 30 base Generator MJ per second",
             cost: new Decimal(6000),
+	    unlocked() { return (hasUpgrade('Ge', 17)) },
 	},
         22: {
             title: "×2 Boost",
             description: "What the title says",
             cost: new Decimal(10000),
+	    unlocked() { return (hasUpgrade('Ge', 21)) },
 	},
         23: {
             title: "More Hyper",
@@ -1303,6 +1312,7 @@ addLayer("Ge", {
                 return player.Ge.points.add(1).pow(0.80)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('Ge', 22)) },
 	},
         24: {
             title: "Generation Speed Up",
@@ -1312,11 +1322,13 @@ addLayer("Ge", {
                 return player.Ge.points.add(1).pow(0.1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('Ge', 23)) },
 	},
         25: {
             title: "😱😱😱",
             description: "×10 Generator MJs",
             cost: new Decimal(1e6),
+	    unlocked() { return (hasUpgrade('Ge', 24)) },
 	},
         26: {
             title: "😊😊😊",
@@ -1326,31 +1338,37 @@ addLayer("Ge", {
                 return player.Ge.points.add(1).pow(0.0750)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            unlocked() { return (hasUpgrade('Ge', 25)) },
 	},
         27: {
             title: "A boost but a nerf",
             description: "×7.5 Generator MJs but /10 Hyper MJ Points.",
             cost: new Decimal(3e8),
+	    unlocked() { return (hasUpgrade('Ge', 26)) },
 	},
         31: {
             title: "Speed up Generator MJs",
             description: "Base gain 500 per second.",
             cost: new Decimal(1e9),
+	    unlocked() { return (hasUpgrade('Ge', 27)) },
 	},
 	32: {
             title: "Generator Power!",
             description: "^1.02 Generator MJs.",
             cost: new Decimal(4e9),
+	    unlocked() { return (hasUpgrade('Ge', 31)) },
 	},
         33: {
             title: "Revival",
             description: "×1000 Hyper MJ Points.",
             cost: new Decimal(6e9),
+	    unlocked() { return (hasUpgrade('Ge', 32)) },
 	},
         34: {
             title: "A BUYABLE!!!",
             description: "Unlock a buyable",
             cost: new Decimal(2e11),
+	    unlocked() { return (hasUpgrade('Ge', 33)) },
 	},
         35: {
             title: "The OP Upgrade",
