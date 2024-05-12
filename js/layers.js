@@ -477,7 +477,7 @@ addLayer("G", {
         15: {
             title: "Giga MJ Power",
             description: "Raise Giga MJ point gain based on MJs.",
-            cost: new Decimal(1e400),
+            cost: new Decimal(1e308),
             effect(){
                 return player.points.add(1).pow(0.000004)
             },
@@ -499,6 +499,7 @@ addLayer("G", {
                 buyUpgrade('G', 12)
                 buyUpgrade('G', 13)
                 buyUpgrade('G', 14)
+	        buyUpgrade('G', 15)
 	}
     },
 })
