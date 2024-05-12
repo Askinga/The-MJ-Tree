@@ -1041,6 +1041,46 @@ addLayer("a", {
             done() { return player.Ge.points.gte(1e9) },
             tooltip: "Get 1e9 Generator MJs",	   
         }, 
+        81: {
+            name: "BUYABLE!",
+            done() { return (hasUpgrade('Ge', 34)) },
+            tooltip: "Get Generator MJ Upgrade 34",	   
+        }, 
+        82: {
+            name: "Accelerators!",
+            done() { return player.Gb.points.gte(1) },
+            tooltip: "Get a Generator Accelerator",	   
+        }, 
+        83: {
+            name: "More Generator MJs",
+            done() { return (hasUpgrade('Gb', 11)) },
+            tooltip: "Get Generator Accelerator Upgrade 11",	   
+        }, 
+        84: {
+            name: "Stronger buyable",
+            done() { return (hasUpgrade('Gb', 12)) },
+            tooltip: "Get Generator Accelerator Upgrade 12",	   
+        }, 
+	85: {
+            name: "New layer",
+            done() { return (hasUpgrade('Gb', 13)) },
+            tooltip: "Get Generator Accelerator Upgrade 13",	   
+        }, 
+        86: {
+            name: "Raising Generator MJs more",
+            done() { return player.Ge.points.gte(1) },
+            tooltip: "Get a Generator Raiser",	   
+        }, 
+        91: {
+            name: "Stronger raising boost",
+            done() { return (hasUpgrade('Gc', 11)) },
+            tooltip: "Get Generator Raiser Upgrade 11",	   
+        }, 
+        92: {
+            name: "Stronger buyable 2",
+            done() { return (hasUpgrade('Gc', 12)) },
+            tooltip: "Get Generator Raiser Upgrade 12",	   
+        }, 
 },
 })
 
@@ -1419,17 +1459,6 @@ addLayer("Ge", {
         },
     },
 },
-automate() {
-            if(hasUpgrade('Gb', 13)) {
-                buyUpgrade('Ge', 11)
-                buyUpgrade('Ge', 12)
-                buyUpgrade('Ge', 13)
-                buyUpgrade('Ge', 14)
-                buyUpgrade('Ge', 15)
-                buyUpgrade('Ge', 16)
-                buyUpgrade('Ge', 17)
-	}
-    },
 })
 
 addLayer("Gb", {
@@ -1482,7 +1511,7 @@ addLayer("Gb", {
             cost: new Decimal(4),
 	},
         13: {
-            title: "It's time to raise generator MJ MORE!",
+            title: "It's time to raise generator MJs MORE!",
             description: "Unlock a new layer.",
             cost: new Decimal(5),
 	},
