@@ -1294,13 +1294,12 @@ addLayer("Ge", {
             title: "Start generating generator MJs",
             description: "Get 1 base Generator MJ per second if you have 9 Ultra Scalers",
             cost: new Decimal(1),
-	    unlocked() { return (hasUpgrade('Ge', 11)) },
 	},
         12: {
             title: "More generating MJs",
             description: "Now get 2 base Generator MJs per second",
             cost: new Decimal(10),
-	    unlocked() { return (hasUpgrade('Ge', 12)) },
+	    unlocked() { return (hasUpgrade('Ge', 11)) },
 	},
         13: {
             title: "Even more generating MJs",
