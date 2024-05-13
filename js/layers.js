@@ -516,7 +516,7 @@ addLayer("H", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#151b24",
+    color: "rainbow",
     requires: new Decimal(4e17), // Can be a function that takes requirement increases into account
     resource: "Hyper MJ Points", // Name of prestige currency
     baseResource: "Giga MJ Points", // Name of resource prestige is based on
