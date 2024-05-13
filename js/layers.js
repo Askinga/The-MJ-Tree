@@ -1068,7 +1068,7 @@ addLayer("a", {
         }, 
         86: {
             name: "Raising Generator MJs more",
-            done() { return player.Ge.points.gte(1) },
+            done() { return player.Gc.points.gte(1) },
             tooltip: "Get a Generator Raiser",	   
         }, 
         91: {
