@@ -49,7 +49,31 @@ addLayer("p", {
         {key: "m", description: "M: Reset for MJ points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
-    
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "blank",
+                "prestige-button",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "upgrades"
+            ],
+        },
+        "Milestones": {
+            content: [
+                ["infobox", "buyable"],
+                "main-display",
+                "blank",
+                "blank",
+                "milestones"
+            ],
+        },
+    },
     upgrades: {
         11: {
             title: "MJ Doubler",
