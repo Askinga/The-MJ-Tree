@@ -229,7 +229,40 @@ addLayer("S", {
        return visible
     },
     branches:["p"],
-    
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "blank",
+                "prestige-button",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "upgrades"
+            ],
+        },
+        "Milestones": {
+            content: [
+                ["infobox", "buyable"],
+                "main-display",
+                "blank",
+                "blank",
+                "milestones"
+            ],
+        },
+        "Challenges": {
+            content: [
+                ["infobox", "buyable"],
+                "main-display",
+                "blank",
+                "blank",
+                "challenges"
+            ],
+        },
+    },
     upgrades: {
         11: {
             title: "SUPER MJ?",
@@ -381,7 +414,31 @@ addLayer("C", {
        return visible
      },
     branches:["S"],
-
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "blank",
+                "prestige-button",
+                "blank",
+                "blank",
+                "milestones",
+                "blank",
+                "blank",
+                "blank",
+                "upgrades"
+            ],
+        },
+        "Milestones": {
+            content: [
+                ["infobox", "buyable"],
+                "main-display",
+                "blank",
+                "blank",
+                "milestones"
+            ],
+        },
+    },
     upgrades: {
         11: {
             title: "Scaler Boost",
@@ -472,7 +529,31 @@ addLayer("G", {
        return visible
      },
     branches: ["S", "C"],
-
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "blank",
+                "prestige-button",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "upgrades"
+            ],
+        },
+        "Challenges": {
+            content: [
+                ["infobox", "buyable"],
+                "main-display",
+                "blank",
+                "blank",
+                "challenges"
+            ],
+        },
+    },
     upgrades: {
         11: {
             title: "This is OP!?",
@@ -587,7 +668,31 @@ addLayer("H", {
        return visible
      },
     branches: ["G", "C"],
- 
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "blank",
+                "prestige-button",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "upgrades"
+            ],
+        },
+        "Challenges": {
+            content: [
+                ["infobox", "buyable"],
+                "main-display",
+                "blank",
+                "blank",
+                "challenges"
+            ],
+        },
+    },
     upgrades: {
         11: {
             title: "Hyper MJs are SUPER OP!!!!!!!!",
@@ -682,7 +787,31 @@ addLayer("L", {
        return visible
      },
     branches: ["H", "G"],
-
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "blank",
+                "prestige-button",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "upgrades"
+            ],
+        },
+        "Milestones": {
+            content: [
+                ["infobox", "buyable"],
+                "main-display",
+                "blank",
+                "blank",
+                "milestones"
+            ],
+        },
+    },
     upgrades: {
         11: {
             title: "Clicker in The Modding Tree?",
@@ -1312,7 +1441,40 @@ addLayer("Ge", {
        return visible
      },
     branches:["G"],
-
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "blank",
+                "prestige-button",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "upgrades"
+            ],
+        },
+        "Milestones": {
+            content: [
+                ["infobox", "buyable"],
+                "main-display",
+                "blank",
+                "blank",
+                "milestones"
+            ],
+        },
+	"Buyables": {
+            content: [
+                ["infobox", "buyable"],
+                "main-display",
+                "blank",
+                "blank",
+                "buyables"
+            ],
+        },
+    },
     upgrades: {
         11: {
             title: "Start generating generator MJs",
@@ -1482,6 +1644,12 @@ addLayer("Ge", {
         },
     },
 },
+infoboxes: {
+        buyable: {
+            title: "Generator MJ buyable",
+            body() { return "This buyable can give BIG boosts to generator MJ gain and is important for the game!" },
+        },
+    }, 
 })
 
 addLayer("Gb", {
