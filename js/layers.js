@@ -1458,7 +1458,7 @@ addLayer("Ge", {
         },
         "Milestones": {
             content: [
-                ["infobox", "buyable"],
+                ["infobox", "blank"],
                 "main-display",
                 "blank",
                 "blank",
