@@ -85,10 +85,20 @@ addLayer("p", {
             description: "Multiply MJ gain based on MJ points.",
             cost: new Decimal(4),
             effect(){
-                return player[this.layer].points.add(1).pow(0.5)
+                let expu3 = 0.5
+                let eff = player.p.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e5000"), 0.5)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("e5000")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts MJs by " + format(upgEffect)+"x" + softcapDescription
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-            unlocked() { return (hasUpgrade('p', 11)) },
+	    unlocked() { return (hasUpgrade('p', 11)) },
         },
         13: {
             title: "MJs boost MJs",
