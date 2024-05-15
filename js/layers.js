@@ -1886,13 +1886,13 @@ addLayer("Po", {
                 "upgrades"
             ],
         },
-        "Challenges": {
+        "Buyables": {
             content: [
                 ["infobox", "buyable"],
                 "main-display",
                 "blank",
                 "blank",
-                "challenges"
+                "buyables"
             ],
         },
     },
