@@ -1791,8 +1791,8 @@ addLayer("Gc", {
         },
 })
 addLayer("Bo", {
-    name: "MJ Raisers",
-    symbol: "^",
+    name: "MJ Boosters",
+    symbol: "×",
     position: 1,
     startData() { return {
         unlocked: true,
@@ -1800,7 +1800,7 @@ addLayer("Bo", {
     }},
     color: "#a0a0a0",
     requires: new Decimal(1e300), // Can be a function that takes requirement increases into account
-    resource: "MJ Raisers", // Name of prestige currency
+    resource: "MJ Boosters", // Name of prestige currency
     baseResource: "MJs", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -1817,7 +1817,7 @@ addLayer("Bo", {
     },
     row: "side", // Row the layer is in on the tree (0 is the first row, side is the side
     hotkeys: [
-        {key: "J", description: "J: Get MJ Raisers", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "J", description: "J: Get MJ Boosters", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
     layerShown(){
