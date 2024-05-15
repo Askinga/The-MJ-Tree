@@ -1825,7 +1825,7 @@ addLayer("Bo", {
        return visible
      },
     effect(){
-    let raipow = 0.01
+    let raipow = 0.05
 	let eff = player.Bo.points.add(1).pow(raipow)
        return eff
        },
