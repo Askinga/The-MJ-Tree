@@ -1799,12 +1799,12 @@ addLayer("Bo", {
 		points: new Decimal(0),
     }},
     color: "#a0a0a0",
-    requires: new Decimal(1e300), // Can be a function that takes requirement increases into account
+    requires: new Decimal(1e10000), // Can be a function that takes requirement increases into account
     resource: "MJ Boosters", // Name of prestige currency
     baseResource: "MJs", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 2, // Prestige currency exponent
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.02, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
