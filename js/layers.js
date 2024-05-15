@@ -1825,12 +1825,12 @@ addLayer("Bo", {
        return visible
      },
     effect(){
-    let raipow = 0.05
+    let raipow = 100
 	let eff = player.Bo.points.add(1).pow(raipow)
        return eff
        },
         effectDescription() {
-            let desc = "which is raising MJs by ^" + format(tmp[this.layer].effect);
+            let desc = "which is boosting MJs by x" + format(tmp[this.layer].effect);
             return desc;
         },
 })
