@@ -1839,7 +1839,7 @@ addLayer("Po", {
     symbol: "P",
     position: 2,
     startData() { return {
-        unlocked: false,
+        unlocked: true,
 		points: new Decimal(0),
     }},
     color: "#ffffff",
@@ -1899,4 +1899,51 @@ addLayer("Po", {
     automate() {
 	player.Po.points = player.points
     },
+    upgrades: {  
+	11: {
+            title: "MJ layer!",
+            description: "×100 MJ gain",
+            cost: new Decimal(1e30),
+	},
+        12: {
+            title: "Raising boost",
+            description: "^1.02 MJs",
+            cost: new Decimal(1e100),
+	    unlocked() { return (hasUpgrade('Po', 11)) },
+	},
+        13: {
+            title: "Buyable fun",
+            description: "Unlock a buyable.",
+            cost: new Decimal(1e200),
+	    unlocked() { return (hasUpgrade('Po', 12)) },
+	},
+    },
+    buyables: {
+        11: {
+        title: "MJ Booster",
+        unlocked() { return (hasUpgrade('Po', 13)) },
+        cost(x) {
+            let exp2 = 2.3
+            return new Decimal(1e300).mul(Decimal.pow(1.2, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
+        },
+        display() {
+            return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " MJs." + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost MJ gain by x" + format(buyableEffect(this.layer, this.id))
+        },
+        canAfford() {
+            return player[this.layer].points.gte(this.cost())
+        },
+        buy() {
+            let cost = new Decimal (1)
+            player[this.layer].points = player[this.layer].points.sub(this.cost().mul(cost))
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+        effect(x) {
+            let base1 = new Decimal(10)
+            let base2 = x
+	    let expo = new Decimal(1.001)
+            let eff = base1.pow(Decimal.pow(base2, expo))
+            return eff
+        },
+    },
+},
 })
