@@ -1834,3 +1834,69 @@ addLayer("Bo", {
             return desc;
         },
 })
+addLayer("Po", {
+    name: "MJs",
+    symbol: "P",
+    position: 2,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#ffffff",
+    requires: new Decimal(4e17), // Can be a function that takes requirement increases into account
+    resource: "MJs", // Name of prestige currency
+    baseResource: "Giga MJ Points", // Name of resource prestige is based on
+    baseAmount() {return player.G.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.045, // Prestige currency exponent
+    passiveGeneration() {
+        if (hasUpgrade('B', 11)) return 0.5
+	if (hasUpgrade('L', 15)) return 0.1
+        return 0
+    },
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: "side", // Row the layer is in on the tree (0 is the first row.
+
+    layerShown(){
+        let visible = true
+        
+       return visible
+     },
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "upgrades"
+            ],
+        },
+        "Challenges": {
+            content: [
+                ["infobox", "buyable"],
+                "main-display",
+                "blank",
+                "blank",
+                "challenges"
+            ],
+        },
+    },
+    automate() {
+	player.Po.points = player.points
+    },
+})
