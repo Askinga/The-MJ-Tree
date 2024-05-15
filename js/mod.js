@@ -45,7 +45,8 @@ function getPointGen() {
 
 	let gain = new Decimal(1)
 	if (layers.Bo.effect().gte(1)) gain = gain.times(layers.Bo.effect())
-        if (hasUpgrade('p', 11)) gain = gain.times(2)
+        gain = gain.times(buyableEffect('Po', 11))
+	if (hasUpgrade('p', 11)) gain = gain.times(2)
 	if (hasUpgrade('p', 12)) gain = gain.times(upgradeEffect('p', 12))
 	if (hasUpgrade('p', 13)) gain = gain.times(upgradeEffect('p', 13))
 	if (hasUpgrade('p', 21)) gain = gain.times(10)
@@ -63,7 +64,9 @@ function getPointGen() {
 	if (hasMilestone('p', 2)) gain = gain.times(250)
         if (hasUpgrade('b', 11)) gain = gain.times(upgradeEffect('b', 11))
 	if (hasAchievement('a', 21)) gain = gain.times(1.5)
-        return gain
+        if (hasUpgrade('Po', 11)) gain = gain.times(100)
+	if (hasUpgrade('Po', 12)) gain = gain.pow(1.02)
+	return gain
 }
 
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
