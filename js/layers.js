@@ -1799,7 +1799,7 @@ addLayer("Bo", {
 		points: new Decimal(0),
     }},
     color: "#a0a0a0",
-    requires: new Decimal(1e10000), // Can be a function that takes requirement increases into account
+    requires: new Decimal(1e308), // Can be a function that takes requirement increases into account
     resource: "MJ Boosters", // Name of prestige currency
     baseResource: "MJs", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
