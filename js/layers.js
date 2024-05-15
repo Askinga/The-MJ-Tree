@@ -1923,7 +1923,7 @@ addLayer("Po", {
         title: "MJ Booster",
         unlocked() { return (hasUpgrade('Po', 13)) },
         cost(x) {
-            let exp2 = 2.3
+            let exp2 = 1.4
             return new Decimal(1e300).mul(Decimal.pow(1.2, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
         },
         display() {
@@ -1938,7 +1938,7 @@ addLayer("Po", {
             setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
         },
         effect(x) {
-            let base1 = new Decimal(10)
+            let base1 = new Decimal(1e5)
             let base2 = x
 	    let expo = new Decimal(1.001)
             let eff = base1.pow(Decimal.pow(base2, expo))
