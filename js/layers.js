@@ -1805,6 +1805,10 @@ addLayer("Bo", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.000025, // Prestige currency exponent
+    passiveGeneration() {
+        if (hasUpgrade('Bo', 11)) return 5
+        return 0
+    },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
@@ -1833,6 +1837,12 @@ addLayer("Bo", {
             let desc = "which is boosting MJs by x" + format(tmp[this.layer].effect);
             return desc;
         },
+    upgrades: {  
+	11: {
+            title: "Passive gain",
+            description: "Gain 5 base MJ Boosters per second",
+            cost: new Decimal(100),
+	},
 })
 addLayer("Po", {
     name: "MJs",
@@ -1849,11 +1859,6 @@ addLayer("Po", {
     baseAmount() {return player.G.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.045, // Prestige currency exponent
-    passiveGeneration() {
-        if (hasUpgrade('B', 11)) return 0.5
-	if (hasUpgrade('L', 15)) return 0.1
-        return 0
-    },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
