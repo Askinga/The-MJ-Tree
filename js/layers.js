@@ -1825,7 +1825,8 @@ addLayer("Bo", {
     ],
 
     layerShown(){
-        let visible = true
+        let visible = false
+        if (hasUpgrade('H', 12) || player.Bo.unlocked) visible = true
        return visible
      },
     effect(){
@@ -1873,8 +1874,8 @@ addLayer("Po", {
     row: "side", // Row the layer is in on the tree (0 is the first row.
 
     layerShown(){
-        let visible = true
-        
+        let visible = false
+        if (hasUpgrade('H', 12) || player.Po.unlocked) visible = true
        return visible
      },
     tabFormat: {
