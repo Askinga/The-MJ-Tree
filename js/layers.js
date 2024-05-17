@@ -1843,6 +1843,7 @@ addLayer("Bo", {
             description: "Gain 5 base MJ Boosters per second",
             cost: new Decimal(100),
 	},
+    },
 })
 addLayer("Po", {
     name: "MJs",
