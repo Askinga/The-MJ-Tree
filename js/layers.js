@@ -2003,11 +2003,17 @@ addLayer("UT", {
             title: "Yes!",
             description: "×2 MJ Booster gain",
             cost: new Decimal(2),
-	    branches: [11],
+	    branches: [11, 31],
 	},
         22: {
             title: "Power",
             description: "^1.01 MJ gain",
+            cost: new Decimal(3),
+	    branches: [11],
+	},
+        31: {
+            title: "MJ World",
+            description: "×1e100 MJ gain",
             cost: new Decimal(3),
 	    branches: [11],
 	},
