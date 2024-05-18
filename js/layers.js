@@ -1982,6 +1982,9 @@ addLayer("UT", {
     },
     row: 3, // Row the layer is in on the tree (0 is the first row
     displayRow: 5,
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Upgrade Tree")
+    }, 
     hotkeys: [
         {key: "t", description: "T: Get Upgrade Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
