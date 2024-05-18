@@ -1775,7 +1775,7 @@ addLayer("Gc", {
 	},
         12: {
             title: "Buyable improving 2",
-            description: "Improve Generator MJ Compounder effect again.",
+            description: "Improve Generator MJ Compounder effect again and unlock a new layer.",
             cost: new Decimal(3),
 	},
     },
@@ -1953,4 +1953,90 @@ addLayer("Po", {
         },
     },
 },
+})
+
+addLayer("UT", {
+    name: "Upgrade Points",
+    symbol: "UT",
+    position: 4,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#765dba",
+    requires: new Decimal(1e308), // Can be a function that takes requirement increases into account
+    resource: "Upgrade Points", // Name of prestige currency
+    baseResource: "Giga MJ Points", // Name of resource prestige is based on
+    baseAmount() {return player.Ge.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1.6, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 3, // Row the layer is in on the tree (0 is the first row
+    displayRow: 5,
+    hotkeys: [
+        {key: "t", description: "T: Get Upgrade Points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('Gc', 12) || player.UT.unlocked) visible = true
+       return visible
+     },
+    branches:["G"],
+
+    tabFormat: {
+        "Paths": {
+            content: [
+                ["display-text", "Welcome to the Upgrade Tree! There are more upgrades coming soon!"],
+                "blank",
+                "clickables",
+                "blank",
+				["upgrade-tree", [[11], [21, 22]]]
+            ]
+        },
+    },
+    upgrades: {
+        11: {
+            cost() {
+                base = new Decimal(1)
+                return base
+            },
+            title: "Upgrade tree!",
+            description: "Multiply MJ gain by 1e10"
+        },
+        21: {
+            cost() {
+                base = new Decimal(2)
+                base = base.times(new Decimal(2).pow(findIndex(player.UT.paths, 1)))
+                return base
+            },
+	    description: "Multiply MJ Booster gain by 1.5",
+			branches: [11],
+            canAfford() { return hasUpgrade('UT', 11) },
+            title: "Cubic"
+        },
+        22: {
+            cost() {
+                base = new Decimal(3)
+                base = base.times(new Decimal(2).pow(findIndex(player.HC.paths, 1)))
+                return base
+            },
+            onPurchase() {
+                player.UT.paths.push(1)
+            },
+	    description: "^1.01 MJs",
+                        branches: [11],
+	    canAfford() { return hasUpgrade('UT', 21) },
+            title: "Power"
+        },
+    },
 })
