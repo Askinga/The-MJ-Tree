@@ -1994,22 +1994,19 @@ addLayer("UT", {
     branches:["G"],
 
     tabFormat: {
-        "Paths": {
+        "Main tab": {
             content: [
                 ["display-text", "Welcome to the Upgrade Tree! There are more upgrades coming soon!"],
                 "blank",
                 "clickables",
-                "blank",
+                "prestige-button",
 				["upgrade-tree", [[11], [21, 22]]]
             ]
         },
     },
     upgrades: {
         11: {
-            cost() {
-                base = new Decimal(1)
-                return base
-            },
+            cost: new Decimal(1),
             title: "Upgrade tree!",
             description: "Multiply MJ gain by 1e10"
         },
@@ -2019,14 +2016,17 @@ addLayer("UT", {
                 base = base.times(new Decimal(2).pow(findIndex(player.UT.paths, 1)))
                 return base
             },
+	    onPurchase() {
+                player.UT.paths.push(1)
+            },
 	    description: "Multiply MJ Booster gain by 1.5",
 			branches: [11],
-            canAfford() { return hasUpgrade('UT', 11) },
+            unlocked() { return (hasUpgrade('UT', 11)) },
             title: "Cubic"
         },
         22: {
             cost() {
-                base = new Decimal(3)
+                base = new Decimal(2)
                 base = base.times(new Decimal(2).pow(findIndex(player.HC.paths, 1)))
                 return base
             },
@@ -2035,8 +2035,8 @@ addLayer("UT", {
             },
 	    description: "^1.01 MJs",
                         branches: [11],
-	    canAfford() { return hasUpgrade('UT', 21) },
-            title: "Power"
+            unlocked() { return (hasUpgrade('UT', 11)) },
+	    title: "Power"
         },
     },
 })
