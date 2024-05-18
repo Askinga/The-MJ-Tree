@@ -1993,17 +1993,6 @@ addLayer("UT", {
      },
     branches:["G"],
 
-    tabFormat: {
-        "Main tab": {
-            content: [
-                ["display-text", "Welcome to the Upgrade Tree! There are more upgrades coming soon!"],
-                "blank",
-                "clickables",
-                "prestige-button",
-				["upgrade-tree", [[11], [21, 22]]]
-            ]
-        },
-    },
     upgrades: {
         11: {
             cost: new Decimal(1),
