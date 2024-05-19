@@ -1965,12 +1965,12 @@ addLayer("UT", {
 		points: new Decimal(0),
     }},
     color: "#765dba",
-    requires: new Decimal(1e308), // Can be a function that takes requirement increases into account
+    requires: new Decimal(2e95), // Can be a function that takes requirement increases into account
     resource: "Upgrade Points", // Name of prestige currency
-    baseResource: "MJs", // Name of resource prestige is based on
-    baseAmount() {return player.points}, // Get the current amount of baseResource
+    baseResource: "Hyper MJ Points", // Name of resource prestige is based on
+    baseAmount() {return player.H.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 6, // Prestige currency exponent
+    exponent: 2.6, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
