@@ -2019,7 +2019,6 @@ addLayer("UT", {
             title: "MJ World",
             description: "×1e100 MJ gain",
             cost: new Decimal(3),
-	    branches: [11],
 	},
     },
 })
