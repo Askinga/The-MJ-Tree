@@ -787,6 +787,7 @@ addLayer("L", {
         return new Decimal(1)
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
+    resetsNothing: true,
     hotkeys: [
         {key: "c", description: "C: Reset for MJ Clicks", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
