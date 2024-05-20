@@ -11,7 +11,7 @@ addLayer("p", {
 	"width": "125px",
 	"height": "125px"
     },
-    color: "#05199c",
+    color: "#0022ff",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "MJ points", // Name of prestige currency
     baseResource: "MJs", // Name of resource prestige is based on
