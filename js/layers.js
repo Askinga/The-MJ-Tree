@@ -711,7 +711,7 @@ addLayer("H", {
 	},
         12: {
             title: "Important for the challenge",
-            description: "×1e10 MJs.",
+            description: "×1e10 MJs and unlock.",
             cost: new Decimal(1000),
 	    unlocked() { return (hasUpgrade('H', 11)) },
 	},
@@ -728,7 +728,7 @@ addLayer("H", {
             challengeDescription: "^0.5 all layers except this layer.",
             canComplete: function() {return player.points.gte("1e550")},
             goalDescription: "Get e550 MJs.",
-            rewardDescription: "^1.1 Giga MJ Points and unlock MJ Clicks"
+            rewardDescription: "^1.1 Giga MJ Points and unlock 3 new layers."
 	},
     },
 })
@@ -1796,7 +1796,7 @@ addLayer("Bo", {
     symbol: "×",
     position: 1,
     startData() { return {
-        unlocked: true,
+        unlocked: false,
 		points: new Decimal(0),
     }},
     color: "#a0a0a0",
@@ -1828,7 +1828,7 @@ addLayer("Bo", {
 
     layerShown(){
         let visible = false
-        if (hasUpgrade('H', 12) || player.Bo.unlocked) visible = true
+        if (hasChallenge('H', 11) || player.Bo.unlocked) visible = true
        return visible
      },
     effect(){
@@ -1853,7 +1853,7 @@ addLayer("Po", {
     symbol: "P",
     position: 2,
     startData() { return {
-        unlocked: true,
+        unlocked: false,
 		points: new Decimal(0),
     }},
     color: "#ffffff",
@@ -1874,10 +1874,10 @@ addLayer("Po", {
         return new Decimal(1)
     },
     row: "side", // Row the layer is in on the tree (0 is the first row.
-
+    canReset: false,
     layerShown(){
         let visible = false
-        if (hasUpgrade('H', 12) || player.Po.unlocked) visible = true
+        if (hasChallenge('H', 11) || player.Po.unlocked) visible = true
        return visible
      },
     tabFormat: {
