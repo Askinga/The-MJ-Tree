@@ -2001,8 +2001,8 @@ addLayer("UT", {
         "Paths": {
             content: [
                 ["display-text", "Welcome to Upgrade Tree! In this layer, there is going to be a upgrade tree to boost the production of layers!"],
-                "blank",
-                "clickables",
+                "main-display",
+                "prestige-button",
                 "blank",
 				["upgrade-tree", [[11], [21, 22], [31]]]
             ]
