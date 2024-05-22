@@ -21,7 +21,7 @@ let changelog = `<h1>Changelog:</h1><br>
 	<h3>v1.5.0 Biggest update yet</h3><br>
 		- More updates soon! Endgame 5 Generator Raisers.<br>
 		- Added more upgrades, more achievements and 3 new layers! MJ Boosters MJ layer and Upgrade Tree! Added a softcap oh no! Added a MJ layer boost. Sorted everything out by tabs. Changed MJ Point layer color to a lighter blue<br>
-                - Check back here for more updates! Full changelog at https://galaxy.click/updates/355`
+                - Check back here for more updates! Full changelog at <a href=https://galaxy.click/updates/355>galaxy.click/updates/355</a>`
   
 let winText = `Congratulations! You have reached the end and beaten The MJ Tree, but for now...`
 
