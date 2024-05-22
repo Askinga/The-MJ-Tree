@@ -13,15 +13,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.4.0 Raising update ^",
-	name: "The Raising Update",
+	num: "1.5.0 Biggest update yet",
+	name: "The Biggest Update",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v1.4.0 Raising update ^</h3><br>
+	<h3>v1.5.0 Biggest update yet</h3><br>
 		- More updates soon! Endgame 5 Generator Raisers.<br>
-		- Added more upgrades, more achievements and new layers! Generator Accelerators and Raisers.<br>
-                - Check back here for more updates!.`
+		- Added more upgrades, more achievements and 3 new layers! MJ Boosters MJ layer and Upgrade Tree! Added a softcap oh no! Added a MJ layer boost.<br>
+                - Check back here for more updates! Full changelog at https://galaxy.click/updates/355`
   
 let winText = `Congratulations! You have reached the end and beaten The MJ Tree, but for now...`
 
