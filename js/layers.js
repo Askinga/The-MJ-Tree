@@ -1998,7 +1998,7 @@ addLayer("UT", {
      },
     branches:["G"],
     tabFormat: {
-        "Paths": {
+        "Main tab": {
             content: [
                 "main-display",
                 "prestige-button",
@@ -2008,8 +2008,8 @@ addLayer("UT", {
                 "blank",
                 "blank",
                 "blank",
-                "blank",
-                "upgrades"
+                "resource-display",
+                "blank"
 				["upgrade-tree", [[11], [21, 22], [31]]]
             ]
         },
