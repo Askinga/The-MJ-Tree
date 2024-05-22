@@ -1998,18 +1998,12 @@ addLayer("UT", {
      },
     branches:["G"],
     tabFormat: {
-        "Main tab": {
+        "Paths": {
             content: [
-                "main-display",
-                "prestige-button",
-                "milestones",
+                ["display-text", "Welcome to Upgrade Tree! In this layer, there is going to be a upgrade tree to boost the production of layers!"],
                 "blank",
+                "clickables",
                 "blank",
-                "blank",
-                "blank",
-                "blank",
-                "resource-display",
-                "blank"
 				["upgrade-tree", [[11], [21, 22], [31]]]
             ]
         },
