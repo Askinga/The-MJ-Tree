@@ -1997,7 +1997,23 @@ addLayer("UT", {
        return visible
      },
     branches:["G"],
-
+    tabFormat: {
+        "Paths": {
+            content: [
+                "main-display",
+                "prestige-button",
+                "milestones",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "upgrades"
+				["upgrade-tree", [[11], [21, 22], [31]]]
+            ]
+        },
+    },
     upgrades: {
         11: {
             title: "Upgrade tree!",
