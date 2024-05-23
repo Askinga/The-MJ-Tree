@@ -1241,16 +1241,21 @@ addLayer("a", {
             tooltip: "Get Generator Raiser Upgrade 11",	   
         }, 
         92: {
-            name: "Let unlock the UPGRADE TREE!",
+            name: "Let unlock a NEW LAYER!!",
             done() { return (hasUpgrade('Gc', 12)) },
             tooltip: "Get Generator Raiser Upgrade 12",	   
         }, 
         93: {
-            name: "Oh is the Upgrade Tree!",
+            name: "These feel like normal upgrades...",
+            done() { return (hasUpgrade('UT', 11)) },
+            tooltip: "Get Upgrade Tree Upgrade 11",	   
+        },
+	94: {
+            name: "Oh this is the Upgrade Tree!",
             done() { return (hasUpgrade('UT', 21)) },
             tooltip: "Get Upgrade Tree Upgrade 21",	   
         },
-        94: {
+        95: {
             name: "Final upgrade in 1.5.0",
             done() { return (hasUpgrade('UT', 31)) },
             tooltip: "Get Upgrade Tree Upgrade 31",	   
