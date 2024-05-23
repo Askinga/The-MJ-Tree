@@ -630,7 +630,6 @@ addLayer("H", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    image: "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTI4ZW4weG83OTk0YzF6MmFmaDdvNGNvZXdodmh1dG9kcmJzdTZkZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6u8HlESk5HtYc/giphy.gif",
     color: "#ffffff",
     requires: new Decimal(4e17), // Can be a function that takes requirement increases into account
     resource: "Hyper MJ Points", // Name of prestige currency
