@@ -1867,7 +1867,7 @@ addLayer("Po", {
     symbol: "P",
     position: 2,
     startData() { return {
-        unlocked: false,
+        unlocked: true,
 		points: new Decimal(0),
     }},
     color: "#ffffff",
