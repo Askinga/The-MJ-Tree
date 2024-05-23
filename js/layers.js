@@ -2012,7 +2012,7 @@ addLayer("UT", {
      },
     branches:["G"],
     tabFormat: {
-        "Paths": {
+        "Upgrade Tree": {
             content: [
                 ["display-text", "Welcome to Upgrade Tree! In this layer, there is going to be a upgrade tree to boost the production of layers!"],
                 "main-display",
