@@ -77,7 +77,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-    "Get 5 Generator Raisers to beat the game!"
+    "Get 4 Upgrade Points to beat the game!"
 ]
 
 // Determines when the game "ends"
