@@ -606,8 +606,8 @@ addLayer("G", {
         11: {
             name: "Exponential Downgrade",
             challengeDescription: "^0.8 all layers except Scaler MJs and this layer.",
-            canComplete: function() {return player.points.gte("1e175")},
-            goalDescription: "Get e175 MJs.",
+            canComplete: function() {return player.points.gte("1e185")},
+            goalDescription: "Get e185 MJs.",
             rewardDescription: "^1.05 Super MJ Points and unlocka upgrade"
 	},
     },
@@ -726,8 +726,8 @@ addLayer("H", {
         11: {
             name: "The hardest challenge in this game",
             challengeDescription: "^0.5 all layers except this layer.",
-            canComplete: function() {return player.points.gte("1e550")},
-            goalDescription: "Get e550 MJs.",
+            canComplete: function() {return player.points.gte("1e555")},
+            goalDescription: "Get e555 MJs.",
             rewardDescription: "^1.1 Giga MJ Points and unlock 3 new layers."
 	},
     },
