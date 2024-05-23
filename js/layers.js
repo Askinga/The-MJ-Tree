@@ -1241,10 +1241,20 @@ addLayer("a", {
             tooltip: "Get Generator Raiser Upgrade 11",	   
         }, 
         92: {
-            name: "Stronger buyable 2",
+            name: "Let unlock the UPGRADE TREE!",
             done() { return (hasUpgrade('Gc', 12)) },
             tooltip: "Get Generator Raiser Upgrade 12",	   
         }, 
+        93: {
+            name: "Oh is the Upgrade Tree!",
+            done() { return (hasUpgrade('UT', 21)) },
+            tooltip: "Get Upgrade Tree Upgrade 21",	   
+        },
+        94: {
+            name: "Final upgrade in 1.5.0",
+            done() { return (hasUpgrade('UT', 31)) },
+            tooltip: "Get Upgrade Tree Upgrade 31",	   
+        },
 },
 })
 
@@ -2018,18 +2028,21 @@ addLayer("UT", {
             title: "Yes!",
             description: "×2 MJ Booster gain",
             cost: new Decimal(2),
-	    branches: [11, 31],
+	    branches: [11],
+	    unlocked() { return (hasUpgrade('UT', 11)) },
 	},
         22: {
             title: "Power",
             description: "^1.01 MJ gain",
             cost: new Decimal(3),
-	    branches: [11],
+	    branches: [11, 31],
+	    unlocked() { return (hasUpgrade('UT', 11)) },
 	},
         31: {
             title: "MJ World",
             description: "×1e100 MJ gain",
             cost: new Decimal(3),
+	    unlocked() { return (hasUpgrade('UT', 22)) },
 	},
     },
 })
