@@ -1955,6 +1955,7 @@ addLayer("Po", {
             title: "MJ layer!",
             description: "×100 MJ gain",
             cost: new Decimal(1e30),
+	    unlocked() { return (hasChallenge('H', 11)) },
 	},
         12: {
             title: "Raising boost",
