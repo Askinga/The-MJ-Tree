@@ -990,6 +990,19 @@ addLayer("a", {
     tooltip() { // Optional, tooltip displays when the layer is locked
         return ("Achievements")
     },
+    tabFormat: {
+        "Achievements": {
+            content: [
+                "achievements",
+                "blank",
+                ],
+        },
+        "Savebank": {
+            content: [
+                ["clickables", [1, 2, 3, 4, 5, 6]],
+            ],
+        },
+    },
     clickables: {
         11: {
             title: "MJ",
