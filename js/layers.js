@@ -727,7 +727,7 @@ addLayer("H", {
             challengeDescription: "^0.5 all layers except this layer.",
             canComplete: function() {return player.points.gte("1e555")},
             goalDescription: "Get e555 MJs.",
-            rewardDescription: "^1.1 Giga MJ Points and unlock 3 new layers."
+            rewardDescription: "^1.1 Giga MJ Points and unlock 3 new layers and automate Layer 1 Speeders and they reset nothing."
 	},
     },
 })
@@ -1287,6 +1287,8 @@ addLayer("b", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    autoPrestige() { return hasChallenge('H', 11) },
+    resetsNothing() { return hasChallenge('H', 11) },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "b", description: "B: Reset for Layer 1 Speeders", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
