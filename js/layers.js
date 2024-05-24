@@ -43,6 +43,8 @@ addLayer("p", {
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
 	return new Decimal(1)
+        if (hasUpgrade('UT', 23)) exp = exp.add(0.01)
+        return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -1342,8 +1344,8 @@ addLayer("a", {
         },
         95: {
             name: "Final upgrade in 1.5.0",
-            done() { return (hasUpgrade('UT', 31)) },
-            tooltip: "Get Upgrade Tree Upgrade 31",	   
+            done() { return (hasUpgrade('UT', 23)) },
+            tooltip: "Get Upgrade Tree Upgrade 23",	   
         },
 },
 })
@@ -1535,6 +1537,7 @@ addLayer("Ge", {
 	if (hasUpgrade('Ge', 31)) mult = mult.pow(1.02)
 	if (hasUpgrade('B', 17)) mult = mult.times(20)
 	if (hasUpgrade('Gb', 11)) mult = mult.times(10)
+	if (hasUpgrade('UT', 32)) mult = mult.times(1000)
 	return mult
     },
 
@@ -2075,6 +2078,10 @@ addLayer("UT", {
     baseAmount() {return player.H.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 2.6, // Prestige currency exponent
+    passiveGeneration() {
+	if (hasUpgrade('UT', 31)) return 1
+	return 0
+    },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
@@ -2103,11 +2110,11 @@ addLayer("UT", {
     tabFormat: {
         "Upgrade Tree": {
             content: [
-                ["display-text", "Welcome to Upgrade Tree! In this layer, there is going to be a upgrade tree to boost the production of layers!"],
+                ["display-text", "Welcome to the Upgrade Tree! In this layer, there is going to be a upgrade tree to boost the production of layers!"],
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11], [21, 22], [31]]]
+				["upgrade-tree", [[11], [21, 22, 23], [31, 32]]]
             ]
         },
     },
@@ -2126,16 +2133,30 @@ addLayer("UT", {
 	},
         22: {
             title: "Power",
-            description: "^1.01 MJ gain",
+            description: "^1.01 MJ gain and ×10 Hyper MJ gain",
             cost: new Decimal(3),
 	    branches: [11, 31],
 	    unlocked() { return (hasUpgrade('UT', 11)) },
 	},
         31: {
             title: "MJ World",
-            description: "×1e100 MJ gain",
-            cost: new Decimal(3),
+            description: "×1e100 MJ gain and gain 1 upgrade point every second!",
+            cost: new Decimal(4),
+	    branches: [32],
 	    unlocked() { return (hasUpgrade('UT', 22)) },
+	},
+        32: {
+            title: "Boosting",
+            description: "×1e3 Generator MJ gain",
+            cost: new Decimal(30),
+	    branches: [23],
+	    unlocked() { return (hasUpgrade('UT', 31)) },
+	},
+        23: {
+            title: "The MJ Swarm has returned",
+            description: "+^1.01 MJ Point gain",
+            cost: new Decimal(45),
+	    unlocked() { return (hasUpgrade('UT', 32)) },
 	},
     },
 })
