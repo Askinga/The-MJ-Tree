@@ -1064,7 +1064,7 @@ addLayer("a", {
                 'background-color': tmp.L.color,
             }},
         },
-        11: {
+        32: {
             title: "Ultra Scaler",
             display: "Layer Finished",
             canClick: true,
