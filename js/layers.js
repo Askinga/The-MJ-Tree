@@ -1078,7 +1078,7 @@ addLayer("a", {
                 'background-color': tmp.B.color,
             }},
         },
-        11: {
+        41: {
             title: "Generator",
             display: "Layer Finished",
             canClick: true,
