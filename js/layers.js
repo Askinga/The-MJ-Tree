@@ -1090,7 +1090,7 @@ addLayer("a", {
                 'background-color': tmp.Ge.color,
             }},
         },
-        11: {
+        42: {
             title: "Accelerators",
             display: "Layer Finished",
             canClick: true,
