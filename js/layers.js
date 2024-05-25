@@ -39,12 +39,11 @@ addLayer("p", {
 	if (hasUpgrade('H', 11)) mult = mult.times(1e20)
 	if (hasUpgrade('L', 35)) mult = mult.times(1e25)
 	if (hasUpgrade('L', 42)) mult = mult.pow(1.011)
+	if (hasUpgrade('UT', 23)) mult = mult.pow(1.01)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
 	return new Decimal(1)
-        if (hasUpgrade('UT', 23)) exp = exp.add(0.01)
-        return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -660,6 +659,7 @@ addLayer("H", {
 	if (hasUpgrade('Ge', 32)) mult = mult.times(1000)
 	if (hasUpgrade('H', 13)) mult = mult.times(100)
 	if (hasUpgrade('Ge', 35)) mult = mult.times(1e5)
+	if (hasUpgrade('UT', 22)) mult = mult.times(10)
 	return mult
     },
 
@@ -1495,7 +1495,7 @@ addLayer("B", {
 	},
         16: {
             title: "Unlock something OP",
-            description: "Unlock a upgrade in Generator layer.",
+            description: "Unlock a upgrade in Generator layer and ×15 Generator MJs.",
             cost: new Decimal(12),
 	},
 	17: {
@@ -1550,6 +1550,7 @@ addLayer("Ge", {
 	if (hasUpgrade('B', 17)) mult = mult.times(20)
 	if (hasUpgrade('Gb', 11)) mult = mult.times(10)
 	if (hasUpgrade('UT', 32)) mult = mult.times(1000)
+	if (hasUpgrade('B', 16)) mult = mult.times(15)
 	return mult
     },
 
@@ -2140,14 +2141,14 @@ addLayer("UT", {
             title: "Yes!",
             description: "×2 MJ Booster gain",
             cost: new Decimal(2),
-	    branches: [11],
+	    branches: [11, 22],
 	    unlocked() { return (hasUpgrade('UT', 11)) },
 	},
         22: {
             title: "Power",
             description: "^1.01 MJ gain and ×10 Hyper MJ gain",
             cost: new Decimal(3),
-	    branches: [11, 31],
+	    branches: [31],
 	    unlocked() { return (hasUpgrade('UT', 11)) },
 	},
         31: {
@@ -2166,7 +2167,7 @@ addLayer("UT", {
 	},
         23: {
             title: "The MJ Swarm has returned",
-            description: "+^1.01 MJ Point gain",
+            description: "^1.01 MJ Point gain",
             cost: new Decimal(45),
 	    unlocked() { return (hasUpgrade('UT', 32)) },
 	},
