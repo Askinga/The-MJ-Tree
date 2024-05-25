@@ -77,12 +77,12 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-    "Get 4 Upgrade Points to beat the game!"
+    "Get Upgrade Tree Upgrade 23 to beat the game!"
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.UT.points.gte(new Decimal("4"))
+	return (hasUpgrade('UT', 23))
 }
 
 
