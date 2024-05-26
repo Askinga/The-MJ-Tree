@@ -44,5 +44,15 @@ addLayer("p", {
             cost: new Decimal(3),
             unlocked() { return (hasUpgrade('p', 12)) },
 	},
+        14: {
+            title: "Point booster",
+            description: "Multiply point gain based on points.",
+            cost: new Decimal(5),
+            effect(){
+                return player.points.add(1).pow(0.15)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('p', 13)) },
+	},
     },
 })
