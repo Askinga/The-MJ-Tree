@@ -54,5 +54,21 @@ addLayer("p", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('p', 13)) },
 	},
+        15: {
+            title: "Challenge time!",
+            description: "Unlock a challenge.",
+            cost: new Decimal(8),
+            unlocked() { return (hasUpgrade('p', 14)) },
+	},
+    },
+    challenges: {
+        11: {
+            name: "Prestige Challenge 1",
+            challengeDescription: "^0.3 points.",
+            canComplete: function() {return player.points.gte("40")},
+            goalDescription: "Get 40 points.",
+            rewardDescription: "×2 points"
+	    unlocked() { return (hasUpgrade('p', 15)) },
+	},
     },
 })
