@@ -36,6 +36,13 @@ addLayer("p", {
             title: "More points",
             description: "+1 point gain per second.",
             cost: new Decimal(1),
-        },
+            unlocked() { return (hasUpgrade('p', 11)) },
+	},
+        13: {
+            title: "It's time for a exponent!",
+            description: "^1.2 points.",
+            cost: new Decimal(3),
+            unlocked() { return (hasUpgrade('p', 12)) },
+	},
     },
 })
