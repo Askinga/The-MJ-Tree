@@ -67,8 +67,8 @@ addLayer("p", {
             challengeDescription: "^0.3 points.",
             canComplete: function() {return player.points.gte("40")},
             goalDescription: "Get 40 points.",
-            rewardDescription: "×2 points"
-	    unlocked() { return hasUpgrade("p", 15) },
+            rewardDescription: "×2 points",
+	    unlocked() { return (hasUpgrade('p', 15)) },
 	},
     },
 })
