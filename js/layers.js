@@ -32,5 +32,10 @@ addLayer("p", {
             description: "Get 1 point every second.",
             cost: new Decimal(0),
         },
+        12: {
+            title: "More points",
+            description: "+1 point gain per second.",
+            cost: new Decimal(1),
+        },
     },
 })
