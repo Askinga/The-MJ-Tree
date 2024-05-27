@@ -94,6 +94,12 @@ addLayer("p", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('p', 23)) },
 	},
+        25: {
+            title: "MORE POINTS!!!",
+            description: "^1.3 points.",
+            cost: new Decimal(232),
+            unlocked() { return (hasUpgrade('p', 24)) },
+	},
     },
     challenges: {
         11: {
