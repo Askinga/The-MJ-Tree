@@ -1,9 +1,9 @@
-let modInfo = {
+.let modInfo = {
 	name: "The Exponential Tree",
 	id: "abcd1234",
 	author: "Askinga",
 	pointsName: "points",
-	modFiles: ["layers.js", "tree.js", "softcaps.js"],
+	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
