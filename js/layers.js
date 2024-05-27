@@ -67,9 +67,19 @@ addLayer("p", {
             description: "Raise point gain based on prestige points.",
             cost: new Decimal(20),
             effect(){
-                return player.p.points.add(1).pow(0.075)
+                let expu3 = 0.075
+                let eff = player.p.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("3"), 0.5)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("3")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts points by " + format(upgEffect)+"x" + softcapDescription
             },
-            effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
 	    unlocked() { return (hasChallenge('p', 11)) },
 	},
         22: {
