@@ -100,6 +100,16 @@ addLayer("p", {
             cost: new Decimal(232),
             unlocked() { return (hasUpgrade('p', 24)) },
 	},
+        31: {
+            title: "Point booster 2",
+            description: "Multiply point gain based on prestige points.",
+            cost: new Decimal(400),
+            effect(){
+                return player.points.add(1).pow(0.175)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('p', 25)) },
+	},
     },
     challenges: {
         11: {
