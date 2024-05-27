@@ -122,3 +122,26 @@ addLayer("p", {
 	},
     },
 })
+
+addLayer("sc", {
+	startData() { return {unlocked: true}},
+	color: "#F214A5",
+	symbol: "SC",
+	row: "side",
+	layerShown() {return true},
+	tooltip: "Softcaps",
+	tabFormat: [
+		"blank", "blank", "blank",
+		["raw-html", function() {
+			let html = ""
+			for (let id in SOFTCAPS) {
+				let data = SOFTCAPS[id];
+				if (data.display) if (data.display()) {
+					html += "<div><h3>"+data.title+"</h3><br>"+data.info();
+					html += "</div><br><br>";
+				}
+			}
+			return html;
+		}],
+	],
+}) 
