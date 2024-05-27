@@ -14,7 +14,7 @@ addLayer("p", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1)
+        mult = new Decimal(10)
         if (hasUpgrade('p', 23)) mult = mult.times(3)
 	return mult
     },
