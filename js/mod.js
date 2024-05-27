@@ -2,12 +2,12 @@ let modInfo = {
 	name: "The master Tree",
 	id: "mymod",
 	author: "tmt-master",
-	pointsName: "mastrey",
+	pointsName: "mastery",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (10), // Used for hard resets and new playe
 	offlineLimit: 1,  // In hours
 }
 
