@@ -78,7 +78,7 @@ addLayer("p", {
                 if (upgEffect.gte(new Decimal("3")) ) {
                     softcapDescription = " (Softcapped)"
 		}
-	        return "This upgrade raises points by " "^" + format(upgEffect) + softcapDescription
+	        return "This upgrade raises points by ^" + format(upgEffect) + softcapDescription
             },
 	    unlocked() { return (hasChallenge('p', 11)) },
 	},
