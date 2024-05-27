@@ -25,4 +25,12 @@ addLayer("p", {
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
+
+    upgrades: {
+        11: {
+            title: "Masterful",
+            description: "Get 1 mastery every second.",
+            cost: new Decimal(0),
+        },
+    },
 })
