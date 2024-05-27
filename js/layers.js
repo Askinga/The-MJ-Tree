@@ -105,7 +105,7 @@ addLayer("p", {
             description: "Multiply point gain based on prestige points.",
             cost: new Decimal(400),
             effect(){
-                return player.points.add(1).pow(0.175)
+                return player.p.points.add(1).pow(0.175)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('p', 25)) },
