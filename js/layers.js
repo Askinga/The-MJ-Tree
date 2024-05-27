@@ -60,6 +60,16 @@ addLayer("p", {
             cost: new Decimal(8),
             unlocked() { return (hasUpgrade('p', 14)) },
 	},
+        21: {
+            title: "Point raiser",
+            description: "Raise point gain based on prestige points.",
+            cost: new Decimal(20),
+            effect(){
+                return player.p.points.add(1).pow(0.005)
+            },
+            effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+	    unlocked() { return (hasChallenge('p', 11)) },
+	},
     },
     challenges: {
         11: {
@@ -67,7 +77,7 @@ addLayer("p", {
             challengeDescription: "^0.15 points.",
             canComplete: function() {return player.points.gte("40")},
             goalDescription: "Get 40 points.",
-            rewardDescription: "×2 points",
+            rewardDescription: "×2 points and unlock upgrade 6",
 	    unlocked() { return (hasUpgrade('p', 15)) },
 	},
     },
