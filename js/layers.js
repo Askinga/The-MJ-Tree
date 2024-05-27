@@ -15,7 +15,8 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        return mult
+        if (hasUpgrade('p', 23)) mult = mult.times(3)
+	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
@@ -69,6 +70,18 @@ addLayer("p", {
             },
             effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
 	    unlocked() { return (hasChallenge('p', 11)) },
+	},
+        22: {
+            title: "Point multiplier",
+            description: "×1.5 points.",
+            cost: new Decimal(25),
+            unlocked() { return (hasUpgrade('p', 21)) },
+	},
+        23: {
+            title: "Prestige multiplier",
+            description: "×3 prestige points.",
+            cost: new Decimal(42),
+            unlocked() { return (hasUpgrade('p', 22)) },
 	},
     },
     challenges: {
