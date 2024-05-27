@@ -84,7 +84,7 @@ addLayer("p", {
             cost: new Decimal(42),
             unlocked() { return (hasUpgrade('p', 22)) },
 	},
-        14: {
+        24: {
             title: "Prestige booster",
             description: "Multiply prestige point gain based on points.",
             cost: new Decimal(160),
