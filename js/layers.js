@@ -64,7 +64,7 @@ addLayer("p", {
     challenges: {
         11: {
             name: "Prestige Challenge 1",
-            challengeDescription: "^0.3 points.",
+            challengeDescription: "^0.15 points.",
             canComplete: function() {return player.points.gte("40")},
             goalDescription: "Get 40 points.",
             rewardDescription: "×2 points",
