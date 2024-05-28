@@ -139,8 +139,8 @@ addLayer("p", {
         12: {
             name: "Prestige Challenge 2",
             challengeDescription: "^0.1 and /10 points.",
-            canComplete: function() {return player.points.gte("1000")},
-            goalDescription: "Get 1000 points.",
+            canComplete: function() {return player.points.gte("50")},
+            goalDescription: "Get 50 points.",
             rewardDescription: "×2 points again and unlock upgrade 13 (placeholder)",
 	    unlocked() { return (hasUpgrade('p', 32)) },
 	},
