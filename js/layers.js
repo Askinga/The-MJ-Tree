@@ -120,7 +120,7 @@ addLayer("p", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('p', 25)) },
 	},
-        15: {
+        32: {
             title: "Oh no",
             description: "Unlock another challenge.",
             cost: new Decimal(1500),
