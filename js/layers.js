@@ -69,13 +69,13 @@ addLayer("p", {
             effect(){
                 let expu3 = 0.075
                 let eff = player.p.points.add(1).pow(expu3)
-                eff = softcap(eff, new Decimal("3"), 0.5)
+                eff = softcap(eff, new Decimal("1.5"), 0.3)
                 return eff
 	    },
             effectDisplay() { // Add formatting to the effect
                 let softcapDescription = ""
                 let upgEffect = upgradeEffect(this.layer, this.id)
-                if (upgEffect.gte(new Decimal("3")) ) {
+                if (upgEffect.gte(new Decimal("1.5")) ) {
                     softcapDescription = " (Softcapped)"
 		}
 	        return "This upgrade raises points by ^" + format(upgEffect) + softcapDescription
