@@ -27,7 +27,31 @@ addLayer("p", {
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
-
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "resource-display",
+                "prestige-button",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "milestones",
+                "upgrades"
+            ],
+        },
+        "Challenges": {
+            content: [
+                ["infobox", "challenge"],
+                "main-display",
+                "blank",
+                "blank",
+                "challenges"
+            ],
+        },
+    },
     upgrades: {
         11: {
             title: "Start off",
@@ -144,5 +168,11 @@ addLayer("p", {
             rewardDescription: "×2 points again and unlock upgrade 13 (placeholder)",
 	    unlocked() { return (hasUpgrade('p', 32)) },
 	},
+    },
+    infoboxes: {
+        challenge: {
+            title: "Challenges",
+            body() { return "Challenges give a set of nerfs to your progression, but when you finish them, you get a boost!" },
+        },
     },
 })
