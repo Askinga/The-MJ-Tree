@@ -120,6 +120,12 @@ addLayer("p", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('p', 25)) },
 	},
+        15: {
+            title: "Oh no",
+            description: "Unlock another challenge.",
+            cost: new Decimal(1500),
+            unlocked() { return (hasUpgrade('p', 31)) },
+	},
     },
     challenges: {
         11: {
@@ -129,6 +135,14 @@ addLayer("p", {
             goalDescription: "Get 40 points.",
             rewardDescription: "×2 points and unlock upgrade 6",
 	    unlocked() { return (hasUpgrade('p', 15)) },
+	},
+        12: {
+            name: "Prestige Challenge 2",
+            challengeDescription: "^0.1 and /10 points.",
+            canComplete: function() {return player.points.gte("1000")},
+            goalDescription: "Get 1000 points.",
+            rewardDescription: "×2 points again and unlock upgrade 13 (placeholder)",
+	    unlocked() { return (hasUpgrade('p', 32)) },
 	},
     },
 })
