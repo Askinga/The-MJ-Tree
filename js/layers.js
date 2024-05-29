@@ -213,6 +213,7 @@ addLayer("p", {
         },
     },
 })
+
 addLayer("up", {
     name: "Upgraded Prestige Points",
     symbol: "U",
