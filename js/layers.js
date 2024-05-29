@@ -8,8 +8,8 @@ addLayer("p", {
     }},
     color: "#ff7300",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
-    resource: "mastery", // Name of prestige currency
-    baseResource: "mastery", // Name of resource prestige is based on
+    resource: "mastered points", // Name of prestige currency
+    baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 1.3, // Prestige currency exponent
@@ -29,8 +29,17 @@ addLayer("p", {
     upgrades: {
         11: {
             title: "Masterful",
-            description: "Get 1 mastery every second.",
+            description: "Get 1 point every second.",
             cost: new Decimal(0),
         },
     },
+      effect(){
+    let enpow = 1
+	let eff = player.p.points.add(1).pow(enpow)
+       return eff
+       },
+        effectDescription() {
+            let desc = "boosting points by x" + format(tmp[this.layer].effect);
+            return desc;
+        },
 })
