@@ -18,6 +18,7 @@ addLayer("p", {
         if (hasUpgrade('p', 23)) mult = mult.times(3)
 	if (hasUpgrade('p', 24)) mult = mult.times(upgradeEffect('p', 24))
 	if (hasUpgrade('p', 33)) mult = mult.times(upgradeEffect('p', 33))
+	if (hasMilestone('p', 1)) mult = mult.times(1.75)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -166,6 +167,18 @@ addLayer("p", {
 	    unlocked() { return (hasChallenge('p', 12)) },
 	    tooltip: "log10(prestige points+1(^0.2)",
 	},
+        34: {
+            title: "Milestone time!",
+            description: "Unlock a milestone.",
+            cost: new Decimal(6500),      
+            unlocked() { return (hasUpgrade('p', 33)) },
+	},
+        35: {
+            title: "Lets unlock something new!!",
+            description: "Unlock a new layer.",
+            cost: new Decimal(15000),      
+            unlocked() { return (hasUpgrade('p', 34)) },
+	},
     },
     challenges: {
         11: {
@@ -189,6 +202,14 @@ addLayer("p", {
         challenge: {
             title: "Challenges",
             body() { return "Challenges give a set of nerfs to your progression, but when you finish them, you get a boost!" },
+        },
+    },
+    milestones: {
+        1: {
+            requirementDescription: "First milestone! (PM1: 4000 PP)",
+            effectDescription: "×1.75 prestige points and unlock a new upgrade",
+            done() { return player["p"].points.gte("4000") },
+            unlocked() {return hasUpgrade('p', 34)},
         },
     },
 })
