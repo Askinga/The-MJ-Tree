@@ -7,7 +7,13 @@ addLayer("p", {
 		points: new Decimal(0),
     }},
     color: "#ff7300",
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account
+        requires() {
+        let req = new Decimal(10)
+        req = req.div(smartUpgradeEffect('p', 12))
+        return req
+    },
+
+    
     resource: "mastered points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -32,8 +38,15 @@ addLayer("p", {
             description: "Get 1 point every second.",
             cost: new Decimal(0),
         },
+        12: {
+            title: "Dividing costs",
+            description: "Divide mastered point cost based on points.",
+            cost: new Decimal(2),
+            effect() {return player.points.max(0).add(1).pow(0.3)},
+            effectDisplay() {return "÷"+format(this.effect())},
+        },
     },
-      effect(){
+    effect(){
     let enpow = 1
 	let eff = player.p.points.add(1).pow(enpow)
        return eff
