@@ -17,6 +17,7 @@ addLayer("p", {
         mult = new Decimal(1)
         if (hasUpgrade('p', 23)) mult = mult.times(3)
 	if (hasUpgrade('p', 24)) mult = mult.times(upgradeEffect('p', 24))
+	if (hasUpgrade('p', 33)) mult = mult.times(upgradeEffect('p', 33))
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -149,6 +150,16 @@ addLayer("p", {
             description: "Unlock another challenge.",
             cost: new Decimal(1500),
             unlocked() { return (hasUpgrade('p', 31)) },
+	},
+        33: {
+            title: "Self Prestige Boost",
+            description: "Multiply prestige point gain based on prestige points.",
+            cost: new Decimal(4000),
+            effect(){
+                return player.p.points.log(10).add(1).pow(0.2)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasChallenge('p', 12)) },
 	},
     },
     challenges: {
