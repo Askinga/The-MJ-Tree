@@ -44,6 +44,7 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (layers.p.effect().gte(1)) gain = gain.times(layers.p.effect())
 	return gain
 }
 
