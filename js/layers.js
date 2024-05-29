@@ -208,7 +208,7 @@ addLayer("p", {
         1: {
             requirementDescription: "First milestone! (PM1: 4000 PP)",
             effectDescription: "×1.75 prestige points and unlock a new upgrade",
-            done() { return player["p"].points.gte("4000") },
+            done() { return player["p"].points.gte("4000") && hasUpgrade('p', 34) },
             unlocked() {return hasUpgrade('p', 34)},
         },
     },
