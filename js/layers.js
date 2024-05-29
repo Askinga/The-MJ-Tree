@@ -177,7 +177,7 @@ addLayer("p", {
             title: "Lets unlock something new!!",
             description: "Unlock a new layer.",
             cost: new Decimal(15000),      
-            unlocked() { return (hasUpgrade('p', 34)) },
+            unlocked() { return (hasMilestone('p', 1)) },
 	},
     },
     challenges: {
