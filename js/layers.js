@@ -80,6 +80,7 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('p', 13)) },
+	    tooltip: "points+1(^0.15)",
 	},
         15: {
             title: "Challenge time!",
@@ -106,6 +107,7 @@ addLayer("p", {
 	        return "This upgrade raises points by ^" + format(upgEffect) + softcapDescription
             },
 	    unlocked() { return (hasChallenge('p', 11)) },
+	    tooltip: "prestige points+1(^0.075) softcap effect 1.5",
 	},
         22: {
             title: "Point multiplier",
@@ -128,6 +130,7 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('p', 23)) },
+	    tooltip: "points+1^(0.06)",
 	},
         25: {
             title: "MORE POINTS!!!",
@@ -144,6 +147,7 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('p', 25)) },
+	    tooltip: "prestige points+1(^0.175).",
 	},
         32: {
             title: "Oh no",
@@ -160,6 +164,7 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasChallenge('p', 12)) },
+	    tooltip: "log10(prestige points+1(^0.2)",
 	},
     },
     challenges: {
