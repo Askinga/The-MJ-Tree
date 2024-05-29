@@ -28,7 +28,7 @@ addLayer("p", {
 
     upgrades: {
         11: {
-            title: "Masterful",
+            title: "Point gain starts now",
             description: "Get 1 point every second.",
             cost: new Decimal(0),
         },
