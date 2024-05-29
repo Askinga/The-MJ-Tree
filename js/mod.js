@@ -1,5 +1,5 @@
 let modInfo = {
-	name: "The Exponential Tree",
+	name: "The tree with huge numbers",
 	id: "abcd1234",
 	author: "Askinga",
 	pointsName: "points",
