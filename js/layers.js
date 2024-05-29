@@ -42,7 +42,7 @@ addLayer("p", {
             title: "Dividing costs",
             description: "Divide mastered point cost based on points.",
             cost: new Decimal(2),
-            effect() {return player.points.max(0).add(1).pow(0.3)},
+            effect() {return player.points.add(1).pow(0.3)},
             effectDisplay() {return "÷"+format(this.effect())},
         },
     },
