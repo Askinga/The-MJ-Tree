@@ -19,7 +19,8 @@ addLayer("p", {
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        if (hasUpgrade('p', 23)) mult = mult.times(3)
+        if (layers.up.effect().gte(1)) mult = mult.times(layers.up.effect())
+	if (hasUpgrade('p', 23)) mult = mult.times(3)
 	if (hasUpgrade('p', 24)) mult = mult.times(upgradeEffect('p', 24))
 	if (hasUpgrade('p', 33)) mult = mult.times(upgradeEffect('p', 33))
 	if (hasMilestone('p', 1)) mult = mult.times(1.75)
@@ -293,12 +294,12 @@ addLayer("up", {
         },
     },
     effect(){
-    let rapow = 0.75
+    let rapow = 0.55
 	let eff = player.up.points.add(1).pow(rapow)
        return eff
         },
         effectDescription() {
-            let desc = "which is boosting points by x" + format(tmp[this.layer].effect);
+            let desc = "which is boosting points and prestige points by x" + format(tmp[this.layer].effect);
             return desc;
         },
 })
