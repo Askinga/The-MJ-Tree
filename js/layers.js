@@ -227,7 +227,7 @@ addLayer("up", {
 	"width": "80px",
 	"height": "100px"
     },
-    color: "#0ec466",
+    color: "#7ecfc4",
     requires: new Decimal(30000000), // Can be a function that takes requirement increases into account
     resource: "upgraded prestige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
