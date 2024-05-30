@@ -94,7 +94,7 @@ addLayer("p", {
 		}
 	        return "This upgrade boosts points by x" + format(upgEffect) + softcapDescription
             },
-	    unlocked() { return (hasChallenge('p', 11)) },
+	    unlocked() { return (hasUpgrade('p', 13)) },
 	    tooltip: "points+1(^0.14) softcap effect 1000",
 	},
         15: {
