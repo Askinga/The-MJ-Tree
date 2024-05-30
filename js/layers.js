@@ -228,7 +228,7 @@ addLayer("p", {
         },
     },
     automate() {
-            if(hasUpgrade('up', 12)
+            if(hasUpgrade('up', 12) {
                 buyUpgrade('p', 11)
                 buyUpgrade('p', 12)
                 buyUpgrade('p', 13)
@@ -248,7 +248,7 @@ addLayer("up", {
     }},
     nodeStyle: {
 	"border-radius": "100%",
-	"width": "80px",
+	"width": "110px",
 	"height": "100px"
     },
     color: "#7ecfc4",
