@@ -14,7 +14,7 @@ addLayer("p", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     passiveGeneration() {
-	if (hasUpgrade('up', 11)) return 0.01
+	if (hasUpgrade('up', 11)) return 0.05
 	return 0
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -227,6 +227,15 @@ addLayer("p", {
             unlocked() {return hasUpgrade('p', 34)},
         },
     },
+    automate() {
+            if(hasUpgrade('up', 12)
+                buyUpgrade('p', 11)
+                buyUpgrade('p', 12)
+                buyUpgrade('p', 13)
+                buyUpgrade('p', 14)
+                buyUpgrade('p', 15)
+        }
+    },
 })
 
 addLayer("up", {
@@ -289,8 +298,13 @@ addLayer("up", {
     upgrades: {
         11: {
             title: "Passive generation",
-            description: "Get 1% of prestige points every second.",
+            description: "Get 5% of prestige points every second.",
             cost: new Decimal(2),
+        },
+        12: {
+            title: "Automation",
+            description: "Automate the first row of prestige upgrades.",
+            cost: new Decimal(3),
         },
     },
     effect(){
