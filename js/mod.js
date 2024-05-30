@@ -44,6 +44,7 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (layers.up.effect().gte(1)) gain = gain.times(layers.up.effect())
 	if (hasUpgrade('p', 12)) gain = gain.add(1)
 	if (hasUpgrade('p', 13)) gain = gain.pow(1.2)
 	if (hasUpgrade('p', 14)) gain = gain.times(upgradeEffect('p', 14))
@@ -69,7 +70,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return (hasChallenge('p', 12))
+	return player.up.points.gte("3")
 }
 
 
