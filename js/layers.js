@@ -243,7 +243,7 @@ addLayer("up", {
 	"height": "100px"
     },
     color: "#7ecfc4",
-    requires: new Decimal(30000000), // Can be a function that takes requirement increases into account
+    requires: new Decimal(12500000), // Can be a function that takes requirement increases into account
     resource: "upgraded prestige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
