@@ -228,13 +228,13 @@ addLayer("p", {
         },
     },
     automate() {
-            if(hasUpgrade('up', 12) {
+            if(hasUpgrade('up', 12)) {
                 buyUpgrade('p', 11)
                 buyUpgrade('p', 12)
                 buyUpgrade('p', 13)
                 buyUpgrade('p', 14)
                 buyUpgrade('p', 15)
-        }
+	}
     },
 })
 
