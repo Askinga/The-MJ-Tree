@@ -313,7 +313,7 @@ addLayer("up", {
                 return player.points.log(10).add(1).pow(0.5)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-	    unlocked() { return (hasUpgrade('p', 23)) },
+	    unlocked() { return (hasUpgrade('up', 11)) },
 	    tooltip: "log10(points+1^(0.5))",
 	},
     },
