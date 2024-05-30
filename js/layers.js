@@ -13,6 +13,10 @@ addLayer("p", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
+    passiveGeneration() {
+	if (hasUpgrade('up', 11)) return 0.01
+	return 0
+    },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('p', 23)) mult = mult.times(3)
@@ -77,11 +81,21 @@ addLayer("p", {
             description: "Multiply point gain based on points.",
             cost: new Decimal(5),
             effect(){
-                return player.points.add(1).pow(0.15)
+                let expu3 = 0.15
+                let eff = player.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1000"), 0.5)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1000")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts points by x" + format(upgEffect) + softcapDescription
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-	    unlocked() { return (hasUpgrade('p', 13)) },
-	    tooltip: "points+1(^0.15)",
+	    unlocked() { return (hasChallenge('p', 11)) },
+	    tooltip: "points+1(^0.14) softcap effect 1000",
 	},
         15: {
             title: "Challenge time!",
@@ -271,4 +285,20 @@ addLayer("up", {
             ],
         },
     },
+    upgrades: {
+        11: {
+            title: "Passive generation",
+            description: "Get 1% of prestige points every second.",
+            cost: new Decimal(2),
+        },
+    },
+    effect(){
+    let rapow = 0.75
+	let eff = player.up.points.add(1).pow(rapow)
+       return eff
+        },
+        effectDescription() {
+            let desc = "which is boosting points by x" + format(tmp[this.layer].effect);
+            return desc;
+        },
 })
