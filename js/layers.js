@@ -252,7 +252,11 @@ addLayer("up", {
 	"height": "100px"
     },
     color: "#7ecfc4",
-    requires: new Decimal(12500000), // Can be a function that takes requirement increases into account
+    requires() {
+        let req = new Decimal(6000000)
+        req = req.div(upgradeEffect('up', 12))
+        return req
+    }, // Can be a function that takes requirement increases into account
     resource: "upgraded prestige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -303,9 +307,15 @@ addLayer("up", {
         },
         12: {
             title: "Automation",
-            description: "Automate the first row of prestige upgrades.",
+            description: "Automate the first row of prestige upgrades, Also divide layer requirement based on points.",
             cost: new Decimal(3),
-        },
+            effect(){
+                return player.points.log(10).add(1).pow(0.5)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('p', 23)) },
+	    tooltip: "log10(points+1^(0.5))",
+	},
     },
     effect(){
     let rapow = 0.625
