@@ -327,3 +327,31 @@ addLayer("up", {
             return desc;
         },
 })
+
+addLayer("pgn", {
+    name: "point gain nerf",
+    symbol: "↓", // ↓
+    position: 3,
+    startData() {return {
+        unlocked: true,
+        points: new Decimal (0),
+    }},
+    tooltip() {
+        return "Point gain nerfs"
+    },
+    color: "#800000",
+    type: "none",
+    row: "side",
+    tabFormat: {
+        Difficulty:{
+            unlocked() {return false},
+        content:[
+            ["display-text", function() { return '<h2>Point gain nerfs</h2>' }],
+            "blank",
+            "blank",
+            ["display-text", function() {
+                if (player.points.gte(100000000)&&(canGenPoints())) return "Your point gain is divided by "+format(getPointDivider())+" (based on points)"
+            }],
+        ],
+        }
+    },
