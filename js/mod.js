@@ -57,9 +57,13 @@ function getPointGen() {
 	if (inChallenge('p', 12)) gain = gain.times(0.1)
 	if (inChallenge('p', 12)) gain = gain.pow(0.1)
 	if (hasChallenge('p', 12)) gain = gain.times(2)
+	gain = gain.div(getPointDivider())
 	return gain
 }
-
+function getPointDivider() {
+	let base = player.points.max(10).log(10).max(1).pow(0.9)
+        return base
+}
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
 function addedPlayerData() { return {
 }}
