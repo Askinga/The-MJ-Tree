@@ -254,7 +254,7 @@ addLayer("up", {
     color: "#7ecfc4",
     requires() {
         let req = new Decimal(6000000)
-        req = req.div(upgradeEffect('up', 12))
+        if (hasUpgrade('up', 12)) req = req.div(upgradeEffect('up', 12))
         return req
     }, // Can be a function that takes requirement increases into account
     resource: "upgraded prestige points", // Name of prestige currency
@@ -312,7 +312,7 @@ addLayer("up", {
             effect(){
                 return player.points.log(10).add(1).pow(0.5)
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            effectDisplay() { return "÷"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('up', 11)) },
 	    tooltip: "log10(points+1^(0.5))",
 	},
