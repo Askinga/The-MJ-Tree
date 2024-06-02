@@ -362,14 +362,32 @@ addLayer("au", {
         let visible = true
        return visible
     },
-    
-    bars: {
-    bigBar: {
-        direction: 'RIGHT',
-        width: 200,
-        height: 50,
-        progress() { return 10000000 },
-        display() { return 'Progress:' },
+    tabFormat: {
+        Difficulty:{
+            unlocked() {return false},
+        content:[
+            ["display-text", function() { return '<h2>Automation</h2>' }],
+            "main-display",
+            "resource-display",
+            ["bar", 'bigBar']
+	],
+        },
     },
-    }
+    bars: {
+        bigBar: {
+            direction: RIGHT,
+            width: 650,
+            height: 40,
+            fillStyle: { 'background-color': "#cf4fe1" },
+            borderStyle() { return { "border-color": "#800000" } },
+            progress() {
+                let prog = player.points.div(layerRequirement('au'))
+                return prog
+            },
+            display() {
+                if (player.i.best.lte(9))
+                    return "Get a automation point: " + format(player.points) + format(layerRequirement('au')) "points."
+            }
+        },
+    },
 })
