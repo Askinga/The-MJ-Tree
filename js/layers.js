@@ -381,11 +381,11 @@ addLayer("au", {
             fillStyle: { 'background-color': "#800000" },
             borderStyle() { return { "border-color": "#800000" } },
             progress() {
-                let prog = player.points.div(layerRequirement('au'))
+                let prog = player.points.div(10000000)
                 return prog
             },
             display() {
-                    return "Get a automation point: " + format(player.points) + format(layerRequirement('au')) "points."
+                    return "Get a automation point: " + format(player.points) +"/10000000 points."
             }
         },
     },
