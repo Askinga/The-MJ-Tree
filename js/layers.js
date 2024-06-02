@@ -355,7 +355,7 @@ addLayer("au", {
             "main-display",
             "resource-display",
             ["display-text", function() {
-                "Next automation point at "+format(layerRequirement())+" points!"
+                "Next automation point at "+format(getLayerRequirement())+" points!"
             }],
         ],
         }
