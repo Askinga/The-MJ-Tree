@@ -328,29 +328,34 @@ addLayer("up", {
         },
 })
 
-addLayer("pgn", {
-    name: "point gain nerf",
-    symbol: "↓", // ↓
+addLayer("au", {
+    name: "automation",
+    symbol: "Au", // ↓
     position: 3,
     startData() {return {
         unlocked: true,
         points: new Decimal (0),
     }},
     tooltip() {
-        return "Point gain nerfs"
+        return "Automation"
     },
     color: "#800000",
-    type: "none",
+    requires: new Decimal(10000000),
+    resource: "automation points", // Name of prestige currency
+    baseResource: "points", // Name of resource prestige is based on
+    baseAmount() {return player.points},
+    type: "static",
+    exponent: 1.5,
     row: "side",
     tabFormat: {
         Difficulty:{
             unlocked() {return false},
         content:[
-            ["display-text", function() { return '<h2>Point gain nerfs</h2>' }],
-            "blank",
-            "blank",
+            ["display-text", function() { return '<h2>Automation</h2>' }],
+            "main-display",
+            "resource-display",
             ["display-text", function() {
-                if (player.points.gte(100000000)&&(canGenPoints())) return "Your point gain is divided by "+format(getPointDivider())+" (based on points)"
+                "Next automation point at "+format(layerRequirement())+" points!"
             }],
         ],
         }
