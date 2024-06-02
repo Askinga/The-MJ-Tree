@@ -60,7 +60,7 @@ function getPointGen() {
 	return gain
 }
 function getPointDivider() {
-	let base = player.points.max(10).log(10).max(1).pow(2)
+	let base = (layerRequirement('au'))
 	return base
 }
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
