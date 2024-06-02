@@ -375,4 +375,12 @@ addLayer("au", {
         ],
         },
     },
+    bars: {
+    bigBar: {
+        direction: 'RIGHT',
+        width: 200,
+        height: 50,
+        progress() { return 10000000 },
+    },
+    }
 })
