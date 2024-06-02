@@ -369,7 +369,8 @@ addLayer("au", {
             ["display-text", function() { return '<h2>Automation</h2>' }],
             "main-display",
             "resource-display",
-        ],
+            "bars",
+	],
         },
     },
     bars: {
