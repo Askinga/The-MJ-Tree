@@ -1,4 +1,3 @@
-
 const myParticle {
     image:"",
     spread: 20,
@@ -7,5 +6,4 @@ const myParticle {
     speed() { // Randomize speed a bit
         return (Math.random() + 1.2) * 8 
     },
-    etc...
-                }
+}
