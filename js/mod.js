@@ -59,10 +59,6 @@ function getPointGen() {
 	if (hasChallenge('p', 12)) gain = gain.times(2)
 	return gain
 }
-function getLayerRequirement() {
-	let base = (layerRequirement('au'))
-	return base
-}
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
 function addedPlayerData() { return {
 }}
