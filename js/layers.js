@@ -362,23 +362,14 @@ addLayer("au", {
         let visible = true
        return visible
     },
-    tabFormat: {
-        Difficulty:{
-            unlocked() {return false},
-        content:[
-            ["display-text", function() { return '<h2>Automation</h2>' }],
-            "main-display",
-            "resource-display",
-            "bars",
-	],
-        },
-    },
+    
     bars: {
     bigBar: {
         direction: 'RIGHT',
         width: 200,
         height: 50,
         progress() { return 10000000 },
+        display() { return 'Progress:' },
     },
     }
 })
