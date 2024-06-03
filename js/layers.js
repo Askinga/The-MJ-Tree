@@ -403,7 +403,7 @@ addLayer("au", {
             description: "You have all prestige challenges finished",
             cost: new Decimal(4),
             effect() {
-                if (hasUpgrade('au', 13)
+                if (hasUpgrade('au', 13) || hasAchievement('🏆', 21)
                 return player.p.challenges[11, 12] = new Decimal(1)
 	    },
 	    unlocked() { return (hasUpgrade('au', 12)) },
@@ -462,6 +462,11 @@ addLayer("🏆", {
             name: "Big point booster",
             done() { return (hasUpgrade('p', 25)) },
             tooltip: "Get prestige upgrade 10.",	   
+        },
+        21: {
+            name: "Big requirement",
+            done() { return player.points.gte(1e10) },
+            tooltip: "Get 10B points.",	   
         },
     },
 })
