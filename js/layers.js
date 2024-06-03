@@ -357,7 +357,7 @@ addLayer("au", {
         return new Decimal(1)
     },
     row: "side", // Row the layer is in on the tree (0 is the first row)
-
+    
     layerShown(){
         let visible = true
        return visible
@@ -385,7 +385,7 @@ addLayer("au", {
                 return prog
             },
             display() {
-                    return "Get a automation point: " + format(player.points) +"/10000000 points."
+                    return "Get a automation point: " + format(player.points) + player.au.requirement +"points."
             }
         },
     },
