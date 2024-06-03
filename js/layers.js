@@ -33,6 +33,7 @@ addLayer("p", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    resetDescription: 'Reset points for ',
     layerShown(){return true},
     tabFormat: {
         "Main tab": {
@@ -276,7 +277,7 @@ addLayer("up", {
     hotkeys: [
         {key: "u", description: "U: Reset for upgraded prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    resetDescription: 'Reset prestige for',
+    resetDescription: 'Reset prestige for ',
     layerShown(){
         let visible = false
         if (hasUpgrade('p', 35) || player.up.unlocked) visible = true
