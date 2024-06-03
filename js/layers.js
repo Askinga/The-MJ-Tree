@@ -238,7 +238,7 @@ addLayer("p", {
 	}
     },
     effect(){
-    let rpow = 0.05
+    let rpow = 0.075
 	let eff = player.p.points.add(1).pow(rpow)
        return eff
         },
