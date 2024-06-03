@@ -276,7 +276,7 @@ addLayer("up", {
     hotkeys: [
         {key: "u", description: "U: Reset for upgraded prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-
+    resetDescription: 'Reset prestige for',
     layerShown(){
         let visible = false
         if (hasUpgrade('p', 35) || player.up.unlocked) visible = true
@@ -357,7 +357,7 @@ addLayer("au", {
         return new Decimal(1)
     },
     row: "side", // Row the layer is in on the tree (0 is the first row)
-    
+    autoPrestige() { return true },
     layerShown(){
         let visible = true
        return visible
