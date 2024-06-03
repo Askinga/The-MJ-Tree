@@ -97,7 +97,7 @@ addLayer("p", {
 	        return "This upgrade boosts points by x" + format(upgEffect) + softcapDescription
             },
 	    unlocked() { return (hasUpgrade('p', 13)) },
-	    tooltip: "points+1(^0.14) softcap effect 1000",
+	    tooltip: "points+1(^0.15) softcap when effect 1000",
 	},
         15: {
             title: "Challenge time!",
@@ -124,7 +124,7 @@ addLayer("p", {
 	        return "This upgrade raises points by ^" + format(upgEffect) + softcapDescription
             },
 	    unlocked() { return (hasChallenge('p', 11)) },
-	    tooltip: "prestige points+1(^0.075) softcap effect 1.5",
+	    tooltip: "prestige points+1(^0.075) softcap when effect 1.5",
 	},
         22: {
             title: "Point multiplier",
@@ -164,7 +164,7 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('p', 25)) },
-	    tooltip: "prestige points+1(^0.175).",
+	    tooltip: "prestige points+1(^0.175)",
 	},
         32: {
             title: "Oh no",
@@ -238,7 +238,7 @@ addLayer("p", {
 	}
     },
     effect(){
-    let rpow = 0.021
+    let rpow = 0.05
 	let eff = player.p.points.add(1).pow(rpow)
        return eff
         },
