@@ -14,7 +14,7 @@ addLayer("p", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     passiveGeneration() {
-	if (hasUpgrade('up', 11)) return 0.05
+	if (hasUpgrade('au', 11)) return 0.1
 	return 0
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -177,11 +177,11 @@ addLayer("p", {
             description: "Multiply prestige point gain based on prestige points.",
             cost: new Decimal(4000),
             effect(){
-                return player.p.points.log(10).add(1).pow(0.2)
+                return player.p.points.log(10).add(2).pow(0.2)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasChallenge('p', 12)) },
-	    tooltip: "log10(prestige points+1(^0.2)",
+	    tooltip: "log10(prestige points+2(^0.2)",
 	},
         34: {
             title: "Milestone time!",
@@ -229,7 +229,7 @@ addLayer("p", {
         },
     },
     automate() {
-            if(hasUpgrade('up', 12)) {
+            if(hasUpgrade('au', 12)) {
                 buyUpgrade('p', 11)
                 buyUpgrade('p', 12)
                 buyUpgrade('p', 13)
@@ -239,6 +239,7 @@ addLayer("p", {
     },
     effect(){
     let rpow = 0.075
+    if (hasUpgrade('up', 11)) rpow = 0.1
 	let eff = player.p.points.add(1).pow(rpow)
        return eff
         },
@@ -286,7 +287,7 @@ addLayer("up", {
     hotkeys: [
         {key: "u", description: "U: Reset for upgraded prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    resetDescription: 'Reset prestige for ',
+    resetDescription: 'Reset prestige and points for ',
     layerShown(){
         let visible = false
         if (hasUpgrade('p', 35) || player.up.unlocked) visible = true
@@ -311,20 +312,21 @@ addLayer("up", {
     },
     upgrades: {
         11: {
-            title: "Passive generation",
-            description: "Get 5% of prestige points every second.",
+            title: "Effect increase",
+            description: "Improve prestige effect.",
             cost: new Decimal(2),
-        },
+            tooltip: "^0.1 instead of ^0.075",
+	},
         12: {
-            title: "Automation",
-            description: "Automate the first row of prestige upgrades, Also divide layer requirement based on points.",
+            title: "Layer divider",
+            description: "Divide layer requirement based on points.",
             cost: new Decimal(3),
             effect(){
-                return player.points.log(10).add(1).pow(0.5)
+                return player.points.log(10).add(2).pow(0.5)
             },
             effectDisplay() { return "÷"+format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('up', 11)) },
-	    tooltip: "log10(points+1^(0.5))",
+	    tooltip: "log10(points+2(^0.5))",
 	},
     },
     effect(){
@@ -377,10 +379,34 @@ addLayer("au", {
             unlocked() {return false},
         content:[
             ["display-text", function() { return '<h2>Automation</h2>' }],
-            "main-display",
+            ["display-text", function() { return 'Here is automation. In this layer, there is going to be some automation 😊' }],
+	    "main-display",
             "resource-display",
             "prestige-button",
 	],
         },
+    },
+    upgrades: {
+        11: {
+            title: "Passive generation",
+            description: "Get 10% of prestige points every second.",
+            cost: new Decimal(1),
+        },
+        12: {
+            title: "Automation",
+            description: "Automate the first 5 prestige upgrades",
+            cost: new Decimal(2),
+            unlocked() { return (hasUpgrade('au', 11)) },
+	},
+        13: {
+            title: "No more grinding",
+            description: "You have all prestige challenges finished",
+            cost: new Decimal(4),
+            effect() {
+                if (hasUpgrade('au', 13)
+                return player.p.challenges[11, 12] = new Decimal(1)
+	    },
+	    unlocked() { return (hasUpgrade('au', 12)) },
+	},
     },
 })
