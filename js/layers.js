@@ -237,6 +237,15 @@ addLayer("p", {
                 buyUpgrade('p', 15)
 	}
     },
+    effect(){
+    let rpow = 0.021
+	let eff = player.p.points.add(1).pow(rpow)
+       return eff
+        },
+        effectDescription() {
+            let desc = "which is boosting points by x" + format(tmp[this.layer].effect);
+            return desc;
+        },
 })
 
 addLayer("up", {
