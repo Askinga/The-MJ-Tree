@@ -379,7 +379,7 @@ addLayer("au", {
             unlocked() {return false},
         content:[
             ["display-text", function() { return '<h2>Automation</h2>' }],
-            ["display-text", function() { return 'Here is automation. In this layer, there is going to be some automation 😊' }],
+            ["display-text", "Here is automation. In this layer, there is going to be automation 😊"],
 	    "main-display",
             "resource-display",
             "prestige-button",
