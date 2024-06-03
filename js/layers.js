@@ -416,6 +416,7 @@ addLayer("🏆", {
         unlocked: true,
     }},
     color: "yellow",
+    position: 1,
     row: "side",
     layerShown() {return true}, 
     tooltip() { // Optional, tooltip displays when the layer is locked
