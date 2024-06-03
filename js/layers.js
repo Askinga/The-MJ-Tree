@@ -410,3 +410,58 @@ addLayer("au", {
 	},
     },
 })
+
+addLayer("🏆", {
+    startData() { return {
+        unlocked: true,
+    }},
+    color: "yellow",
+    row: "side",
+    layerShown() {return true}, 
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Achievements")
+    },
+    tabFormat: {
+        "Achievements": {
+            content: [
+                "achievements",
+                "blank",
+                ],
+        },
+    },
+    achievements: {
+        rows: 25,
+        cols: 6,
+        11: {
+            name: "Start off",
+            done() { return (hasUpgrade('p', 11)) },
+            tooltip: "Get prestige upgrade 1.",	   
+        },
+        12: {
+            name: "Exponent",
+            done() { return (hasUpgrade('p', 13)) },
+            tooltip: "Get prestige upgrade 3.",	   
+        },
+        13: {
+            name: "Challenges",
+            done() { return (hasUpgrade('p', 15)) },
+            tooltip: "Get prestige upgrade 5.",	   
+        },
+        14: {
+            name: "Exponential boost",
+            done() { return (hasUpgrade('p', 21)) },
+            tooltip: "Get prestige upgrade 6.",	   
+        },
+        15: {
+            name: "Prestige booster",
+            done() { return (hasUpgrade('p', 24)) },
+            tooltip: "Get prestige upgrade 9.",	   
+        },
+        16: {
+            name: "Big point booster",
+            done() { return (hasUpgrade('p', 25)) },
+            tooltip: "Get prestige upgrade 10.",	   
+        },
+    },
+})
+	
