@@ -369,7 +369,8 @@ addLayer("au", {
             ["display-text", function() { return '<h2>Automation</h2>' }],
             "main-display",
             "resource-display",
-            ["bar", 'bigBar']
+            "prestige button",
+	    ["bar", "bigBar"],
 	],
         },
     },
@@ -385,7 +386,7 @@ addLayer("au", {
                 return prog
             },
             display() {
-                    return "Get a automation point: " + format(player.points) + player.au.requirement +"points."
+                    return "Get your first automation point: " + format(player.points) +"/10000000" + " points."
             }
         },
     },
