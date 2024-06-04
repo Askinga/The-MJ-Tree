@@ -180,7 +180,7 @@ addLayer("p", {
                 return player.p.points.log(10).add(2).pow(0.2)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-	    unlocked() { return (hasChallenge('p', 12)) },
+	    unlocked() { return (hasChallenge('p', 12)) || hasUpgrade('au', 13) },
 	    tooltip: "log10(prestige points+2(^0.2)",
 	},
         34: {
