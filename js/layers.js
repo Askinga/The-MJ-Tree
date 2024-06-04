@@ -513,6 +513,7 @@ addLayer("s", {
         if (hasUpgrade('up', 13) || player.s.unlocked) visible = true
        return visible
     }, 
+    branches:["p"],
     tabFormat: {
         "Main tab": {
             content: [
