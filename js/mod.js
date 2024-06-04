@@ -58,6 +58,7 @@ function getPointGen() {
 	if (inChallenge('p', 12)) gain = gain.times(0.1)
 	if (inChallenge('p', 12)) gain = gain.pow(0.1)
 	if (hasChallenge('p', 12)) gain = gain.times(2)
+	if (hasUpgrade('au', 13)) gain = gain.times(4)
 	return gain
 }
 function getPointDivider() {
