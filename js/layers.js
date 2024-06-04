@@ -515,7 +515,7 @@ addLayer("s", {
     clickables: {
     11: {
         display() {return "Click for a super point!"},
-        onClick() { return player.s.points.add(1) }
+        onClick() { return player.s.points.add(1) },
     },
     },
 })
