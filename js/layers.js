@@ -523,12 +523,7 @@ addLayer("s", {
 		onClick() { 
 			let gain2 = tmp[this.layer].gainMult;
 			player.s.points = player.s.points.plus(gain2) 
-		},
-		onHold() { 
-				gain2 = tmp[this.layer].gainMult;
-				player.s.points = player.s.points.plus(gain2) 
 		}
 	    }
-    },
     },
 })
