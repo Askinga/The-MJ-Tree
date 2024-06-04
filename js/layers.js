@@ -510,23 +510,7 @@ addLayer("s", {
         let visible = false
         if (hasUpgrade('up', 13) || player.s.unlocked) visible = true
        return visible
-    },
-    tabFormat: {
-        "Main tab": {
-            content: [
-                "main-display",
-                "resource-display",
-                "blank",
-                "blank",
-                "blank",
-                "blank",
-                "blank",
-                "clickables",
-                "milestones",
-                "upgrades"
-            ],
-        },
-    },
+    }, 
     clickables: {	
 	11: {
 		title: "Make Super Points",
