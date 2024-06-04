@@ -68,7 +68,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-        () => (player.points.gte(1e10)&&(canGenPoints())) ? "Past 1e10 points, points are raised ^0.5 because of softcap!" : "",
+        () => (player.points.gte(1e10)&&(canGenPoints())) ? "Past 1e10 points, point gain is raised ^0.5 because of softcap!" : "",
 	"<br>",
 ]
 
