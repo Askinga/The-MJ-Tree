@@ -101,7 +101,7 @@ addLayer("p", {
 	},
         15: {
             title: "Challenge time!",
-            description: "Unlock a challenge.",
+            description: "Unlock a challenge. (only if you do not buy automation upgrade 3)",
             cost: new Decimal(8),
             unlocked() { return (hasUpgrade('p', 14)) },
 	},
@@ -123,7 +123,7 @@ addLayer("p", {
 		}
 	        return "This upgrade raises points by ^" + format(upgEffect) + softcapDescription
             },
-	    unlocked() { return (hasChallenge('p', 11)) },
+	    unlocked() { return (hasChallenge('p', 11)) || hasUpgrade('au', 13) },
 	    tooltip: "prestige points+1(^0.075) softcap when effect 1.5",
 	},
         22: {
@@ -168,7 +168,7 @@ addLayer("p", {
 	},
         32: {
             title: "Oh no",
-            description: "Unlock another challenge.",
+            description: "Unlock another challenge. (only if you do not buy automation upgrade 3)",
             cost: new Decimal(1500),
             unlocked() { return (hasUpgrade('p', 31)) },
 	},
@@ -203,7 +203,7 @@ addLayer("p", {
             canComplete: function() {return player.points.gte("40")},
             goalDescription: "Get 40 points.",
             rewardDescription: "×2 points and unlock upgrade 6",
-	    unlocked() { return (hasUpgrade('p', 15)) },
+	    unlocked() { return (hasUpgrade('p', 15)) && !hasUpgrade('au', 13) },
 	},
         12: {
             name: "Prestige Challenge 2",
@@ -211,7 +211,7 @@ addLayer("p", {
             canComplete: function() {return player.points.gte("50")},
             goalDescription: "Get 50 points.",
             rewardDescription: "×2 points again and unlock upgrade 13",
-	    unlocked() { return (hasUpgrade('p', 32)) },
+	    unlocked() { return (hasUpgrade('p', 32)) && !hasUpgrade('au', 13) },
 	},
     },
     infoboxes: {
@@ -402,12 +402,8 @@ addLayer("au", {
 	},
         13: {
             title: "No more grinding",
-            description: "You have all prestige challenges finished",
+            description: "Prestige challenges are removed, but you gain their rewards",
             cost: new Decimal(4),
-            effect() {
-                if (hasUpgrade('au', 13))
-                return player.p.challenges[11, 12] = new Decimal(1)
-	    },
 	    unlocked() { return (hasUpgrade('au', 12)) },
 	},
     },
