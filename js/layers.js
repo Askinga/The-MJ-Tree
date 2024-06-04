@@ -482,7 +482,7 @@ addLayer("s", {
     symbol: "S",
     position: 1,
     startData() { return {
-        unlocked: true,
+        unlocked: false,
 		points: new Decimal(0),
     }},
     color: "#83f7a2",
@@ -494,7 +494,7 @@ addLayer("s", {
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have.
-    exponent: 0.000000000000001, // Prestige currency exponent
+    exponent: 0.45, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
@@ -506,6 +506,8 @@ addLayer("s", {
         return new Decimal(1)
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
+    resetDescription: 'Get ',
+    resetsNothing: "true",
     layerShown(){
         let visible = false
         if (hasUpgrade('up', 13) || player.s.unlocked) visible = true
@@ -516,7 +518,7 @@ addLayer("s", {
             content: [
                 "main-display",
                 "resource-display",
-                "blank",
+                "prestige-button",
                 "blank",
                 "blank",
                 "blank",
@@ -526,19 +528,5 @@ addLayer("s", {
                 "upgrades"
             ],
         },
-    },
-    clickables: {	
-	11: {
-		title: "Make Super Points",
-        	display() { return "Get a Super Point!." },
-		canClick() {return true},
-		style: {
-			transform: "translate(0px, -10px)"
-		},
-		onClick() { 
-			let gain2 = tmp[this.layer].gainMult;
-			player.s.points = player.s.points.plus(gain2) 
-		}
-	    }
     },
 })
