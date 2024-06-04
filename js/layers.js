@@ -383,6 +383,7 @@ addLayer("au", {
 	    "main-display",
             "resource-display",
             "prestige-button",
+	    "blank"
 	    "upgrades",
 	],
         },
