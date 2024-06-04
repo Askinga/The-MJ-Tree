@@ -71,8 +71,6 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-       () => (player.points.gte(1e9)&&(canGenPoints())) ? "Your point gain is divided by "+format(getPointDivider())" : "",
-	"<br>",
 ]
 
 // Determines when the game "ends"
