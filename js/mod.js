@@ -61,13 +61,15 @@ function getPointGen() {
 	if (hasUpgrade('au', 13)) gain = gain.times(4)
 	if (player.points >= (1e9)) gain = gain.pow(0.75)
 	return gain
-},
+}
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
 function addedPlayerData() { return {
 }}
 
 // Display extra things at the top of the page
 var displayThings = [
+        () => (player.points.gte(1e9)&&(canGenPoints())) ? "Points ^0.75 because of softcap" : "",
+	"<br>",
 ]
 
 // Determines when the game "ends"
