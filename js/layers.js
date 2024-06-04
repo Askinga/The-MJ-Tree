@@ -332,7 +332,8 @@ addLayer("up", {
             title: "Unlock",
             description: "Unlock something new!.",
             cost: new Decimal(4),
-            tooltip: "A new layer",
+            unlocked() { return (hasUpgrade('up', 12)) },
+	    tooltip: "A new layer",
 	},
     },
     effect(){
