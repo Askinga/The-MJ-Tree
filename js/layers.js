@@ -521,7 +521,7 @@ addLayer("s", {
 			transform: "translate(0px, -10px)"
 		},
 		onClick() { 
-			let gain2 = 1
+			let gain2 = 1;
 			player.s.points = player.s.points.plus(gain2) 
 		}
 	    }
