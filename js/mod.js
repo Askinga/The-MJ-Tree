@@ -59,18 +59,20 @@ function getPointGen() {
 	if (inChallenge('p', 12)) gain = gain.pow(0.1)
 	if (hasChallenge('p', 12)) gain = gain.times(2)
 	if (hasUpgrade('au', 13)) gain = gain.times(4)
+	gain = gain.div(getPointDivider())
 	return gain
 }
 function getPointDivider() {
-	let base = (layerRequirement('au'))
+	let base = player.points.max(1e9).log(10).max(1).pow(2)
 	return base
-}
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
 function addedPlayerData() { return {
 }}
 
 // Display extra things at the top of the page
 var displayThings = [
+       () => (player.points.gte(1e9)&&(canGenPoints())) ? "Your point gain is divided by "+format(getPointDivider())" : "",
+	"<br>",
 ]
 
 // Determines when the game "ends"
