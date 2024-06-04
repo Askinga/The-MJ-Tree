@@ -328,6 +328,12 @@ addLayer("up", {
 	    unlocked() { return (hasUpgrade('up', 11)) },
 	    tooltip: "log10(points+2(^0.5))",
 	},
+        13: {
+            title: "Unlock",
+            description: "Unlock something new!.",
+            cost: new Decimal(4),
+            tooltip: "A new layer",
+	},
     },
     effect(){
     let rapow = 0.625
@@ -358,6 +364,7 @@ addLayer("au", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 1.6, // Prestige currency exponent
+    resetsNothing: return true,
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
@@ -468,4 +475,46 @@ addLayer("🏆", {
         },
     },
 })
-	
+
+addLayer("s", {
+    name: "Super Points",
+    symbol: "S",
+    position: 1,
+    startData() { return {
+        unlocked: true,
+		points: new Decimal(0),
+    }},
+    color: "#83f7a2",
+    requires() {
+        let req = new Decimal(1e10)
+        return req
+    }, // Can be a function that takes requirement increases into account
+    resource: "super points", // Name of prestige currency
+    baseResource: "points", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    canReset: return false,
+    exponent: 1.6, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('up', 13) || player.s.unlocked) visible = true
+       return visible
+    },
+    clickables: {
+    11: {
+        display() {return "Click for a super point!"},
+        onClick() { return player.s.points.add(1) }
+    },
+    },
+})
