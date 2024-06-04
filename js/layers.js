@@ -512,13 +512,18 @@ addLayer("s", {
         if (hasUpgrade('up', 13) || player.s.unlocked) visible = true
        return visible
     },
-    clickables: {
-    11: {
-        display() {return "Click for a super point!"},
-        onClick() { 
+    clickables: {	
+	11: {
+		title: "Get Super!",
+        	display() { return "Click to get a super point!." },
+		canClick() {return true},
+		style: {
+			transform: "translate(0px, -10px)"
+		},
+		onClick() { 
 			let gain2 = 1
 			player.s.points = player.s.points.plus(gain2) 
-		},
-    },
+		}
+	    }
     },
 })
