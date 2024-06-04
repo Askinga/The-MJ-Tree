@@ -403,7 +403,7 @@ addLayer("au", {
             description: "You have all prestige challenges finished",
             cost: new Decimal(4),
             effect() {
-                if (hasUpgrade('au', 13) || hasAchievement('🏆', 21)
+                if (hasUpgrade('au', 13))
                 return player.p.challenges[11, 12] = new Decimal(1)
 	    },
 	    unlocked() { return (hasUpgrade('au', 12)) },
