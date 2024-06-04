@@ -68,7 +68,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-       () => (player.points.gte(1e9)&&(canGenPoints())) ? "Points ^0.75 because of softcap" : "",
+        () => (player.points.gte(1e9)&&(canGenPoints())) ? "Points ^0.75 because of softcap" : "",
 	"<br>",
 ]
 
