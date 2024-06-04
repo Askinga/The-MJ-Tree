@@ -365,7 +365,7 @@ addLayer("au", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 1.6, // Prestige currency exponent
-    resetsNothing: return true,
+    resetsNothing: "true",
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
@@ -494,7 +494,7 @@ addLayer("s", {
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    canReset: return false,
+    canReset: "false",
     exponent: 1.6, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -514,8 +514,8 @@ addLayer("s", {
     },
     clickables: {	
 	11: {
-		title: "Chop",
-        	display() { return "Click to chop a tree which would grant you wood." },
+		title: "Make Super Points",
+        	display() { return "Get a Super Point!." },
 		canClick() {return true},
 		style: {
 			transform: "translate(0px, -10px)"
@@ -525,7 +525,6 @@ addLayer("s", {
 			player.s.points = player.s.points.plus(gain2) 
 		},
 		onHold() { 
-			if ( hasUpgrade("T", 11) )
 				gain2 = tmp[this.layer].gainMult;
 				player.s.points = player.s.points.plus(gain2) 
 		}
