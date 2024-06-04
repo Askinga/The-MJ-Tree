@@ -493,8 +493,7 @@ addLayer("s", {
     resource: "super points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    canReset: "false",
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have.
     exponent: 1.6, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -512,6 +511,21 @@ addLayer("s", {
         if (hasUpgrade('up', 13) || player.s.unlocked) visible = true
        return visible
     },
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "resource-display",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "blank",
+                "clickables",
+                "milestones",
+                "upgrades"
+            ],
+        },
     clickables: {	
 	11: {
 		title: "Make Super Points",
