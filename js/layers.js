@@ -410,9 +410,10 @@ addLayer("au", {
 	},
         13: {
             title: "No more grinding",
-            description: "Prestige challenges are removed, but you gain their rewards",
+            description: "Prestige challenges are removed, but you gain their rewards (Buying this will force upgraded prestige reset)",
             cost: new Decimal(4),
 	    unlocked() { return (hasUpgrade('au', 12)) },
+	    pay() { doReset("up", true) },
 	},
     },
 })
