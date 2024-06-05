@@ -113,7 +113,8 @@ addLayer("p", {
                 let expu3 = 0.075
                 let eff = player.p.points.add(1).pow(expu3)
                 eff = softcap(eff, new Decimal("1.5"), 0.3)
-                return eff
+                eff = softcap(eff, new Decimal("2"), 0)
+		return eff
 	    },
             effectDisplay() { // Add formatting to the effect
                 let softcapDescription = ""
@@ -121,7 +122,10 @@ addLayer("p", {
                 if (upgEffect.gte(new Decimal("1.5")) ) {
                     softcapDescription = " (Softcapped)"
 		}
-	        return "This upgrade raises points by ^" + format(upgEffect) + softcapDescription
+	        if (upgEffect.gte(new Decimal("2")) ) {
+                    softcapDescription = " (Hardcapped)"
+		}
+		return "This upgrade raises points by ^" + format(upgEffect) + softcapDescription
             },
 	    unlocked() { return (hasChallenge('p', 11)) || hasUpgrade('au', 13) },
 	    tooltip: "prestige points+1(^0.075) softcap when effect 1.5",
