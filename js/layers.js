@@ -507,7 +507,7 @@ addLayer("s", {
         return new Decimal(1)
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
-    resetDescription: 'Get ',
+    resetDescription: 'Click for ',
     resetsNothing: "true",
     layerShown(){
         let visible = false
@@ -531,4 +531,13 @@ addLayer("s", {
             ],
         },
     },
+    effect(){
+    let ppow = 1
+	let eff = player.s.points.add(1).pow(ppow)
+       return eff
+        },
+        effectDescription() {
+            let desc = "multiplying points by x" + format(tmp[this.layer].effect);
+            return desc;
+        },
 })
