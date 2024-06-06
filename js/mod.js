@@ -70,6 +70,7 @@ function getPointGen() {
 	if (hasUpgrade('UT', 31)) gain = gain.times(1e100)
 	if (hasUpgrade('UT', 13)) gain = gain.times(1e200)
 	if (hasUpgrade('UT', 24)) gain = gain.pow(1.02)
+	if (player.points >= (1e20000)) gain = gain.pow(0.8)
 	return gain
 }
 
