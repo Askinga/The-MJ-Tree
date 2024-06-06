@@ -40,6 +40,7 @@ addLayer("p", {
 	if (hasUpgrade('L', 35)) mult = mult.times(1e25)
 	if (hasUpgrade('L', 42)) mult = mult.pow(1.011)
 	if (hasUpgrade('UT', 23)) mult = mult.pow(1.01)
+	if (hasUpgrade('UT', 14)) mult = mult.pow(1e500)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -2164,7 +2165,7 @@ addLayer("UT", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11, 12, 13], [21, 22, 23, 24], [31, 32]]]
+				["upgrade-tree", [[11, 12, 13, 14], [21, 22, 23, 24], [31, 32]]]
             ]
         },
     },
@@ -2229,5 +2230,11 @@ addLayer("UT", {
             cost: new Decimal(140),
 	    unlocked() { return (hasUpgrade('UT', 13)) },
 	}, 
+        14: {
+            title: "Massive Boost!",
+            description: "×e500 MJ Point gain!.",
+            cost: new Decimal(150),
+	    unlocked() { return (hasUpgrade('UT', 24)) },
+	},
     },
 })
