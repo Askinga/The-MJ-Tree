@@ -2128,6 +2128,7 @@ addLayer("UT", {
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 2.6, // Prestige currency exponent
     passiveGeneration() {
+	if (hasUpgrade('UT', 12)) return 2
 	if (hasUpgrade('UT', 31)) return 1
 	return 0
     },
@@ -2163,7 +2164,7 @@ addLayer("UT", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11], [21, 22, 23], [31, 32]]]
+				["upgrade-tree", [[11, 12, 13], [21, 22, 23, 24], [31, 32]]]
             ]
         },
     },
@@ -2205,7 +2206,28 @@ addLayer("UT", {
             title: "The MJ Swarm has returned",
             description: "^1.01 MJ Point gain",
             cost: new Decimal(45),
+	    branches: [12],
 	    unlocked() { return (hasUpgrade('UT', 32)) },
 	},
+        12: {
+            title: "More generation",
+            description: "×2 Upgrade Point generation",
+            cost: new Decimal(60),
+	    branches: [13],
+	    unlocked() { return (hasUpgrade('UT', 23)) },
+	},
+        13: {
+            title: "More MJ Worlds",
+            description: "×e200 MJ gain",
+            cost: new Decimal(130),
+	    branches: [24],
+	    unlocked() { return (hasUpgrade('UT', 12)) },
+	},
+        24: {
+            title: "Time to raise",
+            description: "^1.02 MJ gain.",
+            cost: new Decimal(140),
+	    unlocked() { return (hasUpgrade('UT', 13)) },
+	}, 
     },
 })
