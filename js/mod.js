@@ -80,7 +80,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-    "Get Upgrade Tree Upgrade 23 to beat the game!"
+    "Get Upgrade Tree Upgrade 23 to beat the game!",
         () => (player.points.gte(1e20000)&&(canGenPoints())) ? "Due to MJ overpopulation, MJ gain is raised ^0.8!" : "",
 	"<br>",
 ]
