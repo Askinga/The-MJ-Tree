@@ -2229,6 +2229,7 @@ addLayer("UT", {
             description: "^1.02 MJ gain.",
             cost: new Decimal(140),
 	    unlocked() { return (hasUpgrade('UT', 13)) },
+	    branches: [14],
 	}, 
         14: {
             title: "Massive Boost!",
