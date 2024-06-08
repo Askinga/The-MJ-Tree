@@ -1605,10 +1605,6 @@ addLayer("Ge", {
 	if (hasUpgrade('Ge', 11)) return 1
 	return 0
     },
-    effect() {
-			let eff = Decimal.pow(this.effBase()
-			return eff;
-		},
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	mult = mult.times(buyableEffect('Ge', 11))
