@@ -174,7 +174,7 @@ addLayer("p", {
             cost: new Decimal("e18115"),
 	    unlocked() { return (hasUpgrade('p', 32)) },
 	},
-        34 {
+        34: {
             title: "Upgrade Tree Continuation",
             description: "Unlock more upgrade tree upgrades! CURRENT ENDGAME",
             cost: new Decimal("e18250"),
