@@ -174,6 +174,12 @@ addLayer("p", {
             cost: new Decimal("e18115"),
 	    unlocked() { return (hasUpgrade('p', 32)) },
 	},
+        34 {
+            title: "Upgrade Tree Continuation",
+            description: "Unlock more upgrade tree upgrades! (ENDGAME)",
+            cost: new Decimal("e18250"),
+	    unlocked() { return (hasUpgrade('p', 33)) },
+	},
     }, 
     milestones: {
         0: {
