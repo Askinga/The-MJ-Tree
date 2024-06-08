@@ -1594,11 +1594,6 @@ addLayer("Ge", {
     baseAmount() {return player.B.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 1e-6, // Prestige currency exponent
-    effBase() {
-			let base = new Decimal(0.03);
-			
-			return base;
-		},
     passiveGeneration() {
 	if (hasUpgrade('Ge', 31)) return 500
 	if (hasMilestone('Ge', 1)) return 100
@@ -1613,9 +1608,6 @@ addLayer("Ge", {
     effect() {
 			let eff = Decimal.pow(this.effBase()
 			return eff;
-		},
-    effectDescription() {
-			return "which are generating "+format(tmp.Ge.effect)+" Generated MJs/sec"
 		},
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -1640,9 +1632,6 @@ addLayer("Ge", {
     },
 
 
-    update(diff) {
-			if (player.Ge.unlocked) player.Ge.power = player.Ge..power.plus(tmp.Ge.effect.times(diff));
-		},
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
@@ -1650,14 +1639,6 @@ addLayer("Ge", {
     hotkeys: [
         {key: "e", description: "E: Get Generator MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    powerExp() {
-			let exp = new Decimal(1/4);
-			return exp;
-		},
-    powerEff() {
-			if (!unl(this.layer)) return new Decimal(1);
-			return player.Ge.power.plus(1).pow(this.powerExp());
-		},
     layerShown(){
         let visible = false
         if (hasUpgrade('B', 15) || player.Ge.unlocked) visible = true
@@ -1671,9 +1652,6 @@ addLayer("Ge", {
                 "blank",
                 "prestige-button",
                 "blank",
-                ["display-text",
-				function() {return 'You have ' + format(player.Ge.power) + ' Generated MJs, which boosts MJ Booster generation by '+format(tmp.Ge.powerEff)+'x'},
-					{}],
                 "blank",
                 "blank",
                 "blank",
