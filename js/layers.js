@@ -108,7 +108,7 @@ addLayer("p", {
             cost: new Decimal(18),
             effect(){
                 let expu3 = 0.15
-                let eff = player.p.points.add(1).pow(expu3)
+                let eff = player.points.add(1).pow(expu3)
                 eff = softcap(eff, new Decimal("1e3100"), 0.5)
                 return eff
 	    },
