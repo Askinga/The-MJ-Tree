@@ -71,7 +71,6 @@ function getPointGen() {
 	if (hasUpgrade('UT', 13)) gain = gain.times(1e200)
 	if (hasUpgrade('UT', 24)) gain = gain.pow(1.02)
 	if (hasUpgrade('p', 31)) gain = gain.times(1e50)
-	if (player.points >= ("e20000")) gain = gain.pow(0.8)
 	return gain
 }
 
@@ -81,9 +80,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-    "Get Upgrade Tree Upgrade 23 to beat the game!",
-        () => (player.points.gte("e20000")&&(canGenPoints())) ? "Due to MJ overpopulation, MJ gain is raised ^0.8!" : "",
-	"<br>",
+    "Get Upgrade Tree Upgrade 23 to beat the game!"  
 ]
 
 // Determines when the game "ends"
