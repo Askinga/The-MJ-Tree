@@ -176,7 +176,7 @@ addLayer("p", {
 	},
         34 {
             title: "Upgrade Tree Continuation",
-            description: "Unlock more upgrade tree upgrades! (ENDGAME)",
+            description: "Unlock more upgrade tree upgrades! CURRENT ENDGAME",
             cost: new Decimal("e18250"),
 	    unlocked() { return (hasUpgrade('p', 33)) },
 	},
