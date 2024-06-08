@@ -80,12 +80,12 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-    "Get Upgrade Tree Upgrade 23 to beat the game!"  
+    "Get MJ Point Upgrade 34 to beat the game!"  
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return (hasUpgrade('UT', 23))
+	return (hasUpgrade('p', 34))
 }
 
 
