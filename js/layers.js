@@ -146,6 +146,12 @@ addLayer("p", {
             cost: new Decimal(550000000),
 	    unlocked() { return (hasUpgrade('p', 23)) },
 	},
+        31: {
+            title: "MJ Upgrade Extension",
+            description: "×e50 MJs.",
+            cost: new Decimal("e17950"),
+	    unlocked() { return (hasUpgrade('UT', 25)) },
+	},
     }, 
     milestones: {
         0: {
@@ -2235,7 +2241,14 @@ addLayer("UT", {
             title: "Massive Boost!",
             description: "×e300 MJ Point gain!.",
             cost: new Decimal(150),
+	    branches: [25],
 	    unlocked() { return (hasUpgrade('UT', 24)) },
+	},
+        25: {
+            title: "Extension!",
+            description: "Unlock more MJ upgrades!",
+            cost: new Decimal(155),
+	    unlocked() { return (hasUpgrade('UT', 14)) },
 	},
     },
 })
