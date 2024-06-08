@@ -234,6 +234,7 @@ addLayer("S", {
 	if (hasUpgrade('L', 43)) mult = mult.pow(1.012)
 	if (hasUpgrade('L', 55)) mult = mult.times(upgradeEffect('L', 55))
 	if (hasAchievement('a', 64)) mult = mult.times(2)
+	if (hasUpgrade('p', 32)) mult = mult.pow(1.01)
 	return mult
     },
 
