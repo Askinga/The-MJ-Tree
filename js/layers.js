@@ -152,6 +152,12 @@ addLayer("p", {
             cost: new Decimal("e17800"),
 	    unlocked() { return (hasUpgrade('UT', 25)) },
 	},
+        32: {
+            title: "Pow",
+            description: "^1.01 Super MJ Points.",
+            cost: new Decimal("e18010"),
+	    unlocked() { return (hasUpgrade('p', 31)) },
+	},
     }, 
     milestones: {
         0: {
