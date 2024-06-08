@@ -107,9 +107,19 @@ addLayer("p", {
             description: "MJ gain is boosted by MJs.",
             cost: new Decimal(18),
             effect(){
-                return player.points.add(1).pow(0.15)
+                let expu3 = 0.15
+                let eff = player.p.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e3100"), 0.5)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("e3100")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts MJs by " + format(upgEffect)+"x" + softcapDescription
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('p', 12)) },
 	},
 	14: {
@@ -157,6 +167,12 @@ addLayer("p", {
             description: "^1.01 Super MJ Points.",
             cost: new Decimal("e18010"),
 	    unlocked() { return (hasUpgrade('p', 31)) },
+	},
+        33: {
+            title: "Super MJ Boost",
+            description: "×e20 Super MJ Points.",
+            cost: new Decimal("e18115"),
+	    unlocked() { return (hasUpgrade('p', 32)) },
 	},
     }, 
     milestones: {
@@ -235,6 +251,7 @@ addLayer("S", {
 	if (hasUpgrade('L', 55)) mult = mult.times(upgradeEffect('L', 55))
 	if (hasAchievement('a', 64)) mult = mult.times(2)
 	if (hasUpgrade('p', 32)) mult = mult.pow(1.01)
+	if (hasUpgrade('p', 32)) mult = mult.times(1e20)
 	return mult
     },
 
