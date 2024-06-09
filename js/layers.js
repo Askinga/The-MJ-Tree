@@ -159,7 +159,7 @@ addLayer("p", {
         31: {
             title: "MJ Upgrade Extension",
             description: "×e50 MJs.",
-            cost: new Decimal("e17800"),
+            cost: new Decimal("e17840"),
 	    unlocked() { return (hasUpgrade('UT', 25)) },
 	},
         32: {
