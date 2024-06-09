@@ -1988,7 +1988,11 @@ addLayer("Bo", {
 		points: new Decimal(0),
     }},
     color: "#a0a0a0",
-    requires: new Decimal(1e308), // Can be a function that takes requirement increases into account
+    requires() {
+        let req = new Decimal("e308")
+        if (player.Bo.points.gte(700000)) req = req.add("ee100")
+        return req
+    }, // Ca// Can be a function that takes requirement increases into account
     resource: "MJ Boosters", // Name of prestige currency
     baseResource: "MJs", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
