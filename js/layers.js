@@ -176,7 +176,7 @@ addLayer("p", {
 	},
         34: {
             title: "Upgrade Tree Continuation",
-            description: "Unlock more upgrade tree upgrades! CURRENT ENDGAME",
+            description: "Unlock more upgrade tree upgrades and a new upgrade tree tab!! CURRENT ENDGAME",
             cost: new Decimal("e18255"),
 	    unlocked() { return (hasUpgrade('p', 33)) },
 	},
@@ -2168,6 +2168,7 @@ addLayer("UT", {
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 2.475, // Prestige currency exponent
     passiveGeneration() {
+	if (hasUpgrade('UT', 15)) return 100
 	if (hasUpgrade('UT', 12)) return 2
 	if (hasUpgrade('UT', 31)) return 1
 	return 0
@@ -2198,13 +2199,23 @@ addLayer("UT", {
      },
     branches:["G"],
     tabFormat: {
-        "Upgrade Tree": {
+        "Upgrade Tree 1": {
             content: [
                 ["display-text", "Welcome to the Upgrade Tree! In this layer, there is going to be a upgrade tree to boost the production of layers!"],
                 "main-display",
                 "prestige-button",
                 "blank",
 				["upgrade-tree", [[11, 12, 13, 14], [21, 22, 23, 24, 25], [31, 32]]]
+            ]
+        },
+        "Upgrade Tree 2": {
+          unlocked() { return (hasUpgrade('p', 34)) },
+	    content: [
+                ["display-text", "Here is the second upgrade tree! There are more upgrades here!"],
+                "main-display",
+                "prestige-button",
+                "blank",
+				["upgrade-tree", [[15], [26]]]
             ]
         },
     },
@@ -2282,6 +2293,19 @@ addLayer("UT", {
             description: "Unlock more MJ upgrades! And ×50 MJ Boosters",
             cost: new Decimal(155),
 	    unlocked() { return (hasUpgrade('UT', 14)) },
+	},
+        15: {
+            title: "More generation!!",
+            description: "×50 upgrade point generation",
+            cost: new Decimal(1000),
+	    branches: [26],
+	    unlocked() { return (hasUpgrade('p', 34)) },
+	},
+        26: {
+            title: "Boost!!",
+            description: "×e150 MJ gain",
+            cost: new Decimal(15000),
+	    unlocked() { return (hasUpgrade('UT', 15)) },
 	},
     },
 })
