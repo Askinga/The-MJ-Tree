@@ -2166,7 +2166,7 @@ addLayer("UT", {
     baseResource: "Hyper MJ Points", // Name of resource prestige is based on
     baseAmount() {return player.H.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 2.53, // Prestige currency exponent
+    exponent: 2.475, // Prestige currency exponent
     passiveGeneration() {
 	if (hasUpgrade('UT', 12)) return 2
 	if (hasUpgrade('UT', 31)) return 1
