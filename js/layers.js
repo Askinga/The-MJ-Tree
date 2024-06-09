@@ -1995,7 +1995,7 @@ addLayer("Bo", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.000025, // Prestige currency exponent
     passiveGeneration() {
-           if (!player.Bo.points.gte(700000)) return 0 
+           if (player.Bo.points.gte(700000)) return 0 
 	if (hasUpgrade('Bo', 11)) return 5
         return 0
     },
