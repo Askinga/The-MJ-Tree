@@ -171,7 +171,7 @@ addLayer("p", {
         33: {
             title: "Super MJ Boost",
             description: "×e20 Super MJ Points.",
-            cost: new Decimal("e18115"),
+            cost: new Decimal("e18105"),
 	    unlocked() { return (hasUpgrade('p', 32)) },
 	},
         34: {
