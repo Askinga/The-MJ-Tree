@@ -1995,12 +1995,14 @@ addLayer("Bo", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.000025, // Prestige currency exponent
     passiveGeneration() {
-        if (hasUpgrade('Bo', 11)) return 5
+           if (!player.Bo.points.gte(700000)) return 0 
+	if (hasUpgrade('Bo', 11)) return 5
         return 0
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('UT', 21)) mult = mult.times(2)
+	if (hasUpgrade('UT', 25)) mult = mult.times(50)
 	return mult
     },
 
@@ -2031,7 +2033,7 @@ addLayer("Bo", {
     upgrades: {  
 	11: {
             title: "Passive gain",
-            description: "Gain 5 base MJ Boosters per second",
+            description: "Gain 5 base MJ Boosters per second unless you have 700000 MJ Boosters",
             cost: new Decimal(100),
 	},
     },
@@ -2273,7 +2275,7 @@ addLayer("UT", {
 	},
         25: {
             title: "Extension!",
-            description: "Unlock more MJ upgrades!",
+            description: "Unlock more MJ upgrades! And ×50 MJ Boosters",
             cost: new Decimal(155),
 	    unlocked() { return (hasUpgrade('UT', 14)) },
 	},
