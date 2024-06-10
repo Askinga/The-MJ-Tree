@@ -1429,9 +1429,29 @@ addLayer("a", {
             tooltip: "Get Upgrade Tree Upgrade 21",	   
         },
         95: {
-            name: "Final upgrade in 1.5.0",
+            name: "MJ Point Raise",
             done() { return (hasUpgrade('UT', 23)) },
             tooltip: "Get Upgrade Tree Upgrade 23",	   
+        },
+        96: {
+            name: "Massive MJ Point boost",
+            done() { return (hasUpgrade('UT', 14)) },
+            tooltip: "Get Upgrade Tree Upgrade 14",	   
+        },
+        101: {
+            name: "Extension!",
+            done() { return (hasUpgrade('p', 31)) },
+            tooltip: "Get MJ Point Upgrade 31",	   
+        },
+        102: {
+            name: "UPGRADE TREE 2!",
+            done() { return (hasUpgrade('p', 34)) },
+            tooltip: "Get MJ Point Upgrade 34",	   
+        },
+        103: {
+            name: "e23k",
+            done() { return player.points.gte("e23000") },
+            tooltip: "Get e23000 MJs",	   
         },
 },
 })
