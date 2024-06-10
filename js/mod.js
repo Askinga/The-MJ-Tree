@@ -18,7 +18,7 @@ let VERSION = {
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v1.6.0 Very big update yet</h3><br>
+	<h3>v1.6.0 Very big update</h3><br>
 		- More updates soon! Endgame e23010 MJs.<br>
 		- Added more upgrades and 4 more achievements! Added a savebank just in case you lose your progress. Added a second upgrade tree. Added another softcap. Added a extension to MJ Point upgrades. Added a MJ Booster layer cap. and more<br>
                 - Check back here for more updates! Full changelog at <a href=https://galaxy.click/updates/355>galaxy.click/updates/355</a>`
