@@ -13,17 +13,17 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.5.0 Biggest update yet",
-	name: "The Biggest Update",
+	num: "1.6.0 Very big update",
+	name: "A very big update",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v1.5.0 Biggest update yet</h3><br>
-		- More updates soon! Endgame 4 Upgrade Points.<br>
-		- Added more upgrades, more achievements and 3 new layers! MJ Boosters MJ layer and Upgrade Tree! Added a softcap *oh no*! Added a MJ *layer boost*. Sorted everything out by tabs. Changed MJ Point layer color to a lighter blue. Changed challenge requirements.<br>
+	<h3>v1.6.0 Very big update yet</h3><br>
+		- More updates soon! Endgame e23010 MJs.<br>
+		- Added more upgrades and 4 more achievements! Added a savebank just in case you lose your progress. Added a second upgrade tree. Added another softcap. Added a extension to MJ Point upgrades. Added a MJ Booster layer cap. and more<br>
                 - Check back here for more updates! Full changelog at <a href=https://galaxy.click/updates/355>galaxy.click/updates/355</a>`
   
-let winText = `Congratulations! You have reached the end and beaten The MJ Tree, but for now...`
+let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
