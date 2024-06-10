@@ -2216,7 +2216,7 @@ addLayer("UT", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[15, 16], [26] [33]]]
+				["upgrade-tree", [[15, 16], [26], [33]]]
             ]
         },
     },
