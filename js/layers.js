@@ -41,6 +41,7 @@ addLayer("p", {
 	if (hasUpgrade('L', 42)) mult = mult.pow(1.011)
 	if (hasUpgrade('UT', 23)) mult = mult.pow(1.01)
 	if (hasUpgrade('UT', 14)) mult = mult.times(1e300)
+	if (hasUpgrade('UT', 16)) mult = mult.times(upgradeEffect('UT', 16))
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -2215,7 +2216,7 @@ addLayer("UT", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[15], [26]]]
+				["upgrade-tree", [[15, 16], [26]]]
             ]
         },
     },
@@ -2305,7 +2306,18 @@ addLayer("UT", {
             title: "Boost!!",
             description: "×e150 MJ gain",
             cost: new Decimal(15000),
+	    branches: [16],
 	    unlocked() { return (hasUpgrade('UT', 15)) },
+	},
+        16: {
+            title: "Growing Booster!",
+            description: "Multiply MJ point gain based on MJ points!",
+            cost: new Decimal(1.6e4),
+	    effect(){
+                return player.p.points.add(1).pow(0.008)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            unlocked() { return (hasUpgrade('UT', 26)) },
 	},
     },
 })
