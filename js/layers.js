@@ -2216,7 +2216,7 @@ addLayer("UT", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[15, 16], [26]]]
+				["upgrade-tree", [[15, 16], [26] [33]]]
             ]
         },
     },
@@ -2314,10 +2314,17 @@ addLayer("UT", {
             description: "Multiply MJ point gain based on MJ points!",
             cost: new Decimal(1.6e4),
 	    effect(){
-                return player.p.points.add(1).pow(0.008)
+                return player.p.points.add(1).pow(0.014)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-            unlocked() { return (hasUpgrade('UT', 26)) },
+            branches: [33],
+	    unlocked() { return (hasUpgrade('UT', 26)) },
+	},
+        33: {
+            title: "Biggest MJ boost yet",
+            description: "×e300 MJ gain.",
+            cost: new Decimal(17500),
+	    unlocked() { return (hasUpgrade('UT', 16)) },
 	},
     },
 })
