@@ -15,7 +15,7 @@ addLayer("p", {
        return eff
         },
         effectDescription() {
-            let desc = "adding" + format(tmp[this.layer].effect); + "to base point gain."
+            let desc = "adding " + format(tmp[this.layer].effect) + " to base point gain.";
             return desc;
         },
     baseResource: "points", // Name of resource prestige is based on
