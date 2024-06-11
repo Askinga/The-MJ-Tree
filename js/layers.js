@@ -9,6 +9,15 @@ addLayer("p", {
     color: "#ffffff",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "MJs", // Name of prestige currency
+    effect(){
+    let rpow = 0.5
+	let eff = player.p.points.pow(rpow)
+       return eff
+        },
+        effectDescription() {
+            let desc = "adding" + format(tmp[this.layer].effect); + "to base point gain."
+            return desc;
+        },
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
