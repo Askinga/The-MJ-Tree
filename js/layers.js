@@ -94,7 +94,7 @@ addLayer("p", {
     0: {
         requirementDescription: "QoL 1 (7 mastered points)",
         effectDescription: "Mastered points don't reset anything.",
-        done() { return player.p.points.gte(7) }
+        done() { return player.p.points.gte(7) },
         unlocked() { return (hasUpgrade('p', 15)) }
     },
 },
