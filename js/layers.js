@@ -50,7 +50,7 @@ addLayer("p", {
             title: "Mult",
             description: "Multiply point gain based on mastered points..",
             cost: new Decimal(4),
-            effect() {return player.p.points.add(1).pow(0.5).div(2.25)},
+            effect() {return player.p.points.add(1).pow(0.5)},
             effectDisplay() {return "x"+format(this.effect())},
             unlocked() { return (hasUpgrade('p', 12)) }
 	},
