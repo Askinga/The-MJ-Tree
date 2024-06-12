@@ -45,7 +45,7 @@ addLayer("p", {
             cost: new Decimal(2),
             effect() {return player.points.add(1).pow(0.3)},
             effectDisplay() {return "÷"+format(this.effect())},
-            unlocked() { return (hasUpgrade('p', 11)) }
+            unlocked() { return (hasUpgrade('p', 11)) },
 	},
         13: {
             title: "Mult",
@@ -53,7 +53,7 @@ addLayer("p", {
             cost: new Decimal(4),
             effect() {return player.p.points.add(1).pow(0.5)},
             effectDisplay() {return "x"+format(this.effect())},
-            unlocked() { return (hasUpgrade('p', 12)) }
+            unlocked() { return (hasUpgrade('p', 12)) },
 	},
         14: {
             title: "Dividing costs again",
@@ -61,13 +61,13 @@ addLayer("p", {
             cost: new Decimal(6),
             effect() {return player.p.points.add(1).pow(0.45)},
             effectDisplay() {return "÷"+format(this.effect())},
-            unlocked() { return (hasUpgrade('p', 13)) }
+            unlocked() { return (hasUpgrade('p', 13)) },
 	},
         15: {
             title: "QoL",
             description: "Unlock a milestone.",
             cost: new Decimal(7),
-            unlocked() { return (hasUpgrade('p', 14)) }
+            unlocked() { return (hasUpgrade('p', 14)) },
 	},
     },
     milestones: {
