@@ -33,26 +33,6 @@ addLayer("p", {
         {key: "m", description: "M: Reset for mastered points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
-    tabFormat: {
-        "Main tab": {
-            content: [
-                "main-display",
-                "blank",
-                "prestige-button",
-                "blank",
-                "upgrades"
-            ],
-        },
-        "QoL": {
-          unlocked() { return (hasUpgrade('p', 15)) },
-	    content: [
-                "main-display",
-                "blank",
-                "blank",
-                "milestones"
-            ],
-        },
-    },
     upgrades: {
         11: {
             title: "Point gain starts now",
@@ -85,7 +65,7 @@ addLayer("p", {
 	},
         15: {
             title: "QoL",
-            description: "Unlock a new tab and a milestone.",
+            description: "Unlock a milestone.",
             cost: new Decimal(7),
             unlocked() { return (hasUpgrade('p', 14)) }
 	},
