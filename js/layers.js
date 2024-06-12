@@ -33,5 +33,11 @@ addLayer("p", {
     hotkeys: [
         {key: "m", description: "M: Reset for MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true}
+    layerShown(){return true},
+    upgrades: {
+        11: {
+            title: "Point multi",
+            description: "×1.5 points.",
+            cost: new Decimal(5),
+        },
 })
