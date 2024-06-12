@@ -28,7 +28,7 @@ addLayer("p", {
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "m", description: "M: Reset for mastery points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "m", description: "M: Reset for mastered points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
 
@@ -52,7 +52,7 @@ addLayer("p", {
             cost: new Decimal(4),
             effect() {return player.p.points.add(1).pow(0.5).div(2.25)},
             effectDisplay() {return "x"+format(this.effect())},
-            unlocked() { return (hasUpgrade('p', 11)) }
+            unlocked() { return (hasUpgrade('p', 12)) }
 	},
     },
     effect(){
