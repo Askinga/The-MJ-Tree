@@ -10,7 +10,8 @@ addLayer("p", {
         requires() {
         let req = new Decimal(10)
         if (hasUpgrade('p', 12)) req = req.div(upgradeEffect('p', 12))
-        return req
+        if (hasUpgrade('p', 14)) req = req.div(upgradeEffect('p', 14))
+	return req
     },
 
     
@@ -48,11 +49,19 @@ addLayer("p", {
 	},
         13: {
             title: "Mult",
-            description: "Multiply point gain based on mastered points..",
+            description: "Multiply point gain based on mastered points.",
             cost: new Decimal(4),
             effect() {return player.p.points.add(1).pow(0.5)},
             effectDisplay() {return "x"+format(this.effect())},
             unlocked() { return (hasUpgrade('p', 12)) }
+	},
+        14: {
+            title: "Dividing costs again",
+            description: "Divide mastered point cost based on mastered points.",
+            cost: new Decimal(2),
+            effect() {return player.p.points.add(1).pow(0.2)},
+            effectDisplay() {return "÷"+format(this.effect())},
+            unlocked() { return (hasUpgrade('p', 13)) }
 	},
     },
     effect(){
