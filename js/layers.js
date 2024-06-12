@@ -40,4 +40,5 @@ addLayer("p", {
             description: "×1.5 points.",
             cost: new Decimal(5),
         },
+    },
 })
