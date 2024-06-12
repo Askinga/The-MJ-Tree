@@ -9,7 +9,7 @@ addLayer("p", {
     color: "#ff7300",
         requires() {
         let req = new Decimal(10)
-        req = req.div(smartUpgradeEffect('p', 12))
+        req = req.div(upgradeEffect('p', 12))
         return req
     },
 
