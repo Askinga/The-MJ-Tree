@@ -9,7 +9,7 @@ addLayer("p", {
     color: "#ff7300",
         requires() {
         let req = new Decimal(10)
-        req = req.div(upgradeEffect('p', 12))
+        if (hasUpgrade('p', 12)) req = req.div(upgradeEffect('p', 12))
         return req
     },
 
@@ -44,7 +44,8 @@ addLayer("p", {
             cost: new Decimal(2),
             effect() {return player.points.add(1).pow(0.3)},
             effectDisplay() {return "÷"+format(this.effect())},
-        },
+            unlocked() { return (hasUpgrade('p', 11)) }
+	},
     },
     effect(){
     let enpow = 1
