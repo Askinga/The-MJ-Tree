@@ -32,7 +32,26 @@ addLayer("p", {
         {key: "m", description: "M: Reset for mastered points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
-
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "blank",
+                "prestige-button",
+                "blank",
+                "upgrades"
+            ],
+        },
+        "QoL": {
+          unlocked() { return (hasUpgrade('p', 15)) }
+	    content: [
+                "main-display",
+                "blank",
+                "blank",
+                "milestones"
+            ],
+        },
+    },
     upgrades: {
         11: {
             title: "Point gain starts now",
@@ -59,11 +78,17 @@ addLayer("p", {
             title: "Dividing costs again",
             description: "Divide mastered point cost based on mastered points.",
             cost: new Decimal(6),
-            effect() {return player.p.points.add(1).pow(0.2)},
+            effect() {return player.p.points.add(1).pow(0.45)},
             effectDisplay() {return "÷"+format(this.effect())},
             unlocked() { return (hasUpgrade('p', 13)) }
 	},
+        15: {
+            title: "QoL",
+            description: "Unlock a new tab and a milestone.",
+            cost: new Decimal(7),
+        },
     },
+    
     effect(){
     let enpow = 1
 	let eff = player.p.points.add(1).pow(enpow)
