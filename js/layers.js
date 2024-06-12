@@ -44,7 +44,7 @@ addLayer("p", {
             ],
         },
         "QoL": {
-          unlocked() { return (hasUpgrade('p', 15)) }
+          unlocked() { return (hasUpgrade('p', 15)) },
 	    content: [
                 "main-display",
                 "blank",
