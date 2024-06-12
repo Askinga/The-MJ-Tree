@@ -44,6 +44,7 @@ function getPointGen() {
 
 	let gain = new Decimal(0)
 	gain = gain.add(layers.p.effect())
+	if (hasUpgrade('p', 11)) gain = gain.times(1.5)
 	return gain
 }
 
