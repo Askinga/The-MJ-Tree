@@ -86,9 +86,17 @@ addLayer("p", {
             title: "QoL",
             description: "Unlock a new tab and a milestone.",
             cost: new Decimal(7),
-        },
+            unlocked() { return (hasUpgrade('p', 14)) }
+	},
     },
-    
+    milestones: {
+    0: {
+        requirementDescription: "7 mastered points",
+        effectDescription: "Mastered points don't reset anything.",
+        done() { return player.p.points.gte(7) }
+        unlocked() { return (hasUpgrade('p', 15)) }
+    },
+},
     effect(){
     let enpow = 1
 	let eff = player.p.points.add(1).pow(enpow)
