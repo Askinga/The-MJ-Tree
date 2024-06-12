@@ -58,7 +58,7 @@ addLayer("p", {
         14: {
             title: "Dividing costs again",
             description: "Divide mastered point cost based on mastered points.",
-            cost: new Decimal(2),
+            cost: new Decimal(6),
             effect() {return player.p.points.add(1).pow(0.2)},
             effectDisplay() {return "÷"+format(this.effect())},
             unlocked() { return (hasUpgrade('p', 13)) }
