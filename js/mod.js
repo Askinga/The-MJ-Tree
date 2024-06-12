@@ -43,6 +43,7 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(0)
+	gain = gain.add(layers.p.effect())
 	return gain
 }
 
