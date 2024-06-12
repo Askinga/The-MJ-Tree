@@ -28,7 +28,7 @@ addLayer("p", {
         return new Decimal(1)
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
-    resetsNothing: return (hasMilestone('p', 0)),
+    resetsNothing: (hasMilestone('p', 0)),
     hotkeys: [
         {key: "m", description: "M: Reset for mastered points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
