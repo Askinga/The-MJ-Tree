@@ -55,7 +55,7 @@ addLayer("p", {
             description: "Multiply point gain based on MJs.",
             cost: new Decimal(30),
             effect(){
-                return player.p.points.pow(0.075)
+                return player.p.points.add(1).pow(0.15)
             },
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
             unlocked() { return (hasUpgrade('p', 12)) },
