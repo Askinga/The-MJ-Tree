@@ -45,7 +45,7 @@ addLayer("p", {
             description: "Add to base point gain based on points.",
             cost: new Decimal(20),
             effect(){
-                return player.points.pow(0.08).times(10)
+                return player.points.pow(0.2)
             },
             effectDisplay() { return "+" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
             unlocked() { return (hasUpgrade('p', 11)) },
