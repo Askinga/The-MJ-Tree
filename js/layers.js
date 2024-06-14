@@ -71,13 +71,13 @@ addLayer("p", {
 	},
     },
     milestones: {
-    0: {
-        requirementDescription: "QoL 1, Requires 7 mastered points",
-        effectDescription: "Mastered points don't reset anything.",
-        done() { return player.p.points.gte(7) },
-        unlocked() { return (hasUpgrade('p', 15)) },
-    },
-},
+        0: {
+            requirementDescription: "7 Mastered Points",
+            effectDescription: "Mastered points reset resets nothing.",
+            done() { return player.p.points >= (7) }
+            unlocked() {return hasUpgrade('p', 15)},
+	},
+     },
     effect(){
     let enpow = 1
 	let eff = player.p.points.add(1).pow(enpow)
