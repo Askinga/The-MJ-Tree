@@ -33,6 +33,28 @@ addLayer("p", {
         {key: "m", description: "M: Reset for mastered points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "resource-display",
+                "prestige-button",
+                "blank",
+                "blank",
+                "blank",
+                "upgrades"
+            ],
+        },
+        "QoL": {
+            content: [
+                ["infobox", "challenge"],
+                "main-display",
+                "blank",
+                "blank",
+                "milestones"
+            ],
+        },
+    },
     upgrades: {
         11: {
             title: "Point gain starts now",
