@@ -137,7 +137,7 @@ addLayer("b", {
     baseResource: "MJs", // Name of resource prestige is based on
     doReset(b) {
         // Stage 1, almost always needed, makes resetting this layer not delete your progress
-        if (layers[p].row <= this.row) return;
+        if (layers[b].row <= this.row) return;
     
         // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
         let keptUpgrades = [];
