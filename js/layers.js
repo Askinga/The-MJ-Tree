@@ -127,7 +127,8 @@ addLayer("b", {
     color: "#caed1c",
     requires() {
         let req = new Decimal(200)
-        return req
+        if (hasUpgrade('p', 21)) req = req.div(4)
+	return req
     }, // Can be a function that takes requirement increases into account
     resource: "MJ Buses", // Name of prestige currency
     baseResource: "MJs", // Name of resource prestige is based on
