@@ -55,6 +55,7 @@ addLayer("p", {
 	if (hasUpgrade('b', 11)) mult = mult.times(3.5)
 	if (hasUpgrade('b', 14)) mult = mult.times(upgradeEffect('b', 14))
 	if (hasUpgrade('b', 15)) mult = mult.times(2.25)
+	if (hasUpgrade('p', 22)) mult = mult.times(1.5)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -109,6 +110,12 @@ addLayer("p", {
             cost: new Decimal(30000),
             unlocked() { return (hasUpgrade('b', 15)) },
 	},
+        22: {
+            title: "MJ multi 3",
+            description: "×1.5 MJs.",
+            cost: new Decimal(10000000),
+            unlocked() { return (hasUpgrade('b', 15)) },
+	},
     },
 })
 
@@ -128,6 +135,26 @@ addLayer("b", {
     }, // Can be a function that takes requirement increases into account
     resource: "MJ Buses", // Name of prestige currency
     baseResource: "MJs", // Name of resource prestige is based on
+    doReset(b) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[p].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        for(i=5;i<6;i++){ //rows
+            for(v=1;v<2;v++){ //columns
+              if ((hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+            }
+	}
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+    
+        // Stage 4, do the actual data reset
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 1.6, // Prestige currency exponent
@@ -163,7 +190,7 @@ addLayer("b", {
         },
     upgrades: {
         11: {
-            title: "Buses!",
+            title: "MJ multi 2",
             description: "×3.5 MJs.",
             cost: new Decimal(1),
         },
