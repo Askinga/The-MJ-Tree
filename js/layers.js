@@ -1,4 +1,4 @@
-// Tip: Upgrade 11 means Column 1, Row 1
+// Tip: 11 means Column 1, Row 1 for upgrades, milestones, etc
 addLayer("p", {
     name: "MJ", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "🧍", // This appears on the layer's node. Default is the id with the first letter capitalized
