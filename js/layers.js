@@ -24,7 +24,8 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        return mult
+        if (hasUpgrade('p', 14)) mult = mult.times(2)
+	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
@@ -60,5 +61,10 @@ addLayer("p", {
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
             unlocked() { return (hasUpgrade('p', 12)) },
 	},
+        14: {
+            title: "MJ multi",
+            description: "×2 MJs.",
+            cost: new Decimal(50),
+        },
     },
 })
