@@ -75,3 +75,49 @@ addLayer("p", {
 	}, 
     },
 })
+
+addLayer("b", {
+    name: "MJ Buses",
+    symbol: "🚌",
+    position: 0,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    nodeStyle: {
+	"border-radius": "100%",
+	"width": "110px",
+	"height": "100px"
+    },
+    color: "#caed1c",
+    requires() {
+        let req = new Decimal(200)
+        return req
+    }, // Can be a function that takes requirement increases into account
+    resource: "MJ Buses", // Name of prestige currency
+    baseResource: "MJs", // Name of resource prestige is based on
+    baseAmount() {return player.p.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1.6, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "b", description: "B: Reset for MJ Buses", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    resetDescription: 'Reset MJ layer for ',
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('p', 15) || player.b.unlocked) visible = true
+       return visible
+    },
+    branches:["p"]
+})
