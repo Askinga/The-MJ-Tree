@@ -118,7 +118,7 @@ addLayer("b", {
     branches:["p"],
     effect(){
     let apow = 0.75
-	let eff = player.b.points.add(1).pow(rpow)
+	let eff = player.b.points.add(1).pow(apow)
        return eff
         },
         effectDescription() {
