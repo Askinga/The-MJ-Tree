@@ -67,12 +67,12 @@ addLayer("p", {
         11: {
             title: "Point multi 1",
             description: "×1.5 points.",
-            cost: new Decimal(5),
+            cost: new Decimal(3),
         },
         12: {
             title: "Point Base Improver 1",
             description: "Add to base point gain based on points.",
-            cost: new Decimal(20),
+            cost: new Decimal(9),
             effect(){
                 return player.points.pow(0.2)
             },
@@ -82,7 +82,7 @@ addLayer("p", {
         13: {
             title: "MJ Multiplier to Points 1",
             description: "Multiply point gain based on MJs.",
-            cost: new Decimal(30),
+            cost: new Decimal(14),
             effect(){
                 return player.p.points.add(1).pow(0.15)
             },
@@ -92,13 +92,13 @@ addLayer("p", {
         14: {
             title: "MJ multi 1",
             description: "×2 MJs.",
-            cost: new Decimal(50),
+            cost: new Decimal(25),
             unlocked() { return (hasUpgrade('p', 13)) },
 	},
         15: {
             title: "Point multi 2",
             description: "×2 points and unlock a new layer.",
-            cost: new Decimal(125),
+            cost: new Decimal(50),
             unlocked() { return (hasUpgrade('p', 14)) },
 	}, 
         15: {
