@@ -65,6 +65,13 @@ addLayer("p", {
             title: "MJ multi",
             description: "×2 MJs.",
             cost: new Decimal(50),
-        },
+            unlocked() { return (hasUpgrade('p', 13)) },
+	},
+        15: {
+            title: "Point multi 2",
+            description: "×2 points.",
+            cost: new Decimal(125),
+            unlocked() { return (hasUpgrade('p', 14)) },
+	}, 
     },
 })
