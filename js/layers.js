@@ -114,5 +114,14 @@ addLayer("b", {
         if (hasUpgrade('p', 15) || player.b.unlocked) visible = true
        return visible
     },
-    branches:["p"]
+    branches:["p"],
+    effect(){
+    let apow = 0.75
+	let eff = player.b.points.add(1).pow(rpow)
+       return eff
+        },
+        effectDescription() {
+            let desc = "multiplying MJ gain by" + format(tmp[this.layer].effect);
+            return desc;
+        },
 })
