@@ -9,6 +9,10 @@ addLayer("p", {
     color: "#ffffff",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "MJs", // Name of prestige currency
+    passiveGeneration() {
+        if (hasUpgrade('b', 13)) return 0.1
+        return 0
+    },
     effect(){
     let rpow = 0.5
 	let eff = player.p.points.pow(rpow)
@@ -136,6 +140,11 @@ addLayer("b", {
             title: "Pi Point Multi",
             description: "×π points.",
             cost: new Decimal(3),
+        },
+        13: {
+            title: "Passive Gain",
+            description: "Get 10% of MJ gain per second.",
+            cost: new Decimal(4),
         },
     },
 })
