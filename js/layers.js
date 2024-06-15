@@ -1,3 +1,4 @@
+// Tip: Upgrade 11 means Column 1, Row 1
 addLayer("p", {
     name: "MJ", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "🧍", // This appears on the layer's node. Default is the id with the first letter capitalized
@@ -100,6 +101,18 @@ addLayer("p", {
             cost: new Decimal(125),
             unlocked() { return (hasUpgrade('p', 14)) },
 	}, 
+        15: {
+            title: "Point multi 2",
+            description: "×2 points and unlock a new layer.",
+            cost: new Decimal(125),
+            unlocked() { return (hasUpgrade('p', 14)) },
+	},
+        21: {
+            title: "Row 2!",
+            description: "÷4 MJ Buses cost.",
+            cost: new Decimal(30000),
+            unlocked() { return (hasUpgrade('b', 15)) },
+	},
     },
 })
 
@@ -181,8 +194,8 @@ addLayer("b", {
 	},
         15: {
             title: "Keeping 1",
-            description: "Keep Row 1 MJ upgrades.",
-            cost: new Decimal(5),
+            description: "Keep Row 1 MJ upgrades and unlock a new row of MJ upgrades!",
+            cost: new Decimal(4),
             unlocked() { return (hasUpgrade('b', 14)) },
 	},
     },
