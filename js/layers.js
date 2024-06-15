@@ -84,11 +84,6 @@ addLayer("b", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    nodeStyle: {
-	"border-radius": "100%",
-	"width": "110px",
-	"height": "100px"
-    },
     color: "#caed1c",
     requires() {
         let req = new Decimal(200)
