@@ -31,6 +31,7 @@ addLayer("p", {
         if (hasUpgrade('p', 14)) mult = mult.times(2)
 	mult = mult.times(layers.b.effect())
 	if (hasUpgrade('b', 11)) mult = mult.times(2)
+	if (hasUpgrade('b', 14)) mult = mult.times(upgradeEffect('b', 14))
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -43,12 +44,12 @@ addLayer("p", {
     layerShown(){return true},
     upgrades: {
         11: {
-            title: "Point multi",
+            title: "Point multi 1",
             description: "×1.5 points.",
             cost: new Decimal(5),
         },
         12: {
-            title: "Point Base Improver",
+            title: "Point Base Improver 1",
             description: "Add to base point gain based on points.",
             cost: new Decimal(20),
             effect(){
@@ -58,7 +59,7 @@ addLayer("p", {
             unlocked() { return (hasUpgrade('p', 11)) },
 	},
         13: {
-            title: "MJ Multiplier to Points",
+            title: "MJ Multiplier to Points 1",
             description: "Multiply point gain based on MJs.",
             cost: new Decimal(30),
             effect(){
@@ -68,7 +69,7 @@ addLayer("p", {
             unlocked() { return (hasUpgrade('p', 12)) },
 	},
         14: {
-            title: "MJ multi",
+            title: "MJ multi 1",
             description: "×2 MJs.",
             cost: new Decimal(50),
             unlocked() { return (hasUpgrade('p', 13)) },
@@ -137,16 +138,26 @@ addLayer("b", {
             cost: new Decimal(2),
         },
         12: {
-            title: "Pi Point Multi",
+            title: "Pi Point Multi 1",
             description: "×π points.",
             cost: new Decimal(3),
             unlocked() { return (hasUpgrade('b', 11)) },
 	},
         13: {
-            title: "Passive Gain",
+            title: "Passive Gain 1",
             description: "Get 10% of MJ gain per second.",
             cost: new Decimal(4),
             unlocked() { return (hasUpgrade('b', 12)) },
+	},
+        14: {
+            title: "MJ Booster 1",
+            description: "Multiply MJ gain based on MJs.",
+            cost: new Decimal(4),
+            effect(){
+                return player.p.points.pow(0.04)
+            },
+            effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+            unlocked() { return (hasUpgrade('b', 13)) },
 	},
     },
 })
