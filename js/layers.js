@@ -2,6 +2,26 @@ addLayer("p", {
     name: "MJ", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "🧍", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    doReset(p) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[p].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        for(i=1;i<1;i++){ //rows
+            for(v=1;v<5;v++){ //columns
+              if ((hasUpgrade('b', 15)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+            }
+	}
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+    
+        // Stage 4, do the actual data reset
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
@@ -158,6 +178,12 @@ addLayer("b", {
             },
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
             unlocked() { return (hasUpgrade('b', 13)) },
+	},
+        15: {
+            title: "Keeping 1",
+            description: "Keep Row 1 MJ upgrades.",
+            cost: new Decimal(5),
+            unlocked() { return (hasUpgrade('b', 14)) },
 	},
     },
 })
