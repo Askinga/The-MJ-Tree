@@ -101,12 +101,6 @@ addLayer("p", {
             cost: new Decimal(50),
             unlocked() { return (hasUpgrade('p', 14)) },
 	}, 
-        15: {
-            title: "Point multi 2",
-            description: "×2 points and unlock a new layer.",
-            cost: new Decimal(125),
-            unlocked() { return (hasUpgrade('p', 14)) },
-	},
         21: {
             title: "Row 2!",
             description: "÷4 MJ Buses cost.",
