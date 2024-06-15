@@ -69,7 +69,7 @@ addLayer("p", {
 	},
         15: {
             title: "Point multi 2",
-            description: "×2 points.",
+            description: "×2 points and unlock a new layer.",
             cost: new Decimal(125),
             unlocked() { return (hasUpgrade('p', 14)) },
 	}, 
