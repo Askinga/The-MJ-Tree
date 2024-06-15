@@ -140,11 +140,13 @@ addLayer("b", {
             title: "Pi Point Multi",
             description: "×π points.",
             cost: new Decimal(3),
-        },
+            unlocked() { return (hasUpgrade('b', 11)) },
+	},
         13: {
             title: "Passive Gain",
             description: "Get 10% of MJ gain per second.",
             cost: new Decimal(4),
-        },
+            unlocked() { return (hasUpgrade('b', 12)) },
+	},
     },
 })
