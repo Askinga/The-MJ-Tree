@@ -125,4 +125,11 @@ addLayer("b", {
             let desc = "multiplying MJ gain by " + format(tmp[this.layer].effect);
             return desc;
         },
+    upgrades: {
+        11: {
+            title: "Buses!",
+            description: "×2 MJs.",
+            cost: new Decimal(2),
+        },
+    },
 })
