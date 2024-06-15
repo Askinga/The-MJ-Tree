@@ -117,12 +117,12 @@ addLayer("b", {
     },
     branches:["p"],
     effect(){
-    let apow = 0.75
+    let apow = 0.825
 	let eff = player.b.points.add(1).pow(apow)
        return eff
         },
         effectDescription() {
-            let desc = "multiplying MJ gain by" + format(tmp[this.layer].effect);
+            let desc = "multiplying MJ gain by " + format(tmp[this.layer].effect);
             return desc;
         },
 })
