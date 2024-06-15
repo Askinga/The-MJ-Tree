@@ -52,8 +52,9 @@ addLayer("p", {
         mult = new Decimal(1)
         if (hasUpgrade('p', 14)) mult = mult.times(2)
 	mult = mult.times(layers.b.effect())
-	if (hasUpgrade('b', 11)) mult = mult.times(2)
+	if (hasUpgrade('b', 11)) mult = mult.times(3.5)
 	if (hasUpgrade('b', 14)) mult = mult.times(upgradeEffect('b', 14))
+	if (hasUpgrade('b', 15)) mult = mult.times(2.25)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -163,8 +164,8 @@ addLayer("b", {
     upgrades: {
         11: {
             title: "Buses!",
-            description: "×2 MJs.",
-            cost: new Decimal(2),
+            description: "×3.5 MJs.",
+            cost: new Decimal(1),
         },
         12: {
             title: "Pi Point Multi 1",
@@ -190,7 +191,7 @@ addLayer("b", {
 	},
         15: {
             title: "Keeping 1",
-            description: "Keep Row 1 MJ upgrades and unlock a new row of MJ upgrades!",
+            description: "Keep Row 1 MJ upgrades and unlock a new row of MJ upgrades! And also ×2.25 MJs",
             cost: new Decimal(4),
             unlocked() { return (hasUpgrade('b', 14)) },
 	},
