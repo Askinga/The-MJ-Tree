@@ -143,7 +143,7 @@ addLayer("b", {
         let keptUpgrades = [];
         for(i=5;i<6;i++){ //rows
             for(v=1;v<2;v++){ //columns
-              if ((hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+              if ((hasUpgrade(this.layer, i+v*10))) keptUpgrades.push(i+v*10)
             }
 	}
         // Stage 3, track which main features you want to keep - milestones
