@@ -132,5 +132,10 @@ addLayer("b", {
             description: "×2 MJs.",
             cost: new Decimal(2),
         },
+        12: {
+            title: "Pi Point Multi",
+            description: "×π points.",
+            cost: new Decimal(3),
+        },
     },
 })
