@@ -199,6 +199,8 @@ addLayer("b", {
     ],
     resetDescription: 'Reset MJ layer for ',
     canBuyMax() { return true },
+    autoPrestige() { return hasUpgrade('w', 15) },
+    resetsNothing() { return hasUpgrade('w', 15) },
     layerShown(){
         let visible = false
         if (hasUpgrade('p', 15) || player.b.unlocked) visible = true
@@ -227,7 +229,7 @@ addLayer("b", {
             unlocked() { return (hasUpgrade('b', 11)) },
 	},
         13: {
-            title: "Passive Gain 1",
+            title: "QoL 1",
             description: "Get 10% of MJ gain per second.",
             cost: new Decimal(4),
             unlocked() { return (hasUpgrade('b', 12)) },
@@ -315,7 +317,7 @@ addLayer("w", {
             unlocked() { return (hasUpgrade('w', 13)) }, 
 	},
         15: {
-            title: "QoL 1",
+            title: "QoL 2",
             description: "You automatically get MJ Buses and they reset nothing.",
             cost: new Decimal(20),
             unlocked() { return (hasUpgrade('w', 13)) }, 
