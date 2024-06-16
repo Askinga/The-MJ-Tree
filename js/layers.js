@@ -336,5 +336,11 @@ addLayer("w", {
             cost: new Decimal(20),
             unlocked() { return (hasUpgrade('w', 21)) }, 
 	},
+        23: {
+            title: "World multi 1",
+            description: "×3 MJ Worlds.",
+            cost: new Decimal(25),
+            unlocked() { return (hasUpgrade('w', 14)) }, 
+	},
     },
 })
