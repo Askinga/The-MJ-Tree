@@ -184,7 +184,11 @@ addLayer("b", {
     },
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1.6, // Prestige currency exponent
+    exponent() {
+        let exp = 1.6
+        if (hasUpgrade('w', 25)) exp = 1.45
+        return exp
+    }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
@@ -353,6 +357,12 @@ addLayer("w", {
             },
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
             unlocked() { return (hasUpgrade('w', 23)) },
+	},
+        25: {
+            title: "Less Cost Scaling 1",
+            description: "Reduce the MJ Buses cost scaling.",
+            cost: new Decimal(250),
+            unlocked() { return (hasUpgrade('w', 24)) }, 
 	},
     },
 })
