@@ -320,7 +320,7 @@ addLayer("w", {
             title: "QoL 2",
             description: "You automatically get MJ Buses and they reset nothing.",
             cost: new Decimal(20),
-            unlocked() { return (hasUpgrade('w', 13)) }, 
+            unlocked() { return (hasUpgrade('w', 14)) }, 
 	},
     },
 })
