@@ -252,7 +252,7 @@ addLayer("w", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#caed1c",
+    color: "#5a6ffa",
     requires() {
         let req = new Decimal(8116034000)
 	return req
