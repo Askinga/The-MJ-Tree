@@ -254,7 +254,7 @@ addLayer("w", {
     }},
     color: "#caed1c",
     requires() {
-        let req = new Decimal(811603400)
+        let req = new Decimal(8116034000)
 	return req
     }, // Can be a function that takes requirement increases into account
     resource: "MJ Worlds", // Name of prestige currency
