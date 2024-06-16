@@ -58,6 +58,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 22)) mult = mult.times(2.5)
 	if (hasUpgrade('p', 24)) mult = mult.times(5)
 	if (hasUpgrade('p', 25)) mult = mult.times(3)
+	if (hasUpgrade('w', 12)) gain = gain.times(10)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -162,9 +163,9 @@ addLayer("b", {
     
         // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
         let keptUpgrades = [];
-        for(i=5;i<6;i++){ //rows
+        for(i=1;i<6;i++){ //rows
             for(v=1;v<2;v++){ //columns
-              if ((hasUpgrade(this.layer, i+v*10))) keptUpgrades.push(i+v*10)
+              if ((hasUpgrade('w', 13)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
             }
 	}
         // Stage 3, track which main features you want to keep - milestones
@@ -291,5 +292,17 @@ addLayer("w", {
             description: "×10 points.",
             cost: new Decimal(1),
         },
+        12: {
+            title: "MJ multi 4",
+            description: "×10 MJs.",
+            cost: new Decimal(3),
+            unlocked() { return (hasUpgrade('w', 11)) }, 
+	},
+        13: {
+            title: "Keeping 2",
+            description: "Keep Row 1 MJ Buses Upgrades.",
+            cost: new Decimal(10),
+            unlocked() { return (hasUpgrade('w', 12)) }, 
+	},
     },
 })
