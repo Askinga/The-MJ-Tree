@@ -211,7 +211,7 @@ addLayer("b", {
     branches:["p"],
     effect(){
     let apow = 0.45
-    if (hasUpgrade('w', 22)) apow = 0.55
+    if (hasUpgrade('w', 22)) apow = 1
 	let eff = player.b.points.add(1).pow(apow)
        return eff
         },
