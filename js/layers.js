@@ -114,7 +114,25 @@ addLayer("p", {
             title: "MJ multi 3",
             description: "×1.5 MJs.",
             cost: new Decimal(10000000),
-            unlocked() { return (hasUpgrade('b', 15)) },
+            unlocked() { return (hasUpgrade('p', 21)) },
+	},
+        23: {
+            title: "Point multi 4",
+            description: "×2.5 points.",
+            cost: new Decimal(30000000),
+            unlocked() { return (hasUpgrade('p', 22)) },
+	},
+        24: {
+            title: "More Buses",
+            description: "÷5 MJ Buses cost.",
+            cost: new Decimal(100000000),
+            unlocked() { return (hasUpgrade('p', 23)) },
+	},
+        24: {
+            title: "New Layer",
+            description: "Unlock a new layer.",
+            cost: new Decimal(1e9),
+            unlocked() { return (hasUpgrade('p', 24)) },
 	},
     },
 })
@@ -131,6 +149,7 @@ addLayer("b", {
     requires() {
         let req = new Decimal(200)
         if (hasUpgrade('p', 21)) req = req.div(4)
+	if (hasUpgrade('p', 24)) req = req.div(5)
 	return req
     }, // Can be a function that takes requirement increases into account
     resource: "MJ Buses", // Name of prestige currency
@@ -223,4 +242,45 @@ addLayer("b", {
             unlocked() { return (hasUpgrade('b', 14)) },
 	},
     },
+})
+
+addLayer("w", {
+    name: "MJ Worlds",
+    symbol: "🌍",
+    position: 0,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#caed1c",
+    requires() {
+        let req = new Decimal(811603400)
+	return req
+    }, // Can be a function that takes requirement increases into account
+    resource: "MJ Worlds", // Name of prestige currency
+    baseResource: "MJs", // Name of resource prestige is based on
+    baseAmount() {return player.p.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.2, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 2, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "w", description: "W: Reset for MJ Worlds", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    resetDescription: 'Reset previous progress for ',
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('p', 25) || player.w.unlocked) visible = true
+       return visible
+    },
+    branches:["b"],
 })
