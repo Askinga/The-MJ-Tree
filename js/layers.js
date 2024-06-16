@@ -62,6 +62,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 24)) mult = mult.times(5)
 	if (hasUpgrade('p', 25)) mult = mult.times(3)
 	if (hasUpgrade('w', 12)) mult = mult.times(10)
+	if (hasUpgrade('w', 24)) mult = mult.times(upgradeEffect('w', 24))
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -275,6 +276,7 @@ addLayer("w", {
     exponent: 0.2, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('w', 23)) mult = mult.times(3)
 	return mult
     },
 
@@ -340,7 +342,17 @@ addLayer("w", {
             title: "World multi 1",
             description: "×3 MJ Worlds.",
             cost: new Decimal(25),
-            unlocked() { return (hasUpgrade('w', 14)) }, 
+            unlocked() { return (hasUpgrade('w', 22)) }, 
+	},
+        24: {
+            title: "MJ Booster 2",
+            description: "Multiply MJ gain based on MJ Worlds.",
+            cost: new Decimal(75),
+            effect(){
+                return player.w.points.add(1).pow(0.6)
+            },
+            effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+            unlocked() { return (hasUpgrade('w', 23)) },
 	},
     },
 })
