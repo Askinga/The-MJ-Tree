@@ -313,13 +313,13 @@ addLayer("w", {
         14: {
             title: "Keeping 3",
             description: "Keep Row 2 MJ Upgrades.",
-            cost: new Decimal(10),
+            cost: new Decimal(6),
             unlocked() { return (hasUpgrade('w', 13)) }, 
 	},
         15: {
             title: "QoL 2",
             description: "You automatically get MJ Buses and they reset nothing.",
-            cost: new Decimal(20),
+            cost: new Decimal(10),
             unlocked() { return (hasUpgrade('w', 14)) }, 
 	},
     },
