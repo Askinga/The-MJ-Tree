@@ -22,7 +22,8 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added 3 layers: MJs, MJ Buses and MJ Worlds.<br>
                 - Added 25 upgrades.<br>
 		- Endgame: MJ Worlds Upgrade 10.<br>
-                
+
+		
 		<h3>v0.0: Literally nothing</h3><br>
 		- First version.`
 
