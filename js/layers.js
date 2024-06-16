@@ -55,7 +55,7 @@ addLayer("p", {
 	if (hasUpgrade('b', 11)) mult = mult.times(3.5)
 	if (hasUpgrade('b', 14)) mult = mult.times(upgradeEffect('b', 14))
 	if (hasUpgrade('b', 15)) mult = mult.times(2.25)
-	if (hasUpgrade('p', 22)) mult = mult.times(1.5)
+	if (hasUpgrade('p', 22)) mult = mult.times(2.5)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -112,8 +112,8 @@ addLayer("p", {
 	},
         22: {
             title: "MJ multi 3",
-            description: "×1.5 MJs.",
-            cost: new Decimal(10000000),
+            description: "×2.5 MJs.",
+            cost: new Decimal(5000000),
             unlocked() { return (hasUpgrade('p', 21)) },
 	},
         23: {
