@@ -248,7 +248,7 @@ addLayer("b", {
             title: "Keeping 1",
             description: "Keep Row 1 MJ upgrades and unlock a new row of MJ upgrades! And also ×2.25 MJs",
             cost: new Decimal(4),
-            unlocked() { return (hasUpgrade('b', 14)) || player.w.points.gte(1) },
+            unlocked() { return (hasUpgrade('b', 14)) },
 	},
     },
 })
