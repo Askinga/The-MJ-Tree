@@ -13,6 +13,9 @@ addLayer("p", {
             for(v=1;v<2;v++){ //columns
               if ((hasUpgrade('b', 15)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
             }
+	    for(v=2;v<3;v++){ //columns
+                if ((hasUpgrade('w', 14)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+	    }
 	}
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
@@ -296,14 +299,26 @@ addLayer("w", {
         12: {
             title: "MJ multi 4",
             description: "×10 MJs.",
-            cost: new Decimal(3),
+            cost: new Decimal(2),
             unlocked() { return (hasUpgrade('w', 11)) }, 
 	},
         13: {
             title: "Keeping 2",
             description: "Keep Row 1 MJ Buses Upgrades.",
-            cost: new Decimal(10),
+            cost: new Decimal(4),
             unlocked() { return (hasUpgrade('w', 12)) }, 
+	},
+        14: {
+            title: "Keeping 3",
+            description: "Keep Row 2 MJ Upgrades.",
+            cost: new Decimal(10),
+            unlocked() { return (hasUpgrade('w', 13)) }, 
+	},
+        15: {
+            title: "QoL 1",
+            description: "You automatically get MJ Buses and they reset nothing.",
+            cost: new Decimal(20),
+            unlocked() { return (hasUpgrade('w', 13)) }, 
 	},
     },
 })
