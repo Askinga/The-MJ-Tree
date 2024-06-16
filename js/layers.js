@@ -128,7 +128,7 @@ addLayer("p", {
             cost: new Decimal(100000000),
             unlocked() { return (hasUpgrade('p', 23)) },
 	},
-        24: {
+        25: {
             title: "New Layer",
             description: "Unlock a new layer.",
             cost: new Decimal(1e9),
@@ -214,7 +214,7 @@ addLayer("b", {
             cost: new Decimal(1),
         },
         12: {
-            title: "Pi Point Multi 1",
+            title: "Point multi 3",
             description: "×π points.",
             cost: new Decimal(3),
             unlocked() { return (hasUpgrade('b', 11)) },
