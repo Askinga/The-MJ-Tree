@@ -285,4 +285,11 @@ addLayer("w", {
        return visible
     },
     branches:["b"],
+    upgrades: {
+        11: {
+            title: "Point multi 5",
+            description: "×10 points.",
+            cost: new Decimal(1),
+        },
+    },
 })
