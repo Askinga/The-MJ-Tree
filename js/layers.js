@@ -195,7 +195,7 @@ addLayer("b", {
         {key: "b", description: "B: Reset for MJ Buses", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     resetDescription: 'Reset MJ layer for ',
-    canBuyMax() { return true }
+    canBuyMax() { return true },
     layerShown(){
         let visible = false
         if (hasUpgrade('p', 15) || player.b.unlocked) visible = true
