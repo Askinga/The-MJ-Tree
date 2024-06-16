@@ -56,6 +56,8 @@ addLayer("p", {
 	if (hasUpgrade('b', 14)) mult = mult.times(upgradeEffect('b', 14))
 	if (hasUpgrade('b', 15)) mult = mult.times(2.25)
 	if (hasUpgrade('p', 22)) mult = mult.times(2.5)
+	if (hasUpgrade('p', 24)) mult = mult.times(5)
+	if (hasUpgrade('p', 25)) mult = mult.times(3)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -124,13 +126,13 @@ addLayer("p", {
 	},
         24: {
             title: "More Buses",
-            description: "÷5 MJ Buses cost.",
+            description: "÷5 MJ Buses cost and ×5 MJs.",
             cost: new Decimal(100000000),
             unlocked() { return (hasUpgrade('p', 23)) },
 	},
         25: {
             title: "New Layer",
-            description: "Unlock a new layer.",
+            description: "Unlock a new layer and ×3 MJs.",
             cost: new Decimal(1e9),
             unlocked() { return (hasUpgrade('p', 24)) },
 	},
