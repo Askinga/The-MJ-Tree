@@ -156,6 +156,7 @@ addLayer("b", {
         let req = new Decimal(200)
         if (hasUpgrade('p', 21)) req = req.div(4)
 	if (hasUpgrade('p', 24)) req = req.div(5)
+	if (hasUpgrade('w', 21)) req = req.div(2500)
 	return req
     }, // Can be a function that takes requirement increases into account
     resource: "MJ Buses", // Name of prestige currency
@@ -322,5 +323,11 @@ addLayer("w", {
             cost: new Decimal(10),
             unlocked() { return (hasUpgrade('w', 14)) }, 
 	},
+        21: {
+            title: "More Roads",
+            description: "÷2500 MJ Buses cost.",
+            cost: new Decimal(15),
+            unlocked() { return (hasUpgrade('w', 15)) }, 
+	}, 
     },
 })
