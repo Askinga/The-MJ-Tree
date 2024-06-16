@@ -210,6 +210,7 @@ addLayer("b", {
     branches:["p"],
     effect(){
     let apow = 0.45
+    if (hasUpgrade('w', 22)) apow = 0.55
 	let eff = player.b.points.add(1).pow(apow)
        return eff
         },
@@ -329,5 +330,11 @@ addLayer("w", {
             cost: new Decimal(15),
             unlocked() { return (hasUpgrade('w', 15)) }, 
 	}, 
+        22: {
+            title: "Bigger Buses",
+            description: "MJ Buses effect is better.",
+            cost: new Decimal(20),
+            unlocked() { return (hasUpgrade('w', 21)) }, 
+	},
     },
 })
