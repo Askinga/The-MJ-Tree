@@ -25,7 +25,8 @@ let changelog = `<h1>Changelog:</h1><br>
 
 		
 		<h3>v0.0: Literally nothing</h3><br>
-		- First version.`
+		- First version.<br>
+                - Nothing special.`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
