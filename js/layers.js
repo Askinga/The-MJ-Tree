@@ -58,7 +58,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 22)) mult = mult.times(2.5)
 	if (hasUpgrade('p', 24)) mult = mult.times(5)
 	if (hasUpgrade('p', 25)) mult = mult.times(3)
-	if (hasUpgrade('w', 12)) gain = gain.times(10)
+	if (hasUpgrade('w', 12)) mult = mult.times(10)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
