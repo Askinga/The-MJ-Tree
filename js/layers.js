@@ -360,7 +360,7 @@ addLayer("w", {
 	},
         25: {
             title: "Less Cost Scaling 1",
-            description: "Reduce the MJ Buses cost scaling.",
+            description: "Reduce the MJ Buses cost scaling and unlock a new row of MJ Buses upgrades.",
             cost: new Decimal(250),
             unlocked() { return (hasUpgrade('w', 24)) }, 
 	},
