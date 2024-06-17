@@ -50,7 +50,11 @@ addLayer("p", {
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.5, // Prestige currency exponent
+    exponent() {
+        let exp = 0.5
+        if (hasUpgrade('b', 21)) exp = 0.525
+        return exp
+    },, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('p', 14)) mult = mult.times(2)
@@ -255,6 +259,12 @@ addLayer("b", {
         15: {
             title: "Keeping 1",
             description: "Keep Row 1 MJ upgrades and unlock a new row of MJ upgrades! And also ×2.25 MJs",
+            cost: new Decimal(4),
+            unlocked() { return (hasUpgrade('b', 14)) },
+	},
+        21: {
+            title: "Less Cost Scaling 2",
+            description: "Reduce the cost scaling of MJs meaning you can get more",
             cost: new Decimal(4),
             unlocked() { return (hasUpgrade('b', 14)) },
 	},
