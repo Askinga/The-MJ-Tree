@@ -54,7 +54,7 @@ addLayer("p", {
         let exp = 0.5
         if (hasUpgrade('b', 21)) exp = 0.525
         return exp
-    },, // Prestige currency exponent
+    }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('p', 14)) mult = mult.times(2)
