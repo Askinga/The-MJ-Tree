@@ -265,7 +265,7 @@ addLayer("b", {
         21: {
             title: "Less Cost Scaling 2",
             description: "Reduce the cost scaling of MJs meaning you can get more",
-            cost: new Decimal(4),
+            cost: new Decimal(18),
             unlocked() { return (hasUpgrade('w', 25)) },
 	},
     },
