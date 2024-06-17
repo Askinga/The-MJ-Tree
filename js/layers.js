@@ -275,6 +275,12 @@ addLayer("b", {
             cost: new Decimal(19),
             unlocked() { return (hasUpgrade('b', 21)) },
 	},
+        23: {
+            title: "we love pi",
+            description: "×π MJ Worlds",
+            cost: new Decimal(20),
+            unlocked() { return (hasUpgrade('b', 22)) },
+	},
     },
 })
 
@@ -299,6 +305,7 @@ addLayer("w", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('w', 23)) mult = mult.times(3)
+	if (hasUpgrade('b', 23)) mult = mult.times(3.14159)
 	return mult
     },
 
