@@ -62,6 +62,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 24)) mult = mult.times(5)
 	if (hasUpgrade('p', 25)) mult = mult.times(3)
 	if (hasUpgrade('w', 12)) mult = mult.times(10)
+	if (hasUpgrade('w', 21)) mult = mult.times(2.1)
 	if (hasUpgrade('w', 24)) mult = mult.times(upgradeEffect('w', 24))
 	return mult
     },
@@ -332,7 +333,7 @@ addLayer("w", {
 	},
         21: {
             title: "More Roads",
-            description: "÷2500 MJ Buses cost.",
+            description: "÷2500 MJ Buses cost and ×2.1 MJs.",
             cost: new Decimal(15),
             unlocked() { return (hasUpgrade('w', 15)) }, 
 	}, 
