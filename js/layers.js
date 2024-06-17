@@ -34,7 +34,8 @@ addLayer("p", {
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "MJs", // Name of prestige currency
     passiveGeneration() {
-        if (hasUpgrade('p', 21)) return 2
+        if (hasUpgrade('b', 22)) return 10
+	if (hasUpgrade('p', 21)) return 2
 	if (hasUpgrade('b', 13)) return 0.1
         return 0
     },
@@ -267,6 +268,12 @@ addLayer("b", {
             description: "Reduce the cost scaling of MJs meaning you can get more",
             cost: new Decimal(18),
             unlocked() { return (hasUpgrade('w', 25)) },
+	},
+        22: {
+            title: "Passive Buff 1",
+            description: "×5 MJ generation",
+            cost: new Decimal(19),
+            unlocked() { return (hasUpgrade('b', 21)) },
 	},
     },
 })
