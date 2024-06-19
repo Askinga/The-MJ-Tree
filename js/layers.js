@@ -164,6 +164,7 @@ addLayer("b", {
         if (hasUpgrade('p', 21)) req = req.div(4)
 	if (hasUpgrade('p', 24)) req = req.div(5)
 	if (hasUpgrade('w', 21)) req = req.div(2500)
+	if (hasUpgrade('b', 23)) req = req.div(3.14159)
 	return req
     }, // Can be a function that takes requirement increases into account
     resource: "MJ Buses", // Name of prestige currency
@@ -277,8 +278,14 @@ addLayer("b", {
 	},
         23: {
             title: "we love pi",
-            description: "×π MJ Worlds",
+            description: "×π MJ Worlds and ÷π MJ Buses cost",
             cost: new Decimal(20),
+            unlocked() { return (hasUpgrade('b', 22)) },
+	},
+        24: {
+            title: "Point Raiser 1",
+            description: "^1.03 points.",
+            cost: new Decimal(21),
             unlocked() { return (hasUpgrade('b', 22)) },
 	},
     },
