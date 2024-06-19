@@ -65,7 +65,7 @@ function getPointGen() {
 	if (hasUpgrade('p', 23)) gain = gain.times(2.5)
 	if (hasUpgrade('w', 11)) gain = gain.times(10)
 	
-	// pow
+	// power
 	
 	if (hasUpgrade('b', 24)) gain = gain.pow(1.03)
 	return gain
