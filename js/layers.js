@@ -281,7 +281,7 @@ addLayer("b", {
             unlocked() { return (hasUpgrade('b', 21)) },
 	},
         23: {
-            title: "we love pi",
+            title: "World multi 2",
             description: "×π MJ Worlds and ÷π MJ Buses cost",
             cost: new Decimal(20),
             unlocked() { return (hasUpgrade('b', 22)) },
@@ -294,7 +294,7 @@ addLayer("b", {
 	},
         25: {
             title: "Keeping 4",
-            description: "Keep this row of MJ Buses upgrades.",
+            description: "Keep this row of MJ Buses upgrades and unlock a new row of MJ Worlds upgrades!.",
             cost: new Decimal(22),
             unlocked() { return (hasUpgrade('b', 24)) },
 	}, 
@@ -323,6 +323,7 @@ addLayer("w", {
         mult = new Decimal(1)
 	if (hasUpgrade('w', 23)) mult = mult.times(3)
 	if (hasUpgrade('b', 23)) mult = mult.times(3.14159)
+	if (hasUpgrade('w', 21)) mult = mult.times(2)
 	return mult
     },
 
@@ -405,6 +406,12 @@ addLayer("w", {
             description: "Reduce the MJ Buses cost scaling and unlock a new row of MJ Buses upgrades.",
             cost: new Decimal(250),
             unlocked() { return (hasUpgrade('w', 24)) }, 
+	},
+        31: {
+            title: "World multi 3",
+            description: "×2 MJ Worlds.",
+            cost: new Decimal(10000),
+            unlocked() { return (hasUpgrade('b', 25)) }, 
 	},
     },
 })
