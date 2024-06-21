@@ -13,11 +13,18 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1 Working hard",
+	num: "0.2 Achievements",
 	name: "Not Finished!",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+                <h3>v0.2</h3><br>
+                - Added Achievements.<br>
+		- Added 8 achievements.<br>
+		- Added 10 upgrades.<br>
+		- Endgame: MJ Worlds Upgrade 15.<br>
+
+  
                 <h3>v0.1</h3><br>
 		- Added 3 layers: MJs, MJ Buses and MJ Worlds.<br>
                 - Added 25 upgrades.<br>
