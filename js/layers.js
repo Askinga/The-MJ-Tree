@@ -459,4 +459,18 @@ addLayer("🏆", {
                 ],
         },
     },
+    achievements: {
+        rows: 25,
+        cols: 6,
+        11: {
+            name: "Starting",
+            done() { return player.p.points.gte(1) },
+            tooltip: "Get 1 MJ.",	   
+        },
+        12: {
+            name: "Point booster",
+            done() { return (hasUpgrade('p', 12)) },
+            tooltip: "Get MJ Upgrade 2.",	   
+        },
+    },
 })
