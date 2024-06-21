@@ -468,9 +468,29 @@ addLayer("🏆", {
             tooltip: "Get 1 MJ.",	   
         },
         12: {
-            name: "Point booster",
-            done() { return (hasUpgrade('p', 12)) },
-            tooltip: "Get MJ Upgrade 2.",	   
+            name: "Buses",
+            done() { return player.b.points.gte(1) },
+            tooltip: "Get a MJ Bus.",	   
+        },
+        13: {
+            name: "Keeping + New Row",
+            done() { return (hasUpgrade('b', 15)) },
+            tooltip: "Get MJ Bus upgrade 5.",	   
+        },
+        14: {
+            name: "Overpopulated",
+            done() { return player.p.points.gte(8116034000) },
+            tooltip: "Get the amount of MJs to the current world population.",	   
+        },
+        15: {
+            name: "Idle stage 1",
+            done() { return (hasUpgrade('w', 15)) },
+            tooltip: "Get MJ World upgrade 5.",	   
+        },
+        16: {
+            name: "Idle stage 1 continues",
+            done() { return (hasUpgrade('w', 25)) },
+            tooltip: "Get MJ World upgrade 10.",	   
         },
     },
 })
