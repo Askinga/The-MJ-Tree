@@ -483,14 +483,24 @@ addLayer("🏆", {
             tooltip: "Get the amount of MJs to the current world population.",	   
         },
         15: {
-            name: "Idle stage 1",
+            name: "Active stage 1",
             done() { return (hasUpgrade('w', 15)) },
             tooltip: "Get MJ World upgrade 5.",	   
         },
         16: {
-            name: "Idle stage 1 continues",
+            name: "Idle stage 1",
             done() { return (hasUpgrade('w', 25)) },
             tooltip: "Get MJ World upgrade 10.",	   
         },
+        21: {
+            name: "Active stage 2",
+            done() { return (hasUpgrade('b', 25)) },
+            tooltip: "Get MJ Bus upgrade 10.",	   
+	},
+        16: {
+            name: "Endgame",
+            done() { return (hasUpgrade('w', 35)) },
+            tooltip: "Get MJ World upgrade 15. Reward: Unlock the current endgame.",	   
+	},
     },
 })
