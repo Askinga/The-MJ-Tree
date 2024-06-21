@@ -441,9 +441,6 @@ addLayer("w", {
     },
 })
 
-    },
-})
-
 addLayer("🏆", {
     startData() { return {
         unlocked: true,
