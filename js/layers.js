@@ -497,7 +497,7 @@ addLayer("🏆", {
             done() { return (hasUpgrade('b', 25)) },
             tooltip: "Get MJ Bus upgrade 10.",	   
 	},
-        16: {
+        22: {
             name: "Endgame",
             done() { return (hasUpgrade('w', 35)) },
             tooltip: "Get MJ World upgrade 15. Reward: Unlock the current endgame.",	   
