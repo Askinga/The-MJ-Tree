@@ -440,3 +440,26 @@ addLayer("w", {
 	},
     },
 })
+
+    },
+})
+
+addLayer("🏆", {
+    startData() { return {
+        unlocked: true,
+    }},
+    color: "yellow",
+    row: "side",
+    layerShown() {return true}, 
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Achievements")
+    },
+    tabFormat: {
+        "Achievements": {
+            content: [
+                "achievements",
+                "blank",
+                ],
+        },
+    },
+})
