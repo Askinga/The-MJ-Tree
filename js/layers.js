@@ -70,6 +70,7 @@ addLayer("p", {
 	if (hasUpgrade('w', 21)) mult = mult.times(2.1)
 	if (hasUpgrade('w', 24)) mult = mult.times(upgradeEffect('w', 24))
 	if (hasUpgrade('b', 24)) mult = mult.times(4)
+	if (hasUpgrade('w', 33)) mult = mult.pow(1.05)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -412,6 +413,30 @@ addLayer("w", {
             description: "×2 MJ Worlds.",
             cost: new Decimal(10000),
             unlocked() { return (hasUpgrade('b', 25)) }, 
+	},
+        32: {
+            title: "Point ^",
+            description: "^1.02 points.",
+            cost: new Decimal(30000),
+            unlocked() { return (hasUpgrade('w', 31)) }, 
+	},
+        33: {
+            title: "MJ ^",
+            description: "^1.05 MJs.",
+            cost: new Decimal(50000),
+            unlocked() { return (hasUpgrade('w', 32)) }, 
+	},
+        34: {
+            title: "Big point boost",
+            description: "×50 points.",
+            cost: new Decimal(100000),
+            unlocked() { return (hasUpgrade('w', 33)) }, 
+	},
+        35: {
+            title: "Endgame",
+            description: "Unlock the current endgame.",
+            cost: new Decimal(1000000),
+            unlocked() { return (hasUpgrade('w', 34)) }, 
 	},
     },
 })
