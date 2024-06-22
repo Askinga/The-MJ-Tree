@@ -434,7 +434,7 @@ addLayer("w", {
 	},
         35: {
             title: "Endgame",
-            description: "Unlock the current endgame.",
+            description: "Unlock a new row of MJ upgrades!",
             cost: new Decimal(200000),
             unlocked() { return (hasUpgrade('w', 34)) }, 
 	},
