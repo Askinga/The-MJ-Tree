@@ -483,17 +483,17 @@ addLayer("🏆", {
             tooltip: "Get the amount of MJs to the current world population.",	   
         },
         15: {
-            name: "Active stage 1",
+            name: "Grinding for upgrades",
             done() { return (hasUpgrade('w', 15)) },
             tooltip: "Get MJ World upgrade 5.",	   
         },
         16: {
-            name: "Idle stage 1",
+            name: "Waiting for upgrades",
             done() { return (hasUpgrade('w', 25)) },
             tooltip: "Get MJ World upgrade 10.",	   
         },
         21: {
-            name: "Active stage 2",
+            name: "Grinding for upgrades again",
             done() { return (hasUpgrade('b', 25)) },
             tooltip: "Get MJ Bus upgrade 10.",	   
 	},
