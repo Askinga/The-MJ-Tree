@@ -433,7 +433,7 @@ addLayer("w", {
             unlocked() { return (hasUpgrade('w', 33)) }, 
 	},
         35: {
-            title: "Endgame",
+            title: "Layer 1 needs more upgrades!",
             description: "Unlock a new row of MJ upgrades!",
             cost: new Decimal(200000),
             unlocked() { return (hasUpgrade('w', 34)) }, 
@@ -498,9 +498,9 @@ addLayer("🏆", {
             tooltip: "Get MJ Bus upgrade 10.",	   
 	},
         22: {
-            name: "Endgame",
+            name: "More MJ Upgrades",
             done() { return (hasUpgrade('w', 35)) },
-            tooltip: "Get MJ World upgrade 15. Reward: Unlock the current endgame.",	   
+            tooltip: "Get MJ World upgrade 15.",	   
 	},
     },
 })
