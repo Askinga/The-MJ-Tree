@@ -324,7 +324,7 @@ addLayer("w", {
         mult = new Decimal(1)
 	if (hasUpgrade('w', 23)) mult = mult.times(3)
 	if (hasUpgrade('b', 23)) mult = mult.times(3.14159)
-	if (hasUpgrade('w', 21)) mult = mult.times(2)
+	if (hasUpgrade('w', 31)) mult = mult.times(2)
 	return mult
     },
 
