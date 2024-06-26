@@ -95,8 +95,8 @@ addLayer("p", {
     milestones: {
         0: {
             requirementDescription: "7 Mastered Points",
-            effectDescription: "Mastered points reset resets nothing.",
-            done() { return player.p.points >= (7) },
+            effectDescription: "Mastered points resets nothing.",
+            done() { return player.p.points >= (7) && (hasUpgrade('p', 15)) },
             unlocked() {return hasUpgrade('p', 15)},
 	},
      },
