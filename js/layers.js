@@ -74,7 +74,7 @@ addLayer("p", {
 	if (hasUpgrade('w', 24)) mult = mult.times(upgradeEffect('w', 24))
 	if (hasUpgrade('b', 24)) mult = mult.times(4)
 	if (hasUpgrade('p', 31)) mult = mult.times(5)
-	if (hasUpgrade('p', 33)) gain = gain.times(2)
+	if (hasUpgrade('p', 33)) mult = mult.times(2)
 	
 	// pow
 	
