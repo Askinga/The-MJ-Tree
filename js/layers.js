@@ -415,7 +415,7 @@ addLayer("w", {
             cost: new Decimal(10000),
             unlocked() { return (hasUpgrade('b', 25)) }, 
 	    effect(){
-                return player.points.add(1).pow(0.0045)
+                return player.points.add(1).pow(0.00625)
             },
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
 	},
