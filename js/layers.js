@@ -598,8 +598,8 @@ addLayer("m", {
         1: {
             requirementDescription: "2 mastered skills",
             effectDescription: "Master MJs, giving you ×50 more MJs.",
-            done() { return player.m.points >= (2) }
-            unlocked() { return (hasMilestone('m', 0)) },
+            done() { return player.m.points >= (2) },
+            unlocked() { return (hasMilestone('m', 0)) }
 	},
     },
 })
