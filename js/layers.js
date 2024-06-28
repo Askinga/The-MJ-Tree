@@ -313,7 +313,7 @@ addLayer("b", {
             title: "Less Cost Scaling 2",
             description: "Reduce the cost scaling of MJs meaning you can get more",
             cost: new Decimal(18),
-            unlocked() { return (hasUpgrade('w', 25)) },
+            unlocked() { return (hasUpgrade('w', 25)) || (hasUpgrade('b', 25)) },
 	},
         22: {
             title: "Passive Buff 1",
