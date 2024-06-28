@@ -585,7 +585,7 @@ addLayer("m", {
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "m", description: "M: Reset for mastered skills", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "a", description: "A: Reset for mastered skills", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     resetDescription: 'Reset previous progress for ',
     layerShown(){
