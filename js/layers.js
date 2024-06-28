@@ -325,6 +325,7 @@ addLayer("w", {
 	if (hasUpgrade('w', 23)) mult = mult.times(3)
 	if (hasUpgrade('b', 23)) mult = mult.times(3.14159)
 	if (hasUpgrade('w', 31)) mult = mult.times(2)
+	if (hasUpgrade('w', 31)) mult = mult.times(upgradeEffect('w', 31))
 	return mult
     },
 
@@ -410,9 +411,13 @@ addLayer("w", {
 	},
         31: {
             title: "World multi 3",
-            description: "×2 MJ Worlds.",
+            description: "×2 MJ Worlds and multiply MJ World gain based on points.",
             cost: new Decimal(10000),
             unlocked() { return (hasUpgrade('b', 25)) }, 
+	    effect(){
+                return player.points.add(1).pow(0.01)
+            },
+            effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
 	},
         32: {
             title: "Point ^",
