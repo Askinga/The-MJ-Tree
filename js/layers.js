@@ -74,6 +74,7 @@ addLayer("p", {
 	if (hasUpgrade('w', 24)) mult = mult.times(upgradeEffect('w', 24))
 	if (hasUpgrade('b', 24)) mult = mult.times(4)
 	if (hasUpgrade('p', 31)) mult = mult.times(5)
+	if (hasUpgrade('p', 33)) gain = gain.times(2)
 	
 	// pow
 	
@@ -165,9 +166,15 @@ addLayer("p", {
         32: {
             title: "^",
             description: "^1.025 points.",
-            cost: new Decimal(2e26),
+            cost: new Decimal(6e26),
             unlocked() { return (hasUpgrade('p', 31)) },
 	},
+        33: {
+            title: "🧍 > 🧍🧍",
+            description: "Clone your MJs, granting you ×2 more MJs.",
+            cost: new Decimal(1e28),
+            unlocked() { return (hasUpgrade('p', 32)) },
+	},  
     },
 })
 
