@@ -197,7 +197,7 @@ addLayer("p", {
         unlocked() { return (hasMilestone('m', 2)) },
         cost(x) {
             let exp2 = 1.05
-            return new Decimal(1e11).mul(Decimal.pow(1.2, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
+            return new Decimal(5e35).mul(Decimal.pow(1.2, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
         },
         display() {
             return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " MJs." + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost MJ gain by x" + format(buyableEffect(this.layer, this.id))
