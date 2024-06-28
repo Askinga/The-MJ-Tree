@@ -186,7 +186,7 @@ addLayer("p", {
             title: "More layers",
             description: "Unlock a new layer.",
             cost: new Decimal(3e31),
-            unlocked() { return (hasUpgrade('p', 35)) },
+            unlocked() { return (hasUpgrade('p', 34)) },
 	},  
     },
 })
