@@ -79,6 +79,7 @@ addLayer("p", {
 	// pow
 	
 	if (hasUpgrade('w', 33)) mult = mult.pow(1.05)
+	if (hasUpgrade('p', 34)) mult = mult.pow(1.04)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -174,6 +175,12 @@ addLayer("p", {
             description: "Clone your MJs, granting you ×2 more MJs.",
             cost: new Decimal(1e28),
             unlocked() { return (hasUpgrade('p', 32)) },
+	},  
+        34: {
+            title: "Raise",
+            description: "^1.04 MJs.",
+            cost: new Decimal(1e29),
+            unlocked() { return (hasUpgrade('p', 33)) },
 	},  
     },
 })
