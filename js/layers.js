@@ -82,7 +82,7 @@ addLayer("p", {
 	
 	if (hasUpgrade('w', 33)) mult = mult.pow(1.05)
 	if (hasUpgrade('p', 34)) mult = mult.pow(1.04)
-	if (hasMilestone('m', 4)) mult = mult.pow(1.02)
+	if (hasMilestone('m', 4)) mult = mult.pow(1.005)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -652,7 +652,7 @@ addLayer("m", {
 	},
         4: {
             requirementDescription: "5 mastered skills",
-            effectDescription: "^1.1 points and ^1.02 MJs.",
+            effectDescription: "^1.1 points and ^1.005 MJs.",
             done() { return player.m.points >= (5) },
             unlocked() { return (hasMilestone('m', 3)) }
 	},
