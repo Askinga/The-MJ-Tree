@@ -41,6 +41,7 @@ addLayer("p", {
     },
     effect(){
     let rpow = 0.5
+       if (hasMilestone('m', 5)) rpow = 0.6
 	let eff = player.p.points.pow(rpow)
        return eff
         },
@@ -655,6 +656,12 @@ addLayer("m", {
             effectDescription: "^1.1 points and ^1.005 MJs.",
             done() { return player.m.points >= (5) },
             unlocked() { return (hasMilestone('m', 3)) }
+	},
+        5: {
+            requirementDescription: "6 mastered skills",
+            effectDescription: "Boost the MJ effect.",
+            done() { return player.m.points >= (6) },
+            unlocked() { return (hasMilestone('m', 4)) }
 	},
     },
 })
