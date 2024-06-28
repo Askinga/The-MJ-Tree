@@ -606,5 +606,11 @@ addLayer("m", {
             done() { return player.m.points >= (2) },
             unlocked() { return (hasMilestone('m', 0)) }
 	},
+        2: {
+            requirementDescription: "3 mastered skills",
+            effectDescription: "You unlock a buyable.",
+            done() { return player.m.points >= (3) },
+            unlocked() { return (hasMilestone('m', 1)) }
+	},
     },
 })
