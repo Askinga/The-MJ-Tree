@@ -77,6 +77,7 @@ function getPointGen() {
 	
 	if (hasUpgrade('b', 24)) gain = gain.pow(1.03)
 	if (hasUpgrade('w', 32)) gain = gain.pow(1.02)
+	if (hasUpgrade('p', 32)) gain = gain.pow(1.025)
 	return gain
 }
 
