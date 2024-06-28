@@ -13,11 +13,20 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.2 Achievements",
+	num: "0.3 Skill Mastery",
 	name: "Not Finished!",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+                <h3>v0.3</h3><br>
+                - Added Skill Mastery.<br>
+		- Added 1 achievement.<br>
+		- Added 5 upgrades.<br>
+		- Added Milestones.<br>
+                - Added 2 milestones.<br>
+		- Endgame: Skill Mastery Milestone 2.<br>
+		
+  
                 <h3>v0.2</h3><br>
                 - Added Achievements.<br>
 		- Added 8 achievements.<br>
@@ -93,7 +102,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return (hasUpgrade('w', 35))
+	return (hasMilestone('m', 1))
 }
 
 
