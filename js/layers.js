@@ -298,7 +298,7 @@ addLayer("b", {
     effect(){
     let apow = 0.45
     if (hasUpgrade('w', 22)) apow = 1
-    if (hasMilestone('m', 3)) apow = 1.5
+    if (hasMilestone('m', 3)) apow = 2
 	let eff = player.b.points.add(1).pow(apow)
        return eff
         },
@@ -648,6 +648,12 @@ addLayer("m", {
             effectDescription: "Master MJ Buses, giving you ÷1e10 MJ Buses cost and the MJ Buses effect is better.",
             done() { return player.m.points >= (4) },
             unlocked() { return (hasMilestone('m', 2)) }
+	},
+        4: {
+            requirementDescription: "5 mastered skills",
+            effectDescription: "^1.1 points.",
+            done() { return player.m.points >= (5) },
+            unlocked() { return (hasMilestone('m', 3)) }
 	},
     },
 })
