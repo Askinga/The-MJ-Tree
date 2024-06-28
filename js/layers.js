@@ -75,6 +75,7 @@ addLayer("p", {
 	if (hasUpgrade('b', 24)) mult = mult.times(4)
 	if (hasUpgrade('p', 31)) mult = mult.times(5)
 	if (hasUpgrade('p', 33)) mult = mult.times(2)
+	if (hasMilestone('m', 1)) mult = mult.times(50)
 	
 	// pow
 	
@@ -588,4 +589,17 @@ addLayer("m", {
        return visible
     },
     branches:["w"],
+    milestones: {
+        0: {
+            requirementDescription: "1 mastered skill",
+            effectDescription: "Master points, giving you ×100 and ^1.02 more points.",
+            done() { return player.m.points >= (1) }
+        },
+        1: {
+            requirementDescription: "2 mastered skills",
+            effectDescription: "Master MJs, giving you ×50 more MJs.",
+            done() { return player.m.points >= (2) }
+            unlocked() { return (hasMilestone('m', 0)) },
+	},
+    },
 })
