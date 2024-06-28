@@ -58,7 +58,10 @@ addLayer("p", {
     }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        if (hasUpgrade('p', 14)) mult = mult.times(2)
+        
+        // mult
+	
+	if (hasUpgrade('p', 14)) mult = mult.times(2)
 	mult = mult.times(layers.b.effect())
 	if (hasUpgrade('b', 11)) mult = mult.times(3.5)
 	if (hasUpgrade('b', 14)) mult = mult.times(upgradeEffect('b', 14))
@@ -70,6 +73,10 @@ addLayer("p", {
 	if (hasUpgrade('w', 21)) mult = mult.times(2.1)
 	if (hasUpgrade('w', 24)) mult = mult.times(upgradeEffect('w', 24))
 	if (hasUpgrade('b', 24)) mult = mult.times(4)
+	if (hasUpgrade('p', 31)) mult = mult.times(5)
+	
+	// pow
+	
 	if (hasUpgrade('w', 33)) mult = mult.pow(1.05)
 	return mult
     },
@@ -148,6 +155,18 @@ addLayer("p", {
             description: "Unlock a new layer and ×3 MJs.",
             cost: new Decimal(1e9),
             unlocked() { return (hasUpgrade('p', 24)) },
+	},
+        31: {
+            title: "Boost",
+            description: "×5 MJs.",
+            cost: new Decimal(2.5e25),
+            unlocked() { return (hasUpgrade('w', 35)) },
+	},
+        32: {
+            title: "^",
+            description: "^1.025 points.",
+            cost: new Decimal(2e26),
+            unlocked() { return (hasUpgrade('p', 31)) },
 	},
     },
 })
