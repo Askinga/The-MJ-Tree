@@ -482,7 +482,7 @@ addLayer("w", {
             title: "World multi 3",
             description: "×2 MJ Worlds and multiply MJ World gain based on points.",
             cost: new Decimal(10000),
-            unlocked() { return (hasUpgrade('b', 25)) }, 
+            unlocked() { return (hasUpgrade('b', 25)) && (hasUpgrade('w', 25)) }, 
 	    effect(){
                 return player.points.add(1).pow(0.00625)
             },
