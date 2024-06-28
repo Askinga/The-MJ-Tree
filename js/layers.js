@@ -61,6 +61,7 @@ addLayer("p", {
         
         // mult
 	
+	mult = mult.times(buyableEffect('p', 11))
 	if (hasUpgrade('p', 14)) mult = mult.times(2)
 	mult = mult.times(layers.b.effect())
 	if (hasUpgrade('b', 11)) mult = mult.times(3.5)
