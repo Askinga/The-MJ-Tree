@@ -72,12 +72,14 @@ function getPointGen() {
 	if (hasUpgrade('p', 23)) gain = gain.times(2.5)
 	if (hasUpgrade('w', 11)) gain = gain.times(10)
 	if (hasUpgrade('w', 34)) gain = gain.times(50)
+	if (hasMilestone('m', 0)) gain = gain.times(100)
 	
 	// power
 	
 	if (hasUpgrade('b', 24)) gain = gain.pow(1.03)
 	if (hasUpgrade('w', 32)) gain = gain.pow(1.02)
 	if (hasUpgrade('p', 32)) gain = gain.pow(1.025)
+	if (hasMilestone('m', 0)) gain = gain.pow(1.02)
 	return gain
 }
 
