@@ -236,6 +236,7 @@ addLayer("b", {
 	if (hasUpgrade('p', 24)) req = req.div(5)
 	if (hasUpgrade('w', 21)) req = req.div(2500)
 	if (hasUpgrade('b', 23)) req = req.div(3.14159)
+	if (hasMilestone('m', 3)) req = req.div(1e10)
 	return req
     }, // Can be a function that takes requirement increases into account
     resource: "MJ Buses", // Name of prestige currency
@@ -297,6 +298,7 @@ addLayer("b", {
     effect(){
     let apow = 0.45
     if (hasUpgrade('w', 22)) apow = 1
+    if (hasMilestone('m', 3)) apow = 1.5
 	let eff = player.b.points.add(1).pow(apow)
        return eff
         },
@@ -601,7 +603,7 @@ addLayer("m", {
     baseResource: "MJs", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 2.825, // Prestige currency exponent
+    exponent: 3.2, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
@@ -640,6 +642,12 @@ addLayer("m", {
             effectDescription: "You unlock a buyable.",
             done() { return player.m.points >= (3) },
             unlocked() { return (hasMilestone('m', 1)) }
+	},
+        3: {
+            requirementDescription: "4 mastered skills",
+            effectDescription: "Master MJ Buses, giving you ÷1e10 MJ Buses cost and the MJ Buses effect is better.",
+            done() { return player.m.points >= (4) },
+            unlocked() { return (hasMilestone('m', 2)) }
 	},
     },
 })
