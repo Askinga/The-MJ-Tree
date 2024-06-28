@@ -547,6 +547,11 @@ addLayer("🏆", {
             done() { return (hasUpgrade('w', 35)) },
             tooltip: "Get MJ World upgrade 15.",	   
 	},
+        23: {
+            name: "Skill Mastery!",
+            done() { return player.m.points.gte(1) },
+            tooltip: "Get a Skill Mastered.",	   
+	},
     },
 })
 
