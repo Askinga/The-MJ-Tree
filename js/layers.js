@@ -84,6 +84,7 @@ addLayer("p", {
 	if (hasUpgrade('w', 33)) mult = mult.pow(1.05)
 	if (hasUpgrade('p', 34)) mult = mult.pow(1.04)
 	if (hasMilestone('m', 4)) mult = mult.pow(1.005)
+	if (hasMilestone('m', 5)) mult = mult.pow(1.035)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -659,9 +660,15 @@ addLayer("m", {
 	},
         5: {
             requirementDescription: "6 mastered skills",
-            effectDescription: "Boost the MJ effect.",
+            effectDescription: "Boost the MJ effect and ^1.035 MJs.",
             done() { return player.m.points >= (6) },
             unlocked() { return (hasMilestone('m', 4)) }
+	},
+        6: {
+            requirementDescription: "7 mastered skills",
+            effectDescription: "×1e20 points!",
+            done() { return player.m.points >= (7) },
+            unlocked() { return (hasMilestone('m', 5)) }
 	},
     },
 })
