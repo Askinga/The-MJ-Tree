@@ -630,11 +630,6 @@ addLayer("🏆", {
             done() { return (hasMilestone('m', 10) },
             tooltip: "Get Skill Mastery Milestone 11.",	   
 	},
-        26: {
-            name: "e1000",
-            done() { return player.points.gte("e1000") },
-            tooltip: "Get e1000 Points.",	   
-	}, 
     },
 })
 
