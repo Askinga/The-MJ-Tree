@@ -78,7 +78,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 31)) mult = mult.times(5)
 	if (hasUpgrade('p', 33)) mult = mult.times(2)
 	if (hasMilestone('m', 1)) mult = mult.times(50)
-	if (hasMilestone('m', 7)) mult = mult.times(1e15)
+	if (hasMilestone('m', 7)) mult = mult.times(1e8)
 	
 	// pow
 	
@@ -678,7 +678,7 @@ addLayer("m", {
 	},
         7: {
             requirementDescription: "8 mastered skills",
-            effectDescription: "×1e15 MJs.",
+            effectDescription: "×1e8 MJs.",
             done() { return player.m.points >= (8) },
             unlocked() { return (hasMilestone('m', 6)) }
 	},
