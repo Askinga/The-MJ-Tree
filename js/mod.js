@@ -83,6 +83,7 @@ function getPointGen() {
 	if (hasUpgrade('w', 34)) gain = gain.times(50)
 	if (hasMilestone('m', 0)) gain = gain.times(100)
 	if (hasMilestone('m', 6)) gain = gain.times(1e10)
+	if (hasMilestone('m', 11)) gain = gain.times(1e20)
 	
 	// power
 	
