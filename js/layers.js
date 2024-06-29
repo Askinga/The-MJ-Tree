@@ -78,6 +78,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 31)) mult = mult.times(5)
 	if (hasUpgrade('p', 33)) mult = mult.times(2)
 	if (hasMilestone('m', 1)) mult = mult.times(50)
+	if (hasMilestone('m', 7)) mult = mult.times(1e15)
 	
 	// pow
 	
@@ -586,6 +587,11 @@ addLayer("🏆", {
             done() { return player.m.points.gte(1) },
             tooltip: "Get a Skill Mastered.",	   
 	},
+        24: {
+            name: "Googol",
+            done() { return player.points.gte(1e100) },
+            tooltip: "Get 1e100 Points.",	   
+	},
     },
 })
 
@@ -669,6 +675,12 @@ addLayer("m", {
             effectDescription: "×1e10 points!",
             done() { return player.m.points >= (7) },
             unlocked() { return (hasMilestone('m', 5)) }
+	},
+        7: {
+            requirementDescription: "8 mastered skills",
+            effectDescription: "×1e15 MJs.",
+            done() { return player.m.points >= (8) },
+            unlocked() { return (hasMilestone('m', 6)) }
 	},
     },
 })
