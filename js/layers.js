@@ -16,6 +16,9 @@ addLayer("p", {
 	    for(v=2;v<3;v++){ //columns
                 if ((hasUpgrade('w', 14)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
 	    }
+	    for(v=3;v<4;v++){ //columns
+                if ((hasMilestone('m', 10)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+	    }
 	}
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
@@ -382,6 +385,26 @@ addLayer("w", {
     name: "MJ Worlds",
     symbol: "🌍",
     position: 0,
+    doReset(w) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[b].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        for(i=1;i<6;i++){ //rows
+            for(v=1;v<4;v++){ //columns
+              if ((hasMilestone('m', 10)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+            }
+	}
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+    
+        // Stage 4, do the actual data reset
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
@@ -702,6 +725,12 @@ addLayer("m", {
             effectDescription: "Master MJ Worlds, giving you ^1.2 MJ Worlds, ×1M MJ Worlds and ×1e8 MJs again.",
             done() { return player.m.points >= (10) },
             unlocked() { return (hasMilestone('m', 8)) }
+	},
+        10: {
+            requirementDescription: "11 mastered skills",
+            effectDescription: "Keep Row 3 MJ upgrades, the first 15 MJ World upgrades and ×1e6 MJs.",
+            done() { return player.m.points >= (11) },
+            unlocked() { return (hasMilestone('m', 9)) }
 	},
     },
 })
