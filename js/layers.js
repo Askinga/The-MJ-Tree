@@ -83,6 +83,7 @@ addLayer("p", {
 	if (hasMilestone('m', 1)) mult = mult.times(50)
 	if (hasMilestone('m', 7)) mult = mult.times(1e8)
 	if (hasMilestone('m', 9)) mult = mult.times(1e8)
+	if (hasMilestone('m', 10)) mult = mult.times(1e6)
 	
 	// pow
 	
