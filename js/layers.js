@@ -79,6 +79,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 33)) mult = mult.times(2)
 	if (hasMilestone('m', 1)) mult = mult.times(50)
 	if (hasMilestone('m', 7)) mult = mult.times(1e8)
+	if (hasMilestone('m', 9)) mult = mult.times(1e8)
 	
 	// pow
 	
@@ -698,7 +699,7 @@ addLayer("m", {
 	},
         9: {
             requirementDescription: "10 mastered skills",
-            effectDescription: "Master MJ Worlds, giving you ^1.2 MJ Worlds and ×1M MJ Worlds.",
+            effectDescription: "Master MJ Worlds, giving you ^1.2 MJ Worlds, ×1M MJ Worlds and ×1e8 MJs again.",
             done() { return player.m.points >= (10) },
             unlocked() { return (hasMilestone('m', 8)) }
 	},
