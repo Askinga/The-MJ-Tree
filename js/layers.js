@@ -733,5 +733,11 @@ addLayer("m", {
             done() { return player.m.points >= (11) },
             unlocked() { return (hasMilestone('m', 9)) }
 	},
+        11: {
+            requirementDescription: "12 mastered skills",
+            effectDescription: "×1e20 points.",
+            done() { return player.m.points >= (12) },
+            unlocked() { return (hasMilestone('m', 10)) }
+	},
     },
 })
