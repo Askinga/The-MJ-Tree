@@ -397,10 +397,17 @@ addLayer("w", {
     exponent: 0.2, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	
+	// mult    
+	    
 	if (hasUpgrade('w', 23)) mult = mult.times(3)
 	if (hasUpgrade('b', 23)) mult = mult.times(3.14159)
 	if (hasUpgrade('w', 31)) mult = mult.times(2)
 	if (hasUpgrade('w', 31)) mult = mult.times(upgradeEffect('w', 31))
+	
+	// power
+	
+	 if (hasMilestone('m', 9)) mult = mult.pow(1.2)   
 	return mult
     },
 
@@ -687,6 +694,12 @@ addLayer("m", {
             effectDescription: "^1.15 points.",
             done() { return player.m.points >= (9) },
             unlocked() { return (hasMilestone('m', 7)) }
+	},
+        9: {
+            requirementDescription: "10 mastered skills",
+            effectDescription: "Master MJ Worlds, giving you ^1.2 MJ Worlds.",
+            done() { return player.m.points >= (10) },
+            unlocked() { return (hasMilestone('m', 8)) }
 	},
     },
 })
