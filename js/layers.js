@@ -660,7 +660,7 @@ addLayer("🏆", {
         25: {
             name: "e500",
             done() { return player.points.gte("e500") },
-            tooltip: "Get e500 Points.",	   
+            tooltip: "Get e500 Points. Reward: ×1e15 Points.",	   
 	},
     },
 })
