@@ -561,7 +561,7 @@ addLayer("w", {
         title: "MJ World Compounder",
         unlocked() { return (hasMilestone('m', 12)) },
         cost(x) {
-            let exp2 = 1.1
+            let exp2 = 1.085
             return new Decimal(1e85).mul(Decimal.pow(1.2, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
         },
         display() {
