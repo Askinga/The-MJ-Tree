@@ -86,6 +86,7 @@ addLayer("p", {
 	if (hasMilestone('m', 10)) mult = mult.times(1e6)
 	if (hasMilestone('m', 11)) mult = mult.times(1e3)
 	if (hasMilestone('m', 12)) mult = mult.times(1e6)
+	if (hasMilestone('m', 13)) mult = mult.times(1e12)
 	
 	// pow
 	
@@ -781,6 +782,18 @@ addLayer("m", {
             effectDescription: "Unlock a buyable in MJ World layer, ×10 MJ Worlds and ×1e6 MJs.",
             done() { return player.m.points >= (13) },
             unlocked() { return (hasMilestone('m', 11)) }
+	},
+        13: {
+            requirementDescription: "14 mastered skills",
+            effectDescription: "×1T MJs.",
+            done() { return player.m.points >= (14) },
+            unlocked() { return (hasMilestone('m', 12)) }
+	},
+        14: {
+            requirementDescription: "15 mastered skills",
+            effectDescription: "Unlock a new layer.",
+            done() { return player.m.points >= (15) },
+            unlocked() { return (hasMilestone('m', 13)) }
 	},
     },
 })
