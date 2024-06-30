@@ -84,6 +84,7 @@ function getPointGen() {
 	if (hasMilestone('m', 0)) gain = gain.times(100)
 	if (hasMilestone('m', 6)) gain = gain.times(1e10)
 	if (hasMilestone('m', 11)) gain = gain.times(1e20)
+	if (hasAchievement('🏆', 25)) gain = gain.times(1e15)
 	
 	// power
 	
