@@ -84,6 +84,7 @@ addLayer("p", {
 	if (hasMilestone('m', 7)) mult = mult.times(1e8)
 	if (hasMilestone('m', 9)) mult = mult.times(1e8)
 	if (hasMilestone('m', 10)) mult = mult.times(1e6)
+	if (hasMilestone('m', 11)) mult = mult.times(1e3)
 	
 	// pow
 	
@@ -424,7 +425,8 @@ addLayer("w", {
         mult = new Decimal(1)
 	
 	// mult    
-	    
+
+	mult = mult.times(buyableEffect('w', 11))
 	if (hasUpgrade('w', 23)) mult = mult.times(3)
 	if (hasUpgrade('b', 23)) mult = mult.times(3.14159)
 	if (hasUpgrade('w', 31)) mult = mult.times(2)
@@ -552,6 +554,34 @@ addLayer("w", {
             unlocked() { return (hasUpgrade('w', 34)) }, 
 	},
     },
+    buyables: {
+        11: {
+        title: "MJ World Compounder",
+        unlocked() { return (hasMilestone('m', 12)) },
+        cost(x) {
+            let exp2 = 1.1
+            return new Decimal(1e85).mul(Decimal.pow(1.2, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
+        },
+        display() {
+            return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " MJ Worlds." + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost MJ World gain by x" + format(buyableEffect(this.layer, this.id))
+        },
+        canAfford() {
+            return player[this.layer].points.gte(this.cost())
+        },
+        buy() {
+            let cost = new Decimal (1)
+            player[this.layer].points = player[this.layer].points.sub(this.cost().mul(cost))
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+        effect(x) {
+            let base1 = new Decimal(1.3)
+            let base2 = x
+	    let expo = new Decimal(1.001)
+            let eff = base1.pow(Decimal.pow(base2, expo))
+            return eff
+        },
+    },
+},
 })
 
 addLayer("🏆", {
@@ -625,6 +655,11 @@ addLayer("🏆", {
             done() { return player.points.gte(1e100) },
             tooltip: "Get 1e100 Points.",	   
 	},
+        25: {
+            name: "e500",
+            done() { return player.points.gte("e500") },
+            tooltip: "Get e500 Points.",	   
+	},
     },
 })
 
@@ -681,7 +716,7 @@ addLayer("m", {
 	},
         2: {
             requirementDescription: "3 mastered skills",
-            effectDescription: "You unlock a buyable.",
+            effectDescription: "You unlock a buyable in MJ layer.",
             done() { return player.m.points >= (3) },
             unlocked() { return (hasMilestone('m', 1)) }
 	},
@@ -735,9 +770,15 @@ addLayer("m", {
 	},
         11: {
             requirementDescription: "12 mastered skills",
-            effectDescription: "×1e20 points.",
+            effectDescription: "×1e20 points and ×1e3 MJs.",
             done() { return player.m.points >= (12) },
             unlocked() { return (hasMilestone('m', 10)) }
+	},
+        12: {
+            requirementDescription: "13 mastered skills",
+            effectDescription: "Unlock a buyable in MJ World layer.",
+            done() { return player.m.points >= (13) },
+            unlocked() { return (hasMilestone('m', 11)) }
 	},
     },
 })
