@@ -85,6 +85,7 @@ addLayer("p", {
 	if (hasMilestone('m', 9)) mult = mult.times(1e8)
 	if (hasMilestone('m', 10)) mult = mult.times(1e6)
 	if (hasMilestone('m', 11)) mult = mult.times(1e3)
+	if (hasMilestone('m', 12)) mult = mult.times(1e6)
 	
 	// pow
 	
@@ -432,6 +433,7 @@ addLayer("w", {
 	if (hasUpgrade('w', 31)) mult = mult.times(2)
 	if (hasUpgrade('w', 31)) mult = mult.times(upgradeEffect('w', 31))
 	if (hasMilestone('m', 9)) mult = mult.times(1000000)
+	if (hasMilestone('m', 12)) mult = mult.times(10)
 	
 	// power
 	
@@ -776,7 +778,7 @@ addLayer("m", {
 	},
         12: {
             requirementDescription: "13 mastered skills",
-            effectDescription: "Unlock a buyable in MJ World layer.",
+            effectDescription: "Unlock a buyable in MJ World layer, ×10 MJ Worlds and ×1e6 MJs.",
             done() { return player.m.points >= (13) },
             unlocked() { return (hasMilestone('m', 11)) }
 	},
