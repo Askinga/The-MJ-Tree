@@ -670,7 +670,13 @@ addLayer("🏆", {
         26: {
             name: "Finally, New Layer!",
             done() { return player.u.points.gte(1) },
-            tooltip: "Get a MJ Universe.",	   
+            tooltip: "Get a MJ Universe. Unlock the next 2 rows of achievements",	   
+	    style() {
+                return {
+                "border-color": "red",
+                "border-width": "3px"
+                }
+	    }
 	},
     },
 })
