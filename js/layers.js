@@ -251,6 +251,7 @@ addLayer("b", {
 	if (hasUpgrade('w', 21)) req = req.div(2500)
 	if (hasUpgrade('b', 23)) req = req.div(3.14159)
 	if (hasMilestone('m', 3)) req = req.div(1e10)
+	if (hasMilestone('m', 15)) req = req.pow(0.1)
 	return req
     }, // Can be a function that takes requirement increases into account
     resource: "MJ Buses", // Name of prestige currency
@@ -801,6 +802,12 @@ addLayer("m", {
             effectDescription: "Unlock a new layer.",
             done() { return player.m.points >= (15) },
             unlocked() { return (hasMilestone('m', 13)) }
+	},
+        15: {
+            requirementDescription: "16 mastered skills",
+            effectDescription: "10th root MJ Buses cost.",
+            done() { return player.m.points >= (16) },
+            unlocked() { return (hasMilestone('m', 14)) }
 	},
     },
 })
