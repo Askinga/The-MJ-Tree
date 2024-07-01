@@ -38,8 +38,8 @@ addLayer("p", {
     resource: "MJs", // Name of prestige currency
     automate(){
       if (hasUpgrade('u', 11)) {
-        for (let i = 0; i < 40; i++) {
-            buyBuyable('main', i % 2 === 0 ? 11);
+        for (let w = 0; w < 40; w++) {
+            buyBuyable('main', w % 2 === 0 ? 11);
         }
     }
   },
