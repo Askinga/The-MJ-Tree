@@ -825,6 +825,7 @@ addLayer("u", {
     exponent: 0.05, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('u', 13)) mult = mult.times(5)
 	return mult
     },
 
@@ -857,6 +858,22 @@ addLayer("u", {
             unlocked() { return (hasUpgrade('u', 11)) }, 
 	    effect(){
                 return player.points.add(1).pow(0.01)
+            },
+            effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+	},
+        13: {
+            title: "More Universes",
+            description: "×5 MJ Universes.",
+            cost: new Decimal(100),
+            unlocked() { return (hasUpgrade('u', 12)) },
+	},
+        14: {
+            title: "Point booster 1",
+            description: "Multiply point gain based on points.",
+            cost: new Decimal(1000),
+            unlocked() { return (hasUpgrade('u', 13)) }, 
+	    effect(){
+                return player.points.add(1).pow(0.02)
             },
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
 	},
