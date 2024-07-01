@@ -18,6 +18,14 @@ let VERSION = {
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+                <h3>v0.4</h3><br>
+                - Added a new layer called MJ Universes.<br>
+		- Added 2 achievements.<br>
+		- Added 1 upgrade.<br>
+                - Added 13 milestones.<br>
+		- Endgame: MJ Universe Upgrade 1.<br>
+		
+
                 <h3>v0.3</h3><br>
                 - Added Skill Mastery.<br>
 		- Added 1 achievement.<br>
@@ -108,7 +116,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return (hasMilestone('m', 1))
+	return (hasUpgrade('u', 11))
 }
 
 
