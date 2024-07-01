@@ -88,6 +88,7 @@ addLayer("p", {
 	if (hasMilestone('m', 11)) mult = mult.times(1e3)
 	if (hasMilestone('m', 12)) mult = mult.times(1e6)
 	if (hasMilestone('m', 13)) mult = mult.times(1e12)
+	if (hasUpgrade('u', 12)) mult = mult.times(upgradeEffect('u', 12))
 	
 	// pow
 	
@@ -849,5 +850,15 @@ addLayer("u", {
             description: "Keep MJ Buyables.",
             cost: new Decimal(1),
         },
+        12: {
+            title: "MJ Booster 3",
+            description: "Multiply MJ gain based on points.",
+            cost: new Decimal(2),
+            unlocked() { return (hasUpgrade('u', 11)) }, 
+	    effect(){
+                return player.points.add(1).pow(0.01)
+            },
+            effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+	},
     },
 })
