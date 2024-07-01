@@ -438,6 +438,7 @@ addLayer("w", {
 	if (hasUpgrade('w', 31)) mult = mult.times(upgradeEffect('w', 31))
 	if (hasMilestone('m', 9)) mult = mult.times(1000000)
 	if (hasMilestone('m', 12)) mult = mult.times(10)
+	if (hasUpgrade('u', 15)) mult = mult.times(upgradeEffect('u', 15))
 	
 	// power
 	
@@ -881,6 +882,16 @@ addLayer("u", {
             unlocked() { return (hasUpgrade('u', 13)) }, 
 	    effect(){
                 return player.points.add(1).pow(0.02)
+            },
+            effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+	},
+        15: {
+            title: "World booster 1",
+            description: "Multiply MJ World gain based on mastered skills.",
+            cost: new Decimal(1000000),
+            unlocked() { return (hasUpgrade('u', 14)) }, 
+	    effect(){
+                return player.m.points.add(1).pow(7.5)
             },
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
 	},
