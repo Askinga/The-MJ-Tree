@@ -614,8 +614,8 @@ addLayer("🏆", {
         cols: 6,
         11: {
             name: "Starting",
-            done() { return player.p.points.gte(1) },
-            tooltip: "Get 1 MJ.",	   
+            done() { return player.points.gte(1) },
+            tooltip: "Get 1 point.",	   
         },
         12: {
             name: "Buses",
