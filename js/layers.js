@@ -405,6 +405,7 @@ addLayer("w", {
 	}
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
+	if (hasUpgrade('u', 21)) keep.push("buyables");
     
         // Stage 4, do the actual data reset
         layerDataReset(this.layer, keep);
@@ -422,6 +423,10 @@ addLayer("w", {
 	return req
     }, // Can be a function that takes requirement increases into account
     resource: "MJ Worlds", // Name of prestige currency
+    passiveGeneration() {
+        if (hasUpgrade('u', 21)) return 1
+        return 0
+    },
     baseResource: "MJs", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -901,5 +906,11 @@ addLayer("u", {
             },
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
 	},
+        21: {
+            title: "Keeping 7",
+            description: "Keep MJ World buyables and get 100% of MJ World gain per second!.",
+            cost: new Decimal(1e9),
+            unlocked() { return (hasUpgrade('u', 15)) },
+	}, 
     },
 })
