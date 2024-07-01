@@ -13,7 +13,7 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.3 Skill Mastery",
+	num: "0.4 Universes",
 	name: "Not Finished!",
 }
 
