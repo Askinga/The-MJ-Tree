@@ -836,5 +836,12 @@ addLayer("u", {
         if (hasMilestone('m', 14) || player.u.unlocked) visible = true
        return visible
     },
-    branches:["w"]
+    branches:["w"],
+    upgrades: {
+        11: {
+            title: "Automation",
+            description: "Autobuy MJ Compounder.",
+            cost: new Decimal(1),
+        },
+    },
 })
