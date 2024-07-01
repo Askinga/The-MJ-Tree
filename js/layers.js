@@ -251,7 +251,6 @@ addLayer("b", {
 	if (hasUpgrade('w', 21)) req = req.div(2500)
 	if (hasUpgrade('b', 23)) req = req.div(3.14159)
 	if (hasMilestone('m', 3)) req = req.div(1e10)
-	if (hasMilestone('m', 15)) req = req.pow(0.1)
 	return req
     }, // Can be a function that takes requirement increases into account
     resource: "MJ Buses", // Name of prestige currency
@@ -284,7 +283,8 @@ addLayer("b", {
     exponent() {
         let exp = 1.6
         if (hasUpgrade('w', 25)) exp = 1.45
-        return exp
+        if (hasMilestone('m', 15)) exp = 1.2
+	return exp
     }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -805,7 +805,7 @@ addLayer("m", {
 	},
         15: {
             requirementDescription: "16 mastered skills",
-            effectDescription: "10th root MJ Buses cost.",
+            effectDescription: "MJ Bus cost scaling is weaker again.",
             done() { return player.m.points >= (16) },
             unlocked() { return (hasMilestone('m', 14)) }
 	},
