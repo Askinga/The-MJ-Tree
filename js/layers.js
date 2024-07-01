@@ -806,7 +806,7 @@ addLayer("u", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#e8a71c",
+    color: "#96ffff",
     requires() {
         let req = new Decimal("e572")
 	return req
