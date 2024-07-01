@@ -22,6 +22,7 @@ addLayer("p", {
 	}
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
+	if (hasUpgrade('u', 11)) keep.push("buyables");
     
         // Stage 4, do the actual data reset
         layerDataReset(this.layer, keep);
@@ -766,7 +767,7 @@ addLayer("m", {
             unlocked() { return (hasMilestone('m', 8)) }
 	},
         10: {
-            requirementDescription: "11 mastered skills",
+            requirementDescription: "Keeping 5, need 11 mastered skills",
             effectDescription: "Keep Row 3 MJ upgrades, the first 15 MJ World upgrades and ×1e6 MJs.",
             done() { return player.m.points >= (11) },
             unlocked() { return (hasMilestone('m', 9)) }
@@ -839,8 +840,8 @@ addLayer("u", {
     branches:["w"],
     upgrades: {
         11: {
-            title: "Automation",
-            description: "Autobuy MJ Compounder.",
+            title: "Keeping 6",
+            description: "Keep MJ Buyables.",
             cost: new Decimal(1),
         },
     },
