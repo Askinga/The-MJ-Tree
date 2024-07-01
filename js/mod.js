@@ -22,7 +22,8 @@ let changelog = `<h1>Changelog:</h1><br>
                 - Added a new layer called MJ Universes.<br>
 		- Added 2 achievements.<br>
 		- Added 1 upgrade.<br>
-                - Added 13 milestones.<br>
+                - Added 2 buyables.<br>
+		- Added 13 milestones.<br>
 		- Endgame: MJ Universe Upgrade 1.<br>
 		
 
