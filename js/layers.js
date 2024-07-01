@@ -664,6 +664,11 @@ addLayer("🏆", {
             done() { return player.points.gte("e500") },
             tooltip: "Get e500 Points. Reward: ×1e15 Points.",	   
 	},
+        26: {
+            name: "Finally, New Layer!",
+            done() { return player.u.points.gte(1) },
+            tooltip: "Get a MJ Universe.",	   
+	},
     },
 })
 
