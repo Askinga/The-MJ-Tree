@@ -95,6 +95,7 @@ function getPointGen() {
 	if (hasMilestone('m', 11)) gain = gain.times(1e20)
 	if (hasAchievement('🏆', 25)) gain = gain.times(1e15)
 	if (hasUpgrade('u', 14)) gain = gain.times(upgradeEffect('u', 14))
+	if (hasUpgrade('u', 22)) gain = gain.times(1e12)
 	
 	// power
 	
