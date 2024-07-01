@@ -912,5 +912,11 @@ addLayer("u", {
             cost: new Decimal(1e9),
             unlocked() { return (hasUpgrade('u', 15)) },
 	}, 
+        22: {
+            title: "×1T is not bad",
+            description: "×1T points.",
+            cost: new Decimal(2e9),
+            unlocked() { return (hasUpgrade('u', 21)) },
+	},
     },
 })
