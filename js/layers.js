@@ -37,7 +37,6 @@ addLayer("p", {
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "MJs", // Name of prestige currency
     automate(){
-      if (hasUpgrade('u', 11)) 
       if (hasUpgrade('u', 11)) {
         for (let i = 0; i < 40; i++) {
             buyBuyable('main', i % 2 === 0 ? 11);
