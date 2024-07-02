@@ -944,5 +944,15 @@ addLayer("u", {
             cost: new Decimal(2.5e21),
             unlocked() { return (hasUpgrade('u', 24)) },
 	},
+        31: {
+            title: "Huge point booster",
+            description: "Multiply point gain based on MJ Universes.",
+            cost: new Decimal(5e25),
+            unlocked() { return (hasUpgrade('u', 25)) },
+	    effect(){
+                return player.u.points.add(1).pow(0.7)
+            },
+            effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+	},
     },
 })
