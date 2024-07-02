@@ -285,6 +285,7 @@ addLayer("b", {
         let exp = 1.6
         if (hasUpgrade('w', 25)) exp = 1.45
         if (hasMilestone('m', 15)) exp = 1.2
+	if (hasUpgrade('u', 32)) exp = 1.1
 	return exp
     }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -953,6 +954,12 @@ addLayer("u", {
                 return player.u.points.add(1).pow(0.7)
             },
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+	},
+        32: {
+            title: "MORE BUSES!",
+            description: "-0.1 MJ Bus cost scaling.",
+            cost: new Decimal(5e30),
+            unlocked() { return (hasUpgrade('u', 31)) },
 	},
     },
 })
