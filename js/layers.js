@@ -938,5 +938,11 @@ addLayer("u", {
             cost: new Decimal(2.5e16),
             unlocked() { return (hasUpgrade('u', 23)) },
 	},
+        25: {
+            title: "Huge point multi",
+            description: "×1 sextillion points.",
+            cost: new Decimal(2.5e21),
+            unlocked() { return (hasUpgrade('u', 24)) },
+	},
     },
 })
