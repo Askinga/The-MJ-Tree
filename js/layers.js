@@ -688,7 +688,7 @@ addLayer("🏆", {
             name: "e1000!",
             done() { return player.points.gte("e1000") },
             tooltip: "Get e1000 Points.",	   
-	    unlocked() { return (hasAchevement('🏆', 26)) },
+	    unlocked() { return (hasAchievement('🏆', 26)) },
 	},
     },
 })
