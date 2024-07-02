@@ -89,6 +89,7 @@ addLayer("p", {
 	if (hasMilestone('m', 12)) mult = mult.times(1e6)
 	if (hasMilestone('m', 13)) mult = mult.times(1e12)
 	if (hasUpgrade('u', 12)) mult = mult.times(upgradeEffect('u', 12))
+	if (hasUpgrade('u', 23)) mult = mult.times(1e15)
 	
 	// pow
 	
@@ -918,5 +919,11 @@ addLayer("u", {
             cost: new Decimal(2e9),
             unlocked() { return (hasUpgrade('u', 21)) },
 	},
+        23: {
+            title: "MJ Swarm",
+            description: "×1e15 MJs.",
+            cost: new Decimal(2.5e11),
+            unlocked() { return (hasUpgrade('u', 22)) },
+	}, 
     },
 })
