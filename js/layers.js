@@ -317,6 +317,7 @@ addLayer("b", {
     if (hasUpgrade('w', 22)) apow = 1
     if (hasMilestone('m', 3)) apow = 2
     if (hasUpgrade('u', 24)) apow = 5
+    if (hasUpgrade('u', 33)) apow = 7.5
 	let eff = player.b.points.add(1).pow(apow)
        return eff
         },
@@ -960,6 +961,12 @@ addLayer("u", {
             description: "-0.1 MJ Bus cost scaling.",
             cost: new Decimal(5e30),
             unlocked() { return (hasUpgrade('u', 31)) },
+	},
+        33: {
+            title: "Better Buses 2",
+            description: "The MJ Buses effect is better again.",
+            cost: new Decimal(1.25e31),
+            unlocked() { return (hasUpgrade('u', 32)) },
 	},
     },
 })
