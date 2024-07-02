@@ -315,6 +315,7 @@ addLayer("b", {
     let apow = 0.45
     if (hasUpgrade('w', 22)) apow = 1
     if (hasMilestone('m', 3)) apow = 2
+    if (hasUpgrade('u', 24)) apow = 5
 	let eff = player.b.points.add(1).pow(apow)
        return eff
         },
@@ -931,5 +932,11 @@ addLayer("u", {
             cost: new Decimal(2.5e11),
             unlocked() { return (hasUpgrade('u', 22)) },
 	}, 
+        24: {
+            title: "Better Buses",
+            description: "MJ Buses effect is better.",
+            cost: new Decimal(2.5e16),
+            unlocked() { return (hasUpgrade('u', 23)) },
+	},
     },
 })
