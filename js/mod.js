@@ -18,6 +18,10 @@ let VERSION = {
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+                <h3>v0.5</h3><br>
+		- In the works.<br>
+		
+  
                 <h3>v0.4</h3><br>
                 - Added a new layer called MJ Universes.<br>
 		- Added 2 achievements.<br>
@@ -121,7 +125,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return (hasUpgrade('u', 11))
+	return (hasUpgrade('u', 33))
 }
 
 
