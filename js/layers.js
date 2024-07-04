@@ -968,5 +968,11 @@ addLayer("u", {
             cost: new Decimal(1.25e31),
             unlocked() { return (hasUpgrade('u', 32)) },
 	},
+        34: {
+            title: "The Point Swarm",
+            description: "×1e30 points.",
+            cost: new Decimal(1e36),
+            unlocked() { return (hasUpgrade('u', 33)) },
+	},
     },
 })
