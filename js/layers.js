@@ -107,6 +107,16 @@ addLayer("p", {
         {key: "m", description: "M: Reset for MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
+    tabFormat: {
+        "Main":{
+            content: [
+                ["display-text", () => "You gave birth to " + colored("p", format(player.p.points)) + " MJs"],
+                "prestige-button",
+                "blank",
+                "upgrades",
+            ]
+        },
+    },
     upgrades: {
         11: {
             title: "Point multi 1",
@@ -325,6 +335,16 @@ addLayer("b", {
             let desc = "multiplying MJ and point gain by " + format(tmp[this.layer].effect);
             return desc;
         },
+    tabFormat: {
+        "Main":{
+            content: [
+                ["display-text", () => "You have created " + colored("b", format(player.b.points)) + " MJ Buses"],
+                "prestige-button",
+                "blank",
+                "upgrades",
+            ]
+        },
+    },
     upgrades: {
         11: {
             title: "MJ multi 2",
@@ -471,6 +491,16 @@ addLayer("w", {
        return visible
     },
     branches:["b"],
+    tabFormat: {
+        "Main":{
+            content: [
+                ["display-text", () => "You have created " + colored("w", format(player.w.points)) + " MJ Worlds."],
+                "prestige-button",
+                "blank",
+                "upgrades",
+            ]
+        },
+    },
     upgrades: {
         11: {
             title: "Point multi 5",
@@ -874,6 +904,16 @@ addLayer("u", {
        return visible
     },
     branches:["w"],
+    tabFormat: {
+        "Main":{
+            content: [
+                ["display-text", () => "You have created " + colored("u", format(player.u.points)) + " MJ Universes."],
+                "prestige-button",
+                "blank",
+                "upgrades",
+            ]
+        },
+    },
     upgrades: {
         11: {
             title: "Keeping 6",
