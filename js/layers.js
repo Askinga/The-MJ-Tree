@@ -987,7 +987,11 @@ addLayer("MU", {
         name: "multiverses", // This is optional, only used in a few places, If absent it just uses the layer id.
         symbol: "M", // This appears on the layer's node. Default is the id with the first letter capitalized
         position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
-        color: "#a3d9a5",
+        startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+	color: "#a3d9a5",
         requires() { return new Decimal(1e44)}, // Can be a function that takes requirement increases into account
         resource: "MJ Multiverses", // Name of prestige currency
         baseResource: "MJ Universes", // Name of resource prestige is based on
@@ -1008,39 +1012,4 @@ addLayer("MU", {
         if (hasUpgrade('u', 35) || player.MU.unlocked) visible = true
        return visible
     },
-		effBase() {
-			let base = new Decimal(2);
-			return base;
-		},
-		effect() {
-			let eff = Decimal.pow(this.effBase(), player.MU.points.sub(1).max(0);
-			return eff;
-		},
-		effectDescription() {
-			return "which are generating "+format(tmp.MU.effect)+" MJ Universes in your MJ Multiverse/sec"
-		},
-		update(diff) {
-			if (player.MU.unlocked) player.MU.power = player.MU.power.plus(tmp.MU.effect.times(diff));
-		},
-		startData() { return {
-			unlocked: false,
-			points: new Decimal(0),
-		}},
-		powerExp() {
-			let exp = new Decimal(1/3);
-			return exp;
-		},
-		powerEff() {
-			if (!unl(this.layer)) return new Decimal(1);
-			return player.MU.power.plus(1).pow(this.powerExp());
-		},
-		tabFormat: ["main-display",
-			"prestige-button",
-			"blank",
-			["display-text",
-				function() {return 'You have ' + format(player.MU.power) + ' MJ Universes in your MJ Multiverses, which boosts Point generation by '+format(tmp.MU.powerEff)},
-					{}],
-			"blank",
-			"blank",
-			"milestones", "blank", "blank", "upgrades"],
 })
