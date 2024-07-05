@@ -1072,7 +1072,8 @@ addLayer("📈", {
             width: 300,
             height: 25,
             instant: false,
-            progress() {
+            fillStyle: { 'background-color': "#302d1a" },
+	    progress() {
                 let prog = player.points.div(1000)
                 return prog
 	    },
