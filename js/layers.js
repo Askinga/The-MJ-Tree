@@ -1062,7 +1062,7 @@ addLayer("📈", {
         "Progress": {
             content: [
                 "blank",
-                "["bar", "bar1"],",
+                ["bar", "bar1"],
                 ],
         },
     },
