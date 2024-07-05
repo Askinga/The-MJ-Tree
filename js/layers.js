@@ -1003,7 +1003,11 @@ addLayer("MU", {
         hotkeys: [
             {key: "l", description: "Press L to perform a MJ Multiverse reset", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
         ],
-        layerShown(){return (hasUpgrade('u', 35)) || player.MU.unlocked},
+        layerShown(){
+        let visible = false
+        if (hasUpgrade('u', 35) || player.MU.unlocked) visible = true
+       return visible
+    },
 		effBase() {
 			let base = new Decimal(2);
 			return base;
@@ -1037,9 +1041,6 @@ addLayer("MU", {
 				function() {return 'You have ' + format(player.MU.power) + ' MJ Universes in your MJ Multiverses, which boosts Point generation by '+format(tmp.MU.powerEff)},
 					{}],
 			"blank",
-			["display-text",
-				function() {return 'Your best MJ Multiverses is ' + formatWhole(player.MU.best) + '<br>You have made a total of '+formatWhole(player.MU.total)+" MJ Multiverses."},
-					{}],
 			"blank",
 			"milestones", "blank", "blank", "upgrades"],
 })
