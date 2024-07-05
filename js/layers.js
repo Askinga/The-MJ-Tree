@@ -1075,6 +1075,7 @@ addLayer("📈", {
             progress() {
                 let prog = player.points.div(1000)
                 return prog
+	    },
             display() {
                     return "Progress to 1000 points"
             },
