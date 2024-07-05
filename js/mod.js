@@ -131,7 +131,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return (hasUpgrade('u', 33))
+	return (hasUpgrade('MU', 11))
 }
 
 
