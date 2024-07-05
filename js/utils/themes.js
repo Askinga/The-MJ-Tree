@@ -23,10 +23,10 @@ var colors = {
 		background_tooltip: "rgba(0, 15, 31, 0.75)",
 	},
         good: {
-		1: "#ffffff",//Branch color 1
+		1: "#091f1a",//Branch color 1
 		2: "#bfbfbf",//Branch color 2
 		3: "#7f7f7f",//Branch color 3
-		color: "#36a58b",
+		color: "#022920",
 		points: "#ffffff",
 		locked: "#bf8f8f",
 		background: "#36a58b",
