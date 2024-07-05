@@ -974,5 +974,72 @@ addLayer("u", {
             cost: new Decimal(1e36),
             unlocked() { return (hasUpgrade('u', 33)) },
 	},
+        35: {
+            title: "Time for Multiverses!",
+            description: "Unlock a new layer.",
+            cost: new Decimal(1e44),
+            unlocked() { return (hasUpgrade('u', 34)) },
+	},
     },
+})
+
+addLayer("MU", {
+        name: "multiverses", // This is optional, only used in a few places, If absent it just uses the layer id.
+        symbol: "M", // This appears on the layer's node. Default is the id with the first letter capitalized
+        position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+        color: "#a3d9a5",
+        requires() { return new Decimal(1e44)}, // Can be a function that takes requirement increases into account
+        resource: "MJ Multiverses", // Name of prestige currency
+        baseResource: "MJ Universes", // Name of resource prestige is based on
+        baseAmount() {return player.u.points}, // Get the current amount of baseResource
+        type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+		branches: ["m", "u"],
+        exponent() { return 1.6 }, // Prestige currency exponent
+		gainMult() {
+			let mult = new Decimal(1);
+			return mult;
+		},
+        row: 4, // Row the layer is in on the tree (0 is the first row)
+        hotkeys: [
+            {key: "l", description: "Press L to perform a MJ Multiverse reset", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        ],
+        layerShown(){return (hasUpgrade('u', 35)) || player.MU.unlocked},
+		effBase() {
+			let base = new Decimal(2);
+			return base;
+		},
+		effect() {
+			let eff = Decimal.pow(this.effBase(), player.MU.points.sub(1).max(0);
+			return eff;
+		},
+		effectDescription() {
+			return "which are generating "+format(tmp.MU.effect)+" MJ Universes in your MJ Multiverse/sec"
+		},
+		update(diff) {
+			if (player.MU.unlocked) player.MU.power = player.MU.power.plus(tmp.MU.effect.times(diff));
+		},
+		startData() { return {
+			unlocked: false,
+			points: new Decimal(0),
+		}},
+		powerExp() {
+			let exp = new Decimal(1/3);
+			return exp;
+		},
+		powerEff() {
+			if (!unl(this.layer)) return new Decimal(1);
+			return player.MU.power.plus(1).pow(this.powerExp());
+		},
+		tabFormat: ["main-display",
+			"prestige-button",
+			"blank",
+			["display-text",
+				function() {return 'You have ' + format(player.MU.power) + ' MJ Universes in your MJ Multiverses, which boosts Point generation by '+format(tmp.MU.powerEff)},
+					{}],
+			"blank",
+			["display-text",
+				function() {return 'Your best MJ Multiverses is ' + formatWhole(player.MU.best) + '<br>You have made a total of '+formatWhole(player.MU.total)+" MJ Multiverses."},
+					{}],
+			"blank",
+			"milestones", "blank", "blank", "upgrades"],
 })
