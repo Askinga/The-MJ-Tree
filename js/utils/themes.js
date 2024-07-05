@@ -43,7 +43,7 @@ function changeTheme() {
 	document.body.style.setProperty("--locked", colors_theme["locked"]);
 }
 function getThemeName() {
-	return options.theme? options.theme : "default";
+	return options.theme ? options.theme : "default";
 }
 
 function switchTheme() {
@@ -54,7 +54,6 @@ function switchTheme() {
 	else {
 		index ++;
 		options.theme = themes[index];
-		options.theme = themes[1];
 	}
 	changeTheme();
 	resizeCanvas();
