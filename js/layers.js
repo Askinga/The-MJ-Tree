@@ -1072,7 +1072,10 @@ addLayer("📈", {
             width: 300,
             height: 25,
             instant: false,
-            progress() {return player.points},
+            progress() {
+                let prog = player.points.pow(0.001)
+                return prog
+            },
         },
         
     },
