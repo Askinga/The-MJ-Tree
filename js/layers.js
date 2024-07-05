@@ -1030,11 +1030,13 @@ addLayer("MU", {
             title: "QoL 3",
             description: "This layer does not reset anything.",
             cost: new Decimal(2),
-        },
+            unlocked() { return (hasUpgrade('MU', 11)) },
+	},
         13: {
             title: "Super Exponent",
             description: "^1.125 MJs.",
             cost: new Decimal(3),
-        },
+            unlocked() { return (hasUpgrade('MU', 12)) },
+	},
     },
 })
