@@ -1063,13 +1063,10 @@ addLayer("📈", {
             content: [
                 "blank",
                 ["bar", "bar1"],
-                ],
 		"blank",
                 ["bar", "bar2"],
-                ],
                 "blank",
                 ["bar", "bar3"],
-                ],
 		"blank",
                 ["bar", "bar4"],
                 ],
