@@ -13,13 +13,17 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.4 Universes",
+	num: "0.5 Universes Part 2",
 	name: "Not Finished!",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
                 <h3>v0.5</h3><br>
-		- In the works.<br>
+		- Added a new layer called MJ Multiverses.<br>
+		- Added 2 achievements.<br>
+		- Added 15 upgrades.<br>
+		- Added 1 milestone.<br>
+		- Endgame: MJ Multiverse Upgrade 1.<br>
 		
   
                 <h3>v0.4</h3><br>
