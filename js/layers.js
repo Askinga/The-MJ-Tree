@@ -1012,4 +1012,11 @@ addLayer("MU", {
         if (hasUpgrade('u', 35) || player.MU.unlocked) visible = true
        return visible
     },
+    upgrades: {
+        11: {
+            title: "5th row is so op!",
+            description: "×1e50 points.",
+            cost: new Decimal(1),
+        },
+    },
 })
