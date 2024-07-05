@@ -693,7 +693,13 @@ addLayer("🏆", {
             tooltip: "Get e1000 Points.",	   
 	    unlocked() { return (hasAchievement('🏆', 26)) },
 	},
-    },
+        32: {
+            name: "MULTIVERSES!!!",
+            done() { return player.MU.points.gte(1) },
+            tooltip: "Get a MJ Multiverse.",
+	    unlocked() { return (hasAchievement('🏆', 26)) },
+	},
+    },	
 })
 
 addLayer("m", {
@@ -998,7 +1004,7 @@ addLayer("MU", {
         baseAmount() {return player.u.points}, // Get the current amount of baseResource
         type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
 		branches: ["m", "u"],
-        exponent() { return 1.6 }, // Prestige currency exponent
+        exponent() { return 2 }, // Prestige currency exponent
 		gainMult() {
 			let mult = new Decimal(1);
 			return mult;
