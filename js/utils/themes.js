@@ -32,6 +32,16 @@ var colors = {
 		background: "#36a58b",
 		background_tooltip: "rgba(0, 0, 0, 0.50)",
 	},
+        magical: {
+		1: "#ffffff",//Branch color 1
+		2: "#bfbfbf",//Branch color 2
+		3: "#7f7f7f",//Branch color 3
+		color: "#821177",
+		points: "#ffffff",
+		locked: "#bf8f8f",
+		background: "#c62ad4",
+		background_tooltip: "rgba(0, 0, 0, 0.80)",
+	},
 }
 function changeTheme() {
 
