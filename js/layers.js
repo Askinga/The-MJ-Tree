@@ -1062,7 +1062,7 @@ addLayer("📈", {
         "Progress": {
             content: [
                 "blank",
-                "blank",
+                "["bar", "bar1"],",
                 ],
         },
     },
@@ -1073,9 +1073,10 @@ addLayer("📈", {
             height: 25,
             instant: false,
             progress() {
-                let prog = player.points.pow(0.001)
+                let prog = player.points.div(1000)
                 return prog
-            },
+            display() { return "Progress to 1000 points" },
+	    },
         },
         
     },
