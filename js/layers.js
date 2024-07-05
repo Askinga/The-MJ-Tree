@@ -1069,6 +1069,8 @@ addLayer("📈", {
                 ["bar", "bar3"],
 		"blank",
                 ["bar", "bar4"],
+		"blank",
+                ["bar", "bar5"],
                 ],
 	},
     },
@@ -1078,7 +1080,7 @@ addLayer("📈", {
             width: 300,
             height: 25,
             instant: false,
-            fillStyle: { 'background-color': "#302d1a" },
+            fillStyle: { 'background-color': "#6200ff" },
 	    progress() {
                 let prog = player.points.div(1000)
                 return prog
@@ -1092,7 +1094,7 @@ addLayer("📈", {
             width: 300,
             height: 25,
             instant: false,
-            fillStyle: { 'background-color': "#302d1a" },
+            fillStyle: { 'background-color': "#6200ff" },
 	    progress() {
                 let prog = player.p.points.div(5000)
                 return prog
@@ -1106,7 +1108,7 @@ addLayer("📈", {
             width: 300,
             height: 25,
             instant: false,
-            fillStyle: { 'background-color': "#302d1a" },
+            fillStyle: { 'background-color': "#6200ff" },
 	    progress() {
                 let prog = player.b.points.div(5)
                 return prog
@@ -1120,13 +1122,27 @@ addLayer("📈", {
             width: 300,
             height: 25,
             instant: false,
-            fillStyle: { 'background-color': "#302d1a" },
+            fillStyle: { 'background-color': "#6200ff" },
 	    progress() {
                 let prog = player.w.points.div(50)
                 return prog
 	    },
             display() {
                     return "Progress to 50 MJ Worlds"
+            },
+        },
+        bar5: {
+            direction: RIGHT,
+            width: 300,
+            height: 25,
+            instant: false,
+            fillStyle: { 'background-color': "#6200ff" },
+	    progress() {
+                let prog = player.p.points.div(1e50)
+                return prog
+	    },
+            display() {
+                    return "Progress to 1e50 MJs"
             },
         },
     },
