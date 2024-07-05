@@ -97,6 +97,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 34)) mult = mult.pow(1.04)
 	if (hasMilestone('m', 4)) mult = mult.pow(1.005)
 	if (hasMilestone('m', 5)) mult = mult.pow(1.035)
+	if (hasUpgrade('MU', 13)) mult = mult.pow(1.125)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -1013,7 +1014,8 @@ addLayer("MU", {
         hotkeys: [
             {key: "l", description: "Press L to perform a MJ Multiverse reset", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
         ],
-        layerShown(){
+        resetsNothing() { return hasUpgrade('MU', 12) },
+	layerShown(){
         let visible = false
         if (hasUpgrade('u', 35) || player.MU.unlocked) visible = true
        return visible
@@ -1023,6 +1025,16 @@ addLayer("MU", {
             title: "5th row is so op!",
             description: "×1e50 points.",
             cost: new Decimal(1),
+        },
+        12: {
+            title: "QoL 3",
+            description: "This layer does not reset anything.",
+            cost: new Decimal(2),
+        },
+        13: {
+            title: "Super Exponent",
+            description: "^1.125 MJs.",
+            cost: new Decimal(3),
         },
     },
 })
