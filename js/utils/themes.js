@@ -30,7 +30,7 @@ var colors = {
 		points: "#ffffff",
 		locked: "#bf8f8f",
 		background: "#36a58b",
-		background_tooltip: "rgba(54, 165, 139, 0.52)",
+		background_tooltip: "rgba(0, 0, 0, 0.50)",
 	},
 }
 function changeTheme() {
