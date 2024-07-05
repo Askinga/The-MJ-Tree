@@ -1047,3 +1047,33 @@ addLayer("MU", {
 	},
     },
 })
+
+addLayer("📈", {
+    startData() { return {
+        unlocked: true,
+    }},
+    color: "white",
+    row: "side",
+    layerShown() {return true}, 
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Progress")
+    },
+    tabFormat: {
+        "Progress": {
+            content: [
+                "blank",
+                "blank",
+                ],
+        },
+    },
+    bars: {
+        bar1: {
+            direction: RIGHT,
+            width: 300,
+            height: 25,
+            instant: false,
+            progress() {return player.points},
+        },
+        
+    },
+})
