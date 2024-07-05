@@ -1064,7 +1064,16 @@ addLayer("📈", {
                 "blank",
                 ["bar", "bar1"],
                 ],
-        },
+		"blank",
+                ["bar", "bar2"],
+                ],
+                "blank",
+                ["bar", "bar3"],
+                ],
+		"blank",
+                ["bar", "bar4"],
+                ],
+	},
     },
     bars: {
         bar1: {
@@ -1081,6 +1090,47 @@ addLayer("📈", {
                     return "Progress to 1000 points"
             },
         },
-        
+        bar2: {
+            direction: RIGHT,
+            width: 300,
+            height: 25,
+            instant: false,
+            fillStyle: { 'background-color': "#302d1a" },
+	    progress() {
+                let prog = player.p.points.div(5000)
+                return prog
+	    },
+            display() {
+                    return "Progress to 5000 MJs"
+            },
+        },
+        bar3: {
+            direction: RIGHT,
+            width: 300,
+            height: 25,
+            instant: false,
+            fillStyle: { 'background-color': "#302d1a" },
+	    progress() {
+                let prog = player.b.points.div(5)
+                return prog
+	    },
+            display() {
+                    return "Progress to 5 MJ Buses"
+            },
+        },
+        bar4: {
+            direction: RIGHT,
+            width: 300,
+            height: 25,
+            instant: false,
+            fillStyle: { 'background-color': "#302d1a" },
+	    progress() {
+                let prog = player.w.points.div(50)
+                return prog
+	    },
+            display() {
+                    return "Progress to 50 MJ Worlds"
+            },
+        },
     },
 })
