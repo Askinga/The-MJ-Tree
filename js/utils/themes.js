@@ -33,7 +33,7 @@ var colors = {
 		background_tooltip: "rgba(0, 0, 0, 0.50)",
 	},
         magical: {
-		1: "#b773bd",//Branch color 1
+		1: "#f7a1ff",//Branch color 1
 		2: "#bfbfbf",//Branch color 2
 		3: "#7f7f7f",//Branch color 3
 		color: "#821177",
