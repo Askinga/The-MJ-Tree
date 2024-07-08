@@ -1027,7 +1027,7 @@ addLayer("MU", {
         "Main tab": {
             content: [
                 "main-display",
-                ["display-text", "The MJ universes merge together to make 1 big MJ multiverse. The MJ multiverse s will help you get further."],
+                ["display-text", "The MJ universes merge together to make 1 big MJ multiverse. The MJ multiverses will help you get further."],
                 "blank",
                 "prestige-button",
             ],
