@@ -998,7 +998,8 @@ addLayer("MU", {
         startData() { return {
         unlocked: false,
 		points: new Decimal(0),
-    }},
+                
+	}},
 	color: "#a3d9a5",
         requires() { return new Decimal(1e44)}, // Can be a function that takes requirement increases into account
         resource: "MJ Multiverses", // Name of prestige currency
@@ -1021,6 +1022,37 @@ addLayer("MU", {
         if (hasUpgrade('u', 35) || player.MU.unlocked) visible = true
        return visible
     },
+    tabFormat: { 
+        "Main": {
+            content: [
+                "main-display",
+                "blank",
+		"prestige-button",
+		"blank",
+                ["display-text", "The MJ universes merge together to make 1 big MJ multiverse. The MJ multiverses will help you get further."],
+		"blank",
+		["display-text",
+                    function(){
+                        let a = ""
+                        a = a + `You have 
+                        <h2><span style="color: blue; text-shadow: 0px 0px 10px #AD6F69; font-family: Lucida Console, Courier New, monospace">
+                            ${format(player.era.ec)}</span></h2> Generated MJ Universes`
+                        return a
+                    }
+                ],
+                ["display-text",
+                    function(){
+                        let a = ""
+                        a = a + "You are gaining " + format(player.gmu.gmug) + " Generated MJ Universes a second."
+                        return a
+                    }
+                ],
+                "blank",
+                "blank",
+                "blank",
+                "upgrades",
+            ],
+        },
     upgrades: {
         11: {
             title: "5th row is so op!",
