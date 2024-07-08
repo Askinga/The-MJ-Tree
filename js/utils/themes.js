@@ -1,5 +1,5 @@
 // ************ Themes ************
-var themes = ["default", "aqua", "good", "magical"]
+var themes = ["default", "aqua", "good", "magical", "lava"]
 
 var colors = {
 	default: {
@@ -41,6 +41,16 @@ var colors = {
 		locked: "#bf8f8f",
 		background: "#c62ad4",
 		background_tooltip: "rgba(0, 0, 0, 0.80)",
+	},
+        lava: {
+		1: "#ff8585",//Branch color 1
+		2: "#bfbfbf",//Branch color 2
+		3: "#7f7f7f",//Branch color 3
+		color: "#632323",
+		points: "#ffffff",
+		locked: "#bf8f8f",
+		background: "#ff0000",
+		background_tooltip: "rgba(0, 0, 0, 0.60)",
 	},
 }
 function changeTheme() {
