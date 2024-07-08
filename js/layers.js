@@ -1023,16 +1023,19 @@ addLayer("MU", {
         if (hasUpgrade('u', 35) || player.MU.unlocked) visible = true
        return visible
     },
-    tabFormat: { 
-        "Main": {
+    tabFormat: {
+        "Main tab": {
             content: [
                 "main-display",
+                ["display-text", "The MJ universes merge together to make 1 big MJ multiverse. The MJ multiverse s will help you get further."],
                 "blank",
-		"prestige-button",
-		"blank",
-                ["display-text", "The MJ universes merge together to make 1 big MJ multiverse. The MJ multiverses will help you get further."],
-		"blank",
-		["display-text",
+                "prestige-button",
+            ],
+        },
+        "Upgrades": {
+            content: [
+                "main-display",
+                ["display-text",
                     function(){
                         let a = ""
                         a = a + `You have 
@@ -1044,7 +1047,7 @@ addLayer("MU", {
                 ["display-text",
                     function(){
                         let a = ""
-                        a = a + "You are gaining " + format(player.gmu.gmug) + " Generated MJ Universes a second."
+                        a = a + "You are gaining " + format(player.MU.gmug) + " Generated MJ Universes a second."
                         return a
                     }
                 ],
@@ -1053,6 +1056,7 @@ addLayer("MU", {
                 "blank",
                 "upgrades",
             ],
+            unlocked() {return player.MU.points.gte(1)}
         },
     },
     upgrades: {
