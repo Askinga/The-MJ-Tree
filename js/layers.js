@@ -998,7 +998,8 @@ addLayer("MU", {
         startData() { return {
         unlocked: false,
 		points: new Decimal(0),
-                
+        gmu: new Decimal(0),
+        gmug: new Decimal(0)  
 	}},
 	color: "#a3d9a5",
         requires() { return new Decimal(1e44)}, // Can be a function that takes requirement increases into account
@@ -1014,7 +1015,7 @@ addLayer("MU", {
 		},
         row: 4, // Row the layer is in on the tree (0 is the first row)
         hotkeys: [
-            {key: "l", description: "Press L to perform a MJ Multiverse reset", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+            {key: "l", description: "Press L to merge MJ universes to a MJ Multiverse", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
         ],
         resetsNothing() { return hasUpgrade('MU', 12) },
 	layerShown(){
@@ -1036,7 +1037,7 @@ addLayer("MU", {
                         let a = ""
                         a = a + `You have 
                         <h2><span style="color: blue; text-shadow: 0px 0px 10px #AD6F69; font-family: Lucida Console, Courier New, monospace">
-                            ${format(player.era.ec)}</span></h2> Generated MJ Universes`
+                            ${format(player.MU.gmu)}</span></h2> Generated MJ Universes`
                         return a
                     }
                 ],
@@ -1053,6 +1054,7 @@ addLayer("MU", {
                 "upgrades",
             ],
         },
+    },
     upgrades: {
         11: {
             title: "5th row is so op!",
