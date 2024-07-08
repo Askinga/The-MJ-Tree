@@ -1056,7 +1056,7 @@ addLayer("MU", {
                 "blank",
                 "upgrades",
             ],
-            unlocked() {return player.MU.points.gte(1)}
+            unlocked() {return player.MU.points.gte(1) || (hasUpgrade('MU', 11))}
         },
     },
     upgrades: {
