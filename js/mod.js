@@ -107,7 +107,7 @@ function getPointGen() {
 	if (hasUpgrade('u', 25)) gain = gain.times(1e21)
 	if (hasUpgrade('u', 31)) gain = gain.times(upgradeEffect('u', 31))
 	if (hasUpgrade('u', 34)) gain = gain.times(1e30)
-        if (hasUpgrade('MU', 11)) gain = gain.times(1e50)
+        if (hasUpgrade('MU', 25)) gain = gain.times(1e50)
 	
 	// power
 	
