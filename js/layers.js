@@ -1068,7 +1068,7 @@ addLayer("MU", {
     },
     update(diff) {
         if (hasUpgrade("MU", 11)) {
-            let gain = new Decimal(15)
+            let gain = new Decimal(1)
             
 
             // statements above this line
