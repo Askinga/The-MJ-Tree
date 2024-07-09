@@ -1008,7 +1008,7 @@ addLayer("MU", {
         baseAmount() {return player.u.points}, // Get the current amount of baseResource
         type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
 		branches: ["m", "u"],
-        exponent() { return 2.75 }, // Prestige currency exponent
+        exponent() { return 3.25 }, // Prestige currency exponent
 		gainMult() {
 			let mult = new Decimal(1);
 			return mult;
@@ -1061,28 +1061,21 @@ addLayer("MU", {
     },
     upgrades: {
         11: {
-            title: "5th row is so op!",
-            description: "×1e50 points.",
+            title: "MJ Universes generation",
+            description: "Generate 1 Generated MJ Universes per second.",
             cost: new Decimal(1),
-        },
-        12: {
-            title: "QoL 3",
-            description: "This layer does not reset anything.",
-            cost: new Decimal(2),
-            unlocked() { return (hasUpgrade('MU', 11)) },
-	},
-        13: {
-            title: "Super Exponent",
-            description: "^1.125 MJs.",
-            cost: new Decimal(3),
-            unlocked() { return (hasUpgrade('MU', 12)) },
-	},
-        14: {
-            title: "MJ MJ MJ MJ MJ!",
-            description: "×1e33 MJs.",
-            cost: new Decimal(6),
-            unlocked() { return (hasUpgrade('MU', 13)) },
-	},
+	}, 
+    },
+    update(diff) {
+        if (hasUpgrade("MU", 11)) {
+            let gain = new Decimal(15)
+            
+
+            // statements above this line
+            player.MU.gmug = gain
+            gain = gain.times(diff)
+            player.MU.gmu = player.MU.gmu.add(gain)
+        }
     },
 })
 
