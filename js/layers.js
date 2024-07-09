@@ -90,6 +90,7 @@ addLayer("p", {
 	if (hasMilestone('m', 13)) mult = mult.times(1e12)
 	if (hasUpgrade('u', 12)) mult = mult.times(upgradeEffect('u', 12))
 	if (hasUpgrade('u', 23)) mult = mult.times(1e15)
+	if (hasUpgrade('MU', 12)) mult = mult.times(1e30)
 	
 	// pow
 	
@@ -448,6 +449,7 @@ addLayer("w", {
 	if (hasMilestone('m', 9)) mult = mult.times(1000000)
 	if (hasMilestone('m', 12)) mult = mult.times(10)
 	if (hasUpgrade('u', 15)) mult = mult.times(upgradeEffect('u', 15))
+	if (hasUpgrade('MU', 14)) mult = mult.times(1e20)
 	
 	// power
 	
@@ -1062,11 +1064,48 @@ addLayer("MU", {
             description: "Generate 1 Generated MJ Universes per second.",
             cost: new Decimal(1),
 	}, 
+        12: {
+            title: "We need some boosts!",
+            description: "×1e30 MJs.",
+            cost: new Decimal(10),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 11)}
+	}, 
+        13: {
+            title: "Boosting the gain",
+            description: "×1.5 Generated MJ Universes.",
+            cost: new Decimal(20),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 12)}
+	},
+        14: {
+            title: "More boosts",
+            description: "×1e20 MJ Worlds.",
+            cost: new Decimal(35),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 13)}
+	},
+        15: {
+            title: "Double the gain",
+            description: "×2 Generated MJ Universes.",
+            cost: new Decimal(40),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 14)}
+	},
     },
     update(diff) {
         if (hasUpgrade("MU", 11)) {
             let gain = new Decimal(1)
-            
+            if (hasUpgrade('MU', 13)) gain = gain.times(1.5)
+	    if (hasUpgrade('MU', 15)) gain = gain.times(2)
 
             // statements above this line
             player.MU.gmug = gain
