@@ -91,6 +91,7 @@ addLayer("p", {
 	if (hasUpgrade('u', 12)) mult = mult.times(upgradeEffect('u', 12))
 	if (hasUpgrade('u', 23)) mult = mult.times(1e15)
 	if (hasUpgrade('MU', 12)) mult = mult.times(1e30)
+	if (hasUpgrade('MU', 25)) mult = mult.times(1e33)
 	
 	// pow
 	
@@ -287,6 +288,7 @@ addLayer("b", {
         if (hasUpgrade('w', 25)) exp = 1.45
         if (hasMilestone('m', 15)) exp = 1.2
 	if (hasUpgrade('u', 32)) exp = 1.1
+	if (hasUpgrade('MU', 21)) exp = 1.04
 	return exp
     }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -715,6 +717,7 @@ addLayer("m", {
     color: "#e8a71c",
     requires() {
         let req = new Decimal(1e33)
+	if (hasUpgrade('MU', 24)) req = req.div("e10000")
 	return req
     }, // Can be a function that takes requirement increases into account
     resource: "mastered skills", // Name of prestige currency
@@ -1100,12 +1103,58 @@ addLayer("MU", {
             currencyLayer: "MU",
             unlocked() {return hasUpgrade("MU", 14)}
 	},
+        21: {
+            title: "Cost Less",
+            description: "The MJ Buses cost scaling is weaker.",
+            cost: new Decimal(100),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 15)}
+	},
+        22: {
+            title: "We need more generated MJ universes!",
+            description: "×3 Generated MJ Universes.",
+            cost: new Decimal(115),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 21)}
+	},
+        23: {
+            title: "Time for a lot of points!",
+            description: "×1e50 points.",
+            cost: new Decimal(350),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 22)}
+	},
+        24: {
+            title: "Super Skills",
+            description: "÷1e10000 mastered skill cost.",
+            cost: new Decimal(375),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 23)}
+	},
+        25: {
+            title: "MJ MJ MJ MJ MJ!",
+            description: "×1e33 MJs.",
+            cost: new Decimal(400),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 24)}
+	},
     },
     update(diff) {
         if (hasUpgrade("MU", 11)) {
             let gain = new Decimal(1)
             if (hasUpgrade('MU', 13)) gain = gain.times(1.5)
 	    if (hasUpgrade('MU', 15)) gain = gain.times(2)
+	    if (hasUpgrade('MU', 22)) gain = gain.times(3)
 
             // statements above this line
             player.MU.gmug = gain
