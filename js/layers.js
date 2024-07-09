@@ -90,7 +90,6 @@ addLayer("p", {
 	if (hasMilestone('m', 13)) mult = mult.times(1e12)
 	if (hasUpgrade('u', 12)) mult = mult.times(upgradeEffect('u', 12))
 	if (hasUpgrade('u', 23)) mult = mult.times(1e15)
-	if (hasUpgrade('MU', 14)) mult = mult.times(1e33)
 	
 	// pow
 	
@@ -98,7 +97,6 @@ addLayer("p", {
 	if (hasUpgrade('p', 34)) mult = mult.pow(1.04)
 	if (hasMilestone('m', 4)) mult = mult.pow(1.005)
 	if (hasMilestone('m', 5)) mult = mult.pow(1.035)
-	if (hasUpgrade('MU', 13)) mult = mult.pow(1.125)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -1017,7 +1015,6 @@ addLayer("MU", {
         hotkeys: [
             {key: "l", description: "Press L to merge MJ universes to a MJ Multiverse", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
         ],
-        resetsNothing() { return hasUpgrade('MU', 12) },
 	layerShown(){
         let visible = false
         if (hasUpgrade('u', 35) || player.MU.unlocked) visible = true
