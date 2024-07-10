@@ -1297,7 +1297,7 @@ addLayer("📈", {
         },
         bar6: {
             direction: RIGHT,
-            width: 300,
+            width: 500,
             height: 25,
             instant: false,
             fillStyle: { 'background-color': "#6200ff" },
