@@ -127,6 +127,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
+    "You have spent "+formatTime(player.runTime)+" in this run"
 ]
 
 // Determines when the game "ends"
