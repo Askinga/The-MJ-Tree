@@ -117,7 +117,7 @@ addLayer("p", {
                 "prestige-button",
                 "blank",
 		"blank",
-		"blank",
+		"buyables",
 		"upgrades"
 	    ],
         },
