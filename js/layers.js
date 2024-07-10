@@ -1286,7 +1286,7 @@ addLayer("📈", {
             instant: false,
             fillStyle: { 'background-color': "#6200ff" },
 	    progress() {
-                let prog = player.p.points.div(1e50)
+                let prog = player.p.points.add(1).log(1e50)
                 return prog
 	    },
             display() {
