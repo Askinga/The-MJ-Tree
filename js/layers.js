@@ -109,6 +109,29 @@ addLayer("p", {
         {key: "m", description: "M: Reset for MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "blank",
+                "prestige-button",
+                "blank",
+		"blank",
+		"blank",
+		"upgrades"
+	    ],
+        },
+        "Challenges": {
+            content: [
+                "main-display",
+                "blank",
+		["display-text", "Here are challenges. These challenges nerf your progression, but when you complete them, you get a boost!"],
+		"blank",
+                "challenges"
+            ],
+            unlocked() {return (hasUpgrade('MU', 31))}
+        },
+    },
     upgrades: {
         11: {
             title: "Point multi 1",
@@ -1147,6 +1170,15 @@ addLayer("MU", {
             currencyInternalName: "gmu",
             currencyLayer: "MU",
             unlocked() {return hasUpgrade("MU", 24)}
+	},
+        31: {
+            title: "Challenges!",
+            description: "Unlock a challenge and a new tab.",
+            cost: new Decimal(425),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 25)}
 	},
     },
     update(diff) {
