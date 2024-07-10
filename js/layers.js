@@ -1172,8 +1172,8 @@ addLayer("MU", {
             unlocked() {return hasUpgrade("MU", 24)}
 	},
         31: {
-            title: "Challenges!",
-            description: "Unlock a challenge and a new tab.",
+            title: "We need some more Generated MJ Universes!",
+            description: "×5 Generated MJ Universes.",
             cost: new Decimal(425),
 	    currencyDisplayName: "Generated MJ Universes",
             currencyInternalName: "gmu",
@@ -1187,6 +1187,7 @@ addLayer("MU", {
             if (hasUpgrade('MU', 13)) gain = gain.times(1.5)
 	    if (hasUpgrade('MU', 15)) gain = gain.times(2)
 	    if (hasUpgrade('MU', 22)) gain = gain.times(3)
+	    if (hasUpgrade('MU', 31)) gain = gain.times(5)
 
             // statements above this line
             player.MU.gmug = gain
