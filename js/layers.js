@@ -1219,7 +1219,9 @@ addLayer("📈", {
                 ["bar", "bar4"],
 		"blank",
                 ["bar", "bar5"],
-                ],
+                "blank",
+                ["bar", "bar6"],
+	        ],
 	},
     },
     bars: {
@@ -1290,7 +1292,21 @@ addLayer("📈", {
                 return prog
 	    },
             display() {
-                    return "Progress to 1e50 MJs"
+                    return "Progress to 1e50 MJs (logarithmic)"
+            },
+        },
+        bar6: {
+            direction: RIGHT,
+            width: 300,
+            height: 25,
+            instant: false,
+            fillStyle: { 'background-color': "#6200ff" },
+	    progress() {
+                let prog = player.points.add(1).log("e10000")
+                return prog
+	    },
+            display() {
+                    return "Progress to e10000 points (logarithmic)"
             },
         },
     },
