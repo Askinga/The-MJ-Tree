@@ -17,6 +17,7 @@ addLayer("p", {
         mult = new Decimal(1)
         if (hasUpgrade('p', 31)) mult = mult.times(2)
 	if (hasUpgrade('p', 32)) mult = mult.times(upgradeEffect('p', 32))
+	if (hasUpgrade('p', 33)) mult = mult.times(upgradeEffect('p', 33))
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -34,7 +35,7 @@ addLayer("p", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11], [21, 22], [31, 32]]]
+				["upgrade-tree", [[11], [21, 22], [31, 32, 33]]]
             ]
         },
     },
@@ -84,6 +85,17 @@ addLayer("p", {
 	    unlocked() { return (hasUpgrade('p', 22)) },
 	    effect(){
                 return player.points.add(1).pow(0.1)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        33: {
+            title: "Currency boosts Currency",
+            description: "Boost upgrade point gain based on upgrade points.",
+            cost: new Decimal(125),
+	    branches: [22],
+	    unlocked() { return (hasUpgrade('p', 32)) },
+	    effect(){
+                return player.points.add(1).pow(0.075)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
