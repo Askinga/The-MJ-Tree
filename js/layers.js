@@ -48,11 +48,17 @@ addLayer("p", {
             description: "×2 points.",
             cost: new Decimal(1),
         },
-        21: {
+        12: {
+            title: "Triple",
+            description: "×3 points.",
+            cost: new Decimal(200),
+	    unlocked() { return (hasUpgrade('p', 33)) },
+	},
+	21: {
             title: "Booster",
             description: "Boost point gain based on upgrade points.",
             cost: new Decimal(2),
-	    branches: [11],
+	    branches: [11, 12],
 	    unlocked() { return (hasUpgrade('p', 11)) },
 	    effect(){
                 return player.p.points.add(1).pow(0.5)
@@ -63,7 +69,7 @@ addLayer("p", {
             title: "Point booster",
             description: "Boost point gain based on points.",
             cost: new Decimal(10),
-	    branches: [11],
+	    branches: [11, 12],
 	    unlocked() { return (hasUpgrade('p', 21)) },
 	    effect(){
                 return player.points.add(1).pow(0.2)
