@@ -51,6 +51,10 @@ addLayer("p", {
             cost: new Decimal(2),
 	    branches: [11],
 	    unlocked() { return (hasUpgrade('p', 11)) },
+	    effect(){
+                return player.p.points.add(1).pow(0.5)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
     },
 })
