@@ -25,6 +25,17 @@ addLayer("p", {
         {key: "t", description: "T: Reset for upgrade points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
+   tabFormat: {
+        "Upgrade Tree 1": {
+            content: [
+                ["display-text", "Welcome to the Upgrade Tree! In this layer, there is going to be a upgrade tree to boost the production of layers!"],
+                "main-display",
+                "prestige-button",
+                "blank",
+				["upgrade-tree", [[11, 12]]]
+            ]
+        },
+    },
     tooltip() {
 	return "The Upgrade Tree"
     },
