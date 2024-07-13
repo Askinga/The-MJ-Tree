@@ -15,7 +15,9 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        return mult
+        if (hasUpgrade('p', 31)) mult = mult.times(2)
+	if (hasUpgrade('p', 32)) mult = mult.times(upgradeEffect('p', 32))
+	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
@@ -26,13 +28,13 @@ addLayer("p", {
     ],
     layerShown(){return true},
    tabFormat: {
-        "Upgrade Tree 1": {
+        "Main": {
             content: [
-                ["display-text", "Welcome to the Upgrade Tree! In this layer, there is going to be a upgrade tree to boost the production of layers!"],
+                ["display-text", "The upgrade tree. The main layer of this game. Has a upgrade tree to boost your production."],
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11], [21, 22]]]
+				["upgrade-tree", [[11], [21, 22], [31, 32]]]
             ]
         },
     },
@@ -64,6 +66,24 @@ addLayer("p", {
 	    unlocked() { return (hasUpgrade('p', 21)) },
 	    effect(){
                 return player.points.add(1).pow(0.2)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        31: {
+            title: "Double currency",
+            description: "×2 upgrade points.",
+            cost: new Decimal(20),
+            branches: [21],
+	    unlocked() { return (hasUpgrade('p', 22)) },
+	},
+        32: {
+            title: "Currency booster",
+            description: "Boost upgrade point gain based on points.",
+            cost: new Decimal(50),
+	    branches: [22],
+	    unlocked() { return (hasUpgrade('p', 22)) },
+	    effect(){
+                return player.points.add(1).pow(0.1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
