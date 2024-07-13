@@ -59,7 +59,7 @@ addLayer("p", {
         21: {
             title: "Point booster",
             description: "Boost point gain based on points.",
-            cost: new Decimal(4),
+            cost: new Decimal(10),
 	    branches: [11],
 	    unlocked() { return (hasUpgrade('p', 21)) },
 	    effect(){
