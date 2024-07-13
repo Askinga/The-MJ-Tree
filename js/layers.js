@@ -35,7 +35,7 @@ addLayer("p", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11, 12], [21, 22], [31, 32, 33]]]
+				["upgrade-tree", [[11, 12, 13], [21, 22], [31, 32, 33]]]
             ]
         },
     },
@@ -54,11 +54,17 @@ addLayer("p", {
             cost: new Decimal(200),
 	    unlocked() { return (hasUpgrade('p', 33)) },
 	},
+	13: {
+            title: "Quadruple",
+            description: "×4 points.",
+            cost: new Decimal(1000),
+	    unlocked() { return (hasUpgrade('p', 12)) },
+	},
 	21: {
             title: "Booster",
             description: "Boost point gain based on upgrade points.",
             cost: new Decimal(2),
-	    branches: [11, 12],
+	    branches: [11, 12, 13],
 	    unlocked() { return (hasUpgrade('p', 11)) },
 	    effect(){
                 return player.p.points.add(1).pow(0.5)
@@ -69,7 +75,7 @@ addLayer("p", {
             title: "Point booster",
             description: "Boost point gain based on points.",
             cost: new Decimal(10),
-	    branches: [11, 12],
+	    branches: [11, 12, 13],
 	    unlocked() { return (hasUpgrade('p', 21)) },
 	    effect(){
                 return player.points.add(1).pow(0.2)
