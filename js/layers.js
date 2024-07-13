@@ -32,7 +32,7 @@ addLayer("p", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11], [21]]]
+				["upgrade-tree", [[11], [21, 22]]]
             ]
         },
     },
