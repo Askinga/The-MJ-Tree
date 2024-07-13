@@ -1,5 +1,5 @@
 const myParticle {
-    makeParticles(myParticle, 1)
+    makeParticles(myParticle, 1),
     image:"options_wheel.png",
     spread: 20,
     gravity: 2,
