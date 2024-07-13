@@ -24,7 +24,7 @@ addLayer("p", {
     hotkeys: [
         {key: "t", description: "T: Reset for upgrade points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true}
+    layerShown(){return true},
     tooltip() {
 	return "The Upgrade Tree"
     },
