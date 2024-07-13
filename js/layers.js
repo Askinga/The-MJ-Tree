@@ -32,11 +32,25 @@ addLayer("p", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11, 12]]]
+				["upgrade-tree", [[11], [21]]]
             ]
         },
     },
     tooltip() {
 	return "The Upgrade Tree"
+    },
+    upgrades: {
+        11: {
+            title: "Double",
+            description: "×2 points.",
+            cost: new Decimal(1),
+        },
+        21: {
+            title: "Booster",
+            description: "Boost point gain based on upgrade points.",
+            cost: new Decimal(2),
+	    branches: [11],
+	    unlocked() { return (hasUpgrade('p', 11)) },
+	},
     },
 })
