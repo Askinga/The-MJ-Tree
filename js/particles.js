@@ -6,4 +6,5 @@ const myParticle {
     speed() { // Randomize speed a bit
         return (Math.random() + 1.2) * 8 
     },
+    makeParticles(myParticle, 1),
 }
