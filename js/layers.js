@@ -16,6 +16,7 @@ addLayer("p", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('p', 31)) mult = mult.times(2)
+	if (hasUpgrade('p', 34)) mult = mult.times(3)
 	if (hasUpgrade('p', 32)) mult = mult.times(upgradeEffect('p', 32))
 	if (hasUpgrade('p', 33)) mult = mult.times(upgradeEffect('p', 33))
 	return mult
@@ -35,7 +36,7 @@ addLayer("p", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11, 12, 13], [21, 22], [31, 32, 33]]]
+				["upgrade-tree", [[11, 12, 13], [21, 22], [31, 32, 33, 34]]]
             ]
         },
     },
@@ -110,6 +111,13 @@ addLayer("p", {
                 return player.p.points.add(1).pow(0.075)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        34: {
+            title: "Triple currency",
+            description: "×3 upgrade points.",
+            cost: new Decimal(5000),
+            branches: [21, 22],
+	    unlocked() { return (hasUpgrade('p', 13)) },
 	},
     },
 })
