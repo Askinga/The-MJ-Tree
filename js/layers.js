@@ -56,7 +56,7 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
-        21: {
+        22: {
             title: "Point booster",
             description: "Boost point gain based on points.",
             cost: new Decimal(10),
