@@ -138,7 +138,7 @@ addLayer("r", {
 		points: new Decimal(0),
     }},
     
-    color: "#7ecfc4",
+    color: "#199fa8",
     requires() {
         let req = new Decimal(25000)
         return req
