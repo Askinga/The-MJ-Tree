@@ -39,6 +39,16 @@ addLayer("p", {
 				["upgrade-tree", [[11, 12, 13], [21, 22], [31, 32, 33, 34], [41]]]
             ]
         },
+        "Prestige upgrade tree": {
+          unlocked() { return (hasMilestone('r', 0)) },
+	    content: [
+                ["display-text", "The upgrade tree. The main layer of this game. Has a upgrade tree to boost your production."],
+                "main-display",
+                "prestige-button",
+                "blank",
+				["upgrade-tree", [[14]]]
+            ]
+	},
     },
     tooltip() {
 	return "The Upgrade Tree"
@@ -60,6 +70,15 @@ addLayer("p", {
             description: "×4 points.",
             cost: new Decimal(1000),
 	    unlocked() { return (hasUpgrade('p', 12)) },
+	},
+	14: {
+            title: "Triple again",
+            description: "×3 points.",
+            cost: new Decimal(1),
+	    unlocked() { return (hasMilestone('r', 0)) },
+	    currencyDisplayName: "prestige points",
+            currencyInternalName: "points",
+            currencyLayer: "r",
 	},
 	21: {
             title: "Booster",
