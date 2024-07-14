@@ -179,4 +179,11 @@ addLayer("r", {
         },
     },
     branches:["p"],
+    upgrades: {
+        11: {
+            title: "Triple again",
+            description: "×3 points.",
+            cost: new Decimal(1),
+        },
+    },
 })
