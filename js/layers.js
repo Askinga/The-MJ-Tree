@@ -187,4 +187,11 @@ addLayer("r", {
        return visible
     },
     branches:["p"],
+    milestones: {
+        0: {
+            requirementDescription: "1 prestige point",
+            effectDescription: "Unlock a new tab and upgrade",
+            done() { return player.r.points >= (1) }
+        },
+    },
 })
