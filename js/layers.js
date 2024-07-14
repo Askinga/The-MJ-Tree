@@ -36,7 +36,7 @@ addLayer("p", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11, 12, 13], [21, 22], [31, 32, 33, 34]]]
+				["upgrade-tree", [[11, 12, 13], [21, 22], [31, 32, 33, 34], [41]]]
             ]
         },
     },
@@ -118,6 +118,13 @@ addLayer("p", {
             cost: new Decimal(5000),
             branches: [21, 22],
 	    unlocked() { return (hasUpgrade('p', 13)) },
+	},
+        41: {
+            title: "New layer",
+            description: "Unlock a new layer.",
+            cost: new Decimal(20000),
+            branches: [31, 32, 33, 34],
+	    unlocked() { return (hasUpgrade('p', 34)) },
 	},
     },
 })
