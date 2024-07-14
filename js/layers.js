@@ -128,3 +128,44 @@ addLayer("p", {
 	},
     },
 })
+
+addLayer("r", {
+    name: "prestige",
+    symbol: "P",
+    position: 0,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    
+    color: "#7ecfc4",
+    requires() {
+        let req = new Decimal(25000)
+        return req
+    }, // Can be a function that takes requirement increases into account
+    resource: "prestige points", // Name of prestige currency
+    baseResource: "upgrade points", // Name of resource prestige is based on
+    baseAmount() {return player.p.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.25, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('p', 41) || player.r.unlocked) visible = true
+       return visible
+    },
+    branches:["p"],
+})
