@@ -19,6 +19,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 34)) mult = mult.times(3)
 	if (hasUpgrade('p', 32)) mult = mult.times(upgradeEffect('p', 32))
 	if (hasUpgrade('p', 33)) mult = mult.times(upgradeEffect('p', 33))
+	if (hasUpgrade('r', 22)) mult = mult.times(upgradeEffect('r', 22))
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -197,11 +198,22 @@ addLayer("r", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
+	22: {
+            title: "Prestige booster 2",
+            description: "Boost upgrade point gain based on prestige points.",
+            cost: new Decimal(20),
+	    branches: [11],
+	    unlocked() { return (hasUpgrade('r', 31)) },
+	    effect(){
+                return player.r.points.add(2).pow(0.75)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
         31: {
             title: "Reverse prestige booster",
             description: "Boost prestige point gain based on points.",
             cost: new Decimal(4),
-	    branches: [21],
+	    branches: [21, 22],
 	    unlocked() { return (hasUpgrade('r', 21)) },
 	    effect(){
                 return player.points.add(1).pow(0.05)
