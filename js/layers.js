@@ -174,7 +174,7 @@ addLayer("r", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11]]]
+				["upgrade-tree", [[11], [21]]]
             ]
         },
     },
@@ -185,5 +185,16 @@ addLayer("r", {
             description: "×3 points.",
             cost: new Decimal(1),
         },
+        21: {
+            title: "Prestige booster",
+            description: "Boost point gain based on prestige points.",
+            cost: new Decimal(2),
+	    branches: [11],
+	    unlocked() { return (hasUpgrade('r', 11)) },
+	    effect(){
+                return player.p.points.add(2).pow(1.25)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
     },
 })
