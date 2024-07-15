@@ -192,7 +192,7 @@ addLayer("r", {
 	    branches: [11],
 	    unlocked() { return (hasUpgrade('r', 11)) },
 	    effect(){
-                return player.p.points.add(2).pow(1.25)
+                return player.r.points.add(2).pow(1.25)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
