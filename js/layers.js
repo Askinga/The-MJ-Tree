@@ -176,7 +176,7 @@ addLayer("r", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11], [21], [31]]]
+				["upgrade-tree", [[11], [21, 22], [31]]]
             ]
         },
     },
