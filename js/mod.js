@@ -65,7 +65,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	
-	() => (player.points.gte(1e15)&&(canGenPoints())) ? "Your point gain is divided by "+format(getPointDivider()) : "",
+	() => (player.points.gte(1e15)&&(canGenPoints())) ? "Your point gain is divided by "+format(getPointDivider())+" due to softcap." : "",
 	
 ]
 
