@@ -54,7 +54,7 @@ function getPointGen() {
 	return gain
 }
 function getPointDivider() {
-	let base = player.points.max(1e15).log(1e15).max(1e15).pow(3.5)
+	let base = player.points.max(1e15).log(1e15).max(1).pow(1.5)
 	return base
 }
 
@@ -65,7 +65,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	
-	() => (player.points.gte(1e15)&&(canGenPoints())) ? "Your point gain is divided by "+format(getPointDivider())+" due to softcap!" : "",
+	() => (player.points.gte(0)&&(canGenPoints())) ? "Your point gain is divided by "+format(getPointDivider())+" due to softcap!" : "",
 	
 ]
 
