@@ -50,7 +50,12 @@ function getPointGen() {
         if (hasUpgrade('p', 21)) gain = gain.times(upgradeEffect('p', 21))
 	if (hasUpgrade('p', 22)) gain = gain.times(upgradeEffect('p', 22))
 	if (hasUpgrade('r', 21)) gain = gain.times(upgradeEffect('r', 21))
+	gain = gain.div(getPointDivider())
 	return gain
+}
+function getPointDivider() {
+	let base = player.points.max(1e15).log(10).max(1).pow(3)
+	return base
 }
 
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
@@ -59,6 +64,9 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
+	
+	() => (player.points.gte(1e15)&&(canGenPoints())) ? "Your point gain is divided by "+format(getPointDivider()) : "",
+	
 ]
 
 // Determines when the game "ends"
