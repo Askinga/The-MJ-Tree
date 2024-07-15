@@ -150,6 +150,7 @@ addLayer("r", {
     exponent: 0.25, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('r', 31)) mult = mult.times(upgradeEffect('r', 31))
 	return mult
     },
 
@@ -174,7 +175,7 @@ addLayer("r", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11], [21]]]
+				["upgrade-tree", [[11], [21], [31]]]
             ]
         },
     },
@@ -193,6 +194,17 @@ addLayer("r", {
 	    unlocked() { return (hasUpgrade('r', 11)) },
 	    effect(){
                 return player.r.points.add(2).pow(1.25)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        31: {
+            title: "Reverse prestige booster",
+            description: "Boost prestige point gain based on points.",
+            cost: new Decimal(4),
+	    branches: [21],
+	    unlocked() { return (hasUpgrade('r', 21)) },
+	    effect(){
+                return player.points.add(1).pow(0.05)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
