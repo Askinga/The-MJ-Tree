@@ -54,7 +54,7 @@ function getPointGen() {
 	return gain
 }
 function getPointDivider() {
-	let base = player.points.max(1e15).log(1e15).max(1).pow(20)
+	let base = player.points.max(1e15).log(1e15).max(1).pow(35)
 	return base
 }
 
