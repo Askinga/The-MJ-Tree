@@ -281,7 +281,7 @@ addLayer("r", {
     clickables:{
 	11:{
             display(){return `Go back`},
-            style:{"height":"150px","width":"150px","border-radius":"0%","border":"6px solid","border-color":"#31aeb0","color":"#31aeb0","font-size":"15px","background-color":"#00000000"},
+            style:{"height":"150px","width":"150px","border-radius":"0%","border":"6px solid","border-color":"#4BDC13","color":"#4BDC13","font-size":"15px","background-color":"#00000000"},
             onClick(){
                 player.tab='p'
             },
