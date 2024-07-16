@@ -14,6 +14,8 @@ function getStartOptions() {
 		forceOneTab: false,
 		oldStyle: false,
 		tooltipForcing: true,
+	        dp: 3,
+		showdp: 5,
 	}
 }
 
