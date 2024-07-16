@@ -58,8 +58,10 @@ addLayer("p", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11, 12, 13], [21, 22], [31, 32, 33, 34], [41]]]
-            ]
+				["upgrade-tree", [[11, 12, 13], [21, 22], [31, 32, 33, 34], [41]]],
+		"blank",
+		"clickables"
+	    ]
         },
     },
     tooltip() {
@@ -149,6 +151,17 @@ addLayer("p", {
 	    unlocked() { return (hasUpgrade('p', 34)) },
 	},
     },
+    clickables:{
+        11:{
+            display(){return `Continue`},
+            style:{"height":"150px","width":"150px","border-radius":"0%","border":"6px solid","border-color":"#31aeb0","color":"#31aeb0","font-size":"15px","background-color":"#00000000"},
+            unlocked(){return hasUpgrade("p",41) || hasUpgrade('r', 11)},
+            onClick(){
+                player.tab='r'
+            },
+            canClick(){return true}
+        },
+    },
 })
 
 addLayer("r", {
@@ -160,7 +173,7 @@ addLayer("r", {
 		points: new Decimal(0),
     }},
     
-    color: "#199fa8",
+    color: "#31aeb0",
     requires() {
         let req = new Decimal(25000)
         return req
@@ -194,11 +207,13 @@ addLayer("r", {
     tabFormat: {
         "Main": {
             content: [
-                ["display-text", "Prestige. The second layer. Has a upgrade tree to boost your production even more."],
+                ["display-text", "Prestige. The second layer. It continues."],
                 "main-display",
                 "prestige-button",
                 "blank",
 				["upgrade-tree", [[11], [21, 22], [31, 32], [41]]]
+		"blank",
+		"clickables"
             ]
         },
     },
@@ -260,5 +275,15 @@ addLayer("r", {
 	    branches: [11, 21, 22, 31, 32],
 	    unlocked() { return (hasUpgrade('r', 32)) },
 	},
+    },
+    clickables:{
+	11:{
+            display(){return `Go back`},
+            style:{"height":"150px","width":"150px","border-radius":"0%","border":"6px solid","border-color":"#31aeb0","color":"#31aeb0","font-size":"15px","background-color":"#00000000"},
+            onClick(){
+                player.tab='p'
+            },
+            canClick(){return true}
+        },
     },
 })
