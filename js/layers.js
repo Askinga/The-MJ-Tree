@@ -58,9 +58,9 @@ addLayer("p", {
                 "main-display",
 		"prestige-button",
                 "blank",
-		"clickables",
+				["upgrade-tree", [[11, 12, 13], [21, 22], [31, 32, 33, 34], [41]]],
 		"blank",
-				["upgrade-tree", [[11, 12, 13], [21, 22], [31, 32, 33, 34], [41]]]
+		"clickables",
 	    ]
         },
     },
@@ -210,11 +210,11 @@ addLayer("r", {
                 ["display-text", "Prestige. The second layer. It continues."],
                 "main-display",
 		"prestige-button",
+		"blank",
+				["upgrade-tree", [[11], [21, 22], [31, 32], [41]]],
                 "blank",
 		"clickables",
-		"blank",
-				["upgrade-tree", [[11], [21, 22], [31, 32], [41]]]
-            ]
+	    ]
         },
     },
     branches:["p"],
