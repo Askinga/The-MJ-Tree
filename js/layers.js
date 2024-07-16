@@ -152,6 +152,7 @@ addLayer("r", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('r', 31)) mult = mult.times(upgradeEffect('r', 31))
+	if (hasUpgrade('r', 32)) mult = mult.times(upgradeEffect('r', 32))
 	return mult
     },
 
@@ -176,7 +177,7 @@ addLayer("r", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11], [21, 22], [31]]]
+				["upgrade-tree", [[11], [21, 22], [31, 32]]]
             ]
         },
     },
@@ -217,6 +218,17 @@ addLayer("r", {
 	    unlocked() { return (hasUpgrade('r', 21)) },
 	    effect(){
                 return player.points.add(1).pow(0.05)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        32: {
+            title: "Prestige booster?",
+            description: "Boost prestige point gain based on upgrade points.",
+            cost: new Decimal(10000),
+	    branches: [21, 22],
+	    unlocked() { return (hasUpgrade('r', 22)) },
+	    effect(){
+                return player.p.points.add(1).pow(0.02)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
