@@ -56,11 +56,10 @@ addLayer("p", {
             content: [
                 ["display-text", "The upgrade tree. The main layer of this game. Has a upgrade tree to boost your production."],
                 "main-display",
+		"prestige-button",
                 "blank",
 		"clickables",
 		"blank",
-		"prestige-button",
-                "blank",
 				["upgrade-tree", [[11, 12, 13], [21, 22], [31, 32, 33, 34], [41]]]
 	    ]
         },
@@ -210,16 +209,18 @@ addLayer("r", {
             content: [
                 ["display-text", "Prestige. The second layer. It continues."],
                 "main-display",
+		"prestige-button",
                 "blank",
 		"clickables",
 		"blank",
-		"prestige-button",
-                "blank",
 				["upgrade-tree", [[11], [21, 22], [31, 32], [41]]]
             ]
         },
     },
     branches:["p"],
+    tooltip() {
+	return "The Upgrade Tree Part 2"
+    },
     upgrades: {
         11: {
             title: "Triple again",
