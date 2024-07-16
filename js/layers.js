@@ -2,6 +2,33 @@ addLayer("p", {
     name: "Upgrade Tree", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "T", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    doReset(p) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[p].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        for(i=1;i<6;i++){ //rows
+            for(v=1;v<2;v++){ //columns
+              if ((hasUpgrade('b', 15)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+            }
+	    for(v=2;v<3;v++){ //columns
+                if ((hasUpgrade('w', 14)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+	    }
+	    for(v=3;v<4;v++){ //columns
+                if ((hasMilestone('m', 10)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+	    }
+	}
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	if (hasUpgrade('r', 41)) keep.push("upgrades");
+    
+        // Stage 4, do the actual data reset
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
@@ -9,6 +36,10 @@ addLayer("p", {
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "upgrade points", // Name of prestige currency
+    passiveGeneration() {
+        if (hasUpgrade('r', 41)) return 1
+        return 0
+    },
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -177,7 +208,7 @@ addLayer("r", {
                 "main-display",
                 "prestige-button",
                 "blank",
-				["upgrade-tree", [[11], [21, 22], [31, 32]]]
+				["upgrade-tree", [[11], [21, 22], [31, 32], [41]]]
             ]
         },
     },
@@ -231,6 +262,13 @@ addLayer("r", {
                 return player.p.points.add(1).pow(0.02)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
+        41: {
+            title: "Most OP upgrade",
+            description: "Keep Upgrade Tree upgrades and get 100% of Upgrade point gain per second!.",
+            cost: new Decimal(50000),
+	    branches: [11, 21, 22, 31, 32],
+	    unlocked() { return (hasUpgrade('r', 32)) },
 	},
     },
 })
