@@ -249,6 +249,17 @@ addLayer("r", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
+	23: {
+            title: "Prestige booster 3",
+            description: "Each Prestige Point + 1 = ×1.001 points.",
+            cost: new Decimal(20000),
+	    branches: [11],
+	    unlocked() { return (hasUpgrade('r', 32)) },
+	    effect(){
+                return player.r.points.add(1).div(1000)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	},
         31: {
             title: "Reverse prestige booster",
             description: "Boost prestige point gain based on points.",
@@ -273,9 +284,9 @@ addLayer("r", {
 	},
         41: {
             title: "Most OP upgrade",
-            description: "Keep Upgrade Tree upgrades and get 100% of Upgrade point gain per second!.",
+            description: "Keep Upgrade Tree upgrades and get 100% of Upgrade point gain per second!",
             cost: new Decimal(50000),
-	    branches: [11, 21, 22, 31, 32],
+	    branches: [11, 21, 22, 23, 31, 32],
 	    unlocked() { return (hasUpgrade('r', 32)) },
 	},
     },
