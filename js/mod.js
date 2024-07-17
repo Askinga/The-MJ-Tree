@@ -52,6 +52,7 @@ function getPointGen() {
 	if (hasUpgrade('r', 21)) gain = gain.times(upgradeEffect('r', 21))
 	if (hasUpgrade('r', 23)) gain = gain.times(upgradeEffect('r', 23))
 	gain = gain.div(getPointDivider())
+	if (hasUpgrade('r', 12)) gain = gain.times(10)
 	return gain
 }
 function getPointDivider() {
