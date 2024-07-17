@@ -14,11 +14,8 @@ function getStartOptions() {
 		forceOneTab: false,
 		oldStyle: false,
 		tooltipForcing: true,
-	        dp: 3,
-		showdp: 5,
 	}
 }
-let dpList = [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 function toggleOpt(name) {
 	if (name == "oldStyle" && styleCooldown > 0)
 		return;
