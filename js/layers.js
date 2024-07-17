@@ -211,7 +211,7 @@ addLayer("r", {
                 "main-display",
 		"prestige-button",
 		"blank",
-				["upgrade-tree", [[11], [21, 22, 23], [31, 32], [41]]],
+				["upgrade-tree", [[11, 12], [21, 22, 23], [31, 32], [41]]],
                 "blank",
 		"clickables",
 	    ]
@@ -227,11 +227,17 @@ addLayer("r", {
             description: "×3 points.",
             cost: new Decimal(1),
         },
+	12: {
+            title: "Decouple",
+            description: "×10 points (after softcap).",
+            cost: new Decimal(800000),
+            unlocked() { return (hasUpgrade('r', 41)) },
+	},
         21: {
             title: "Prestige booster",
             description: "Boost point gain based on prestige points.",
             cost: new Decimal(2),
-	    branches: [11],
+	    branches: [11, 12],
 	    unlocked() { return (hasUpgrade('r', 11)) },
 	    effect(){
                 return player.r.points.add(2).pow(1.25)
@@ -242,7 +248,7 @@ addLayer("r", {
             title: "Prestige booster 2",
             description: "Boost upgrade point gain based on prestige points.",
             cost: new Decimal(20),
-	    branches: [11],
+	    branches: [11, 12],
 	    unlocked() { return (hasUpgrade('r', 31)) },
 	    effect(){
                 return player.r.points.add(2).pow(0.75)
@@ -253,7 +259,7 @@ addLayer("r", {
             title: "Prestige booster 3",
             description: "Each Prestige Point + 1 = ×1.001 points.",
             cost: new Decimal(20000),
-	    branches: [11],
+	    branches: [11, 12],
 	    unlocked() { return (hasUpgrade('r', 32)) },
 	    effect(){
                 return player.r.points.add(1).div(1000)
@@ -286,7 +292,7 @@ addLayer("r", {
             title: "Most OP upgrade",
             description: "Keep Upgrade Tree upgrades and get 100% of Upgrade point gain per second!",
             cost: new Decimal(50000),
-	    branches: [11, 21, 22, 23, 31, 32],
+	    branches: [11, 12, 21, 22, 23, 31, 32],
 	    unlocked() { return (hasUpgrade('r', 32)) },
 	},
     },
