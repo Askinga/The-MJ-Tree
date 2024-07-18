@@ -326,7 +326,7 @@ addLayer("r", {
                     window.location.reload();
                 } 
                 
-            }
+            },
             canClick(){return true}
         },
     },
