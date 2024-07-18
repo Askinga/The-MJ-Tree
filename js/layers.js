@@ -27,7 +27,8 @@ addLayer("p", {
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "upgrade points", // Name of prestige currency
     passiveGeneration() {
-        if (hasUpgrade('r', 41)) return 1
+        if (inChallenge('r', 11) return 0
+	if (hasUpgrade('r', 41)) return 1
         return 0
     },
     baseResource: "points", // Name of resource prestige is based on
