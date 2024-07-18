@@ -204,8 +204,8 @@ addLayer("r", {
 },
 componentStyles: {
     "prestige-button"() {return { "background": "radial-gradient(#00fbff, #165657)",
-        "width": "150px",
-        "height": "100px",
+        "width": "200px",
+        "height": "150px",
     }},
 },
     requires() {
