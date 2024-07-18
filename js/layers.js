@@ -1027,6 +1027,11 @@ addLayer("MU", {
         gmu: new Decimal(0),
         gmug: new Decimal(0)  
 	}},
+	nodeStyle() {return {
+        "width": "150px",
+        "height": "150px",
+    }
+},
 	color: "#a3d9a5",
         requires() { return new Decimal(1e44)}, // Can be a function that takes requirement increases into account
         resource: "MJ Multiverses", // Name of prestige currency
