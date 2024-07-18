@@ -211,7 +211,7 @@ addLayer("r", {
                 "main-display",
 		"prestige-button",
 		"blank",
-				["upgrade-tree", [[11, 12], [21, 22, 23], [31, 32], [41]]],
+				["upgrade-tree", [[11, 12], [21, 22, 23], [31, 32], [41, 42]]],
                 "blank",
 		"clickables",
 	    ]
@@ -294,6 +294,13 @@ addLayer("r", {
             cost: new Decimal(50000),
 	    branches: [11, 12, 21, 22, 23, 31, 32],
 	    unlocked() { return (hasUpgrade('r', 32)) },
+	},
+        42: {
+            title: "Challenges!",
+            description: "Unlock a challenge",
+            cost: new Decimal(2500000),
+	    branches: [31, 32],
+	    unlocked() { return (hasUpgrade('r', 12)) },
 	},
     },
     clickables:{
