@@ -202,11 +202,17 @@ addLayer("r", {
         "height": "100px",
     }
 },
-    
+componentStyles: {
+    "prestige-button"() {return { "background": "radial-gradient(#00fbff, #165657)",
+        "width": "150px",
+        "height": "100px",
+    }},
+},
     requires() {
         let req = new Decimal(25000)
         return req
     }, // Can be a function that takes requirement increases into account
+    color: "#00fbff",
     resource: "prestige points", // Name of prestige currency
     baseResource: "upgrade points", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
