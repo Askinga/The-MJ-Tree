@@ -60,7 +60,7 @@ addLayer("p", {
                 "main-display",
 		"prestige-button",
                 "blank",
-				["upgrade-tree", [[11, 12, 13, 14], [21, 22], [31, 32, 33, 34, 35], [41]]],
+				["upgrade-tree", [[11, 12, 13, 14], [21, 22, 23], [31, 32, 33, 34, 35], [41]]],
 		"blank",
 		"clickables",
 	    ]
@@ -115,7 +115,16 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
-        31: {
+        23: {
+            title: "Upgrade booster",
+            description: "Multiply point gain based on total upgrade tree part 1 upgrades bought.",
+            cost: new Decimal(1e24),
+	    branches: [11, 12, 13, 14],
+	    effect() {return new Decimal (player.p.upgrades.length).add(2).pow(1.5)},
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+	    unlocked() { return (hasUpgrade('p', 3)) },
+	},
+	31: {
             title: "Double currency",
             description: "×2 upgrade points.",
             cost: new Decimal(20),
