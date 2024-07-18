@@ -171,7 +171,7 @@ addLayer("p", {
             title: "New layer",
             description: "Unlock a new layer.",
             cost: new Decimal(20000),
-            branches: [31, 32, 33, 34],
+            branches: [31, 32, 33, 34, 35],
 	    unlocked() { return (hasUpgrade('p', 34)) },
 	},
     },
