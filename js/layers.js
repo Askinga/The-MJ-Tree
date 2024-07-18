@@ -197,7 +197,7 @@ addLayer("r", {
 		points: new Decimal(0),
     }},
     nodeStyle() {return {
-        "background": "radial-gradient(#165657, #00fbff",
+        "background": "radial-gradient(#00fbff, #165657)",
         "width": "100px",
         "height": "100px",
     }
