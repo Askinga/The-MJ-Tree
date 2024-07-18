@@ -122,7 +122,7 @@ addLayer("p", {
 	    branches: [11, 12, 13, 14],
 	    effect() {return new Decimal (player.p.upgrades.length).add(2).pow(1.5)},
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
-	    unlocked() { return (hasUpgrade('p', 3)) },
+	    unlocked() { return (hasUpgrade('p', 35)) },
 	},
 	31: {
             title: "Double currency",
