@@ -27,7 +27,6 @@ addLayer("p", {
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "upgrade points", // Name of prestige currency
     passiveGeneration() {
-        if (inChallenge('r', 11)) return 0
 	if (hasUpgrade('r', 41)) return 1
         return 0
     },
@@ -42,7 +41,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 32)) mult = mult.times(upgradeEffect('p', 32))
 	if (hasUpgrade('p', 33)) mult = mult.times(upgradeEffect('p', 33))
 	if (hasUpgrade('r', 22)) mult = mult.times(upgradeEffect('r', 22))
-	if (inChallenge('r', 11)) mult = mult.div(1e9)
+	if (inChallenge('r', 11)) mult = 0
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -320,7 +319,7 @@ addLayer("r", {
     challenges: {
         11: {
             name: "Challenge 1",
-            challengeDescription: "Square the softcap, you cannot passively generate Upgrade Points and ÷1e9 Upgrade Points.",
+            challengeDescription: "Square the softcap, you cannot gain Upgrade Points and ÷20 points.",
             canComplete: function() {return player.points.gte("1e50000")},
             goalDescription: "Get ??? points.",
             rewardDescription: "???",
