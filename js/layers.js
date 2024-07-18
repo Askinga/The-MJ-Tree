@@ -260,12 +260,12 @@ addLayer("r", {
 	},
 	23: {
             title: "Prestige booster 3",
-            description: "Each Prestige Point + 1 = ×1.001 points.",
+            description: "Each Prestige Point + 1000 = ×1.001 points.",
             cost: new Decimal(20000),
 	    branches: [11, 12],
 	    unlocked() { return (hasUpgrade('r', 32)) },
 	    effect(){
-                return player.r.points.add(1).div(1000)
+                return player.r.points.add(1000).div(1000)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
