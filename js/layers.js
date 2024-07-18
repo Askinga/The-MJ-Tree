@@ -196,8 +196,12 @@ addLayer("r", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+    nodeStyle() {return {
+        "background": "linear-gradient(#31aeb0, #44eff2)",
+        "width": "100px",
+        "height": "100px",
+    }
     
-    color: "#31aeb0",
     requires() {
         let req = new Decimal(25000)
         return req
