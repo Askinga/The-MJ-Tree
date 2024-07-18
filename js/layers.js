@@ -66,7 +66,7 @@ addLayer("p", {
         },
     },
     tooltip() {
-	return "The Upgrade Tree"
+	return "The Upgrade Tree Part 1"
     },
     upgrades: {
         11: {
@@ -188,6 +188,7 @@ addLayer("r", {
         mult = new Decimal(1)
 	if (hasUpgrade('r', 31)) mult = mult.times(upgradeEffect('r', 31))
 	if (hasUpgrade('r', 32)) mult = mult.times(upgradeEffect('r', 32))
+	if (hasChallenge('r', 11)) mult = mult.times(2)
 	return mult
     },
 
@@ -333,10 +334,10 @@ addLayer("r", {
     challenges: {
         11: {
             name: "Challenge 1",
-            challengeDescription: "Square the softcap, you cannot gain Upgrade Points and ÷20 points.",
-            canComplete: function() {return player.points.gte("1e50000")},
-            goalDescription: "Get ??? points.",
-            rewardDescription: "???",
+            challengeDescription: "Square the softcap, you cannot gain Upgrade Points and ÷20 points. (recommended 3,000,000 prestige points)",
+            canComplete: function() {return player.points.gte("4e15")},
+            goalDescription: "Get 4e15 points.",
+            rewardDescription: "×2 prestige points and ???",
 	    unlocked() { return (hasUpgrade('r', 42)) },
 	},
     },
