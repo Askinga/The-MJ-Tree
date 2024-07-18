@@ -38,6 +38,7 @@ addLayer("p", {
         mult = new Decimal(1)
         if (hasUpgrade('p', 31)) mult = mult.times(2)
 	if (hasUpgrade('p', 34)) mult = mult.times(3)
+	if (hasUpgrade('p', 35)) mult = mult.times(5)
 	if (hasUpgrade('p', 32)) mult = mult.times(upgradeEffect('p', 32))
 	if (hasUpgrade('p', 33)) mult = mult.times(upgradeEffect('p', 33))
 	if (hasUpgrade('r', 22)) mult = mult.times(upgradeEffect('r', 22))
@@ -59,7 +60,7 @@ addLayer("p", {
                 "main-display",
 		"prestige-button",
                 "blank",
-				["upgrade-tree", [[11, 12, 13], [21, 22], [31, 32, 33, 34], [41]]],
+				["upgrade-tree", [[11, 12, 13, 14], [21, 22], [31, 32, 33, 34, 35], [41]]],
 		"blank",
 		"clickables",
 	    ]
@@ -86,11 +87,17 @@ addLayer("p", {
             cost: new Decimal(1000),
 	    unlocked() { return (hasUpgrade('p', 12)) },
 	},
+	14: {
+            title: "Quintuple",
+            description: "×5 points.",
+            cost: new Decimal(2.5e21),
+	    unlocked() { return (hasChallenge('r', 11)) },
+	},
 	21: {
             title: "Booster",
             description: "Boost point gain based on upgrade points.",
             cost: new Decimal(2),
-	    branches: [11, 12, 13],
+	    branches: [11, 12, 13, 14],
 	    unlocked() { return (hasUpgrade('p', 11)) },
 	    effect(){
                 return player.p.points.add(1).pow(0.5)
@@ -101,7 +108,7 @@ addLayer("p", {
             title: "Point booster",
             description: "Boost point gain based on points.",
             cost: new Decimal(10),
-	    branches: [11, 12, 13],
+	    branches: [11, 12, 13, 14],
 	    unlocked() { return (hasUpgrade('p', 21)) },
 	    effect(){
                 return player.points.add(1).pow(0.125)
@@ -143,6 +150,13 @@ addLayer("p", {
             cost: new Decimal(5000),
             branches: [21, 22],
 	    unlocked() { return (hasUpgrade('p', 13)) },
+	},
+	35: {
+            title: "Quintuple currency",
+            description: "×5 upgrade points.",
+            cost: new Decimal(4e22),
+            branches: [21, 22],
+	    unlocked() { return (hasUpgrade('p', 14)) },
 	},
         41: {
             title: "New layer",
@@ -337,7 +351,7 @@ addLayer("r", {
             challengeDescription: "Square the softcap, you cannot gain Upgrade Points and ÷20 points. (recommended 3,000,000 prestige points)",
             canComplete: function() {return player.points.gte("4e15")},
             goalDescription: "Get 4e15 points.",
-            rewardDescription: "×2 prestige points and ???",
+            rewardDescription: "×2 prestige points and unlock more upgrade tree part 1 upgrades.",
 	    unlocked() { return (hasUpgrade('r', 42)) },
 	},
     },
