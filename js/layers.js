@@ -41,6 +41,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 32)) mult = mult.times(upgradeEffect('p', 32))
 	if (hasUpgrade('p', 33)) mult = mult.times(upgradeEffect('p', 33))
 	if (hasUpgrade('r', 22)) mult = mult.times(upgradeEffect('r', 22))
+	if (inChallenge('r', 11)) mult = mult.div(1e6)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -318,7 +319,7 @@ addLayer("r", {
     challenges: {
         11: {
             name: "Challenge 1",
-            challengeDescription: "Square the softcap",
+            challengeDescription: "Square the softcap, you cannot passively generate Upgrade Points and ÷1e9 Upgrade Points.",
             canComplete: function() {return player.points.gte("1e50000")},
             goalDescription: "Get ??? points.",
             rewardDescription: "???",
