@@ -315,6 +315,15 @@ addLayer("r", {
             },
             canClick(){return true}
         },
+        clickables:{
+	12:{
+            display(){return `Set prestige points to 1000`},
+            style:{"height":"150px","width":"150px","border-radius":"0%","border":"6px solid","border-color":"#4BDC13","color":"#4BDC13","font-size":"15px","background-color":"#00000000"},
+            onClick(){
+                player.r.points.set(1000)
+            },
+            canClick(){return true}
+        },
     },
     challenges: {
         11: {
