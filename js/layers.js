@@ -315,20 +315,20 @@ addLayer("r", {
             },
             canClick(){return true}
         },
-	12:{
-            display(){return `Set prestige points to 1000`},
-            style:{"height":"150px","width":"150px","border-radius":"0%","border":"6px solid","border-color":"#4BDC13","color":"#4BDC13","font-size":"15px","background-color":"#00000000"},
-            onClick(){
-                if (confirm("This will set your prestige points to 1000. Continue?") == true) 
+	12: {
+            title: "Set prestige points to 1000",
+            description: "For overboard",
+            canClick() {return true},
+            onClick() {
+                if (confirm("This will set prestige points to 1000. Continue?") == true) 
                 {
-                    player.r.points = 0;
+                    player.r.points = 1000;
 			        save(true);
                     window.location.reload();
                 } 
                 
-            },
-            canClick(){return true}
-        },
+            }
+	}
     },
     challenges: {
         11: {
