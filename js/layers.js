@@ -211,6 +211,8 @@ addLayer("r", {
                 "main-display",
 		"prestige-button",
 		"blank",
+		"challenges",
+		"blank",
 				["upgrade-tree", [[11, 12], [21, 22, 23], [31, 32], [41, 42]]],
                 "blank",
 		"clickables",
@@ -312,5 +314,15 @@ addLayer("r", {
             },
             canClick(){return true}
         },
+    },
+    challenges: {
+        11: {
+            name: "Challenge 1",
+            challengeDescription: "Square the softcap",
+            canComplete: function() {return player.points.gte("1e50000")},
+            goalDescription: "Get ??? points.",
+            rewardDescription: "???",
+	    unlocked() { return (hasUpgrade('r', 42)) },
+	},
     },
 })
