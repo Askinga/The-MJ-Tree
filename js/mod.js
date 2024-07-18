@@ -57,6 +57,7 @@ function getPointGen() {
 }
 function getPointDivider() {
 	let base = player.points.max(1e15).log(1e15).max(1).pow(50)
+	if (inChallenge('r', 11)) base = base.pow(2)
 	return base
 }
 
