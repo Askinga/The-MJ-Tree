@@ -200,7 +200,8 @@ addLayer("r", {
         "background": "linear-gradient(#31aeb0, #44eff2)",
         "width": "100px",
         "height": "100px",
-    },
+    }
+},
     
     requires() {
         let req = new Decimal(25000)
