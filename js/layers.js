@@ -814,6 +814,23 @@ addLayer("L", {
     name: "MJ Clicks",
     symbol: "CLI",
     position: 1,
+    doReset(L) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[L].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	if (hasUpgrade('GLA', 15)) keep.push("upgrades");
+    
+        // Stage 4, do the actual data resetautomate() {
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
@@ -1492,6 +1509,11 @@ addLayer("a", {
             done() { return player.points.gte("e23000") },
             tooltip: "Get e23000 MJs",	   
         },
+        104: {
+            name: "e100k!",
+            done() { return player.points.gte("e100000") },
+            tooltip: "Get e100000 MJs",	   
+        },
 },
 })
 
@@ -1587,7 +1609,7 @@ addLayer("B", {
     upgrades: {
         11: {
             title: "SUPER OP GENERATION AND INSANE HYPER BOOST!!",
-            description: "Multiply Hyper MJ Point gain based on Ultra Scalers and get 1000% of MJ Point gain per second, 200% of Super MJ Points per second, 100% of Giga MJ Points per second, 50% of Hyper MJ Points per second and 20000% of MJ Click gain per second and also automate Giga MJ upgrades!.",
+            description: "Multiply Hyper MJ Point gain based on Ultra Scalers and get 1000% of MJ Point gain per second, 200% of Super MJ Points per second, 100% of Giga MJ Points per second, 50% of Hyper MJ Points per second and 20000% of MJ Click gain per second.",
             cost: new Decimal(1),
 	    effect(){
                 return player.B.points.add(1).pow(4)
@@ -2217,6 +2239,23 @@ addLayer("UT", {
     name: "Upgrade Points",
     symbol: "UT",
     position: 4,
+    doReset(UT) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[UT].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	if (hasUpgrade('GLA', 15)) keep.push("upgrades");
+    
+        // Stage 4, do the actual data resetautomate() {
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
@@ -2466,6 +2505,12 @@ componentStyles: {
             description: "^1.1 MJs",
             cost: new Decimal(45),
 	    unlocked() { return (hasUpgrade('GLA', 13)) },
+	},
+        15: {
+            title: "We need more keeping!",
+            description: "Keep MJ Click upgrades and Upgrade Tree upgrades!",
+            cost: new Decimal(1e9),
+	    unlocked() { return (hasUpgrade('GLA', 14)) },
 	},
     },
 })
