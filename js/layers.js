@@ -2198,6 +2198,7 @@ addLayer("UT", {
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 2.475, // Prestige currency exponent
     passiveGeneration() {
+	if (hasUpgrade('GLA', 11)) return 10000
 	if (hasUpgrade('UT', 15)) return 100
 	if (hasUpgrade('UT', 12)) return 2
 	if (hasUpgrade('UT', 31)) return 1
@@ -2292,7 +2293,7 @@ addLayer("UT", {
 	},
         12: {
             title: "More generation",
-            description: "×2 Upgrade Point generation",
+            description: "×2 Upgrade Point generation (WON'T WORK IF YOU HAVE GALACTICAL MJ UPGRADE 11)",
             cost: new Decimal(60),
 	    branches: [13],
 	    unlocked() { return (hasUpgrade('UT', 23)) },
@@ -2326,7 +2327,7 @@ addLayer("UT", {
 	},
         15: {
             title: "More generation!!",
-            description: "×50 upgrade point generation",
+            description: "×50 upgrade point generation (WON'T WORK IF YOU HAVE GALACTICAL MJ UPGRADE 11)",
             cost: new Decimal(1000),
 	    branches: [26],
 	    unlocked() { return (hasUpgrade('p', 34)) },
@@ -2410,7 +2411,7 @@ componentStyles: {
     upgrades: {
         11: {
             title: "BOOST",
-            description: "That reset reseted almost everything. Let me give some boosts to you, ×1e1000 MJs, ×2 MJ Clicks, automate Hyper MJ Upgrades, ×1000 Generator MJs.",
+            description: "That reset reseted almost everything. Let me give some boosts to you, ×1e1000 MJs, ×2 MJ Clicks, automate Hyper MJ Upgrades, ×1000 Generator MJs and get 10000 Upgrade Points per second!",
             cost: new Decimal(1),
         },
         12: {
