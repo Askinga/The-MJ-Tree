@@ -62,6 +62,10 @@ function getPointDivider() {
 	if (inChallenge('r', 11)) base = base.pow(2)
 	return base
 }
+function getUpgradePointDivider() {
+	let base = player.p.points.max(1e26).log(1e26).max(1).pow(100)
+	return base
+}
 
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
 function addedPlayerData() { return {
@@ -71,7 +75,8 @@ function addedPlayerData() { return {
 var displayThings = [
 	
 	() => (player.points.gte(1e15)&&(canGenPoints())) ? "Your point gain is divided by "+format(getPointDivider())+" due to softcap!" : "",
-	
+	"<br>",
+	() => (player.p.points.gte(1e26) ? "Your upgrade point gain is divided by "+format(getUpgradePointDivider())+" due to softcap!" : "",
 ]
 
 // Determines when the game "ends"
