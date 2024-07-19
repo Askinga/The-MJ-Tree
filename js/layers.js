@@ -2,6 +2,24 @@ addLayer("p", {
     name: "MJ points", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "MJ", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    doReset(p) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[p].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	if (hasUpgrade('G', 11)) keep.push("upgrades");
+	if (hasUpgrade('H', 11)) keep.push("milestones");
+    
+        // Stage 4, do the actual data resetautomate() {
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
@@ -199,24 +217,30 @@ addLayer("p", {
             done() { return player.p.points >= (1000000) }
         },
     },
-    automate() {
-            if(hasUpgrade('G', 11) || hasUpgrade('H', 11)) {
-                buyUpgrade('p', 11)
-                buyUpgrade('p', 12)
-                buyUpgrade('p', 13)
-                buyUpgrade('p', 14)
-                buyUpgrade('p', 21)
-                buyUpgrade('p', 22)
-                buyUpgrade('p', 23)
-                buyUpgrade('p', 24)
-        }
-    },
 })
 
 addLayer("S", {
     name: "Super MJ Points",
     symbol: "SMJ",
     position: 0,
+    doReset(S) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[S].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	if (hasUpgrade('H', 11)) keep.push("upgrades");
+        if (hasUpgrade('H', 11)) keep.push("challenges");
+	
+        // Stage 4, do the actual data reset
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
@@ -404,19 +428,6 @@ addLayer("S", {
             goalDescription: "Get e34 MJs.",
             rewardDescription: "^1.1 MJ Points and unlock a new upgrade"
         },
-    },
-    automate() {
-            if(hasUpgrade('H', 11)) {
-                buyUpgrade('S', 11)
-                buyUpgrade('S', 12)
-                buyUpgrade('S', 13)
-                buyUpgrade('S', 14)
-                buyUpgrade('S', 15)
-                buyUpgrade('S', 21)
-                buyUpgrade('S', 22)
-                buyUpgrade('S', 23)
-                buyUpgrade('S', 24)
-	}
     },
 })
 
