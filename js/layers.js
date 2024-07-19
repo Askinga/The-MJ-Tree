@@ -2420,5 +2420,15 @@ componentStyles: {
             cost: new Decimal(4),
 	    unlocked() { return (hasUpgrade('GLA', 11)) },
 	},
+        13: {
+            title: "WE NEED MORE!!!",
+            description: "Multiply MJ gain based on Galactical MJs",
+            cost: new Decimal(10),
+	    effect(){
+                return player.GLA.points.add(1).pow(1500)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('GLA', 12)) },
+	}, 
     },
 })
