@@ -234,6 +234,7 @@ addLayer("S", {
         let keep = [];
 	if (hasUpgrade('H', 11)) keep.push("upgrades");
         if (hasUpgrade('H', 11)) keep.push("challenges");
+	if (hasUpgrade('GLA', 21)) keep.push("milestones");
 	
         // Stage 4, do the actual data reset
         layerDataReset(this.layer, keep);
@@ -2511,6 +2512,12 @@ componentStyles: {
             description: "Keep MJ Click upgrades and Upgrade Tree upgrades!",
             cost: new Decimal(1e9),
 	    unlocked() { return (hasUpgrade('GLA', 14)) },
+	},
+        21: {
+            title: "More keeping!",
+            description: "Keep Super MJ Milestones.",
+            cost: new Decimal(2e13),
+	    unlocked() { return (hasUpgrade('GLA', 15)) },
 	},
     },
 })
