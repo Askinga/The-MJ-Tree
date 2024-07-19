@@ -825,6 +825,7 @@ addLayer("L", {
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
 	if (hasUpgrade('GLA', 15)) keep.push("upgrades");
+	if (hasUpgrade('GLA', 22)) keep.push("milestones");
     
         // Stage 4, do the actual data resetautomate() {
         layerDataReset(this.layer, keep);
@@ -2518,6 +2519,12 @@ componentStyles: {
             description: "Keep Super MJ Milestones.",
             cost: new Decimal(2e13),
 	    unlocked() { return (hasUpgrade('GLA', 15)) },
+	},
+        22: {
+            title: "MORE!!!!!",
+            description: "×e10000 MJs and keep MJ Click milestones.",
+            cost: new Decimal(5e13),
+	    unlocked() { return (hasUpgrade('GLA', 21)) },
 	},
     },
 })
