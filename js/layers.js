@@ -2450,5 +2450,11 @@ componentStyles: {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('GLA', 12)) },
 	}, 
+        14: {
+            title: "EVEN MORE",
+            description: "^1.1 MJs",
+            cost: new Decimal(45),
+	    unlocked() { return (hasUpgrade('GLA', 13)) },
+	},
     },
 })
