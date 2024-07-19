@@ -74,9 +74,9 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	
-	() => (player.points.gte(1e15)&&(canGenPoints())) ? "Your point gain is divided by "+format(getPointDivider())+" due to softcap!" : "",
+	() => (player.points.gte(1e15)&&(canGenPoints())) ? "After 1e15 points, your point gain is divided by "+format(getPointDivider())+" due to softcap!" : "",
 	"<br>",
-	() => (player.p.points.gte(1e26)) ? "Your upgrade point gain is divided by "+format(getUpgradePointDivider())+" due to softcap^2!" : "",
+	() => (player.p.points.gte(1e26)) ? "After 1e26 upgrade points, your upgrade point gain is divided by "+format(getUpgradePointDivider())+" due to softcap^2!" : "",
 ]
 
 // Determines when the game "ends"
