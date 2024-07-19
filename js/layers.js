@@ -1028,8 +1028,8 @@ addLayer("MU", {
         gmug: new Decimal(0)  
 	}},
 	nodeStyle() {return {
-        "width": "150px",
-        "height": "150px",
+        "width": "175px",
+        "height": "175px",
     }
 },
 	color: "#a3d9a5",
