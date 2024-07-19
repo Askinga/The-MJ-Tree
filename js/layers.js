@@ -2398,4 +2398,16 @@ componentStyles: {
        return visible
 },
     branches:["Gb", "Gc", "UT"],
+    upgrades: {
+        11: {
+            title: "BOOST",
+            description: "That reset reseted almost everything. Let me give some boosts to you, ×1e1000 MJs, ×2 MJ Clicks, automate Hyper MJ Upgrades, ×1000 Generator MJs.",
+            cost: new Decimal(1),
+        },
+        12: {
+            title: "???",
+            description: "Coming soon!",
+            cost: new Decimal("ee10"),
+	    unlocked() { return (hasUpgrade('GLA', 11)) },
+	},
 })
