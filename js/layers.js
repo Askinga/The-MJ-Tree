@@ -2415,9 +2415,9 @@ componentStyles: {
             cost: new Decimal(1),
         },
         12: {
-            title: "???",
-            description: "Coming soon!",
-            cost: new Decimal("ee10"),
+            title: "We need more MJs!",
+            description: "×e1500 MJs",
+            cost: new Decimal(4),
 	    unlocked() { return (hasUpgrade('GLA', 11)) },
 	},
     },
