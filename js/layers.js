@@ -12,7 +12,7 @@ addLayer("p", {
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
 	if (hasUpgrade('G', 11)) keep.push("upgrades");
-	if (hasUpgrade('H', 11)) keep.push("milestones");
+	if (hasUpgrade('G', 11)) keep.push("milestones");
     
         // Stage 4, do the actual data resetautomate() {
         layerDataReset(this.layer, keep);
@@ -536,6 +536,24 @@ addLayer("G", {
     name: "Giga MJ Points",
     symbol: "GMJ",
     position: 0,
+    doReset(G) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[p].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	if (hasUpgrade('H', 11)) keep.push("upgrades");
+	if (hasUpgrade('H', 11)) keep.push("milestones");
+    
+        // Stage 4, do the actual data resetautomate() {
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
@@ -616,7 +634,7 @@ addLayer("G", {
     upgrades: {
         11: {
             title: "This is OP!?",
-            description: "×1M MJs, ×1000 MJ Points and ×10 Super MJ Points and automate MJ upgrades.",
+            description: "×1M MJs, ×1000 MJ Points and ×10 Super MJ Points and keep MJ upgrades and milestones.",
             cost: new Decimal(1),
 	},
         12: {
@@ -660,15 +678,6 @@ addLayer("G", {
             goalDescription: "Get e185 MJs.",
             rewardDescription: "^1.05 Super MJ Points and unlocka upgrade"
 	},
-    },
-    automate() {
-            if(hasUpgrade('B', 11)) {
-                buyUpgrade('G', 11)
-                buyUpgrade('G', 12)
-                buyUpgrade('G', 13)
-                buyUpgrade('G', 14)
-	        buyUpgrade('G', 15)
-	}
     },
 })
 
@@ -756,7 +765,7 @@ addLayer("H", {
     upgrades: {
         11: {
             title: "Hyper MJs are SUPER OP!!!!!!!!",
-            description: "×1e50 MJs, ×1e20 MJ Points, ×1e6 Super MJ Points and ×1000 Giga MJ Points and automate MJ and Super MJ Upgrades.",
+            description: "×1e50 MJs, ×1e20 MJ Points, ×1e6 Super MJ Points, ×1000 Giga MJ Points, keep Super MJ upgrades and challenges and keep Giga MJ upgrades and challenges.",
             cost: new Decimal(1),
 	},
         12: {
