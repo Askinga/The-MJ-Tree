@@ -2357,11 +2357,18 @@ addLayer("GLA", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    nodeStyle: {
-	"border-radius": "100%",
-	"width": "150px",
-	"height": "150px"
-    },
+    nodeStyle() {return {
+        "background": "radial-gradient(#791ceb, #300c5c)",
+        "width": "150px",
+        "height": "150px",
+    }
+},
+componentStyles: {
+    "prestige-button"() {return { "background": "radial-gradient(#791ceb, #300c5c)",
+        "width": "200px",
+        "height": "150px",
+    }},
+},
     color: "#310b5e",
     requires: new Decimal("e23010"), // Can be a function that takes requirement increases into account
     resource: "Galactical MJs", // Name of prestige currency
