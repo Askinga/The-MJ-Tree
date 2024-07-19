@@ -685,6 +685,24 @@ addLayer("H", {
     name: "Hyper MJ Points",
     symbol: "HMJ",
     position: 0,
+    doReset(H) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[H].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	if (hasUpgrade('G', 11)) keep.push("upgrades");
+	if (hasUpgrade('G', 11)) keep.push("challenges");
+    
+        // Stage 4, do the actual data resetautomate() {
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
@@ -789,13 +807,6 @@ addLayer("H", {
             goalDescription: "Get e555 MJs.",
             rewardDescription: "^1.1 Giga MJ Points and unlock 3 new layers and automate Layer 1 Speeders and they reset nothing."
 	},
-    },
-    automate() {
-            if(hasUpgrade('GLA', 11)) {
-                buyUpgrade('H', 11)
-                buyUpgrade('H', 12)
-                buyUpgrade('H', 13)
-	}
     },
 })
 
@@ -2431,7 +2442,7 @@ componentStyles: {
     upgrades: {
         11: {
             title: "BOOST",
-            description: "That reset reseted almost everything. Let me give some boosts to you, ×1e1000 MJs, ×2 MJ Clicks, automate Hyper MJ Upgrades, ×1000 Generator MJs and get 10000 Upgrade Points per second!",
+            description: "That reset reseted almost everything. Let me give some boosts to you, ×1e1000 MJs, ×2 MJ Clicks, keep Hyper MJ Upgrades and Challenges, ×1000 Generator MJs and get 10000 Upgrade Points per second!",
             cost: new Decimal(1),
         },
         12: {
