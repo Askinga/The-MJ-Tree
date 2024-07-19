@@ -76,7 +76,7 @@ var displayThings = [
 	
 	() => (player.points.gte(1e15)&&(canGenPoints())) ? "Your point gain is divided by "+format(getPointDivider())+" due to softcap!" : "",
 	"<br>",
-	() => (player.p.points.gte(1e26) ? "Your upgrade point gain is divided by "+format(getUpgradePointDivider())+" due to softcap!" : "",
+	() => (player.p.points.gte(1e26)) ? "Your upgrade point gain is divided by "+format(getUpgradePointDivider())+" due to softcap!" : "",
 ]
 
 // Determines when the game "ends"
