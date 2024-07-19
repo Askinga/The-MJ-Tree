@@ -2397,5 +2397,5 @@ componentStyles: {
         if (player.points.gte("e23010") || player.GLA.unlocked) visible = true
        return visible
 },
-    branches:["Gb, Gc, UT"],
+    branches:["Gb", "Gc", "UT"],
 })
