@@ -74,6 +74,7 @@ function getPointGen() {
 	if (hasUpgrade('UT', 26)) gain = gain.times(1e150)
 	if (hasUpgrade('UT', 33)) gain = gain.times(1e300)
 	if (hasUpgrade('GLA', 11)) gain = gain.times("e1000")
+	if (hasUpgrade('GLA', 12)) gain = gain.times("e1500")
 	return gain
 }
 
