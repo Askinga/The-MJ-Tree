@@ -546,7 +546,7 @@ addLayer("G", {
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
 	if (hasUpgrade('H', 11)) keep.push("upgrades");
-	if (hasUpgrade('H', 11)) keep.push("milestones");
+	if (hasUpgrade('H', 11)) keep.push("challenges");
     
         // Stage 4, do the actual data resetautomate() {
         layerDataReset(this.layer, keep);
