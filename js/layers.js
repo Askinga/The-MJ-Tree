@@ -770,6 +770,13 @@ addLayer("H", {
             rewardDescription: "^1.1 Giga MJ Points and unlock 3 new layers and automate Layer 1 Speeders and they reset nothing."
 	},
     },
+    automate() {
+            if(hasUpgrade('GLA', 11)) {
+                buyUpgrade('H', 11)
+                buyUpgrade('H', 12)
+                buyUpgrade('H', 13)
+	}
+    },
 })
 
 addLayer("L", {
@@ -817,6 +824,7 @@ addLayer("L", {
 	if (hasUpgrade('L', 53)) mult = mult.times(1e5)
 	if (hasUpgrade('L', 55)) mult = mult.times(1e6)
 	if (hasUpgrade('B', 12)) mult = mult.times(upgradeEffect('B', 12))
+	if (hasUpgrade('GLA', 11)) mult = mult.times(2)
 	return mult
     },
 
@@ -1645,6 +1653,7 @@ addLayer("Ge", {
 	if (hasUpgrade('Gb', 11)) mult = mult.times(10)
 	if (hasUpgrade('UT', 32)) mult = mult.times(1000)
 	if (hasUpgrade('B', 16)) mult = mult.times(15)
+	if (hasUpgrade('GLA', 11)) mult = mult.times(1000)
 	return mult
     },
 
@@ -2410,4 +2419,5 @@ componentStyles: {
             cost: new Decimal("ee10"),
 	    unlocked() { return (hasUpgrade('GLA', 11)) },
 	},
+    },
 })
