@@ -2527,5 +2527,11 @@ componentStyles: {
             cost: new Decimal(5e13),
 	    unlocked() { return (hasUpgrade('GLA', 21)) },
 	},
+        23: {
+            title: "EVEN MORE!!!!!",
+            description: "×e10000 MJs again",
+            cost: new Decimal(3e34),
+	    unlocked() { return (hasUpgrade('GLA', 22)) },
+	},
     },
 })
