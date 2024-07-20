@@ -673,8 +673,8 @@ addLayer("G", {
             effectDisplay() { // Add formatting to the effect
                 let softcapDescription = ""
                 let upgEffect = upgradeEffect(this.layer, this.id)
-                if (upgEffect.gte(new Decimal("e3100")) ) {
-                    softcapDescription = " (Softcapped)"
+                if (upgEffect.gte(new Decimal(50000)) ) {
+                    softcapDescription = " (Hardcapped)"
 		}
 	        return "This upgrade boosts Giga MJs by " + format(upgEffect)+"^" + softcapDescription
             },
