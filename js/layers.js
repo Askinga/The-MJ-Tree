@@ -1075,6 +1075,12 @@ addLayer("L", {
             effectDescription: "×7.5 MJ Clicks",
             done() { return (hasUpgrade('L', 25)) }
         },
+        3: {
+            requirementDescription: "5e252 MJ Clicks",
+            effectDescription: "×e20000 MJs",
+            done() { return player.L.points.gte(5e252) },
+            unlocked() { return (hasMilestone('GLA', 0)) }
+	},
     },
 })
 
