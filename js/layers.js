@@ -665,9 +665,19 @@ addLayer("G", {
             description: "Raise Giga MJ point gain based on MJs.",
             cost: new Decimal(1e308),
             effect(){
-                return player.points.add(1).pow(0.000004)
+                let expu3 = 0.000004
+                let eff = player.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal(50000), 0)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal(50000)) ) {
+                    softcapDescription = " (Hardcapped)"
+		}
+	        return "This upgrade boosts Giga MJ Points by ""^ " + format(upgEffect) + softcapDescription
             },
-            effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id))}, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('G', 14)) },
 	},
     },
