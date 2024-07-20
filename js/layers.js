@@ -2534,4 +2534,10 @@ componentStyles: {
 	    unlocked() { return (hasUpgrade('GLA', 22)) },
 	},
     },
+    milestones: {
+        0: {
+            requirementDescription: "1e55 Galactical MJs",
+            effectDescription: "Multiply MJ gain by 1e10000.",
+            done() { return player.GLA.points >= (1e55) }
+        },
 })
