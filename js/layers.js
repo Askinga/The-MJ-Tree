@@ -2540,4 +2540,5 @@ componentStyles: {
             effectDescription: "Multiply MJ gain by 1e10000.",
             done() { return player.GLA.points >= (1e55) }
         },
+    },
 })
