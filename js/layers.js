@@ -1644,6 +1644,7 @@ addLayer("B", {
                 return player.G.points.add(1).pow(0.15)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (!player.GLA.points.gte(1))}
 	},
         14: {
             title: "Speed up",
