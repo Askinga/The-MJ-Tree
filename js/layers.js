@@ -436,4 +436,7 @@ componentStyles: {
     tooltip() {
 	return "The Upgrade Tree Part 3"
     },
+    automate() {
+	player.s.sp = player.points.log(10)
+    },
 })
