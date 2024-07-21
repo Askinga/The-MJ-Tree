@@ -431,6 +431,10 @@ effect(){
 	let eff = player.s.points.add(1).pow(player.s.powEff)
        return eff
         },
+    effectDescription() {
+            let desc = "multiplying point gain by" + format(tmp[this.layer].effect);
+            return desc;
+        },
     powerEff() {
     if (!unl(this.layer)) return new Decimal(1);
     return player.s.sp.plus(1).pow(0.05);
