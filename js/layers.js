@@ -427,6 +427,10 @@ componentStyles: {
     hotkeys: [
         {key: "s", description: "S: Reset for super prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    powerEff() {
+    if (!unl(this.layer)) return new Decimal(1);
+    return player.s.sp.plus(1).pow(0.05);
+    },
     layerShown(){
         let visible = false
         if (player.p.points.gte(1e26) || player.s.unlocked) visible = true
@@ -446,14 +450,8 @@ componentStyles: {
                 "blank",
                 "prestige-button",
 		["display-text",
-                    function(){
-                        let a = ""
-                        a = a + `You have 
-                        <h2><span style="color: blue; text-shadow: 0px 0px 10px #AD6F69; font-family: Lucida Console, Courier New, monospace">
-                            ${format(player.s.sp)}</span></h2> Super Points`
-                        return a
-                    }
-                ],
+				function() {return 'You have ' + format(player.s.sp) + 'Super Points, which raises the Super Prestige effect by '+format(tmp.s.powerEff)
+					{}],
                 "blank",
                 "blank",
                 "blank",
