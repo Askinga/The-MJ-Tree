@@ -439,4 +439,26 @@ componentStyles: {
     automate() {
 	player.s.sp = player.points.log(10)
     },
+    tabFormat: {
+        "Main": {
+            content: [
+                "main-display",
+                "blank",
+                "prestige-button",
+		["display-text",
+                    function(){
+                        let a = ""
+                        a = a + `You have 
+                        <h2><span style="color: blue; text-shadow: 0px 0px 10px #AD6F69; font-family: Lucida Console, Courier New, monospace">
+                            ${format(player.s.sp)}</span></h2> Super Points`
+                        return a
+                    }
+                ],
+                "blank",
+                "blank",
+                "blank",
+                "upgrades",
+            ],
+        },
+    },
 })
