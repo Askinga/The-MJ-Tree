@@ -429,7 +429,7 @@ componentStyles: {
     ],
     layerShown(){
         let visible = false
-        if player.p.points.gte(1e26) || player.s.unlocked) visible = true
+        if (player.p.points.gte(1e26) || player.s.unlocked) visible = true
        return visible
     },
     branches:["r"],
