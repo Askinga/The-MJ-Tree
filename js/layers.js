@@ -62,7 +62,7 @@ addLayer("p", {
 		"prestige-button",
                 ["display-text",
 		'Your upgrade point gain softcaps at 1e26!',
-                { "color": "red", "font-size": "13px",}],
+                { "color": "red", "font-size": "25px",}],
                 "blank",
 		"blank",
 				["upgrade-tree", [[11, 12, 13, 14], [21, 22, 23], [31, 32, 33, 34, 35], [41]]],
@@ -379,5 +379,61 @@ componentStyles: {
             rewardDescription: "×2 prestige points and unlock more upgrade tree part 1 upgrades.",
 	    unlocked() { return (hasUpgrade('r', 42)) },
 	},
+    },
+})
+
+addLayer("s", {
+    name: "super prestige",
+    symbol: "Sp",
+    position: 0,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+                sp: new Decimal(0),
+    }},
+    nodeStyle() {return {
+        "background": "radial-gradient(#00fbff, #165657)",
+        "width": "100px",
+        "height": "100px",
+    }
+},
+componentStyles: {
+    "prestige-button"() {return { "background": "radial-gradient(#00fbff, #165657)",
+        "width": "200px",
+        "height": "150px",
+    }},
+},
+    requires() {
+        let req = new Decimal(1e26)
+        return req
+    }, // Can be a function that takes requirement increases into account
+    color: "#00fbff",
+    resource: "super prestige points", // Name of prestige currency
+    baseResource: "upgrade points", // Name of resource prestige is based on
+    baseAmount() {return player.p.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.125, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "s", description: "S: Reset for super prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    layerShown(){
+        let visible = false
+        if player.p.points.gte(1e26) || player.s.unlocked) visible = true
+       return visible
+    },
+    branches:["r"],
+    tooltip() {
+	return "The Upgrade Tree Part 3"
     },
 })
