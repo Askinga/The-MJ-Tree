@@ -392,13 +392,13 @@ addLayer("s", {
                 sp: new Decimal(0),
     }},
     nodeStyle() {return {
-        "background": "radial-gradient(#00fbff, #165657)",
+        "background": "radial-gradient(#00ff44, #084518)",
         "width": "100px",
         "height": "100px",
     }
 },
 componentStyles: {
-    "prestige-button"() {return { "background": "radial-gradient(#00fbff, #165657)",
+    "prestige-button"() {return { "background": "radial-gradient(#00ff44, #084518)",
         "width": "200px",
         "height": "150px",
     }},
@@ -407,7 +407,7 @@ componentStyles: {
         let req = new Decimal(1e26)
         return req
     }, // Can be a function that takes requirement increases into account
-    color: "#00fbff",
+    color: "#00ff44",
     resource: "super prestige points", // Name of prestige currency
     baseResource: "upgrade points", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
