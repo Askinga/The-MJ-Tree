@@ -427,7 +427,7 @@ componentStyles: {
     hotkeys: [
         {key: "s", description: "S: Reset for super prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-effect(){
+    effect(){
 	let eff = player.s.points.add(1).pow(player.s.powEff)
        return eff
         },
