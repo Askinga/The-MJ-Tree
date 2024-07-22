@@ -458,7 +458,7 @@ effect(){
                 "blank",
                 "prestige-button",
 		["display-text",
-				function() {return 'You have ' + format(player.s.sp) + 'Super Points, which raises the Super Prestige effect by '+format(tmp.s.powerEff)")":"")},
+				function() {return 'You have ' + format(player.s.sp) + 'Super Points, which raises the Super Prestige effect by '+format(tmp.s.powerEff):""},
 					{}],
                 "blank",
                 "blank",
