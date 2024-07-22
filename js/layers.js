@@ -432,11 +432,10 @@ effect(){
        return eff
         },
     effectDescription() {
-            let desc = "multiplying point gain by" + format(tmp[this.layer].effect);
+            let desc = "multiplying point gain and super points by" + format(tmp[this.layer].effect);
             return desc;
         },
     powerEff() {
-    if (!unl(this.layer)) return new Decimal(1);
     return player.s.sp.plus(1).pow(0.05);
     },
     layerShown(){
@@ -449,7 +448,9 @@ effect(){
 	return "The Upgrade Tree Part 3"
     },
     automate() {
-	player.s.sp = player.points.log(10)
+     if (unl(this.layer)) {
+	    player.s.sp = player.points.log(10).pow(player.s.points)
+     }
     },
     tabFormat: {
         "Main": {
