@@ -428,6 +428,7 @@ componentStyles: {
         {key: "s", description: "S: Reset for super prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     effect(){
+      let rpow = 1
 	let eff = player.s.points.add(1).pow(player.s.powEff)
        return eff
         },
@@ -448,9 +449,7 @@ componentStyles: {
 	return "The Upgrade Tree Part 3"
     },
     automate() {
-     if (unl(this.layer)) {
 	    player.s.sp = player.points.log(10).pow(player.s.points)
-     }
     },
     tabFormat: {
         "Main": {
