@@ -436,9 +436,7 @@ componentStyles: {
             let desc = "multiplying point gain and super points by" + format(tmp[this.layer].effect);
             return desc;
         },
-    powerEff() {
-    return player.s.sp.plus(1).pow(0.05)
-    },
+    
     layerShown(){
         let visible = false
         if (player.p.points.gte(1e26) || player.s.unlocked) visible = true
@@ -457,9 +455,7 @@ componentStyles: {
                 "main-display",
                 "blank",
                 "prestige-button",
-                ["display-text",
-				function() {return 'You have ' + format(player.s.sp) + 'Super Points, which raises the Super Prestige effect by '+format(tmp.s.powerEff):""},
-					{}],
+                
 		"blank",
                 "blank",
                 "blank",
