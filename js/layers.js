@@ -44,7 +44,7 @@ addLayer("p", {
 	if (hasUpgrade('r', 22)) mult = mult.times(upgradeEffect('r', 22))
 	if (inChallenge('r', 11)) mult = mult.div("eee20")
 	mult = mult.div(getUpgradePointDivider())
-	mult = mult.times(tmp.s.powerEff)
+	if (player.s.points.gte(1)) mult = mult.times(tmp.s.powerEff)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -459,7 +459,7 @@ componentStyles: {
                 "blank",
                 "prestige-button",
                 ["display-text",
-				function() {return 'You have ' + format(player.s.sp) + ' Super Points, which boosts Upgrade Points (after softcap) and the Super Prestige effect by '+'×'+format(tmp.s.powerEff)+(tmp.nerdMode?" ((x+1)^"+format(tmp.s.powerExp)+")":"")},
+				function() {return 'You have ' + format(player.s.sp) + ' Super Points, which boosts Upgrade Points (after softcap and only if you have 1 super prestige points or more) and the Super Prestige effect by '+'×'+format(tmp.s.powerEff)+(tmp.nerdMode?" ((x+1)^"+format(tmp.s.powerExp)+")":"")},
 					{}],
 		"blank",
                 "blank",
