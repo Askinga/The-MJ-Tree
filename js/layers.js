@@ -428,7 +428,7 @@ componentStyles: {
         {key: "s", description: "S: Reset for super prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     effect(){
-      let rpow = 1
+      let rpow = 1.60
 	let eff = player.s.points.add(1).pow(rpow).times(tmp.s.powerEff)
        return eff
         },
