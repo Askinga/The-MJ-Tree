@@ -429,11 +429,11 @@ componentStyles: {
     ],
     effect(){
       let rpow = 1
-	let eff = player.s.points.add(1).pow(player.s.powEff)
+	let eff = player.s.points.add(1).pow(tmp.s.powEff)
        return eff
         },
     effectDescription() {
-            let desc = "multiplying point gain and super points by " + format(tmp[this.layer].effect);
+            let desc = "multiplying point gain by " + format(tmp[this.layer].effect);
             return desc;
         },
     powerEff() {
@@ -449,7 +449,7 @@ componentStyles: {
 	return "The Upgrade Tree Part 3"
     },
     automate() {
-	    player.s.sp = player.points.log(10)
+	    player.s.sp = player.points.add(10).log(10)
     },
     tabFormat: {
         "Main": {
