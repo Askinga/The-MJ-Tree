@@ -427,15 +427,6 @@ componentStyles: {
     hotkeys: [
         {key: "s", description: "S: Reset for super prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    effect(){
-      let rpow = 1
-	let eff = player.s.points.add(1).pow(player.s.powEff)
-       return eff
-        },
-    effectDescription() {
-            let desc = "multiplying point gain and super points by" + format(tmp[this.layer].effect);
-            return desc;
-        },
     powerEff() {
     return player.s.sp.plus(1).pow(0.05);
     },
