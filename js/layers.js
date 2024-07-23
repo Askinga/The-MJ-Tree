@@ -433,7 +433,7 @@ componentStyles: {
        return eff
         },
     effectDescription() {
-            let desc = "multiplying point gain and super points by" + format(tmp[this.layer].effect);
+            let desc = "multiplying point gain and super points by " + format(tmp[this.layer].effect);
             return desc;
         },
     powerEff() {
