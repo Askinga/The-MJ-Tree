@@ -429,7 +429,7 @@ componentStyles: {
     ],
     effect(){
       let rpow = 1
-	let eff = player.s.points.add(1).pow(tmp.s.powEff)
+	let eff = player.s.points.add(1).pow(rpow).times(tmp.s.powerEff)
        return eff
         },
     effectDescription() {
@@ -437,7 +437,7 @@ componentStyles: {
             return desc;
         },
     powerEff() {
-    return player.s.sp.plus(1).pow(0.05);
+    return player.s.sp.plus(1).pow(0.2);
     },
     layerShown(){
         let visible = false
@@ -458,7 +458,7 @@ componentStyles: {
                 "blank",
                 "prestige-button",
                 ["display-text",
-				function() {return 'You have ' + format(player.s.sp) + ' Super Points, which raises the Super Prestige effect by '+'^'+format(tmp.s.powerEff)+(tmp.nerdMode?" ((x+1)^"+format(tmp.s.powerExp)+")":"")},
+				function() {return 'You have ' + format(player.s.sp) + ' Super Points, which boosts the Super Prestige effect by '+'×'+format(tmp.s.powerEff)+(tmp.nerdMode?" ((x+1)^"+format(tmp.s.powerExp)+")":"")},
 					{}],
 		"blank",
                 "blank",
