@@ -449,7 +449,7 @@ componentStyles: {
 	return "The Upgrade Tree Part 3"
     },
     automate() {
-	    player.s.sp = player.points.log(10).pow(player.s.points)
+	    player.s.sp = player.points.log(10)
     },
     tabFormat: {
         "Main": {
@@ -457,7 +457,10 @@ componentStyles: {
                 "main-display",
                 "blank",
                 "prestige-button",
-                "blank",
+                ["display-text",
+				function() {return 'You have ' + format(player.s.sp) + 'Super Points, which raises the Super Prestige effect by '+format(tmp.s.powerEff):""},
+					{}],
+		"blank",
                 "blank",
                 "blank",
                 "upgrades",
