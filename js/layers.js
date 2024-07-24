@@ -460,7 +460,7 @@ componentStyles: {
                 "blank",
                 "prestige-button",
                 ["display-text",
-				function() {return 'You have ' + format(player.s.sp) + ' Super Points, which boost the Super Prestige effect by '+'×'+format(tmp.s.powerEff)+(hasUpgrade('s', 11))?" (Your super points are also boosting Upgrade Points by "+format(tmp.s.powerEff)+")":"")},
+				function() {return 'You have ' + format(player.s.sp) + ' Super Points, which boost the Super Prestige effect by '+'×'+format(tmp.s.powerEff)+(hasUpgrade('s', 11)?" (Your super points are also boosting Upgrade Points by "+format(tmp.s.powerEff)+")":"")},
 					{}],
 		"blank",
 		"blank",
