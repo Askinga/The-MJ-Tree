@@ -44,7 +44,7 @@ addLayer("p", {
 	if (hasUpgrade('r', 22)) mult = mult.times(upgradeEffect('r', 22))
 	if (inChallenge('r', 11)) mult = mult.div("eee20")
 	mult = mult.div(getUpgradePointDivider())
-	if (player.s.points.gte(1)) mult = mult.times(tmp.s.powerEff)
+	if (hasUpgrade('s', 11)) mult = mult.times(tmp.s.powerEff)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -439,7 +439,6 @@ componentStyles: {
             return desc;
         },
     powerEff() {
-    if (!unl(this.layer)) return new Decimal(1);
     return player.s.sp.plus(1).pow(0.5);
     },
     layerShown(){
@@ -461,7 +460,7 @@ componentStyles: {
                 "blank",
                 "prestige-button",
                 ["display-text",
-				function() {return 'You have ' + format(player.s.sp) + ' Super Points, which boosts Upgrade Points (after softcap) and the Super Prestige effect by '+'×'+format(tmp.s.powerEff)+(tmp.nerdMode?" ((x+1)^"+format(tmp.s.powerExp)+")":"")},
+				function() {return 'You have ' + format(player.s.sp) + ' Super Points, which boost the Super Prestige effect by '+'×'+format(tmp.s.powerEff)+(hasUpgrade('s', 11))?" (Your super points are also boosting Upgrade Points by "+format(tmp.s.powerExp)+")":"")},
 					{}],
 		"blank",
 		"blank",
@@ -474,7 +473,7 @@ componentStyles: {
     upgrades: {
         11: {
             title: "×1000",
-            description: "×1000 points (after softcap).",
+            description: "×1000 points (after softcap) and add a effect to Super Points.",
             cost: new Decimal(2),
         },
         12: {
