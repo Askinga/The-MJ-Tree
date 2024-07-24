@@ -475,7 +475,7 @@ componentStyles: {
     upgrades: {
         11: {
             title: "×1000",
-            description: "×1000 points.",
+            description: "×1000 points (after softcap).",
             cost: new Decimal(2),
         },
     },
