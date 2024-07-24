@@ -468,7 +468,7 @@ componentStyles: {
 					{}],
 		"blank",
                 "blank",
-                ["upgrade-tree", [[11], [21]]],
+                ["upgrade-tree", [[11, 12], [21]]],
                 "blank",
             ],
         },
@@ -479,10 +479,16 @@ componentStyles: {
             description: "×1000 points (after softcap).",
             cost: new Decimal(2),
         },
+        12: {
+            title: "×1000 again",
+            description: "×1000 points (after softcap).",
+            cost: new Decimal(5),
+        },
         21: {
             title: "Make prestige quicker",
             description: "×10 prestige points.",
             cost: new Decimal(3),
+            branches: [11, 12],
         },
     },
 })
