@@ -467,8 +467,16 @@ componentStyles: {
 					{}],
 		"blank",
                 "blank",
-                "upgrades",
+                ["upgrade-tree", [[11]]],
+                "blank",
             ],
+        },
+    },
+    upgrades: {
+        11: {
+            title: "×1000",
+            description: "×1000 points.",
+            cost: new Decimal(2),
         },
     },
 })
