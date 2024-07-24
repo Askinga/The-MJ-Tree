@@ -439,6 +439,7 @@ componentStyles: {
             return desc;
         },
     powerEff() {
+    if (!unl(this.layer)) return new Decimal(1);
     return player.s.sp.plus(1).pow(0.5);
     },
     layerShown(){
@@ -463,9 +464,6 @@ componentStyles: {
 				function() {return 'You have ' + format(player.s.sp) + ' Super Points, which boosts Upgrade Points (after softcap) and the Super Prestige effect by '+'×'+format(tmp.s.powerEff)+(tmp.nerdMode?" ((x+1)^"+format(tmp.s.powerExp)+")":"")},
 					{}],
 		"blank",
-                ["display-text",
-				function() {return 'Note: The Upgrade point boost only works if you have 1 super prestige point or more!'+(tmp.nerdMode?" ((x+1)^"+format(tmp.s.powerExp)+")":"")},
-					{}],
 		"blank",
                 "blank",
                 ["upgrade-tree", [[11, 12], [21]]],
@@ -483,12 +481,14 @@ componentStyles: {
             title: "×1000 again",
             description: "×1000 points (after softcap).",
             cost: new Decimal(5),
-        },
+            unlocked() { return (hasUpgrade('s', 21)) },
+	},
         21: {
             title: "Make prestige quicker",
             description: "×10 prestige points.",
             cost: new Decimal(3),
             branches: [11, 12],
-        },
+            unlocked() { return (hasUpgrade('s', 11)) },
+	},
     },
 })
