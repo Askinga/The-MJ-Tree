@@ -229,7 +229,8 @@ componentStyles: {
 	if (hasUpgrade('r', 31)) mult = mult.times(upgradeEffect('r', 31))
 	if (hasUpgrade('r', 32)) mult = mult.times(upgradeEffect('r', 32))
 	if (hasChallenge('r', 11)) mult = mult.times(2)
-	return mult
+	if (hasUpgrade('s', 21)) mult = mult.times(10)
+ return mult
     },
 
 
@@ -467,7 +468,7 @@ componentStyles: {
 					{}],
 		"blank",
                 "blank",
-                ["upgrade-tree", [[11]]],
+                ["upgrade-tree", [[11], [21]]],
                 "blank",
             ],
         },
@@ -477,6 +478,11 @@ componentStyles: {
             title: "×1000",
             description: "×1000 points (after softcap).",
             cost: new Decimal(2),
+        },
+        21: {
+            title: "Make prestige quicker",
+            description: "×10 prestige points.",
+            cost: new Decimal(3),
         },
     },
 })
