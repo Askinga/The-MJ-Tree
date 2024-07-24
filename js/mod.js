@@ -56,7 +56,8 @@ function getPointGen() {
 	gain = gain.div(getPointDivider())
 	if (hasUpgrade('r', 12)) gain = gain.times(10)
 	if (inChallenge('r', 11)) gain = gain.div(20)
-	return gain
+	if (hasUpgrade('s', 11)) gain = gain.times(1000)
+ return gain
 }
 function getPointDivider() {
 	let base = player.points.max(1e15).log(1e15).max(1).pow(50)
