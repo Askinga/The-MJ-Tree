@@ -1552,7 +1552,7 @@ addLayer("a", {
         106: {
             name: "e2M!!!!",
             done() { return player.points.gte("e2000000") },
-            tooltip: "Get e1000000 MJs",	   
+            tooltip: "Get e2000000 MJs",	   
         },
     },
 })
