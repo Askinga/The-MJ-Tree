@@ -20,7 +20,7 @@ let VERSION = {
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v2.0.0!</h3><br>
 		- More updates soon! Endgame e2130000 MJs.<br>
-		- Added 10 more upgrade that are op, added 1 new savebank, made it possible to reach e1M MJs,added 1 new layer that is called Galactical MJs, added 3 new achievements, added 2 new milestones, more<br>
+		- Added 10 more upgrade that are op, added 1 new savebank, made it possible to reach e1M MJs, added 1 new layer that is called Galactical MJs, added 3 new achievements, added 2 new milestones, more<br>
                 - Check back here for more updates! Full changelog at <a href=https://galaxy.click/updates/355>galaxy.click/updates/355</a>`
   
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
