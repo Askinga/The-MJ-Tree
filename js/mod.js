@@ -81,6 +81,7 @@ function getPointGen() {
 	if (hasUpgrade('GLA', 23)) gain = gain.times("e10000")
 	if (hasMilestone('GLA', 0)) gain = gain.times("e10000")
 	if (hasMilestone('L', 3)) gain = gain.times("e20000")
+	if (hasUpgrade('GLA', 24)) gain = gain.times("e25000")
 	return gain
 }
 
