@@ -2477,6 +2477,7 @@ componentStyles: {
     exponent: 0.0001, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('GLA', 25)) mult = mult.times(1e10)
 	return mult
     },
 
@@ -2554,6 +2555,12 @@ componentStyles: {
             description: "×e25000 MJs",
             cost: new Decimal(3e122),
 	    unlocked() { return (hasUpgrade('GLA', 23)) },
+	},
+        25: {
+            title: "End of v2.0.0",
+            description: "×e10 Galactical MJs",
+            cost: new Decimal(3e174),
+	    unlocked() { return (hasUpgrade('GLA', 24)) },
 	},
     },
     milestones: {
