@@ -823,7 +823,7 @@ addLayer("H", {
 
 addLayer("L", {
     name: "MJ Clicks",
-    symbol: "CLI",
+    symbol: "CL",
     position: 1,
     doReset(L) {
         // Stage 1, almost always needed, makes resetting this layer not delete your progress
