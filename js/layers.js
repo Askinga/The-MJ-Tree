@@ -97,7 +97,7 @@ addLayer("p", {
             title: "Quintuple",
             description: "×5 points.",
             cost: new Decimal(2.5e21),
-	    unlocked() { return (hasChallenge('r', 11)) },
+	    unlocked() { return (hasChallenge('r', 11) || hasUpgrade('p', 35)) },
 	},
 	21: {
             title: "Booster",
