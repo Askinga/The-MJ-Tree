@@ -482,7 +482,7 @@ componentStyles: {
 		"blank",
 		"blank",
                 "blank",
-                ["upgrade-tree", [[11, 12], [21]]],
+                ["upgrade-tree", [[11, 12], [21], [31]]],
                 "blank",
             ],
         },
