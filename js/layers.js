@@ -198,6 +198,23 @@ addLayer("r", {
     name: "prestige",
     symbol: "P",
     position: 0,
+    doReset(r) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[r].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	if (hasUpgrade('s', 31)) keep.push("upgrades");
+    
+        // Stage 4, do the actual data reset
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
@@ -488,6 +505,13 @@ componentStyles: {
             cost: new Decimal(3),
             branches: [11, 12],
             unlocked() { return (hasUpgrade('s', 11)) },
+	},
+        31: {
+            title: "Keeping",
+            description: "Keep Prestige Upgrades.",
+            cost: new Decimal(10),
+            branches: [11, 12],
+            unlocked() { return (hasUpgrade('s', 12)) },
 	},
     },
 })
