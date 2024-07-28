@@ -93,6 +93,49 @@ function standard(decimal, precision){
 	if (decimal.sign!=0) return '1/'+standard(decimal.recip(),precision)
 	return regularFormat(decimal, precision)
 }
+function formatSciEng(decimal, precision) {
+	decimal = new Decimal(decimal)
+	if (isNaN(decimal.sign)||isNaN(decimal.layer)||isNaN(decimal.mag)) {
+		player.hasNaN = true;
+		console.log(decimal)
+		Decimal(0)
+		for (i in player){
+			if (player[i] == undefined) continue
+			if (player[i].points != undefined) {
+				if (isNaN(player[i].points.mag)) console.log(i + "'s points are NaN")
+			}
+		}
+		
+		return "NaN"
+	}
+	if (player.notation == 'Mixed Scientific' || player.notation == 'Mixed Engineering'){
+		if (decimal.layer < 1 || (Math.abs(decimal.mag) < 63 && decimal.layer == 1)) return standard(decimal,precision)
+	}
+	if (decimal.sign < 0) return "-"+format(decimal.neg(), precision)
+	if (decimal.mag<0) {
+		if (decimal.layer > 3 || (decimal.mag < -1e10 && decimal.layer == 3)) return "1/" + format(decimal.recip(), precision)
+		else exponentialFormat(decimal, precision)
+	}
+	if (decimal.mag == Number.POSITIVE_INFINITY) return "Infinity"
+	if (decimal.layer > 3 || (decimal.mag >= 1e10 && decimal.layer == 3)) {
+		var slog = decimal.slog()
+		if (slog.gte(1e9)) return "F" + formatWhole(slog.floor())
+		if (slog.gte(100)) return Decimal.pow(10, slog.sub(slog.floor())).toStringWithDecimalPlaces(3) + "F" + commaFormat(slog.floor(), 0)
+		else return Decimal.pow(10, slog.sub(slog.floor())).toStringWithDecimalPlaces(4) + "F" + commaFormat(slog.floor(), 0)
+	} else if (decimal.layer > 2 || (Math.abs(decimal.mag) > 308 && decimal.layer == 2)) {
+		return "e" + format(decimal.log10(), precision)
+	} else if (decimal.layer > 1 || (Math.abs(decimal.mag) >= 1e12 && decimal.layer == 1)) {
+		return "e" + format(decimal.log10(), 4)
+	} else if (decimal.layer > 0 || decimal.mag >= 1e9) {
+		return exponentialFormat(decimal, precision)
+	} else if (decimal.mag >= 1000) {
+		return commaFormat(decimal, 0)
+	} else if (decimal.mag>=0.001) {
+		return regularFormat(decimal, precision)
+	} else if (decimal.sign!=0) {
+		return exponentialFormat(decimal, precision)
+	} else return regularFormat(decimal, precision)
+}
 function format(decimal, precision = 2, small) {
     small = small || modInfo.allowSmall
     decimal = new Decimal(decimal)
