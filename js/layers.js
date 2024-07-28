@@ -527,7 +527,7 @@ componentStyles: {
 	},
         41: {
             title: "VERY OP",
-            description: "^2 POINTS!.",
+            description: "^2 POINTS (AFTER SOFTCAP)!.",
             cost: new Decimal(100),
             branches: [11, 12, 21, 31, 32],
             unlocked() { return (hasUpgrade('s', 32)) },
