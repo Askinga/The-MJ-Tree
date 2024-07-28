@@ -534,3 +534,73 @@ componentStyles: {
 	},
     },
 })
+// This next layer will do nothing.
+addLayer("q", {
+    name: "nothing",
+    symbol: "a",
+    position: 0,
+    doReset(r) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[r].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	if (hasUpgrade('s', 31)) keep.push("upgrades");
+        if (hasUpgrade('s', 32)) keep.push("challenges");
+    
+        // Stage 4, do the actual data reset
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    nodeStyle() {return {
+        "background": "radial-gradient(#00fbff, #165657)",
+        "width": "100px",
+        "height": "100px",
+    }
+},
+componentStyles: {
+    "prestige-button"() {return { "background": "radial-gradient(#00fbff, #165657)",
+        "width": "200px",
+        "height": "150px",
+    }},
+},
+    requires() {
+        let req = new Decimal("eee10")
+        return req
+    }, // Can be a function that takes requirement increases into account
+    color: "#00fbff",
+    resource: "g", // Name of prestige currency
+    baseResource: "gg", // Name of resource prestige is based on
+    
+    baseAmount() {return player.p.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.25, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	if (hasUpgrade('r', 31)) mult = mult.times(upgradeEffect('r', 31))
+	if (hasUpgrade('r', 32)) mult = mult.times(upgradeEffect('r', 32))
+	if (hasChallenge('r', 11)) mult = mult.times(2)
+	if (hasUpgrade('s', 21)) mult = mult.times(10)
+ return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    layerShown(){
+        let visible = false
+       return visible
+    },
+})
