@@ -208,6 +208,7 @@ addLayer("r", {
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
 	if (hasUpgrade('s', 31)) keep.push("upgrades");
+        if (hasUpgrade('s', 32)) keep.push("challenges");
     
         // Stage 4, do the actual data reset
         layerDataReset(this.layer, keep);
@@ -238,6 +239,10 @@ componentStyles: {
     color: "#00fbff",
     resource: "prestige points", // Name of prestige currency
     baseResource: "upgrade points", // Name of resource prestige is based on
+    passiveGeneration() {
+	if (hasUpgrade('s', 32)) return 1
+        return 0
+    },
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.25, // Prestige currency exponent
@@ -482,7 +487,7 @@ componentStyles: {
 		"blank",
 		"blank",
                 "blank",
-                ["upgrade-tree", [[11, 12], [21], [31]]],
+                ["upgrade-tree", [[11, 12], [21], [31, 32]]],
                 "blank",
             ],
         },
@@ -512,6 +517,13 @@ componentStyles: {
             cost: new Decimal(10),
             branches: [11, 12],
             unlocked() { return (hasUpgrade('s', 12)) },
+	},
+        32: {
+            title: "Keeping 2",
+            description: "Keep Prestige challenges and get 100% of your prestige gain per second.",
+            cost: new Decimal(25),
+            branches: [11, 12],
+            unlocked() { return (hasUpgrade('s', 31)) },
 	},
     },
 })
