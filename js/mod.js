@@ -63,6 +63,7 @@ function getPointGen() {
 	if (inChallenge('r', 11)) gain = gain.div(20)
 	if (hasUpgrade('s', 11)) gain = gain.times(1000)
  if (hasUpgrade('s', 12)) gain = gain.times(1000)
+ if (hasUpgrade('s', 41)) gain = gain.pow(2)
  return gain
 }
 function getPointDivider() {
