@@ -487,7 +487,7 @@ componentStyles: {
 		"blank",
 		"blank",
                 "blank",
-                ["upgrade-tree", [[11, 12], [21], [31, 32]]],
+                ["upgrade-tree", [[11, 12], [21], [31, 32], [41]]],
                 "blank",
             ],
         },
@@ -524,6 +524,13 @@ componentStyles: {
             cost: new Decimal(25),
             branches: [11, 12],
             unlocked() { return (hasUpgrade('s', 31)) },
+	},
+        41: {
+            title: "VERY OP",
+            description: "^2 POINTS!.",
+            cost: new Decimal(100),
+            branches: [11, 12, 21, 31, 32],
+            unlocked() { return (hasUpgrade('s', 32)) },
 	},
     },
 })
