@@ -90,7 +90,7 @@ var displayThings = [
 	
 	() => (player.points.gte(1e15)&&(canGenPoints())) ? "After 1e15 points, your point gain is divided by "+format(getPointDivider())+" due to softcap!" : "",
         "<br>",
-	() => (player.points.gte(1e100)&&(canGenPoints())) ? "After 1e100 points, the first softcap is raised by "+format(getPointSoftcapRaiser())+" due to softcap^2!" : "",
+	() => (player.points.gte(1e100)&&(canGenPoints())) ? "After 1e100 points, the first softcap is raised by "+"^"+format(getPointSoftcapRaiser())+" due to softcap^2!" : "",
 ] 
 
 // Determines when the game "ends"
