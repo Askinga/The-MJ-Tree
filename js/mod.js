@@ -73,7 +73,7 @@ function getPointDivider() {
 	return base
 }
 function getPointSoftcapRaiser() {
-	let base = player.points.max(1e100).log(1e100).max(1).pow(0.9)
+	let base = player.points.max(1e100).log(1e100).max(1).pow(0.775)
 	return base
 }
 function getUpgradePointDivider() {
