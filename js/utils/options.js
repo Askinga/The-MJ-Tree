@@ -16,7 +16,7 @@ function getStartOptions() {
 		tooltipForcing: true,
 	}
 }
-let notations = ['Scientific','Engineering','Standard']
+let notations = ['Scientific','Infinity by unicodes']
 
 function changeNotation() {
 	player.notation = notations[(notations.indexOf(player.notation) + 1) % notations.length]
