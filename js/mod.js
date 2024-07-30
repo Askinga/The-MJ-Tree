@@ -84,8 +84,6 @@ function addedPlayerData() { return {
 var displayThings = [
 	
 	() => (player.points.gte(1e15)&&(canGenPoints())) ? "After 1e15 points, your point gain is divided by "+format(getPointDivider())+" due to softcap!" : "",
-        "<br>",
-	() => "You have spent "+formatTime(player.runTime)+" in this run" : "",
 ] 
 
 // Determines when the game "ends"
