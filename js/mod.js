@@ -71,10 +71,6 @@ function getPointDivider() {
 	if (inChallenge('r', 11)) base = base.pow(2)
 	return base
 }
-function getPointDivider2() {
-	let base = player.q.points.max(1e100).max(1).log("-10000")
-	return base
-}
 function getUpgradePointDivider() {
 	let base = player.p.points.max(1e26).log(1e26).max(1).pow(100)
 	return base
@@ -90,8 +86,6 @@ var displayThings = [
 	() => (player.points.gte(1e15)&&(canGenPoints())) ? "After 1e15 points, your point gain is divided by "+format(getPointDivider())+" due to softcap!" : "",
         "<br>",
 	() => "You have spent "+formatTime(player.runTime)+" in this run" : "",
-        "<br>",
-	() => (player.points.gte(1e100)) ? "After 1e100 points, your point gain is raised to the power of "+format(getPointDivider2())+" due to softcap^2!" : "",
 ] 
 
 // Determines when the game "ends"
