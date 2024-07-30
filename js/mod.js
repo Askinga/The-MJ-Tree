@@ -72,7 +72,7 @@ function getPointDivider() {
 	return base
 }
 function getPointDivider2() {
-	let base = player.q.points.max(1e100).max(1).div(player.points.log(1e10000).pow(2).add(1))
+	let base = player.q.points.max(1e100).max(1).log("-10000")
 	return base
 }
 function getUpgradePointDivider() {
