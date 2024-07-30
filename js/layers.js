@@ -541,8 +541,6 @@ componentStyles: {
             onClick() {
                 if (confirm("This will set super prestige points to 100. Continue?") == true) 
                 {
-                if (confirm("ARE YOU SURE YOU WANT TO SET SUPER PRESTIGE POINTS TO 100???? THIS WILL REMOVE THE FUN! CONTINUE??????") == true)  
-		}{   
 		    player.s.points = 100;
 			        save(true);
                     window.location.reload();
