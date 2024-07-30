@@ -20,7 +20,7 @@ addLayer("p", {
         player[this.layer].upgrades.push(...keptUpgrades);
     },
     startData() { return {
-        unlocked: true,
+        unlocked: false,
 		points: new Decimal(0),
     }},
     color: "#4BDC13",
@@ -108,7 +108,7 @@ addLayer("p", {
 	    effect(){
                 return player.p.points.add(1).pow(0.5)
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            effectDisplay() { return notationChooser(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
         22: {
             title: "Point booster",
@@ -119,7 +119,7 @@ addLayer("p", {
 	    effect(){
                 return player.points.add(1).pow(0.125)
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            effectDisplay() { return notationChooser(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
         23: {
             title: "Upgrade booster",
@@ -127,7 +127,7 @@ addLayer("p", {
             cost: new Decimal(1e24),
 	    branches: [11, 12, 13, 14],
 	    effect() {return new Decimal (player.p.upgrades.length).add(2).pow(1.5)},
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+            effectDisplay() { return notationChooser(upgradeEffect(this.layer, this.id))+"x" },
 	    unlocked() { return (hasUpgrade('p', 35)) },
 	},
 	31: {
@@ -146,7 +146,7 @@ addLayer("p", {
 	    effect(){
                 return player.points.add(1).pow(0.1)
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            effectDisplay() { return notationChooser(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
         33: {
             title: "Currency boosts Currency",
@@ -157,7 +157,7 @@ addLayer("p", {
 	    effect(){
                 return player.p.points.add(1).pow(0.075)
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            effectDisplay() { return notationChooser(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
         34: {
             title: "Triple currency",
@@ -309,7 +309,7 @@ componentStyles: {
 	    effect(){
                 return player.r.points.add(2).pow(1.25)
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            effectDisplay() { return notationChooser(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
 	22: {
             title: "Prestige booster 2",
@@ -320,7 +320,7 @@ componentStyles: {
 	    effect(){
                 return player.r.points.add(2).pow(0.75)
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            effectDisplay() { return notationChooser(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
 	23: {
             title: "Prestige booster 3",
@@ -331,7 +331,7 @@ componentStyles: {
 	    effect(){
                 return player.r.points.add(1000).div(1000)
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            effectDisplay() { return notationChooser(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
         31: {
             title: "Reverse prestige booster",
@@ -342,7 +342,7 @@ componentStyles: {
 	    effect(){
                 return player.points.add(1).pow(0.05)
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            effectDisplay() { return notationChooser(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
         32: {
             title: "Prestige booster?",
@@ -353,7 +353,7 @@ componentStyles: {
 	    effect(){
                 return player.p.points.add(1).pow(0.02)
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            effectDisplay() { return notationChooser(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
         41: {
             title: "Most OP upgrade",
