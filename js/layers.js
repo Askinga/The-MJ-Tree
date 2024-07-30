@@ -488,7 +488,7 @@ componentStyles: {
 		"blank",
                 "blank",
                 ["upgrade-tree", [[11, 12], [21], [31, 32], [41]]],
-                "blank",
+                "clickables",
             ],
         },
     },
