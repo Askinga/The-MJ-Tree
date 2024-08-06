@@ -5,7 +5,7 @@ addLayer("p", {
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
-		points: new Decimal(0),
+		points: new Decimal(10),
     }},
     color: "#ffffff",
     requires: new Decimal(0), // Can be a function that takes requirement increases into account
@@ -14,7 +14,7 @@ addLayer("p", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent() {
-        let exp = 0.5
+        let exp = player.p.points.add(1).div(5).pow(0.1)
         return exp
     }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
