@@ -107,7 +107,10 @@ addLayer("p", {
         },
         effect(x) {
             let base1 = new Decimal(1.005)
-            let eff = base1
+            let base2 = x
+            
+	    let expo = new Decimal(1.001)
+	    let eff = base1.pow(Decimal.pow(base2, expo))
             return eff
         },
     }, 
