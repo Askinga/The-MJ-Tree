@@ -20,6 +20,7 @@ addLayer("p", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	mult = mult.times(buyableEffect('p', 12))
+	if (hasUpgrade('p', 11)) mult = mult.times(2.5)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -84,5 +85,12 @@ addLayer("p", {
             return eff
         },
     },
+    },
+    upgrades: {
+        11: {
+            title: "Get more Clicks",
+            description: "x2.5 Clicks",
+            cost: new Decimal(1000),
+	},
     },
 })
