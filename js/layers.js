@@ -19,6 +19,7 @@ addLayer("p", {
     }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	mult = mult.times(buyableEffect('p', 12))
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -34,8 +35,8 @@ addLayer("p", {
 	11: {
         title: "Click Buyable 1",
         cost(x) {
-            let mult2 = 1.005
-            return new Decimal(100).mul(Decimal.pow(1.2, x)).mul(Decimal.mul(x , Decimal.times(mult2 , x))).floor()
+            let mult2 = 1.01
+            return new Decimal(100).mul(Decimal.pow(1.2, x)).mul(Decimal.pow(x , Decimal.pow(mult2 , x))).floor()
         },
         display() {
             return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Clicks" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Points are multiplied by x" + format(buyableEffect(this.layer, this.id))
@@ -57,5 +58,31 @@ addLayer("p", {
             return eff
         },
     },
-},
+    12: {
+        title: "Click Buyable 2",
+        cost(x) {
+            let mult2 = 1.02
+            return new Decimal(200).mul(Decimal.pow(1.2, x)).mul(Decimal.pow(x , Decimal.pow(mult2 , x))).floor()
+        },
+        display() {
+            return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Clicks" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Clicks are multiplied by x" + format(buyableEffect(this.layer, this.id))
+        },
+        canAfford() {
+            return player[this.layer].points.gte(this.cost())
+        },
+        buy() {
+            let cost = new Decimal (1)
+            player[this.layer].points = player[this.layer].points.sub(this.cost().mul(cost))
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+        effect(x) {
+            let base1 = new Decimal(1.2)
+            let base2 = x
+            
+	    let expo = new Decimal(1.001)
+            let eff = base1.pow(Decimal.pow(base2, expo))
+            return eff
+        },
+    },
+    },
 })
