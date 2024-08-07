@@ -87,6 +87,30 @@ addLayer("p", {
             return eff
         },
     },
+    13: {
+        title: "Click Buyable 3",
+        unlocked() { return (hasUpgrade('p', 14)) },
+	cost(x) {
+            let mult2 = 1.15
+            return new Decimal(1e12).mul(Decimal.pow(1.2, x)).mul(Decimal.pow(x , Decimal.pow(mult2 , x))).floor()
+        },
+        display() {
+            return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Clicks" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Points are raised by ^" + format(buyableEffect(this.layer, this.id))
+        },
+        canAfford() {
+            return player[this.layer].points.gte(this.cost())
+        },
+        buy() {
+            let cost = new Decimal (1)
+            player[this.layer].points = player[this.layer].points.sub(this.cost().mul(cost))
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+        effect(x) {
+            let base1 = new Decimal(1.005)
+            let eff = base1
+            return eff
+        },
+    }, 
     },
     upgrades: {
         11: {
@@ -109,6 +133,12 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             unlocked() { return (hasUpgrade('p', 12)) },
+	},
+        14: {
+            title: "1 more buyable",
+            description: "Unlock Click Buyable 3",
+            cost: new Decimal(1e12),
+	    unlocked() { return (hasUpgrade('p', 13)) },
 	},
     },
 })
