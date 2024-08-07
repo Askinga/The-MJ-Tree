@@ -22,7 +22,7 @@ addLayer("p", {
         mult = new Decimal(1)
 	mult = mult.times(buyableEffect('p', 12))
 	if (hasUpgrade('p', 11)) mult = mult.times(2.5)
-	if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13)
+	if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13))
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
