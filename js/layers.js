@@ -143,5 +143,11 @@ addLayer("p", {
             cost: new Decimal(1e12),
 	    unlocked() { return (hasUpgrade('p', 13)) },
 	},
+        15: {
+            title: "1 new layer",
+            description: "Unlock Super Clicks",
+            cost: new Decimal(1e15),
+	    unlocked() { return (hasUpgrade('p', 14)) },
+	},
     },
 })
