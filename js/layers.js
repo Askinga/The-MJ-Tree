@@ -2604,8 +2604,8 @@ componentStyles: {
         11: {
             name: "Cosmicless Challenge",
             challengeDescription: "Every MJ Click and Upgrade Tree upgrades is disabled, Every layer ^0.2 except this layer and buyables scale a lot faster except MJ Booster.",
-            canComplete: function() {return player.points.gte("e23010")},
-            goalDescription: "Get e23010 MJs (the requirement to do a Galactic MJ).",
+            canComplete: function() {return player.points.gte("e1002000")},
+            goalDescription: "Get e1002000 MJs.",
             rewardDescription: "???"
         },
     },
