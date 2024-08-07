@@ -2508,6 +2508,7 @@ componentStyles: {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('GLA', 25)) mult = mult.times(1e10)
+	if (hasUpgrade('GLA', 31)) mult = mult.times(1e15)
 	return mult
     },
 
@@ -2592,6 +2593,12 @@ componentStyles: {
             cost: new Decimal(3e174),
 	    unlocked() { return (hasUpgrade('GLA', 24)) },
 	},
+        31: {
+            title: "😃",
+            description: "×e15 Galactical MJs",
+            cost: new Decimal(1e223),
+	    unlocked() { return (hasChallenge('GLA', 11)) },
+	},
     },
     milestones: {
         0: {
@@ -2608,5 +2615,15 @@ componentStyles: {
             goalDescription: "Get e982000 MJs.",
             rewardDescription: "Unlock more Galactic MJ Upgrades"
         },
+    },
+    challenges: {
+        12: {
+            name: "Broken MJs",
+            challengeDescription: "^0.01 MJs",
+            canComplete: function() {return player.points.gte("e982000")},
+            goalDescription: "Get e982000 MJs.",
+            rewardDescription: "Unlock more Galactic MJ Upgrades",
+            unlocked() { return (hasChallenge('GLA', 11)) },
+	},
     },
 })
