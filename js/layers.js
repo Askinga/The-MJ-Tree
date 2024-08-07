@@ -35,7 +35,7 @@ addLayer("p", {
         title: "Click Buyable 1",
         cost(x) {
             let mult2 = 1.005
-            return new Decimal(100).mul(Decimal.pow(1.2, x)).mul(Decimal.pow(x , Decimal.times(mult2 , x))).floor()
+            return new Decimal(100).mul(Decimal.pow(1.2, x)).mul(Decimal.mul(x , Decimal.times(mult2 , x))).floor()
         },
         display() {
             return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Clicks" + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Points are multiplied by x" + format(buyableEffect(this.layer, this.id))
