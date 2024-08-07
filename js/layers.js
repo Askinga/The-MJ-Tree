@@ -162,7 +162,7 @@ addLayer("sc", {
     }},
     color: "#dddddd",
     requires: new Decimal(2.5e15), // Can be a function that takes requirement increases into account
-    resource: "supe clicks", // Name of prestige currency
+    resource: "super clicks", // Name of prestige currency
     baseResource: "clicks", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
