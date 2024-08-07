@@ -182,6 +182,10 @@ name: "Super Clicks", // This is optional, only used in a few places, If absent 
     hotkeys: [
         {key: "s", description: "C: Get Super Clicks", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true},
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('p', 15) || player.sc.unlocked) visible = true
+       return visible
+     },
     branches["p"]
 })
