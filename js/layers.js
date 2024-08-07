@@ -1,3 +1,4 @@
+
 // Tip: 11 means Column 1, Row 1 for upgrades, milestones, etc
 addLayer("p", {
     name: "Clicks", // This is optional, only used in a few places, If absent it just uses the layer id.
@@ -91,6 +92,11 @@ addLayer("p", {
             title: "Get more Clicks",
             description: "x2.5 Clicks",
             cost: new Decimal(1000),
+	},
+        11: {
+            title: "Get more Points",
+            description: "x5 Points",
+            cost: new Decimal(25000),
 	},
     },
 })
