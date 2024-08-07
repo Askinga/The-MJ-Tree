@@ -97,6 +97,17 @@ addLayer("p", {
             title: "Get more Points",
             description: "x5 Points",
             cost: new Decimal(25000),
+	    unlocked() { return (hasUpgrade('p', 11)) },
+	},
+        13: {
+            title: "Click boost",
+            description: "Multiply Click gain based on points.",
+            cost: new Decimal(1000000),
+            effect(){
+                return player[this.layer].points.add(1).pow(0.15)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            unlocked() { return (hasUpgrade('p', 12)) },
 	},
     },
 })
