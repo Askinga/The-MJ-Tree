@@ -91,7 +91,7 @@ addLayer("p", {
         title: "Click Buyable 3",
         unlocked() { return (hasUpgrade('p', 14)) },
 	cost(x) {
-            let mult2 = 1.15
+            let mult2 = 1.25
             return new Decimal(1e12).mul(Decimal.pow(1.2, x)).mul(Decimal.pow(x , Decimal.pow(mult2 , x))).floor()
         },
         display() {
