@@ -152,40 +152,41 @@ addLayer("p", {
     },
 })
 
-addLayer("p", {
-    name: "Super Clicks", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "Sc", // This appears on the layer's node. Default is the id with the first letter capitalized
-    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+addLayer("sc", {
+    name: "Super Clicks",
+    symbol: "Sc",
+    position: 0,
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
     }},
     color: "#dddddd",
     requires: new Decimal(2.5e15), // Can be a function that takes requirement increases into account
-    resource: "Super Clicks", // Name of prestige currency
-    baseResource: "clicks ", // Name of resource prestige is based on
+    resource: "supe clicks", // Name of prestige currency
+    baseResource: "clicks", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent() {
-        let exp = 0.10
-        return exp
-    }, // Prestige currency exponent
+    exponent: 0.1, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
     },
+
+
+
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 1, // Row the layer is in on the tree (0 is the first row
     resetsNothing: true,
     hotkeys: [
-        {key: "s", description: "C: Get Super Clicks", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "s", description: "S: Get Super Clicks", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+
     layerShown(){
         let visible = false
         if (hasUpgrade('p', 15) || player.sc.unlocked) visible = true
        return visible
      },
-    branches:["p"], 
+    branches:["p"],
 })
