@@ -14,7 +14,7 @@ addLayer("p", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent() {
-        let exp = player.p.points.add(1).div(5).pow(0.1)
+        let exp = 0.30
         return exp
     }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -25,6 +25,7 @@ addLayer("p", {
         return new Decimal(1)
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
+    resetsNothing: true,
     hotkeys: [
         {key: "c", description: "C: Get Clicks", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
