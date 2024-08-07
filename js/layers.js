@@ -47,7 +47,7 @@ addLayer("p", {
 	if (hasUpgrade('S', 12)) mult = mult.times(upgradeEffect('S', 12))
         if (hasUpgrade('S', 13)) mult = mult.times(upgradeEffect('S', 13))
 	if (hasUpgrade('S', 23)) mult = mult.pow(1.08)
-        if (hasUpgrade('L', 13)) mult = mult.times(1000)
+        if (hasUpgrade('L', 13) && !inChallenge('GLA', 11)) mult = mult.times(1000)
 	if (hasUpgrade('p', 23)) mult = mult.times(1.4)
 	if (inChallenge('S', 11)) mult = mult.pow(0.3)
 	if (hasChallenge('S', 11)) mult = mult.pow(1.1)
@@ -55,11 +55,12 @@ addLayer("p", {
 	if (inChallenge('H', 11)) mult = mult.pow(0.5)
 	if (hasUpgrade('G', 11)) mult = mult.times(1000)
 	if (hasUpgrade('H', 11)) mult = mult.times(1e20)
-	if (hasUpgrade('L', 35)) mult = mult.times(1e25)
-	if (hasUpgrade('L', 42)) mult = mult.pow(1.011)
-	if (hasUpgrade('UT', 23)) mult = mult.pow(1.01)
-	if (hasUpgrade('UT', 14)) mult = mult.times(1e300)
-	if (hasUpgrade('UT', 16)) mult = mult.times(upgradeEffect('UT', 16))
+	if (hasUpgrade('L', 35) && !inChallenge('GLA', 11)) mult = mult.times(1e25)
+	if (hasUpgrade('L', 42) && !inChallenge('GLA', 11)) mult = mult.pow(1.011)
+	if (hasUpgrade('UT', 23) && !inChallenge('GLA', 11)) mult = mult.pow(1.01)
+	if (hasUpgrade('UT', 14) && !inChallenge('GLA', 11)) mult = mult.times(1e300)
+	if (hasUpgrade('UT', 16) && !inChallenge('GLA', 11)) mult = mult.times(upgradeEffect('UT', 16))
+	if (inChallenge('GLA', 11)) mult = mult.pow(0.2)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -278,12 +279,13 @@ addLayer("S", {
 	if (hasMilestone('C', 0)) mult = mult.times(5)
 	if (hasUpgrade('G', 14)) mult = mult.times(100)
 	if (hasUpgrade('H', 11)) mult = mult.times(1e6)
-	if (hasUpgrade('L', 34)) mult = mult.times(1e10)
-	if (hasUpgrade('L', 43)) mult = mult.pow(1.012)
-	if (hasUpgrade('L', 55)) mult = mult.times(upgradeEffect('L', 55))
+	if (hasUpgrade('L', 34) && !inChallenge('GLA', 11)) mult = mult.times(1e10)
+	if (hasUpgrade('L', 43) && !inChallenge('GLA', 11)) mult = mult.pow(1.012)
+	if (hasUpgrade('L', 55) && !inChallenge('GLA', 11)) mult = mult.times(upgradeEffect('L', 55))
 	if (hasAchievement('a', 64)) mult = mult.times(2)
 	if (hasUpgrade('p', 32)) mult = mult.pow(1.01)
 	if (hasUpgrade('p', 33)) mult = mult.times(1e20)
+	if (inChallenge('GLA', 11)) mult = mult.pow(0.2)
 	return mult
     },
 
@@ -583,11 +585,12 @@ addLayer("G", {
 	if (hasUpgrade('H', 11)) mult = mult.times(1000)
 	if (inChallenge('H', 11)) mult = mult.pow(0.5)
 	if (hasChallenge('H', 11)) mult = mult.pow(1.1)
-	if (hasUpgrade('L', 44)) mult = mult.pow(1.013)
-	if (hasUpgrade('L', 32)) mult = mult.times(1e6)
+	if (hasUpgrade('L', 44) && !inChallenge('GLA', 11)) mult = mult.pow(1.013)
+	if (hasUpgrade('L', 32) && !inChallenge('GLA', 11)) mult = mult.times(1e6)
 	if (hasUpgrade('B', 15)) mult = mult.times(upgradeEffect('B', 15))
 	if (hasAchievement('a', 35)) mult = mult.times(1.2)
 	if (hasUpgrade('G', 15)) mult = mult.pow(upgradeEffect('G', 15))
+	if (inChallenge('GLA', 11)) mult = mult.pow(0.2)
 	return mult
     },
 
@@ -733,9 +736,9 @@ addLayer("H", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasMilestone('C', 1)) mult = mult.times(10)
-	if (hasUpgrade('L', 13)) mult = mult.times(3)
-	if (hasUpgrade('L', 22)) mult = mult.times(upgradeEffect('L', 22))
-	if (hasUpgrade('L', 32)) mult = mult.times(20)
+	if (hasUpgrade('L', 13) && !inChallenge('GLA', 11)) mult = mult.times(3)
+	if (hasUpgrade('L', 22) && !inChallenge('GLA', 11)) mult = mult.times(upgradeEffect('L', 22))
+	if (hasUpgrade('L', 32) && !inChallenge('GLA', 11)) mult = mult.times(20)
 	if (hasUpgrade('B', 11)) mult = mult.times(upgradeEffect('B', 11))
 	if (hasUpgrade('B', 14)) mult = mult.times(300)
 	if (hasUpgrade('B', 13)) mult = mult.times(upgradeEffect('B', 13))
@@ -746,7 +749,8 @@ addLayer("H", {
 	if (hasUpgrade('Ge', 32)) mult = mult.times(1000)
 	if (hasUpgrade('H', 13)) mult = mult.times(100)
 	if (hasUpgrade('Ge', 35)) mult = mult.times(1e5)
-	if (hasUpgrade('UT', 22)) mult = mult.times(10)
+	if (hasUpgrade('UT', 22) && !inChallenge('GLA', 11)) mult = mult.times(10)
+	if (inChallenge('GLA', 11)) mult = mult.pow(0.2)
 	return mult
     },
 
@@ -867,24 +871,25 @@ addLayer("L", {
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-	if (hasUpgrade('L', 11)) mult = mult.times(3)
-	if (hasUpgrade('L', 12)) mult = mult.times(4)
-	if (hasUpgrade('L', 13)) mult = mult.times(5)
-	if (hasUpgrade('L', 14)) mult = mult.times(upgradeEffect('L', 14))
+	if (hasUpgrade('L', 11) && !inChallenge('GLA', 11)) mult = mult.times(3)
+	if (hasUpgrade('L', 12) && !inChallenge('GLA', 11)) mult = mult.times(4)
+	if (hasUpgrade('L', 13) && !inChallenge('GLA', 11)) mult = mult.times(5)
+	if (hasUpgrade('L', 14) && !inChallenge('GLA', 11)) mult = mult.times(upgradeEffect('L', 14))
 	if (hasMilestone('L', 0)) mult = mult.times(10)
-	if (hasUpgrade('L', 21)) mult = mult.times(4)
-        if (hasUpgrade('L', 24)) mult = mult.times(5)
+	if (hasUpgrade('L', 21) && !inChallenge('GLA', 11)) mult = mult.times(4)
+        if (hasUpgrade('L', 24) && !inChallenge('GLA', 11)) mult = mult.times(5)
 	if (hasMilestone('L', 1)) mult = mult.times(10)
 	if (hasMilestone('L', 2)) mult = mult.times(7.5)
-	if (hasUpgrade('L', 31)) mult = mult.times(1.5)
+	if (hasUpgrade('L', 31) && !inChallenge('GLA', 11)) mult = mult.times(1.5)
 	if (hasUpgrade('C', 12)) mult = mult.times(upgradeEffect('C', 12))
-	if (hasUpgrade('L', 45)) mult = mult.pow(1.5)
-	if (hasUpgrade('L', 51)) mult = mult.times(100)
-	if (hasUpgrade('L', 52)) mult = mult.times(1000)
-	if (hasUpgrade('L', 53)) mult = mult.times(1e5)
-	if (hasUpgrade('L', 55)) mult = mult.times(1e6)
+	if (hasUpgrade('L', 45) && !inChallenge('GLA', 11)) mult = mult.pow(1.5)
+	if (hasUpgrade('L', 51) && !inChallenge('GLA', 11)) mult = mult.times(100)
+	if (hasUpgrade('L', 52) && !inChallenge('GLA', 11)) mult = mult.times(1000)
+	if (hasUpgrade('L', 53) && !inChallenge('GLA', 11)) mult = mult.times(1e5)
+	if (hasUpgrade('L', 55) && !inChallenge('GLA', 11)) mult = mult.times(1e6)
 	if (hasUpgrade('B', 12)) mult = mult.times(upgradeEffect('B', 12))
 	if (hasUpgrade('GLA', 11)) mult = mult.times(2)
+	if (inChallenge('GLA', 11)) mult = mult.pow(0.2)
 	return mult
     },
 
@@ -1746,9 +1751,10 @@ addLayer("Ge", {
 	if (hasUpgrade('Ge', 31)) mult = mult.pow(1.02)
 	if (hasUpgrade('B', 17)) mult = mult.times(20)
 	if (hasUpgrade('Gb', 11)) mult = mult.times(10)
-	if (hasUpgrade('UT', 32)) mult = mult.times(1000)
+	if (hasUpgrade('UT', 32) && !inChallenge('GLA', 11)) mult = mult.times(1000)
 	if (hasUpgrade('B', 16)) mult = mult.times(15)
 	if (hasUpgrade('GLA', 11)) mult = mult.times(1000)
+	if (inChallenge('GLA', 11)) mult = mult.pow(0.2)
 	return mult
     },
 
@@ -1944,7 +1950,8 @@ addLayer("Ge", {
         unlocked() { return (hasUpgrade('Ge', 34)) },
         cost(x) {
             let exp2 = 1.1
-            return new Decimal(1e11).mul(Decimal.pow(1.2, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
+            if (inChallenge('GLA', 11)) exp2 = 2
+	    return new Decimal(1e11).mul(Decimal.pow(1.2, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
         },
         display() {
             return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Generator MJs." + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Generator MJ gain by x" + format(buyableEffect(this.layer, this.id))
@@ -2130,8 +2137,8 @@ addLayer("Bo", {
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-	if (hasUpgrade('UT', 21)) mult = mult.times(2)
-	if (hasUpgrade('UT', 25)) mult = mult.times(50)
+	if (hasUpgrade('UT', 21) && !inChallenge('GLA', 11)) mult = mult.times(2)
+	if (hasUpgrade('UT', 25) && !inChallenge('GLA', 11)) mult = mult.times(50)
 	return mult
     },
 
@@ -2591,6 +2598,15 @@ componentStyles: {
             requirementDescription: "1e55 Galactical MJs",
             effectDescription: "Multiply MJ gain by 1e10000.",
             done() { return player.GLA.points >= (1e55) }
+        },
+    },
+    challenges: {
+        11: {
+            name: "Cosmicless Challenge",
+            challengeDescription: "Every MJ Click and Upgrade Tree upgrades is disabled, Every layer ^0.2 except this layer and buyables scale a lot faster except MJ Booster.",
+            canComplete: function() {return player.points.gte("e23010")},
+            goalDescription: "Get e23010 MJs (the requirement to do a Galactic MJ).",
+            rewardDescription: "???"
         },
     },
 })
