@@ -150,6 +150,12 @@ addLayer("p", {
             cost: new Decimal(1e15),
 	    unlocked() { return (hasUpgrade('p', 14)) },
 	},
+        21: {
+            title: "Get more Super Clicks",
+            description: "×10 Super Clicks",
+            cost: new Decimal(1e21),
+	    unlocked() { return (hasUpgrade('p', 15)) },
+	},
     },
 })
 
@@ -170,6 +176,7 @@ addLayer("sc", {
     exponent: 0.225, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('p', 21)) mult = mult.times(10)
 	return mult
     },
 
