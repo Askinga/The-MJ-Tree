@@ -2615,8 +2615,6 @@ componentStyles: {
             goalDescription: "Get e982000 MJs.",
             rewardDescription: "Unlock more Galactic MJ Upgrades"
         },
-    },
-    challenges: {
         12: {
             name: "Broken MJs",
             challengeDescription: "^0.01 MJs",
