@@ -13,6 +13,10 @@ addLayer("p", {
     resource: "clicks", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
+    passiveGeneration() {
+	if (hasUpgrade('p', 22)) return 20
+	return 0
+    },
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent() {
         let exp = 0.30
@@ -156,6 +160,12 @@ addLayer("p", {
             description: "×10 Super Clicks",
             cost: new Decimal(1e21),
 	    unlocked() { return (hasUpgrade('p', 15)) },
+	},
+        22: {
+            title: "Finally some automation!",
+            description: "Automatically click the Click button 20 times per second!",
+            cost: new Decimal(1e33),
+	    unlocked() { return (hasUpgrade('p', 21)) },
 	},
     },
 })
