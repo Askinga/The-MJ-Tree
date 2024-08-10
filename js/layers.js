@@ -2599,12 +2599,18 @@ componentStyles: {
             cost: new Decimal(1e223),
 	    unlocked() { return (hasChallenge('GLA', 11)) },
 	},
+        32: {
+            title: "Prepare for Broken MJs Challenge 1",
+            description: "×e20000 MJs",
+            cost: new Decimal(1e289),
+	    unlocked() { return (hasUpgrade('GLA', 31)) },
+	},
     },
     milestones: {
         0: {
             requirementDescription: "1e55 Galactical MJs",
             effectDescription: "Multiply MJ gain by 1e10000.",
-            done() { return player.GLA.points >= (1e55) }
+            done() { return player.GLA.points >= (1e55) },
         },
     },
     challenges: {
