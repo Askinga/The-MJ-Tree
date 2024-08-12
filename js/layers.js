@@ -1559,6 +1559,11 @@ addLayer("a", {
             done() { return player.points.gte("e2000000") },
             tooltip: "Get e2000000 MJs",	   
         },
+        111: {
+            name: "Cosmicless!",
+            done() { return (hasChallenge('GLA', 11)) },
+            tooltip: "Beat the Cosmicless Challenge",	   
+        },
     },
 })
 
