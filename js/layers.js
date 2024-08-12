@@ -2608,7 +2608,7 @@ componentStyles: {
         33: {
             title: "Prepare for Broken MJs Challenge 2",
             description: "×e25000 MJs",
-            cost: new Decimal(1e330),
+            cost: new Decimal("e330"),
 	    unlocked() { return (hasUpgrade('GLA', 32)) },
 	},
     },
