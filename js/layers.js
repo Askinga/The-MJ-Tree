@@ -2618,9 +2618,15 @@ componentStyles: {
 	},
         34: {
             title: "Prepare for Broken MJs Challenge 3",
-            description: "×e15000 MJs (before all exponents",
+            description: "×e15000 MJs (before all exponents)",
             cost: new Decimal("e383"),
 	    unlocked() { return (hasUpgrade('GLA', 33)) },
+	},
+        35: {
+            title: "Prepare for Broken MJs Challenge final",
+            description: "×e50000 MJs",
+            cost: new Decimal("e422"),
+	    unlocked() { return (hasUpgrade('GLA', 34)) },
 	},
     },
     milestones: {
