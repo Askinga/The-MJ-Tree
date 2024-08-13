@@ -2652,8 +2652,8 @@ componentStyles: {
         12: {
             name: "Broken MJs",
             challengeDescription: "^0.01 MJs",
-            canComplete: function() {return player.points.gte("e11000")},
-            goalDescription: "Get e11000 MJs.",
+            canComplete: function() {return player.points.gte("e10805")},
+            goalDescription: "Get e10805 MJs.",
             rewardDescription: "Beat the game",
             unlocked() { return (hasChallenge('GLA', 11)) },
 	},
