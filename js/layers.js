@@ -2715,9 +2715,6 @@ componentStyles: {
             content: [
                 ["display-text", "Welcome to Sanas Challenges! These challenges are hard and give big boosts"],
                 "main-display",
-                ["display-text",
-				function() {return 'You have beaten ' + format(player.SAC.beaten) + '/' + format(player.SAC.points) 'Sanas Challenges'+(tmp.nerdMode?" ((x+1)^"+format(tmp.g.powerExp)+")":"")},
-					{}],
 		"prestige-button",
                 "blank",
             ]
