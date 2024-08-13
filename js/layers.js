@@ -1564,6 +1564,11 @@ addLayer("a", {
             done() { return (hasChallenge('GLA', 11)) },
             tooltip: "Beat the Cosmicless Challenge",	   
         },
+        112: {
+            name: "Fixed MJs",
+            done() { return (hasChallenge('GLA', 12)) },
+            tooltip: "Beat the Broken MJs Challenge",	   
+        },
     },
 })
 
