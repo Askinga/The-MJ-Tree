@@ -2652,9 +2652,9 @@ componentStyles: {
         12: {
             name: "Broken MJs",
             challengeDescription: "^0.01 MJs",
-            canComplete: function() {return player.points.gte("e982000")},
-            goalDescription: "Get e982000 MJs.",
-            rewardDescription: "Unlock more Galactic MJ Upgrades",
+            canComplete: function() {return player.points.gte("e11000")},
+            goalDescription: "Get e11000 MJs.",
+            rewardDescription: "Beat the game",
             unlocked() { return (hasChallenge('GLA', 11)) },
 	},
     },
