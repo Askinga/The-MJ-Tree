@@ -2623,7 +2623,6 @@ componentStyles: {
 	    unlocked() { return (hasUpgrade('GLA', 33)) },
 	},
     },
-    },
     milestones: {
         0: {
             requirementDescription: "1e55 Galactical MJs",
