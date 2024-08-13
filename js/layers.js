@@ -2659,3 +2659,68 @@ componentStyles: {
 	},
     },
 })
+
+addLayer("SAC", {
+    name: "Sanas Challenges",
+    symbol: "Sa",
+    position: 1,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+                beaten: new Decimal(0),
+    }},
+    nodeStyle() {return {
+        "background": "radial-gradient(#791ceb, #300c5c)",
+        "width": "125px",
+        "height": "125px",
+    }
+},
+componentStyles: {
+    "prestige-button"() {return { "background": "radial-gradient(#791ceb, #300c5c)",
+        "width": "150px",
+        "height": "150px",
+    }},
+},
+    color: "#310b5e",
+    requires: new Decimal("e5066885"), // Can be a function that takes requirement increases into account
+    resource: "Unlocked Sanas Challenges", // Name of prestige currency
+    baseResource: "MJs", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 8, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 4, // Row the layer is in on the tree (0 is the first row)
+    displayRow: 6,
+    hotkeys: [
+        {key: "n", description: "N: Reset for unlocked challenges", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+
+    layerShown(){
+        let visible = false
+        if (player.points.gte("e5066884") || player.SAC.unlocked) visible = true
+       return visible
+},
+    branches:["Gb", "Gc", "UT"],
+    tabFormat: {
+        "Sanas Challenges": {
+            content: [
+                ["display-text", "Welcome to Sanas Challenges! These challenges are hard and give big boosts"],
+                "main-display",
+                ["display-text",
+				function() {return 'You have beaten ' + format(player.SAC.beaten) + '/' + format(player.SAC.points) 'Sanas Challenges'+(tmp.nerdMode?" ((x+1)^"+format(tmp.g.powerExp)+")":"")},
+					{}],
+		"prestige-button",
+                "blank",
+            ]
+        },
+    },
+})
