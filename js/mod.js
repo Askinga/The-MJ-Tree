@@ -13,17 +13,17 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "2.0.0!",
-	name: "yay!",
+	num: "2.1.0",
+	name: "The Cosmicless Update",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v2.0.0!</h3><br>
-		- More updates soon! Endgame e2130000 MJs.<br>
-		- Added 10 more upgrade that are op, added 1 new savebank, made it possible to reach e1M MJs, added 1 new layer that is called Galactical MJs, added 3 new achievements, added 2 new milestones, more<br>
+	<h3>v2.1.0</h3><br>
+		- More updates soon! Endgame: Beat Broken MJs.<br>
+		- Added 5 upgrades, Cosmicless Challenge and Broken MJs Challenges, 2 achievements and more things<br>
                 - Check back here for more updates! Full changelog at <a href=https://galaxy.click/updates/355>galaxy.click/updates/355</a>`
   
-let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
+let winText = `Congratulations! You have reached the end and beaten this game. Good job! 🏆`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
@@ -96,12 +96,12 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-    "Get e2130000 MJs to beat the game!"  
+    "Beat the Broken MJs Challenge to beat the game!"  
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return (player.points.gte("e2130000"))
+	return (hasChallenge('GLA', 12))
 }
 
 
