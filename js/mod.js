@@ -53,6 +53,7 @@ function getPointGen() {
 	if (hasUpgrade('p', 22)) gain = gain.times(upgradeEffect('p', 22))
 	if (hasUpgrade('p', 24)) gain = gain.times(1000)
 	if (hasUpgrade('S', 11)) gain = gain.times(10)
+	if (hasUpgrade('GLA', 34)) gain = gain.times("e15000")
 	if (hasUpgrade('S', 14)) gain = gain.pow(1.05)
 	if (hasUpgrade('G', 11)) gain = gain.times(1e6)
 	if (hasUpgrade('G', 12)) gain = gain.times(upgradeEffect('G', 12))
