@@ -2726,8 +2726,8 @@ componentStyles: {
         11: {
             name: "Sanas Challenge 1",
             challengeDescription: "MJs and MJ Points ^0.005.",
-            canComplete: function() {return player.points.gte("e9820000")},
-            goalDescription: "Get ??? MJs.",
+            canComplete: function() {return player.points.gte("e5361")},
+            goalDescription: "Get e5361 MJs.",
             rewardDescription: "^1.05 MJs"
         },
     },
