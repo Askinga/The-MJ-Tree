@@ -91,6 +91,7 @@ function getPointGen() {
 	if (hasChallenge('SAC', 11)) gain = gain.pow(1.05)
 	if (inChallenge('SAC', 12)) gain = gain.pow(0.00001)
 	if (inChallenge('SAC', 14)) gain = gain.tetrate(0.9)
+	if (inChallenge('SAC', 15)) gain = gain.pow(0.0001)
 	return gain
 }
 
