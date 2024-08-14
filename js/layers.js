@@ -2763,14 +2763,14 @@ componentStyles: {
         15: {
             name: "Sanas Challenge 5",
             challengeDescription: "^0.0001 MJs, MJ Points, Super MJ Points.",
-            canComplete: function() {return player.points.gte("e53610000")},
-            goalDescription: "Get ??? MJs.",
-            rewardDescription: "×1e50 Galactial MJs",
+            canComplete: function() {return player.points.gte("e347")},
+            goalDescription: "Get e347 MJs.",
+            rewardDescription: "×1e225 Galactial MJs",
             unlocked() { return (player.SAC.points.gte(5)) },
 	},
         16: {
             name: "Sanas Challenge 6",
-            challengeDescription: "^^0.9 MJs",
+            challengeDescription: "Galactical MJ Upgrade 13 is disabled.",
             canComplete: function() {return player.points.gte("e53610000")},
             goalDescription: "Get ??? MJs.",
             rewardDescription: "×1e50 Galactial MJs",
