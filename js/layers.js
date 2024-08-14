@@ -62,6 +62,7 @@ addLayer("p", {
 	if (hasUpgrade('UT', 16) && !inChallenge('GLA', 11)) mult = mult.times(upgradeEffect('UT', 16))
 	if (inChallenge('GLA', 11)) mult = mult.pow(0.2)
 	if (inChallenge('SAC', 11)) mult = mult.pow(0.005)
+	if (inChallenge('SAC', 15)) mult = mult.pow(0.0001)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -287,6 +288,7 @@ addLayer("S", {
 	if (hasUpgrade('p', 32)) mult = mult.pow(1.01)
 	if (hasUpgrade('p', 33)) mult = mult.times(1e20)
 	if (inChallenge('GLA', 11)) mult = mult.pow(0.2)
+	if (inChallenge('SAC', 15)) mult = mult.pow(0.0001)
 	return mult
     },
 
@@ -2760,7 +2762,7 @@ componentStyles: {
 	},
         15: {
             name: "Sanas Challenge 5",
-            challengeDescription: "^^0.9 MJs",
+            challengeDescription: "^0.0001 MJs, MJ Points, Super MJ Points.",
             canComplete: function() {return player.points.gte("e53610000")},
             goalDescription: "Get ??? MJs.",
             rewardDescription: "×1e50 Galactial MJs",
