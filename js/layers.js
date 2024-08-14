@@ -2770,7 +2770,7 @@ componentStyles: {
 	},
         16: {
             name: "Sanas Challenge 6",
-            challengeDescription: "Galactical MJ Upgrade 13 is disabled.",
+            challengeDescription: "Galactical MJ Upgrade 13, 14 and Sanas Challenge 1 reward is disabled.",
             canComplete: function() {return player.points.gte("e53610000")},
             goalDescription: "Get ??? MJs.",
             rewardDescription: "×1e50 Galactial MJs",
