@@ -2728,7 +2728,24 @@ componentStyles: {
             challengeDescription: "MJs and MJ Points ^0.005.",
             canComplete: function() {return player.points.gte("e5361")},
             goalDescription: "Get e5361 MJs.",
-            rewardDescription: "^1.05 MJs"
-        },
+            rewardDescription: "^1.05 MJs",
+            unlocked() { return (player.SAC.points.gte(1)) },
+	},
+        12: {
+            name: "Sanas Challenge 2",
+            challengeDescription: "MJs ^0.00001.",
+            canComplete: function() {return player.points.gte("e53610000")},
+            goalDescription: "Get ??? MJs.",
+            rewardDescription: "×1e50 Galactial MJs",
+            unlocked() { return (player.SAC.points.gte(2)) },
+	},
+        13: {
+            name: "Sanas Challenge 3",
+            challengeDescription: "???.",
+            canComplete: function() {return player.points.gte("e53610000")},
+            goalDescription: "Get ??? MJs.",
+            rewardDescription: "×1e50 Galactial MJs",
+            unlocked() { return (player.SAC.points.gte(3)) },
+	},
     },
 })
