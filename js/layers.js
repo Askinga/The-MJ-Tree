@@ -2521,6 +2521,7 @@ componentStyles: {
 	if (hasUpgrade('GLA', 25)) mult = mult.times(1e10)
 	if (hasUpgrade('GLA', 31)) mult = mult.times(1e15)
 	if (hasChallenge('SAC', 12)) mult = mult.times(1e50)
+	if (hasChallenge('SAC', 13)) mult = mult.times(1e175)
 	return mult
     },
 
@@ -2743,9 +2744,9 @@ componentStyles: {
         13: {
             name: "Sanas Challenge 3",
             challengeDescription: "MJ Point upgrade 12 and 13 is useless.",
-            canComplete: function() {return player.points.gte("e53610000")},
-            goalDescription: "Get ??? MJs.",
-            rewardDescription: "×1e50 Galactial MJs",
+            canComplete: function() {return player.points.gte("e4591000")},
+            goalDescription: "Get e4591000 MJs.",
+            rewardDescription: "×1e175 Galactial MJs",
             unlocked() { return (player.SAC.points.gte(3)) },
 	},
         14: {
