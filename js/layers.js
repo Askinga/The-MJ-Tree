@@ -2520,6 +2520,7 @@ componentStyles: {
         mult = new Decimal(1)
 	if (hasUpgrade('GLA', 25)) mult = mult.times(1e10)
 	if (hasUpgrade('GLA', 31)) mult = mult.times(1e15)
+	if (hasChallenge('SAC', 12)) mult = mult.times(1e50)
 	return mult
     },
 
