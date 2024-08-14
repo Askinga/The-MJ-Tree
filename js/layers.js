@@ -2741,7 +2741,7 @@ componentStyles: {
 	},
         13: {
             name: "Sanas Challenge 3",
-            challengeDescription: "???.",
+            challengeDescription: "MJ Point upgrade 12 and 13 is useless.",
             canComplete: function() {return player.points.gte("e53610000")},
             goalDescription: "Get ??? MJs.",
             rewardDescription: "×1e50 Galactial MJs",
