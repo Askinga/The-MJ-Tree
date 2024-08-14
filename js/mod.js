@@ -47,8 +47,8 @@ function getPointGen() {
 	if (layers.Bo.effect().gte(1)) gain = gain.times(layers.Bo.effect())
         gain = gain.times(buyableEffect('Po', 11))
 	if (hasUpgrade('p', 11)) gain = gain.times(2)
-	if (hasUpgrade('p', 12)) gain = gain.times(upgradeEffect('p', 12))
-	if (hasUpgrade('p', 13)) gain = gain.times(upgradeEffect('p', 13))
+	if (hasUpgrade('p', 12) && !inChallenge('SAC', 13)) gain = gain.times(upgradeEffect('p', 12))
+	if (hasUpgrade('p', 13) && !inChallenge('SAC', 13)) gain = gain.times(upgradeEffect('p', 13))
 	if (hasUpgrade('p', 21)) gain = gain.times(10)
 	if (hasUpgrade('p', 22)) gain = gain.times(upgradeEffect('p', 22))
 	if (hasUpgrade('p', 24)) gain = gain.times(1000)
@@ -89,6 +89,7 @@ function getPointGen() {
 	if (inChallenge('GLA', 12)) gain = gain.pow(0.01)
 	if (inChallenge('SAC', 11)) gain = gain.pow(0.005)
 	if (hasChallenge('SAC', 11)) gain = gain.pow(1.05)
+	if (inChallenge('SAC', 12)) gain = gain.pow(0.00001)
 	return gain
 }
 
