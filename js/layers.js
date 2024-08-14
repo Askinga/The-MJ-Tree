@@ -61,6 +61,7 @@ addLayer("p", {
 	if (hasUpgrade('UT', 14) && !inChallenge('GLA', 11)) mult = mult.times(1e300)
 	if (hasUpgrade('UT', 16) && !inChallenge('GLA', 11)) mult = mult.times(upgradeEffect('UT', 16))
 	if (inChallenge('GLA', 11)) mult = mult.pow(0.2)
+	if (inChallenge('SAC', 11)) mult = mult.pow(0.005)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -2717,7 +2718,17 @@ componentStyles: {
                 "main-display",
 		"prestige-button",
                 "blank",
-            ]
+                "challenges"
+	    ]
+        },
+    },
+    challenges: {
+        11: {
+            name: "Sanas Challenge 1",
+            challengeDescription: "MJs and MJ Points ^0.005.",
+            canComplete: function() {return player.points.gte("e9820000")},
+            goalDescription: "Get ??? MJs.",
+            rewardDescription: "^1.05 MJs"
         },
     },
 })
