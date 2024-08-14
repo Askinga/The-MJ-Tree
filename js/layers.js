@@ -2525,6 +2525,7 @@ componentStyles: {
 	if (hasChallenge('SAC', 12)) mult = mult.times(1e50)
 	if (hasChallenge('SAC', 13)) mult = mult.times(1e175)
 	if (hasChallenge('SAC', 14)) mult = mult.times(1e200)
+	if (hasChallenge('SAC', 15)) mult = mult.times(1e225)
 	return mult
     },
 
