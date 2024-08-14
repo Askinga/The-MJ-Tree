@@ -2522,6 +2522,7 @@ componentStyles: {
 	if (hasUpgrade('GLA', 31)) mult = mult.times(1e15)
 	if (hasChallenge('SAC', 12)) mult = mult.times(1e50)
 	if (hasChallenge('SAC', 13)) mult = mult.times(1e175)
+	if (hasChallenge('SAC', 14)) mult = mult.times(1e200)
 	return mult
     },
 
@@ -2752,9 +2753,9 @@ componentStyles: {
         14: {
             name: "Sanas Challenge 4",
             challengeDescription: "^^0.9 MJs",
-            canComplete: function() {return player.points.gte("e53610000")},
-            goalDescription: "Get ??? MJs.",
-            rewardDescription: "×1e50 Galactial MJs",
+            canComplete: function() {return player.points.gte("e10370000")},
+            goalDescription: "Get e10370000 MJs.",
+            rewardDescription: "×1e200 Galactial MJs",
             unlocked() { return (player.SAC.points.gte(4)) },
 	},
         15: {
