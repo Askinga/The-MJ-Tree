@@ -61,7 +61,7 @@ addLayer("p", {
 	if (hasUpgrade('UT', 14) && !inChallenge('GLA', 11)) mult = mult.times(1e300)
 	if (hasUpgrade('UT', 16) && !inChallenge('GLA', 11)) mult = mult.times(upgradeEffect('UT', 16))
 	if (inChallenge('GLA', 11)) mult = mult.pow(0.2)
-	if (inChallenge('SAC', 11)) mult = mult.pow(0.005)
+	if (inChallenge('SAC', 11) || inChallenge('SAC', 19)) mult = mult.pow(0.005)
 	if (inChallenge('SAC', 15)) mult = mult.pow(0.0001)
 	return mult
     },
