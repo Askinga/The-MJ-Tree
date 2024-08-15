@@ -76,8 +76,8 @@ function getPointGen() {
 	if (hasUpgrade('UT', 33) && !inChallenge('GLA', 11)) gain = gain.times(1e300)
 	if (hasUpgrade('GLA', 11)) gain = gain.times("e1000")
 	if (hasUpgrade('GLA', 12)) gain = gain.times("e1500")
-	if (hasUpgrade('GLA', 13) && !inChallenge('SAC', 16)) gain = gain.times(upgradeEffect('GLA', 13))
-	if (hasUpgrade('GLA', 14) && !inChallenge('SAC', 16)) gain = gain.pow(1.1)
+	if (hasUpgrade('GLA', 13) && !inChallenge('SAC', 16) && !inChallenge('SAC', 19)) gain = gain.times(upgradeEffect('GLA', 13))
+	if (hasUpgrade('GLA', 14) && !inChallenge('SAC', 16) && !inChallenge('SAC', 19)) gain = gain.pow(1.1)
 	if (hasUpgrade('GLA', 22)) gain = gain.times("e10000")
 	if (hasUpgrade('GLA', 23)) gain = gain.times("e10000")
 	if (hasMilestone('GLA', 0)) gain = gain.times("e10000")
@@ -87,11 +87,12 @@ function getPointGen() {
 	if (hasUpgrade('GLA', 33)) gain = gain.times("e25000")
 	if (hasUpgrade('GLA', 35)) gain = gain.times("e50000")
 	if (inChallenge('GLA', 12)) gain = gain.pow(0.01)
-	if (inChallenge('SAC', 11)) gain = gain.pow(0.005)
+	if (inChallenge('SAC', 11) || inChallenge('SAC', 19)) gain = gain.pow(0.005)
 	if (hasChallenge('SAC', 11) && !inChallenge('SAC', 16)) gain = gain.pow(1.05)
 	if (inChallenge('SAC', 12)) gain = gain.pow(0.00001)
 	if (inChallenge('SAC', 14)) gain = gain.tetrate(0.9)
 	if (inChallenge('SAC', 15)) gain = gain.pow(0.0001)
+	if (inChallenge('SAC', 17)) gain = gain.pow(0.0987654321)
 	return gain
 }
 
