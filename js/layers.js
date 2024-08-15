@@ -2834,7 +2834,7 @@ componentStyles: {
             canComplete: function() {return player.points.gte("300")},
             goalDescription: "Wait 5 minutes.",
             rewardDescription: "Beat v2.2.0",
-            unlocked() { return (player.SAC.points.gte(10)) },
+            unlocked() { return (player.SAC.points.gte(10) && hasChallenge('SAC', 19)) },
 	},
     },
 })
