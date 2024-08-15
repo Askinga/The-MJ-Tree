@@ -18,7 +18,7 @@ let VERSION = {
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v2.1.0</h3><br>
+	<h3>v2.2.0</h3><br>
 		- More updates soon! Endgame: Beat Sanas Challenge 10.<br>
 		- Added Sanas challenges, Added 10 challenges, Added 4 achievements. Some challenges have you wait, grind and tetrate your MJ gain!<br>
                 - Check back here for more updates! Full changelog at <a href=https://galaxy.click/updates/355>galaxy.click/updates/355</a>`
