@@ -2526,6 +2526,7 @@ componentStyles: {
 	if (hasChallenge('SAC', 13)) mult = mult.times(1e175)
 	if (hasChallenge('SAC', 14)) mult = mult.times(1e200)
 	if (hasChallenge('SAC', 15)) mult = mult.times(1e225)
+	if (hasChallenge('SAC', 16)) mult = mult.times(1e250)
 	return mult
     },
 
@@ -2772,9 +2773,9 @@ componentStyles: {
         16: {
             name: "Sanas Challenge 6",
             challengeDescription: "Galactical MJ Upgrade 13, 14 and Sanas Challenge 1 reward is disabled.",
-            canComplete: function() {return player.points.gte("e53610000")},
-            goalDescription: "Get ??? MJs.",
-            rewardDescription: "×1e50 Galactial MJs",
+            canComplete: function() {return player.points.gte("e689400")},
+            goalDescription: "Get e689400 MJs.",
+            rewardDescription: "×1e250 Galactial MJs",
             unlocked() { return (player.SAC.points.gte(6)) },
 	},
         17: {
