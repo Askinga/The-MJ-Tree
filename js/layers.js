@@ -2798,8 +2798,8 @@ componentStyles: {
         19: {
             name: "Sanas Challenge 9",
             challengeDescription: "You're stuck in Sanas challenge 1, 3, 4 and 6.",
-            canComplete: function() {return player.points.gte("e53610000")},
-            goalDescription: "Get ??? MJs.",
+            canComplete: function() {return player.points.gte("2e968")},
+            goalDescription: "Get 2e968 MJs.",
             rewardDescription: "×1e1000 Galactical MJs",
             unlocked() { return (player.SAC.points.gte(9)) },
 	},
