@@ -13,14 +13,14 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "2.1.0",
-	name: "The Cosmicless Update",
+	num: "2.2.0",
+	name: "Sanas challenges?",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v2.1.0</h3><br>
-		- More updates soon! Endgame: Beat Broken MJs.<br>
-		- Added 5 upgrades, Cosmicless Challenge and Broken MJs Challenges, 2 achievements and more things<br>
+		- More updates soon! Endgame: Beat Sanas Challenge 10.<br>
+		- Added Sanas challenges, Added 10 challenges, Some challenges have you wait, grind and tetrate your MJ gain!<br>
                 - Check back here for more updates! Full changelog at <a href=https://galaxy.click/updates/355>galaxy.click/updates/355</a>`
   
 let winText = `Congratulations! You have reached the end and beaten this game. Good job! 🏆`
@@ -96,6 +96,7 @@ function getPointGen() {
 	if (hasChallenge('SAC', 17)) gain = gain.pow(1.02)
 	if (inChallenge('SAC', 18)) gain = gain.tetrate(0.25)
 	if (hasChallenge('SAC', 18)) gain = gain.pow(1.05)
+	if (inChallenge('SAC', 21)) gain = gain.set(1)
 	return gain
 }
 
