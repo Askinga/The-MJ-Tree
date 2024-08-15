@@ -20,7 +20,7 @@ let VERSION = {
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v2.1.0</h3><br>
 		- More updates soon! Endgame: Beat Sanas Challenge 10.<br>
-		- Added Sanas challenges, Added 10 challenges, Some challenges have you wait, grind and tetrate your MJ gain!<br>
+		- Added Sanas challenges, Added 10 challenges, Added 4 achievements. Some challenges have you wait, grind and tetrate your MJ gain!<br>
                 - Check back here for more updates! Full changelog at <a href=https://galaxy.click/updates/355>galaxy.click/updates/355</a>`
   
 let winText = `Congratulations! You have reached the end and beaten this game. Good job! 🏆`
@@ -106,7 +106,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-    "Beat the Broken MJs Challenge to beat the game!"  
+    "Beat Sanas Challenge 10 to beat the game!"  
 ]
 
 // Determines when the game "ends"
