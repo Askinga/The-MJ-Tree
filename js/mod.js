@@ -111,7 +111,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return (hasChallenge('GLA', 12))
+	return (hasChallenge('SAC', 21))
 }
 
 
