@@ -2527,6 +2527,7 @@ componentStyles: {
 	if (hasChallenge('SAC', 14)) mult = mult.times(1e200)
 	if (hasChallenge('SAC', 15)) mult = mult.times(1e225)
 	if (hasChallenge('SAC', 16)) mult = mult.times(1e250)
+	if (hasChallenge('SAC', 16)) mult = mult.times("e1000")
 	return mult
     },
 
@@ -2796,10 +2797,10 @@ componentStyles: {
 	},
         19: {
             name: "Sanas Challenge 9",
-            challengeDescription: "^^0.9 MJs",
+            challengeDescription: "You're stuck in Sanas challenge 1, 3, 4 and 6.",
             canComplete: function() {return player.points.gte("e53610000")},
             goalDescription: "Get ??? MJs.",
-            rewardDescription: "×1e50 Galactial MJs",
+            rewardDescription: "×1e1000 Galactical MJs",
             unlocked() { return (player.SAC.points.gte(9)) },
 	},
     },
