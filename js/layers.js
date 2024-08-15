@@ -1572,6 +1572,31 @@ addLayer("a", {
             done() { return (hasChallenge('GLA', 12)) },
             tooltip: "Beat the Broken MJs Challenge",	   
         },
+        113: {
+            name: "Sanas challenges?",
+            done() { return (hasChallenge('SAC', 11)) },
+            tooltip: "Beat Sanas Challenge 1",	   
+        },
+        113: {
+            name: "Timewall",
+            done() { return (hasChallenge('SAC', 12)) },
+            tooltip: "Beat Sanas Challenge 2",	   
+        },
+        114: {
+            name: "3 exponents",
+            done() { return (hasChallenge('SAC', 15)) },
+            tooltip: "Beat Sanas Challenge 5",	   
+        },
+        115: {
+            name: "Galactical MJs are Useless",
+            done() { return (hasChallenge('SAC', 16)) },
+            tooltip: "Beat Sanas Challenge 6",	   
+        },
+        116: {
+            name: "Timewall 2",
+            done() { return (hasChallenge('SAC', 21)) },
+            tooltip: "Beat Sanas Challenge 10",	   
+        },
     },
 })
 
@@ -2663,7 +2688,7 @@ componentStyles: {
             challengeDescription: "^0.01 MJs",
             canComplete: function() {return player.points.gte("e10805")},
             goalDescription: "Get e10805 MJs.",
-            rewardDescription: "Beat the game",
+            rewardDescription: "Beat v2.1.0",
             unlocked() { return (hasChallenge('GLA', 11)) },
 	},
     },
@@ -2802,6 +2827,14 @@ componentStyles: {
             goalDescription: "Get 2e968 MJs.",
             rewardDescription: "×1e1000 Galactical MJs",
             unlocked() { return (player.SAC.points.gte(9)) },
+	},
+        21: {
+            name: "Sanas Challenge 10",
+            challengeDescription: "MJ gain is stuck at 1",
+            canComplete: function() {return player.points.gte("300")},
+            goalDescription: "Wait 5 minutes.",
+            rewardDescription: "Beat v2.2.0",
+            unlocked() { return (player.SAC.points.gte(10)) },
 	},
     },
 })
