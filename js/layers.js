@@ -2790,9 +2790,9 @@ componentStyles: {
         18: {
             name: "Sanas Challenge 8",
             challengeDescription: "^^0.25 MJs",
-            canComplete: function() {return player.points.gte("e53610000")},
-            goalDescription: "Get ??? MJs.",
-            rewardDescription: "×1e50 Galactial MJs",
+            canComplete: function() {return player.points.gte("e1562324")},
+            goalDescription: "Get e1562324 MJs.",
+            rewardDescription: "^1.05 MJs",
             unlocked() { return (player.SAC.points.gte(8)) },
 	},
         19: {
