@@ -99,6 +99,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 34)) mult = mult.pow(1.04)
 	if (hasMilestone('m', 4)) mult = mult.pow(1.005)
 	if (hasMilestone('m', 5)) mult = mult.pow(1.035)
+	if (hasUpgrade('MU', 33)) mult = mult.pow(1.1)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -1184,6 +1185,24 @@ addLayer("MU", {
             currencyInternalName: "gmu",
             currencyLayer: "MU",
             unlocked() {return hasUpgrade("MU", 25)}
+	},
+        32: {
+            title: "More power",
+            description: "^1.025 points.",
+            cost: new Decimal(2000),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 31)}
+	},
+        33: {
+            title: "More power 2",
+            description: "^1.1 MJs.",
+            cost: new Decimal(2000),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 32)}
 	},
     },
     update(diff) {
