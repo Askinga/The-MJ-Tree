@@ -380,13 +380,13 @@ componentStyles: {
             canClick(){return true}
         },
 	12: {
-            title: "Set prestige points to 1000",
+            title: "Set prestige points to 1000000",
             description: "For overboard",
             canClick() {return true},
             onClick() {
-                if (confirm("This will set prestige points to 1000. Continue?") == true) 
+                if (confirm("This will set prestige points to 1000000. Continue?") == true) 
                 {
-                    player.r.points = 1000;
+                    player.r.points = 1000000;
 			        save(true);
                     window.location.reload();
                 } 
