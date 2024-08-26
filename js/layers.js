@@ -290,15 +290,5 @@ addLayer("🏆", {
             done() { return (hasUpgrade('p', 41)) },
             tooltip: "Buy your sixteenth prestige upgrade.",	   
         },
-	21: {
-            name: "Resetted",
-            done() { return (player.up.points.gte(1)) },
-            tooltip: "Get your first upgraded prestige point.",	   
-        },
-        22: {
-            name: "Challenge P1 Complete",
-            done() { return (hasChallenge('up', 11)) },
-            tooltip: "Get Challenge P1 Complete.",	   
-        },
     },
 })
