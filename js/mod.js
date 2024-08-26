@@ -1,24 +1,31 @@
 let modInfo = {
-	name: "The ??? Tree",
-	id: "mymod",
-	author: "nobody",
+	name: "The TMT Game About Points",
+	id: "mymod55",
+	author: "Askinga",
 	pointsName: "points",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0",
-	name: "Literally nothing",
+	num: "0.1",
+	name: "1 Layer Finished",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.0</h3><br>
+            	<h3>v0.1</h3><br>
+		- Added 21 upgrades<br>
+		- Added 2 milestones.<br>
+  		- Added 1 layer.<br>
+    		- Changed the font.<br>
+	
+	     
+		<h3>v0.0</h3><br>
 		- Added things.<br>
 		- Added stuff.`
 
@@ -43,6 +50,22 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+        if (hasUpgrade('p', 11)) gain = gain.times(2)
+	if (hasUpgrade('p', 12)) gain = gain.times(1.5)
+	if (hasUpgrade('p', 13)) gain = gain.times(2)
+	if (hasUpgrade('p', 14)) gain = gain.times(2.5)
+	if (hasUpgrade('p', 15)) gain = gain.times(3)
+	if (hasUpgrade('p', 21)) gain = gain.times(upgradeEffect('p', 21))
+	if (hasUpgrade('p', 22)) gain = gain.times(upgradeEffect('p', 22))
+	if (hasUpgrade('p', 23)) gain = gain.times(upgradeEffect('p', 23))
+	if (hasUpgrade('p', 24)) gain = gain.times(upgradeEffect('p', 24))
+	if (hasUpgrade('p', 25)) gain = gain.times(upgradeEffect('p', 25))
+	if (hasUpgrade('p', 32)) gain = gain.times(upgradeEffect('p', 32))
+	if (hasUpgrade('p', 42)) gain = gain.pow(1.05)
+	if (hasUpgrade('p', 43)) gain = gain.pow(upgradeEffect('p', 43))
+	if (hasUpgrade('up', 11)) gain = gain.times(5)
+        if (hasChallenge('up', 11)) gain = gain.times(10)
+	if (inChallenge('up', 11)) gain = gain.pow(0.5)
 	return gain
 }
 
@@ -52,17 +75,18 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
+	"Reach 1ee30 points to beat the game!"
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e280000000"))
+	return player.points.gte(new Decimal("ee30"))
 }
 
 
 
 // Less important things beyond this point!
-
+function colored(layer, text, tag='h2') { return `<${tag} style='color:${temp[layer].color};text-shadow:${temp[layer].color} 0px 0px 10px;'>${text}</${tag}>` }
 // Style for the background, can be a function
 var backgroundStyle = {
 
