@@ -23,7 +23,8 @@ addLayer("p", {
         if (hasUpgrade('p', 31)) mult = mult.times(2)
 	if (hasUpgrade('p', 33)) mult = mult.times(upgradeEffect('p', 33))
 	if (hasMilestone('p', 1)) mult = mult.times(2.5)
-	if (hasUpgrade('p', 34)) mult = mult.times(3)
+	if (hasUpgrade('p', 34) && !hasUpgrade('up', 13)) mult = mult.times(3)
+	if (hasUpgrade('p', 34) && hasUpgrade('up', 13)) mult = mult.times(10)
 	if (hasUpgrade('p', 35)) mult = mult.times(5)
 	if (hasUpgrade('p', 41)) mult = mult.times(upgradeEffect('p', 41))
 	if (hasMilestone('p', 2)) mult = mult.times(3)
@@ -315,6 +316,12 @@ addLayer( "up", {
 	    cost: new Decimal(5),
 	    unlocked() {return hasChallenge('up', 11)},
 	},
+        13: {
+            title: "Upgrade 23",
+	    description: "Upgrade 14 gives ×10 prestige points instead of ×3",
+	    cost: new Decimal(10),
+	    unlocked() {return hasChallenge('up', 12)},
+	},
     },
     challenges: {
         11: {
@@ -388,6 +395,11 @@ addLayer("🏆", {
             name: "Challenge P1 Complete",
             done() { return (hasChallenge('up', 11)) },
             tooltip: "Get Challenge P1 Complete.",	   
+        },
+        23: {
+            name: "Buffed",
+            done() { return (hasUpgrade('up', 12)) },
+            tooltip: "Buy your second upgraded prestige upgrade.",	   
         },
     },
 })
