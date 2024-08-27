@@ -28,6 +28,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 41)) mult = mult.times(upgradeEffect('p', 41))
 	if (hasMilestone('p', 2)) mult = mult.times(3)
 	if (hasUpgrade('p', 44)) mult = mult.pow(1.1)
+	if (hasUpgrade('up', 11)) mult = mult.times(3)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -237,6 +238,78 @@ addLayer("p", {
     },
 })
 
+addLayer( "up", {
+    name: "Upgraded Prestige Points",
+    symbol: "P1",
+    position: 0,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    nodeStyle: {
+	"border-radius": "100%",
+	"width": "100px",
+	"height": "100px"
+    },
+    color: "#ff3c00",
+    requires() {
+        let req = new Decimal(1e10)
+        return req
+    }, // Can be a function that takes requirement increases into account
+    resource: "upgraded prestige points", // Name of prestige currency
+    baseResource: "prestige points", // Name of resource prestige is based on
+    baseAmount() {return player.p.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.25, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "u", description: "U: Reset for upgraded prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    resetDescription: 'Reset prestige and points for ',
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('p', 45) || player.up.unlocked) visible = true
+       return visible
+    },
+    branches:["p"],
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "resource-display",
+                "prestige-button",
+                "challenges",
+                "upgrades"
+            ],
+        },
+    },
+    upgrades: {
+	11: {
+            title: "Upgrade 21",
+	    description: "Quintuple point gain and ×3 prestige points",
+	    cost: new Decimal(1),
+	},
+    },
+    challenges: {
+        11: {
+            name: "Challenge P1",
+            challengeDescription: "^0.5 points.",
+            canComplete: function() {return hasUpgrade('p', 25)},
+            goalDescription: "Buy Prestige Upgrade 10.",
+            rewardDescription: "×10 points and unlock upgrade 23"
+	},
+    },
+})
 
 addLayer("🏆", {
     startData() { return {
@@ -289,6 +362,16 @@ addLayer("🏆", {
             name: "Reversed",
             done() { return (hasUpgrade('p', 41)) },
             tooltip: "Buy your sixteenth prestige upgrade.",	   
+        },
+	21: {
+            name: "Resetted",
+            done() { return (player.up.points.gte(1)) },
+            tooltip: "Get your first upgraded prestige point.",	   
+        },
+        22: {
+            name: "Challenge P1 Complete",
+            done() { return (hasChallenge('up', 11)) },
+            tooltip: "Get Challenge P1 Complete.",	   
         },
     },
 })
