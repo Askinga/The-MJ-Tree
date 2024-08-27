@@ -282,7 +282,7 @@ addLayer("🏆", {
         },
         15: {
             name: "Lots",
-            done() { return (player.point.gte(1e9)) },
+            done() { return (player.points.gte(1e9)) },
             tooltip: "1e9 points.",	   
         },
 	16: {
