@@ -142,7 +142,7 @@ addLayer("p", {
      		return eff
             },
             effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
-            tooltip: "(points+1)<sup>0.065</sup> or <sup>0.085</sup>",
+            tooltip: "(points+1)<sup>0.065</sup>",
 	    unlocked() {return (hasUpgrade('p', 24))}
         },
         31: {
