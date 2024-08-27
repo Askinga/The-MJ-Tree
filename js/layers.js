@@ -176,7 +176,10 @@ addLayer("p", {
 	},
         34: {
             title: "Upgrade 14",
-	    description: "×3 prestige points",
+	    description() {
+		let description = "×3 prestige points"
+		 if (hasUpgrade('up', 13)) description = "×10 prestige points"
+	    },
 	    cost: new Decimal(200000),
 	    unlocked() { return (hasUpgrade('p', 33)) }
 	},
@@ -320,7 +323,7 @@ addLayer( "up", {
             title: "Upgrade 23",
 	    description: "Upgrade 14 gives ×10 prestige points instead of ×3",
 	    cost: new Decimal(10),
-	    unlocked() {return hasChallenge('up', 12)},
+	    unlocked() {return hasUpgrade('up', 12)},
 	},
     },
     challenges: {
