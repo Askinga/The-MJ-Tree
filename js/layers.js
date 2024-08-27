@@ -29,6 +29,7 @@ addLayer("p", {
 	if (hasMilestone('p', 2)) mult = mult.times(3)
 	if (hasUpgrade('p', 44)) mult = mult.pow(1.1)
 	if (hasUpgrade('up', 11)) mult = mult.times(3)
+	if (hasMilestone('p', 3)) mult = mult.times(2.5)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -230,10 +231,16 @@ addLayer("p", {
             unlocked() {return hasUpgrade('p', 33)},
         },
         2: {
-            requirementDescription: "Second milestone! (PM1: 20,000,000 PP)",
+            requirementDescription: "Second milestone! (PM2: 5,000,000 PP)",
             effectDescription: "×3 prestige points",
-            done() { return player["p"].points.gte("20000000") && hasUpgrade('p', 41) },
+            done() { return player["p"].points.gte("5000000") && hasUpgrade('p', 41) },
             unlocked() {return hasUpgrade('p', 41)},
+        },
+        3: {
+            requirementDescription: "Unlock that new layer! (PM3: 500,000,000 PP)",
+            effectDescription: "×2.5 prestige points",
+            done() { return player["p"].points.gte("500000000") && hasUpgrade('p', 43) },
+            unlocked() {return hasUpgrade('p', 43)},
         },
     },
 })
@@ -299,6 +306,7 @@ addLayer( "up", {
 	    description: "Quintuple point gain and ×3 prestige points",
 	    cost: new Decimal(1),
 	},
+    
     },
     challenges: {
         11: {
