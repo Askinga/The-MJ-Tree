@@ -135,11 +135,14 @@ addLayer("p", {
             title: "The Tenth Upgrade",
             description: "Multiplies point gain based on points (again but weakened 4)",
             cost: new Decimal(1500),
-            effect() {
-                return player.points.add(1).pow(0.065)
+            effect(){
+    	    let rpow = 0.065
+	     if(hasUpgrade('up', 12)) rpow = 0.085
+		let eff = player.p.points.add(1).pow(rpow)
+     		return eff
             },
             effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
-            tooltip: "(points+1)<sup>0.065</sup>",
+            tooltip: "(points+1)<sup>0.065</sup> or <sup>0.085</sup>",
 	    unlocked() {return (hasUpgrade('p', 24))}
         },
         31: {
@@ -306,7 +309,12 @@ addLayer( "up", {
 	    description: "Quintuple point gain and ×3 prestige points",
 	    cost: new Decimal(1),
 	},
-    
+        12: {
+            title: "Upgrade 22",
+	    description: "Buff the effect of the tenth upgrade",
+	    cost: new Decimal(5),
+	    unlocked() {return hasChallenge('up', 11)},
+	},
     },
     challenges: {
         11: {
@@ -314,7 +322,7 @@ addLayer( "up", {
             challengeDescription: "^0.5 points.",
             canComplete: function() {return hasUpgrade('p', 25)},
             goalDescription: "Buy Prestige Upgrade 10.",
-            rewardDescription: "×10 points and unlock upgrade 23"
+            rewardDescription: "×10 points and unlock upgrade 22"
 	},
     },
 })
