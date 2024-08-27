@@ -176,11 +176,15 @@ addLayer("p", {
 	},
         34: {
             title: "Upgrade 14",
-	    description() {
-		let description = "×3 prestige points"
-		 if (hasUpgrade('up', 13)) description = "×10 prestige points"
-	    },
+	    description: "×3 prestige points",
 	    cost: new Decimal(200000),
+	    effect(){
+    	     let rpow = "×3 prestige points"
+	      if(hasUpgrade('up', 13)) rpow = "×10 prestige points"
+		 let eff = rpow
+     		return eff
+            },
+            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
 	    unlocked() { return (hasUpgrade('p', 33)) }
 	},
         35: {
