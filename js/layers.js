@@ -138,7 +138,7 @@ addLayer("p", {
             effect(){
     	    let rpow = 0.065
 	     if(hasUpgrade('up', 12)) rpow = 0.085
-		let eff = player.p.points.add(1).pow(rpow)
+		let eff = player.points.add(1).pow(rpow)
      		return eff
             },
             effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
