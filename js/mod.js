@@ -13,12 +13,17 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1",
-	name: "1 Layer Finished",
+	num: "0.1.1",
+	name: "Frozenless",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-            	<h3>v0.1</h3><br>
+            	<h3>v0.1.1</h3><br>
+		- Fixed a bug where the game is partially frozen<br>
+    		- Changed the font to original<br>
+	     
+      
+      		<h3>v0.1</h3><br>
 		- Added 21 upgrades<br>
 		- Added 2 milestones.<br>
   		- Added 1 layer.<br>
