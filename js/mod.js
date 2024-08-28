@@ -91,7 +91,7 @@ function isEndgame() {
 
 
 // Less important things beyond this point!
-function colored(layer, text, tag='h2') { return `<${tag} style='color:${temp[layer].color};text-shadow:${temp[layer].color} 0px 0px 10px;'>${text}</${tag}>` }
+
 // Style for the background, can be a function
 var backgroundStyle = {
 
