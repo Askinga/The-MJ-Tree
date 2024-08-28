@@ -65,7 +65,7 @@ addLayer("p", {
             ],
         },
 	"Generators": {
-          unlocked() { return (hasUpgrade('up', 15)) }
+          unlocked() { return (hasUpgrade('up', 15)) },
 	    content: [
                 ["display-text",
 				function() {return 'You have ' + format(player.p.gens) + ' Prestige Generators, which are generating prestige points at the percentage '+'%'+format(tmp.p.powerEff)+(hasUpgrade('p', 45)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
