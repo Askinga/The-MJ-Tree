@@ -478,5 +478,10 @@ addLayer("🏆", {
             done() { return (hasUpgrade('up', 12)) },
             tooltip: "Buy your second upgraded prestige upgrade.",	   
         },
+        23: {
+            name: "The Automation Era",
+            done() { return (player.p.gens.gte(1)) },
+            tooltip: "Get a Prestige Generator.",	   
+        },
     },
 })
