@@ -5,6 +5,7 @@ addLayer("p", {
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
+                gens: new Decimal(0),
     }},
     color: "#FF0000",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -49,6 +50,15 @@ addLayer("p", {
             ],
         },
         "Milestones": {
+            content: [
+                "main-display",
+                "resource-display",
+                "prestige-button",
+                "blank",
+                "milestones"
+            ],
+        },
+	"Generators": {
             content: [
                 "main-display",
                 "resource-display",
