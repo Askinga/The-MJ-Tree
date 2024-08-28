@@ -24,7 +24,8 @@ addLayer("p", {
 	if (hasUpgrade('p', 13)) mult = mult.times(1.3)
 	if (hasUpgrade('p', 14)) mult = mult.times(1.4)
 	if (hasUpgrade('p', 15)) mult = mult.times(1.5)
-        if (hasUpgrade('p', 31)) mult = mult.times(2)
+        if (hasUpgrade('p', 23)) mult = mult.times(2.5)
+	if (hasUpgrade('p', 31)) mult = mult.times(2)
 	if (hasUpgrade('p', 33)) mult = mult.times(upgradeEffect('p', 33))
 	if (hasMilestone('p', 1)) mult = mult.times(2.5)
 	if (hasUpgrade('p', 34) && !hasUpgrade('up', 13)) mult = mult.times(3)
@@ -131,7 +132,7 @@ addLayer("p", {
         },
         23: {
             title: "The Eighth Upgrade",
-            description: "Multiplies point gain based on points (again but weakened 2)",
+            description: "Multiplies point gain based on points (again but weakened 2) and ×2.5 prestige points",
             cost: new Decimal(400),
             effect() {
                 return player.points.add(1).pow(0.095)
