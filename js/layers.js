@@ -69,7 +69,7 @@ addLayer("p", {
                 "resource-display",
                 "prestige-button",
                 "blank",
-                "milestones"
+                "clickables"
             ],
         },
     },
@@ -275,6 +275,20 @@ addLayer("p", {
             done() { return player["p"].points.gte("500000000") && hasUpgrade('p', 43) },
             unlocked() {return hasUpgrade('p', 43)},
         },
+    },
+    clickables: {
+    	11: {
+		title: "Generate!",
+        	display() { return "Click to generate Prestige Generators which automate your prestige point gain!" },
+		canClick() {return true},
+		style: {
+			transform: "translate(0px, -15px)"
+		},
+		onClick() { 
+			let gain2 = 1;
+			player.p.gens = player.p.gens.plus(gain2) 
+		},
+	    } 
     },
 })
 
