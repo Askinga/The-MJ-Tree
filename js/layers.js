@@ -184,7 +184,13 @@ addLayer("p", {
 		 let eff = rpow
      		return eff
             },
-            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+            effectDisplay() {
+                let softcapDescription = "×3 prestige points"
+                if (hasUpgrade('up', 13) ) {
+                    softcapDescription = "×10 prestige points"
+                }
+                return softcapDescription
+            },
 	    unlocked() { return (hasUpgrade('p', 33)) }
 	},
         35: {
