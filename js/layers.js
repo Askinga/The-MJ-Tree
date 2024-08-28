@@ -39,6 +39,9 @@ addLayer("p", {
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true},
+    powerEff() {
+    return player.p.gens.div(250);
+    },
     tabFormat: {
         "Upgrades": {
             content: [
@@ -60,7 +63,9 @@ addLayer("p", {
         },
 	"Generators": {
             content: [
-                "main-display",
+                ["display-text",
+				function() {return 'You have ' + format(player.p.gens) + ' Prestige Generators, which are generating prestige points at the percentage: '+'%'+format(tmp.p.powerEff)+(hasUpgrade('s', 11)?" (Your super points are also boosting Upgrade Points by "+format(tmp.s.powerEff)+")":"")},
+					{}],
                 "resource-display",
                 "prestige-button",
                 "blank",
