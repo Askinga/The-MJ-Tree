@@ -308,7 +308,13 @@ addLayer("p", {
 			if(hasUpgrade('up', 22)) gain2 = 10;
 			player.p.gens = player.p.gens.plus(gain2) 
 		},
-	    } 
+	   	onHold() { 
+			if ( hasUpgrade("up", 23) )
+				gain2 = 10;
+				player.p.gens = player.p.gens.plus(gain2) 
+	
+		}
+	} 
     },
 })
 
@@ -408,6 +414,18 @@ addLayer( "up", {
 	    description: "Gain 10 prestige generators instead of 2.5 when you press the generate button",
 	    cost: new Decimal(5000),
 	    unlocked() {return hasUpgrade('up', 21)},
+	},
+        23: {
+            title: "Upgrade 28",
+	    description: "Unlock the ability to hold the generate button",
+	    cost: new Decimal(10000),
+	    unlocked() {return hasUpgrade('up', 22)},
+	},
+        24: {
+            title: "Upgrade 29",
+	    description: "×100 points",
+	    cost: new Decimal(20000),
+	    unlocked() {return hasUpgrade('up', 23)},
 	},
     },
     challenges: {
