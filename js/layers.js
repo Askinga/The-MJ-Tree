@@ -305,6 +305,7 @@ addLayer("p", {
 		onClick() { 
 			let gain2 = 1;
 			if(hasUpgrade('up', 21)) gain2 = 2.5;
+			if(hasUpgrade('up', 22)) gain2 = 10;
 			player.p.gens = player.p.gens.plus(gain2) 
 		},
 	    } 
@@ -401,6 +402,12 @@ addLayer( "up", {
 	    description: "Gain 2.5 prestige generators instead of 1 when you press the generate button",
 	    cost: new Decimal(2000),
 	    unlocked() {return hasUpgrade('up', 15)},
+	},
+        22: {
+            title: "Upgrade 27",
+	    description: "Gain 10 prestige generators instead of 2.5 when you press the generate button",
+	    cost: new Decimal(5000),
+	    unlocked() {return hasUpgrade('up', 21)},
 	},
     },
     challenges: {
