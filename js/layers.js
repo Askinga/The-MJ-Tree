@@ -10,7 +10,7 @@ addLayer("p", {
     color: "#FF0000",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     passiveGeneration() {
-	return player.p.powerEff.div(100)
+	return player.p.gens.div(25000)
     },
     resource: "prestige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
@@ -68,7 +68,7 @@ addLayer("p", {
           unlocked() { return (hasUpgrade('up', 15)) },
 	    content: [
                 ["display-text",
-				function() {return 'You have ' + format(player.p.gens) + ' Prestige Generators, which are generating prestige points at the percentage '+'%'+format(tmp.p.powerEff)+(hasUpgrade('p', 45)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
+				function() {return 'You have ' + format(player.p.gens) + ' Prestige Generators, which are generating prestige points at the percentage '+'%'+format(tmp.p.powerEff)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
 					{}],
                 "resource-display",
                 "prestige-button",
