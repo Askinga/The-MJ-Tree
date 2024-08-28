@@ -10,7 +10,7 @@ addLayer("p", {
     color: "#FF0000",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     passiveGeneration() {
-	return player.p.gens.div(1000)
+	return player.p.gens.div(5000)
     },
     resource: "prestige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
@@ -44,7 +44,7 @@ addLayer("p", {
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true},
     powerEff() {
-    return player.p.gens.div(10);
+    return player.p.gens.div(50);
     },
     tabFormat: {
         "Upgrades": {
