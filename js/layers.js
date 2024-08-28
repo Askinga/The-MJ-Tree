@@ -256,7 +256,7 @@ addLayer("p", {
 	        return "This upgrade boosts Points by " + format(upgEffect)+"^" + softcapDescription
             },
 	    tooltip: "(prestigepoints+1)<sup>0.004</sup>",
-	    unlocked() { return (hasUpgrade('p', 11)) },
+	    unlocked() { return (hasUpgrade('p', 42)) },
         },
         44: {
             title: "Upgrade 19",
