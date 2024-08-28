@@ -427,6 +427,17 @@ addLayer( "up", {
 	    cost: new Decimal(20000),
 	    unlocked() {return hasUpgrade('up', 23)},
 	},
+        25: {
+            title: "Upgrade 30",
+	    description: "Boost point gain based on upgraded prestige points",
+	    cost: new Decimal(250000),
+	    effect() {
+                return player.up.points.add(1).pow(0.35)
+            },
+            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+            tooltip: "(UPP+1)<sup>0.35</sup>",
+	    unlocked() { return (hasUpgrade('up', 24)) }
+	},
     },
     challenges: {
         11: {
