@@ -139,6 +139,7 @@ addLayer("p", {
             effect(){
     	    let rpow = 0.065
 	     if(hasUpgrade('up', 12)) rpow = 0.085
+		if(hasUpgrade('up', 14)) rpow = 0.1
 		let eff = player.points.add(1).pow(rpow)
      		return eff
             },
@@ -332,8 +333,14 @@ addLayer( "up", {
         13: {
             title: "Upgrade 23",
 	    description: "Upgrade 14 gives ×10 prestige points instead of ×3",
-	    cost: new Decimal(10),
+	    cost: new Decimal(25),
 	    unlocked() {return hasUpgrade('up', 12)},
+	},
+        14: {
+            title: "Upgrade 24",
+	    description: "Buff the tenth upgrade again",
+	    cost: new Decimal(65),
+	    unlocked() {return hasUpgrade('up', 13)},
 	},
     },
     challenges: {
