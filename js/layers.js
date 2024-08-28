@@ -9,6 +9,9 @@ addLayer("p", {
     }},
     color: "#FF0000",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
+    passiveGeneration() {
+	return player.p.powerEff.div(100)
+    },
     resource: "prestige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -40,7 +43,7 @@ addLayer("p", {
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true},
     powerEff() {
-    return player.p.gens.add(1).div(250);
+    return player.p.gens.div(250);
     },
     tabFormat: {
         "Upgrades": {
@@ -62,7 +65,8 @@ addLayer("p", {
             ],
         },
 	"Generators": {
-            content: [
+          unlocked() { return (hasUpgrade('up', 15)) }
+	    content: [
                 ["display-text",
 				function() {return 'You have ' + format(player.p.gens) + ' Prestige Generators, which are generating prestige points at the percentage '+'%'+format(tmp.p.powerEff)+(hasUpgrade('p', 45)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
 					{}],
@@ -369,6 +373,12 @@ addLayer( "up", {
             title: "Upgrade 24",
 	    description: "Buff the tenth upgrade again",
 	    cost: new Decimal(65),
+	    unlocked() {return hasUpgrade('up', 13)},
+	},
+        15: {
+            title: "Upgrade 25",
+	    description: "Unlock Prestige Generators",
+	    cost: new Decimal(200),
 	    unlocked() {return hasUpgrade('up', 13)},
 	},
     },
