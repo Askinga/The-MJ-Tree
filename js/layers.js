@@ -498,6 +498,16 @@ addLayer( "up", {
 	    cost: new Decimal(1e8),
 	    unlocked() {return hasUpgrade('up', 31)},
 	},
+        33: {
+            title: "Upgrade 33",
+	    description: "Boost prestige booster gain based on points",
+	    cost: new Decimal(5e8),
+	    unlocked() {return hasUpgrade('up', 32)},
+	    effect() {
+                return player.points.add(1).pow(0.01)
+            },
+            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+	},
     },
     challenges: {
         11: {
@@ -519,6 +529,7 @@ addLayer( "up", {
 		onClick() { 
 			let gain2 = 1;
 			if(hasUpgrade('up', 31)) gain2 = 10;
+			if(hasUpgrade('up', 33)) gain2 = gain2.times(upgradeEffect('up', 33));
 			player.up.boosters = player.up.boosters.plus(gain2) 
 		},
 	} 
