@@ -328,6 +328,7 @@ addLayer("p", {
 			let gain2 = 1;
 			if(hasUpgrade('up', 21)) gain2 = 2.5;
 			if(hasUpgrade('up', 22)) gain2 = 10;
+			if(hasUpgrade('up', 34)) gain2 = 500
 			player.p.gens = player.p.gens.plus(gain2) 
 		},
 	   	onHold() { 
@@ -508,6 +509,19 @@ addLayer( "up", {
                 return player.points.add(1).pow(0.005)
             },
             effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+	    tooltip: "(points+1)<sup>0.005</sup>",
+	},
+   	34: {
+            title: "Upgrade 34",
+	    description: "×50 prestige generator gain",
+	    cost: new Decimal(2.5e9),
+	    unlocked() {return hasUpgrade('up', 33)},
+	},
+        35: {
+            title: "Upgrade 35",
+	    description: "Unlock a new layer",
+	    cost: new Decimal(1e10),
+	    unlocked() {return hasUpgrade('up', 34)},
 	},
     },
     challenges: {
@@ -619,4 +633,54 @@ addLayer("🏆", {
             tooltip: "Get a Prestige Booster.",	   
         },
     },
+})
+
+addLayer( "sp", {
+    name: "Super Prestige Points",
+    symbol: "P2",
+    position: 0,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+  		superpoints: new Decimal(0),
+    }},
+    nodeStyle: {
+	"border-radius": "100%",
+	"width": "100px",
+	"height": "100px"
+    },
+    color: "#ff5400",
+    requires() {
+        let req = new Decimal(1e10)
+        return req
+    }, // Can be a function that takes requirement increases into account
+    resource: "super prestige points", // Name of prestige currency
+    baseResource: "upgraded prestige points", // Name of resource prestige is based on
+    baseAmount() {return player.up.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.15, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 2, // Row the layer is in on the tree (0 is the first row)
+    powerEff() {
+    return player.sp.superpoints.add(1).pow(0.25);
+    },
+    hotkeys: [
+        {key: "s", description: "S: Reset for super prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    resetDescription: 'Reset previous progress for ',
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('up', 35) || player.sp.unlocked) visible = true
+       return visible
+    },
+    branches:["up"],
 })
