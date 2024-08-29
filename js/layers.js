@@ -367,6 +367,11 @@ addLayer( "up", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
+   
+           
+        let gain2 = new Decimal(1)
+	if ( hasUpgrade("up", 32) ) gain2 = gain2.plus(9)
+        if ( hasUpgrade("up", 33) ) gain2 = gain2.times(upgradeEffect("up", 33))
     },
 
 
@@ -527,9 +532,7 @@ addLayer( "up", {
 			transform: "translate(0px, -15px)"
 		},
 		onClick() { 
-			let gain2 = 1;
-			if(hasUpgrade('up', 31)) gain2 = 10;
-			if(hasUpgrade('up', 33)) gain2 = gain2.times(upgradeEffect('up', 33));
+			let gain2 = tmp[this.layer].gainMult;
 			player.up.boosters = player.up.boosters.plus(gain2) 
 		},
 	} 
