@@ -372,6 +372,7 @@ addLayer( "up", {
         let gain2 = new Decimal(1)
 	if ( hasUpgrade("up", 32) ) gain2 = gain2.plus(9)
         if ( hasUpgrade("up", 33) ) gain2 = gain2.times(upgradeEffect("up", 33))
+        return gain2
     },
 
 
