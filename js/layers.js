@@ -485,6 +485,12 @@ addLayer( "up", {
             tooltip: "(UPP+1)<sup>0.35</sup>",
 	    unlocked() { return (hasUpgrade('up', 24)) }
 	},
+  	31: {
+            title: "Upgrade 31",
+	    description: "Unlock Prestige Boosters",
+	    cost: new Decimal(1000000),
+	    unlocked() {return hasUpgrade('up', 25)},
+	},
     },
     challenges: {
         11: {
