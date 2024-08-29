@@ -366,13 +366,8 @@ addLayer( "up", {
     exponent: 0.25, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('up', 33)) mult = mult.times(upgradeEffect('up', 33))
 	return mult
-   
-           
-        let gain2 = new Decimal(1)
-	if ( hasUpgrade("up", 32) ) gain2 = gain2.plus(9)
-        if ( hasUpgrade("up", 33) ) gain2 = gain2.times(upgradeEffect("up", 33))
-        return gain2
     },
 
 
@@ -506,11 +501,11 @@ addLayer( "up", {
 	},
         33: {
             title: "Upgrade 33",
-	    description: "Boost prestige booster gain based on points",
+	    description: "Boost upgraded prestige point gain based on points",
 	    cost: new Decimal(5e8),
 	    unlocked() {return hasUpgrade('up', 32)},
 	    effect() {
-                return player.points.add(1).pow(0.01)
+                return player.points.add(1).pow(0.005)
             },
             effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
 	},
@@ -533,7 +528,8 @@ addLayer( "up", {
 			transform: "translate(0px, -15px)"
 		},
 		onClick() { 
-			let gain2 = tmp[this.layer].gainMult;
+			let gain2 = 1;
+			if(hasUpgrade('up', 32)) gain2 = 10
 			player.up.boosters = player.up.boosters.plus(gain2) 
 		},
 	} 
