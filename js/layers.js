@@ -115,10 +115,20 @@ addLayer("p", {
             title: "The Sixth Upgrade",
             description: "Multiplies point gain based on points",
             cost: new Decimal(100),
-            effect() {
-                return player.points.add(1).pow(0.125)
-            },
-            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+            effect(){
+                let expu3 = 0.125
+                let eff = player.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e6"), 0.4)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e6")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts Points by " + format(upgEffect)+"x" + softcapDescription
+	    },
             tooltip: "(points+1)<sup>0.125</sup>",
 	    unlocked() {return (hasUpgrade('p', 15))}
         },
@@ -126,10 +136,20 @@ addLayer("p", {
             title: "The Seventh Upgrade",
             description: "Multiplies point gain based on points (again but weakened)",
             cost: new Decimal(250),
-            effect() {
-                return player.points.add(1).pow(0.110)
-            },
-            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+            effect(){
+                let expu3 = 0.110
+                let eff = player.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("5e6"), 0.4)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("5e6")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts Points by " + format(upgEffect)+"x" + softcapDescription
+	    },
             tooltip: "(points+1)<sup>0.110</sup>",
 	    unlocked() {return (hasUpgrade('p', 21))}
         },
