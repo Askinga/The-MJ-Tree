@@ -37,6 +37,7 @@ addLayer("p", {
 	if (hasUpgrade('up', 11)) mult = mult.times(3)
 	if (hasMilestone('p', 3)) mult = mult.times(2.5)
 	if (hasUpgrade('up', 15)) mult = mult.times(3)
+	if (hasUpgrade('sp', 11)) mult = mult.times(10)
 	mult = mult.times(tmp.up.powerEff)
 	return mult
     },
@@ -368,6 +369,7 @@ addLayer( "up", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('up', 33)) mult = mult.times(upgradeEffect('up', 33))
+	if (hasUpgrade('sp', 11)) mult = mult.times(10)
 	return mult
     },
 
@@ -632,6 +634,11 @@ addLayer("🏆", {
             done() { return (player.up.boosters.gte(1)) },
             tooltip: "Get a Prestige Booster.",	   
         },
+        31: {
+            name: "Resetted... again",
+            done() { return (player.sp.points.gte(1)) },
+            tooltip: "Get your first super prestige point.",	   
+        },
     },
 })
 
@@ -683,4 +690,11 @@ addLayer( "sp", {
        return visible
     },
     branches:["up"],
+    upgrades: {
+	11: {
+            title: "Upgrade 36",
+	    description: "×10 previous resources",
+	    cost: new Decimal(1),
+	},
+    },
 })
