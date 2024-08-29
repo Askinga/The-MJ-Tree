@@ -36,6 +36,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 44)) mult = mult.pow(1.1)
 	if (hasUpgrade('up', 11)) mult = mult.times(3)
 	if (hasMilestone('p', 3)) mult = mult.times(2.5)
+	mult = mult.times(tmp.up.powerEff)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -345,6 +346,7 @@ addLayer( "up", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+  		boosters: new Decimal(0),
     }},
     nodeStyle: {
 	"border-radius": "100%",
@@ -372,6 +374,9 @@ addLayer( "up", {
         return new Decimal(1)
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
+    powerEff() {
+    return player.up.boosters.add(1).pow(0.5);
+    },
     hotkeys: [
         {key: "u", description: "U: Reset for upgraded prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -383,16 +388,38 @@ addLayer( "up", {
     },
     branches:["p"],
     tabFormat: {
-        "Main tab": {
+        "Upgrades": {
             content: [
                 "main-display",
                 "resource-display",
                 "prestige-button",
-                "challenges",
+                "blank",
                 "upgrades"
             ],
         },
+        "Milestones": {
+            content: [
+                "main-display",
+                "resource-display",
+                "prestige-button",
+                "blank",
+                "milestones"
+            ],
+        },
+	"Boosters": {
+          unlocked() { return (hasUpgrade('up', 31)) },
+	    content: [
+                ["display-text",
+				function() {return 'You have ' + format(player.up.boosters) + ' Prestige Boosters, which are boosting prestige points by '+'x'+format(tmp.up.powerEff)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
+					{}],
+                "resource-display",
+                "prestige-button",
+                "blank",
+                "clickables"
+            ],
+        },
     },
+    
     upgrades: {
 	11: {
             title: "Upgrade 21",
@@ -467,6 +494,20 @@ addLayer( "up", {
             goalDescription: "Buy Prestige Upgrade 10.",
             rewardDescription: "×10 points and unlock upgrade 22"
 	},
+    },
+    clickables: {
+    	11: {
+		title: "Boost the gain!",
+        	display() { return "Click to generate Prestige Boosters which boost your prestige point gain!" },
+		canClick() {return true},
+		style: {
+			transform: "translate(0px, -15px)"
+		},
+		onClick() { 
+			let gain2 = 1;
+			player.up.boosters = player.up.boosters.plus(gain2) 
+		},
+	} 
     },
 })
 
