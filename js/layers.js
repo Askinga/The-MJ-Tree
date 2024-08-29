@@ -36,6 +36,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 44)) mult = mult.pow(1.1)
 	if (hasUpgrade('up', 11)) mult = mult.times(3)
 	if (hasMilestone('p', 3)) mult = mult.times(2.5)
+	if (hasUpgrade('up', 15)) mult = mult.times(3)
 	mult = mult.times(tmp.up.powerEff)
 	return mult
     },
@@ -446,7 +447,7 @@ addLayer( "up", {
 	},
         15: {
             title: "Upgrade 25",
-	    description: "Unlock Prestige Generators",
+	    description: "Unlock Prestige Generators and ×3 prestige points",
 	    cost: new Decimal(200),
 	    unlocked() {return hasUpgrade('up', 14)},
 	},
