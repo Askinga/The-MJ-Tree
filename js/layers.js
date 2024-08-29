@@ -397,13 +397,13 @@ addLayer( "up", {
                 "upgrades"
             ],
         },
-        "Milestones": {
+        "Challenges": {
             content: [
                 "main-display",
                 "resource-display",
                 "prestige-button",
                 "blank",
-                "milestones"
+                "challenges"
             ],
         },
 	"Boosters": {
