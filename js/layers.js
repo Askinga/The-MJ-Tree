@@ -489,8 +489,14 @@ addLayer( "up", {
   	31: {
             title: "Upgrade 31",
 	    description: "Unlock Prestige Boosters",
-	    cost: new Decimal(1000000),
+	    cost: new Decimal(10000000),
 	    unlocked() {return hasUpgrade('up', 25)},
+	},
+        32: {
+            title: "Upgrade 32",
+	    description: "×10 prestige booster gain",
+	    cost: new Decimal(1e8),
+	    unlocked() {return hasUpgrade('up', 31)},
 	},
     },
     challenges: {
@@ -512,6 +518,7 @@ addLayer( "up", {
 		},
 		onClick() { 
 			let gain2 = 1;
+			if(hasUpgrade('up', 31)) gain2 = 10;
 			player.up.boosters = player.up.boosters.plus(gain2) 
 		},
 	} 
@@ -589,6 +596,16 @@ addLayer("🏆", {
             name: "The Automation Era",
             done() { return (player.p.gens.gte(1)) },
             tooltip: "Get a Prestige Generator.",	   
+        },
+        25: {
+            name: "Reset ❌ Wait ✅",
+            done() { return (player.p.gens.gte(5000)) },
+            tooltip: "Get 5000 Prestige Generators.",	   
+        },
+        26: {
+            name: "Click = More",
+            done() { return (player.up.boosters.gte(1)) },
+            tooltip: "Get a Prestige Booster.",	   
         },
     },
 })
