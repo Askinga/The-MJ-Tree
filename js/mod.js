@@ -13,24 +13,33 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1.1",
-	name: "Frozenless",
+	num: "0.2.0",
+	name: "The grind continues...",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-            	<h3>v0.1.1</h3><br>
+            	<h3>v0.2.0</h3><br>
+		- Added 16 upgrades<br>
+		- Added 1 milestones.<br>
+  		- Added 1 layer.<br>
+    		- Added the achievements layer.<br>
+      		- Added 13 achievements.<br>
+		- Added Prestige Generators and Boosters.<br>
+	     
+      
+      		<h3>v0.1.1</h3><br>
 		- Fixed a bug where the game is partially frozen<br>
     		- Changed the font to original<br>
 	     
       
-      		<h3>v0.1</h3><br>
+      		<h3>v0.1.0</h3><br>
 		- Added 21 upgrades<br>
 		- Added 2 milestones.<br>
   		- Added 1 layer.<br>
     		- Changed the font.<br>
 	
 	     
-		<h3>v0.0</h3><br>
+		<h3>v0.0.0</h3><br>
 		- Added things.<br>
 		- Added stuff.`
 
