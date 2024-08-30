@@ -2,6 +2,23 @@ addLayer("p", {
     name: "prestige", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "P0", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    doReset(p) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[p].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	if (hasUpgrade('sp', 12)) keep.push("upgrades");
+    
+        // Stage 4, do the actual data reset
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
@@ -695,6 +712,11 @@ addLayer( "sp", {
             title: "Upgrade 36",
 	    description: "×10 previous resources",
 	    cost: new Decimal(1),
+	},
+        12: {
+            title: "Upgrade 37",
+	    description: "Keep your Prestige Upgrades!",
+	    cost: new Decimal(2),
 	},
     },
 })
