@@ -754,7 +754,7 @@ addLayer( "sp", {
 	},
         13: {
             title: "Upgrade 38",
-	    description: "×10 points every upgrade starting from this upgrade!",
+	    description: "×10 points every upgrade starting from this upgrade! And x100 points",
 	    cost: new Decimal(3),
 	    unlocked() {return hasUpgrade('sp', 12)},
 	},
