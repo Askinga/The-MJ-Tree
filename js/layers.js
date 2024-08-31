@@ -731,7 +731,7 @@ addLayer( "sp", {
           unlocked() { return (hasUpgrade('sp', 15)) },
 	    content: [
                 ["display-text",
-				function() {return 'You have ' + format(player.sp.superpoints) + ' Super Points, gaining ' + format(player.sp.superpoints) + ' super points per second and are boosting points by '+'x'+format(tmp.sp.powerEff)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
+				function() {return 'You have ' + format(player.sp.superpoints) + ' Super Points, gaining ' + format(player.sp.superpointsgain) + ' super points per second and are boosting points by '+'x'+format(tmp.sp.powerEff)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
 					{}],
                 "resource-display",
                 "prestige-button",
@@ -772,7 +772,7 @@ addLayer( "sp", {
 	},
     },
     update(diff) {
-        if (hasUpgrade("MU", 11)) {
+        if (hasUpgrade("sp", 15)) {
             let gain = new Decimal(1)
             
             // statements above this line
