@@ -717,6 +717,25 @@ addLayer( "sp", {
             title: "Upgrade 37",
 	    description: "Keep your Prestige Upgrades!",
 	    cost: new Decimal(2),
+	    unlocked() {return hasUpgrade('sp', 11)},
+	},
+        13: {
+            title: "Upgrade 38",
+	    description: "×10 points every upgrade starting from this upgrade!",
+	    cost: new Decimal(3),
+	    unlocked() {return hasUpgrade('sp', 12)},
+	},
+        14: {
+            title: "Upgrade 39",
+	    description: "×25 × 10 points",
+	    cost: new Decimal(5),
+	    unlocked() {return hasUpgrade('sp', 13)},
+	},
+        15: {
+            title: "Upgrade 40",
+	    description: "Unlock Super Points (not yet) and ×10 points",
+	    cost: new Decimal(10),
+	    unlocked() {return hasUpgrade('sp', 14)},
 	},
     },
 })
