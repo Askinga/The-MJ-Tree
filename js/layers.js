@@ -667,6 +667,7 @@ addLayer( "sp", {
         unlocked: false,
 		points: new Decimal(0),
   		superpoints: new Decimal(0),
+                superpointsgain: new Decimal(0),
     }},
     nodeStyle: {
 	"border-radius": "100%",
@@ -707,6 +708,38 @@ addLayer( "sp", {
        return visible
     },
     branches:["up"],
+    tabFormat: {
+        "Upgrades": {
+            content: [
+                "main-display",
+                "resource-display",
+                "prestige-button",
+                "blank",
+                "upgrades"
+            ],
+        },
+        "Challenges": {
+            content: [
+                "main-display",
+                "resource-display",
+                "prestige-button",
+                "blank",
+                "challenges"
+            ],
+        },
+	"Super Points": {
+          unlocked() { return (hasUpgrade('sp', 15)) },
+	    content: [
+                ["display-text",
+				function() {return 'You have ' + format(player.sp.superpoints) + ' Super Points, gaining ' + format(player.sp.superpoints) + ' super points per second and are boosting points by '+'x'+format(tmp.sp.powerEff)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
+					{}],
+                "resource-display",
+                "prestige-button",
+                "blank",
+                "clickables"
+            ],
+        },
+    },
     upgrades: {
 	11: {
             title: "Upgrade 36",
@@ -733,9 +766,19 @@ addLayer( "sp", {
 	},
         15: {
             title: "Upgrade 40",
-	    description: "Unlock Super Points (not yet) and ×10 points",
+	    description: "Unlock Super Points and ×10 points",
 	    cost: new Decimal(10),
 	    unlocked() {return hasUpgrade('sp', 14)},
 	},
+    },
+    update(diff) {
+        if (hasUpgrade("MU", 11)) {
+            let gain = new Decimal(1)
+            
+            // statements above this line
+            player.sp.superpointsgain = gain
+            gain = gain.times(diff)
+            player.sp.superpoints = player.sp.superpoints.add(gain)
+        }
     },
 })
