@@ -86,6 +86,7 @@ function getPointGen() {
 	if (hasUpgrade('sp', 13)) gain = gain.times(1000)
 	if (hasUpgrade('sp', 14)) gain = gain.times(250)
 	if (hasUpgrade('sp', 15)) gain = gain.times(10)
+	gain = gain.times(tmp.sp.powerEff)
 	return gain
 }
 
