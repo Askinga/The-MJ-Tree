@@ -11,7 +11,7 @@ addLayer("p", {
         
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
-	if (hasUpgrade('sp', 12)) keep.push("upgrades");
+	if (hasUpgrade('sp', 12) && !inChallenge('sp', 11)) keep.push("upgrades");
     
         // Stage 4, do the actual data reset
         layerDataReset(this.layer, keep);
@@ -778,7 +778,7 @@ addLayer( "sp", {
     challenges: {
         11: {
             name: "Challenge P2",
-            challengeDescription: "^0.1 points.",
+            challengeDescription: "^0.1 points and keep prestige upgrades is disabled.",
             canComplete: function() {return hasUpgrade('p', 45)},
             goalDescription: "Buy Prestige Upgrade 20.",
             rewardDescription: "×1e6 points"
