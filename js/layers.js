@@ -696,7 +696,7 @@ addLayer( "sp", {
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     powerEff() {
-    return player.sp.superpoints.add(1).pow(1.25);
+    return player.sp.superpoints.add(1).pow(0.75);
     },
     hotkeys: [
         {key: "s", description: "S: Reset for super prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -769,6 +769,15 @@ addLayer( "sp", {
 	    description: "Unlock Super Points and ×10 points",
 	    cost: new Decimal(10),
 	    unlocked() {return hasUpgrade('sp', 14)},
+	},
+    },
+    challenges: {
+        11: {
+            name: "Challenge P2",
+            challengeDescription: "^0.1 points.",
+            canComplete: function() {return hasUpgrade('p', 45)},
+            goalDescription: "Buy Prestige Upgrade 20.",
+            rewardDescription: "×1e6 points"
 	},
     },
     update(diff) {
