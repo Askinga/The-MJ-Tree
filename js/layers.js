@@ -696,7 +696,7 @@ addLayer( "sp", {
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     powerEff() {
-    return player.sp.superpoints.add(1).pow(0.25);
+    return player.sp.superpoints.add(1).pow(1.25);
     },
     hotkeys: [
         {key: "s", description: "S: Reset for super prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
