@@ -220,10 +220,20 @@ addLayer("p", {
             title: "Upgrade 12",
 	    description: "Boost point gain based on prestige points",
 	    cost: new Decimal(6500),
-	    effect() {
-                return player.p.points.add(1).pow(0.2)
-            },
-            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+	    effect(){
+                let expu3 = 0.2
+                let eff = player.p.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e25"), 0.5)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e25")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts Points by " + format(upgEffect)+"x" + softcapDescription
+	    },
             tooltip: "(prestigepoints+1)<sup>0.2</sup>",
 	    unlocked() { return (hasUpgrade('p', 31)) }
 	},
@@ -770,9 +780,41 @@ addLayer( "sp", {
 	},
         15: {
             title: "Upgrade 40",
-	    description: "Unlock Super Points and ×10 points",
+	    description: "Unlock Super Points",
 	    cost: new Decimal(10),
 	    unlocked() {return hasUpgrade('sp', 14)},
+	},
+        21: {
+            title: "Mult",
+            description: "×2 super point gain",
+            cost: new Decimal(15),
+	    currencyDisplayName: "Super Points",
+            currencyInternalName: "superpoints",
+            currencyLayer: "sp",
+            unlocked() {return hasUpgrade("sp", 15)}
+	},
+        22: {
+            title: "Boost",
+            description: "Boost super points based on upgraded prestige points",
+            cost: new Decimal(35),
+	    currencyDisplayName: "Super Points",
+            currencyInternalName: "superpoints",
+            currencyLayer: "sp",
+            effect() {
+                return player.up.points.add(1).pow(0.025)
+            },
+            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+	    tooltip: "(UPP+1)<sup>0.025</sup>",
+	    unlocked() {return hasUpgrade("sp", 21)}
+	},
+        23: {
+            title: "The boost of points",
+            description: "×100 × 10 point gain",
+            cost: new Decimal(100),
+	    currencyDisplayName: "Super Points",
+            currencyInternalName: "superpoints",
+            currencyLayer: "sp",
+            unlocked() {return hasUpgrade("sp", 22)}
 	},
     },
     challenges: {
@@ -787,7 +829,9 @@ addLayer( "sp", {
     update(diff) {
         if (hasUpgrade("sp", 15)) {
             let gain = new Decimal(1)
-            
+	    if (hasUpgrade('sp', 21)) gain = gain.times(2)
+	    if (hasUpgrade('sp', 22)) gain = gain.times(upgradeEffect('sp', 22))
+		
             // statements above this line
             player.sp.superpointsgain = gain
             gain = gain.times(diff)
