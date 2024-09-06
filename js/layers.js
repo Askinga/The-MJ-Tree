@@ -844,7 +844,7 @@ addLayer( "sp", {
             },
             effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
 	    tooltip: "(points+1)<sup>0.0005</sup>",
-	    unlocked() {return hasUpgrade("sp", 24)}
+	    unlocked() {return hasUpgrade("sp", 23)}
 	},
         25: {
             title: "Upgrade 45",
@@ -853,7 +853,7 @@ addLayer( "sp", {
 	    currencyDisplayName: "Super Points",
             currencyInternalName: "superpoints",
             currencyLayer: "sp",
-            unlocked() {return hasUpgrade("sp", 22)}
+            unlocked() {return hasUpgrade("sp", 24)}
 	},
     },
     challenges: {
