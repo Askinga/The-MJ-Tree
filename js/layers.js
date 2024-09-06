@@ -840,10 +840,10 @@ addLayer( "sp", {
             currencyInternalName: "superpoints",
             currencyLayer: "sp",
 	    effect() {
-                return player.points.add(1).pow(0.001)
+                return player.points.add(1).pow(0.0025)
             },
             effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
-	    tooltip: "(points+1)<sup>0.001</sup>",
+	    tooltip: "(points+1)<sup>0.0025</sup>",
             unlocked() {return hasUpgrade('sp', 23)},
         },
         25: {
@@ -870,7 +870,7 @@ addLayer( "sp", {
             title: "First buyable!",
             unlocked() { return (hasUpgrade('sp', 25)) },
             cost(x) {
-                let exp2 = new Decimal(1.1)
+                let exp2 = new Decimal(1.075)
                 return new Decimal(1000).mul(Decimal.pow(1.15, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
             },
             display() {
