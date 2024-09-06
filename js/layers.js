@@ -834,17 +834,16 @@ addLayer( "sp", {
 	},
         24: {
             title: "Upgrade 44",
-            description: function() {return `Boost Super Points based on points`},
+            description: "Points boost super points",
             cost: new Decimal(200),
             currencyDisplayName: "Super Points",
             currencyInternalName: "superpoints",
             currencyLayer: "sp",
 	    effect() {
-                x = player[this.layer].points
-                return Decimal.pow(1.5, Decimal.log(x.add(1), 1e100))
+                return player.points.add(1).pow(0.001)
             },
-            effectDisplay() {return `${formatX(upgradeEffect(this.layer, this.id))}`},
-            tooltip: () => `Effect: 1.5${superscript("log"+subscript("1e100", "#fff")+"(points + 1)","#fff")}`,
+            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+	    tooltip: "(points+1)<sup>0.001</sup>",
             unlocked() {return hasUpgrade('sp', 23)},
         },
         25: {
