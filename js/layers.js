@@ -742,15 +742,31 @@ addLayer( "sp", {
             ],
         },
 	"Super Points": {
+          unlocked() { return (hasUpgrade('sp', 25)) },
+	    content: [
+                "main-display",
+		"blank",
+		["display-text",
+				function() {return 'You have ' + format(player.sp.superpoints) + ' Super Points, gaining ' + format(player.sp.superpointsgain) + ' super points per second and are boosting points by '+'x'+format(tmp.sp.powerEff)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
+					{}],
+		"resource-display",
+                "prestige-button",
+                "blank",
+                "clickables"
+            ],
+        },
+        "Buyables": {
           unlocked() { return (hasUpgrade('sp', 15)) },
 	    content: [
-                ["display-text",
+                "main-display",
+		"blank",
+		["display-text",
 				function() {return 'You have ' + format(player.sp.superpoints) + ' Super Points, gaining ' + format(player.sp.superpointsgain) + ' super points per second and are boosting points by '+'x'+format(tmp.sp.powerEff)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
 					{}],
                 "resource-display",
                 "prestige-button",
                 "blank",
-                "clickables"
+                "buyables"
             ],
         },
     },
@@ -785,7 +801,7 @@ addLayer( "sp", {
 	    unlocked() {return hasUpgrade('sp', 14)},
 	},
         21: {
-            title: "Mult",
+            title: "Upgrade 41",
             description: "×2 super point gain",
             cost: new Decimal(15),
 	    currencyDisplayName: "Super Points",
@@ -794,7 +810,7 @@ addLayer( "sp", {
             unlocked() {return hasUpgrade("sp", 15)}
 	},
         22: {
-            title: "Boost",
+            title: "Upgrade 42",
             description: "Boost super points based on upgraded prestige points",
             cost: new Decimal(35),
 	    currencyDisplayName: "Super Points",
@@ -808,9 +824,32 @@ addLayer( "sp", {
 	    unlocked() {return hasUpgrade("sp", 21)}
 	},
         23: {
-            title: "The boost of points",
+            title: "Upgrade 43",
             description: "×100 × 10 point gain",
             cost: new Decimal(100),
+	    currencyDisplayName: "Super Points",
+            currencyInternalName: "superpoints",
+            currencyLayer: "sp",
+            unlocked() {return hasUpgrade("sp", 22)}
+	},
+        24: {
+            title: "Upgrade 44",
+            description: "Points boost super points",
+            cost: new Decimal(200),
+	    currencyDisplayName: "Super Points",
+            currencyInternalName: "superpoints",
+            currencyLayer: "sp",
+            effect() {
+                return player.points.add(1).pow(0.0005)
+            },
+            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+	    tooltip: "(points+1)<sup>0.0005</sup>",
+	    unlocked() {return hasUpgrade("sp", 24)}
+	},
+        25: {
+            title: "Upgrade 45",
+            description: "Unlock a buyable and a new tab",
+            cost: new Decimal(500),
 	    currencyDisplayName: "Super Points",
             currencyInternalName: "superpoints",
             currencyLayer: "sp",
@@ -826,13 +865,43 @@ addLayer( "sp", {
             rewardDescription: "×1e6 points"
 	},
     },
+    buyables: {
+        11: {
+            title: "First buyable!",
+            unlocked() { return (hasUpgrade('sp', 25)) },
+            cost(x) {
+                let exp2 = new Decimal(1.1)
+                return new Decimal(1000).mul(Decimal.pow(1.15, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
+            },
+            display() {
+                return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Super Points." + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Super Points gain by x" + format(buyableEffect(this.layer, this.id))
+            },
+            canAfford() {
+                return player.sp.superpoints.gte(this.cost())
+            },
+            buy() {
+                let cost = new Decimal(1)
+                player.sp.superpoints = player.sp.superpoints.sub(this.cost().mul(cost))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            effect(x) {
+                let base1 = new Decimal(2)
+                let base2 = x
+                let expo = new Decimal(1)
+                let eff = base1.pow(Decimal.pow(base2, expo))
+                return eff
+            },
+        },
+    },
     update(diff) {
         if (hasUpgrade("sp", 15)) {
             let gain = new Decimal(1)
+	    gain = gain.times(buyableEffect('sp', 11))
 	    if (hasUpgrade('sp', 21)) gain = gain.times(2)
 	    if (hasUpgrade('sp', 22)) gain = gain.times(upgradeEffect('sp', 22))
-		
-            // statements above this line
+	    if (hasUpgrade('sp', 24)) gain = gain.times(upgradeEffect('sp', 24))
+            
+	    // statements above this line
             player.sp.superpointsgain = gain
             gain = gain.times(diff)
             player.sp.superpoints = player.sp.superpoints.add(gain)
