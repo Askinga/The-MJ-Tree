@@ -863,7 +863,7 @@ addLayer( "sp", {
             currencyInternalName: "superpoints",
             currencyLayer: "sp",
 	    effect() {
-                return player.points.add(1).pow(0.15)
+                return player.sp.superpoints.add(1).pow(0.15)
             },
             effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
 	    tooltip: "(SP+1)<sup>0.15</sup>",
