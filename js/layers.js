@@ -855,7 +855,21 @@ addLayer( "sp", {
             currencyLayer: "sp",
             unlocked() {return hasUpgrade("sp", 24)}
 	},
-    },
+       	31: {
+            title: "Upgrade 46",
+            description: "Super points boost super points",
+            cost: new Decimal(200),
+            currencyDisplayName: "Super Points",
+            currencyInternalName: "superpoints",
+            currencyLayer: "sp",
+	    effect() {
+                return player.points.add(1).pow(0.15)
+            },
+            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+	    tooltip: "(SP+1)<sup>0.15</sup>",
+            unlocked() {return hasUpgrade('sp', 25}},
+        },
+},
     challenges: {
         11: {
             name: "Challenge P2",
@@ -900,6 +914,7 @@ addLayer( "sp", {
 	    if (hasUpgrade('sp', 21)) gain = gain.times(2)
 	    if (hasUpgrade('sp', 22)) gain = gain.times(upgradeEffect('sp', 22))
 	    if (hasUpgrade('sp', 24)) gain = gain.times(upgradeEffect('sp', 24))
+     if (hasUpgrade('sp', 31)) gain = gain.times(upgradeEffect('sp', 31))
             
 	    // statements above this line
             player.sp.superpointsgain = gain
