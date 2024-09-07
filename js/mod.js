@@ -1,13 +1,13 @@
 let modInfo = {
-	name: "The Clicking Tree",
-	id: "mymod20",
-	author: "Askinga",
+	name: "The ??? Tree",
+	id: "mymod",
+	author: "nobody",
 	pointsName: "points",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (0), // Used for hard resets and new players
+	initialStartPoints: new Decimal (10), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
@@ -18,9 +18,9 @@ let VERSION = {
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-		<h3>v0.0</h3><br>
-	Added things<br>
-  Added stuff`
+	<h3>v0.0</h3><br>
+		- Added things.<br>
+		- Added stuff.`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -43,10 +43,6 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
-	gain = gain.times(buyableEffect('p', 11))
-	if (hasUpgrade('p', 12)) gain = gain.times(5)
-	gain = gain.pow(buyableEffect('p', 13))
-	gain = gain.times(buyableEffect('sc', 11))
 	return gain
 }
 
@@ -60,7 +56,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return (player.p.points.gte(1))
+	return player.points.gte(new Decimal("e280000000"))
 }
 
 
