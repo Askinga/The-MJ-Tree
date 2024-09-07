@@ -867,9 +867,9 @@ addLayer( "sp", {
             },
             effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
 	    tooltip: "(SP+1)<sup>0.15</sup>",
-            unlocked() {return hasUpgrade('sp', 25}},
+            unlocked() {return hasUpgrade('sp', 25)},
         },
-},
+    },
     challenges: {
         11: {
             name: "Challenge P2",
