@@ -858,7 +858,7 @@ addLayer( "sp", {
        	31: {
             title: "Upgrade 46",
             description: "Super points boost super points",
-            cost: new Decimal(200),
+            cost: new Decimal(5000),
             currencyDisplayName: "Super Points",
             currencyInternalName: "superpoints",
             currencyLayer: "sp",
