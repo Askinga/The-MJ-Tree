@@ -133,7 +133,7 @@ addLayer("p", {
 	},
         21: {
             title: "The Sixth Upgrade",
-            description: "Multiplies point gain based on points",
+            description: function() {return `<br> Boost your <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> based on points `},
             cost: new Decimal(100),
             effect(){
                 let expu3 = 0.125
@@ -154,7 +154,7 @@ addLayer("p", {
         },
         22: {
             title: "The Seventh Upgrade",
-            description: "Multiplies point gain based on points (again but weakened)",
+            description: function() {return `<br>Boost your <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> based on points (weaker 1)`},
             cost: new Decimal(250),
             effect(){
                 let expu3 = 0.110
@@ -175,7 +175,7 @@ addLayer("p", {
         },
         23: {
             title: "The Eighth Upgrade",
-            description: "Multiplies point gain based on points (again but weakened 2) and ×2.5 prestige points",
+            description: function() {return `<br>Boost your <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> based on points (weaker 2)`},
             cost: new Decimal(400),
             effect() {
                 return player.points.add(1).pow(0.095)
@@ -186,7 +186,7 @@ addLayer("p", {
         },
         24: {
             title: "The Ninth Upgrade",
-            description: "Multiplies point gain based on points (again but weakened 3)",
+            description: function() {return `<br> Boost your <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> based on points (weaker 3)`},
             cost: new Decimal(750),
             effect() {
                 return player.points.add(1).pow(0.08)
@@ -197,7 +197,7 @@ addLayer("p", {
         },
         25: {
             title: "The Tenth Upgrade",
-            description: "Multiplies point gain based on points (again but weakened 4)",
+            description: function() {return `<br> Boost your <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> based on points (weaker 4)`},
             cost: new Decimal(1500),
             effect(){
     	    let rpow = 0.065
@@ -218,7 +218,7 @@ addLayer("p", {
 	},
         32: {
             title: "Upgrade 12",
-	    description: "Boost point gain based on prestige points",
+	    description: function() {return `<br>Boost your <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> based on <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span>`},
 	    cost: new Decimal(6500),
 	    effect(){
                 let expu3 = 0.2
