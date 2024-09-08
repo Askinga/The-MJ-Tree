@@ -957,7 +957,7 @@ addLayer("📈", {
                     }
                     return result;
                 }
-	        return "<h3>Big text</h3> means that something is dynamic<br><span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">Colored text with a shadow</span> mean layers/layer points<br>There are currently 7 colors that mean something:<br><span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">Points</span><br><span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">" + (player.p.points.gte(1) || hasUpgrade('p', 11) player.up.points.gte(1) || hasUpgrade('up', 11) || player.sp.points.gte(1) || hasUpgrade('sp', 11) ? "Prestige" : makeid(8)) + " layer</span>" },
+	        return "<h3>Big text</h3> means that something is dynamic<br><span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">Colored text with a shadow</span> mean layers/layer points<br>There are currently 7 colors that mean something:<br><span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">Points</span><br><span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">" + (player.p.points.gte(1) || hasUpgrade('p', 11) || player.up.points.gte(1) || hasUpgrade('up', 11) || player.sp.points.gte(1) || hasUpgrade('sp', 11) ? "Prestige" : makeid(8)) + " layer</span>" },
       	}
     },
 })
