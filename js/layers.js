@@ -935,7 +935,7 @@ addLayer("📈", {
         return ("Stats")
     },
     tabFormat: {
-        "All layers": {
+        "Help": {
             content: [
                 "blank",
 	        ["infobox", "help"],
@@ -944,7 +944,7 @@ addLayer("📈", {
     },
     infoboxes: {
         help: {
-            title: "Layers",
+            title: "Help",
             body() {
                 function makeid(length) {
                     let result = '';
