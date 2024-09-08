@@ -104,36 +104,36 @@ addLayer("p", {
     upgrades: {
 	11: {
             title: "The first upgrade",
-	    description: "Double point gain and ×1.1 prestige points",
+	    description: function() {return `<br>×2 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> and ×1.1 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span>`},
 	    cost: new Decimal(1),
 	},
         12: {
             title: "The second upgrade",
-	    description: "×1.5 point gain and ×1.2 prestige points",
+	    description: function() {return `<br>×1.5 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> and ×1.2 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span>`},
 	    cost: new Decimal(3),
 	    unlocked() { return (hasUpgrade('p', 11)) }
 	},
         13: {
             title: "The third upgrade",
-	    description: "×2 point gain and ×1.3 prestige points",
+	    description: function() {return `<br>×2 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> and ×1.3 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span>`},
 	    cost: new Decimal(5),
 	    unlocked() { return (hasUpgrade('p', 12)) }
 	},
         14: {
             title: "The forth upgrade",
-	    description: "×2.5 point gain and ×1.4 prestige points",
+	    description: function() {return `<br>×2.5 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> and ×1.4 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span>`},
 	    cost: new Decimal(12),
 	    unlocked() { return (hasUpgrade('p', 13)) }
 	},
   	15: {
             title: "The fifth upgrade",
-	    description: "×3 point gain and ×1.5 prestige points",
+	    description: function() {return `<br>×3 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> and ×1.5 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span>`},
 	    cost: new Decimal(30),
 	    unlocked() { return (hasUpgrade('p', 14)) }
 	},
         21: {
             title: "The Sixth Upgrade",
-            description: function() {return `<br> Boost your <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> based on points `},
+            description: function() {return `<br> Boost your <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\"><h3>points</h3></span><br> based on points `},
             cost: new Decimal(100),
             effect(){
                 let expu3 = 0.125
