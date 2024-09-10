@@ -24,6 +24,6 @@ addLayer("SCH", {
     hotkeys: [
         {key: "S", description: "Shift+S: Reset for MJ Schools", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true},
+    layerShown(){return hasChallenge('SAC', 21},
     branches:["SAC"]
 })
