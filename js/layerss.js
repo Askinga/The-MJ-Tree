@@ -3,7 +3,7 @@ addLayer("SCH", {
     symbol: "Sch", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
-        unlocked: true,
+        unlocked: false,
 		points: new Decimal(0),
     }},
     color: "#FFFFFF",
@@ -24,6 +24,6 @@ addLayer("SCH", {
     hotkeys: [
         {key: "S", description: "Shift+S: Reset for MJ Schools", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return hasChallenge('SAC', 21},
+    layerShown(){return hasChallenge('SAC', 21)},
     branches:["SAC"]
 })
