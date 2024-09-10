@@ -20,10 +20,15 @@ addLayer("SCH", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 6, // Row the layer is in on the tree (0 is the first row)
+    row: 5, // Row the layer is in on the tree (0 is the first row)
+    displayRow: 7,
     hotkeys: [
         {key: "S", description: "Shift+S: Reset for MJ Schools", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return hasChallenge('SAC', 21)},
-    branches:["SAC"]
+    layerShown(){
+        let visible = false
+        if (hasChallenge('SAC', 21) || player.SCH.unlocked) visible = true
+       return visible
+},
+    branches:["SAC", "GLA"]
 })
