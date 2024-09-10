@@ -13,12 +13,12 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "2.2.0",
-	name: "Sanas challenges?",
+	num: "PREVIEW 2.3.0",
+	name: "It's time to learn",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v2.2.0</h3><br>
+	<h3>v2.3.0</h3><br>
 		- More updates soon! Endgame: Beat Sanas Challenge 10.<br>
 		- Added Sanas challenges, Added 10 challenges, Added 4 achievements. Some challenges have you wait, grind and tetrate your MJ gain!<br>
                 - Check back here for more updates! Full changelog at <a href=https://galaxy.click/updates/355>galaxy.click/updates/355</a>`
