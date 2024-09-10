@@ -12,7 +12,7 @@ addLayer("SCH", {
     baseResource: "MJs", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.000001, // Prestige currency exponent
+    exponent: 0.00000001, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -20,7 +20,7 @@ addLayer("SCH", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 5, // Row the layer is in on the tree (0 is the first row)
+    row: 6, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "S", description: "Shift+S: Reset for MJ Schools", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
