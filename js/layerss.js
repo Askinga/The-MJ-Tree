@@ -6,7 +6,7 @@ addLayer("SCH", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#FFFFFF",
+    color: "#ffbf00",
     requires: new Decimal("e26081500"), // Can be a function that takes requirement increases into account
     resource: "MJ Schools", // Name of prestige currency
     baseResource: "MJs", // Name of resource prestige is based on
