@@ -5,6 +5,8 @@ addLayer("SCH", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+    		students: new Decimal(0),
+    		thoughts: new Decimal(0),
     }},
     color: "#ffbf00",
     requires: new Decimal("e26081500"), // Can be a function that takes requirement increases into account
