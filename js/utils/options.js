@@ -14,6 +14,7 @@ function getStartOptions() {
 		forceOneTab: false,
 		oldStyle: false,
 		tooltipForcing: true,
+	        formatting: "default",
 	}
 }
 
@@ -75,4 +76,17 @@ function milestoneShown(layer, id) {
 			break;
 	}
 	return false;
+}
+
+function format(decimal, precision = 2) {
+	switch (options.formatting) {
+		case "default":
+			return defaultFormat(decimal, precision);
+		case "infinity":
+			return infFormat(decimal);
+		case "exponent":
+			return eFormat(decimal);
+		case "blind":
+			return "";
+	}
 }
