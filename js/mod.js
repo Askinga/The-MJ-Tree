@@ -41,7 +41,7 @@ function canGenPoints(){
 // Calculate points/sec!
 function getPointGen() {
 	if(!canGenPoints())
-		return new Decimal(0)
+		return new Decimal("e100000")
 
 	let gain = new Decimal(1)
 	if (layers.Bo.effect().gte(1)) gain = gain.times(layers.Bo.effect())
