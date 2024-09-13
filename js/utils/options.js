@@ -24,13 +24,15 @@ function toggleOpt(name) {
 
 	options[name] = !options[name];
 	if (name == "hqTree")
-		changeTreeQuality();
+		changeTreeQuality()
+	        return;
 	if (name == "formatting") {
 		changeFormat()
 		return;
 	}
 	if (name == "oldStyle")
-		updateStyle();
+		updateStyle()
+	        return;
 }
 var styleCooldown = 0;
 function updateStyle() {
