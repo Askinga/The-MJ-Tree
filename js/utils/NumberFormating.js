@@ -30,6 +30,19 @@ function regularFormat(num, precision) {
     return num.toStringWithDecimalPlaces(precision)
 }
 
+function infFormat(decimal) {
+    decimal = new Decimal(decimal)
+    if (decimal.lt(new Decimal(2).pow(1024))) {
+        return defaultFormat(decimal)
+    }
+    if (decimal.lt(new Decimal(2).pow(1024).pow(1e6))) {
+        return defaultFormat(decimal.div(new Decimal(2).pow(1024).pow(decimal.log(new Decimal(2).pow(1024)).floor()))) + "+(" + defaultFormat(decimal.log(new Decimal(2).pow(1024)).floor()) + ")∞"
+    }
+    if (decimal.lt(new Decimal(2).pow(1024).tetrate(10))) {
+        return infFormat(decimal.log(new Decimal(2).pow(1024)).floor()) + "∞"
+    }
+    return "∞^(" + decimal.slog(new Decimal(2).pow(1024)) + ")"
+}
 function fixValue(x, y = 0) {
     return x || new Decimal(y)
 }
