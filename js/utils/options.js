@@ -94,3 +94,20 @@ function format(decimal, precision = 2) {
 			return "";
 	}
 }
+
+function changeFormat() {
+	switch (options.formatting) {
+		case "default":
+			options.formatting = "infinity";
+			break;
+		case "infinity":
+			options.formatting = "exponent";
+			break;
+		case "exponent":
+			options.formatting = "blind";
+			break;
+		case "blind":
+			options.formatting = "standard";
+			break;
+	}
+}
