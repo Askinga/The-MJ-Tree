@@ -47,6 +47,12 @@ function fixValue(x, y = 0) {
     return x || new Decimal(y)
 }
 
+function eFormat(decimal) {
+    decimal = new Decimal(decimal)
+    if (decimal.lt("1e1000")) return exponentialFormat(decimal, 2)
+    return "e"+eFormat(decimal.log10().floor())
+}
+
 function sumValues(x) {
     x = Object.values(x)
     if (!x[0]) return decimalZero
