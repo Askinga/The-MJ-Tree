@@ -25,6 +25,10 @@ function toggleOpt(name) {
 	options[name] = !options[name];
 	if (name == "hqTree")
 		changeTreeQuality();
+	if (name == "formatting") {
+		changeFormat()
+		return;
+	}
 	if (name == "oldStyle")
 		updateStyle();
 }
