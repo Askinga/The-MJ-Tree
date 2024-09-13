@@ -21,15 +21,16 @@ function getStartOptions() {
 function toggleOpt(name) {
 	if (name == "oldStyle" && styleCooldown > 0)
 		return;
+	if (name == "formatting") {
+		changeFormat()
+		return;
+	}
 
 	options[name] = !options[name];
 	if (name == "hqTree")
 		changeTreeQuality()
 	        return;
-	if (name == "formatting") {
-		changeFormat()
-		return;
-	}
+	
 	if (name == "oldStyle")
 		updateStyle()
 	        return;
