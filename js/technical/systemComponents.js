@@ -173,7 +173,8 @@ var systemComponents = {
 				</tr> 
        	     <tr>
 	        <td><button class="opt" onclick="toggleOpt('formatting'); needsCanvasUpdate = true">Formatting: {{ options.formatting }}</button></td>
-	</table>`
+	     </tr>
+ 	</table>`
     },
 
     'back-button': {
