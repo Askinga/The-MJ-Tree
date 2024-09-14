@@ -129,3 +129,40 @@ function invertOOM(x){
 
     return x
 }
+
+function standardFormat(decimal) {
+    first = ["", "k", "M", "B"]
+    symbols = [
+        [
+            "", "U", "D", "T", "Q", "q", "S", "s", "O", "N"
+        ],
+        [
+            "", "Dc", "Vg", "Tg", "Qg", "qg", "Sg", "sg", "Og", "Ng"
+        ],
+        [
+            "", "C", "Du", "Tc", "Qc", "qc", "Sc", "sc", "Oc", "Nc"
+        ],
+    ]
+    decimal = new Decimal(decimal)
+    if (decimal.eq(0)) return "0"
+    e = decimal.log10().div(3).floor().clampMin(0)
+    prefix = ""
+    if (first[e] != undefined) { prefix = first[e] } else {
+        decimal = decimal.div(1000)
+        e = decimal.log10().div(3).floor().clampMin(0)
+        prefix += symbols[0][e.div(10000).floor().mod(10)]
+        prefix += symbols[1][e.div(100000).floor().mod(10)]
+        prefix += symbols[2][e.div(1000000).floor().mod(10)]
+        prefix += e.div(1000).floor().mod(10).neq(0) ? "Mi" : ""
+        prefix += symbols[0][e.mod(10)]
+        prefix += symbols[1][e.div(10).floor().mod(10)]
+        prefix += symbols[2][e.div(100).floor().mod(10)]
+    }
+    return (e.lt(3000) ? defaultFormat(decimal.div(new Decimal(10).pow(e.times(3)))) : "1") + prefix
+}
+
+setInterval(function() {
+    if (document.getElementById("tout") != undefined) {
+        document.getElementById("tout").innerHTML = format(document.getElementById("tester").value)
+    }
+})
