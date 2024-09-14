@@ -15,6 +15,10 @@ function getStartOptions() {
 		oldStyle: false,
 		tooltipForcing: true,
 		formatting: "default",
+		addictionMode: false,
+		disabledTextFlickering: false,
+		maxTickLen: "1h",
+		disabledTextColorChange: false
 	}
 }
 
@@ -37,7 +41,10 @@ function toggleOpt(name) {
 		changeFormat()
 		return;
 	}
-	
+	if (name == "maxTickLen") {
+		changeMTL()
+		return;
+	}
 	options[name] = !options[name];
 	if (name == "hqTree")
 		changeTreeQuality();
@@ -67,6 +74,12 @@ function changeFormat() {
 			options.formatting = "exponent";
 			break;
 		case "exponent":
+			options.formatting = "blind";
+			break;
+		case "blind":
+			options.formatting = "standard";
+			break;
+		case "standard":
 			options.formatting = "default";
 			break;
 	}
@@ -114,5 +127,34 @@ function format(decimal, precision = 2) {
 			return infFormat(decimal);
 		case "exponent":
 			return eFormat(decimal);
+		case "blind":
+			return "";
+		case "standard":
+			return standardFormat(decimal);
 	}
 }
+function changeMTL() {
+	switch (options.maxTickLen) {
+		case "1h":
+			options.maxTickLen = "3h"
+			break;
+		case "3h":
+			options.maxTickLen = "10h"
+			break;
+		case "10h":
+			options.maxTickLen = "10s"
+			break;
+		case "10s":
+			options.maxTickLen = "1m"
+			break;
+		case "1m":
+			options.maxTickLen = "5m"
+			break;
+		case "5m":
+			options.maxTickLen = "30m"
+			break;
+		case "30m":
+			options.maxTickLen = "1h"
+			break;
+	}
+		}
