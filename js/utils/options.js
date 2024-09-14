@@ -91,8 +91,6 @@ function format(decimal, precision = 2) {
 			return infFormat(decimal);
 		case "exponent":
 			return eFormat(decimal);
-		case "blind":
-			return "";
 	}
 }
 
@@ -105,9 +103,6 @@ function changeFormat() {
 			options.formatting = "exponent";
 			break;
 		case "exponent":
-			options.formatting = "blind";
-			break;
-		case "blind":
 			options.formatting = "default";
 			break;
 	}
