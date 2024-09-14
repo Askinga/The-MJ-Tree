@@ -28,12 +28,10 @@ function toggleOpt(name) {
 
 	options[name] = !options[name];
 	if (name == "hqTree")
-		changeTreeQuality()
-	        return;
+		changeTreeQuality();
 	
 	if (name == "oldStyle")
-		updateStyle()
-	        return;
+		updateStyle();
 }
 var styleCooldown = 0;
 function updateStyle() {
