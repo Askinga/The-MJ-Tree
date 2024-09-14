@@ -74,7 +74,7 @@ function changeFormat() {
 			options.formatting = "exponent";
 			break;
 		case "exponent":
-			options.formatting = "blind";
+			options.formatting = "default";
 			break;
 		case "blind":
 			options.formatting = "standard";
