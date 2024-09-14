@@ -6,7 +6,7 @@ function exponentialFormat(num, precision, mantissa = true) {
         m = decimalOne
         e = e.add(1)
     }
-    e = (e.gte(1e9) ? format(e, 5) : (e.gte(10000) ? commaFormat(e, 0) : e.toStringWithDecimalPlaces(0)))
+    e = (e.gte(1e9) ? defaultFormat(e, 3) : (e.gte(10000) ? commaFormat(e, 0) : e.toStringWithDecimalPlaces(0)))
     if (mantissa)
         return m.toStringWithDecimalPlaces(precision) + "e" + e
     else return "e" + e
@@ -43,14 +43,15 @@ function infFormat(decimal) {
     }
     return "∞^(" + decimal.slog(new Decimal(2).pow(1024)) + ")"
 }
-function fixValue(x, y = 0) {
-    return x || new Decimal(y)
-}
 
 function eFormat(decimal) {
     decimal = new Decimal(decimal)
     if (decimal.lt("1e1000")) return exponentialFormat(decimal, 2)
     return "e"+eFormat(decimal.log10().floor())
+}
+
+function fixValue(x, y = 0) {
+    return x || new Decimal(y)
 }
 
 function sumValues(x) {
@@ -90,6 +91,7 @@ function defaultFormat(decimal, precision = 2, small) {
         return defaultFormat(decimal, precision) + "⁻¹"
 
 }
+
 function formatWhole(decimal) {
     decimal = new Decimal(decimal)
     if (decimal.gte(1e9)) return format(decimal, 2)
@@ -98,11 +100,11 @@ function formatWhole(decimal) {
 }
 
 function formatTime(s) {
-    if (s < 60) return format(s) + "s"
-    else if (s < 3600) return formatWhole(Math.floor(s / 60)) + "m " + format(s % 60) + "s"
-    else if (s < 86400) return formatWhole(Math.floor(s / 3600)) + "h " + formatWhole(Math.floor(s / 60) % 60) + "m " + format(s % 60) + "s"
-    else if (s < 31536000) return formatWhole(Math.floor(s / 86400) % 365) + "d " + formatWhole(Math.floor(s / 3600) % 24) + "h " + formatWhole(Math.floor(s / 60) % 60) + "m " + format(s % 60) + "s"
-    else return formatWhole(Math.floor(s / 31536000)) + "y " + formatWhole(Math.floor(s / 86400) % 365) + "d " + formatWhole(Math.floor(s / 3600) % 24) + "h " + formatWhole(Math.floor(s / 60) % 60) + "m " + format(s % 60) + "s"
+    if (s < 60) return defaultFormat(s) + "s"
+    else if (s < 3600) return formatWhole(Math.floor(s / 60)) + "m " + defaultFormat(s % 60) + "s"
+    else if (s < 86400) return formatWhole(Math.floor(s / 3600)) + "h " + formatWhole(Math.floor(s / 60) % 60) + "m " + defaultFormat(s % 60) + "s"
+    else if (s < 31536000) return formatWhole(Math.floor(s / 86400) % 365) + "d " + formatWhole(Math.floor(s / 3600) % 24) + "h " + formatWhole(Math.floor(s / 60) % 60) + "m " + defaultFormat(s % 60) + "s"
+    else return formatWhole(Math.floor(s / 31536000)) + "y " + formatWhole(Math.floor(s / 86400) % 365) + "d " + formatWhole(Math.floor(s / 3600) % 24) + "h " + formatWhole(Math.floor(s / 60) % 60) + "m " + defaultFormat(s % 60) + "s"
 }
 
 function toPlaces(x, precision, maxAccepted) {
