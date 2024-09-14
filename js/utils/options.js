@@ -14,8 +14,20 @@ function getStartOptions() {
 		forceOneTab: false,
 		oldStyle: false,
 		tooltipForcing: true,
-	        formatting: "default",
+		formatting: "default",
 	}
+}
+
+function makeid(length) {
+	let result = '';
+	const characters = options.disabledTextFlickering ? '?' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz?';
+	const charactersLength = characters.length;
+	let counter = 0;
+	while (counter < length) {
+	  result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	  counter += 1;
+	}
+	return result;
 }
 
 function toggleOpt(name) {
@@ -25,11 +37,10 @@ function toggleOpt(name) {
 		changeFormat()
 		return;
 	}
-
+	
 	options[name] = !options[name];
 	if (name == "hqTree")
 		changeTreeQuality();
-	
 	if (name == "oldStyle")
 		updateStyle();
 }
@@ -46,6 +57,19 @@ function changeTreeQuality() {
 	document.body.style.setProperty('--hqProperty2a', on ? "-4px -4px 4px rgba(0, 0, 0, 0.25) inset" : "-4px -4px 4px rgba(0, 0, 0, 0) inset");
 	document.body.style.setProperty('--hqProperty2b', on ? "0px 0px 20px var(--background)" : "");
 	document.body.style.setProperty('--hqProperty3', on ? "2px 2px 4px rgba(0, 0, 0, 0.25)" : "none");
+}
+function changeFormat() {
+	switch (options.formatting) {
+		case "default":
+			options.formatting = "infinity";
+			break;
+		case "infinity":
+			options.formatting = "exponent";
+			break;
+		case "exponent":
+			options.formatting = "default";
+			break;
+	}
 }
 function toggleAuto(toggle) {
 	Vue.set(player[toggle[0]], [toggle[1]], !player[toggle[0]][toggle[1]]);
@@ -82,7 +106,6 @@ function milestoneShown(layer, id) {
 	}
 	return false;
 }
-
 function format(decimal, precision = 2) {
 	switch (options.formatting) {
 		case "default":
@@ -91,19 +114,5 @@ function format(decimal, precision = 2) {
 			return infFormat(decimal);
 		case "exponent":
 			return eFormat(decimal);
-	}
-}
-
-function changeFormat() {
-	switch (options.formatting) {
-		case "default":
-			options.formatting = "infinity";
-			break;
-		case "infinity":
-			options.formatting = "exponent";
-			break;
-		case "exponent":
-			options.formatting = "default";
-			break;
 	}
 }
