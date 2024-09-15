@@ -14,7 +14,7 @@ function getStartOptions() {
 		forceOneTab: false,
 		oldStyle: false,
 		tooltipForcing: true,
-		formatting: false,
+		formatting: "default",
 		addictionMode: false,
 		disabledTextFlickering: false,
 		maxTickLen: "1h",
@@ -130,7 +130,7 @@ function format(decimal, precision = 2) {
 			return defaultFormat(decimal, precision);
 		case "infinity":
 			return infFormat(decimal);
-		case "false":
+		case "exponent":
 			return eFormat(decimal);
 		case "blind":
 			return "";
