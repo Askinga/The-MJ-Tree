@@ -183,7 +183,7 @@ var systemComponents = {
 				<td><button class="opt" onclick="toggleOpt('disabledTextFlickering')">Disabled Text Flickering: {{ options.disabledTextFlickering?"YES":"NO" }}</button></td>
 				</tr> 
        		<tr>
-	 	<td><button class="opt" onclick="toggleOpt('resetOptions'); needsCanvasUpdate = true">Reset Options</button></td>
+	 	<td><button class="opt" onclick="toggleOpt('resetOptions'); needsCanvasUpdate = true">Reset options to default</button></td>
    		</tr>
 	</table>`
     },
