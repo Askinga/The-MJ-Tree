@@ -14,7 +14,7 @@ function getStartOptions() {
 		forceOneTab: false,
 		oldStyle: false,
 		tooltipForcing: true,
-		formatting: "default",
+		formatting: "exponent",
 		addictionMode: false,
 		disabledTextFlickering: false,
 		maxTickLen: "1h",
