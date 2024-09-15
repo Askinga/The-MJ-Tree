@@ -67,7 +67,7 @@ function changeTreeQuality() {
 }
 function changeFormat() {
 	switch (options.formatting) {
-		case "default":
+		case "false":
 			options.formatting = "infinity";
 			break;
 		case "infinity":
