@@ -130,7 +130,7 @@ function format(decimal, precision = 2) {
 			return defaultFormat(decimal, precision);
 		case "infinity":
 			return infFormat(decimal);
-		case "exponent":
+		case "false":
 			return eFormat(decimal);
 		case "blind":
 			return "";
