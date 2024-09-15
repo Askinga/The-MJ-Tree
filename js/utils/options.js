@@ -68,13 +68,13 @@ function changeTreeQuality() {
 function changeFormat() {
 	switch (options.formatting) {
 		case "false":
-			return options.formatting = "infinity";
+			options.formatting = "infinity";
 			break;
 		case "infinity":
-			return options.formatting = "exponent";
+			options.formatting = "exponent";
 			break;
 		case "exponent":
-			return options.formatting = "default";
+			options.formatting = "default";
 			break;
 		case "blind":
 			options.formatting = "standard";
@@ -83,6 +83,7 @@ function changeFormat() {
 			options.formatting = "default";
 			break;
 	}
+	return "infinity";
 }
 function toggleAuto(toggle) {
 	Vue.set(player[toggle[0]], [toggle[1]], !player[toggle[0]][toggle[1]]);
