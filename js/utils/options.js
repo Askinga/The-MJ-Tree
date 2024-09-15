@@ -18,7 +18,8 @@ function getStartOptions() {
 		addictionMode: false,
 		disabledTextFlickering: false,
 		maxTickLen: "1h",
-		disabledTextColorChange: false
+		disabledTextColorChange: false,
+		resetOptions: false
 	}
 }
 
@@ -39,6 +40,10 @@ function toggleOpt(name) {
 		return;
 	if (name == "formatting") {
 		changeFormat()
+		return;
+	}
+	if (name == "resetOptions") {
+		getStartOptions()
 		return;
 	}
 	if (name == "maxTickLen") {
@@ -67,7 +72,7 @@ function changeTreeQuality() {
 }
 function changeFormat() {
 	switch (options.formatting) {
-		case "false":
+		case "default":
 			options.formatting = "infinity";
 			break;
 		case "infinity":
@@ -83,7 +88,6 @@ function changeFormat() {
 			options.formatting = "default";
 			break;
 	}
-	return "infinity";
 }
 function toggleAuto(toggle) {
 	Vue.set(player[toggle[0]], [toggle[1]], !player[toggle[0]][toggle[1]]);
