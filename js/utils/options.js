@@ -68,13 +68,13 @@ function changeTreeQuality() {
 function changeFormat() {
 	switch (options.formatting) {
 		case "false":
-			options.formatting = "infinity";
+			return options.formatting = "infinity";
 			break;
 		case "infinity":
-			options.formatting = "exponent";
+			return options.formatting = "exponent";
 			break;
 		case "exponent":
-			options.formatting = "default";
+			return options.formatting = "default";
 			break;
 		case "blind":
 			options.formatting = "standard";
