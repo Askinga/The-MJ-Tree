@@ -182,7 +182,10 @@ var systemComponents = {
 				<td><button class="opt" onclick="toggleOpt('addictionMode')">Addiction mode: {{ options.addictionMode?"ON":"OFF" }}</button></td>
 				<td><button class="opt" onclick="toggleOpt('disabledTextFlickering')">Disabled Text Flickering: {{ options.disabledTextFlickering?"YES":"NO" }}</button></td>
 				</tr> 
-        </table>`
+       		<tr>
+	 	<td><button class="opt" onclick="toggleOpt('resetOptions'); needsCanvasUpdate = true">Reset Options</button></td>
+   		</tr>
+	</table>`
     },
 
     'back-button': {
