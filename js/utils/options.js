@@ -14,7 +14,6 @@ function getStartOptions() {
 		forceOneTab: false,
 		oldStyle: false,
 		tooltipForcing: true,
-		formatting: "exponent",
 		addictionMode: false,
 		disabledTextFlickering: false,
 		maxTickLen: "1h",
@@ -38,10 +37,7 @@ function makeid(length) {
 function toggleOpt(name) {
 	if (name == "oldStyle" && styleCooldown > 0)
 		return;
-	if (name == "formatting") {
-		changeFormat()
-		return;
-	}
+	
 	if (name == "resetOptions") {
 		getStartOptions()
 		return;
@@ -70,25 +66,7 @@ function changeTreeQuality() {
 	document.body.style.setProperty('--hqProperty2b', on ? "0px 0px 20px var(--background)" : "");
 	document.body.style.setProperty('--hqProperty3', on ? "2px 2px 4px rgba(0, 0, 0, 0.25)" : "none");
 }
-function changeFormat() {
-	switch (options.formatting) {
-		case "default":
-			options.formatting = "infinity";
-			break;
-		case "infinity":
-			options.formatting = "exponent";
-			break;
-		case "exponent":
-			options.formatting = "default";
-			break;
-		case "blind":
-			options.formatting = "standard";
-			break;
-		case "standard":
-			options.formatting = "default";
-			break;
-	}
-}
+
 function toggleAuto(toggle) {
 	Vue.set(player[toggle[0]], [toggle[1]], !player[toggle[0]][toggle[1]]);
 	needCanvasUpdate=true
@@ -124,20 +102,7 @@ function milestoneShown(layer, id) {
 	}
 	return false;
 }
-function format(decimal, precision = 2) {
-	switch (options.formatting) {
-		case "default":
-			return defaultFormat(decimal, precision);
-		case "infinity":
-			return infFormat(decimal);
-		case "exponent":
-			return eFormat(decimal);
-		case "blind":
-			return "";
-		case "standard":
-			return standardFormat(decimal);
-	}
-}
+
 function changeMTL() {
 	switch (options.maxTickLen) {
 		case "1h":
