@@ -178,7 +178,7 @@ var systemComponents = {
 				<td><button class="opt" onclick="toggleOpt('forceTooltips'); needsCanvasUpdate = true">Shift-Click to Toggle Tooltips: {{ options.forceTooltips?"ON":"OFF" }}</button></td>
 				</tr> 
 			<tr>
-                
+                <td><button class="opt" onclick="toggleOpt('formatting'); needsCanvasUpdate = true">Formatting: {{ options.formatting }}</button></td>
 				<td><button class="opt" onclick="toggleOpt('addictionMode')">Addiction mode: {{ options.addictionMode?"ON":"OFF" }}</button></td>
 				<td><button class="opt" onclick="toggleOpt('disabledTextFlickering')">Disabled Text Flickering: {{ options.disabledTextFlickering?"YES":"NO" }}</button></td>
 				</tr> 
