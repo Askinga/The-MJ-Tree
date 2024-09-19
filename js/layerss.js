@@ -43,6 +43,7 @@ addLayer("SCH", {
             title: "Boosts are needed",
             description: "Cube Super MJ gain",
             cost: new Decimal(2),
-        },
+            unlocked() { return (hasUpgrade('SCH', 11)) },
+	},
     },
 })
