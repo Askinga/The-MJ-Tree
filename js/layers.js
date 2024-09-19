@@ -63,6 +63,7 @@ addLayer("p", {
 	if (inChallenge('GLA', 11)) mult = mult.pow(0.2)
 	if (inChallenge('SAC', 11) || inChallenge('SAC', 19)) mult = mult.pow(0.005)
 	if (inChallenge('SAC', 15)) mult = mult.pow(0.0001)
+	if (hasUpgrade('SCH', 21)) mult = mult.times("ee7")
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
