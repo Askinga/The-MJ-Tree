@@ -85,5 +85,17 @@ addLayer("SCH", {
             cost: new Decimal(1250),
             unlocked() { return (hasUpgrade('SCH', 22)) },
 	},
+        24: {
+            title: "BIG",
+            description: "^1.25 Super MJ Points",
+            cost: new Decimal(10000),
+            unlocked() { return (hasUpgrade('SCH', 23)) },
+	},
+    	25: {
+            title: "Yay, unlock",
+            description: "Unlock MJ Students",
+            cost: new Decimal(50000),
+            unlocked() { return (hasUpgrade('SCH', 24)) },
+	},
     },
 })
