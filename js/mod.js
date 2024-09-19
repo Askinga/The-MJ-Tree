@@ -98,7 +98,7 @@ function getPointGen() {
 	if (hasChallenge('SAC', 18)) gain = gain.pow(1.05)
 	if (hasUpgrade('SCH', 11)) gain = gain.times("e1000000")
 	if (hasUpgrade('SCH', 11)) gain = gain.pow(1.01)
-	if (hasUpgrade('SCH', 14)) gain = gain.pow(1.01)
+	if (hasUpgrade('SCH', 14)) gain = gain.pow(1.1)
 	if (hasUpgrade('SCH', 15)) gain = gain.times("e5000000")
 	if (inChallenge('SAC', 21)) gain = gain.pow(0)
 	return gain
