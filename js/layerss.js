@@ -80,7 +80,7 @@ addLayer("SCH", {
 	    unlocked() { return (hasUpgrade('SCH', 21)) },
 	},
     	23: {
-            title: "Boosts are needed",
+            title: ":)",
             description: "Square Hyper MJ gain",
             cost: new Decimal(1250),
             unlocked() { return (hasUpgrade('SCH', 22)) },
