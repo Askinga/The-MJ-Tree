@@ -65,6 +65,7 @@ addLayer("SCH", {
                 "clickables"
             ],
         },
+    },
     upgrades: {
         11: {
             title: "Everything Reset!!!!",
