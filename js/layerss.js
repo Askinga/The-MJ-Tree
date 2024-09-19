@@ -74,10 +74,16 @@ addLayer("SCH", {
             description: "Multiply MJ gain based on Hyper MJs and keep MJ Click upgrade again.",
             cost: new Decimal(200),
 	    effect(){
-                return player.H.points.add(1).pow(30)
+                return player.H.points.add(1).pow(25)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('SCH', 21)) },
+	},
+    	23: {
+            title: "Boosts are needed",
+            description: "Square Hyper MJ gain",
+            cost: new Decimal(1250),
+            unlocked() { return (hasUpgrade('SCH', 22)) },
 	},
     },
 })
