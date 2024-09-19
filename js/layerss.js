@@ -32,6 +32,9 @@ addLayer("SCH", {
         if (hasChallenge('SAC', 21) || player.SCH.unlocked) visible = true
        return visible
 },
+    powerEff() {
+    return player.SCH.students.add(1).pow(0.025);
+    },
     automate(){
 	if(hasUpgrade('SCH', 25)) {
 		player.SCH.students = player.points.add(1).log(1e1000).pow(0.00001)
