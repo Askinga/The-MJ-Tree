@@ -300,6 +300,7 @@ addLayer("S", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         let exp = new Decimal(1)
         if(hasUpgrade('SCH',12)) exp = exp.times(3)
+	if(hasUpgrade('SCH',24)) exp = exp.times(1.25)
 	return exp
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
