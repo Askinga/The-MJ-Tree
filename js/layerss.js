@@ -41,7 +41,7 @@ addLayer("SCH", {
         },
         12: {
             title: "Boosts are needed",
-            description: "Square Super MJ gain",
+            description: "Cube Super MJ gain",
             cost: new Decimal(2),
         },
     },
