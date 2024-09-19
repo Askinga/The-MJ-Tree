@@ -45,5 +45,11 @@ addLayer("SCH", {
             cost: new Decimal(2),
             unlocked() { return (hasUpgrade('SCH', 11)) },
 	},
+    	13: {
+            title: "More Classes",
+            description: "^1.15 MJ Point gain",
+            cost: new Decimal(3),
+            unlocked() { return (hasUpgrade('SCH', 12)) },
+	},
     },
 })
