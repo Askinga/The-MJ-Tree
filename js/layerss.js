@@ -66,8 +66,17 @@ addLayer("SCH", {
     	21: {
             title: "Add a backyard",
             description: "×e1.000e7 MJ Point gain",
-            cost: new Decimal(15),
+            cost: new Decimal(55),
             unlocked() { return (hasUpgrade('SCH', 15)) },
+	},
+        22: {
+            title: "Hyper Boost",
+            description: "Multiply MJ gain based on Hyper MJs and keep MJ Click upgrade again.",
+            cost: new Decimal(200),
+	    effect(){
+                return player.H.points.add(1).pow(100)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
     },
 })
