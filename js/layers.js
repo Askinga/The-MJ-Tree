@@ -296,6 +296,7 @@ addLayer("S", {
 
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
+        if(hasUpgrade('SCH',12)) return 3
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
