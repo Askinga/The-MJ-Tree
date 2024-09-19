@@ -846,7 +846,7 @@ addLayer("L", {
         
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
-	if (hasUpgrade('GLA', 15)) keep.push("upgrades");
+	if (hasUpgrade('GLA', 15) || hasUpgrade('SCH', 22)) keep.push("upgrades");
 	if (hasUpgrade('GLA', 22)) keep.push("milestones");
     
         // Stage 4, do the actual data resetautomate() {
