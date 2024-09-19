@@ -32,5 +32,12 @@ addLayer("SCH", {
         if (hasChallenge('SAC', 21) || player.SCH.unlocked) visible = true
        return visible
 },
-    branches:["SAC", "GLA"]
+    branches:["SAC", "GLA"],
+    upgrades: {
+        11: {
+            title: "Everything Reset!!!!",
+            description: "Here is a upgrade to help you recover: ×e1.000e6 MJ gain, keep Hyper MJ Upgrades again, ×100 Galactical MJs, ^1.01 MJs.",
+            cost: new Decimal(1),
+        },
+    }
 })
