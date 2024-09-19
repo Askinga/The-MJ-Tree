@@ -43,7 +43,7 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	let gain = new Decimal("e100000")
+	let gain = new Decimal(1)
 	if (layers.Bo.effect().gte(1)) gain = gain.times(layers.Bo.effect())
         gain = gain.times(buyableEffect('Po', 11))
 	if (hasUpgrade('p', 11)) gain = gain.times(2)
