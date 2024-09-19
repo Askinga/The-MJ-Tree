@@ -126,7 +126,7 @@ addLayer("SCH", {
     	25: {
             title: "Yay, unlock",
             description: "Unlock MJ Students",
-            cost: new Decimal(50000),
+            cost: new Decimal(35000000),
             unlocked() { return (hasUpgrade('SCH', 24)) },
 	},
     },
