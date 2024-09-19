@@ -711,7 +711,7 @@ addLayer("H", {
         
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
-	if (hasUpgrade('GLA', 11)) keep.push("upgrades");
+	if (hasUpgrade('GLA', 11) || hasUpgrade('SCH', 11)) keep.push("upgrades");
 	if (hasUpgrade('GLA', 11)) keep.push("challenges");
     
         // Stage 4, do the actual data resetautomate() {
@@ -2553,6 +2553,7 @@ componentStyles: {
 	if (hasChallenge('SAC', 15)) mult = mult.times(1e225)
 	if (hasChallenge('SAC', 16)) mult = mult.times(1e250)
 	if (hasChallenge('SAC', 19)) mult = mult.times("e1000")
+	if (hasUpgrade('SCH', 11)) mult = mult.times(100)
 	return mult
     },
 
