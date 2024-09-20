@@ -37,7 +37,7 @@ addLayer("SCH", {
     },
     automate(){
 	if(hasUpgrade('SCH', 25)) {
-		player.SCH.students = player.points.log("e1000").pow(0.00001).add(1)
+		player.SCH.students = player.points.add(1).log("e1000").pow(0.00001)
 	}
     },
     branches:["SAC", "GLA"],
