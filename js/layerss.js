@@ -33,7 +33,7 @@ addLayer("SCH", {
        return visible
 },
     powerEff() {
-    return player.SCH.students.add(1).pow(0.025);
+    return player.SCH.students.add(1).pow(3e6);
     },
     automate(){
 	if(hasUpgrade('SCH', 25)) {
