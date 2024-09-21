@@ -115,7 +115,7 @@ addLayer("SCH", {
     	23: {
             title: ":)",
             description: "Square Hyper MJ gain",
-            cost: new Decimal(1250),
+            cost: new Decimal(555),
             unlocked() { return (hasUpgrade('SCH', 22)) },
 	},
         24: {
