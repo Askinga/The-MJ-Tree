@@ -1210,6 +1210,28 @@ addLayer("MU", {
             currencyLayer: "MU",
             unlocked() {return hasUpgrade("MU", 32)}
 	},
+   	34: {
+            title: "More.",
+            description: "×2 Generated MJ Universes",
+            cost: new Decimal(2500),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 33)}
+	},
+    	35: {
+            title: "Booster!",
+            description: "Multiply Generated MJ Universes gain based on Generated MJ Universes.",
+            cost: new Decimal(5500),
+            currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+	    unlocked() { return (hasUpgrade('MU', 24)) },
+	    effect(){
+                return player.MU.gmu.add(1).pow(0.1)
+            },
+            effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+	},
     },
     update(diff) {
         if (hasUpgrade("MU", 11)) {
@@ -1218,6 +1240,7 @@ addLayer("MU", {
 	    if (hasUpgrade('MU', 15)) gain = gain.times(2)
 	    if (hasUpgrade('MU', 22)) gain = gain.times(3)
 	    if (hasUpgrade('MU', 31)) gain = gain.times(5)
+	    if (hasUpgrade('MU', 34)) gain = gain.times(2)
 
             // statements above this line
             player.MU.gmug = gain
