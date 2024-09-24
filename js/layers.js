@@ -1228,7 +1228,7 @@ addLayer("MU", {
             currencyLayer: "MU",
 	    unlocked() { return (hasUpgrade('MU', 34)) },
 	    effect(){
-                return player.MU.gmu.add(1).log(7)
+                return player.MU.gmu.add(1).log(7).div(1.75)
             },
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
 	},
