@@ -385,6 +385,7 @@ function gameLoop(diff) {
 
 function hardReset(resetOptions) {
 	if (!confirm("Are you sure you want to do this? You will lose all your progress!")) return
+	if (!confirm("ARE YOU SURE YOU WANT TO DO THIS????? YOU MIGHT LOSE A FEW DAYS OF PROGRESS!!!!!!!")) return
 	player = null
 	if(resetOptions) options = null
 	save(true);
