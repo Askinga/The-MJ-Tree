@@ -385,6 +385,10 @@ function gameLoop(diff) {
 
 function hardReset(resetOptions) {
 	if (!confirm("Are you sure you want to do this? You will lose all your progress!")) return
+	if (!confirm("ARE YOU SURE YOU WANT TO DO THIS????? YOU MIGHT LOSE A FEW DAYS OF PROGRESS!!!!!!!")) return
+	if (!confirm("Just please don't do this, it will make MJs extinct. please don't press ok got it?")) return
+	if (!confirm("A̴͌ͅR̷̺͘E̸͍͐ ̶͖́Y̷̭̍O̷͎͂Ủ̷̠ ̴͓͐S̷͚̐Ṷ̷̑R̵͖͌Ȇ̴͚ ̷̧̔Y̵͉͂O̸̩͐U̴̥̾ ̷̠̓W̴͎͋A̶͉͗N̵̬͊T̵̨͑ ̷̡͊T̴̺̾O̵̜͘ ̷̛̜L̵̯̐O̸̹̓S̷̭͆Ḙ̵́ ̶̩̃Ã̷͈L̷̙̅L̶̼͊ ̷̼͗O̷̡͝F̷͖̿ ̴̧̓Y̶̻͛O̵͈͛U̴̼͒R̵̩̐ ̴̭̐Ṕ̵͖R̵̖͌Ȏ̶͖G̶̦͝R̴̪̽Ĕ̸͎S̵͚͌S̵̰͐?̸̝̑?̵̤͒?̴͇̀?̸̝̔?̵̱͛ ̷̨̒L̴̨̔Ą̴̑S̶̭̈T̵̨̋ ̷̭̆C̸̮͘Ĥ̷̻A̵̽ͅŃ̴̦C̴͕͗E̵̮̊!̶̚ͅ")) return
+	alert("Because of you not listening, MJs are now extinct :(")
 	player = null
 	if(resetOptions) options = null
 	save(true);
