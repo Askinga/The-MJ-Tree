@@ -64,7 +64,7 @@ addLayer("SCH", {
    		], 
    	 },
     },
-    "Students": {
+    "students": {
        title: "Students",
 	unlocked() { return (hasUpgrade('SCH', 25)) },
 	    content: [
