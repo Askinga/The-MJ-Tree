@@ -57,7 +57,6 @@ addLayer("SCH", {
 		    ["microtabs", "students"],
                 ],
             },
-	},
         upgrades: {
             "box": {
                 title: "Upgrades",
@@ -67,8 +66,8 @@ addLayer("SCH", {
 			"prestige-button",
 			"upgrades",
    		], 
-   	 },
-    },
+	    },
+    	},
     "students": {
        title: "Students",
 	unlocked() { return (hasUpgrade('SCH', 25)) },
@@ -84,6 +83,7 @@ addLayer("SCH", {
                 "clickables"
             ],
         },
+      },
     },
     upgrades: {
         11: {
