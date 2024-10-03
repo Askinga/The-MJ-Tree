@@ -7,6 +7,11 @@ addLayer("SCH", {
 		points: new Decimal(0),
     		students: new Decimal(0),
     		thoughts: new Decimal(0),
+	        time: new Decimal(0),
+	        clicks: new Decimal(0),
+	        work: new Decimal(0),
+	        backyards: new Decimal(0),
+	        teachers: new Decimal(0),
     }},
     color: "#ffbf00",
     requires: new Decimal("e26081500"), // Can be a function that takes requirement increases into account
