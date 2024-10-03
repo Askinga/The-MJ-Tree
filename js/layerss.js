@@ -41,18 +41,32 @@ addLayer("SCH", {
 	}
     },
     branches:["SAC", "GLA"],
-    tabFormat: {
-        "Upgrades": {
-            content: [
-                "main-display",
-                "resource-display",
-                "prestige-button",
-                "blank",
-                "upgrades"
-            ],
-        },
-	"*Students*": {
-          unlocked() { return (hasUpgrade('SCH', 25)) },
+    microtabs: {
+        main: {
+            "main": {
+                title: "Main",
+                content: [
+                    "main-display"
+		    ["display-text", "Hi! Welcome to the MJ School layer! Press the reset button to reset everything to get a op MJ School!"],
+                    ["microtabs", "upgrades"], 
+		    ["microtabs", "students"],
+                ],
+            },
+	},
+        upgrades: {
+            "box": {
+                title: "Upgrades",
+                content: [
+			"main-display",
+			"resource-display",
+			"prestige-button",
+			"upgrades",
+   		], 
+   	 },
+    },
+    "Students": {
+       title: "Students",
+	unlocked() { return (hasUpgrade('SCH', 25)) },
 	    content: [
                 "main-display",
 		"blank",
