@@ -2564,7 +2564,7 @@ componentStyles: {
     row: 4, // Row the layer is in on the tree (0 is the first row)
     displayRow: 6,
     hotkeys: [
-        {key: "L", description: "L: Reset for Galactical MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "l", description: "L: Reset for Galactical MJs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 
     layerShown(){
