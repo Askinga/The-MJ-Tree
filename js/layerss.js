@@ -48,7 +48,7 @@ addLayer("SCH", {
     branches:["SAC", "GLA"],
     microtabs: {
         main: {
-            "Main": {
+            "main": {
                 title: "Main",
                 content: [
                     "main-display",
@@ -59,7 +59,7 @@ addLayer("SCH", {
 		    ["microtabs", "upgrades"]
 		],
             },
-	    "The-Outside": {
+	    "outside": {
 		title: "The Outside",
                 content: [
                     "main-display",
@@ -95,7 +95,7 @@ addLayer("SCH", {
     },
     tabFormat: [
         ["blank", "10px"],
-        ["microtabs", "Main"],
+        ["microtabs", "main"],
         ["blank", "20px"],
     ],
     upgrades: {
