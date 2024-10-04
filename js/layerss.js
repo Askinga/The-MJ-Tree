@@ -66,7 +66,7 @@ addLayer("SCH", {
             },
 	    },
             upgrades: {
-	      "box": {
+	      "Upgrades": {
                 title: "Upgrades",
                 content: [
 			"main-display",
