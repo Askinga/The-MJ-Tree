@@ -53,19 +53,20 @@ addLayer("SCH", {
                 content: [
                     "main-display",
 		    ["display-text", "Hi! Welcome to the MJ School layer! Press the reset button to reset everything to get a op MJ School!"],
-                    "upgrades"
+		    ["microtabs", "upgrades"]
                 ],
             },
 	    "outside": {
 		title: "The Outside",
                 content: [
                     "main-display",
-		    ["display-text", "Hi! Welcome to the MJ School layer! Press the reset button to reset everything to get a op MJ School!"],
+		    ["display-text", "The second part of this layer... This part will focus on idle."],
                     
                 ],
             },
 	    },
-            "upgrades": {
+            upgrades: {
+	      "box": {
                 title: "Upgrades",
                 content: [
 			"main-display",
@@ -89,6 +90,7 @@ addLayer("SCH", {
                 "clickables"
             ],
         },
+      },
     },
     tabFormat: [
         ["blank", "10px"],
