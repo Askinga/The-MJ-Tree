@@ -48,7 +48,7 @@ addLayer("SCH", {
     branches:["SAC", "GLA"],
     microtabs: {
         main: {
-            "main": {
+            "Main": {
                 title: "Main",
                 content: [
                     "main-display",
@@ -59,7 +59,7 @@ addLayer("SCH", {
 		    ["microtabs", "upgrades"]
 		],
             },
-	    "outside": {
+	    "The Outside": {
 		title: "The Outside",
                 content: [
                     "main-display",
@@ -76,7 +76,7 @@ addLayer("SCH", {
 			"upgrades",
    		], 
     },
-    "students": {
+    "Students": {
        title: "Students",
 	unlocked() { return (hasUpgrade('SCH', 25)) },
 	    content: [
@@ -95,7 +95,7 @@ addLayer("SCH", {
     },
     tabFormat: [
         ["blank", "10px"],
-        ["microtabs", "main"],
+        ["microtabs", "Main"],
         ["blank", "20px"],
     ],
     upgrades: {
