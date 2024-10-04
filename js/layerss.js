@@ -51,10 +51,17 @@ addLayer("SCH", {
             "main": {
                 title: "Main",
                 content: [
-                    "main-display"
+                    "main-display",
 		    ["display-text", "Hi! Welcome to the MJ School layer! Press the reset button to reset everything to get a op MJ School!"],
-                    ["microtabs", "upgrades"], 
-		    ["microtabs", "students"],
+                    "upgrades"
+                ],
+            },
+	    "outside": {
+		title: "The Outside",
+                content: [
+                    "main-display",
+		    ["display-text", "Hi! Welcome to the MJ School layer! Press the reset button to reset everything to get a op MJ School!"],
+                    
                 ],
             },
 	    },
