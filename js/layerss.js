@@ -52,9 +52,12 @@ addLayer("SCH", {
                 title: "Main",
                 content: [
                     "main-display",
+		    "blank",
+		    "resource-display",
 		    ["display-text", "Hi! Welcome to the MJ School layer! Press the reset button to reset everything to get a op MJ School!"],
+		    "prestige-button",
 		    ["microtabs", "upgrades"]
-                ],
+		],
             },
 	    "outside": {
 		title: "The Outside",
@@ -69,9 +72,7 @@ addLayer("SCH", {
 	      "Upgrades": {
                 title: "Upgrades",
                 content: [
-			"main-display",
-			"resource-display",
-			"prestige-button",
+			"blank",
 			"upgrades",
    		], 
     },
