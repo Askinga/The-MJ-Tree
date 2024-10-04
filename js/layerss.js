@@ -57,9 +57,8 @@ addLayer("SCH", {
 		    ["microtabs", "students"],
                 ],
             },
-	},
-        upgrades: {
-            "box": {
+	    },
+            "upgrades": {
                 title: "Upgrades",
                 content: [
 			"main-display",
@@ -67,8 +66,7 @@ addLayer("SCH", {
 			"prestige-button",
 			"upgrades",
    		], 
-	    },
-    	},
+    },
     "students": {
        title: "Students",
 	unlocked() { return (hasUpgrade('SCH', 25)) },
@@ -84,7 +82,6 @@ addLayer("SCH", {
                 "clickables"
             ],
         },
-      },
     },
     tabFormat: [
         ["blank", "10px"],
