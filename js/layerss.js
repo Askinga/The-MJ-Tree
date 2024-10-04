@@ -57,6 +57,7 @@ addLayer("SCH", {
 		    ["microtabs", "students"],
                 ],
             },
+	},
         upgrades: {
             "box": {
                 title: "Upgrades",
