@@ -59,7 +59,7 @@ addLayer("SCH", {
 		    ["microtabs", "upgrades"]
 		],
             },
-	    "The Outside": {
+	    "The-Outside": {
 		title: "The Outside",
                 content: [
                     "main-display",
