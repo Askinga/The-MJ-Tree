@@ -85,6 +85,11 @@ addLayer("SCH", {
         },
       },
     },
+    tabFormat: [
+        ["blank", "10px"],
+        ["microtabs", "main"],
+        ["blank", "20px"],
+    ],
     upgrades: {
         11: {
             title: "Everything Reset!!!!",
