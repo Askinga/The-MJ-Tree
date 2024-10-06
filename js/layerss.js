@@ -61,7 +61,8 @@ addLayer("SCH", {
             },
 	    "outside": {
 		title: "The Outside",
-                content: [
+                unlocked() { return (hasUpgrade('SCH', 35)) },
+		content: [
                     "main-display",
 		    ["display-text", "The second part of this layer... This part will focus on idle."],
                     
@@ -167,6 +168,12 @@ addLayer("SCH", {
             description: "×e1.500e7 MJ gain",
             cost: new Decimal(2e8),
             unlocked() { return (hasUpgrade('SCH', 25)) },
+	},
+        32: {
+            title: "Mega Keeping",
+            description: "Keep Galactical MJ upgrades, Sanas challenges, Super MJ milestones, Upgrade tree upgrades, but you can't ultra scaler reset and ×e2.000e7 MJs",
+            cost: new Decimal(1e12),
+            unlocked() { return (hasUpgrade('SCH', 31)) },
 	},
     },
 })
