@@ -140,7 +140,10 @@ addLayer("SCH", {
             description: "Multiply MJ gain based on Hyper MJs and keep MJ Click upgrade again.",
             cost: new Decimal(200),
 	    effect(){
-                return player.H.points.add(1).pow(25)
+                let power = 25
+		if (hasUpgrade('SCH', 33)) power = 32.5
+		let eff = player.H.points.add(1).pow(power)
+		return eff
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('SCH', 21)) },
@@ -174,6 +177,12 @@ addLayer("SCH", {
             description: "Keep Galactical MJ upgrades, Sanas challenges, Super MJ milestones, Upgrade tree upgrades, but you can't ultra scaler reset and ×e2.000e7 MJs",
             cost: new Decimal(1e12),
             unlocked() { return (hasUpgrade('SCH', 31)) },
+	},
+    	33: {
+            title: "Buff",
+            description: "Buff MJ School Upgrade 7",
+            cost: new Decimal(2.5e14),
+            unlocked() { return (hasUpgrade('SCH', 32)) },
 	},
     },
 })
