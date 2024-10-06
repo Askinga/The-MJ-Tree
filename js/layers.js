@@ -2580,6 +2580,10 @@ componentStyles: {
     }},
 },
     color: "#310b5e",
+    passiveGeneration() {
+        if (hasUpgrade('SCH', 34)) return 1
+	return 0
+    },
     requires: new Decimal("e23010"), // Can be a function that takes requirement increases into account
     resource: "Galactical MJs", // Name of prestige currency
     baseResource: "MJs", // Name of resource prestige is based on
