@@ -2548,7 +2548,7 @@ addLayer("GLA", {
     position: 0,
     doReset(GLA) {
         // Stage 1, almost always needed, makes resetting this layer not delete your progress
-        if (layers[p].row <= this.row) return;
+        if (layers[GLA].row <= this.row) return;
     
         // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
         let keptUpgrades = [];
@@ -2744,7 +2744,7 @@ addLayer("SAC", {
     position: 1,
     doReset(SAC) {
         // Stage 1, almost always needed, makes resetting this layer not delete your progress
-        if (layers[p].row <= this.row) return;
+        if (layers[SAC].row <= this.row) return;
     
         // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
         let keptUpgrades = [];
