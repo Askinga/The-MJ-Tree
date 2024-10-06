@@ -162,5 +162,11 @@ addLayer("SCH", {
             cost: new Decimal(35000000),
             unlocked() { return (hasUpgrade('SCH', 24)) },
 	},
+        31: {
+            title: "MJMJMJ!",
+            description: "×e1.500e7 MJ gain",
+            cost: new Decimal(2e8),
+            unlocked() { return (hasUpgrade('SCH', 25)) },
+	},
     },
 })
