@@ -74,9 +74,9 @@ function defaultFormat(decimal, precision = 2, small) {
         if (slog.gte(1e6)) return "F" + defaultFormat(slog.floor())
         else return Decimal.pow(10, slog.sub(slog.floor())).toStringWithDecimalPlaces(3) + "F" + commaFormat(slog.floor(), 0)
     }
-    else if (decimal.gte("1ee9")) return exponentialFormat(decimal, 0, false)
+    else if (decimal.gte("1ee6")) return exponentialFormat(decimal, 0, false)
     else if (decimal.gte("1e10000")) return exponentialFormat(decimal, 0)
-    else if (decimal.gte(1e15)) return exponentialFormat(decimal, precision)
+    else if (decimal.gte(1e9)) return exponentialFormat(decimal, precision)
     else if (decimal.gte(1e3)) return commaFormat(decimal, 0)
     else if (decimal.gte(0.0001) || !small) return regularFormat(decimal, precision)
     else if (decimal.eq(0)) return (0).toFixed(precision)
