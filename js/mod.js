@@ -20,7 +20,7 @@ let VERSION = {
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v2.3.0</h3><br>
 		- More updates soon! Endgame: MJ School Upgrade 35.<br>
-		- Added MJ Schools, added 15 upgrades, Added MJ Students, Microtabs are a better way to sort out things. For now, it will be added in v2.3.0+. A specific MJ School upgrades makes hyper MJs boost normal MJs! And minor bug fixes<br>
+		- Added MJ Schools, Added 15 upgrades, Added MJ Students, Added 3 achievements, Microtabs are a better way to sort out things. For now, it will be added in v2.3.0+. A specific MJ School upgrades makes hyper MJs boost normal MJs! And minor bug fixes<br>
                 - Check back here for more updates! Full changelog at <a href=https://galaxy.click/updates/355>galaxy.click/updates/355</a>`
   
 let winText = `Congratulations! You have reached the end and beaten this game. Good job! 🏆`
