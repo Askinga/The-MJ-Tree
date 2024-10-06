@@ -1612,12 +1612,12 @@ addLayer("a", {
         },
         122: {
             name: "e100,000,000!",
-            done() { return player.SCH.points.gte("ee8") },
+            done() { return player.points.gte("ee8") },
             tooltip: "Get e100,000,000 MJs",	   
         },
         123: {
             name: "Double e!",
-            done() { return player.SCH.points.gte("ee9") },
+            done() { return player.points.gte("ee9") },
             tooltip: "Get e1.000e9 MJs",	   
         },
     },
