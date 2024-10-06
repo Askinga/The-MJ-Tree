@@ -241,6 +241,7 @@ addLayer("S", {
 	if (hasUpgrade('H', 11)) keep.push("upgrades");
         if (hasUpgrade('H', 11)) keep.push("challenges");
 	if (hasUpgrade('GLA', 21)) keep.push("milestones");
+	if (hasUpgrade('SCH', 32)) keep.push("milestones");
 	
         // Stage 4, do the actual data reset
         layerDataReset(this.layer, keep);
@@ -1702,6 +1703,7 @@ addLayer("B", {
         return new Decimal(1)
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
+    canReset() {return !hasUpgrade('SCH', 32)},
     hotkeys: [
         {key: "u", description: "U: Reset for Ultra Scalers", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
@@ -2359,6 +2361,7 @@ addLayer("UT", {
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
 	if (hasUpgrade('GLA', 15)) keep.push("upgrades");
+	if (hasUpgrade('SCH', 32)) keep.push("upgrades");
     
         // Stage 4, do the actual data resetautomate() {
         layerDataReset(this.layer, keep);
@@ -2543,6 +2546,23 @@ addLayer("GLA", {
     name: "Galactical MJs",
     symbol: "G",
     position: 0,
+    doReset(GLA) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[p].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	if (hasUpgrade('SCH', 32)) keep.push("upgrades");
+    
+        // Stage 4, do the actual data resetautomate() {
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
@@ -2722,6 +2742,23 @@ addLayer("SAC", {
     name: "Sanas Challenges",
     symbol: "Sa",
     position: 1,
+    doReset(SAC) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[p].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	if (hasUpgrade('SCH', 32)) keep.push("challenges");
+    
+        // Stage 4, do the actual data resetautomate() {
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
