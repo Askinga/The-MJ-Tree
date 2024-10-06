@@ -81,13 +81,10 @@ addLayer("SCH", {
        title: "Students",
 	unlocked() { return (hasUpgrade('SCH', 25)) },
 	    content: [
-                "main-display",
 		"blank",
 		["display-text",
 				function() {return 'You have ' + format(player.SCH.students) + ' MJ Students (based on MJs), which are boosting MJs by '+'×'+format(tmp.SCH.powerEff)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
 					{}],
-		"resource-display",
-                "prestige-button",
                 "blank",
                 "clickables"
             ],
