@@ -183,6 +183,12 @@ addLayer("SCH", {
             description: "Buff MJ School Upgrade 7",
             cost: new Decimal(2.5e14),
             unlocked() { return (hasUpgrade('SCH', 32)) },
+   	},
+        34: {
+            title: "Finally!",
+            description: "Gain 100% of Galactical MJs per second!",
+            cost: new Decimal(1e18),
+            unlocked() { return (hasUpgrade('SCH', 33)) },
 	},
     },
 })
