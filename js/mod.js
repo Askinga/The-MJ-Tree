@@ -114,7 +114,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-    "Beat Sanas Challenge 10 to beat the game!"  
+    "Get MJ School Upgrade 35 to beat the game!"  
 ]
 
 // Determines when the game "ends"
