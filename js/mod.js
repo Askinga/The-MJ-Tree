@@ -102,6 +102,7 @@ function getPointGen() {
 	if (hasUpgrade('SCH', 15)) gain = gain.times("e5000000")
 	if (hasUpgrade('SCH', 22)) gain = gain.times(upgradeEffect('SCH', 22))
 	if (hasUpgrade('SCH', 31)) gain = gain.times("e15000000")
+	if (hasUpgrade('SCH', 32)) gain = gain.times("e20000000")
 	gain = gain.times(tmp.SCH.powerEff)
 	if (inChallenge('SAC', 21)) gain = gain.pow(0)
 	return gain
