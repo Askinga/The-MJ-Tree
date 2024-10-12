@@ -30,5 +30,6 @@ addLayer("p", {
             title: "MJ Doubler",
             description: "Get double MJs per second.",
             cost: new Decimal(1),
-            
-}
+	},
+},
+})
