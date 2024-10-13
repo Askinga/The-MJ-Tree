@@ -212,13 +212,13 @@ addLayer("p", {
         },
         31: {
             title: "Upgrade 11",
-	    description: "×2 prestige points",
+	    description: function() {return `<br>×2 <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span><br>`},
 	    cost: new Decimal(2500),
 	    unlocked() { return (hasUpgrade('p', 25)) }
 	},
         32: {
             title: "Upgrade 12",
-	    description: function() {return `<br>Boost your <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> based on <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span>`},
+	    description: function() {return `<br>Boost your <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\"><h3>points</h3></span><br> based on <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span>`},
 	    cost: new Decimal(6500),
 	    effect(){
                 let expu3 = 0.2
@@ -239,18 +239,28 @@ addLayer("p", {
 	},
         33: {
             title: "Upgrade 13",
-	    description: "Boost prestige point gain based on prestige points",
+	    description: function() {return `<br>Boost your <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\"><h3>prestige points</h3></span><br> based on <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span>`},
 	    cost: new Decimal(25000),
-	    effect() {
-                return player.p.points.add(1).pow(0.05)
-            },
-            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+	    effect(){
+                let expu3 = 0.05
+                let eff = player.p.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e10"), 0.5)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e25")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts Points by " + format(upgEffect)+"x" + softcapDescription
+	    },
             tooltip: "(prestigepoints+1)<sup>0.05</sup>",
 	    unlocked() { return (hasUpgrade('p', 32)) }
 	},
         34: {
             title: "Upgrade 14",
-	    description: "×3 prestige points",
+	    description: function() {return `<br>Boost your <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, p, 0) 0px 0px 10px;\">prestige points.</span><br>`},
 	    cost: new Decimal(200000),
 	    effect(){
     	     let rpow = "×3 prestige points"
@@ -269,7 +279,7 @@ addLayer("p", {
 	},
         35: {
             title: "Upgrade 15",
-	    description: "×5 prestige points",
+	    description: function() {return `<br>×5 <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span><br>`},
 	    cost: new Decimal(1000000),
 	    unlocked() { return (hasUpgrade('p', 34)) }
 	},
