@@ -3,7 +3,7 @@ let modInfo = {
 	id: "abc123",
 	author: "Askinga",
 	pointsName: "MJs",
-	modFiles: ["layers.js", "tree.js"],
+	modFiles: ["layers.js", "layerss.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -97,6 +97,14 @@ function getPointGen() {
 	if (inChallenge('SAC', 18)) gain = gain.tetrate(0.25)
 	if (hasChallenge('SAC', 18)) gain = gain.pow(1.05)
 	if (inChallenge('SAC', 21)) gain = gain.pow(0)
+	if (hasUpgrade('SCH', 11)) gain = gain.times("e1000000")
+	if (hasUpgrade('SCH', 11)) gain = gain.pow(1.01)
+	if (hasUpgrade('SCH', 14)) gain = gain.pow(1.1)
+	if (hasUpgrade('SCH', 15)) gain = gain.times("e5000000")
+	if (hasUpgrade('SCH', 22)) gain = gain.times(upgradeEffect('SCH', 22))
+	if (hasUpgrade('SCH', 31)) gain = gain.times("e15000000")
+	if (hasUpgrade('SCH', 32)) gain = gain.times("e20000000")
+	gain = gain.times(tmp.SCH.powerEff)
 	return gain
 }
 
