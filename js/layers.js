@@ -260,7 +260,7 @@ addLayer("p", {
 	},
         34: {
             title: "Upgrade 14",
-	    description: function() {return `<br>Boost your <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, p, 0) 0px 0px 10px;\">prestige points.</span><br>`},
+	    description: function() {return `<br>Boost your <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points.</span><br>`},
 	    cost: new Decimal(200000),
 	    effect(){
     	     let rpow = "×3 prestige points"
@@ -285,7 +285,7 @@ addLayer("p", {
 	},
         41: {
             title: "Upgrade 16",
-	    description: "Boost prestige point gain based on points",
+	    description: function() {return `<br>Boost <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\"><h3>prestige points</h3></span><br> based on <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br>`},
 	    cost: new Decimal(1e7),
 	    effect() {
                 return player.points.add(1).pow(0.025)
@@ -296,13 +296,13 @@ addLayer("p", {
 	},
         42: {
             title: "Upgrade 17",
-	    description: "^1.05 points",
+	    description: function() {return `<br>^1.05 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br>`},
 	    cost: new Decimal(2.5e7),
 	    unlocked() { return (hasUpgrade('p', 41)) }
 	},
         43: {
             title: "Upgrade 18",
-	    description: "Raise point gain based on prestige points",
+	    description: function() {return `<br>Raise <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\"><h3>points</h3></span><br> based on <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span><br>`},
 	    cost: new Decimal(1e8),
 	    effect(){
                 let expu3 = 0.004
@@ -327,7 +327,7 @@ addLayer("p", {
         },
         44: {
             title: "Upgrade 19",
-	    description: "^1.1 prestige points",
+	    description: function() {return `<br>^1.1 <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span><br>`},
 	    cost: new Decimal(1e9),
 	    unlocked() { return (hasUpgrade('p', 43)) }
 	},
