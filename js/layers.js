@@ -1625,6 +1625,21 @@ addLayer("a", {
             done() { return (hasChallenge('SAC', 21)) },
             tooltip: "Beat Sanas Challenge 10",	   
         },
+        121: {
+            name: "All our progress...",
+            done() { return player.SCH.points.gte(1) },
+            tooltip: "Get a MJ School",	   
+        },
+        122: {
+            name: "e100,000,000!",
+            done() { return player.points.gte("ee8") },
+            tooltip: "Get e100,000,000 MJs",	   
+        },
+        123: {
+            name: "Double e!",
+            done() { return player.points.gte("ee9") },
+            tooltip: "Get e1.000e9 MJs",	   
+        },
     },
 })
 
