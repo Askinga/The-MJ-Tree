@@ -63,10 +63,13 @@ addLayer("p", {
 	if (inChallenge('GLA', 11)) mult = mult.pow(0.2)
 	if (inChallenge('SAC', 11) || inChallenge('SAC', 19)) mult = mult.pow(0.005)
 	if (inChallenge('SAC', 15)) mult = mult.pow(0.0001)
+	if (hasUpgrade('SCH', 21)) mult = mult.times("ee7")
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-	return new Decimal(1)
+        let exp = new Decimal(1)
+        if(hasUpgrade('SCH',13)) exp = exp.times(1.15)
+	return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -764,7 +767,9 @@ addLayer("H", {
 
 
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        let exp = new Decimal(1)
+	if(hasUpgrade('SCH',23)) exp = exp.times(2)
+	return exp
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -2598,6 +2603,10 @@ componentStyles: {
     }},
 },
     color: "#310b5e",
+    passiveGeneration() {
+        if (hasUpgrade('SCH', 34)) return 1
+	return 0
+    },
     requires: new Decimal("e23010"), // Can be a function that takes requirement increases into account
     resource: "Galactical MJs", // Name of prestige currency
     baseResource: "MJs", // Name of resource prestige is based on
@@ -2614,6 +2623,7 @@ componentStyles: {
 	if (hasChallenge('SAC', 15)) mult = mult.times(1e225)
 	if (hasChallenge('SAC', 16)) mult = mult.times(1e250)
 	if (hasChallenge('SAC', 19)) mult = mult.times("e1000")
+	if (hasUpgrade('SCH', 11)) mult = mult.times(100)
 	return mult
     },
 
