@@ -247,7 +247,7 @@ addLayer("SCH", {
                 return player.points.gte("e1.794e9")
             },
             prestigeGain() {
-                let mul = 1
+                let mul = EN(1)
                 if(hasUpgrade('SCH', 41)) mul = mul.times(2)
 	        if(hasUpgrade('SCH', 42)) mul = mul.times(1.35)
 		return player.points.log(10).div(1.794e9).mul(mul)
