@@ -261,7 +261,7 @@ addLayer("SCH", {
             currencyLayer: "SCH",
 	    effect(){
                 let div = 2.5e9
-		let eff = player.points.add(1).log(10).div(div)
+		let eff = player.points.add(1).log(10).div(div).add(1)
 		return eff
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
