@@ -106,7 +106,7 @@ addLayer("SCH", {
 					{}],
                 "blank",
 		["display-text",
-				function() {return 'You have ' + format(player.SCH.thoughts) + ' Thoughts, which are boosting MJ Students effect by '+'^'+format(tmp.SCH.powerEff2)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
+				function() {return (hasUpgrade('SCH', 35)?'You have ' + format(player.SCH.thoughts) + ' Thoughts, which are boosting MJ Students effect by '+'^'+format(tmp.SCH.powerEff2)+")":"")},
 					{}],
                 "blank",
                 "clickables"
