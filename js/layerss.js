@@ -232,7 +232,40 @@ addLayer("SCH", {
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
-	    unlocked() { return (hasUpgrade('SCH', 35)) },
+	    unlocked() { return (hasUpgrade('SCH', 41)) },
+	},
+        43: {
+            title: "Tell people to think",
+            description: "×3 your thought gain",
+            cost: new Decimal(50),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    unlocked() { return (hasUpgrade('SCH', 42)) },
+	},
+        44: {
+            title: "Tell more people to think",
+            description: "×2 your thought gain",
+            cost: new Decimal(500),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    unlocked() { return (hasUpgrade('SCH', 43)) },
+	},
+        45: {
+            title: "The points are thinking",
+            description: "Boost thought gain based on points",
+            cost: new Decimal(1050),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    effect(){
+                let log = 2.5e9
+		let eff = player.points.add(1).log(log)
+		return eff
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('SCH', 44)) },
 	},
     },
     clickables: {
@@ -250,6 +283,9 @@ addLayer("SCH", {
                 let mul = new Decimal(1)
 		if(hasUpgrade('SCH', 41)) mul = mul.mul(2)
 		if(hasUpgrade('SCH', 42)) mul = mul.mul(1.35)
+		if(hasUpgrade('SCH', 43)) mul = mul.mul(3)
+		if(hasUpgrade('SCH', 44)) mul = mul.mul(2)
+		if(hasUpgrade('SCH', 45)) mul = mul.mul(upgradeEffect('SCH', 45))
 		return player.points.log(10).div(1.794e9).mul(mul)
             },
             onClick() {
