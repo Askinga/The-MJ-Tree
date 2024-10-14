@@ -1727,6 +1727,7 @@ addLayer("B", {
         return new Decimal(1)
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
+    canReset() {return !hasUpgrade('SCH', 32)},
     hotkeys: [
         {key: "u", description: "U: Reset for Ultra Scalers", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
