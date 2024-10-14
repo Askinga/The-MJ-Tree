@@ -234,7 +234,7 @@ addLayer("SCH", {
             },
             onClick() {
                 player.SCH.thoughts = player.SCH.thoughts.add(this.prestigeGain())
-                doReset(SCH)
+                doReset("SCH", true)
             },
             onHold() {
             },
