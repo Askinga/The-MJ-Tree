@@ -38,7 +38,10 @@ addLayer("SCH", {
        return visible
 },
     powerEff() {
-    return player.SCH.students.add(1).pow(3e6);
+    return player.SCH.students.add(1).pow(3e6).pow(tmp.SCH.powerEff2);
+    },
+    powerEff2() {
+    return player.SCH.thoughts.add(1).pow(0.33);
     },
     automate(){
 	if(hasUpgrade('SCH', 25)) {
@@ -84,6 +87,10 @@ addLayer("SCH", {
 		"blank",
 		["display-text",
 				function() {return 'You have ' + format(player.SCH.students) + ' MJ Students (based on MJs), which are boosting MJs by '+'×'+format(tmp.SCH.powerEff)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
+					{}],
+                "blank",
+		["display-text",
+				function() {return 'You have ' + format(player.SCH.thoughts) + ' Thoughts, which are boosting MJ Students effect by '+'^'+format(tmp.SCH.powerEff2)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
 					{}],
                 "blank",
                 "clickables"
@@ -194,4 +201,27 @@ addLayer("SCH", {
             unlocked() { return (hasUpgrade('SCH', 34)) },
 	},
     },
+    clickables: {
+	    11: {
+            display() {
+                return `Reset everything MJ Schools does, but gain ${formatWhole(this.prestigeGain())} thoughts`
+            },
+            unlocked() {
+                return hasUpgrade("SCH", 35)
+            },
+            canClick() {
+                return player.points.gte("1.794ee9")
+            },
+            prestigeGain() {
+                let mul = 1
+                return player.points.log(10).div(1.794e9).mul(mul)
+            },
+            onClick() {
+                player.SCH.thoughts = player.SCH.thoughts.add(this.prestigeGain())
+                doReset(SCH)
+            },
+            onHold() {
+            },
+        },
+    }, 
 })
