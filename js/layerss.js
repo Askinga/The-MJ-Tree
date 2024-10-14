@@ -106,7 +106,7 @@ addLayer("SCH", {
 					{}],
                 "blank",
 		["display-text",
-				function() {return (hasUpgrade('SCH', 35)?'You have ' + format(player.SCH.thoughts) + ' Thoughts, which are boosting MJ Students effect by '+'^'+format(tmp.SCH.powerEff2)+")":"")},
+				function() {return (hasUpgrade('SCH', 35)?'You have ' + format(player.SCH.thoughts) + ' Thoughts, which are boosting MJ Students effect by '+'^'+format(tmp.SCH.powerEff2):"")},
 					{}],
                 "blank",
                 "clickables"
