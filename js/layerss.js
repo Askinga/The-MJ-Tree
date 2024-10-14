@@ -226,7 +226,7 @@ addLayer("SCH", {
                 return hasUpgrade("SCH", 35)
             },
             canClick() {
-                return player.points.gte("1.794ee9")
+                return player.points.gte("e1.794e9")
             },
             prestigeGain() {
                 let mul = 1
