@@ -255,7 +255,7 @@ addLayer("SCH", {
         45: {
             title: "The points are thinking",
             description: "Boost thought gain based on points",
-            cost: new Decimal(350),
+            cost: new Decimal(500),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
