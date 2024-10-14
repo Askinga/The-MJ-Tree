@@ -216,6 +216,24 @@ addLayer("SCH", {
             cost: new Decimal(5e18),
             unlocked() { return (hasUpgrade('SCH', 34)) },
 	},
+        41: {
+            title: "More thinking",
+            description: "Double your thought gain",
+            cost: new Decimal(10),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    unlocked() { return (hasUpgrade('SCH', 35)) },
+	},
+        42: {
+            title: "Even more thinking",
+            description: "×1.35 your thought gain",
+            cost: new Decimal(25),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    unlocked() { return (hasUpgrade('SCH', 35)) },
+	},
     },
     clickables: {
 	    11: {
@@ -230,7 +248,9 @@ addLayer("SCH", {
             },
             prestigeGain() {
                 let mul = 1
-                return player.points.log(10).div(1.794e9).mul(mul)
+                if(hasUpgrade('SCH', 41)) mul = mul.times(2)
+	        if(hasUpgrade('SCH', 42)) mul = mul.times(1.35)
+		return player.points.log(10).div(1.794e9).mul(mul)
             },
             onClick() {
                 player.SCH.thoughts = player.SCH.thoughts.add(this.prestigeGain())
