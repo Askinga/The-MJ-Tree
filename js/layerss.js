@@ -306,6 +306,15 @@ addLayer("SCH", {
             currencyLayer: "SCH",
 	    unlocked() { return (hasUpgrade('SCH', 52)) },
 	},
+        54: {
+            title: "Ultra Inflation",
+            description: "MJ Students now raise MJs!",
+            cost: new Decimal("ee1000"),
+            currencyDisplayName: "MJ Schools",
+            currencyInternalName: "points",
+            currencyLayer: "SCH",
+	    unlocked() { return (hasUpgrade('SCH', 53)) },
+	},
     },
     clickables: {
 	    11: {
