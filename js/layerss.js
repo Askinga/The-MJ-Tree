@@ -54,7 +54,9 @@ addLayer("SCH", {
        return visible
 },
     powerEff() {
-    return player.SCH.students.add(1).pow(3e6).pow(tmp.SCH.powerEff2);
+    let pow = 1
+    if(hasUpgrade('SCH', 53)) pow = pow.mul(upgradeEffect('SCH', 52))
+    return player.SCH.students.add(1).pow(3e6).pow(tmp.SCH.powerEff2).pow(pow);
     },
     powerEff2() {
     return player.SCH.thoughts.add(1).pow(0.33);
@@ -261,7 +263,6 @@ addLayer("SCH", {
             currencyLayer: "SCH",
 	    effect(){
                 let div = 2.5e9
-		if(hasUpgrade('SCH', 52)) div = div.div(upgradeEffect('SCH', 52))
 		let eff = player.points.add(1).log(10).div(div).add(1)
 		return eff
             },
@@ -285,7 +286,7 @@ addLayer("SCH", {
 	},
         52: {
             title: "Think Faster!",
-            description: "Boost School Upgrade 45 effect based on MJ Schools",
+            description: "Boost Thought gain based on MJ Schools",
             cost: new Decimal(1500),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
@@ -297,6 +298,15 @@ addLayer("SCH", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('SCH', 51)) },
+	},
+        53: {
+            title: "Tell the MJ Students to work faster",
+            description: "^1.1 MJ Student effect",
+            cost: new Decimal(4500),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    unlocked() { return (hasUpgrade('SCH', 52)) },
 	},
     },
     clickables: {
@@ -318,6 +328,7 @@ addLayer("SCH", {
 		if(hasUpgrade('SCH', 44)) mul = mul.mul(2)
 		if(hasUpgrade('SCH', 45)) mul = mul.mul(upgradeEffect('SCH', 45))
 		if(hasUpgrade('SCH', 51)) mul = mul.mul(upgradeEffect('SCH', 51))
+		if(hasUpgrade('SCH', 52)) mul = mul.mul(upgradeEffect('SCH', 52))
 		return player.points.log(10).div(1.794e9).mul(mul)
             },
             onClick() {
