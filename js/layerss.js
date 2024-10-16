@@ -253,19 +253,50 @@ addLayer("SCH", {
 	    unlocked() { return (hasUpgrade('SCH', 43)) },
 	},
         45: {
-            title: "The points are thinking",
-            description: "Boost thought gain based on points",
+            title: "The MJs are thinking",
+            description: "Boost thought gain based on MJs",
             cost: new Decimal(500),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
 	    effect(){
                 let div = 2.5e9
+		if(hasUpgrade('SCH', 52)) div = div.div(upgradeEffect('SCH', 52))
 		let eff = player.points.add(1).log(10).div(div).add(1)
 		return eff
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('SCH', 44)) },
+	},
+        51: {
+            title: "The Galactical MJs are thinking",
+            description: "Boost thought gain based on Galactical MJs",
+            cost: new Decimal(1000),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    effect(){
+                let div = 2e5
+		let eff = player.GLA.points.add(1).log(10).div(div).add(1)
+		return eff
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('SCH', 45)) },
+	},
+        52: {
+            title: "Think Faster!",
+            description: "Boost School Upgrade 45 effect based on MJ Schools",
+            cost: new Decimal(1500),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    effect(){
+                let div = 65
+		let eff = player.SCH.points.add(1).log(10).div(div).add(1)
+		return eff
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('SCH', 51)) },
 	},
     },
     clickables: {
@@ -286,6 +317,7 @@ addLayer("SCH", {
 		if(hasUpgrade('SCH', 43)) mul = mul.mul(3)
 		if(hasUpgrade('SCH', 44)) mul = mul.mul(2)
 		if(hasUpgrade('SCH', 45)) mul = mul.mul(upgradeEffect('SCH', 45))
+		if(hasUpgrade('SCH', 51)) mul = mul.mul(upgradeEffect('SCH', 51))
 		return player.points.log(10).div(1.794e9).mul(mul)
             },
             onClick() {
