@@ -315,6 +315,21 @@ addLayer("SCH", {
             currencyLayer: "SCH",
 	    unlocked() { return (hasUpgrade('SCH', 53)) },
 	},
+        55: {
+            title: "Hyper Inflation",
+            description: "Boost MJs.",
+            cost: new Decimal("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee10"),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    effect(){
+                let div = 2.5e9
+		let eff = player.points.add(1).log(10).div(div).add(1)
+		return eff
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"^^" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('SCH', 54)) },
+	},
     },
     clickables: {
 	    11: {
