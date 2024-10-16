@@ -54,9 +54,7 @@ addLayer("SCH", {
        return visible
 },
     powerEff() {
-    let pow = 1
-    if(hasUpgrade('SCH', 53)) pow = pow.mul(upgradeEffect('SCH', 52))
-    return player.SCH.students.add(1).pow(3e6).pow(tmp.SCH.powerEff2).pow(pow);
+    return player.SCH.students.add(1).pow(3e6).pow(tmp.SCH.powerEff2);
     },
     powerEff2() {
     return player.SCH.thoughts.add(1).pow(0.33);
@@ -300,8 +298,8 @@ addLayer("SCH", {
 	    unlocked() { return (hasUpgrade('SCH', 51)) },
 	},
         53: {
-            title: "Tell the MJ Students to work faster",
-            description: "^1.1 MJ Student effect",
+            title: "Inflation",
+            description: "^1.04 MJs",
             cost: new Decimal(4500),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
