@@ -212,7 +212,7 @@ addLayer("SCH", {
 	},
         35: {
             title: "Give your students some time to think",
-            description: "Unlock Thoughts (next update)",
+            description: "Unlock Thoughts",
             cost: new Decimal(5e18),
             unlocked() { return (hasUpgrade('SCH', 34)) },
 	},
