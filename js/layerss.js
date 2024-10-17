@@ -219,7 +219,7 @@ addLayer("SCH", {
         41: {
             title: "More thinking",
             description: "Double your thought gain",
-            cost: new Decimal(10),
+            cost: new Decimal(12),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
@@ -228,7 +228,7 @@ addLayer("SCH", {
         42: {
             title: "Even more thinking",
             description: "×1.35 your thought gain",
-            cost: new Decimal(25),
+            cost: new Decimal(30),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
@@ -237,7 +237,7 @@ addLayer("SCH", {
         43: {
             title: "Tell people to think",
             description: "×3 your thought gain",
-            cost: new Decimal(50),
+            cost: new Decimal(55),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
@@ -246,7 +246,7 @@ addLayer("SCH", {
         44: {
             title: "Tell more people to think",
             description: "×2 your thought gain",
-            cost: new Decimal(175),
+            cost: new Decimal(200),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
@@ -255,7 +255,7 @@ addLayer("SCH", {
         45: {
             title: "The MJs are thinking",
             description: "Boost thought gain based on MJs",
-            cost: new Decimal(500),
+            cost: new Decimal(750),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
@@ -270,7 +270,7 @@ addLayer("SCH", {
         51: {
             title: "The Galactical MJs are thinking",
             description: "Boost thought gain based on Galactical MJs",
-            cost: new Decimal(1000),
+            cost: new Decimal(1500),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
@@ -285,7 +285,7 @@ addLayer("SCH", {
         52: {
             title: "Think Faster!",
             description: "Boost Thought gain based on MJ Schools",
-            cost: new Decimal(1500),
+            cost: new Decimal(3000),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
@@ -300,7 +300,7 @@ addLayer("SCH", {
         53: {
             title: "Inflation",
             description: "^1.015 MJs",
-            cost: new Decimal(4500),
+            cost: new Decimal(7500),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
