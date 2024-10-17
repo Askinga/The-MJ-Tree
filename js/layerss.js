@@ -299,7 +299,7 @@ addLayer("SCH", {
 	},
         53: {
             title: "Inflation",
-            description: "^1.015;MJs",
+            description: "^1.015 MJs",
             cost: new Decimal(4500),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
@@ -308,7 +308,7 @@ addLayer("SCH", {
 	},
         54: {
             title: "THINK!",
-            description: "*2.5 Thoughts",
+            description: "×2.5 Thoughts",
             cost: new Decimal("10000"),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
