@@ -309,7 +309,7 @@ addLayer("SCH", {
         54: {
             title: "THINK!",
             description: "×2.5 Thoughts",
-            cost: new Decimal("10000"),
+            cost: new Decimal("50000"),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
@@ -318,7 +318,7 @@ addLayer("SCH", {
         55: {
             title: "It's time to give your MJ Students some work",
             description: "Unlock Work (next update)",
-            cost: new Decimal("50000"),
+            cost: new Decimal("150000"),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
