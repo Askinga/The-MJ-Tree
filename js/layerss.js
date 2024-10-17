@@ -307,27 +307,21 @@ addLayer("SCH", {
 	    unlocked() { return (hasUpgrade('SCH', 52)) },
 	},
         54: {
-            title: "Ultra Inflation",
-            description: "MJ Students now raise MJs!",
-            cost: new Decimal("ee1000"),
-            currencyDisplayName: "MJ Schools",
-            currencyInternalName: "points",
+            title: "THINK!",
+            description: "*2.5 Thoughts",
+            cost: new Decimal("10000"),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
             currencyLayer: "SCH",
 	    unlocked() { return (hasUpgrade('SCH', 53)) },
 	},
         55: {
-            title: "Hyper Inflation",
-            description: "Boost MJs.",
-            cost: new Decimal("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee10"),
+            title: "It's time to give your MJ Students some work",
+            description: "Unlock Work (next update)",
+            cost: new Decimal("50000"),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
-	    effect(){
-                let div = 2.5e9
-		let eff = player.points.add(1).log(10).div(div).add(1)
-		return eff
-            },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"^^" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('SCH', 54)) },
 	},
     },
@@ -351,6 +345,7 @@ addLayer("SCH", {
 		if(hasUpgrade('SCH', 45)) mul = mul.mul(upgradeEffect('SCH', 45))
 		if(hasUpgrade('SCH', 51)) mul = mul.mul(upgradeEffect('SCH', 51))
 		if(hasUpgrade('SCH', 52)) mul = mul.mul(upgradeEffect('SCH', 52))
+		if(hasUpgrade('SCH', 44)) mul = mul.mul(2.5)
 		return player.points.log(10).div(1.794e9).mul(mul)
             },
             onClick() {
