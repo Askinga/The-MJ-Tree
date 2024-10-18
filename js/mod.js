@@ -118,7 +118,7 @@ function addedPlayerData() { return {
 var displayThings = [
     () => "<br>Get MJ School Upgrade 35 to beat the game!.",
 	"<br>",
-	() => (player.points.gte("e1.000e10") ? "<span style=\"color: rgb(255, 0, 0); 0px 0px 10px;\">MJ are softcapped past e2.000e10! (^0.4)</span><br>" : "",
+	() => (player.points.gte("e1.000e10") ? "<span style=\"color: rgb(255, 0, 0); 0px 0px 10px;\">MJ are softcapped past e2.000e10 due to overpopulation! (^0.4)</span><br>" : "",
 	"<br>",
 ]
 
