@@ -345,7 +345,7 @@ addLayer("SCH", {
 		if(hasUpgrade('SCH', 45)) mul = mul.mul(upgradeEffect('SCH', 45))
 		if(hasUpgrade('SCH', 51)) mul = mul.mul(upgradeEffect('SCH', 51))
 		if(hasUpgrade('SCH', 52)) mul = mul.mul(upgradeEffect('SCH', 52))
-		if(hasUpgrade('SCH', 44)) mul = mul.mul(2.5)
+		if(hasUpgrade('SCH', 54)) mul = mul.mul(2.5)
 		return player.points.log(10).div(1.794e9).mul(mul)
             },
             onClick() {
