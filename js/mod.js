@@ -116,7 +116,10 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-    "Get MJ School Upgrade 35 to beat the game!"  
+    () => "<br>Get MJ School Upgrade 35 to beat the game!.",
+	"<br>",
+	() => (player.points.gte("e1.000e10") ? "<span style=\"color: rgb(255, 0, 0); 0px 0px 10px;\">MJ are softcapped past e2.000e10! (^0.4)</span><br>" : "",
+	"<br>",
 ]
 
 // Determines when the game "ends"
