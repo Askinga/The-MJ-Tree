@@ -300,7 +300,7 @@ addLayer("SCH", {
         53: {
             title: "Inflation",
             description: "^1.01 MJs",
-            cost: new Decimal(7500),
+            cost: new Decimal(5000),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
@@ -308,8 +308,8 @@ addLayer("SCH", {
 	},
         54: {
             title: "THINK!",
-            description: "×2.5 Thoughts",
-            cost: new Decimal("50000"),
+            description: "×5 Thoughts",
+            cost: new Decimal("10000"),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
@@ -345,7 +345,7 @@ addLayer("SCH", {
 		if(hasUpgrade('SCH', 45)) mul = mul.mul(upgradeEffect('SCH', 45))
 		if(hasUpgrade('SCH', 51)) mul = mul.mul(upgradeEffect('SCH', 51))
 		if(hasUpgrade('SCH', 52)) mul = mul.mul(upgradeEffect('SCH', 52))
-		if(hasUpgrade('SCH', 54)) mul = mul.mul(2.5)
+		if(hasUpgrade('SCH', 54)) mul = mul.mul(5)
 		return player.points.log(10).div(1.794e9).mul(mul)
             },
             onClick() {
