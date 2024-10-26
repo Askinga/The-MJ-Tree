@@ -783,7 +783,7 @@ addLayer( "sp", {
     upgrades: {
 	11: {
             title: "Upgrade 36",
-	    description: "×10 previous resources",
+	    description: function() {return `<br>×2 <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span><br> and <span style=\"color: rgb(255, 60, 0); text-shadow: rgb(255, 60, 0) 0px 0px 10px;\">upgraded prestige points</span>`},
 	    cost: new Decimal(1),
 	},
         12: {
@@ -794,7 +794,7 @@ addLayer( "sp", {
 	},
         13: {
             title: "Upgrade 38",
-	    description: "×10 points every upgrade starting from this upgrade! And x100 points",
+	    description: function() {return `<br>×10 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> every upgrade starting from this upgrade! And ×100 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span>`},
 	    cost: new Decimal(3),
 	    unlocked() {return hasUpgrade('sp', 12)},
 	},
