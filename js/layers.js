@@ -25,7 +25,6 @@ addLayer("SCH", {
         {key: "S", description: "Shift+S: Reset for MJ Schools", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
-    branches["SAC"],
     challenges: {
         12: {
             name: "Broken MJs",
