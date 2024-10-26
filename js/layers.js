@@ -27,19 +27,12 @@ addLayer("SCH", {
     layerShown(){return true},
     branches["SAC"],
     challenges: {
-        11: {
-            name: "Cosmicless Challenge",
-            challengeDescription: "Every MJ Click and Upgrade Tree upgrades is disabled, Every layer ^0.2 except this layer and buyables scale a lot faster except MJ Booster.",
-            canComplete: function() {return player.points.gte("e982000")},
-            goalDescription: "Get e982000 MJs.",
-            rewardDescription: "Unlock more Galactic MJ Upgrades"
-        },
         12: {
             name: "Broken MJs",
             challengeDescription: "^0.01 MJs",
             canComplete: function() {return player.points.gte("e10805")},
             goalDescription: "Get e10805 MJs.",
-            rewardDescription: "Beat v2.1.0. Tip: If you reach a certain amount of MJs, you will see a glimpse of the creater, about challenges",
+            rewardDescription: "Beat v2.1.0. Tip: If you reach a certain amount of MJs, you will see a glimpse of the creater, <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">about challenges</span><br>",
             unlocked() { return (hasChallenge('GLA', 11)) },
 	},
     },
