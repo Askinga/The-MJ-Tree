@@ -492,7 +492,7 @@ addLayer( "up", {
 	},
         15: {
             title: "Upgrade 25",
-	    description: function() {return `<br>Unlock Prestige Generators and ×3 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">prestige points</span>`},
+	    description: function() {return `<br>Unlock Prestige Generators and ×3 <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span>`},
 	    cost: new Decimal(200),
 	    unlocked() {return hasUpgrade('up', 14)},
 	},
