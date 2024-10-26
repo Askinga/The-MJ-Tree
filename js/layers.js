@@ -469,18 +469,18 @@ addLayer( "up", {
     upgrades: {
 	11: {
             title: "Upgrade 21",
-	    description: "Quintuple point gain and ×3 prestige points",
+	    description: function() {return `<br>×5 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br> and ×3 <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span>`},
 	    cost: new Decimal(1),
 	},
         12: {
             title: "Upgrade 22",
-	    description: "Buff the effect of the tenth upgrade",
+	    description: "Buff the effect of The Tenth Upgrade",
 	    cost: new Decimal(5),
 	    unlocked() {return hasChallenge('up', 11)},
 	},
         13: {
             title: "Upgrade 23",
-	    description: "Upgrade 14 gives ×10 prestige points instead of ×3",
+	    description: function() {return `<br>Upgrade 14 gives ×10 <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span><br> instead of ×3`},
 	    cost: new Decimal(25),
 	    unlocked() {return hasUpgrade('up', 12)},
 	},
@@ -492,7 +492,7 @@ addLayer( "up", {
 	},
         15: {
             title: "Upgrade 25",
-	    description: "Unlock Prestige Generators and ×3 prestige points",
+	    description: function() {return `<br>Unlock Prestige Generators and ×3 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">prestige points</span>`},
 	    cost: new Decimal(200),
 	    unlocked() {return hasUpgrade('up', 14)},
 	},
@@ -516,13 +516,13 @@ addLayer( "up", {
 	},
         24: {
             title: "Upgrade 29",
-	    description: "×100 points",
+	    description: function() {return `<br>×100 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span>`},",
 	    cost: new Decimal(20000),
 	    unlocked() {return hasUpgrade('up', 23)},
 	},
         25: {
             title: "Upgrade 30",
-	    description: "Boost point gain based on upgraded prestige points",
+	    description: function() {return `<br>Boost <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\"><h3>points</h3></span><br> based on <span style=\"color: rgb(255, 60, 0); text-shadow: rgb(255, 60, 0) 0px 0px 10px;\">upgraded prestige points</span>`},
 	    cost: new Decimal(250000),
 	    effect() {
                 return player.up.points.add(1).pow(0.35)
@@ -545,7 +545,7 @@ addLayer( "up", {
 	},
         33: {
             title: "Upgrade 33",
-	    description: "Boost upgraded prestige point gain based on points",
+	    description: function() {return `<br>Boost <span style=\"color: rgb(255, 60, 0); text-shadow: rgb(255, 60, 0) 0px 0px 10px;\"><h3>upgraded prestige points</h3></span><br> based on <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span>`},
 	    cost: new Decimal(5e8),
 	    unlocked() {return hasUpgrade('up', 32)},
 	    effect() {
