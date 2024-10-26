@@ -516,7 +516,7 @@ addLayer( "up", {
 	},
         24: {
             title: "Upgrade 29",
-	    description: function() {return `<br>×100 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span>`},",
+	    description: function() {return `<br>×100 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span>`},
 	    cost: new Decimal(20000),
 	    unlocked() {return hasUpgrade('up', 23)},
 	},
