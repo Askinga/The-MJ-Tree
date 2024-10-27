@@ -752,7 +752,7 @@ addLayer( "sp", {
             ],
         },
 	"Super Points": {
-          unlocked() { return (hasUpgrade('sp', 25)) },
+          unlocked() { return (hasUpgrade('sp', 15)) },
 	    content: [
                 "main-display",
 		"blank",
@@ -766,7 +766,7 @@ addLayer( "sp", {
             ],
         },
         "Buyables": {
-          unlocked() { return (hasUpgrade('sp', 15)) },
+          unlocked() { return (hasUpgrade('sp', 25)) },
 	    content: [
                 "main-display",
 		"blank",
