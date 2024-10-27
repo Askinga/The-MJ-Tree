@@ -77,7 +77,8 @@ addLayer("p", {
                 "prestige-button",
                 "blank",
                 "upgrades"
-            ],
+                "blank", ['display-image', 'https://lh3.googleusercontent.com/qQtQmmsFKVwjW33tRae3ow4xjyu2_PXcEfAqEyU_QQqDz1oVcI63NYslAjKXH0iP4rDcL0JEKzFgzxAHXM5B3KdoBCFo0pHyyrXD1C3j0A=s0'],
+	    ],
         },
         "Milestones": {
             content: [
