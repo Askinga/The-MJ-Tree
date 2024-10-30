@@ -92,6 +92,7 @@ addLayer("p", {
 	if (hasUpgrade('u', 23)) mult = mult.times(1e15)
 	if (hasUpgrade('MU', 12)) mult = mult.times(1e30)
 	if (hasUpgrade('MU', 25)) mult = mult.times(1e33)
+	if (hasUpgrade('MU', 42)) mult = mult.times(1e25)
 	
 	// pow
 	
@@ -1233,13 +1234,49 @@ addLayer("MU", {
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
 	},
     	41: {
-            title: "More. again",
+            title: "More... again",
             description: "×2 Generated MJ Universes",
-            cost: new Decimal(200),
-	    currencyDisplayName: "Generated MJ Universes gain",
-            currencyInternalName: "gmug",
+            cost: new Decimal(25000),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
             currencyLayer: "MU",
             unlocked() {return hasUpgrade("MU", 35)}
+	},
+        42: {
+            title: "More... but with a boost",
+            description: "×2 Generated MJ Universes and ×e25 MJs",
+            cost: new Decimal(25000),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 41)}
+	},
+	43: {
+            title: ";)",
+            description: "×3 Generated MJ Universes",
+            cost: new Decimal(4),
+	    currencyDisplayName: "MJ Multiverses",
+            currencyInternalName: "points",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 42)}
+	},
+    	44: {
+            title: ":)",
+            description: "×2.5 Generated MJ Universes",
+            cost: new Decimal(1000000),
+	    currencyDisplayName: "Generated MJ Universes",
+            currencyInternalName: "gmu",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 44)}
+	},
+        45: {
+            title: ":O",
+            description: "Unlock the next layer (SOON)",
+            cost: new Decimal(3),
+	    currencyDisplayName: "MJ Multiverses",
+            currencyInternalName: "points",
+            currencyLayer: "MU",
+            unlocked() {return hasUpgrade("MU", 44)}
 	},
     },
     update(diff) {
@@ -1252,6 +1289,9 @@ addLayer("MU", {
 	    if (hasUpgrade('MU', 34)) gain = gain.times(2)
 	    if (hasUpgrade('MU', 35)) gain = gain.times(upgradeEffect('MU', 35))
 	    if (hasUpgrade('MU', 41)) gain = gain.times(2)
+	    if (hasUpgrade('MU', 42)) gain = gain.times(2)
+	    if (hasUpgrade('MU', 43)) gain = gain.times(3)
+	    if (hasUpgrade('MU', 44)) gain = gain.times(2.5)
 		
             // statements above this line
             player.MU.gmug = gain
