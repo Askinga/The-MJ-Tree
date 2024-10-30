@@ -1267,7 +1267,7 @@ addLayer("MU", {
 	    currencyDisplayName: "Generated MJ Universes",
             currencyInternalName: "gmu",
             currencyLayer: "MU",
-            unlocked() {return hasUpgrade("MU", 44)}
+            unlocked() {return hasUpgrade("MU", 43)}
 	},
         45: {
             title: ":O",
