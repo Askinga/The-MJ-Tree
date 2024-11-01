@@ -85,7 +85,7 @@ addLayer("p", {
             title: "Triple",
             description: "×3 points.",
             cost: new Decimal(200),
-	    unlocked() { return (hasUpgrade('p', 33)) },
+	    unlocked() { return (hasUpgrade('p', 11)) },
 	},
 	13: {
             title: "Quadruple",
@@ -379,20 +379,14 @@ componentStyles: {
             },
             canClick(){return true}
         },
-	12: {
-            title: "Set prestige points to 1000000",
-            description: "For overboard",
-            canClick() {return true},
-            onClick() {
-                if (confirm("This will set prestige points to 1000000. Continue?") == true) 
-                {
-                    player.r.points = 1000000;
-			        save(true);
-                    window.location.reload();
-                } 
-                
-            }
-	}
+        12:{
+            display(){return `Continue`},
+            style:{"height":"150px","width":"150px","border-radius":"0%","border":"6px solid","border-color":"#00ff44","color":"#00ff44","font-size":"15px","background-color":"#00000000"},
+            onClick(){
+                player.tab='p'
+            },
+            canClick(){return player.s.unlocked == true}
+        },
     },
     challenges: {
         11: {
