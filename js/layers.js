@@ -87,7 +87,7 @@ addLayer("p", {
             description: "×3 points.",
             cost: new Decimal(200),
 	    branches: [13],
-	    unlocked() { return (hasUpgrade('p', 11)) },
+	    unlocked() { return (hasUpgrade('p', 33)) },
 	},
 	13: {
             title: "Quadruple",
