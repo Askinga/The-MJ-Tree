@@ -80,17 +80,20 @@ addLayer("p", {
             title: "Double",
             description: "×2 points.",
             cost: new Decimal(1),
-        },
+            branches: [12],
+	},
         12: {
             title: "Triple",
             description: "×3 points.",
             cost: new Decimal(200),
+	    branches: [13],
 	    unlocked() { return (hasUpgrade('p', 11)) },
 	},
 	13: {
             title: "Quadruple",
             description: "×4 points.",
             cost: new Decimal(1000),
+	    branches: [13],
 	    unlocked() { return (hasUpgrade('p', 12)) },
 	},
 	14: {
