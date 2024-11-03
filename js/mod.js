@@ -17,14 +17,13 @@ let VERSION = {
 	name: "Not Finished!",
 }
 
-let changelog = `<h1>Changelog:</h1><br>
-               <h3>0.1</h3><br>
-	       - Added 6 milestones<br>
-	       - Added 2 layers <spoiler>Computing</spoiler> and <spoiler>Addition</spoiler><br>
-	       - Added 5 upgrades<br>
-  
-  		
-    		<h3>0.0</h3><br>
+let changelog = `<h1>Changelog:</h1><br/>
+               <h2>0.1</h2><br/>
+	       - Added 6 milestones<br/>
+	       - Added 2 layers: <spoiler>Computing</spoiler> and <spoiler>Addition.</spoiler><br/>
+	       - Added 5 upgrades.<br/>
+  	       <br/>
+    		<h2>0.0</h2><br/>
                 - Nothing!`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
