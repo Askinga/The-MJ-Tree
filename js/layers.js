@@ -51,7 +51,7 @@ addLayer("c", {
 	},
         3: {
             requirementDescription: "4 computions",
-            effectDescription: "Compute upgrades: +2 upgrades for addition layer",
+            effectDescription: "Compute upgrades: +3 upgrades for addition layer",
             done() { return player.c.points >= (4) },
             unlocked() { return (hasMilestone('c', 2)) }
 	},
@@ -106,4 +106,24 @@ addLayer("a", {
        return visible
     },
     branches:["c"],
+    upgrades: {
+        11: {
+            title: "First upgrade?",
+            description: "Grant yourself 2x points by speeding up time (before addition).",
+            cost: new Decimal(5),
+	    unlocked() { return (hasMilestone('c', 3)) }
+        },
+        12: {
+            title: "addition reference",
+            description: "Grant yourself +4 point gain.",
+            cost: new Decimal(12),
+	    unlocked() { return (hasMilestone('c', 3)) }
+        },
+        13: {
+            title: "Upgrade repeat",
+            description: "Grant yourself 2x points by speeding up time again (before addition).",
+            cost: new Decimal(20),
+	    unlocked() { return (hasMilestone('c', 3)) }
+        },
+    }, 
 })
