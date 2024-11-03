@@ -24,10 +24,12 @@ addLayer("c", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 99, // Row the layer is in on the tree (0 is the first row)
+    displayRow: 0,
     hotkeys: [
         {key: "c", description: "C: Compute something new", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    resetDescription: 'Reset Everything for', 
     layerShown(){return true},
     milestones: {
         0: {
@@ -41,11 +43,58 @@ addLayer("c", {
             done() { return player.c.points >= (2) },
             unlocked() { return (hasMilestone('c', 0)) }
 	},
-        3: {
+        2: {
             requirementDescription: "3 computions",
             effectDescription: "Compute a new layer: Add Addition layer",
             done() { return player.c.points >= (3) },
             unlocked() { return (hasMilestone('c', 1)) }
 	},
+        3: {
+            requirementDescription: "4 computions",
+            effectDescription: "Compute upgrades: +2 upgrades for addition layer",
+            done() { return player.c.points >= (4) },
+            unlocked() { return (hasMilestone('c', 2)) }
+	},
     },
+})
+
+addLayer("a", {
+    name: "Addition",
+    symbol: "➕",
+    position: 0,
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#a8a8a8",
+    requires() {
+        let req = new Decimal(250)
+	return req
+    }, // Can be a function that takes requirement increases into account
+    resource: "Addition", // Name of prestige currency
+    baseResource: "points", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.15, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "a", description: "A: Reset for addition", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    resetDescription: 'Reset points for',
+    layerShown(){
+        let visible = false
+        if (hasMilestone('c', 2) || player.a.unlocked) visible = true
+       return visible
+    },
+    branches:["c"],
 })
