@@ -46,8 +46,10 @@ function getPointGen() {
 	if(hasMilestone('c', 1)) gain = gain.add(3.5)
 	if(hasUpgrade('a', 11)) gain = gain.times(2)
 	if(hasUpgrade('a', 13)) gain = gain.times(4)
+	if(hasMilestone('c', 4)) gain = gain.times(1.4)
 	gain = gain.add(layers.a.effect())
 	if(hasUpgrade('a', 12)) gain = gain.add(4)
+	if(hasMilestone('c', 4)) gain = gain.add(10)
 	return gain
 }
 
