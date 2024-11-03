@@ -34,16 +34,19 @@ addLayer("c", {
             requirementDescription: "1 compution",
             effectDescription: "Compute a muliplier: 1.5x points",
             done() { return player.c.points >= (1) }
-        },
+            
+	},
         1: {
             requirementDescription: "2 computions",
             effectDescription: "Compute a addition: +1.5 point gain",
             done() { return player.c.points >= (2) }
-        },
+            unlocked() { return (hasMilestone('c', 0)) }
+	},
         3: {
             requirementDescription: "3 computions",
             effectDescription: "Compute a new layer: Add Addition layer",
             done() { return player.c.points >= (3) }
-        },
+            unlocked() { return (hasMilestone('c', 1)) }
+	},
     },
 })
