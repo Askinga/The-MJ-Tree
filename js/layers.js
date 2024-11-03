@@ -37,7 +37,7 @@ addLayer("c", {
 	},
         1: {
             requirementDescription: "2 computions",
-            effectDescription: "Compute a addition: +1.5 point gain",
+            effectDescription: "Compute a addition: +3.5 point gain",
             done() { return player.c.points >= (2) },
             unlocked() { return (hasMilestone('c', 0)) }
 	},
