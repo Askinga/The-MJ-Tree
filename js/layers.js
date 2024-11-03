@@ -68,7 +68,7 @@ addLayer("a", {
     }},
     color: "#a8a8a8",
     requires() {
-        let req = new Decimal(250)
+        let req = new Decimal(200)
 	return req
     }, // Can be a function that takes requirement increases into account
     resource: "Addition", // Name of prestige currency
@@ -76,6 +76,15 @@ addLayer("a", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.15, // Prestige currency exponent
+    effect(){
+    let rpow = 1
+	let eff = player.a.points.pow(rpow)
+       return eff
+        },
+        effectDescription() {
+            let desc = "adding " + format(tmp[this.layer].effect) + " to point gain.";
+            return desc;
+        },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
