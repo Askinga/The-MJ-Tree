@@ -44,7 +44,10 @@ function getPointGen() {
 	let gain = new Decimal(1)
 	if(hasMilestone('c', 0)) gain = gain.times(1.5)
 	if(hasMilestone('c', 1)) gain = gain.add(3.5)
+	if(hasupgrade('a', 11)) gain = gain.times(2)
+	if(hasupgrade('a', 13)) gain = gain.times(2)
 	gain = gain.add(layers.a.effect())
+	if(hasupgrade('a', 12)) gain = gain.add(4)
 	return gain
 }
 
