@@ -31,6 +31,9 @@ addLayer("c", {
     ],
     resetDescription: 'Reset Everything for ', 
     layerShown(){return true},
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Computing")
+    },
     milestones: {
         0: {
             requirementDescription: "1 compution",
@@ -114,6 +117,9 @@ addLayer("a", {
        return visible
     },
     branches:["c"],
+    tooltip() { // Optional, tooltip displays when the layer is locked
+        return ("Addition")
+    },
     upgrades: {
         11: {
             title: "First upgrade?",
