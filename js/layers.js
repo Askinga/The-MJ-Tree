@@ -68,7 +68,7 @@ addLayer("a", {
     }},
     color: "#a8a8a8",
     requires() {
-        let req = new Decimal(200)
+        let req = new Decimal(100)
 	return req
     }, // Can be a function that takes requirement increases into account
     resource: "Addition", // Name of prestige currency
@@ -116,13 +116,13 @@ addLayer("a", {
         12: {
             title: "addition reference",
             description: "Grant yourself +4 point gain.",
-            cost: new Decimal(12),
+            cost: new Decimal(7),
 	    unlocked() { return (hasMilestone('c', 3)) }
         },
         13: {
             title: "Upgrade repeat",
             description: "Grant yourself 2x points by speeding up time again (before addition).",
-            cost: new Decimal(20),
+            cost: new Decimal(10),
 	    unlocked() { return (hasMilestone('c', 3)) }
         },
     }, 
