@@ -139,7 +139,7 @@ addLayer("a", {
             cost: new Decimal(30),
 	    unlocked() { return (hasMilestone('c', 4)) }
         },
-        14: {
+        15: {
             title: "Even more Addition",
             description: "Grant yourself 2x Addition by cloning the additions you gain again.",
             cost: new Decimal(100),
