@@ -14,7 +14,7 @@ addLayer("c", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent() {
-        let exp = 1.675
+        let exp = 1.625
         return exp
     }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -55,6 +55,12 @@ addLayer("c", {
             done() { return player.c.points >= (4) },
             unlocked() { return (hasMilestone('c', 2)) }
 	},
+        4: {
+            requirementDescription: "5 computions",
+            effectDescription: "Compute things: +2 upgrades for addition layer, ×1.4 points and +10 point gain",
+            done() { return player.c.points >= (5) },
+            unlocked() { return (hasMilestone('c', 3)) }
+	},
     },
 })
 
@@ -87,6 +93,8 @@ addLayer("a", {
         },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if(hasUpgrade('a', 14)) mult = mult.times(2)
+        if(hasUpgrade('a', 15)) mult = mult.times(2)
 	return mult
     },
 
@@ -124,6 +132,18 @@ addLayer("a", {
             description: "Grant yourself 4x points by speeding up time again (before addition).",
             cost: new Decimal(13),
 	    unlocked() { return (hasMilestone('c', 3)) }
+        },
+        14: {
+            title: "More Addition",
+            description: "Grant yourself 2x Addition by cloning the additions you gain.",
+            cost: new Decimal(30),
+	    unlocked() { return (hasMilestone('c', 4)) }
+        },
+        14: {
+            title: "Even more Addition",
+            description: "Grant yourself 2x Addition by cloning the additions you gain again.",
+            cost: new Decimal(100),
+	    unlocked() { return (hasMilestone('c', 4)) }
         },
     }, 
 })
