@@ -43,7 +43,7 @@ function getPointGen() {
 
 	let gain = new Decimal(1)
 	if(hasMilestone('c', 0)) gain = gain.times(1.5)
-	if(hasMilestone('c', 1)) gain = gain.add(1.5)
+	if(hasMilestone('c', 1)) gain = gain.add(3.5)
 	return gain
 }
 
