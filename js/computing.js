@@ -4,13 +4,13 @@ addLayer("c", {
     symbol: "💻", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     nodeStyle() {return {
-        "background": "radial-gradient(#25d10f, #106b04)",
+        "background": "radial-gradient(#1aad07, #106b04)",
         "width": "100px",
         "height": "100px",
     }
 },
 componentStyles: {
-    "prestige-button"() {return { "background": "radial-gradient(#25d10f, #106b04)",
+    "prestige-button"() {return { "background": "radial-gradient(#1aad07, #106b04)",
         "width": "200px",
         "height": "150px",
     }},
