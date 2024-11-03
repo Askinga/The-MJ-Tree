@@ -53,7 +53,7 @@
 			<h3>Please check the Discord to see if there are new content updates!</h3><br><br>
 			<div v-if="!player.timePlayedReset">It took you {{formatTime(player.timePlayed)}} to beat the game.</div>
 			<br>
-			<button class="longUpg can" onclick="hardReset(true)">Play Again (reset all progress and start over)</button>&nbsp;&nbsp;&nbsp;&nbsp;<button
+			<button class="longUpg can" onclick="hardReset(true)">Play Again (reset all progress)</button>&nbsp;&nbsp;&nbsp;&nbsp;<button
 				class="longUpg can" onclick="keepGoing()">Keep Going (see how far you can get)</button>
 			<br><br><br>
 			<span v-if="modInfo.discordLink"><a class="link" v-bind:href="modInfo.discordLink"
