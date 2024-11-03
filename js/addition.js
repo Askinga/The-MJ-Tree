@@ -39,7 +39,7 @@ addLayer("a", {
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "a", description: "A: Reset for addition", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "a", description: "A: Reset for Addition", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     resetDescription: 'Reset points for ',
     layerShown(){
