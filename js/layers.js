@@ -29,7 +29,7 @@ addLayer("c", {
     hotkeys: [
         {key: "c", description: "C: Compute something new", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    resetDescription: 'Reset Everything for', 
+    resetDescription: 'Reset Everything for ', 
     layerShown(){return true},
     milestones: {
         0: {
@@ -99,7 +99,7 @@ addLayer("a", {
     hotkeys: [
         {key: "a", description: "A: Reset for addition", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    resetDescription: 'Reset points for',
+    resetDescription: 'Reset points for ',
     layerShown(){
         let visible = false
         if (hasMilestone('c', 2) || player.a.unlocked) visible = true
