@@ -64,6 +64,12 @@ addLayer("c", {
             done() { return player.c.points >= (5) },
             unlocked() { return (hasMilestone('c', 3)) }
 	},
+        5: {
+            requirementDescription: "6 computions",
+            effectDescription: "Compute a new layer: Add Multiplication layer (SOON!)",
+            done() { return player.c.points >= (6) },
+            unlocked() { return (hasMilestone('c', 4)) }
+	},
     },
 })
 
