@@ -121,7 +121,7 @@ addLayer("a", {
         },
         13: {
             title: "Upgrade repeat",
-            description: "Grant yourself 2x points by speeding up time again (before addition).",
+            description: "Grant yourself 4x points by speeding up time again (before addition).",
             cost: new Decimal(13),
 	    unlocked() { return (hasMilestone('c', 3)) }
         },
