@@ -14,7 +14,7 @@ addLayer("c", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent() {
-        let exp = 1.8
+        let exp = 1.55
         return exp
     }, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -29,4 +29,11 @@ addLayer("c", {
         {key: "c", description: "C: Compute something new", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
+    milestones: {
+        0: {
+            requirementDescription: "1 compution",
+            effectDescription: "Compute a muliplier: 1.5x points",
+            done() { return player.c.points >= (1) }
+        },
+    },
 })
