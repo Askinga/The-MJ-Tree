@@ -72,7 +72,7 @@ componentStyles: {
 	},
         4: {
             requirementDescription: "5 computions",
-            effectDescription: "Compute things: +2 upgrades for addition layer, ×1.4 points and +10 point gain",
+            effectDescription: "Compute things: +2 upgrades for addition layer, 1.4x points and +10 point gain",
             done() { return player.c.points >= (5) },
             unlocked() { return (hasMilestone('c', 3)) }
 	},
@@ -81,6 +81,12 @@ componentStyles: {
             effectDescription: "Compute a new layer: Add Multiplication layer, 1 upgrade for it",
             done() { return player.c.points >= (6) },
             unlocked() { return (hasMilestone('c', 4)) }
+	},
+        6: {
+            requirementDescription: "7 computions",
+            effectDescription: "Compute things: +2 upgrades for Multiplication layer, 2.5x points",
+            done() { return player.c.points >= (7) },
+            unlocked() { return (hasMilestone('c', 5)) }
 	},
     },
 })
