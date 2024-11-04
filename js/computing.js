@@ -88,5 +88,17 @@ componentStyles: {
             done() { return player.c.points >= (7) },
             unlocked() { return (hasMilestone('c', 5)) }
 	},
+        6: {
+            requirementDescription: "7 computions",
+            effectDescription: "Compute things: +2 upgrades for Multiplication layer, 2.5x points",
+            done() { return player.c.points >= (7) },
+            unlocked() { return (hasMilestone('c', 5)) }
+	},
+        7: {
+            requirementDescription: "8 computions",
+            effectDescription: "Compute things: +2 upgrades for Multiplication layer, 2x points and Addition",
+            done() { return player.c.points >= (8) },
+            unlocked() { return (hasMilestone('c', 6)) }
+	},
     },
 })
