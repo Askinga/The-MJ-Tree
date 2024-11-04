@@ -30,6 +30,7 @@ addLayer("a", {
 	if(hasUpgrade('a', 14)) mult = mult.times(2)
         if(hasUpgrade('a', 15)) mult = mult.times(2)
 	if(hasUpgrade('m', 12)) mult = mult.times(2)
+	if(hasUpgrade('m', 13)) mult = mult.times(1.5)
 	return mult
     },
 
