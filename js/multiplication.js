@@ -18,7 +18,7 @@ addLayer("m", {
     exponent: 1.65, // Prestige currency exponent
     effect(){
     let rpow = 1
-	let eff = player.m.points.pow(rpow)
+	let eff = player.m.points.add(1).pow(rpow)
        return eff
         },
         effectDescription() {
