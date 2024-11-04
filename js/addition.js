@@ -29,6 +29,7 @@ addLayer("a", {
         mult = new Decimal(1)
 	if(hasUpgrade('a', 14)) mult = mult.times(2)
         if(hasUpgrade('a', 15)) mult = mult.times(2)
+	if(hasUpgrade('m', 12)) mult = mult.times(2)
 	return mult
     },
 
