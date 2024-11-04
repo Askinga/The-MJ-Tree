@@ -57,4 +57,5 @@ addLayer("m", {
             cost: new Decimal(2),
 	    unlocked() { return (hasMilestone('c', 5)) }
         },
+    },
 })
