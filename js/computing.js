@@ -78,7 +78,7 @@ componentStyles: {
 	},
         5: {
             requirementDescription: "6 computions",
-            effectDescription: "Compute a new layer: Add Multiplication layer (SOON!)",
+            effectDescription: "Compute a new layer: Add Multiplication layer, 1 upgrade for it",
             done() { return player.c.points >= (6) },
             unlocked() { return (hasMilestone('c', 4)) }
 	},
