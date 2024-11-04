@@ -69,5 +69,17 @@ addLayer("m", {
             cost: new Decimal(4),
 	    unlocked() { return (hasMilestone('c', 6)) }
         },
+        14: {
+            title: "Medium mult",
+            description: "A simple 5x point gain",
+            cost: new Decimal(4),
+	    unlocked() { return (hasMilestone('c', 7)) }
+        },
+        15: {
+            title: "Medium mult mult",
+            description: "A simple 5x Addition gain.",
+            cost: new Decimal(4),
+	    unlocked() { return (hasMilestone('c', 7)) }
+        },
     },
 })
