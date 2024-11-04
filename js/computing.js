@@ -109,7 +109,7 @@ componentStyles: {
             instant: false,
             fillStyle: { 'background-color': "#ffffff" },
 	    progress() {
-                let prog = this.requirement
+                let prog = player.points.div(this.requirement)
                 return prog
 	    },
             display() {
