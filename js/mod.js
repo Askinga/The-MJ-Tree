@@ -3,7 +3,7 @@ let modInfo = {
 	id: "mymod1MATH",
 	author: "Askinga",
 	pointsName: "points",
-	modFiles: ["computing.js", "addition.js", "tree.js"],
+	modFiles: ["computing.js", "addition.js", "multiplication.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
