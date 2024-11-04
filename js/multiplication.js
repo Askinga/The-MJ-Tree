@@ -50,4 +50,11 @@ addLayer("m", {
     tooltip() { // Optional, tooltip displays when the layer is locked
         return ("Multiplication")
     },
+    upgrades: {
+        11: {
+            title: "Multiply",
+            description: "Why not a 5x point boost?.",
+            cost: new Decimal(2),
+	    unlocked() { return (hasMilestone('c', 5)) }
+        },
 })
