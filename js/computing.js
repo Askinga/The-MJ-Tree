@@ -101,4 +101,20 @@ componentStyles: {
             unlocked() { return (hasMilestone('c', 6)) }
 	},
     },
+    bars: {
+        bar1: {
+            direction: RIGHT,
+            width: 300,
+            height: 25,
+            instant: false,
+            fillStyle: { 'background-color': "#ffffff" },
+	    progress() {
+                let prog = this.requirement
+                return prog
+	    },
+            display() {
+                    return "Progress to next Compution"
+            },
+        },
+    },
 })
