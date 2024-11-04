@@ -59,13 +59,13 @@ addLayer("m", {
         },
         12: {
             title: "Cloning continues",
-            description: "Double Addition gain, cloning the additions you get!",
+            description: "Double Addition gain, cloning the Addition you get!",
             cost: new Decimal(3),
 	    unlocked() { return (hasMilestone('c', 6)) }
         },
         13: {
             title: "Little mult",
-            description: "A simple 1.5x point gain.",
+            description: "A simple 1.5x point and Addition gain.",
             cost: new Decimal(4),
 	    unlocked() { return (hasMilestone('c', 6)) }
         },
