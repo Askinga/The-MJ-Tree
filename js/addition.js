@@ -60,7 +60,7 @@ addLayer("a", {
         },
         12: {
             title: "addition reference",
-            description: "Grant yourself +4 point gain.",
+            description: "Grant yourself +10 point gain.",
             cost: new Decimal(9),
 	    unlocked() { return (hasMilestone('c', 3)) }
         },
