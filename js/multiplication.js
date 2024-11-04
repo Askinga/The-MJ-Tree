@@ -53,7 +53,7 @@ addLayer("m", {
     upgrades: {
         11: {
             title: "Multiply",
-            description: "Why not a 1.5^2x point boost?.",
+            description: "Why not a 2.25x point boost?.",
             cost: new Decimal(2),
 	    unlocked() { return (hasMilestone('c', 5)) }
         },
