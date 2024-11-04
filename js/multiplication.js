@@ -76,7 +76,7 @@ addLayer("m", {
 	    unlocked() { return (hasMilestone('c', 7)) }
         },
         15: {
-            title: "Medium mult mult",
+            title: "Medium mult",
             description: "A simple 5x Addition gain.",
             cost: new Decimal(6),
 	    unlocked() { return (hasMilestone('c', 7)) }
