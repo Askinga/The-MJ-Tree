@@ -106,6 +106,12 @@ componentStyles: {
             done() { return player.c.points >= (9) },
             unlocked() { return (hasMilestone('c', 7)) }
 	},
+        9: {
+            requirementDescription: "10 computions",
+            effectDescription: "Compute a new layer: Add Division layer",
+            done() { return player.c.points >= (10) },
+            unlocked() { return (hasMilestone('c', 8)) }
+	},
     },
     bars: {
         bar1: {
