@@ -108,7 +108,7 @@ componentStyles: {
 	},
         9: {
             requirementDescription: "10 computions",
-            effectDescription: "Compute a new layer: Add Division layer",
+            effectDescription: "Compute a new layer: Add Division layer (SOON)",
             done() { return player.c.points >= (10) },
             unlocked() { return (hasMilestone('c', 8)) }
 	},
