@@ -60,7 +60,7 @@ function getPointGen() {
 	if(hasMilestone('c', 6)) gain = gain.times(2.5)
 	if(hasUpgrade('m', 13)) gain = gain.times(1.5)
 	if(hasMilestone('c', 7)) gain = gain.times(2)
-	if(hasUpgrade('m', 15)) gain = gain.times(5)
+	if(hasUpgrade('m', 14)) gain = gain.times(5)
 	return gain
 }
 
