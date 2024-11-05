@@ -124,7 +124,7 @@ componentStyles: {
         },
     },
     tabFormat: {
-        "Progress": {
+        "Computing": {
             content: [
                 "blank",
                 ["bar", "bar1"],
