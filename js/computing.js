@@ -100,6 +100,12 @@ componentStyles: {
             done() { return player.c.points >= (8) },
             unlocked() { return (hasMilestone('c', 6)) }
 	},
+        8: {
+            requirementDescription: "9 computions",
+            effectDescription: "Compute things: +2 upgrades for Addition layer, 2x points and Addition",
+            done() { return player.c.points >= (9) },
+            unlocked() { return (hasMilestone('c', 7)) }
+	},
     },
     bars: {
         bar1: {
