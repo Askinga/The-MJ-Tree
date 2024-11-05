@@ -29,6 +29,8 @@ addLayer("a", {
         mult = new Decimal(1)
 	if(hasUpgrade('a', 14)) mult = mult.times(2)
         if(hasUpgrade('a', 15)) mult = mult.times(2)
+	if(hasUpgrade('a', 16)) mult = mult.times(2)
+	if(hasUpgrade('a', 17)) mult = mult.times(2)
 	if(hasUpgrade('m', 12)) mult = mult.times(2)
 	if(hasUpgrade('m', 13)) mult = mult.times(1.5)
 	if(hasUpgrade('m', 15)) mult = mult.times(5)
@@ -76,15 +78,27 @@ addLayer("a", {
         },
         14: {
             title: "More Addition",
-            description: "Grant yourself 2x Addition by cloning the additions you gain.",
+            description: "Grant yourself 2x Addition by cloning the Addition you gain.",
             cost: new Decimal(30),
 	    unlocked() { return (hasMilestone('c', 4)) }
         },
         15: {
             title: "Even more Addition",
-            description: "Grant yourself 2x Addition by cloning the additions you gain again.",
+            description: "Grant yourself 2x Addition by cloning the Addition you gain again.",
             cost: new Decimal(100),
 	    unlocked() { return (hasMilestone('c', 4)) }
+        },
+        16: {
+            title: "Double Cloning",
+            description: "Grant yourself 2x Addition and points by cloning the Addition and points you gain.",
+            cost: new Decimal(500000),
+	    unlocked() { return (hasMilestone('c', 8)) }
+        },
+        17: {
+            title: "Double Cloning",
+            description: "Grant yourself 2x Addition and points by cloning the Addition and points you gain.",
+            cost: new Decimal(1500000),
+	    unlocked() { return (hasMilestone('c', 8)) }
         },
     }, 
 })
