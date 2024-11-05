@@ -123,4 +123,19 @@ componentStyles: {
             },
         },
     },
+    tabFormat: {
+        "Progress": {
+            content: [
+                "blank",
+                ["bar", "bar1"],
+		"blank",
+		"main-display",
+		"blank",
+		"prestige-button",
+		"resource-display",
+		"blank",
+		"milestones",
+	   ],
+	},
+    },
 })
