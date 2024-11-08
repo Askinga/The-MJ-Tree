@@ -19,11 +19,11 @@ addLayer("d", {
     exponent: 1.7, // Prestige currency exponent
     effect(){
     let rpow = 1
-	let eff = player.d.baseeffect.div(player.d.points)
+	let eff = player.d.baseeffect.div(player.d.points.add(1))
        return eff
         },
         effectDescription() {
-            let desc = "dividing point gain by" + format(tmp[this.layer].effect);
+            let desc = "dividing point gain by " + format(tmp[this.layer].effect);
             return desc;
         },
     gainMult() { // Calculate the multiplier for main currency from bonuses
