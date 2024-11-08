@@ -38,7 +38,7 @@ addLayer("m", {
     row: 2, // Row the layer is in on the tree (0 is the first row)
     displayRow: 1,
     hotkeys: [
-        {key: "m", description: "A: Reset for Multiplication", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "m", description: "M: Reset for Multiplication", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     resetDescription: 'Reset points and Addition for ',
     layerShown(){
