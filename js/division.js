@@ -9,7 +9,7 @@ addLayer("d", {
     }},
     color: "#a8a8a8",
     requires() {
-        let req = new Decimal(5e10)
+        let req = new Decimal(5e11)
 	return req
     }, // Can be a function that takes requirement increases into account
     resource: "Division", // Name of prestige currency
