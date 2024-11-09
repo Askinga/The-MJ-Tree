@@ -118,6 +118,12 @@ componentStyles: {
             done() { return player.c.points >= (11) },
             unlocked() { return (hasMilestone('c', 9)) }
 	},
+        11: {
+            requirementDescription: "12 computions",
+            effectDescription: "Compute a challenge: Add Challenge 2",
+            done() { return player.c.points >= (12) },
+            unlocked() { return (hasMilestone('c', 10)) }
+	},
     },
     bars: {
         bar1: {
@@ -162,6 +168,14 @@ componentStyles: {
             goalDescription: "Get 1 Division.",
             rewardDescription: "^1.05 points and add 1 upgrade to Division layer",
             unlocked() { return (hasMilestone('c', 10)) },
+	},
+        12: {
+            name: "Challenge 2: Slowdown",
+            challengeDescription() {return `Points divide point gain.<br>Currently: /${format(player.point.pow(0.5))}`},
+            canComplete: function() {return player.d.points.gte("1")},
+            goalDescription: "Get 1 Division.",
+            rewardDescription: "10x points per challenge completed.",
+            unlocked() { return (hasMilestone('c', 11)) },
 	},
     },
     achievements: {
