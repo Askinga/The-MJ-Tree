@@ -50,4 +50,12 @@ addLayer("d", {
     tooltip() { // Optional, tooltip displays when the layer is locked
         return ("Division")
     },
+    upgrades: {
+        11: {
+            title: "d.i.v.i.d.e",
+            description: "Divide point gain by /0.1",
+            cost: new Decimal(4),
+	    unlocked() { return (hasChallenge('c', 11)) }
+        },
+    },
 })
