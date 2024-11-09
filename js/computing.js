@@ -160,7 +160,7 @@ componentStyles: {
             challengeDescription: "Points are raised to the power of 0.80, and add 1 achevement to this layer.",
             canComplete: function() {return player.d.points.gte("1")},
             goalDescription: "Get 1 Division.",
-            rewardDescription: "^1.05 points",
+            rewardDescription: "^1.05 points and add 1 upgrade to Division layer",
             unlocked() { return (hasMilestone('c', 10)) },
 	},
     },
