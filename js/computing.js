@@ -148,6 +148,8 @@ componentStyles: {
 		"blank",
 		"challenges",
 		"blank",
+		"achevements",
+		"blank",
 		"milestones",
 	   ],
 	},
@@ -155,11 +157,20 @@ componentStyles: {
     challenges: {
         11: {
             name: "Challenge 1: Time Dilation",
-            challengeDescription: "Points are raised to the power of 0.80.",
+            challengeDescription: "Points are raised to the power of 0.80, and add 1 achevement to this layer.",
             canComplete: function() {return player.d.points.gte("1")},
             goalDescription: "Get 1 Division.",
             rewardDescription: "^1.05 points",
             unlocked() { return (hasMilestone('c', 10)) },
 	},
+    },
+    achievements: {
+        rows: 25,
+        cols: 6,
+        11: {
+            name: "Special Ach 1",
+            done() { return (player.points.gte(1e9)) },
+            tooltip: "Get 1e9 points. Reward: 100x points (only if you are in challenge 1)",	   
+        },
     },
 })
