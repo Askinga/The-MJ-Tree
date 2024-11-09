@@ -74,6 +74,7 @@ function getPointGen() {
 	if(hasMilestone('c', 9)) gain = gain.times(1.5)
 	gain = gain.div(layers.d.effect())
 	if(hasAchievement('c', 11) && inChallenge('c', 11)) gain = gain.times(100)
+	if(hasUpgrade('d', 11)) gain = gain.div(0.1)
 	if(inChallenge('c', 11)) gain = gain.pow(0.8)
 	if(hasChallenge('c', 11)) gain = gain.pow(1.05)
 	return gain
