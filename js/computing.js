@@ -148,7 +148,7 @@ componentStyles: {
 		"blank",
 		"challenges",
 		"blank",
-		"achevements",
+		"achievements",
 		"blank",
 		"milestones",
 	   ],
