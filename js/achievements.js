@@ -50,5 +50,10 @@ addLayer("🏆", {
             done() { return (player.c.points.gte(10)) },
             tooltip: "Add the Division layer",	   
          },
-    },
+         21: {
+            name: "Challenge!",
+            done() { return (hasChallenge('c', 11)) },
+            tooltip: "Finish the Challenge 1!",	   
+         },
+     },
 })
