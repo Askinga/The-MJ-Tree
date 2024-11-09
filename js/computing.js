@@ -112,6 +112,12 @@ componentStyles: {
             done() { return player.c.points >= (10) },
             unlocked() { return (hasMilestone('c', 8)) }
 	},
+        10: {
+            requirementDescription: "11 computions",
+            effectDescription: "Compute a challenge: Add Challenge 1",
+            done() { return player.c.points >= (11) },
+            unlocked() { return (hasMilestone('c', 9)) }
+	},
     },
     bars: {
         bar1: {
@@ -140,8 +146,20 @@ componentStyles: {
 		"prestige-button",
 		"resource-display",
 		"blank",
+		"challenges",
+		"blank",
 		"milestones",
 	   ],
+	},
+    },
+    challenges: {
+        11: {
+            name: "Challenge 1: Time Dilation",
+            challengeDescription: "Points are raised to the power of 0.80.",
+            canComplete: function() {return player.d.points.gte("1")},
+            goalDescription: "Get 1 Division.",
+            rewardDescription: "^1.05 points",
+            unlocked() { return (hasMilestone('c', 10)) },
 	},
     },
 })
