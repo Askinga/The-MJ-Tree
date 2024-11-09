@@ -165,8 +165,6 @@ componentStyles: {
 	},
     },
     achievements: {
-        rows: 25,
-        cols: 6,
         11: {
             name: "Special Ach 1",
             done() { return (player.points.gte(1e9)) },
