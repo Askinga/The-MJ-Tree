@@ -171,7 +171,7 @@ componentStyles: {
 	},
         12: {
             name: "Challenge 2: Slowdown",
-            challengeDescription() {return `Points divide point gain.<br>Currently: /${format(player.points.pow(0.5))}`},
+            challengeDescription() {return `Points divide point gain.<br>Currently: /${format(player.points.pow(0.35))}`},
             canComplete: function() {return player.d.points.gte("1")},
             goalDescription: "Get 1 Division.",
             rewardDescription: "10x points per challenge completed.",
