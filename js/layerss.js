@@ -2,7 +2,23 @@ addLayer("SCH", {
     name: "Schools", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "Sch", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
-    startData() { return {
+    doReset(SCH) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[SCH].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+    
+        // Stage 4, do the actual data reset
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
+	startData() { return {
         unlocked: false,
 		points: new Decimal(0),
     		students: new Decimal(0),
@@ -13,11 +29,6 @@ addLayer("SCH", {
 	        backyards: new Decimal(0),
 	        teachers: new Decimal(0),
     }},
-    nodeStyle() {return { 
-        "width": "150px",
-        "height": "150px",
-    }
-},
     color: "#ffbf00",
     requires: new Decimal("e26081500"), // Can be a function that takes requirement increases into account
     resource: "MJ Schools", // Name of prestige currency
@@ -43,7 +54,10 @@ addLayer("SCH", {
        return visible
 },
     powerEff() {
-    return player.SCH.students.add(1).pow(3e6);
+    return player.SCH.students.add(1).pow(3e6).pow(tmp.SCH.powerEff2);
+    },
+    powerEff2() {
+    return player.SCH.thoughts.add(1).pow(0.33);
     },
     automate(){
 	if(hasUpgrade('SCH', 25)) {
@@ -89,6 +103,10 @@ addLayer("SCH", {
 		"blank",
 		["display-text",
 				function() {return 'You have ' + format(player.SCH.students) + ' MJ Students (based on MJs), which are boosting MJs by '+'×'+format(tmp.SCH.powerEff)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
+					{}],
+                "blank",
+		["display-text",
+				function() {return (hasUpgrade('SCH', 35)?'You have ' + format(player.SCH.thoughts) + ' Thoughts, which are boosting MJ Students effect by '+'^'+format(tmp.SCH.powerEff2):"")},
 					{}],
                 "blank",
                 "clickables"
@@ -194,9 +212,148 @@ addLayer("SCH", {
 	},
         35: {
             title: "Give your students some time to think",
-            description: "Unlock Thoughts (next update)",
+            description: "Unlock Thoughts",
             cost: new Decimal(5e18),
             unlocked() { return (hasUpgrade('SCH', 34)) },
 	},
+        41: {
+            title: "More thinking",
+            description: "Double your thought gain",
+            cost: new Decimal(12),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    unlocked() { return (hasUpgrade('SCH', 35)) },
+	},
+        42: {
+            title: "Even more thinking",
+            description: "×1.35 your thought gain",
+            cost: new Decimal(30),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    unlocked() { return (hasUpgrade('SCH', 41)) },
+	},
+        43: {
+            title: "Tell people to think",
+            description: "×3 your thought gain",
+            cost: new Decimal(55),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    unlocked() { return (hasUpgrade('SCH', 42)) },
+	},
+        44: {
+            title: "Tell more people to think",
+            description: "×2 your thought gain",
+            cost: new Decimal(200),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    unlocked() { return (hasUpgrade('SCH', 43)) },
+	},
+        45: {
+            title: "The MJs are thinking",
+            description: "Boost thought gain based on MJs",
+            cost: new Decimal(750),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    effect(){
+                let div = 2.5e9
+		let eff = player.points.add(1).log(10).div(div).add(1)
+		return eff
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('SCH', 44)) },
+	},
+        51: {
+            title: "The Galactical MJs are thinking",
+            description: "Boost thought gain based on Galactical MJs",
+            cost: new Decimal(1500),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    effect(){
+                let div = 2e5
+		let eff = player.GLA.points.add(1).log(10).div(div).add(1)
+		return eff
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('SCH', 45)) },
+	},
+        52: {
+            title: "Think Faster!",
+            description: "Boost Thought gain based on MJ Schools",
+            cost: new Decimal(3000),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    effect(){
+                let div = 65
+		let eff = player.SCH.points.add(1).log(10).div(div).add(1)
+		return eff
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('SCH', 51)) },
+	},
+        53: {
+            title: "Inflation",
+            description: "^1.01 MJs",
+            cost: new Decimal(5000),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    unlocked() { return (hasUpgrade('SCH', 52)) },
+	},
+        54: {
+            title: "THINK!",
+            description: "×5 Thoughts",
+            cost: new Decimal("10000"),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    unlocked() { return (hasUpgrade('SCH', 53)) },
+	},
+        55: {
+            title: "It's time to give your MJ Students some work",
+            description: "Unlock Work (next update)",
+            cost: new Decimal("150000"),
+            currencyDisplayName: "Thoughts",
+            currencyInternalName: "thoughts",
+            currencyLayer: "SCH",
+	    unlocked() { return (hasUpgrade('SCH', 54)) },
+	},
     },
+    clickables: {
+	    11: {
+            display() {
+                return `Reset everything MJ Schools does, but gain ${formatWhole(this.prestigeGain())} thoughts`
+            },
+            unlocked() {
+                return hasUpgrade("SCH", 35)
+            },
+            canClick() {
+                return player.points.gte("e1.794e9")
+            },
+            prestigeGain() {
+                let mul = new Decimal(1)
+		if(hasUpgrade('SCH', 41)) mul = mul.mul(2)
+		if(hasUpgrade('SCH', 42)) mul = mul.mul(1.35)
+		if(hasUpgrade('SCH', 43)) mul = mul.mul(3)
+		if(hasUpgrade('SCH', 44)) mul = mul.mul(2)
+		if(hasUpgrade('SCH', 45)) mul = mul.mul(upgradeEffect('SCH', 45))
+		if(hasUpgrade('SCH', 51)) mul = mul.mul(upgradeEffect('SCH', 51))
+		if(hasUpgrade('SCH', 52)) mul = mul.mul(upgradeEffect('SCH', 52))
+		if(hasUpgrade('SCH', 54)) mul = mul.mul(5)
+		return player.points.log(10).div(1.794e9).mul(mul)
+            },
+            onClick() {
+                player.SCH.thoughts = player.SCH.thoughts.add(this.prestigeGain())
+                doReset("SCH", true)
+            },
+            onHold() {
+            },
+        },
+    }, 
 })
