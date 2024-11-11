@@ -13,16 +13,16 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "2.3.0",
-	name: "It's time to learn",
+	num: "2.4.0",
+	name: "It's time to learn (Part 2!)",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v2.3.0</h3><br>
-		- More updates soon! Endgame: MJ School Upgrade 35.<br>
-		- Added MJ Schools, Added 15 upgrades, Added MJ Students, Added 3 achievements, Added 2 savebanks, Microtabs are a better way to sort out things. For now, it will be added in v2.3.0+. A specific MJ School upgrades makes hyper MJs boost normal MJs! And minor bug fixes<br>
+	<h3>v2.4.0</h3><br>
+		- More updates soon! Endgame: MJ School Upgrade 55.<br>
+		- Added a new thing in the MJ Students tab. It boosts MJ Students! Added 10 upgrades, Added 3 achievements, (New softcap occurs at e2.000e10 MJs!!! The softcap is there to prevent inflation! The boost from the softcap is ^0.4!!)<br>
                 - Check back here for more updates! Full changelog at <a href=https://galaxy.click/updates/355>galaxy.click/updates/355</a>`
-
+  
 let winText = `Congratulations! You have reached the end and beaten this game. Good job! 🏆`
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
@@ -96,7 +96,6 @@ function getPointGen() {
 	if (hasChallenge('SAC', 17)) gain = gain.pow(1.02)
 	if (inChallenge('SAC', 18)) gain = gain.tetrate(0.25)
 	if (hasChallenge('SAC', 18)) gain = gain.pow(1.05)
-	if (inChallenge('SAC', 21)) gain = gain.pow(0)
 	if (hasUpgrade('SCH', 11)) gain = gain.times("e1000000")
 	if (hasUpgrade('SCH', 11)) gain = gain.pow(1.01)
 	if (hasUpgrade('SCH', 14)) gain = gain.pow(1.1)
@@ -105,6 +104,9 @@ function getPointGen() {
 	if (hasUpgrade('SCH', 31)) gain = gain.times("e15000000")
 	if (hasUpgrade('SCH', 32)) gain = gain.times("e20000000")
 	gain = gain.times(tmp.SCH.powerEff)
+	if (hasUpgrade('SCH', 53)) gain = gain.pow(1.01)
+	if (player.points.gte("e2.000e10")) gain = gain.pow(0.4)
+	if (inChallenge('SAC', 21)) gain = gain.pow(0)
 	return gain
 }
 
@@ -114,12 +116,15 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-    "Get MJ School Upgrade 35 to beat the game!"  
+    () => "<br>Get MJ School Upgrade 55 to beat the game!",
+	"<br>",
+	() => (player.points.gte("e1.000e10")) ? "<span style=\"color: rgb(255, 0, 0); 0px 0px 10px;\">MJs are softcapped past e2.000e10 due to overpopulation! (^0.4)</span><br>" : "",
+	"<br>",
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return (hasUpgrade('SCH', 35))
+	return (hasUpgrade('SCH', 55))
 }
 
 
@@ -139,4 +144,4 @@ function maxTickLength() {
 // Use this if you need to undo inflation from an older version. If the version is older than the version that fixed the issue,
 // you can cap their current resources with this.
 function fixOldSave(oldVersion){
-}
+	    }
