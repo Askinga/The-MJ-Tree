@@ -1645,6 +1645,21 @@ addLayer("a", {
             done() { return player.points.gte("ee9") },
             tooltip: "Get e1.000e9 MJs",	   
         },
+        124: {
+            name: "Thoughts!",
+            done() { return player.SCH.thoughts.gte("1") },
+            tooltip: "Get 1 Thought.",	   
+        },
+        125: {
+            name: "Thoughts are op!",
+            done() { return player.points.gte("ee10") },
+            tooltip: "Get e1.000e10 MJs",	   
+        },
+        126: {
+            name: "(hardcapped)",
+            done() { return player.points.gte("e2.000e10") },
+            tooltip: "Get e2.000e10 MJs",	   
+        },
     },
 })
 
