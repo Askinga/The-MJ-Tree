@@ -175,7 +175,7 @@ componentStyles: {
 	},
         "The Tree Of Math": {
             content: [
-                "blank",
+                ["blank", "25px"],
                 ["tree", tree],
             ],
 	},	
