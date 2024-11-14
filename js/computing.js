@@ -32,6 +32,10 @@ componentStyles: {
         {
             player.startedGame = true
 	}
+        if (player.startedGame && !inChallenge('c', 11) || inChallenge('c', 12) || inChallenge('c', 13))
+        {
+            playAndLoopAudio("music/And-So-It-Begins-Inspired-By-Crush-Sometimes(chosic.com).mp3", options.musicVolume/8);
+	}
     },
     exponent() {
         let exp = 1.625
