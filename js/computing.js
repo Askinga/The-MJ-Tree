@@ -173,6 +173,12 @@ componentStyles: {
 		"milestones",
 	   ],
 	},
+        "The Tree Of Math": {
+            content: [
+                "blank",
+                ["tree", tree],
+            ],
+	},	
     },
     challenges: {
         11: {
