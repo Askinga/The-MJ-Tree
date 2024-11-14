@@ -136,7 +136,7 @@ componentStyles: {
             requirementDescription: "14 computions",
             effectDescription: "Compute a challenge: Add Challenge 3 and 100x points if you have completed Challenge 3",
             done() { return player.c.points >= (14) },
-            unlocked() { return (hasMilestone('c', 13)) }
+            unlocked() { return (hasMilestone('c', 12)) }
 	},
     },
     bars: {
