@@ -127,7 +127,7 @@ componentStyles: {
 	},
         12: {
             requirementDescription: "13 computions",
-            effectDescription: "Compute mults: 25x points and 4x Addition and also unlock Auto Addition Upgrades!",
+            effectDescription: "Compute mults: 7.5x points and 4x Addition and also unlock Auto Addition Upgrades!",
             done() { return player.c.points >= (13) },
             unlocked() { return (hasMilestone('c', 11)) },
 	    toggles: [["c", "autoAddUp"]],
