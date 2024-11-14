@@ -132,6 +132,12 @@ componentStyles: {
             unlocked() { return (hasMilestone('c', 11)) },
 	    toggles: [["c", "autoAddUp"]],
 	},
+        13: {
+            requirementDescription: "14 computions",
+            effectDescription: "Compute a challenge: Add Challenge 3 and 100x points if you have completed Challenge 3",
+            done() { return player.c.points >= (14) },
+            unlocked() { return (hasMilestone('c', 13)) }
+	},
     },
     bars: {
         bar1: {
@@ -184,6 +190,15 @@ componentStyles: {
             goalDescription: "Get 1 Division.",
             rewardDescription: "10x points per challenge completed.",
             unlocked() { return (hasMilestone('c', 11)) },
+	},
+        13: {
+            name: "Challenge 3: Malfunctioning",
+            challengeDescription() {return `Automation is disabled.`},
+            canComplete: function() {return player.points.gte("1e26")},
+            goalDescription: "Get 1e26 Points",
+            rewardDescription: "Unlock Auto Addition",
+            toggles: [["c", "autoAdd"]],
+	    unlocked() { return (hasMilestone('c', 13)) },
 	},
     },
     achievements: {
