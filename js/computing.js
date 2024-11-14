@@ -120,10 +120,17 @@ componentStyles: {
 	},
         11: {
             requirementDescription: "12 computions",
-            effectDescription: "Compute a challenge: Add Challenge 2 and also unlock Auto Multiplication",
+            effectDescription: "Compute a challenge: Add Challenge 2 and also unlock Auto Multiplication!",
             done() { return player.c.points >= (12) },
             unlocked() { return (hasMilestone('c', 10)) },
-	    toggles: [["c", "auto"]],
+	    toggles: [["c", "autoMult"]],
+	},
+        12: {
+            requirementDescription: "13 computions",
+            effectDescription: "Compute mults: 25x points and Addition and also unlock Auto Addition Upgrades!",
+            done() { return player.c.points >= (13) },
+            unlocked() { return (hasMilestone('c', 11)) },
+	    toggles: [["c", "autoAddUp"]],
 	},
     },
     bars: {
