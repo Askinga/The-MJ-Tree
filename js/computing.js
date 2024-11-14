@@ -120,9 +120,10 @@ componentStyles: {
 	},
         11: {
             requirementDescription: "12 computions",
-            effectDescription: "Compute a challenge: Add Challenge 2",
+            effectDescription: "Compute a challenge: Add Challenge 2 and also unlock Auto Multiplication",
             done() { return player.c.points >= (12) },
             unlocked() { return (hasMilestone('c', 10)) }
+	    toggles: [["c", "auto"]],
 	},
     },
     bars: {
