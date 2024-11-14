@@ -197,7 +197,6 @@ componentStyles: {
             canComplete: function() {return player.points.gte("1e26")},
             goalDescription: "Get 1e26 Points",
             rewardDescription: "Unlock Auto Addition",
-            toggles: [["c", "autoAdd"]],
 	    unlocked() { return (hasMilestone('c', 13)) },
 	},
     },
