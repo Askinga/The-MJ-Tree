@@ -172,7 +172,7 @@ componentStyles: {
 	},
         12: {
             name: "Challenge 2: Slowdown",
-            challengeDescription() {return `Points divide point gain.<br>Currently: /${format(player.points.pow(0.3))}`},
+            challengeDescription() {return `Points divide point gain. and SA1 effect is applied, but is 20x instead of 100x!<br>Currently: /${format(player.points.pow(0.3))}`},
             canComplete: function() {return player.d.points.gte("1")},
             goalDescription: "Get 1 Division.",
             rewardDescription: "10x points per challenge completed.",
