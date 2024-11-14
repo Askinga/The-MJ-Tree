@@ -1,6 +1,6 @@
 let modInfo = {
-	name: "The Master Tree",
-	id: "mymod",
+	name: "Polynomal Points",
+	id: "mymo1qd",
 	author: "tmt-master",
 	pointsName: "points",
 	modFiles: ["layers.js", "tree.js"],
@@ -43,9 +43,8 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	let gain = new Decimal(1)
-	if (layers.p.effect().gte(1)) gain = gain.times(layers.p.effect())
-	if (hasUpgrade('p', 13)) gain = gain.times(upgradeEffect('p', 13))
+	let gain = new Decimal(0)
+	if (layers.p.effect().gte(1)) gain = gain.add(layers.p.effect())
 	return gain
 }
 
