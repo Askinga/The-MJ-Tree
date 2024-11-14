@@ -82,4 +82,5 @@ addLayer("m", {
 	    unlocked() { return (hasMilestone('c', 7)) }
         },
     },
+    autoPrestige() { return (player.i.auto && hasMilestone('c', 11))
 })
