@@ -1,4 +1,4 @@
-// Tip: 11 means Column 1, Row 1 for upgrades, milestones, etc
+ // Tip: 11 means Column 1, Row 1 for upgrades, milestones, etc
 addLayer("c", {
     name: "Computing", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "💻", // This appears on the layer's node. Default is the id with the first letter capitalized
@@ -127,7 +127,7 @@ componentStyles: {
 	},
         12: {
             requirementDescription: "13 computions",
-            effectDescription: "Compute mults: 25x points and Addition and also unlock Auto Addition Upgrades!",
+            effectDescription: "Compute mults: 25x points and 4x Addition and also unlock Auto Addition Upgrades!",
             done() { return player.c.points >= (13) },
             unlocked() { return (hasMilestone('c', 11)) },
 	    toggles: [["c", "autoAddUp"]],
