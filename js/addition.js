@@ -103,5 +103,6 @@ addLayer("a", {
 	    unlocked() { return (hasMilestone('c', 8)) }
         },
     }, 
-    autoUpgrade() {return (player.c.autoAddUp && hasMilestone('c', 12))}
+    autoPrestige() {return (player.c.autoAdd && hasMilestone('c', 13) && !inChallenge('c', 13))},
+    autoUpgrade() {return (player.c.autoAddUp && hasMilestone('c', 12) && !inChallenge('c', 13))}
 })
