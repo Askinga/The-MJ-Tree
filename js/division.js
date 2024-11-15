@@ -58,4 +58,15 @@ addLayer("d", {
 	    unlocked() { return (hasChallenge('c', 11)) }
         },
     },
+    clickables: {
+        1: {
+            title() { return "<h2>Go back" },
+            canClick() { return true },
+            unlocked() { return true },
+            onClick() {
+                player.tab = "c"
+            },
+            style: { width: '100px', "min-height": '75px' },
+        },
+    },
 })
