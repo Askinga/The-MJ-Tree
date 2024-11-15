@@ -30,7 +30,7 @@ componentStyles: {
     update(diff) {
         let onepersec = new Decimal(1)
 
-        if (player.startedGame == false && player.tab == "c")
+        if (player.startedGame == false && player.points.gte(1))
         {
             player.startedGame = true
 	}
