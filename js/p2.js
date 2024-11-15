@@ -47,12 +47,12 @@ addLayer("p2", {
         },
     },
     effect(){
-    let enpow = 1
-	let eff = player.p2.points.pow(enpow)
+    let powe = 1
+	let eff = player.p2.points.pow(powe)
        return eff
        },
         effectDescription() {
-            let desc = "generating " + format(tmp[this.layer].effect) + " points&^1 per second";
+            let desc = "generating " + format(tmp[this.layer].effect) + " points^1 per second";
             return desc;
         },
 	branches:["p1"],
