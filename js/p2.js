@@ -48,7 +48,7 @@ addLayer("p2", {
     },
     effect(){
     let enpow = 1
-	let eff = player.p.points.add(1).pow(enpow)
+	let eff = player.p2.points.add(1).pow(enpow)
        return eff
        },
         effectDescription() {
