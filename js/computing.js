@@ -36,10 +36,10 @@ componentStyles: {
 	}
         if (player.startedGame && !(inChallenge('c', 11) || inChallenge('c', 12) || inChallenge('c', 13)) )
         {
-            playAndLoopAudio("music/pointuni.mp3");
+            playAndLoopAudio("music/pointuni.mp3", options.musicVolume/10);
 	} else if (player.startedGame && (inChallenge("c", 11) || inChallenge("c", 12) || inChallenge("c", 13)) )
         {
-            playAndLoopAudio("music/challenge.mp3");
+            playAndLoopAudio("music/challenge.mp3", options.musicVolume/10);
 	}
     },
     exponent() {
