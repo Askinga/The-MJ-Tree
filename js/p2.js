@@ -12,9 +12,7 @@ addLayer("p2", {
     baseAmount() { return player.p1.points },  // A function to return the current amount of baseResource.
 
     requires: new Decimal(400),              // The amount of the base needed to  gain 1 of the prestige currency.
-    passiveGeneration() {   // Also the amount required to unlock the layer.
-    	return player.p2.effect
-    },
+   
    
 
     type: "normal",                         // Determines the formula used for calculating prestige currency.
@@ -50,7 +48,7 @@ addLayer("p2", {
     },
     effect(){
     let enpow = 1
-	let eff = player.p2.points.add(1).pow(enpow)
+	let eff = player.p2.points.pow(enpow)
        return eff
        },
         effectDescription() {
