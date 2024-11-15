@@ -55,4 +55,5 @@ addLayer("p2", {
             let desc = "generating " + format(tmp[this.layer].effect) + ";
             return desc;
         },
+	branches:["p1"]
 })
