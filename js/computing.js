@@ -1,4 +1,6 @@
- // Tip: 11 means Column 1, Row 1 for upgrades, milestones, etc
+﻿var tree = [["a", "m"] ["d"]]
+
+// Tip: 11 means Column 1, Row 1 for upgrades, milestones, etc
 addLayer("c", {
     name: "Computing", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "💻", // This appears on the layer's node. Default is the id with the first letter capitalized
@@ -188,6 +190,7 @@ componentStyles: {
         "The Tree Of Math": {
             content: [
                 ["blank", "25px"],
+		["tree", tree],
             ],
 	},	
     },
