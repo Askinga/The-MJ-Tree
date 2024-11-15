@@ -20,7 +20,7 @@ componentStyles: {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
-	        startedGame: false
+	        startedGame: false,
     }},
     color: "#106b04",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
