@@ -52,7 +52,7 @@ addLayer("p2", {
        return eff
        },
         effectDescription() {
-            let desc = "generating " + format(tmp[this.layer].effect) + ";
+            let desc = "generating " + format(tmp[this.layer].effect) + " points&^1 per second";
             return desc;
         },
 	branches:["p1"],
