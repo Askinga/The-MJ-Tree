@@ -1,4 +1,4 @@
-﻿var tree = [["a", "m"] ["d"]]
+﻿var tree = [["a", "m"], ["d"]]
 
 // Tip: 11 means Column 1, Row 1 for upgrades, milestones, etc
 addLayer("c", {
