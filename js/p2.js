@@ -24,9 +24,35 @@ addLayer("p2", {
         return new Decimal(1)
     },
 
-    layerShown() { return true },          // Returns a bool for if this layer's node should be visible in the tree.
+    layerShown() { return player.p1.points.gte(100) },          // Returns a bool for if this layer's node should be visible in the tree.
 
     upgrades: {
         // Look in the upgrades docs to see what goes here!
     },
+      hotkeys: [
+        {key: "b", description: "B: Reset for points^2", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    layerShown(){return true},
+    tabFormat: {
+        "Main tab": {
+            content: [
+                "main-display",
+                "resource-display",
+                "prestige-button",
+                "blank",
+                "blank",
+                "blank",
+                "upgrades"
+            ],
+        },
+    },
+    effect(){
+    let enpow = 1
+	let eff = player.p.points.add(1).pow(enpow)
+       return eff
+       },
+        effectDescription() {
+            let desc = "generating " + format(tmp[this.layer].effect) + ";
+            return desc;
+        },
 })
