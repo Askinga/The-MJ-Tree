@@ -34,7 +34,7 @@ componentStyles: {
         {
             player.startedGame = true
 	}
-        if (player.startedGame && !(inChallenge('c', 11) || inChallenge('c', 12) || inChallenge('c', 13)) )
+        if (player.startedGame && options.musicToggle && !(inChallenge('c', 11) || inChallenge('c', 12) || inChallenge('c', 13)) )
         {
             playAndLoopAudio("music/pointuni.mp3", options.musicVolume/10);
 	} else if (player.startedGame && (inChallenge("c", 11) || inChallenge("c", 12) || inChallenge("c", 13)) )
