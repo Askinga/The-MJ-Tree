@@ -103,6 +103,17 @@ addLayer("a", {
 	    unlocked() { return (hasMilestone('c', 8)) }
         },
     }, 
+    clickables: {
+        1: {
+            title() { return "<h2>Go back" },
+            canClick() { return true },
+            unlocked() { return true },
+            onClick() {
+                player.tab = "c"
+            },
+            style: { width: '100px', "min-height": '75px' },
+        },
+    },
     autoPrestige() {return (player.c.autoAdd && hasMilestone('c', 13) && !inChallenge('c', 13))},
     autoUpgrade() {return (player.c.autoAddUp && hasMilestone('c', 12) && !inChallenge('c', 13))}
 })
