@@ -32,7 +32,6 @@ addLayer("p2", {
       hotkeys: [
         {key: "b", description: "B: Reset for points^2", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true},
     tabFormat: {
         "Main tab": {
             content: [
