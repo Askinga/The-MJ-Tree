@@ -220,8 +220,8 @@ componentStyles: {
         13: {
             name: "Challenge 3: Malfunctioning",
             challengeDescription() {return `Automation is disabled.`},
-            canComplete: function() {return player.points.gte("1e26")},
-            goalDescription: "Get 1e26 Points",
+            canComplete: function() {return player.points.gte("2.5e20")},
+            goalDescription: "Get 2.5e20 Points",
             rewardDescription: "Unlock Auto Addition",
 	    unlocked() { return (hasMilestone('c', 13)) },
 	},
