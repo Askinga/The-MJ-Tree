@@ -226,7 +226,7 @@ componentStyles: {
     achievements: {
         11: {
             name: "Special Ach 1",
-            done() { return (player.points.gte(1e9)) },
+            done() { return (player.points.gte(1e9) && inChallenge('c', 11)) },
             tooltip: "Get 1e9 points. Reward: 100x points (only if you are in challenge 1)",	   
             unlocked() { return (inChallenge('c', 11)) },
 	},
