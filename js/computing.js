@@ -158,6 +158,12 @@ componentStyles: {
             done() { return player.c.points >= (14) },
             unlocked() { return (hasMilestone('c', 12)) }
 	},
+        14: {
+            requirementDescription: "Challenge 3 Complete",
+            effectDescription: "Look at the reward for challenge 3",
+            done() { return hasChallenge('c', 13) },
+            unlocked() { return (hasChallenge('c', 13)) }
+	},
     },
     bars: {
         bar1: {
@@ -199,12 +205,6 @@ componentStyles: {
 		["tree", tree],
             ],
 	},	
-    "Challenge Milestones": {
-            content: [
-                "blank",
-                ["milestones", "14"],
-           ],
-					 },
     },
     challenges: {
         11: {
