@@ -15,7 +15,7 @@ function getStartOptions() {
 		oldStyle: false,
 		tooltipForcing: true,
 	        musicVolume: 2,
-		musicToggle: true,
+		musicToggle: "true",
 	}
 }
 
@@ -28,6 +28,8 @@ function toggleOpt(name) {
 		changeTreeQuality();
 	if (name == "oldStyle")
 		updateStyle();
+	if (name == "musicToggle")
+		updateMusicToggle();	
 }
 var styleCooldown = 0;
 function updateStyle() {
@@ -77,4 +79,15 @@ function milestoneShown(layer, id) {
 			break;
 	}
 	return false;
+}
+
+function updateMusicToggle() {
+	switch (options.musicToggle) {
+		case "true":
+			options.musicToggle = "false"
+			break;
+		case "false":
+			options.musicToggle = "true"
+			break;
+	}
 }
