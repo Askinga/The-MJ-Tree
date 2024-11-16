@@ -80,6 +80,7 @@ function getPointGen() {
 	if(hasChallenge('c', 12)) gain = gain.times(100)
 	if(hasAchievement('c', 11) && inChallenge('c', 12)) gain = gain.times(20)
 	if(hasMilestone('c', 12)) gain = gain.times(7.5)
+	if(hasChallenge('c', 13)) gain = gain.times(100)
 	if(hasChallenge('c', 11)) gain = gain.pow(1.05)
 	return gain
 }
