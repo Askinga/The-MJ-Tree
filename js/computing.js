@@ -40,7 +40,10 @@ componentStyles: {
 	} else if (player.startedGame && (inChallenge("c", 11) || inChallenge("c", 12) || inChallenge("c", 13)) )
         {
             playAndLoopAudio("music/challenge.mp3", options.musicVolume/10);
-	}
+	} else
+        {
+            stopAudio();
+   	}
     },
     exponent() {
         let exp = 1.625
