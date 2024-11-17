@@ -27,6 +27,7 @@ let changelog = `<h1>Changelog:</h1><br/>
 	       - Added 3 automaters<br/>
 	       - Added the tree of math (tab)<br/>
 	       - Made the Next Compution bar working!<br/>
+	       - Added 1 option.<br/>
 	       <br/>
 	       <h2>v0.2</h2><br/>
 	       - Added 4 milestones.<br/>
