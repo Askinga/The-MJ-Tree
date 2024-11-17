@@ -13,12 +13,22 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.2",
+	num: "0.3",
 	name: "Not Finished!",
 }
 
 let changelog = `<h1>Changelog:</h1><br/>
-               <h2>v0.2</h2><br/>
+              <h2>v0.3</h2><br/>
+	       - Added MUSIC!!! 🎶<br/>
+	       - Added the Achevements layer and added 10 achevements (one being a special one)<br/>
+	       - Added 1 layers: <spoiler>Division.</spoiler><br/>
+	       - Added 1 upgrades<br/>
+	       - Added 3 challenges<br/>
+	       - Added 3 automaters<br/>
+	       - Added the tree of math (tab)<br/>
+	       - Made the Next Compution bar working!<br/>
+	       <br/>
+	       <h2>v0.2</h2><br/>
 	       - Added 4 milestones.<br/>
 	       - Added 1 layers: <spoiler>Multiplication.</spoiler><br/>
 	       - Added 7 upgrades.<br/>
@@ -96,7 +106,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return (hasMilestone('c', 9))
+	return (player.c.points.gte(15))
 }
 
 
