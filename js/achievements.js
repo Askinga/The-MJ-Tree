@@ -55,5 +55,15 @@ addLayer("🏆", {
             done() { return (hasChallenge('c', 11)) },
             tooltip: "Finish the Challenge 1!",	   
          },
+         22: {
+            name: "Era of Automation",
+            done() { return (player.c.autoMult) },
+            tooltip: "Enable the first Automater!",
+         },
+         23: {
+            name: "The automaters...",
+            done() { return (inChallenge('c', 13)) },
+            tooltip: "Enter Challenge 3.",	   
+         },
      },
 })
