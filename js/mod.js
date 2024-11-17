@@ -19,9 +19,10 @@ let VERSION = {
 
 let changelog = `<h1>Changelog:</h1><br/>
               <h2>v0.3</h2><br/>
-	       - Added MUSIC!!! 🎶<br/>
+	       - Added MUSIC!!! 🎶 (currently has 2 songs, but will be adding more soon!)<br/>
 	       - Added the Achevements layer and added 10 achevements (one being a special one)<br/>
 	       - Added 1 layers: <spoiler>Division.</spoiler><br/>
+	       - Added 5 milestones<br/>
 	       - Added 1 upgrades<br/>
 	       - Added 3 challenges<br/>
 	       - Added 3 automaters<br/>
