@@ -162,7 +162,7 @@ componentStyles: {
             requirementDescription: "Challenge 3 Complete",
             effectDescription: "Look at the reward for challenge 3",
             done() { return hasChallenge('c', 13) },
-            unlocked() { return (hasChallenge('c', 13)) }
+            unlocked() { return (hasChallenge('c', 13)) },
 	    toggles: [["c", "autoAdd"]],
 	},
     },
