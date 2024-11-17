@@ -173,7 +173,7 @@ componentStyles: {
             instant: false,
             fillStyle: { 'background-color': "#ffffff" },
 	    progress() {
-                let prog = player.points.div(this.requirement)
+                let prog = player.points.log(getNextAt('c'))
                 return prog
 	    },
             display() {
