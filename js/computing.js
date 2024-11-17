@@ -171,7 +171,7 @@ componentStyles: {
             width: 300,
             height: 25,
             instant: false,
-            fillStyle: { 'background-color': "#ffffff" },
+            fillStyle: { 'background-color': "#106b04" },
 	    progress() {
                 let prog = player.points.log(getNextAt('c'))
                 return prog
