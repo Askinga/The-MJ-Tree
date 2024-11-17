@@ -114,6 +114,6 @@ addLayer("a", {
             style: { width: '100px', "min-height": '75px' },
         },
     },
-    autoPrestige() {return (player.c.autoAdd && hasMilestone('c', 13) && !inChallenge('c', 13))},
+    autoPrestige() {return (player.c.autoAdd && hasChallenge('c', 13) && !inChallenge('c', 13))},
     autoUpgrade() {return (player.c.autoAddUp && hasMilestone('c', 12) && !inChallenge('c', 13))}
 })
