@@ -59,6 +59,9 @@ addLayer("SCH", {
     powerEff2() {
     return player.SCH.thoughts.add(1).pow(0.33);
     },
+    powerEff3() {
+    return player.SCH.work.add(1);
+    },
     automate(){
 	if(hasUpgrade('SCH', 25)) {
 		player.SCH.students = player.points.add(1).log("ee8")
@@ -107,6 +110,10 @@ addLayer("SCH", {
                 "blank",
 		["display-text",
 				function() {return (hasUpgrade('SCH', 35)?'You have ' + format(player.SCH.thoughts) + ' Thoughts, which are boosting MJ Students effect by '+'^'+format(tmp.SCH.powerEff2):"")},
+					{}],
+		"blank",
+		["display-text",
+				function() {return (hasUpgrade('SCH', 55)?'You have ' + format(player.SCH.work) + ' Work, which are boosting Thoughts by '+'×'+format(tmp.SCH.powerEff3):"")},
 					{}],
                 "blank",
                 "clickables"
@@ -318,7 +325,7 @@ addLayer("SCH", {
         55: {
             title: "It's time to give your MJ Students some work",
             description: "Unlock Work (next update)",
-            cost: new Decimal("150000"),
+            cost: new Decimal("2000000"),
             currencyDisplayName: "Thoughts",
             currencyInternalName: "thoughts",
             currencyLayer: "SCH",
@@ -346,11 +353,34 @@ addLayer("SCH", {
 		if(hasUpgrade('SCH', 51)) mul = mul.mul(upgradeEffect('SCH', 51))
 		if(hasUpgrade('SCH', 52)) mul = mul.mul(upgradeEffect('SCH', 52))
 		if(hasUpgrade('SCH', 54)) mul = mul.mul(5)
+		mul = mul.mul(tmp.SCH.powerEff3)
 		return player.points.log(10).div(1.794e9).mul(mul)
             },
             onClick() {
                 player.SCH.thoughts = player.SCH.thoughts.add(this.prestigeGain())
                 doReset("SCH", true)
+            },
+            onHold() {
+            },
+        },
+        12: {
+            display() {
+                return `Reset everything Thoughts do, but lose all thoughts to gain ${formatWhole(this.prestigeGain())} Work`
+            },
+            unlocked() {
+                return hasUpgrade("SCH", 55)
+            },
+            canClick() {
+                return player.points.gte("e2e10")
+            },
+            prestigeGain() {
+                let mul = new Decimal(1)
+		return player.points.log(10).div(2e10).mul(mul)
+            },
+            onClick() {
+                player.SCH.work = player.SCH.work.add(this.prestigeGain())
+                doReset("SCH", true)
+		player.SCH.thoughts = 0
             },
             onHold() {
             },
