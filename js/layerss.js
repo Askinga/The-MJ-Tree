@@ -119,7 +119,7 @@ addLayer("SCH", {
                 "clickables"
             ],
         },
-        worktree": {
+        "worktree": {
        title: "Work Upgrade Tree",
 	unlocked() { return (hasUpgrade('SCH', 55)) },
 	    content: [
