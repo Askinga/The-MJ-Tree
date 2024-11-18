@@ -380,7 +380,7 @@ addLayer("SCH", {
             onClick() {
                 player.SCH.work = player.SCH.work.add(this.prestigeGain())
                 doReset("SCH", true)
-		player.SCH.thoughts = 0
+		player.SCH.thoughts = player.SCH.thoughts.sub(player.SCH.thoughts)
             },
             onHold() {
             },
