@@ -70,7 +70,7 @@ addLayer("SCH", {
     branches:["SAC", "GLA"],
     microtabs: {
         main: {
-            "main": {
+            "Main": {
                 title: "Main",
                 content: [
                     "main-display",
@@ -81,7 +81,7 @@ addLayer("SCH", {
 		    ["microtabs", "upgrades"]
 		],
             },
-	    "outside": {
+	    "The Outside": {
 		title: "The Outside",
                 unlocked() { return (hasUpgrade('SCH', 35)) },
 		content: [
@@ -119,7 +119,7 @@ addLayer("SCH", {
                 "clickables"
             ],
         },
-        "worktree": {
+        "Work Upgrade Tree": {
        title: "Work Upgrade Tree",
 	unlocked() { return (hasUpgrade('SCH', 55)) },
 	    content: [
