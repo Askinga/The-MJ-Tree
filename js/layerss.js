@@ -119,6 +119,13 @@ addLayer("SCH", {
                 "clickables"
             ],
         },
+        worktree": {
+       title: "Work Upgrade Tree",
+	unlocked() { return (hasUpgrade('SCH', 55)) },
+	    content: [
+		"blank",
+	  ],
+	},
       },
     },
     tabFormat: [
