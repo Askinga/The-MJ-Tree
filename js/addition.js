@@ -55,7 +55,7 @@ addLayer("a", {
         if (hasMilestone('c', 2) || player.a.unlocked) visible = true
        return visible
     },
-    branches:["c"],
+    branches:["c", "s", "m"],
     tooltip() { // Optional, tooltip displays when the layer is locked
         return ("Addition")
     },
