@@ -48,7 +48,7 @@ addLayer("s", {
     },
     branches:["c"],
     tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Division")
+        return ("Subtraction")
     },
     clickables: {
         1: {
