@@ -1,4 +1,4 @@
-﻿var tree = [["a", "m"], ["d"]]
+﻿var tree = [["a", "m"], ["s", "d"]]
 
 // Tip: 11 means Column 1, Row 1 for upgrades, milestones, etc
 addLayer("c", {
@@ -128,7 +128,7 @@ componentStyles: {
 	},
         9: {
             requirementDescription: "10 computions",
-            effectDescription: "Compute a new layer: Add Division layer (SOON) and 1.5x points",
+            effectDescription: "Compute a new layer: Add Division layer and 1.5x points",
             done() { return player.c.points >= (10) },
             unlocked() { return (hasMilestone('c', 8)) }
 	},
@@ -164,6 +164,12 @@ componentStyles: {
             done() { return hasChallenge('c', 13) },
             unlocked() { return (hasChallenge('c', 13)) },
 	    toggles: [["c", "autoAdd"]],
+	},
+        15: {
+            requirementDescription: "15 computions",
+            effectDescription: "Compute a new layer: Add Subtraction layer (SOON)",
+            done() { return player.c.points >= (15) },
+            unlocked() { return (hasMilestone('c', 14)) }
 	},
     },
     bars: {
