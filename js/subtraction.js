@@ -43,7 +43,7 @@ addLayer("s", {
     resetDescription: 'Reset points and Addition for ',
     layerShown(){
         let visible = false
-        if (hasMilestone('c', 14) || player.s.unlocked) visible = true
+        if (hasMilestone('c', 15) || player.s.unlocked) visible = true
        return visible
     },
     branches:["c"],
