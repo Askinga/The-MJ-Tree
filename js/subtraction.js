@@ -23,7 +23,7 @@ addLayer("s", {
        return eff
         },
         effectDescription() {
-            let desc = "subtracting base computing requirement by " + format(tmp[this.layer].effect);
+            let desc = "subtracting base computing requirement to " + format(tmp[this.layer].effect);
             return desc;
         },
     gainMult() { // Calculate the multiplier for main currency from bonuses
