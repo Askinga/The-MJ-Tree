@@ -23,7 +23,7 @@ componentStyles: {
     }},
     color: "#106b04",
     requires() {
-        let req = new Decimal(10)
+        let req = tmp.s.effect
         return req
     }, // Can be a function that takes requirement increases into account
     resource: "Computions", // Name of prestige currency
