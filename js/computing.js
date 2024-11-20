@@ -22,7 +22,10 @@ componentStyles: {
 		points: new Decimal(0),
     }},
     color: "#106b04",
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account
+    requires() {
+        let req = layers.s.effect
+        return req
+    }, // Can be a function that takes requirement increases into account
     resource: "Computions", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
