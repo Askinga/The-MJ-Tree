@@ -1076,6 +1076,10 @@ addLayer( "I", {
                 "resource-display",
                 "prestige-button",
                 "blank",
+		["display-text",
+				function() {return format(player.I.infinity) + '∞'+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
+					{}],
+		"blank",
                 "upgrades"
             ],
         },
