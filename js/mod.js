@@ -13,12 +13,21 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.2.0",
+	num: "0.3.0",
 	name: "The grind continues...",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-            	<h3>v0.2.0</h3><br>
+            	<h3>v0.3.0</h3><br>
+		- Added 16 upgrades<br>
+  		- Added 1 layer.<br>
+      		- Added 5 achievements.<br>
+		- Added Super Points.<br>
+  		- Added 1 buyable.<br>
+                - Changed the font.<br>
+	     
+      
+		<h3>v0.2.0</h3><br>
 		- Added 16 upgrades<br>
 		- Added 1 milestones.<br>
   		- Added 1 layer.<br>
@@ -98,6 +107,7 @@ function getPointGen() {
 	if (hasUpgrade('sp', 34)) gain = gain.pow(1.005)
 	if (hasUpgrade('sp', 34)) gain = gain.times(10)
 	if (hasUpgrade('sp', 35)) gain = gain.times(200)
+	if (hasUpgrade('I', 11)) gain = gain.times(2)
 	return gain
 }
 
