@@ -413,6 +413,7 @@ addLayer( "up", {
         mult = new Decimal(1)
 	if (hasUpgrade('up', 33)) mult = mult.times(upgradeEffect('up', 33))
 	if (hasUpgrade('sp', 11)) mult = mult.times(10)
+	if (hasUpgrade('sp', 33)) mult = mult.times(upgradeEffect('sp', 33))
 	return mult
     },
 
@@ -894,6 +895,38 @@ addLayer( "sp", {
             effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
 	    tooltip: "(SP+1)<sup>0.5</sup>",
             unlocked() {return hasUpgrade('sp', 31)},
+        },
+        33: {
+            title: "Upgrade 48",
+            description: "Super points boost upgraded prestige points",
+            cost: new Decimal(40000),
+            currencyDisplayName: "Super Points",
+            currencyInternalName: "superpoints",
+            currencyLayer: "sp",
+	    effect() {
+                return player.sp.superpoints.add(1).pow(0.2)
+            },
+            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+	    tooltip: "(SP+1)<sup>0.2</sup>",
+            unlocked() {return hasUpgrade('sp', 32)},
+        },
+        34: {
+            title: "Upgrade 49",
+            description: "^1.005 points",
+            cost: new Decimal(50000),
+            currencyDisplayName: "Super Points",
+            currencyInternalName: "superpoints",
+            currencyLayer: "sp",
+            unlocked() {return hasUpgrade('sp', 33)},
+        },
+        35: {
+            title: "Upgrade 50",
+            description: "×100K × 10 points",
+            cost: new Decimal(50000),
+            currencyDisplayName: "Super Points",
+            currencyInternalName: "superpoints",
+            currencyLayer: "sp",
+            unlocked() {return hasUpgrade('sp', 33)},
         },
     },
     challenges: {
