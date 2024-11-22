@@ -1060,6 +1060,9 @@ addLayer( "I", {
         {key: "i", description: "I: Reset for IP", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     resetDescription: 'Reset EVERYTHING for ',
+    tooltip() {
+	return ("Infinity")
+    },
     layerShown(){
         let visible = false
         if (player.points.gte(1e300) || player.I.unlocked) visible = true
@@ -1076,5 +1079,12 @@ addLayer( "I", {
                 "upgrades"
             ],
         },
+    },
+    upgrades: {
+	11: {
+            title: "Upgrade 51",
+	    description: function() {return `<br>×2 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span>`},
+	    cost: new Decimal(1),
+	},
     },
 })
