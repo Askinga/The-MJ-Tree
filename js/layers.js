@@ -55,6 +55,7 @@ addLayer("p", {
 	if (hasMilestone('p', 3)) mult = mult.times(2.5)
 	if (hasUpgrade('up', 15)) mult = mult.times(3)
 	if (hasUpgrade('sp', 11)) mult = mult.times(10)
+	if (hasUpgrade('sp', 32)) mult = mult.times(upgradeEffect('sp', 32))
 	mult = mult.times(tmp.up.powerEff)
 	return mult
     },
@@ -879,6 +880,20 @@ addLayer( "sp", {
             effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
 	    tooltip: "(SP+1)<sup>0.15</sup>",
             unlocked() {return hasUpgrade('sp', 25)},
+        },
+        32: {
+            title: "Upgrade 47",
+            description: "Super points boost prestige points",
+            cost: new Decimal(25000),
+            currencyDisplayName: "Super Points",
+            currencyInternalName: "superpoints",
+            currencyLayer: "sp",
+	    effect() {
+                return player.sp.superpoints.add(1).pow(0.5)
+            },
+            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+	    tooltip: "(SP+1)<sup>0.5</sup>",
+            unlocked() {return hasUpgrade('sp', 31)},
         },
     },
     challenges: {
