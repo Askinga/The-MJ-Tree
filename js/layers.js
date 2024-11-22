@@ -1035,7 +1035,7 @@ addLayer( "I", {
 	"width": "100px",
 	"height": "100px"
     },
-    color: "#cc8899",
+    color: "#bb00ff",
     requires() {
         let req = new Decimal("1.79e308")
         return req
