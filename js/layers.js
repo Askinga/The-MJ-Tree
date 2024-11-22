@@ -1045,6 +1045,10 @@ addLayer( "I", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.005, // Prestige currency exponent
+    onPrestige() {
+	infGain = new Decimal(1)
+	player.I.infinity = player.I.infinity.add(infGain)
+    },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	return mult
