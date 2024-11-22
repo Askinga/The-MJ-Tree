@@ -97,7 +97,7 @@ function getPointGen() {
 	if (hasUpgrade('sp', 33)) gain = gain.times(10)
 	if (hasUpgrade('sp', 34)) gain = gain.pow(1.005)
 	if (hasUpgrade('sp', 34)) gain = gain.times(10)
-	if (hasUpgrade('sp', 35)) gain = gain.times(1e6)
+	if (hasUpgrade('sp', 35)) gain = gain.times(100)
 	return gain
 }
 
