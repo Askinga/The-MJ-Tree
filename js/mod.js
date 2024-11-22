@@ -90,6 +90,14 @@ function getPointGen() {
 	if (hasUpgrade('sp', 21)) gain = gain.times(10)
 	if (hasUpgrade('sp', 22)) gain = gain.times(10)
 	if (hasUpgrade('sp', 23)) gain = gain.times(1000)
+	if (hasUpgrade('sp', 24)) gain = gain.times(10)
+	if (hasUpgrade('sp', 25)) gain = gain.times(10)
+	if (hasUpgrade('sp', 31)) gain = gain.times(10)
+	if (hasUpgrade('sp', 32)) gain = gain.times(10)
+	if (hasUpgrade('sp', 33)) gain = gain.times(10)
+	if (hasUpgrade('sp', 34)) gain = gain.pow(1.005)
+	if (hasUpgrade('sp', 34)) gain = gain.times(10)
+	if (hasUpgrade('sp', 35)) gain = gain.times(1e6)
 	return gain
 }
 
@@ -99,7 +107,7 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	"Reach 1ee30 points to beat the game!"
+	"Reach e1.000e30 points to beat the game!"
 ]
 
 // Determines when the game "ends"
