@@ -57,6 +57,7 @@ addLayer("p", {
 	if (hasUpgrade('sp', 11)) mult = mult.times(10)
 	if (hasUpgrade('sp', 32)) mult = mult.times(upgradeEffect('sp', 32))
 	mult = mult.times(tmp.up.powerEff)
+	if (hasUpgrade('I', 12)) mult = mult.times(2)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -1093,6 +1094,12 @@ addLayer( "I", {
             title: "Upgrade 51",
 	    description: function() {return `<br>×2 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span>`},
 	    cost: new Decimal(1),
+	},
+        12: {
+            title: "Upgrade 52",
+	    description: function() {return `<br>×2 <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span>`},
+	    cost: new Decimal(1),
+	    unlocked() {return hasUpgrade('I', 11)},
 	},
     },
 })
