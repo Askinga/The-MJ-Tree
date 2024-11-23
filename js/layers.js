@@ -922,11 +922,11 @@ addLayer( "sp", {
         35: {
             title: "Upgrade 50",
             description: "×20 × 10 points",
-            cost: new Decimal(50000),
+            cost: new Decimal(1000000),
             currencyDisplayName: "Super Points",
             currencyInternalName: "superpoints",
             currencyLayer: "sp",
-            unlocked() {return hasUpgrade('sp', 33)},
+            unlocked() {return hasUpgrade('sp', 34)},
         },
     },
     challenges: {
