@@ -415,6 +415,7 @@ addLayer( "up", {
 	if (hasUpgrade('up', 33)) mult = mult.times(upgradeEffect('up', 33))
 	if (hasUpgrade('sp', 11)) mult = mult.times(10)
 	if (hasUpgrade('sp', 33)) mult = mult.times(upgradeEffect('sp', 33))
+	if (hasUpgrade('I', 13)) mult = mult.times(2)
 	return mult
     },
 
@@ -714,6 +715,7 @@ addLayer( "sp", {
     exponent: 0.15, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('I', 14)) mult = mult.times(2)
 	return mult
     },
 
@@ -974,7 +976,8 @@ addLayer( "sp", {
 	    if (hasUpgrade('sp', 21)) gain = gain.times(2)
 	    if (hasUpgrade('sp', 22)) gain = gain.times(upgradeEffect('sp', 22))
 	    if (hasUpgrade('sp', 24)) gain = gain.times(upgradeEffect('sp', 24))
-     if (hasUpgrade('sp', 31)) gain = gain.times(upgradeEffect('sp', 31))
+     	    if (hasUpgrade('sp', 31)) gain = gain.times(upgradeEffect('sp', 31))
+	    if (hasUpgrade('I', 15)) gain = gain.times(2)
             
 	    // statements above this line
             player.sp.superpointsgain = gain
@@ -1100,6 +1103,24 @@ addLayer( "I", {
 	    description: function() {return `<br>×2 <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span>`},
 	    cost: new Decimal(1),
 	    unlocked() {return hasUpgrade('I', 11)},
+	},
+        13: {
+            title: "Upgrade 53",
+	    description: function() {return `<br>×2 <span style=\"color: rgb(255, 60, 0); text-shadow: rgb(255, 60, 0) 0px 0px 10px;\">upgraded prestige points</span>`},
+	    cost: new Decimal(1),
+	    unlocked() {return hasUpgrade('I', 12)},
+	},
+        14: {
+            title: "Upgrade 54",
+	    description: function() {return `<br>×2 <span style=\"color: rgb(255, 105, 31); text-shadow: rgb(255, 105, 31) 0px 0px 10px;\">super prestige points</span>`},
+	    cost: new Decimal(1),
+	    unlocked() {return hasUpgrade('I', 13)},
+	},
+        15: {
+            title: "Upgrade 55",
+	    description: function() {return `<br>×2 super points`},
+	    cost: new Decimal(1),
+	    unlocked() {return hasUpgrade('I', 14)},
 	},
     },
 })
