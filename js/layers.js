@@ -1084,6 +1084,8 @@ addLayer( "I", {
                 "resource-display",
                 "prestige-button",
                 "blank",
+		["bar", "bar1"],
+		"blank",
 		["display-text",
 				function() {return format(player.I.infinity) + '∞'+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
 					{}],
@@ -1122,5 +1124,21 @@ addLayer( "I", {
 	    cost: new Decimal(1),
 	    unlocked() {return hasUpgrade('I', 14)},
 	},
+        bars: {
+        bar1: {
+            direction: RIGHT,
+            width: 300,
+            height: 25,
+            instant: false,
+            fillStyle: { 'background-color': "#bb00ff" },
+	    progress() {
+                let prog = player.points.log(getNextAt('I'))
+                return prog
+	    },
+            display() {
+                    return "Progress to next IP"
+            },
+        },
+    },
     },
 })
