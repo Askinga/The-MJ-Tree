@@ -1124,7 +1124,8 @@ addLayer( "I", {
 	    cost: new Decimal(1),
 	    unlocked() {return hasUpgrade('I', 14)},
 	},
-        bars: {
+    },
+    bars: {
         bar1: {
             direction: RIGHT,
             width: 300,
@@ -1139,6 +1140,5 @@ addLayer( "I", {
                     return "Progress to next IP"
             },
         },
-    },
     },
 })
