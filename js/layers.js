@@ -1118,7 +1118,7 @@ addLayer( "I", {
 	},
         15: {
             title: "Upgrade 55",
-	    description: function() {return `<br>×2 super points`},
+	    description: function() {return `<br>×2 super points and unlock Automation`},
 	    cost: new Decimal(1),
 	    unlocked() {return hasUpgrade('I', 14)},
 	},
