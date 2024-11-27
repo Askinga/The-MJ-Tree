@@ -1044,7 +1044,7 @@ addLayer( "I", {
         let req = new Decimal("1.79e308")
         return req
     }, // Can be a function that takes requirement increases into account
-    resource: "IP", // Name of prestige currency
+    resource: "Infinity Points (IP)", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -1122,5 +1122,48 @@ addLayer( "I", {
 	    cost: new Decimal(1),
 	    unlocked() {return hasUpgrade('I', 14)},
 	},
+    },
+})
+
+addLayer( "au", {
+    name: "Automation Points",
+    symbol: "⚙️",
+    position: 0,
+    startData() { return {
+        unlocked: true,
+		points: new Decimal(0),
+  		total: new Decimal(0)
+    }},
+    nodeStyle: {
+	"border-radius": "100%",
+	"width": "100px",
+	"height": "100px"
+    },
+    color: "#a0a0a0",
+    requires() {
+        let req = new Decimal("ee100")
+        return req
+    }, // Can be a function that takes requirement increases into account
+    resource: "Automation Points (AP)", // Name of prestige currency
+    baseResource: "points", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.15, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+	
+	return mult
+    },
+
+
+
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: "side", // Row the layer is in on the tree (0 is the first row)
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('I', 15) || player.au.unlocked) visible = true
+       return visible
     },
 })
