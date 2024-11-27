@@ -1161,4 +1161,26 @@ addLayer( "au", {
         if (hasUpgrade('I', 15) || player.au.unlocked) visible = true
        return visible
     },
+    buyables: {
+    11: {
+        cost(x) { return new Decimal(1e100).pow(x) },
+        display() { return "+1 Automation Point" },
+        canAfford() { return player.points.gte(this.cost()) },
+        buy() {
+            player.points = player.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+	    player[this.layer].points = player[this.layer].points.add(1)
+        },
+    },
+    12: {
+        cost(x) { return new Decimal(1e50).pow(x) },
+        display() { return "+1 Automation Point" },
+        canAfford() { return player.p.points.gte(this.cost()) },
+        buy() {
+            player.p.points = player.p.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+	    player[this.layer].points = player[this.layer].points.add(1)
+        },
+    },
+    }
 })
