@@ -1164,7 +1164,7 @@ addLayer( "au", {
     buyables: {
     11: {
         cost(x) { return new Decimal(1e100).pow(x) },
-        display() { return "+1 Automation Point." + " Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Points." + "<br>Bought: " + getBuyableAmount(this.layer, this.id)},
+        display() { return "+1 Automation Point." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Points." + "<br>Bought: " + getBuyableAmount(this.layer, this.id)},
         canAfford() { return player.points.gte(this.cost()) },
         buy() {
             player.points = player.points.sub(this.cost())
@@ -1174,7 +1174,7 @@ addLayer( "au", {
     },
     12: {
         cost(x) { return new Decimal(1e50).pow(x) },
-        display() { return "+1 Automation Point." + " Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Prestige Points." + "<br>Bought: " + getBuyableAmount(this.layer, this.id)},
+        display() { return "+1 Automation Point." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Prestige Points." + "<br>Bought: " + getBuyableAmount(this.layer, this.id)},
         canAfford() { return player.p.points.gte(this.cost()) },
         buy() {
             player.p.points = player.p.points.sub(this.cost())
