@@ -1134,11 +1134,6 @@ addLayer( "au", {
 		points: new Decimal(0),
   		total: new Decimal(0)
     }},
-    nodeStyle: {
-	"border-radius": "100%",
-	"width": "100px",
-	"height": "100px"
-    },
     color: "#a0a0a0",
     requires() {
         let req = new Decimal("ee100")
