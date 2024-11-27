@@ -1183,5 +1183,16 @@ addLayer( "au", {
 	    player[this.layer].total = player[this.layer].total.add(1)
         },
     },
+    13: {
+        cost(x) { return new Decimal(2).pow(x) },
+        display() { return "+1 Automation Point." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " IP." + "<br>Bought: " + getBuyableAmount(this.layer, this.id)},
+        canAfford() { return player.I.points.gte(this.cost()) },
+        buy() {
+            player.I.points = player.I.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+	    player[this.layer].points = player[this.layer].points.add(1)
+	    player[this.layer].total = player[this.layer].total.add(1)
+        },
+    },
     }
 })
