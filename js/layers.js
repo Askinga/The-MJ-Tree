@@ -1,4 +1,4 @@
-	addLayer("p", {
+addLayer("p", {
     name: "prestige", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "P0", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
@@ -27,7 +27,8 @@
     color: "#FF0000",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     passiveGeneration() {
-	return player.p.gens.div(5000)
+	 if (player.au.autoPrePoi && hasMilestone('au', 1)) return 0.1
+	 return player.p.gens.div(5000)
     },
     resource: "prestige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
@@ -1261,6 +1262,13 @@ addLayer( "au", {
             title: "A1",
 	    description: function() {return `<br>Unlock Auto Prestige Upgrades`},
 	    cost: new Decimal(6),
+	    unlocked() { return (hasUpgrade('I', 15)) },
+	},
+        12: {
+            title: "A2",
+	    description: function() {return `<br>Unlock Passive 1`},
+	    cost: new Decimal(6),
+	    unlocked() { return (hasUpgrade('au', 11)) },
 	},
     },
     milestones: {
@@ -1270,6 +1278,13 @@ addLayer( "au", {
             done() { return hasUpgrade('au', 11) },
             unlocked() { return (hasUpgrade('au', 11)) },
 	    toggles: [["au", "autoPreUp"]],
+   	},
+        1: {
+            requirementDescription: "Passive 1",
+            effectDescription: "10% Prestige Points per second",
+            done() { return hasUpgrade('au', 12) },
+            unlocked() { return (hasUpgrade('au', 12)) },
+	    toggles: [["au", "autoPrePoi"]],
    	},
     },
 })
