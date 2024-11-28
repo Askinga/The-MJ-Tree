@@ -1209,8 +1209,8 @@ addLayer( "au", {
     },
     milestones: {
         0: {
-            requirementDescription: "Challenge 3 Complete",
-            effectDescription: "Look at the reward for challenge 3",
+            requirementDescription: "Auto Prestige Upgrades",
+            effectDescription: "Auto Prestige Upgrades!",
             done() { return hasUpgrade('au', 11) },
             unlocked() { return (hasUpgrade('au', 11)) },
 	    toggles: [["au", "autoPreUp"]],
