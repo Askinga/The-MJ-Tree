@@ -71,7 +71,7 @@ addLayer("p", {
     powerEff() {
     return player.p.gens.div(50);
     },
-    autoUpgrade(){return player.au.autoPreUp && hasMilestone('au', 11)},
+    autoUpgrade(){return player.au.autoPreUp && hasMilestone('au', 0)},
     tabFormat: {
         "Upgrades": {
             content: [
