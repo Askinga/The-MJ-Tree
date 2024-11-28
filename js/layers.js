@@ -686,6 +686,41 @@ addLayer("🏆", {
             done() { return (player.sp.points.gte(1)) },
             tooltip: "Get your first super prestige point.",	   
         },
+        32: {
+            name: "Polynomial Points",
+            done() { return (player.sp.superpoints.gte(1)) },
+            tooltip: "Get your first super point.",	   
+        },
+        33: {
+            name: "The grind...",
+            done() { return (player.sp.superpoints.gte(5000)) },
+            tooltip: "Get 5,000 super points.",	
+        },
+        34: {
+            name: "Grind to Infinity",
+            done() { return (hasUpgrade('sp', 35)) },
+            tooltip: "Get Super Prestige Upgrade 15. (Upgrade 50)",	   
+        },
+        35: {
+            name: "Timewalled",
+            done() { return (player.sp.superpoints.gte(1e7)) },
+            tooltip: "Get 10,000,000 Super Points.",	   
+        },
+        36: {
+            name: "This is taking a WHILE!!!",
+            done() { return (player.points.gte(1e300)) },
+            tooltip: "Get 1e300 points.",	   
+        },
+        41: {
+            name: "Finally!",
+            done() { return (player.I.infinity.gte(1)) },
+            tooltip: "Do your first infinity.",	   
+        },
+        42: {
+            name: "🕓",
+            done() { return (player.I.infinity.gte(3)) },
+            tooltip: "Do your third infinity.",	   
+        }, 
     },
 })
 
