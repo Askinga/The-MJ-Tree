@@ -1170,6 +1170,7 @@ addLayer( "au", {
             player.points = player.points.sub(this.cost())
             setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
 	    player[this.layer].points = player[this.layer].points.add(1)
+	    player[this.layer].total = player[this.layer].total.add(1)
         },
     },
     12: {
