@@ -1267,7 +1267,7 @@ addLayer( "au", {
         12: {
             title: "A2",
 	    description: function() {return `<br>Unlock Passive 1`},
-	    cost: new Decimal(6),
+	    cost: new Decimal(5),
 	    unlocked() { return (hasUpgrade('au', 11)) },
 	},
     },
