@@ -71,6 +71,7 @@ addLayer("p", {
     powerEff() {
     return player.p.gens.div(50);
     },
+    autoUpgrade(){return player.au.autoPreUp && hasMilestone('au', 11)},
     tabFormat: {
         "Upgrades": {
             content: [
@@ -1172,6 +1173,7 @@ addLayer( "au", {
 	    player[this.layer].points = player[this.layer].points.add(1)
 	    player[this.layer].total = player[this.layer].total.add(1)
         },
+        unlocked() { return (hasUpgrade('I', 15)) },
     },
     12: {
         cost(x) { return new Decimal(1e50).pow(x) },
@@ -1183,6 +1185,7 @@ addLayer( "au", {
 	    player[this.layer].points = player[this.layer].points.add(1)
 	    player[this.layer].total = player[this.layer].total.add(1)
         },
+        unlocked() { return (hasUpgrade('I', 15)) },
     },
     13: {
         cost(x) { return new Decimal(2).pow(x) },
@@ -1194,6 +1197,23 @@ addLayer( "au", {
 	    player[this.layer].points = player[this.layer].points.add(1)
 	    player[this.layer].total = player[this.layer].total.add(1)
         },
+        unlocked() { return (hasUpgrade('I', 15)) },
     },
-    }
+    },
+    upgrades: {
+	11: {
+            title: "A1",
+	    description: function() {return `<br>Unlock Auto Prestige Upgrades`},
+	    cost: new Decimal(6),
+	},
+    },
+    milestones: {
+        0: {
+            requirementDescription: "Challenge 3 Complete",
+            effectDescription: "Look at the reward for challenge 3",
+            done() { return hasUpgrade('au', 11) },
+            unlocked() { return (hasUpgrade('au', 11)) },
+	    toggles: [["au", "autoPreUp"]],
+   	},
+    },
 })
