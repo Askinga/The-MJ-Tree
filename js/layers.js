@@ -1158,6 +1158,27 @@ addLayer( "I", {
 	    cost: new Decimal(1),
 	    unlocked() {return hasUpgrade('I', 14)},
 	},
+        21: {
+	    title: "Upgrade 56",
+            description: function() {return `<br> Boost your <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\"><h3>points</h3></span><br> based on Infinities<br>`},
+            cost: new Decimal(2),
+            effect(){
+                let expu3 = 0.5
+                let eff = player.I.infinity.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e10"), 0.5)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e10")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts Points by " + format(upgEffect)+"x" + softcapDescription
+	    },
+            tooltip: "(Infinities+1)<sup>0.5</sup>",
+	    unlocked() {return (hasUpgrade('I', 15))}
+        },
     },
 })
 
