@@ -59,6 +59,7 @@ addLayer("p", {
 	if (hasUpgrade('sp', 32)) mult = mult.times(upgradeEffect('sp', 32))
 	mult = mult.times(tmp.up.powerEff)
 	if (hasUpgrade('I', 12)) mult = mult.times(2)
+        if (hasUpgrade('I', 22)) mult = mult.times(upgradeEffect('I', 22))
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -418,6 +419,7 @@ addLayer( "up", {
 	if (hasUpgrade('sp', 11)) mult = mult.times(10)
 	if (hasUpgrade('sp', 33)) mult = mult.times(upgradeEffect('sp', 33))
 	if (hasUpgrade('I', 13)) mult = mult.times(2)
+	if (hasUpgrade('I', 23)) mult = mult.times(upgradeEffect('I', 23))
 	return mult
     },
 
@@ -753,6 +755,7 @@ addLayer( "sp", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('I', 14)) mult = mult.times(2)
+	if (hasUpgrade('I', 24)) mult = mult.times(upgradeEffect('I', 24))
 	return mult
     },
 
@@ -1015,6 +1018,7 @@ addLayer( "sp", {
 	    if (hasUpgrade('sp', 24)) gain = gain.times(upgradeEffect('sp', 24))
      	    if (hasUpgrade('sp', 31)) gain = gain.times(upgradeEffect('sp', 31))
 	    if (hasUpgrade('I', 15)) gain = gain.times(2)
+	    if (hasUpgrade('I', 25)) gain = gain.times(upgradeEffect('I', 25))
             
 	    // statements above this line
             player.sp.superpointsgain = gain
@@ -1092,6 +1096,7 @@ addLayer( "I", {
     },
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('I', 25)) gain = gain.times(2)
 	return mult
     },
 
@@ -1179,6 +1184,90 @@ addLayer( "I", {
 	    },
             tooltip: "(Infinities+1)<sup>0.5</sup>",
 	    unlocked() {return (hasUpgrade('I', 15))}
+        },
+        22: { 
+	    title: "Upgrade 57",
+            description: function() {return `<br> Boost your <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\"><h3>prestige points</h3></span><br> based on Infinities<br>`},
+            cost: new Decimal(2),
+            effect(){
+                let expu3 = 0.5
+                let eff = player.I.infinity.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e10"), 0.5)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e10")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts Prestige Points by " + format(upgEffect)+"x" + softcapDescription
+	    },
+            tooltip: "(Infinities+1)<sup>0.5</sup>",
+	    unlocked() {return (hasUpgrade('I', 21))}
+        },
+        23: { 
+	    title: "Upgrade 58",
+            description: function() {return `<br> Boost your <span style=\"color: rgb(255, 60, 0); text-shadow: rgb(255, 60, 0) 0px 0px 10px;\"><h3>upgraded prestige points</h3></span><br> based on Infinities<br>`},
+            cost: new Decimal(2),
+            effect(){
+                let expu3 = 0.5
+                let eff = player.I.infinity.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e10"), 0.5)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e10")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts Upgraded Prestige Points by " + format(upgEffect)+"x" + softcapDescription
+	    },
+            tooltip: "(Infinities+1)<sup>0.5</sup>",
+	    unlocked() {return (hasUpgrade('I', 22))}
+        },
+        24: { 
+	    title: "Upgrade 59",
+            description: function() {return `<br> Boost your <span style=\"color: rgb(255, 105, 31); text-shadow: rgb(255, 105, 31) 0px 0px 10px;\"><h3>super prestige points</h3></span><br> based on Infinities<br>`},
+            cost: new Decimal(2),
+            effect(){
+                let expu3 = 0.5
+                let eff = player.I.infinity.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e10"), 0.5)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e10")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts Super Prestige Points by " + format(upgEffect)+"x" + softcapDescription
+	    },
+            tooltip: "(Infinities+1)<sup>0.5</sup>",
+	    unlocked() {return (hasUpgrade('I', 23))}
+        },
+        25: { 
+	    title: "Upgrade 60",
+            description: function() {return `<br> Boost your super points based on Infinities<br> and ×2 IP`},
+            cost: new Decimal(2),
+            effect(){
+                let expu3 = 0.5
+                let eff = player.I.infinity.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e10"), 0.5)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e10")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts Super Points by " + format(upgEffect)+"x" + softcapDescription
+	    },
+            tooltip: "(Infinities+1)<sup>0.5</sup>",
+	    unlocked() {return (hasUpgrade('I', 24))}
         },
     },
 })
