@@ -602,7 +602,7 @@ addLayer( "up", {
     },
 })
 
-addLayer("🏆", {
+addLayer("A", {
     startData() { return {
         unlocked: true,
     }},
@@ -1028,7 +1028,7 @@ addLayer( "sp", {
     },
 })
 
-addLayer("📈", {
+addLayer("S", {
     startData() { return {
         unlocked: true,
     }},
@@ -1274,7 +1274,7 @@ addLayer( "I", {
 
 addLayer( "au", {
     name: "Automation Points",
-    symbol: "⚙️",
+    symbol: "Au",
     position: 0,
     startData() { return {
         unlocked: true,
