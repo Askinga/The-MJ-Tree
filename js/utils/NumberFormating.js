@@ -30,6 +30,26 @@ function regularFormat(num, precision) {
     return num.toStringWithDecimalPlaces(precision)
 }
 
+function infFormat(decimal) {
+    decimal = new Decimal(decimal)
+    if (decimal.lt(new Decimal(2).pow(1024))) {
+        return defaultFormat(decimal)
+    }
+    if (decimal.lt(new Decimal(2).pow(1024).pow(1e6))) {
+        return defaultFormat(decimal.div(new Decimal(2).pow(1024).pow(decimal.log(new Decimal(2).pow(1024)).floor()))) + "+(" + defaultFormat(decimal.log(new Decimal(2).pow(1024)).floor()) + ")∞"
+    }
+    if (decimal.lt(new Decimal(2).pow(1024).tetrate(10))) {
+        return infFormat(decimal.log(new Decimal(2).pow(1024)).floor()) + "∞"
+    }
+    return "∞^(" + decimal.slog(new Decimal(2).pow(1024)) + ")"
+}
+
+function eFormat(decimal) {
+    decimal = new Decimal(decimal)
+    if (decimal.lt("1e1000")) return exponentialFormat(decimal, 2)
+    return "e"+eFormat(decimal.log10().floor())
+ }
+
 function fixValue(x, y = 0) {
     return x || new Decimal(y)
 }
@@ -40,7 +60,7 @@ function sumValues(x) {
     return x.reduce((a, b) => Decimal.add(a, b))
 }
 
-function format(decimal, precision = 2, small) {
+function defaultFormat(decimal, precision = 2, small) {
     small = small || modInfo.allowSmall
     decimal = new Decimal(decimal)
     if (isNaN(decimal.sign) || isNaN(decimal.layer) || isNaN(decimal.mag)) {
@@ -108,4 +128,68 @@ function invertOOM(x){
     x = new Decimal(10).pow(e).times(m)
 
     return x
+}
+
+function standardFormat(decimal) {
+    first = ["", "k", "M", "B"]
+    symbols = [
+        [
+            "", "U", "D", "T", "Q", "q", "S", "s", "O", "N"
+        ],
+        [
+            "", "Dc", "Vg", "Tg", "Qg", "qg", "Sg", "sg", "Og", "Ng"
+        ],
+        [
+            "", "C", "Du", "Tc", "Qc", "qc", "Sc", "sc", "Oc", "Nc"
+        ],
+    ]
+    decimal = new Decimal(decimal)
+    if (decimal.eq(0)) return "0"
+    e = decimal.log10().div(3).floor().clampMin(0)
+    prefix = ""
+    if (first[e] != undefined) { prefix = first[e] } else {
+        decimal = decimal.div(1000)
+        e = decimal.log10().div(3).floor().clampMin(0)
+        prefix += symbols[0][e.div(10000).floor().mod(10)]
+        prefix += symbols[1][e.div(100000).floor().mod(10)]
+        prefix += symbols[2][e.div(1000000).floor().mod(10)]
+        prefix += e.div(1000).floor().mod(10).neq(0) ? "Mi" : ""
+        prefix += symbols[0][e.mod(10)]
+        prefix += symbols[1][e.div(10).floor().mod(10)]
+        prefix += symbols[2][e.div(100).floor().mod(10)]
+    }
+    if (e.div(1000000).floor().gt(10)) return defaultFormat(decimal)
+    return (e.lt(3000) ? defaultFormat(decimal.div(new Decimal(10).pow(e.times(3)))) : "1") + prefix
+}
+
+function altStandardFormat(decimal) {
+    first = ["", "k", "M", "B"]
+    symbols = [
+        [
+            "", "U", "D", "T", "q", "Q", "s", "S", "O", "N"
+        ],
+        [
+            "", "Dc", "Vg", "Tg", "qg", "Qg", "sg", "Sg", "Og", "Ng"
+        ],
+        [
+            "", "C", "Du", "Tc", "qc", "Qc", "sc", "Sc", "Oc", "Nc"
+        ],
+    ]
+    decimal = new Decimal(decimal)
+    if (decimal.eq(0)) return "0"
+    e = decimal.log10().div(3).floor().clampMin(0)
+    prefix = ""
+    if (first[e] != undefined) { prefix = first[e] } else {
+        decimal = decimal.div(1000)
+        e = decimal.log10().div(3).floor().clampMin(0)
+        prefix += symbols[0][e.div(10000).floor().mod(10)]
+        prefix += symbols[1][e.div(100000).floor().mod(10)]
+        prefix += symbols[2][e.div(1000000).floor().mod(10)]
+        prefix += e.div(1000).floor().mod(10).neq(0) ? "Mi" : ""
+        prefix += symbols[0][e.mod(10)]
+        prefix += symbols[1][e.div(10).floor().mod(10)]
+        prefix += symbols[2][e.div(100).floor().mod(10)]
+    }
+    if (e.div(1000000).floor().gt(10)) return standardFormat(decimal)
+    return (e.lt(3000) ? defaultFormat(decimal.div(new Decimal(10).pow(e.times(3)))) : "1") + prefix
 }
