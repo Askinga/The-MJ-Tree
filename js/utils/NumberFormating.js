@@ -88,7 +88,7 @@ function defaultFormat(decimal, precision = 2, small) {
         return val.replace(/([^(?:e|F)]*)$/, '-$1')
     }
     else   
-        return format(decimal, precision) + "⁻¹"
+        return defaultformat(decimal, precision) + "⁻¹"
 
 }
 
