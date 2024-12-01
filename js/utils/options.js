@@ -14,12 +14,17 @@ function getStartOptions() {
 		forceOneTab: false,
 		oldStyle: false,
 		tooltipForcing: true,
+		formatting: "default",
 	}
 }
 
 function toggleOpt(name) {
 	if (name == "oldStyle" && styleCooldown > 0)
 		return;
+        if (name == "formatting") {
+		changeFormat()
+		return;
+	}
 
 	options[name] = !options[name];
 	if (name == "hqTree")
@@ -75,4 +80,44 @@ function milestoneShown(layer, id) {
 			break;
 	}
 	return false;
+}
+
+function format(decimal, precision = 2) {
+	switch (options.formatting) {
+		case "default":
+			return defaultFormat(decimal, precision);
+		case "infinity":
+			return infFormat(decimal);
+		case "exponent":
+			return eFormat(decimal);
+		case "blind":
+			return "";
+		case "standard":
+			return standardFormat(decimal);
+		case "altstandard":
+			return altStandardFormat(decimal);
+	}
+}
+
+function changeFormat() {
+	switch (options.formatting) {
+		case "default":
+			options.formatting = "infinity";
+			break;
+		case "infinity":
+			options.formatting = "exponent";
+			break;
+		case "exponent":
+			options.formatting = "blind";
+			break;
+		case "blind":
+			options.formatting = "standard";
+			break;
+		case "standard":
+			options.formatting = "altstandard";
+			break;
+		case "altstandard":
+			options.formatting = "default";
+			break;
+	}
 }
