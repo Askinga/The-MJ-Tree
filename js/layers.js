@@ -1039,31 +1039,37 @@ addLayer("S", {
         return ("Stats")
     },
     tabFormat: {
-        "Help": {
+        "Statistics": {
             content: [
                 "blank",
-	        ["infobox", "help"],
-	        ],
+	        ["blank", "15px"],
+                    ["display-text", function() {
+                        return `Points: ${textStyle_h4(format(player.points),'ffffff')}`
+                    }],
+		"blank",
+	        ["display-text", function() {
+                        if (tmp.p.layerShown)
+                        return `Prestige Points: ${textStyle_h4(format(player.p.points),'ff0000')}`
+                    }],
+		"blank", 
+	        ["display-text", function() {
+                        if (tmp.up.layerShown)
+                        return `Upgraded Prestige Points: ${textStyle_h4(format(player.up.points),'ff3c00')}`
+                    }],
+		"blank", 
+	        ["display-text", function() {
+                        if (tmp.sp.layerShown)
+                        return `Super Prestige Points: ${textStyle_h4(format(player.sp.points),'ff5400')}`
+                    }],
+		"blank", 
+	        ["display-text", function() {
+                        if (tmp.I.layerShown)
+                        return `Infinity Points: ${textStyle_h4(format(player.I.points),'bb00ff')}`
+                    }],
+		"blank", 
+	    ],
 	},
-    },
-    infoboxes: {
-        help: {
-            title: "Help",
-            body() {
-                function makeid(length) {
-                    let result = '';
-                    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????';
-                    const charactersLength = characters.length;
-                    let counter = 0;
-                    while (counter < length) {
-                      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-                      counter += 1;
-                    }
-                    return result;
-                }
-	        return "<h3>Big text</h3> means that something is dynamic<br><span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">Colored text with a shadow</span> mean layers/layer points<br>There are currently 7 colors that mean something:<br><span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">Points</span><br><span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">" + (player.p.points.gte(1) || hasUpgrade('p', 11) || player.up.points.gte(1) || hasUpgrade('up', 11) || player.sp.points.gte(1) || hasUpgrade('sp', 11) ? "Prestige" : makeid(8)) + " layer</span><br><span style=\"color: rgb(255, 60, 0); text-shadow: rgb(255, 60, 0) 0px 0px 10px;\">" + (player.up.unlocked == 1 ? "Upgraded Prestige" : makeid(7)) + " layer</span>" },
-      	}
-    },
+    },      
 })
 
 addLayer( "I", {
@@ -1115,7 +1121,7 @@ addLayer( "I", {
     },
     layerShown(){
         let visible = false
-        if (player.points.gte(1e300) || player.I.unlocked) visible = true
+        if (player.points.gte("1.79e308") || player.I.unlocked) visible = true
        return visible
     },
     branches:["sp"],
