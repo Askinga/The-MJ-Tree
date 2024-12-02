@@ -173,6 +173,8 @@ var systemComponents = {
 				</tr> 
             <tr>
                 <td><button class="opt" onclick="toggleOpt('formatting'); needsCanvasUpdate = true">Formatting: {{ options.formatting }}</button></td>
+		<td><button class=opt onclick=exportFile()>Export file</button></td>
+                <td><label class=opt for='importfile' style='display:flex;align-items:center;justify-content:center;width:92px;height:92px;'>Import<br>file</label><input id='importfile' type='file' onchange='importFile()' style='display:none' /></td>
 	    </tr>
         </table>`
     },
