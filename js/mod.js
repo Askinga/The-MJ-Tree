@@ -13,12 +13,21 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.3.0",
-	name: "The grind continues...",
+	num: "0.4.0",
+	name: "Infinite... Part 1",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-            	<h3>v0.3.0</h3><br>
+            	<h3>v0.4.0</h3><br>
+		- Added 12 upgrades<br>
+  		- Added 1 progression layer.<br>
+      		- Added 6 achievements.<br>
+  		- Added 3 buyables.<br>
+                - Added 2 milestones.<br>
+		- Added 2 side layers.<br>
+	     
+      
+      		<h3>v0.3.0</h3><br>
 		- Added 16 upgrades<br>
   		- Added 1 layer.<br>
       		- Added 5 achievements.<br>
@@ -118,12 +127,12 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	"Reach e1.000e30 points to beat the game!"
+	"Reach Infinity and get Infinity upgrade 10 to beat the game!"
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("ee30"))
+	return (player.points.gte(new Decimal("1.79e308")) && hasUpgrade('I', 25))
 }
 
 
