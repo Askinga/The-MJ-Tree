@@ -1043,27 +1043,27 @@ addLayer("S", {
             content: [
 	        ["blank", "15px"],
 	        ["display-text", function() {
-                        return 'You have ' + (format(player.points),'ffffff') + ' points'
+                        return 'You have ' + format(player.points) + ' points'
                     }],
 		"blank", 
 	        ["display-text", function() {
                         if (tmp.p.layerShown)
-                        return 'You have ' + (format(player.p.points),'ff0000') + ' prestige points'
+                        return 'You have ' + format(player.p.points) + ' prestige points'
                     }],
 		"blank", 
 	        ["display-text", function() {
                         if (tmp.up.layerShown)
-                        return 'You have ' + (format(player.up.points),'ff3c00') + ' upgraded prestige points'
+                        return 'You have ' + format(player.up.points) + ' upgraded prestige points'
                     }],
 		"blank", 
 	        ["display-text", function() {
                         if (tmp.sp.layerShown)
-                        return 'You have ' + (format(player.sp.points),'ff5400') + ' super prestige points'
+                        return 'You have ' + format(player.sp.points) + ' super prestige points'
                     }],
 		"blank", 
 		["display-text", function() {
                         if (tmp.I.layerShown)
-			return 'You have ' + (format(player.I.points),'bb00ff') + ' Infinity Points'
+			return 'You have ' + format(player.I.points) + ' Infinity Points'
                     }],
 		"blank",
 	    ],
