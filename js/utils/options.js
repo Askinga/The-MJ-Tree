@@ -111,7 +111,7 @@ function changeFormat() {
 			options.formatting = "blind";
 			break;
 		case "blind":
-			options.formatting = "standard";
+			options.formatting = "default";
 			break;
 		case "standard":
 			options.formatting = "altstandard";
