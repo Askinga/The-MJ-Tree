@@ -866,7 +866,7 @@ addLayer( "sp", {
 	},
         14: {
             title: "Upgrade 39",
-	    description: "×25 × 10 points",
+	    description: function() {return `<br>25 ×10 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br>`},
 	    cost: new Decimal(5),
 	    unlocked() {return hasUpgrade('sp', 13)},
 	},
@@ -887,7 +887,7 @@ addLayer( "sp", {
 	},
         22: {
             title: "Upgrade 42",
-            description: "Boost super points based on upgraded prestige points",
+            description: function() {return `<br>Boost super points based on <span style=\"color: rgb(255, 60, 0); text-shadow: rgb(255, 60, 0) 0px 0px 10px;\"><h3>upgraded prestige points</h3></span><br>`},
             cost: new Decimal(35),
 	    currencyDisplayName: "Super Points",
             currencyInternalName: "superpoints",
@@ -910,7 +910,7 @@ addLayer( "sp", {
 	},
         24: {
             title: "Upgrade 44",
-            description: "Points boost super points",
+            description: function() {return `<br><span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\"><h3>points</h3></span> boost super points<br>`},
             cost: new Decimal(200),
             currencyDisplayName: "Super Points",
             currencyInternalName: "superpoints",
@@ -947,7 +947,7 @@ addLayer( "sp", {
         },
         32: {
             title: "Upgrade 47",
-            description: "Super points boost prestige points",
+            description: function() {return `<br>Super points boost <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span><br>`},
             cost: new Decimal(25000),
             currencyDisplayName: "Super Points",
             currencyInternalName: "superpoints",
@@ -961,7 +961,7 @@ addLayer( "sp", {
         },
         33: {
             title: "Upgrade 48",
-            description: "Super points boost upgraded prestige points",
+            description: function() {return `<br>Super points boost <span style=\"color: rgb(255, 60, 0); text-shadow: rgb(255, 60, 0) 0px 0px 10px;\">upgraded prestige points</span><br>`},
             cost: new Decimal(40000),
             currencyDisplayName: "Super Points",
             currencyInternalName: "superpoints",
@@ -975,7 +975,7 @@ addLayer( "sp", {
         },
         34: {
             title: "Upgrade 49",
-            description: "^1.005 points",
+            description: function() {return `<br>^1.005 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br>`},
             cost: new Decimal(50000),
             currencyDisplayName: "Super Points",
             currencyInternalName: "superpoints",
@@ -984,7 +984,7 @@ addLayer( "sp", {
         },
         35: {
             title: "Upgrade 50",
-            description: "×20 × 10 points",
+            description: function() {return `<br>20 ×10 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br>`},
             cost: new Decimal(200000),
             currencyDisplayName: "Super Points",
             currencyInternalName: "superpoints",
