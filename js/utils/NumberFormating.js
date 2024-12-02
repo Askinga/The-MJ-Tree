@@ -130,35 +130,72 @@ function invertOOM(x){
     return x
 }
 
-formattingSymbols = [
-    [
-        "", "k", "M", "B", "T", "Qu", "Qi", "Sx", "Sp", "O", "N", 
-        "Dc", "UDc", "DDc", "TDc", "QDc", "QiDc", "SDc", "SpDc", "ODc", "NDc",
-        "Vg", "UVg", "DVg", "TVg", "QVg", "QiVg", "SVg", "SpVg", "OVg", "NVg",
-        "Tg", "UTg", "DTg", "TTg", "QTg", "QiTg", "STg", "SpTg", "OTg", "NTg",
-        "Qg", "UQg", "DQg", "TQg", "QQg", "QiQg", "SQg", "SpQg", "OQg", "NQg",
-        "qg", "Uqg", "Dqg", "Tqg", "Qqg", "Qiqg", "Sqg", "Spqg", "Oqg", "Nqg",
-        "Sg", "USg", "DSg", "TSg", "QSg", "QiSg", "SSg", "SpSg", "OSg", "NSg",
-        "sg", "Usg", "Dsg", "Tsg", "Qsg", "Qisg", "Ssg", "Spsg", "Osg", "Nsg",
-        "Og", "UOg", "DOg", "TOg", "QOg", "QiOg", "SOg", "SpOg", "OOg", "NOg",
-        "Ng", "UNg", "DNg", "TNg", "QNg", "QiNg", "SNg", "SpNg", "ONg", "NNg"
-    ],
-    [
-        "", "C", "Dc", "Tc", "Qc", "qc", "Sc", "sc", "Oc", "Nc",
-        "Ml", "CMl", "DMl", "TMl", "QMl", "QiMl", "SMl", "SpMl", "OMl", "NMl",
-        "Bl", "CBl", "DBl", "TBl", "QBl", "QiBl", "SBl", "SpBl", "OBl", "NBl",
-        "Tl", "CTl", "DTl", "TTl", "QTl", "QiTl", "STl", "SpTl", "OTl", "NTl",
-        "Ql", "CQl", "DQl", "TQl", "QQl", "QiQl", "SQl", "SpQl", "OQl", "NQl",
-        "ql", "Cql", "Dql", "Tql", "Qql", "Qiql", "Sql", "Spql", "Oql", "Nql",
-        "Sl", "CSl", "DSl", "TSl", "QSl", "QiSl", "SSl", "SpSl", "OSl", "NSl",
-        "sl", "Csl", "Dsl", "Tsl", "Qsl", "Qisl", "Ssl", "Spsl", "Osl", "Nsl",
-        "Ol", "COl", "DOl", "TOl", "QOl", "QiOl", "SOl", "SpOl", "OOl", "NOl",
-        "Nl", "CNl", "DNl", "TNl", "QNl", "QiNl", "SNl", "SpNl", "ONl", "NNl",
-    ]
-]
 function standardFormat(decimal) {
+    first = ["", "k", "M", "B"]
+    symbols = [
+        [
+            "", "U", "D", "T", "Q", "q", "S", "s", "O", "N"
+        ],
+        [
+            "", "Dc", "Vg", "Tg", "Qg", "qg", "Sg", "sg", "Og", "Ng"
+        ],
+        [
+            "", "C", "Du", "Tc", "Qc", "qc", "Sc", "sc", "Oc", "Nc"
+        ],
+    ]
     decimal = new Decimal(decimal)
-    e3 = decimal.log10().div(3).floor()
-    if (formattingSymbols[1][e3.div(100).floor()] == undefined ) return defaultFormat(decimal)
-    return defaultFormat(decimal.div(new Decimal(1000).pow(e3)), e3.gt(0) ? 2 : 0) + formattingSymbols[0][e3.mod(100)] + formattingSymbols[1][e3.div(100).floor()]
+    if (decimal.eq(0)) return "0"
+    e = decimal.log10().div(3).floor().clampMin(0)
+    prefix = ""
+    if (first[e] != undefined) { prefix = first[e] } else {
+        decimal = decimal.div(1000)
+        e = decimal.log10().div(3).floor().clampMin(0)
+        prefix += symbols[0][e.div(10000).floor().mod(10)]
+        prefix += symbols[1][e.div(100000).floor().mod(10)]
+        prefix += symbols[2][e.div(1000000).floor().mod(10)]
+        prefix += e.div(1000).floor().mod(10).neq(0) ? "Mi" : ""
+        prefix += symbols[0][e.mod(10)]
+        prefix += symbols[1][e.div(10).floor().mod(10)]
+        prefix += symbols[2][e.div(100).floor().mod(10)]
+    }
+    if (e.div(1000000).floor().gt(10)) return defaultFormat(decimal)
+    return (e.lt(3000) ? defaultFormat(decimal.div(new Decimal(10).pow(e.times(3)))) : "1") + prefix
 }
+
+function altStandardFormat(decimal) {
+    first = ["", "k", "M", "B"]
+    symbols = [
+        [
+            "", "U", "D", "T", "q", "Q", "s", "S", "O", "N"
+        ],
+        [
+            "", "Dc", "Vg", "Tg", "qg", "Qg", "sg", "Sg", "Og", "Ng"
+        ],
+        [
+            "", "C", "Du", "Tc", "qc", "Qc", "sc", "Sc", "Oc", "Nc"
+        ],
+    ]
+    decimal = new Decimal(decimal)
+    if (decimal.eq(0)) return "0"
+    e = decimal.log10().div(3).floor().clampMin(0)
+    prefix = ""
+    if (first[e] != undefined) { prefix = first[e] } else {
+        decimal = decimal.div(1000)
+        e = decimal.log10().div(3).floor().clampMin(0)
+        prefix += symbols[0][e.div(10000).floor().mod(10)]
+        prefix += symbols[1][e.div(100000).floor().mod(10)]
+        prefix += symbols[2][e.div(1000000).floor().mod(10)]
+        prefix += e.div(1000).floor().mod(10).neq(0) ? "Mi" : ""
+        prefix += symbols[0][e.mod(10)]
+        prefix += symbols[1][e.div(10).floor().mod(10)]
+        prefix += symbols[2][e.div(100).floor().mod(10)]
+    }
+    if (e.div(1000000).floor().gt(10)) return standardFormat(decimal)
+    return (e.lt(3000) ? defaultFormat(decimal.div(new Decimal(10).pow(e.times(3)))) : "1") + prefix
+}
+
+setInterval(function() {
+    if (document.getElementById("tout") != undefined) {
+        document.getElementById("tout").innerHTML = format(document.getElementById("tester").value)
+    }
+})
