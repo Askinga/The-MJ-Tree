@@ -1041,14 +1041,8 @@ addLayer("S", {
     tabFormat: {
         "Statistics": {
             content: [
-                "blank",
 	        ["blank", "15px"],
-                    ["display-text", function() {
-                        return `Points: ${textStyle_h4(format(player.points),'ffffff')}`
-                    }],
-		"blank",
 	        ["display-text", function() {
-                        if (tmp.p.layerShown)
                         return `Prestige Points: ${textStyle_h4(format(player.p.points),'ff0000')}`
                     }],
 		"blank", 
