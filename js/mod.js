@@ -25,6 +25,8 @@ let changelog = `<h1>Changelog:</h1><br>
   		- Added 3 buyables.<br>
                 - Added 2 milestones.<br>
 		- Added 2 side layers.<br>
+  	        - Added 4 formats.<br>
+	        - Added 3 options.<br>
 	     
       
       		<h3>v0.3.0</h3><br>
