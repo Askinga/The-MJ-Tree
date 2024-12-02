@@ -727,7 +727,7 @@ addLayer("A", {
         43: {
             name: "It's getting faster",
             done() { return (hasUpgrade('I', 15)) },
-            tooltip: "Buy the fifth Infinity upgrade..",	   
+            tooltip: "Buy the fifth Infinity upgrade.",	   
         },
         44: {
             name: "Fast Infinity",
@@ -736,7 +736,7 @@ addLayer("A", {
         },
         45: {
             name: "End of v0.4.0",
-            done() { return (hasUpgrade('I', 25) },
+            done() { return (hasUpgrade('I', 25)) },
             tooltip: "Buy the 10th Infinity Upgrade.",	   
         },
         46: {
