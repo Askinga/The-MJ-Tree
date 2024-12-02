@@ -292,12 +292,12 @@ function exportFile() {
 	let data = btoa(JSON.stringify(player));
 	let file = new Blob([data], {type: "text/plain"});
 	if (window.navigator.msSaveOrOpenBlob) // IE10+
-        window.navigator.msSaveOrOpenBlob(file, "CI_Save");
+        window.navigator.msSaveOrOpenBlob(file, "TTGAP_Save");
     else { // Others
         var a = document.createElement("a"),
                 url = URL.createObjectURL(file);
         a.href = url;
-        a.download = "CI_Save";
+        a.download = "TTGAP_Save";
         document.body.appendChild(a);
         a.click();
         setTimeout(function() {
