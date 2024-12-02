@@ -287,6 +287,36 @@ function importSave(imported = undefined, forced = false) {
 		return;
 	}
 }
+
+function exportFile() {
+	let data = btoa(JSON.stringify(player));
+	let file = new Blob([data], {type: "text/plain"});
+	if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, "CI_Save");
+    else { // Others
+        var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = "CI_Save";
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }, 0);
+    }
+}
+
+function importFile() {
+	const input = document.querySelector('input[type="file"]');
+	if (!input.files?.length) return;
+
+	const file = input.files.item(0);
+	if (!file) return;
+
+	file.text().then(data => importSave(data));
+}
+
 function versionCheck() {
 	let setVersion = true;
 
