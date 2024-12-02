@@ -724,6 +724,26 @@ addLayer("A", {
             done() { return (player.I.infinity.gte(3)) },
             tooltip: "Do your third infinity.",	   
         }, 
+        43: {
+            name: "It's getting faster",
+            done() { return (hasUpgrade('I', 15)) },
+            tooltip: "Buy the fifth Infinity upgrade..",	   
+        },
+        44: {
+            name: "Fast Infinity",
+            done() { return (player.I.infinity.gte(10)) },
+            tooltip: "Do your tenth infinity.",	   
+        },
+        45: {
+            name: "End of v0.4.0",
+            done() { return (hasUpgrade('I', 25) },
+            tooltip: "Buy the 10th Infinity Upgrade.",	   
+        },
+        46: {
+            name: "Why are you still going?",
+            done() { return (player.I.infinity.gte(20)) },
+            tooltip: "Do your 20th infinity.",	   
+        }, 
     },
 })
 
