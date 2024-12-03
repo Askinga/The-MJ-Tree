@@ -809,15 +809,6 @@ addLayer( "sp", {
                 "upgrades"
             ],
         },
-        "Challenges": {
-            content: [
-                "main-display",
-                "resource-display",
-                "prestige-button",
-                "blank",
-                "challenges"
-            ],
-        },
 	"Super Points": {
           unlocked() { return (hasUpgrade('sp', 15)) },
 	    content: [
@@ -827,20 +818,6 @@ addLayer( "sp", {
 				function() {return 'You have ' + format(player.sp.superpoints) + ' Super Points, gaining ' + format(player.sp.superpointsgain) + ' super points per second and are boosting points by '+'x'+format(tmp.sp.powerEff)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
 					{}],
 		"resource-display",
-                "prestige-button",
-                "blank",
-                "clickables"
-            ],
-        },
-        "Buyables": {
-          unlocked() { return (hasUpgrade('sp', 25)) },
-	    content: [
-                "main-display",
-		"blank",
-		["display-text",
-				function() {return 'You have ' + format(player.sp.superpoints) + ' Super Points, gaining ' + format(player.sp.superpointsgain) + ' super points per second and are boosting points by '+'x'+format(tmp.sp.powerEff)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
-					{}],
-                "resource-display",
                 "prestige-button",
                 "blank",
                 "buyables"
@@ -925,7 +902,7 @@ addLayer( "sp", {
         },
         25: {
             title: "Upgrade 45",
-            description: "Unlock a buyable and a new tab",
+            description: "Unlock a buyable.",
             cost: new Decimal(500),
 	    currencyDisplayName: "Super Points",
             currencyInternalName: "superpoints",
@@ -992,15 +969,6 @@ addLayer( "sp", {
             currencyLayer: "sp",
             unlocked() {return hasUpgrade('sp', 34)},
         },
-    },
-    challenges: {
-        11: {
-            name: "Challenge P2",
-            challengeDescription: "^0.1 points and keep prestige upgrades is disabled.",
-            canComplete: function() {return hasUpgrade('p', 45)},
-            goalDescription: "Buy Prestige Upgrade 20.",
-            rewardDescription: "×1e6 points"
-	},
     },
     buyables: {
         11: {
