@@ -105,7 +105,7 @@ function changeFormat() {
 			options.formatting = "infinity";
 			break;
 		case "infinity":
-			options.formatting = "exponent";
+			options.formatting = "blind";
 			break;
 		case "exponent":
 			options.formatting = "blind";
