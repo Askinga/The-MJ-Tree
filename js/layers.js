@@ -382,6 +382,7 @@ addLayer("p", {
 	   	onHold() { 
 			if ( hasUpgrade("up", 23) )
 				gain2 = 10;
+			        if(hasUpgrade('up', 34)) gain2 = 500
 				player.p.gens = player.p.gens.plus(gain2) 
 	
 		}
