@@ -259,7 +259,7 @@ addLayer("p", {
                 if (upgEffect.gte(new Decimal("1e25")) ) {
                     softcapDescription = " (Softcapped)"
 		}
-	        return "This upgrade boosts Points by " + format(upgEffect)+"x" + softcapDescription
+	        return "This upgrade boosts Prestige Points by " + format(upgEffect)+"x" + softcapDescription
 	    },
             tooltip: "(prestigepoints+1)<sup>0.05</sup>",
 	    unlocked() { return (hasUpgrade('p', 32)) }
