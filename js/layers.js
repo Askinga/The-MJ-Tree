@@ -520,7 +520,7 @@ addLayer( "up", {
 	},
         23: {
             title: "Upgrade 28",
-	    description: "Unlock the ability to hold the generate button",
+	    description: "Unlock the ability to hold the generate button. (for mobile players)",
 	    cost: new Decimal(10000),
 	    unlocked() {return hasUpgrade('up', 22)},
 	},
