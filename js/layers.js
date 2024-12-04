@@ -373,12 +373,11 @@ addLayer("p", {
 			transform: "translate(0px, -15px)"
 		},
 		onClick() { 
-			if ( hasUpgrade("up", 15) )
-				let gain2 = 1;
-				if(hasUpgrade('up', 21)) gain2 = 2.5;
-				if(hasUpgrade('up', 22)) gain2 = 10;
-				if(hasUpgrade('up', 34)) gain2 = 500
-				player.p.gens = player.p.gens.plus(gain2) 
+			let gain2 = 1;
+			if(hasUpgrade('up', 21)) gain2 = 2.5;
+			if(hasUpgrade('up', 22)) gain2 = 10;
+			if(hasUpgrade('up', 34)) gain2 = 500
+			player.p.gens = player.p.gens.plus(gain2) 
 		},
 	   	onHold() { 
 			if ( hasUpgrade("up", 23) )
