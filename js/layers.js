@@ -805,6 +805,9 @@ addLayer( "sp", {
                 "main-display",
                 "resource-display",
                 "prestige-button",
+		["display-text",
+				function() {return (hasUpgrade('sp', 15)?"You have " + format(player.sp.superpoints) + " Super Points":"")},
+					{},
                 "blank",
                 "upgrades"
             ],
@@ -818,7 +821,8 @@ addLayer( "sp", {
 				function() {return 'You have ' + format(player.sp.superpoints) + ' Super Points, gaining ' + format(player.sp.superpointsgain) + ' super points per second and are boosting points by '+'x'+format(tmp.sp.powerEff)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
 					{}],
 		"resource-display",
-                "prestige-button",
+		"blank",
+		"prestige-button",
                 "blank",
                 "buyables"
             ],
