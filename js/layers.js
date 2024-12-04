@@ -1131,7 +1131,7 @@ addLayer( "I", {
     upgrades: {
 	11: {
             title: "Upgrade 51",
-	    description: function() {return `<br>×2 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span>`},
+	    description: function() {return `<br>×2 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span> and unlock Automation`},
 	    cost: new Decimal(1),
 	},
         12: {
@@ -1154,7 +1154,7 @@ addLayer( "I", {
 	},
         15: {
             title: "Upgrade 55",
-	    description: function() {return `<br>×2 super points and unlock Automation`},
+	    description: function() {return `<br>×2 super points`},
 	    cost: new Decimal(1),
 	    unlocked() {return hasUpgrade('I', 14)},
 	},
@@ -1299,7 +1299,7 @@ addLayer( "au", {
     row: "side", // Row the layer is in on the tree (0 is the first row)
     layerShown(){
         let visible = false
-        if (hasUpgrade('I', 15) || player.au.unlocked) visible = true
+        if (hasUpgrade('I', 11) || player.au.unlocked) visible = true
        return visible
     },
     buyables: {
@@ -1313,7 +1313,7 @@ addLayer( "au", {
 	    player[this.layer].points = player[this.layer].points.add(1)
 	    player[this.layer].total = player[this.layer].total.add(1)
         },
-        unlocked() { return (hasUpgrade('I', 15)) },
+        unlocked() { return (hasUpgrade('I', 11)) },
     },
     12: {
         cost(x) { return new Decimal(1e50).pow(x) },
@@ -1325,7 +1325,7 @@ addLayer( "au", {
 	    player[this.layer].points = player[this.layer].points.add(1)
 	    player[this.layer].total = player[this.layer].total.add(1)
         },
-        unlocked() { return (hasUpgrade('I', 15)) },
+        unlocked() { return (hasUpgrade('I', 11)) },
     },
     13: {
         cost(x) { return new Decimal(2).pow(x) },
@@ -1337,7 +1337,7 @@ addLayer( "au", {
 	    player[this.layer].points = player[this.layer].points.add(1)
 	    player[this.layer].total = player[this.layer].total.add(1)
         },
-        unlocked() { return (hasUpgrade('I', 15)) },
+        unlocked() { return (hasUpgrade('I', 11)) },
     },
     },
     upgrades: {
@@ -1345,7 +1345,7 @@ addLayer( "au", {
             title: "A1",
 	    description: function() {return `<br>Unlock Auto Prestige Upgrades`},
 	    cost: new Decimal(6),
-	    unlocked() { return (hasUpgrade('I', 15)) },
+	    unlocked() { return (hasUpgrade('I', 11)) },
 	},
         12: {
             title: "A2",
