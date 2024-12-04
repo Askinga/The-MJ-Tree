@@ -444,6 +444,7 @@ addLayer( "up", {
        return visible
     },
     branches:["p"],
+    autoUpgrade(){return player.au.autoUpPreUp && hasMilestone('au', 2)},
     tabFormat: {
         "Upgrades": {
             content: [
@@ -712,9 +713,9 @@ addLayer("A", {
             tooltip: "Get 10,000,000 Super Points.",	   
         },
         36: {
-            name: "This is taking a WHILE!!!",
-            done() { return (player.points.gte(1e300)) },
-            tooltip: "Get 1e300 points.",	   
+            name: "Almost there!",
+            done() { return (player.points.gte("e308")) },
+            tooltip: "Get 1e308 points.",	   
         },
         41: {
             name: "Finally!",
@@ -1346,14 +1347,20 @@ addLayer( "au", {
 	11: {
             title: "A1",
 	    description: function() {return `<br>Unlock Auto Prestige Upgrades`},
-	    cost: new Decimal(6),
+	    cost: new Decimal(0),
 	    unlocked() { return (hasUpgrade('I', 11)) },
 	},
         12: {
             title: "A2",
 	    description: function() {return `<br>Unlock Passive 1`},
-	    cost: new Decimal(5),
+	    cost: new Decimal(6),
 	    unlocked() { return (hasUpgrade('au', 11)) },
+	},
+	13: {
+            title: "A3",
+	    description: function() {return `<br>Unlock Auto Upgraded Prestige Upgrades`},
+	    cost: new Decimal(5),
+	    unlocked() { return (hasUpgrade('au', 12)) },
 	},
     },
     milestones: {
@@ -1370,6 +1377,13 @@ addLayer( "au", {
             done() { return hasUpgrade('au', 12) },
             unlocked() { return (hasUpgrade('au', 12)) },
 	    toggles: [["au", "autoPrePoi"]],
+   	},
+        2: {
+            requirementDescription: "Auto Upgraded Prestige Upgrades",
+            effectDescription: "Auto Upgraded Prestige Upgrades!",
+            done() { return hasUpgrade('au', 11) },
+            unlocked() { return (hasUpgrade('au', 11)) },
+	    toggles: [["au", "autoUpPreUp"]],
    	},
     },
 })
