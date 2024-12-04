@@ -805,9 +805,6 @@ addLayer( "sp", {
                 "main-display",
                 "resource-display",
                 "prestige-button",
-		["display-text",
-				function() {return (hasUpgrade('sp', 15)?"You have " + format(player.sp.superpoints) + " Super Points":"")},
-					{},
                 "blank",
                 "upgrades"
             ],
