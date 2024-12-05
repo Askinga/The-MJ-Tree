@@ -27,7 +27,7 @@ addLayer("p", {
     color: "#FF0000",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     passiveGeneration() {
-	 if (player.au.autoPrePoi && hasMilestone('au', 1)) return 0.1
+	 if (player.au.autoPrePoi && hasMilestone('au', 1) && !(player.p.gens.gte(500))) return 0.1
 	 return player.p.gens.div(5000)
     },
     resource: "prestige points", // Name of prestige currency
