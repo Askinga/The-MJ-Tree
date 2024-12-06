@@ -1114,6 +1114,9 @@ addLayer( "I", {
        return visible
     },
     branches:["sp"],
+    powerEff() {
+    return player.I.infinity.add(1).pow(1.5);
+    },
     tabFormat: {
         "Upgrades": {
             content: [
@@ -1122,7 +1125,7 @@ addLayer( "I", {
                 "prestige-button",
                 "blank",
 		["display-text",
-				function() {return format(player.I.infinity) + '∞'+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
+				function() {return format(player.I.infinity) + '∞,'+ ' which boosts Points by ' +'x'+format(tmp.I.powerEff)+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
 					{}],
 		"blank",
                 "upgrades"
