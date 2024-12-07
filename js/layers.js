@@ -338,7 +338,7 @@ addLayer("p", {
 	    unlocked() { return (hasUpgrade('p', 43)) }
 	},
    	45: {
-            title: "Upgrade 20",
+            title: "Feature 1 (Upgrade 20)",
 	    description: "Unlock a new layer",
 	    cost: new Decimal(5e9),
 	    unlocked() { return (hasUpgrade('p', 44)) }
@@ -501,7 +501,7 @@ addLayer( "up", {
 	    unlocked() {return hasUpgrade('up', 13)},
 	},
         15: {
-            title: "Upgrade 25",
+            title: "Feature 2 (Upgrade 25)",
 	    description: function() {return `<br>Unlock Prestige Generators and ×3 <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span>`},
 	    cost: new Decimal(200),
 	    unlocked() {return hasUpgrade('up', 14)},
@@ -519,7 +519,7 @@ addLayer( "up", {
 	    unlocked() {return hasUpgrade('up', 21)},
 	},
         23: {
-            title: "Upgrade 28",
+            title: "Feature 3 (Upgrade 28)",
 	    description: "Unlock the ability to hold the generate button. (for mobile players)",
 	    cost: new Decimal(10000),
 	    unlocked() {return hasUpgrade('up', 22)},
@@ -542,7 +542,7 @@ addLayer( "up", {
 	    unlocked() { return (hasUpgrade('up', 24)) }
 	},
   	31: {
-            title: "Upgrade 31",
+            title: "Feature 4 (Upgrade 31)",
 	    description: "Unlock Prestige Boosters",
 	    cost: new Decimal(10000000),
 	    unlocked() {return hasUpgrade('up', 25)},
@@ -571,7 +571,7 @@ addLayer( "up", {
 	    unlocked() {return hasUpgrade('up', 33)},
 	},
         35: {
-            title: "Upgrade 35",
+            title: "Feature 5 (Upgrade 35)",
 	    description: "Unlock a new layer",
 	    cost: new Decimal(1e10),
 	    unlocked() {return hasUpgrade('up', 34)},
@@ -850,7 +850,7 @@ addLayer( "sp", {
 	    unlocked() {return hasUpgrade('sp', 13)},
 	},
         15: {
-            title: "Upgrade 40",
+            title: "Feature 6 (Upgrade 40)",
 	    description: "Unlock Super Points",
 	    cost: new Decimal(10),
 	    unlocked() {return hasUpgrade('sp', 14)},
@@ -902,7 +902,7 @@ addLayer( "sp", {
             unlocked() {return hasUpgrade('sp', 23)},
         },
         25: {
-            title: "Upgrade 45",
+            title: "Feature 7 (Upgrade 45)",
             description: "Unlock a buyable.",
             cost: new Decimal(500),
 	    currencyDisplayName: "Super Points",
@@ -962,7 +962,7 @@ addLayer( "sp", {
             unlocked() {return hasUpgrade('sp', 33)},
         },
         35: {
-            title: "Upgrade 50",
+            title: "Final upgrade before the grind. (Upgrade 50)",
             description: function() {return `<br>20 ×10 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br>`},
             cost: new Decimal(200000),
             currencyDisplayName: "Super Points",
