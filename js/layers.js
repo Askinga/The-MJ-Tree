@@ -65,7 +65,7 @@ addLayer("p", {
 		'Your upgrade point gain softcaps at 1e26!',
                 { "color": "red", "font-size": "25px",}],
 		["display-text",
-				function() {return 'The upgrade point softcap divides upgrade point gain by ' + format(getUpgradePointDividet())+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
+				function() {return 'The upgrade point softcap divides upgrade point gain by ' + format(getUpgradePointDivider())+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
 					{}],
                 "blank",
 		"blank",
