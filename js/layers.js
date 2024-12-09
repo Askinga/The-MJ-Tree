@@ -561,7 +561,7 @@ componentStyles: {
         51: {
             title: "Super Prestige Booster 1",
             description: "Boost point gain based on super prestige points.",
-            cost: new Decimal(1250),
+            cost: new Decimal(20000),
 	    branches: [41, 42, 43],
 	    unlocked() { return (hasUpgrade('s', 43)) },
 	    effect(){
