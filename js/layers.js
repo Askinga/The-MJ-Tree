@@ -265,7 +265,9 @@ componentStyles: {
 
 
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        let exp = new Decimal(1)
+	if(hasUpgrade('s', 42)) exp = exp.times(1.2)
+	return exp
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -488,7 +490,7 @@ componentStyles: {
 		"blank",
 		"blank",
                 "blank",
-                ["upgrade-tree", [[11, 12], [21, 22], [31, 32], [41]]],
+                ["upgrade-tree", [[11, 12], [21, 22], [31, 32], [41, 42]]],
                 "clickables",
             ],
         },
@@ -539,6 +541,13 @@ componentStyles: {
             cost: new Decimal(100),
             branches: [11, 12, 21, 31, 32],
             unlocked() { return (hasUpgrade('s', 32)) },
+	},
+        42: {
+            title: "Prestige Exp.",
+            description: "^1.20 prestige points",
+            cost: new Decimal(300),
+            branches: [21, 22],
+            unlocked() { return (hasUpgrade('s', 22)) },
 	},
     },
 })
