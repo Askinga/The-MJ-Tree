@@ -49,7 +49,8 @@ addLayer("p", {
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        let exp = new Decimal(1)
+	if(hasUpgrade('s', 43)) exp = exp.times(1.15)
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -490,7 +491,7 @@ componentStyles: {
 		"blank",
 		"blank",
                 "blank",
-                ["upgrade-tree", [[11, 12], [21, 22], [31, 32], [41, 42]]],
+                ["upgrade-tree", [[11, 12], [21, 22], [31, 32], [41, 42, 43]]],
                 "clickables",
             ],
         },
@@ -548,6 +549,13 @@ componentStyles: {
             cost: new Decimal(300),
             branches: [21, 22],
             unlocked() { return (hasUpgrade('s', 22)) },
+	},
+        43: {
+            title: "Upgraded Points",
+            description: "^1.15 upgrade points",
+            cost: new Decimal(500),
+            branches: [21, 22],
+            unlocked() { return (hasUpgrade('s', 42)) },
 	},
     },
 })
