@@ -492,7 +492,7 @@ componentStyles: {
 		"blank",
 		"blank",
                 "blank",
-                ["upgrade-tree", [[11, 12], [21, 22], [31, 32], [41, 42, 43]]],
+                ["upgrade-tree", [[11, 12], [21, 22], [31, 32], [41, 42, 43], [51]]],
                 "clickables",
             ],
         },
@@ -557,6 +557,17 @@ componentStyles: {
             cost: new Decimal(500),
             branches: [21, 22],
             unlocked() { return (hasUpgrade('s', 42)) },
+	},
+        51: {
+            title: "Super Prestige Booster 1",
+            description: "Boost point gain based on super prestige points.",
+            cost: new Decimal(1250),
+	    branches: [41, 42, 43],
+	    unlocked() { return (hasUpgrade('s', 43)) },
+	    effect(){
+                return player.s.points.add(1).pow(3)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	},
     },
 })
