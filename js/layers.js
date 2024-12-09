@@ -45,6 +45,7 @@ addLayer("p", {
 	if (inChallenge('r', 11)) mult = mult.div("eee20")
 	mult = mult.div(getUpgradePointDivider())
 	if (hasUpgrade('s', 11)) mult = mult.times(tmp.s.powerEff)
+	if (hasUpgrade('s', 22)) mult = mult.times(10000)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -487,7 +488,7 @@ componentStyles: {
 		"blank",
 		"blank",
                 "blank",
-                ["upgrade-tree", [[11, 12], [21], [31, 32], [41]]],
+                ["upgrade-tree", [[11, 12], [21, 22], [31, 32], [41]]],
                 "clickables",
             ],
         },
@@ -511,7 +512,14 @@ componentStyles: {
             branches: [11, 12],
             unlocked() { return (hasUpgrade('s', 11)) },
 	},
-        31: {
+        22: {
+            title: "Faster upgrade points",
+            description: "×1e4 prestige points.",
+            cost: new Decimal(150),
+            branches: [11, 12],
+            unlocked() { return (hasUpgrade('s', 41)) },
+	},
+	31: {
             title: "Keeping",
             description: "Keep Prestige Upgrades.",
             cost: new Decimal(10),
@@ -532,21 +540,5 @@ componentStyles: {
             branches: [11, 12, 21, 31, 32],
             unlocked() { return (hasUpgrade('s', 32)) },
 	},
-    },
-    clickables:{
-	    11: {
-            title: "Set super prestige points to 100",
-            description: "For overboard",
-            canClick() {return true},
-            onClick() {
-                if (confirm("This will set super prestige points to 100. Continue?") == true) 
-                {
-		    player.s.points = 100;
-			        save(true);
-                    window.location.reload();
-                } 
-                
-            }
-	}
     },
 })
