@@ -2444,8 +2444,8 @@ addLayer("UT", {
 				["upgrade-tree", [[15, 16], [26], [33]]]
             ]
         },
-        "Upgrade Tree 2": {
-          unlocked() { return (hasUpgrade('p', 34)) },
+        "Work Upgrade Tree": {
+          unlocked() { return (hasUpgrade('SCH', 55)) },
 	    content: [
                 ["display-text", "The work upgrade tree."],
                 "main-display",
