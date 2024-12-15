@@ -2444,6 +2444,16 @@ addLayer("UT", {
 				["upgrade-tree", [[15, 16], [26], [33]]]
             ]
         },
+        "Upgrade Tree 2": {
+          unlocked() { return (hasUpgrade('p', 34)) },
+	    content: [
+                ["display-text", "The work upgrade tree."],
+                "main-display",
+                "prestige-button",
+                "blank",
+				["upgrade-tree", [[17]]]
+            ]
+        },
     },
     upgrades: {
         11: {
@@ -2550,6 +2560,16 @@ addLayer("UT", {
             description: "×e300 MJ gain.",
             cost: new Decimal(17500),
 	    unlocked() { return (hasUpgrade('UT', 16)) },
+	},
+        17: {
+            title: "First work upgrade",
+            description: "Multiply Work based on MJs",
+            cost: new Decimal(1.6e44),
+	    effect(){
+                return player.points.add(2).log(10).div(1e10).pow(0.4).add(1)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    unlocked() { return (hasUpgrade('SCH', 55)) },
 	},
     },
 })
