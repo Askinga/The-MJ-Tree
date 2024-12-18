@@ -379,12 +379,12 @@ addLayer("p", {
 			if(hasUpgrade('up', 34)) gain2 = 500
 			player.p.gens = player.p.gens.plus(gain2) 
 		},
-	   	onHold() { 
-			if ( hasUpgrade("up", 23) )
-				gain2 = 10;
-			        if(hasUpgrade('up', 34)) gain2 = 500
-				player.p.gens = player.p.gens.plus(gain2) 
-	
+	   	onHold() {
+			gain2 = 1;
+			if(hasUpgrade('up', 21)) gain2 = 2.5;
+			if(hasUpgrade('up', 22)) gain2 = 10;
+			if(hasUpgrade('up', 34)) gain2 = 500
+			player.p.gens = player.p.gens.plus(gain2) 
 		}
 	} 
     },
@@ -519,8 +519,8 @@ addLayer( "up", {
 	    unlocked() {return hasUpgrade('up', 21)},
 	},
         23: {
-            title: "Feature 3 (Upgrade 28)",
-	    description: "Unlock the ability to hold the generate button. (for mobile players)",
+            title: "Upgrade 28",
+	    description: function() {return `<br>×2 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span>`},
 	    cost: new Decimal(10000),
 	    unlocked() {return hasUpgrade('up', 22)},
 	},
@@ -542,7 +542,7 @@ addLayer( "up", {
 	    unlocked() { return (hasUpgrade('up', 24)) }
 	},
   	31: {
-            title: "Feature 4 (Upgrade 31)",
+            title: "Feature 3 (Upgrade 31)",
 	    description: "Unlock Prestige Boosters",
 	    cost: new Decimal(10000000),
 	    unlocked() {return hasUpgrade('up', 25)},
@@ -571,7 +571,7 @@ addLayer( "up", {
 	    unlocked() {return hasUpgrade('up', 33)},
 	},
         35: {
-            title: "Feature 5 (Upgrade 35)",
+            title: "Feature 4 (Upgrade 35)",
 	    description: "Unlock a new layer",
 	    cost: new Decimal(1e10),
 	    unlocked() {return hasUpgrade('up', 34)},
@@ -850,7 +850,7 @@ addLayer( "sp", {
 	    unlocked() {return hasUpgrade('sp', 13)},
 	},
         15: {
-            title: "Feature 6 (Upgrade 40)",
+            title: "Feature 5 (Upgrade 40)",
 	    description: "Unlock Super Points",
 	    cost: new Decimal(10),
 	    unlocked() {return hasUpgrade('sp', 14)},
@@ -902,7 +902,7 @@ addLayer( "sp", {
             unlocked() {return hasUpgrade('sp', 23)},
         },
         25: {
-            title: "Feature 7 (Upgrade 45)",
+            title: "Feature 6 (Upgrade 45)",
             description: "Unlock a buyable.",
             cost: new Decimal(500),
 	    currencyDisplayName: "Super Points",
