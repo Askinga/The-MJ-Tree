@@ -1358,11 +1358,17 @@ addLayer( "au", {
 	    cost: new Decimal(6),
 	    unlocked() { return (hasUpgrade('au', 11)) },
 	},
+        13: {
+            title: "A3",
+	    description: function() {return `<br>Unlock Auto Upgraded Prestige Upgrades`},
+	    cost: new Decimal(6),
+	    unlocked() { return (hasUpgrade('au', 12)) },
+	},
     },
     milestones: {
         0: {
             requirementDescription: "Auto Prestige Upgrades",
-            effectDescription: "Auto Prestige Upgrades!",
+            effectDescription: "Automatically buys Prestige Upgrades!",
             done() { return hasUpgrade('au', 11) },
             unlocked() { return (hasUpgrade('au', 11)) },
 	    toggles: [["au", "autoPreUp"]],
@@ -1373,6 +1379,13 @@ addLayer( "au", {
             done() { return hasUpgrade('au', 12) },
             unlocked() { return (hasUpgrade('au', 12)) },
 	    toggles: [["au", "autoPrePoi"]],
+   	},
+        2: {
+            requirementDescription: "Auto Prestige Upgrades",
+            effectDescription: "Automatically buys Upgraded Prestige Upgrades!",
+            done() { return hasUpgrade('au', 13) },
+            unlocked() { return (hasUpgrade('au', 13)) },
+	    toggles: [["au", "autoUpPreUp"]],
    	},
     },
 })
