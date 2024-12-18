@@ -63,7 +63,9 @@ addLayer("p", {
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        let exp = new Decimal(1)
+	if(hasUpgrade('I', 31)) exp = exp.times(1.01)
+	return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true},
@@ -443,6 +445,7 @@ addLayer( "up", {
        return visible
     },
     branches:["p"],
+    autoUpgrade(){return player.au.autoUpPreUp && hasMilestone('au', 2)},
     tabFormat: {
         "Upgrades": {
             content: [
@@ -1268,6 +1271,33 @@ addLayer( "I", {
             tooltip: "(Infinities+1)<sup>0.5</sup>",
 	    unlocked() {return (hasUpgrade('I', 24))}
         },
+        31: {
+            title: "Upgrade 61",
+	    description: function() {return `<br>Exponential, Raise <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span> to the power of 1.01.`},
+	    cost: new Decimal(5),
+	    unlocked() {return (hasUpgrade('I', 25))}
+	},
+        32: {
+            title: "Upgrade 62",
+	    description: function() {return `<br>Total AP boosts <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span>`},
+	    cost: new Decimal(5),
+	    effect(){
+                let expu3 = 0.5
+                let eff = player.au.total.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e10"), 0.5)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e10")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts Points by " + format(upgEffect)+"x" + softcapDescription
+	    },
+            tooltip: "(Total AP+1)<sup>2</sup>",
+	    unlocked() {return (hasUpgrade('I', 31))}
+	},
     },
 })
 
@@ -1381,7 +1411,7 @@ addLayer( "au", {
 	    toggles: [["au", "autoPrePoi"]],
    	},
         2: {
-            requirementDescription: "Auto Prestige Upgrades",
+            requirementDescription: "Auto Upgraded Prestige Upgrades",
             effectDescription: "Automatically buys Upgraded Prestige Upgrades!",
             done() { return hasUpgrade('au', 13) },
             unlocked() { return (hasUpgrade('au', 13)) },
