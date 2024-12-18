@@ -2564,12 +2564,29 @@ addLayer("UT", {
         17: {
             title: "First work upgrade",
             description: "Multiply Work based on MJs",
-            cost: new Decimal(1.6e44),
+            cost: new Decimal(5),
+	    currencyDisplayName: "Work",
+            currencyInternalName: "work",
+            currencyLayer: "SCH",
 	    effect(){
                 return player.points.add(2).log(10).div(1e10).pow(0.4).add(1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked() { return (hasUpgrade('SCH', 55)) },
+	},
+        27: {
+            title: "MJs get working",
+            description: "Multiply MJs based on Work",
+            cost: new Decimal(20),
+	    currencyDisplayName: "Work",
+            currencyInternalName: "work",
+            currencyLayer: "SCH",
+	    effect(){
+                return player.SCH.work.add(1).pow(1e8)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    branches: [17],
+	    unlocked() { return (hasUpgrade('UT', 17)) },
 	},
     },
 })
