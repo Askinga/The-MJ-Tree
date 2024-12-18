@@ -845,7 +845,7 @@ addLayer( "sp", {
 	},
         14: {
             title: "Upgrade 39",
-	    description: function() {return `<br>25 ×10 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br>`},
+	    description: function() {return `<br>25 × 10 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br>`},
 	    cost: new Decimal(5),
 	    unlocked() {return hasUpgrade('sp', 13)},
 	},
@@ -880,7 +880,7 @@ addLayer( "sp", {
 	},
         23: {
             title: "Upgrade 43",
-            description: "×100 × 10 point gain",
+            description: function() {return `<br>100 × 10 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br>`},
             cost: new Decimal(100),
 	    currencyDisplayName: "Super Points",
             currencyInternalName: "superpoints",
@@ -963,7 +963,7 @@ addLayer( "sp", {
         },
         35: {
             title: "Final upgrade before the grind. (Upgrade 50)",
-            description: function() {return `<br>20 ×10 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br>`},
+            description: function() {return `<br>20 × 10 <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span><br>`},
             cost: new Decimal(200000),
             currencyDisplayName: "Super Points",
             currencyInternalName: "superpoints",
