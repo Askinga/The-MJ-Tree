@@ -382,6 +382,7 @@ addLayer("SCH", {
             },
             prestigeGain() {
                 let mul = new Decimal(1)
+		if(hasUpgrade('UT', 17)) mul = mul.mul(upgradeEffect('UT', 17))
 		return player.points.log(10).div(2e10).mul(mul)
             },
             onClick() {
