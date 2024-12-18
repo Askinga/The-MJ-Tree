@@ -100,6 +100,7 @@ function getPointGen() {
 	if (hasUpgrade('up', 11)) gain = gain.times(5)
 	if (hasChallenge('up', 11)) gain = gain.times(10)
 	if (inChallenge('up', 11)) gain = gain.pow(0.5)
+	if (hasUpgrade('up', 23)) gain = gain.times(2)
 	if (hasUpgrade('up', 24)) gain = gain.times(100)
 	if (hasUpgrade('up', 25)) gain = gain.times(upgradeEffect('up', 25))
 	if (hasUpgrade('sp', 11)) gain = gain.times(10)
