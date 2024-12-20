@@ -371,6 +371,7 @@ addLayer("p", {
 		title: "Generate!",
         	display() { return "Click to generate Prestige Generators which automate your prestige point gain!" },
 		canClick() {return true},
+		unlocked() {return (hasUpgrade('up', 15))},
 		style: {
 			transform: "translate(0px, -15px)"
 		},
