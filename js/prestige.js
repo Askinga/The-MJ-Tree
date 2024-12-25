@@ -71,5 +71,11 @@ addLayer("p", {
 	    tooltip(){return `log<sub>10</sub>(points+1)+1`},
 	    unlocked(){return (hasUpgrade('p',14))},
         },
+        21: {
+	    title: "It is time for a triple.",
+  	    description: "Triple the point generation.",
+    	    cost: new Decimal(100),
+	    unlocked(){return (hasUpgrade('p',15))},
+        },
     },
 })
