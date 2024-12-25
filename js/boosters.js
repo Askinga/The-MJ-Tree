@@ -29,4 +29,12 @@ addLayer("b", {
     upgrades: {
         // Look in the upgrades docs to see what goes here!
     },
+    effect(){
+	let eff = player.b.baseeffect.pow(player.b.points)
+       return eff
+       },
+        effectDescription() {
+            let desc = "which is boosting Point generation by x" + format(tmp[this.layer].effect);
+            return desc;
+        },
 })
