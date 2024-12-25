@@ -63,7 +63,7 @@ addLayer("p", {
         15: {
 	    title: "It is getting faster",
   	    description: "Boost prestige points gain based on points.",
-    	    cost: new Decimal(15),
+    	    cost: new Decimal(30),
 	    effect() {
        		return player.points.add(1).log(10).add(1)
     		},
