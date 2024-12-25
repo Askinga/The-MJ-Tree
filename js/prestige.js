@@ -77,5 +77,17 @@ addLayer("p", {
     	    cost: new Decimal(100),
 	    unlocked(){return (hasUpgrade('p',15))},
         },
+        22: {
+	    title: "Exponent time.",
+  	    description: "Point generation is raised to the power of 1.15.",
+    	    cost: new Decimal(250),
+	    unlocked(){return (hasUpgrade('p',21))},
+        },
+        23: {
+	    title: "We need more doubles",
+  	    description: "Point generation is multiplied by 2.",
+    	    cost: new Decimal(400),
+	    unlocked(){return (hasUpgrade('p',22))},
+        },
     },
 })
