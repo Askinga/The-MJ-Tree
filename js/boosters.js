@@ -13,7 +13,7 @@ addLayer("b", {
     baseAmount() { return player.p.points },  // A function to return the current amount of baseResource.
     requires: new Decimal(25000),              // The amount of the base needed to gain 1 of the prestige currency.                                    // Also the amount required to unlock the layer
     type: "static",                         // Determines the formula used for calculating prestige currency.
-    exponent: 1.625,                          // "normal" prestige gain is (currency^exponent).
+    exponent: 1.45,                          // "normal" prestige gain is (currency^exponent).
     gainMult() {                            // Returns your multiplier to your gain of the prestige resource.
         return new Decimal(1)               // Factor in any bonuses multiplying gain here.
     },
