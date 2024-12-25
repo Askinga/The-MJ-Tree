@@ -30,7 +30,11 @@ addLayer("b", {
         {key: "b", description: "B: Reset for boosters", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     upgrades: {
-        // Look in the upgrades docs to see what goes here!
+        11: {
+	    title: "First booster upgrade.",
+	    description: "Prestige point gain is multiplied by 2.",
+	    cost: new Decimal(2),
+	},
     },
     effect(){
 	let eff = player.b.baseeffect.pow(player.b.points)
