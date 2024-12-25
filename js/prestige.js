@@ -15,6 +15,7 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('p', 15)) mult = mult.times(upgradeEffect('p', 15))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -41,7 +42,34 @@ addLayer("p", {
 	    title: "Here is another boost.",
   	    description: "Boost the point generation based on prestige points.",
     	    cost: new Decimal(4),
+	    effect() {
+       		return player[this.layer].points.add(1).pow(0.35)
+    		},
+  	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    tooltip(){return `(PP)<sup>0.35</sup>`},
 	    unlocked(){return (hasUpgrade('p',12))},
+        },
+	14: {
+	    title: "Now we are getting somewhere",
+  	    description: "Boost the point generation based on points.",
+    	    cost: new Decimal(15),
+	    effect() {
+       		return player.points.add(1).pow(0.06)
+    		},
+  	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    tooltip(){return `(points)<sup>0.06</sup>`},
+	    unlocked(){return (hasUpgrade('p',13))},
+        },
+        15: {
+	    title: "It is getting faster",
+  	    description: "Boost prestige points gain based on points.",
+    	    cost: new Decimal(15),
+	    effect() {
+       		return player.points.add(1).log(10).add(1)
+    		},
+  	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    tooltip(){return `log<sub>10</sub>(points+1)+1`},
+	    unlocked(){return (hasUpgrade('p',14))},
         },
     },
 })
