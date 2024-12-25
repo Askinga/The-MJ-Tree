@@ -20,7 +20,11 @@ addLayer("b", {
     gainExp() {                             // Returns the exponent to your gain of the prestige resource.
         return new Decimal(1)
     },
-    layerShown() { return hasUpgrade('p', 25) },          // Returns a bool for if this layer's node should be visible in the tree.
+    layerShown(){
+        let visible = false
+        if (hasUpgrade('p', 25) || player.b.unlocked) visible = true
+       return visible
+},          // Returns a bool for if this layer's node should be visible in the tree.
     branches: ["p"],
     upgrades: {
         // Look in the upgrades docs to see what goes here!
