@@ -35,11 +35,13 @@ addLayer("p", {
 	    title: "That gain is kinda slow, Here is a boost.",
   	    description: "Double the point generation.",
     	    cost: new Decimal(1),
+	    unlocked(){return (hasUpgrade('p',11))},
         },
         13: {
-	    title: "That gain is still kinda slow, Here is another boost.",
+	    title: "Here is another boost.",
   	    description: "Boost the point generation based on prestige points.",
     	    cost: new Decimal(4),
+	    unlocked(){return (hasUpgrade('p',12))},
         },
     },
 })
