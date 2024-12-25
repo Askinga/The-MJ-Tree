@@ -1,8 +1,8 @@
 let modInfo = {
-	name: "The Prestige Layers Tree",
-	author: "Askinga",
-	pointsName: "points",
-	modFiles: ["prestige.js", "boosters.js", "tree.js"],
+	name: "The Prestige Layers Tree", // Name of the mod
+	author: "Askinga", // Put your github username here
+	pointsName: "points", // Name of "points"
+	modFiles: ["prestige.js", "boosters.js", "tree.js"], // Use this if you have more than 1 layer file.
 
 	discordName: "",
 	discordLink: "",
