@@ -26,6 +26,9 @@ addLayer("b", {
        return visible
 },          // Returns a bool for if this layer's node should be visible in the tree.
     branches: ["p"],
+    hotkeys: [
+        {key: "b", description: "B: Reset for boosters", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
     upgrades: {
         // Look in the upgrades docs to see what goes here!
     },
