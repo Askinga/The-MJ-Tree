@@ -46,7 +46,7 @@ addLayer("p", {
        		return player[this.layer].points.add(1).pow(0.35)
     		},
   	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-	    tooltip(){return `(PP)<sup>0.35</sup>`},
+	    tooltip(){return `(PP+1)<sup>0.35</sup>`},
 	    unlocked(){return (hasUpgrade('p',12))},
         },
 	14: {
@@ -57,7 +57,7 @@ addLayer("p", {
        		return player.points.add(1).pow(0.06)
     		},
   	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-	    tooltip(){return `(points)<sup>0.06</sup>`},
+	    tooltip(){return `(points+1)<sup>0.06</sup>`},
 	    unlocked(){return (hasUpgrade('p',13))},
         },
         15: {
