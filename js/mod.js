@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The Prestige Layers Tree",
 	author: "Askinga",
 	pointsName: "points",
-	modFiles: ["prestige.js", "tree.js"],
+	modFiles: ["prestige.js", "boosters.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
