@@ -16,6 +16,7 @@ addLayer("p", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('p', 15)) mult = mult.times(upgradeEffect('p', 15))
+	if(hasUpgrade('p',24)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -88,6 +89,18 @@ addLayer("p", {
   	    description: "Point generation is multiplied by 2.",
     	    cost: new Decimal(400),
 	    unlocked(){return (hasUpgrade('p',22))},
+        },
+        24: {
+	    title: "More prestige points",
+  	    description: "Prestige Point gain is multiplied by 2.",
+    	    cost: new Decimal(1000),
+	    unlocked(){return (hasUpgrade('p',23))},
+        },
+        25: {
+	    title: "Yeah!",
+  	    description: "Point generation is multiplied by 5. And unlock a new layer.",
+    	    cost: new Decimal(2500),
+	    unlocked(){return (hasUpgrade('p',24))},
         },
     },
 })
