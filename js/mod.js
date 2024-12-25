@@ -1,5 +1,5 @@
 let modInfo = {
-	name: "A simple TMT mod",
+	name: "The Prestige Layers Tree",
 	author: "Askinga",
 	pointsName: "points",
 	modFiles: ["layers.js", "tree.js"],
