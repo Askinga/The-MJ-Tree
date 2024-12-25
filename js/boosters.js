@@ -21,6 +21,7 @@ addLayer("b", {
         return new Decimal(1)
     },
     layerShown() { return hasUpgrade('p', 25) },          // Returns a bool for if this layer's node should be visible in the tree.
+    branches: ["p"],
     upgrades: {
         // Look in the upgrades docs to see what goes here!
     },
