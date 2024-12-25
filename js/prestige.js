@@ -29,7 +29,7 @@ addLayer("p", {
     layerShown(){return true},
     upgrades: {
         11: {
-	    title: "Start the generation of points",
+	    title: "Start the generation of points.",
   	    description: "Gain 1 point per second.",
     	    cost: new Decimal(0),
         },
@@ -51,7 +51,7 @@ addLayer("p", {
 	    unlocked(){return (hasUpgrade('p',12))},
         },
 	14: {
-	    title: "Now we are getting somewhere",
+	    title: "Now we are getting somewhere.",
   	    description: "Boost the point generation based on points.",
     	    cost: new Decimal(15),
 	    effect() {
@@ -62,7 +62,7 @@ addLayer("p", {
 	    unlocked(){return (hasUpgrade('p',13))},
         },
         15: {
-	    title: "It is getting faster",
+	    title: "It is getting faster.",
   	    description: "Boost prestige points gain based on points.",
     	    cost: new Decimal(30),
 	    effect() {
@@ -85,13 +85,13 @@ addLayer("p", {
 	    unlocked(){return (hasUpgrade('p',21))},
         },
         23: {
-	    title: "We need more doubles",
+	    title: "We need more doubles.",
   	    description: "Point generation is multiplied by 2.",
     	    cost: new Decimal(400),
 	    unlocked(){return (hasUpgrade('p',22))},
         },
         24: {
-	    title: "More prestige points",
+	    title: "More prestige points.",
   	    description: "Prestige Point gain is multiplied by 2.",
     	    cost: new Decimal(1000),
 	    unlocked(){return (hasUpgrade('p',23))},
