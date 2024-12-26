@@ -37,7 +37,7 @@ addLayer("b", {
 	},
     },
     effect(){
-	let eff = player.b.baseeffect.pow(player.b.points)
+	let eff = new Decimal(2).pow(player.b.points)
        return eff
        },
         effectDescription() {
