@@ -81,8 +81,7 @@ addLayer("b", {
 	    description: "Boosters multiplies prestige point gain.",
 	    cost: new Decimal(7),
 	    effect() {
-		let eff = player.b.points.add(1).pow(0.5)
-		return eff
+		return player.b.points.add(1).pow(0.5)
     		},
   	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    tooltip(){return `(boosters+1)<sup>0.5</sup>`},
