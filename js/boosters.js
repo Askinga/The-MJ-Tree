@@ -79,7 +79,7 @@ addLayer("b", {
     },
     effect(){
        let base = 2
-	if(hasUpgrade('b',22)) base = 2.25
+	if(hasUpgrade('b',22)) base = base.add(0.25)
 	let eff = new Decimal(base).pow(player.b.points)
        return eff
        },
