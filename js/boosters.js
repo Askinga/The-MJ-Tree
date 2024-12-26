@@ -11,12 +11,15 @@ addLayer("b", {
     row: 1,                                 // The row this layer is on (0 is the first row).
     baseResource: "prestige points",                 // The name of the resource your prestige gain is based on.
     baseAmount() { return player.p.points },  // A function to return the current amount of baseResource.
-    requires: new Decimal(25000),              // The amount of the base needed to gain 1 of the prestige currency.                                    // Also the amount required to unlock the layer
+    requires(){
+	let req = new Decimal(25000)
+	if(hasUpgrade('b',21)) req = req.div(3)
+	return req
+    },              // The amount of the base needed to gain 1 of the prestige currency.                                    // Also the amount required to unlock the layer
     type: "static",                         // Determines the formula used for calculating prestige currency.
     exponent: 1.45,                          // "normal" prestige gain is (currency^exponent).
     gainMult() {                            // Returns your multiplier to your gain of the prestige resource.
         mult = new Decimal(1)               // Factor in any bonuses multiplying gain here.
-        if(hasUpgrade('b',21)) mult = mult.times(3)
     	return mult
     },
     gainExp() {                             // Returns the exponent to your gain of the prestige resource.
