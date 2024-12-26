@@ -85,7 +85,7 @@ addLayer("b", {
 		return eff
     		},
   	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-	    tooltip(){return `(boosters+1)<sup>exponent</sup>`},
+	    tooltip(){return `(boosters+1)<sup>0.5</sup>`},
 	    unlocked(){return (hasUpgrade('b',22))}
 	},
     },
