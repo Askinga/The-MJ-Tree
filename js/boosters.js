@@ -53,6 +53,12 @@ addLayer("b", {
 	    cost: new Decimal(5),
 	    unlocked(){return (hasUpgrade('b',13))}
 	},
+        15: {
+	    title: "Even more prestige",
+	    description: "Prestige Point gain is multiplied by 2.5.",
+	    cost: new Decimal(5),
+	    unlocked(){return (hasUpgrade('b',14))}
+	},
     },
     effect(){
 	let eff = new Decimal(2).pow(player.b.points)
