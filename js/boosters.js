@@ -82,7 +82,8 @@ addLayer("b", {
 	    cost: new Decimal(7),
 	    effect() {
        		let base = 2.25
-		return new Decimal(base).pow(player.b.points).pow(0.15)
+		let eff = new Decimal(base).pow(player.b.points).pow(0.15)
+		return eff
     		},
   	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    tooltip(){return `(booster effect)<sup>0.15</sup>`},
