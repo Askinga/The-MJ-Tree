@@ -39,16 +39,19 @@ addLayer("b", {
 	    title: "More points",
 	    description: "Point generation is multiplied by 2.5.",
 	    cost: new Decimal(4),
+	    unlocked(){return (hasUpgrade('b',11))}
 	},
         13: {
 	    title: "More prestige",
 	    description: "Prestige Point gain is multiplied by 1.5",
 	    cost: new Decimal(4),
+	    unlocked(){return (hasUpgrade('b',12))}
 	},
         14: {
 	    title: "More Exponents",
 	    description: "Prestige Point gain is raised to the power of 1.075.",
 	    cost: new Decimal(5),
+	    unlocked(){return (hasUpgrade('b',13))}
 	},
     },
     effect(){
