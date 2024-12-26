@@ -78,15 +78,15 @@ addLayer("b", {
 	},
         23: {
 	    title: "Boosters -> Prestige",
-	    description: "The Booster effect multiplies prestige point gain, but heavily nerfed",
+	    description: "Boosters multiplies prestige point gain.",
 	    cost: new Decimal(7),
 	    effect() {
-       		let base = 2.25
-		let eff = new Decimal(base).pow(player.b.points).pow(0.15)
+       		let exp = 0.5
+		let eff = player.b.points.add(1).pow(exp)
 		return eff
     		},
   	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-	    tooltip(){return `(booster effect)<sup>0.15</sup>`},
+	    tooltip(){return `(boosters+1)<sup>exponent</sup>`},
 	    unlocked(){return (hasUpgrade('b',22))}
 	},
     },
