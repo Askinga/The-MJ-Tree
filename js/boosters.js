@@ -40,6 +40,16 @@ addLayer("b", {
 	    description: "Point generation is multiplied by 2.5.",
 	    cost: new Decimal(4),
 	},
+        13: {
+	    title: "More prestige",
+	    description: "Prestige Point gain is multiplied by 1.5",
+	    cost: new Decimal(4),
+	},
+        14: {
+	    title: "More Exponents",
+	    description: "Prestige Point gain is raised to the power of 1.075.",
+	    cost: new Decimal(5),
+	},
     },
     effect(){
 	let eff = new Decimal(2).pow(player.b.points)
