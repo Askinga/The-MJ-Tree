@@ -15,7 +15,9 @@ addLayer("b", {
     type: "static",                         // Determines the formula used for calculating prestige currency.
     exponent: 1.45,                          // "normal" prestige gain is (currency^exponent).
     gainMult() {                            // Returns your multiplier to your gain of the prestige resource.
-        return new Decimal(1)               // Factor in any bonuses multiplying gain here.
+        mult = new Decimal(1)               // Factor in any bonuses multiplying gain here.
+        if(hasUpgrade('b',21)) mult = mult.times(3)
+    	return mult
     },
     gainExp() {                             // Returns the exponent to your gain of the prestige resource.
         return new Decimal(1)
@@ -58,6 +60,12 @@ addLayer("b", {
 	    description: "Prestige Point gain is multiplied by 2.5.",
 	    cost: new Decimal(5),
 	    unlocked(){return (hasUpgrade('b',14))}
+	},
+        21: {
+	    title: "Easier boosters",
+	    description: "Booster requirement is divided by 3.",
+	    cost: new Decimal(6),
+	    unlocked(){return (hasUpgrade('b',15))}
 	},
     },
     effect(){
