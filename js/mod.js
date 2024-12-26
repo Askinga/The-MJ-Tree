@@ -55,6 +55,7 @@ function getPointGen() {
 	if(hasUpgrade('p',23)) gain = gain.times(2)
 	if(hasUpgrade('p',25)) gain = gain.times(5)
 	gain = gain.times(layers.b.effect())
+	if(hasUpgrade('b',12)) gain = gain.times(2.5)
 	return gain
 }
 
