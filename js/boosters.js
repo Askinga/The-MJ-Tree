@@ -70,9 +70,17 @@ addLayer("b", {
 	    cost: new Decimal(6),
 	    unlocked(){return (hasUpgrade('b',15))}
 	},
+        22: {
+	    title: "Booster+",
+	    description: "Adds 0.25 to the booster base.",
+	    cost: new Decimal(7),
+	    unlocked(){return (hasUpgrade('b',21))}
+	},
     },
     effect(){
-	let eff = new Decimal(2).pow(player.b.points)
+       let base = 2
+	if(hasUpgrade('b',22)) base = 2.25
+	let eff = new Decimal(base).pow(player.b.points)
        return eff
        },
         effectDescription() {
