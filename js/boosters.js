@@ -76,17 +76,6 @@ addLayer("b", {
 	    cost: new Decimal(7),
 	    unlocked(){return (hasUpgrade('b',21))}
 	},
-        23: {
-	    title: "Boosters -> Prestige",
-	    description: "Boosters multiplies prestige point gain.",
-	    cost: new Decimal(7),
-	    effect() {
-		return player.b.points.add(1).pow(0.5)
-    		},
-  	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
-	    tooltip(){return `(boosters+1)<sup>0.5</sup>`},
-	    unlocked(){return (hasUpgrade('b',22))}
-	},
     },
     effect(){
        let base = 2
