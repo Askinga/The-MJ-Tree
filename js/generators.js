@@ -73,7 +73,7 @@ addLayer("g", {
 	    description: "Boost prestige points based on generator power",
 	    cost: new Decimal(5),
 	    effect() {
-		return player.g.gp.add(1).pow(0.1)
+		return player[this.layer].gp.add(1).pow(0.1)
 	    },
 	    effectDescription() { return format(upgradeEffect(this.layer, this.id))+"x" },
 	    tooltip(){
