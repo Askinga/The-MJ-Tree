@@ -13,6 +13,9 @@ addLayer("g", {
     row: 1,                                 // The row this layer is on (0 is the first row).
     baseResource: "prestige points",                 // The name of the resource your prestige gain is based on.
     baseAmount() { return player.p.points },  // A function to return the current amount of baseResource.
+    onPrestige(){
+	player.g.gp = player.g.gp.sub(player.g.gp)
+    },
     requires(){
 	let req = new Decimal("e10")
 	return req
@@ -36,7 +39,7 @@ addLayer("g", {
         {key: "g", description: "G: Reset for generators", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     genPowerEffect() {
-	return (tmp.g.effect.pow(0.5))
+	return (player.g.gp.pow(0.5))
 		},
     effect(){
        let base = 2
