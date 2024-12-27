@@ -117,5 +117,14 @@ addLayer("g", {
 	    },
 	    unlocked(){return (hasUpgrade('g', 14))}
 	},
+        21: {
+	    title: "Prestige++",
+	    description: "Prestige point gain is multiplied by 5",
+	    cost: new Decimal(52530),
+	    currencyDisplayName: "Generator Power",
+            currencyInternalName: "gp",
+            currencyLayer: "g",
+	    unlocked(){return (hasUpgrade('g', 15))}
+	},
     },
 })
