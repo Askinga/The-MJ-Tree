@@ -43,6 +43,7 @@ addLayer("g", {
 		},
     effect(){
        let base = 2
+	if(hasUpgrade('g',14)) base = 2.1
 	let eff = new Decimal(base).pow(player.g.points).sub(1)
        return eff
        },
@@ -86,13 +87,35 @@ addLayer("g", {
 	    description: "Boost point generation based on generators",
 	    cost: new Decimal(6),
 	    effect() {
-		return new Decimal(1.2).pow(player.g.points)
+		let base = 1.2
+		return new Decimal(base).pow(player.g.points)
 	    },
 	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
 	    tooltip(){
 		return "1.2<sup>generators</sup>"
 	    },
 	    unlocked(){return (hasUpgrade('g', 12))}
+	},
+        14: {
+	    title: "Generator+",
+	    description: "Generator base is now 2.1 instead of 2.",
+	    cost: new Decimal(32500),
+	    currencyDisplayName: "Generator Power",
+            currencyInternalName: "gp",
+            currencyLayer: "g",
+	    unlocked(){return (hasUpgrade('g', 13))}
+	},
+        15: {
+	    title: "Upgraded Upgrade",
+	    description: "Generator upgrade 3 is better.",
+	    cost: new Decimal(100000),
+	    currencyDisplayName: "Generator Power",
+            currencyInternalName: "gp",
+            currencyLayer: "g",
+	    tooltip(){
+		return "1.2x per generator -> 1.3x per generator"
+	    },
+	    unlocked(){return (hasUpgrade('g', 14))}
 	},
     },
 })
