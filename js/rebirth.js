@@ -33,4 +33,20 @@ addLayer("r", {
     hotkeys: [
         {key: "r", description: "R: Reset for rebirth points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    challenges: {
+        11: {
+            name: "Rebirth Challenge 1",
+            challengeDescription: "Point generation is divided by 1e3.",
+            canComplete: function() {return player.points.gte(1e24)},
+            goalDescription: "Reach Rebirth.",
+            rewardDescription: "Unlock more prestige upgrades"
+	},
+    },
+    upgrades: {
+	11: {
+	    title: "You Rebirthed!",
+	    description: "5x points and prestige points.",
+	    cost: new Decimal(1)
+	},
+    },
 })
