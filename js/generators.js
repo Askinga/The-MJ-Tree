@@ -89,6 +89,7 @@ addLayer("g", {
 	    effect() {
 		let base = 1.2
 		if(hasUpgrade('g',15)) base = 1.3
+		if(hasUpgrade('g',24)) base = 1.35
 		return new Decimal(base).pow(player.g.points)
 	    },
 	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
@@ -126,6 +127,36 @@ addLayer("g", {
             currencyInternalName: "gp",
             currencyLayer: "g",
 	    unlocked(){return (hasUpgrade('g', 15))}
+	},
+        22: {
+	    title: "Powered Points",
+	    description: "Point generation is raised to the power of 1.025",
+	    cost: new Decimal(8),
+	    unlocked(){return (hasUpgrade('g', 21))}
+	},
+        23: {
+	    title: "I don't like buying all the prestige upgrade every reset.",
+	    description: "Automate buying prestige upgrades!",
+	    cost: new Decimal(9),
+	    unlocked(){return (hasUpgrade('g', 22))}
+	},
+        24: {
+	    title: "Upgraded Upgrade 2",
+	    description: "Generator upgrade 3 is better again.",
+	    cost: new Decimal(500000),
+	    currencyDisplayName: "Generator Power",
+            currencyInternalName: "gp",
+            currencyLayer: "g",
+	    tooltip(){
+		return "1.3x per generator -> 1.35x per generator"
+	    },
+	    unlocked(){return (hasUpgrade('g', 23))}
+	},
+        25: {
+	    title: "Finished with generators",
+	    description: "Unlock a new layer.",
+	    cost: new Decimal(10),
+	    unlocked(){return (hasUpgrade('g', 24))}
 	},
     },
 })
