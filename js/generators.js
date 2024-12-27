@@ -35,6 +35,8 @@ addLayer("g", {
     hotkeys: [
         {key: "g", description: "G: Reset for generators", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    genPowerEffect() {
+	return (tmp.g.effect.pow(0.5)
     effect(){
        let base = 2
 	let eff = new Decimal(base).pow(player.g.points).sub(1)
@@ -44,4 +46,17 @@ addLayer("g", {
             let desc = "which is generating " + format(tmp[this.layer].effect) + " Generator Power per second.";
             return desc;
         },
+    update(diff) {
+            player.g.gp = player.g.gp.add(tmp.g.effect.mul(diff))
+    },
+    tabFormat: [
+        "main-display",
+        "prestige-button",
+        "resource-display",
+
+        "blank",
+        ["display-text", () => "You have " + format(player.g.gp) + " generator power, which is multiplying point gain by " + format(tmp.g.genPowerEffect)],
+        "blank",
+	"upgrades",
+    ],
 })
