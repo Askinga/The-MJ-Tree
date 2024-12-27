@@ -88,6 +88,7 @@ addLayer("g", {
 	    cost: new Decimal(6),
 	    effect() {
 		let base = 1.2
+		if(hasUpgrade('g',15)) base = 1.3
 		return new Decimal(base).pow(player.g.points)
 	    },
 	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
