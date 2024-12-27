@@ -58,7 +58,7 @@ addLayer("g", {
         "prestige-button",
         "resource-display",
         "blank",
-        ["display-text", () => "You have " + format(player.g.gp) + " generator power, which is multiplying point gain by " + format(tmp.g.genPowerEffect)],
+        ["display-text", () => "You have " + format(player.g.gp) + " generator power, which is multiplying point generation by " + format(tmp.g.genPowerEffect)],
         "blank",
 	"upgrades"
     ],
