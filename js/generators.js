@@ -62,4 +62,24 @@ addLayer("g", {
         "blank",
 	"upgrades"
     ],
+    upgrades: {
+	11: {
+	    title: "Point++",
+	    description: "Point generation is multiplied by 5.",
+	    cost: new Decimal(4)
+	},
+        12: {
+	    title: "GP -> Prestige",
+	    description: "Boost prestige points based on generator power",
+	    cost: new Decimal(5),
+	    effect() {
+		return player.g.gp.add(1).pow(0.1)
+	    },
+	    effectDescription() { return format(upgradeEffect(this.layer, this.id))+"x" },
+	    tooltip(){
+		return "(GP+1)<sup>0.1</sup>"
+	    },
+	    unlocked(){return (hasUpgrade('g', 11))}
+	},
+    },
 })
