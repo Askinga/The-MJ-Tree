@@ -58,6 +58,7 @@ function getPointGen() {
 	if(hasUpgrade('b',12)) gain = gain.times(2.5)
 	if(hasUpgrade('b',24)) gain = gain.times(10)
 	gain = gain.times(tmp.g.genPowerEffect)
+	if(hasUpgrade('g',11)) gain = gain.times(5)
 	return gain
 }
 
