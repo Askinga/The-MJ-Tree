@@ -12,15 +12,20 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1",
-	name: "Prestiged",
+	num: "0.2",
+	name: "Row 2",
 }
 
 let changelog = `<h1>Changelog:</h1><br/>
-	<h2>v0.1: Prestiged</h3><br/>
+	<h2>v0.2: Row 1</h3><br/>
+		- Added Booster layer. Its formula is base^boosters<br/>
+  		- Added Generator layer and Generator Power. It shares the same formula with boosters, but it is subtracted by 1.<br/>
+    		- Added 20 new upgrades. 2 unlocking new layers.<br/>
+      		- Added Rebirth layer (not finished)<br/>
+ 		<br/>
+ 	<h2>v0.1: Prestiged</h3><br/>
 		- Added Prestige layer.<br/>
   		- Added 10 new upgrades.<br/>
-    		- Added Booster layer. (not finished)<br/>
  		<br/>
  	<h2>v0.0: Literally nothing</h3><br/>
 		- Added things.<br/>
