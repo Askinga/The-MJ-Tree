@@ -99,7 +99,7 @@ addLayer("g", {
         14: {
 	    title: "Generator+",
 	    description: "Generator base is now 2.1 instead of 2.",
-	    cost: new Decimal(32500),
+	    cost: new Decimal(16125),
 	    currencyDisplayName: "Generator Power",
             currencyInternalName: "gp",
             currencyLayer: "g",
@@ -108,7 +108,7 @@ addLayer("g", {
         15: {
 	    title: "Upgraded Upgrade",
 	    description: "Generator upgrade 3 is better.",
-	    cost: new Decimal(100000),
+	    cost: new Decimal(50000),
 	    currencyDisplayName: "Generator Power",
             currencyInternalName: "gp",
             currencyLayer: "g",
