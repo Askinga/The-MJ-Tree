@@ -41,7 +41,7 @@ addLayer("g", {
        return eff
        },
         effectDescription() {
-            let desc = "which is generating " + format(tmp[this.layer].effect) + " Generator Power per second.;
+            let desc = "which is generating " + format(tmp[this.layer].effect) + " Generator Power per second.";
             return desc;
         },
 })
