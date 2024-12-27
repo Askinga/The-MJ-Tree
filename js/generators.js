@@ -92,7 +92,7 @@ addLayer("g", {
 	    },
 	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
 	    tooltip(){
-		return "1.2<sup>generators</sup>"
+		return "base<sup>generators</sup>"
 	    },
 	    unlocked(){return (hasUpgrade('g', 12))}
 	},
