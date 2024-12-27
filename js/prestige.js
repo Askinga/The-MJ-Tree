@@ -34,6 +34,7 @@ addLayer("p", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    autoUpgrade(){return (hasUpgrade('g', 23))},
     layerShown(){return true},
     upgrades: {
         11: {
