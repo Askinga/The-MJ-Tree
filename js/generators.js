@@ -36,7 +36,7 @@ addLayer("g", {
         {key: "g", description: "G: Reset for generators", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     genPowerEffect() {
-	return (tmp.g.effect.pow(0.5)
+	return (tmp.g.effect.pow(0.5))
 		},
     effect(){
        let base = 2
