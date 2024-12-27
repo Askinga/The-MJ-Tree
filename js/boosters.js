@@ -76,6 +76,24 @@ addLayer("b", {
 	    cost: new Decimal(7),
 	    unlocked(){return (hasUpgrade('b',21))}
 	},
+        23: {
+	    title: "Prestige+",
+	    description: "Prestige point gain is multiplied by 3.",
+	    cost: new Decimal(7),
+	    unlocked(){return (hasUpgrade('b',22))}
+	},
+        24: {
+	    title: "Point+",
+	    description: "Point generation is multiplied by 10.",
+	    cost: new Decimal(8),
+	    unlocked(){return (hasUpgrade('b',23))}
+	},
+        25: {
+	    title: "Time for generators",
+	    description: "Unlock a new layer.",
+	    cost: new Decimal(9),
+	    unlocked(){return (hasUpgrade('b',24))}
+	},
     },
     effect(){
        let base = 2
