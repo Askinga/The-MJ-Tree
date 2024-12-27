@@ -81,5 +81,18 @@ addLayer("g", {
 	    },
 	    unlocked(){return (hasUpgrade('g', 11))}
 	},
+        13: {
+	    title: "Generators -> Points",
+	    description: "Boost point generation based on generators",
+	    cost: new Decimal(6),
+	    effect() {
+		return new Decimal(1.2).pow(player.g.points)
+	    },
+	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+	    tooltip(){
+		return "1.2<sup>generators</sup>"
+	    },
+	    unlocked(){return (hasUpgrade('g', 12))}
+	},
     },
 })
