@@ -37,6 +37,7 @@ addLayer("g", {
     ],
     genPowerEffect() {
 	return (tmp.g.effect.pow(0.5)
+		},
     effect(){
        let base = 2
 	let eff = new Decimal(base).pow(player.g.points).sub(1)
