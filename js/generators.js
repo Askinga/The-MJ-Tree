@@ -75,7 +75,7 @@ addLayer("g", {
 	    effect() {
 		return player[this.layer].gp.add(1).pow(0.1)
 	    },
-	    effectDescription() { return format(upgradeEffect(this.layer, this.id))+"x" },
+	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
 	    tooltip(){
 		return "(GP+1)<sup>0.1</sup>"
 	    },
