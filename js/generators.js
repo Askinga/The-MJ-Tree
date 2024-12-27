@@ -35,4 +35,13 @@ addLayer("g", {
     hotkeys: [
         {key: "g", description: "G: Reset for generators", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    effect(){
+       let base = 2
+	let eff = new Decimal(base).pow(player.g.points).sub(1)
+       return eff
+       },
+        effectDescription() {
+            let desc = "which is generating " + format(tmp[this.layer].effect) + " Generator Power per second.;
+            return desc;
+        },
 })
