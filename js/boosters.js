@@ -1,6 +1,7 @@
 addLayer("b", {
     name: "Boosters",
     symbol: "B",
+    position: 0,
     startData() { return {                  // startData is a function that returns default data for a layer. 
         unlocked: false,                     // You can add more variables here to add them to your layer.
         points: new Decimal(0), 
