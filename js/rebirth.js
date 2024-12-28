@@ -104,5 +104,11 @@ addLayer("r", {
 	    cost: new Decimal(70),
 	    unlocked(){ return(hasChallenge('r',11))}
 	},
+        25: {
+	    title: "ExPrUp1 is still taking forever to reach.",
+	    description: "5x points and prestige points.",
+	    cost: new Decimal(250),
+	    unlocked(){ return(hasUpgrade('r',24))}
+	},
     },
 })
