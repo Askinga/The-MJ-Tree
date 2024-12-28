@@ -14,6 +14,7 @@ addLayer("p", {
     passiveGeneration(){
 	gen = new Decimal(0)
 	    if(hasUpgrade('r', 12)) gen = gen.add(0.5)
+	    if(hasUpgrade('r', 23)) gen = gen.add(1.5)
 	return gen
     },
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
