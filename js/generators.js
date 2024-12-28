@@ -44,6 +44,7 @@ addLayer("g", {
     effect(){
        let base = 2
 	if(hasUpgrade('g',14)) base = 2.1
+	if(hasUpgrade('r',15)) base = 3
 	let eff = new Decimal(base).pow(player.g.points).sub(1)
        return eff
        },
