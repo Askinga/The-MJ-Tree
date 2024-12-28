@@ -15,6 +15,7 @@ addLayer("p", {
 	gen = new Decimal(0)
 	    if(hasUpgrade('r', 12)) gen = gen.add(0.5)
 	    if(hasUpgrade('r', 23)) gen = gen.add(1.5)
+	    if(hasUpgrade('p', 32)) gen = gen.times(5)
 	return gen
     },
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -118,6 +119,24 @@ addLayer("p", {
   	    description: "Point generation is multiplied by 5. And unlock a new layer.",
     	    cost: new Decimal(2500),
 	    unlocked(){return (hasUpgrade('p',24))},
+        },
+        31: {
+	    title: "ExPrUp1",
+  	    description: "First extended upgrade! Boosts point generation by 5x.",
+    	    cost: new Decimal(2e27),
+	    unlocked(){return (hasChallenge('r',11))},
+        },
+        32: {
+	    title: "ExPrUp2",
+  	    description: "Boosts prestige point generation by 5x.",
+    	    cost: new Decimal(2e28),
+	    unlocked(){return (hasUpgrade('p',31))},
+        },
+        33: {
+	    title: "ExPrUp3",
+  	    description: "Booster base is now 2.35.",
+    	    cost: new Decimal(2e29),
+	    unlocked(){return (hasUpgrade('p',32))},
         },
     },
 })
