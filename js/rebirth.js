@@ -18,7 +18,8 @@ addLayer("r", {
     type: "normal",                         // Determines the formula used for calculating prestige currency.
     exponent: 0.1,                          // "normal" prestige gain is (currency^exponent).
     gainMult() {                            // Returns your multiplier to your gain of the prestige resource.
-        mult = new Decimal(1)               // Factor in any bonuses multiplying gain here.
+        mult = new Decimal(1)    
+	if(hasUpgrade('p', 35)) mult = mult.times(2)// Factor in any bonuses multiplying gain here.
     	return mult
     },
     gainExp() {                             // Returns the exponent to your gain of the prestige resource.
