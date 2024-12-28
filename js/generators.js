@@ -16,8 +16,7 @@ addLayer("g", {
     onPrestige() {
 	if(!hasUpgrade('r',21)) {
 		player.g.gp = player.g.gp.sub(player.g.gp)
-	},
-    },
+    }},
     requires(){
 	let req = new Decimal("e10")
 	return req
