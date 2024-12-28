@@ -102,6 +102,7 @@ addLayer("b", {
     effect(){
        let base = 2
 	if(hasUpgrade('b',22)) base = 2.25
+	if(hasUpgrade('p',33)) base = 2.35
 	let eff = new Decimal(base).pow(player.b.points)
        return eff
        },
