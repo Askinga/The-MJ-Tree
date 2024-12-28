@@ -48,5 +48,17 @@ addLayer("r", {
 	    description: "5x points and prestige points.",
 	    cost: new Decimal(1)
 	},
+        12: {
+	    title: "Game needs more automation.",
+	    description: "Generator upgrade 8 effect is kept and generates 50% of prestige points per second.",
+	    cost: new Decimal(1),
+	    unlocked(){ return(hasUpgrade('r',11))}
+	},
+        13: {
+	    title: "Still needs more automation.",
+	    description: "Automatically buys boosters.",
+	    cost: new Decimal(2),
+	    unlocked(){ return(hasUpgrade('r',12))}
+	},
     },
 })
