@@ -66,5 +66,11 @@ addLayer("r", {
 	    cost: new Decimal(2),
 	    unlocked(){ return(hasUpgrade('r',13))}
 	},
+        15: {
+	    title: "Super op",
+	    description: "Generator base is now 3.",
+	    cost: new Decimal(3),
+	    unlocked(){ return(hasUpgrade('r',14))}
+	},
     },
 })
