@@ -36,6 +36,8 @@ addLayer("b", {
         {key: "b", description: "B: Reset for boosters", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     autoPrestige(){ return (hasUpgrade('r', 13))},
+    autoUpgrade(){ return (hasUpgrade('r', 14))},
+    resetsNothing(){ return (hasUpgrade('r', 14))},
     upgrades: {
         11: {
 	    title: "First booster upgrade.",
