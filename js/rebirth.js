@@ -118,7 +118,7 @@ addLayer("r", {
 	},
         32: {
 	    title: "🐌",
-	    description: "5x prestige points.",
+	    description: "2.5x prestige points.",
 	    cost: new Decimal(1000),
 	    unlocked(){ return(hasUpgrade('r',31))}
 	},
