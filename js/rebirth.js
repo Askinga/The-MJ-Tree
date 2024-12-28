@@ -72,5 +72,11 @@ addLayer("r", {
 	    cost: new Decimal(3),
 	    unlocked(){ return(hasUpgrade('r',14))}
 	},
+        21: {
+	    title: "Really needs automation.",
+	    description: "Automatically buy generator, it's upgrades and generators reset nothing.",
+	    cost: new Decimal(10),
+	    unlocked(){ return(hasUpgrade('r',15))}
+	},
     },
 })
