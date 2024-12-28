@@ -32,6 +32,7 @@ addLayer("p", {
 	if(hasUpgrade('g',21)) mult = mult.times(5)
 	if(hasUpgrade('r',11)) mult = mult.times(5)
 	if(hasUpgrade('r',22)) mult = mult.times(3)
+	if(hasUpgrade('p', 34)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -137,6 +138,18 @@ addLayer("p", {
   	    description: "Booster base is now 2.35.",
     	    cost: new Decimal(2e29),
 	    unlocked(){return (hasUpgrade('p',32))},
+        },
+        34: {
+	    title: "ExPrUp4",
+  	    description: "3x prestige point gain.",
+    	    cost: new Decimal(2e30),
+	    unlocked(){return (hasUpgrade('p',33))},
+        },
+        35: {
+	    title: "ExPrUp5",
+  	    description: "2x rebirth point gain.",
+    	    cost: new Decimal(1e32),
+	    unlocked(){return (hasUpgrade('p',34))},
         },
     },
 })
