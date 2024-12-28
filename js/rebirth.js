@@ -84,5 +84,11 @@ addLayer("r", {
 	    cost: new Decimal(15),
 	    unlocked(){ return(hasUpgrade('r',21))}
 	},
+        23: {
+	    title: "Still too slow",
+	    description: "2.5x points and +150% prestige point generation.",
+	    cost: new Decimal(15),
+	    unlocked(){ return(hasUpgrade('r',22))}
+	},
     },
 })
