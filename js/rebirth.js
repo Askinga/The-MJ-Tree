@@ -41,6 +41,13 @@ addLayer("r", {
             goalDescription: "Reach Rebirth.",
             rewardDescription: "Unlock more prestige upgrades"
 	},
+        12: {
+            name: "Rebirth Challenge 2",
+            challengeDescription: "You can only buy the first prestige upgrade.",
+            canComplete: function() {return player.points.gte(1e24)},
+            goalDescription: "Reach Rebirth.",
+            rewardDescription: "2x points."
+	},
     },
     upgrades: {
 	11: {
