@@ -13,8 +13,10 @@ addLayer("g", {
     row: 1,                                 // The row this layer is on (0 is the first row).
     baseResource: "prestige points",                 // The name of the resource your prestige gain is based on.
     baseAmount() { return player.p.points },  // A function to return the current amount of baseResource.
-    onPrestige(){
-	player.g.gp = player.g.gp.sub(player.g.gp)
+    onPrestige() {
+	if(!hasUpgrade('r',21)) {
+		player.g.gp = player.g.gp.sub(player.g.gp)
+	},
     },
     requires(){
 	let req = new Decimal("e10")
@@ -55,6 +57,9 @@ addLayer("g", {
     update(diff) {
             player.g.gp = player.g.gp.add(tmp.g.effect.mul(diff))
     },
+    autoPrestige(){return(hasUpgrade('r',21))},
+    autoUpgrade(){return(hasUpgrade('r',21))},
+    resetsNothing(){return(hasUpgrade('r',21))},
     tabFormat: [
         "main-display",
         "prestige-button",
