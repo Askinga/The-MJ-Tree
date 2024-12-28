@@ -60,5 +60,11 @@ addLayer("r", {
 	    cost: new Decimal(2),
 	    unlocked(){ return(hasUpgrade('r',12))}
 	},
+        14: {
+	    title: "Too long.",
+	    description: "Automatically buys booster upgrades, boosters reset nothing and 2x point generation.",
+	    cost: new Decimal(2),
+	    unlocked(){ return(hasUpgrade('r',13))}
+	},
     },
 })
