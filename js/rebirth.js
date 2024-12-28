@@ -122,5 +122,16 @@ addLayer("r", {
 	    cost: new Decimal(1000),
 	    unlocked(){ return(hasUpgrade('r',31))}
 	},
+        33: {
+	    title: "Faster rebirths",
+  	    description: "Boost point generation based on rebirth points.",
+    	    cost: new Decimal(2000),
+	    effect() {
+       		return player.r.points.add(1).pow(0.5)
+    		},
+  	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    tooltip(){return `(RP)<sup>0.5</sup>`},
+	    unlocked(){return (hasUpgrade('r',32))},
+        },
     },
 })
