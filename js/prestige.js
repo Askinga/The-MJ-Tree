@@ -55,7 +55,7 @@ addLayer("p", {
 	    title: "That gain is kinda slow, Here is a boost.",
   	    description: "Double the point generation.",
     	    cost: new Decimal(1),
-	    unlocked(){return (hasUpgrade('p',11))},
+	    unlocked(){return (hasUpgrade('p',11) && !inChallenge('r',12))},
         },
         13: {
 	    title: "Here is another boost.",
@@ -124,7 +124,7 @@ addLayer("p", {
 	    title: "ExPrUp1",
   	    description: "First extended upgrade! Boosts point generation by 5x.",
     	    cost: new Decimal(2e27),
-	    unlocked(){return (hasChallenge('r',11))},
+	    unlocked(){return (hasChallenge('r',11) && !inChallenge('r',12))},
         },
         32: {
 	    title: "ExPrUp2",
