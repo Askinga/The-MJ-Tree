@@ -39,7 +39,7 @@ addLayer("r", {
             challengeDescription: "Point generation is divided by 1e3.",
             canComplete: function() {return player.points.gte(1e24)},
             goalDescription: "Reach Rebirth.",
-            rewardDescription: "Unlock more prestige upgrades"
+            rewardDescription: "Unlock more prestige upgrades and a new rebirth upgrade."
 	},
         12: {
             name: "Rebirth Challenge 2",
@@ -101,7 +101,7 @@ addLayer("r", {
 	    title: "ExPrUp1 is taking forever to reach.",
 	    description: "10x point generation.",
 	    cost: new Decimal(70),
-	    unlocked(){ return(hasUpgrade('r',23))}
+	    unlocked(){ return(hasChallenge('r',11))}
 	},
     },
 })
