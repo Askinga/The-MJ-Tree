@@ -78,5 +78,11 @@ addLayer("r", {
 	    cost: new Decimal(10),
 	    unlocked(){ return(hasUpgrade('r',15))}
 	},
+        22: {
+	    title: "Make rebirth faster",
+	    description: "3x points and prestige points.",
+	    cost: new Decimal(15),
+	    unlocked(){ return(hasUpgrade('r',21))}
+	},
     },
 })
