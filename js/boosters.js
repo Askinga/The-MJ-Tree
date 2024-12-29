@@ -122,6 +122,12 @@ addLayer("b", {
 	    },
 	    unlocked(){return (hasUpgrade('b',31))}
 	},
+    	33: {
+	    title: "ExBoUp3",
+	    description: "Point generation is multiplied by 20.",
+	    cost: new Decimal(35),
+	    unlocked(){return (hasUpgrade('b',32))}
+	},
     },
     effect(){
        let base = 2
