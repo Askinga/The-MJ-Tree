@@ -16,6 +16,7 @@ addLayer("b", {
 	let req = new Decimal(25000)
 	if(hasUpgrade('b',21)) req = req.div(3)
 	if(hasUpgrade('b',32)) req = req.div(upgradeEffect('b',32))
+	if(hasUpgrade('b',35)) req = req.div(10000)
 	return req
     },              // The amount of the base needed to gain 1 of the prestige currency.                                    // Also the amount required to unlock the layer
     type: "static",                         // Determines the formula used for calculating prestige currency.
@@ -127,6 +128,18 @@ addLayer("b", {
 	    description: "Point generation is multiplied by 20.",
 	    cost: new Decimal(35),
 	    unlocked(){return (hasUpgrade('b',32))}
+	},
+    	34: {
+	    title: "ExBoUp4",
+	    description: "Prestige Point gain is multiplied by 10.",
+	    cost: new Decimal(37),
+	    unlocked(){return (hasUpgrade('b',33))}
+	},
+        35: {
+	    title: "ExBoUp5",
+	    description: "Booster cost is divided by 10000.",
+	    cost: new Decimal(39),
+	    unlocked(){return (hasUpgrade('b',34))}
 	},
     },
     effect(){
