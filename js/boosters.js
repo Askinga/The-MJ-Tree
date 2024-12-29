@@ -100,8 +100,12 @@ addLayer("b", {
 	},
         31: {
 	    title: "ExBoUp1",
-	    description: "?",
-	    cost: new Decimal(900),
+	    description: "Boost prestige point gain based on boosters.",
+	    cost: new Decimal(30),
+	    effect() {
+     	   	return new Decimal(1.1).pow(player.b.points)
+   	    },
+   	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked(){return (hasChallenge('r',12))}
 	},
     },
