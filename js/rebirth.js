@@ -47,7 +47,7 @@ addLayer("r", {
             challengeDescription: "You can only buy the first prestige upgrade.",
             canComplete: function() {return player.points.gte(1e24)},
             goalDescription: "Reach Rebirth.",
-            rewardDescription: "2x points."
+            rewardDescription: "Booster base is 2,5 and unlock more booster upgrades."
 	},
     },
     upgrades: {
