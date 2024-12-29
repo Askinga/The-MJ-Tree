@@ -98,11 +98,18 @@ addLayer("b", {
 	    cost: new Decimal(9),
 	    unlocked(){return (hasUpgrade('b',24))}
 	},
+        31: {
+	    title: "ExBoUp1",
+	    description: "?",
+	    cost: new Decimal(900),
+	    unlocked(){return (hasChallenge('r',12))}
+	},
     },
     effect(){
        let base = 2
 	if(hasUpgrade('b',22)) base = 2.25
 	if(hasUpgrade('p',33)) base = 2.35
+	if(hasChallenge('r',12)) base = 2.5
 	let eff = new Decimal(base).pow(player.b.points)
        return eff
        },
