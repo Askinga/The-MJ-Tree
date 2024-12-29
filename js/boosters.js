@@ -138,7 +138,7 @@ addLayer("b", {
         35: {
 	    title: "ExBoUp5",
 	    description: "Booster cost is divided by 10000.",
-	    cost: new Decimal(7),
+	    cost: new Decimal(37),
 	    unlocked(){return (hasUpgrade('b',34))}
 	},
     },
