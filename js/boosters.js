@@ -132,13 +132,13 @@ addLayer("b", {
     	34: {
 	    title: "ExBoUp4",
 	    description: "Prestige Point gain is multiplied by 10.",
-	    cost: new Decimal(37),
+	    cost: new Decimal(36),
 	    unlocked(){return (hasUpgrade('b',33))}
 	},
         35: {
 	    title: "ExBoUp5",
 	    description: "Booster cost is divided by 10000.",
-	    cost: new Decimal(39),
+	    cost: new Decimal(7),
 	    unlocked(){return (hasUpgrade('b',34))}
 	},
     },
