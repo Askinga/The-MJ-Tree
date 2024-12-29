@@ -133,5 +133,17 @@ addLayer("r", {
 	    tooltip(){return `(RP)<sup>0.5</sup>`},
 	    unlocked(){return (hasUpgrade('r',32))},
         },
+        34: {
+	    title: "🏃",
+	    description: "10x prestige points and points.",
+	    cost: new Decimal(5000),
+	    unlocked(){ return(hasUpgrade('r',33))}
+	},
+        35: {
+	    title: "Ready!",
+	    description: "2x points.",
+	    cost: new Decimal(12500),
+	    unlocked(){ return(hasUpgrade('r',34))}
+	},
     },
 })
