@@ -141,7 +141,7 @@ addLayer("r", {
 	},
         35: {
 	    title: "Ready!",
-	    description: "2x points.",
+	    description: "20x points.",
 	    cost: new Decimal(20000),
 	    unlocked(){ return(hasUpgrade('r',34))}
 	},
