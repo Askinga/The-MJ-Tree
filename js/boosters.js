@@ -15,6 +15,7 @@ addLayer("b", {
     requires(){
 	let req = new Decimal(25000)
 	if(hasUpgrade('b',21)) req = req.div(3)
+	if(hasUpgrade('b',32)) req = req.div(upgradeEffect('b',32))
 	return req
     },              // The amount of the base needed to gain 1 of the prestige currency.                                    // Also the amount required to unlock the layer
     type: "static",                         // Determines the formula used for calculating prestige currency.
@@ -107,6 +108,19 @@ addLayer("b", {
    	    },
    	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    unlocked(){return (hasChallenge('r',12))}
+	},
+    	32: {
+	    title: "ExBoUp2",
+	    description: "Divide booster requirement based on points.",
+	    cost: new Decimal(32),
+	    effect() {
+     	   	return player.points.add(1).log(3).add(1).pow(2)
+   	    },
+   	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    tooltip(){
+		return `log<sub>3</sub>((points+1)+1)<sup>2</sup>`
+	    },
+	    unlocked(){return (hasUpgrade('b',31))}
 	},
     },
     effect(){
