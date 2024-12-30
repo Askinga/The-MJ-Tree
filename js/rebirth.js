@@ -47,7 +47,16 @@ addLayer("r", {
             challengeDescription: "You can only buy the first prestige upgrade.",
             canComplete: function() {return player.points.gte(1e24)},
             goalDescription: "Reach Rebirth.",
-            rewardDescription: "Booster base is 2.5 and unlock more booster upgrades."
+            rewardDescription: "Booster base is 2.5 and unlock more booster upgrades.",
+	    unlocked(){ return(hasChallenge('r',11))}
+	},
+    	21: {
+            name: "Rebirth Challenge 3",
+            challengeDescription: "Booster and generator base is stuck to 1.025",
+            canComplete: function() {return player.points.gte(1e200)},
+            goalDescription: "Reach unknown.",
+            rewardDescription: "Booster base is 2.5 and unlock more booster upgrades.",
+	    unlocked(){ return(hasChallenge('r',12))}
 	},
     },
     upgrades: {
