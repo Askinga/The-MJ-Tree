@@ -147,6 +147,7 @@ addLayer("b", {
 	if(hasUpgrade('b',22)) base = 2.25
 	if(hasUpgrade('p',33)) base = 2.35
 	if(hasChallenge('r',12)) base = 2.5
+	if(inChallenge('r',21)) base = 1.025
 	let eff = new Decimal(base).pow(player.b.points)
        return eff
        },
