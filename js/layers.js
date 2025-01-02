@@ -462,7 +462,7 @@ addLayer("DMC", {
     },
     passiveGeneration() {return hasMilestone("VX", 8) ? 10 : 0},
     effect(){
-        return (hasMilestone("DMC", 2) ? Decimal.pow(player[this.layer].points.add(1), 3.6).max(1) : decimalOne).pow(hasMilestone("DMC", 3) ? 2 : 1);
+        return (hasMilestone("DMC", 2) ? Decimal.pow(player[this.layer].points.add(1), 3.6).max(1) : decimalOne).pow(hasMilestone("DMC", 2) ? 2 : 1);
     },
     effectDescription(){
         return hasMilestone("DMC", 2) ? format(this.effect()) + "x DC and DN gain" : "";
