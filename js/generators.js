@@ -47,6 +47,7 @@ addLayer("g", {
        let base = 2.4
 	if(hasUpgrade('g',14)) base = 2.5
 	if(hasUpgrade('r',15)) base = 3
+	if(hasUpgrade('r',43)) base = 3.25
 	if(inChallenge('r',21)) base = 1.025
 	let eff = new Decimal(base).pow(player.g.points).sub(1)
        return eff
@@ -61,6 +62,7 @@ addLayer("g", {
     autoPrestige(){return(hasUpgrade('r',21))},
     autoUpgrade(){return(hasUpgrade('r',21))},
     resetsNothing(){return(hasUpgrade('r',21))},
+    canBuyMax(){return(hasUpgrade('r',43))},
     tabFormat: [
         "main-display",
         "prestige-button",
