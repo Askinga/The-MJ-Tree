@@ -19,6 +19,7 @@ addLayer("g", {
     }},
     requires(){
 	let req = new Decimal("e10")
+	if(hasUpgrade('r',42)) req = req.div(1000000)
 	return req
     },              // The amount of the base needed to gain 1 of the prestige currency.                                    // Also the amount required to unlock the layer
     type: "static",                         // Determines the formula used for calculating prestige currency.
