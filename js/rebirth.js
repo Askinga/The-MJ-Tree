@@ -201,5 +201,16 @@ addLayer("r", {
 	    tooltip(){return `log<sub>10</sub>((points+1)<sup>0.2</sup>)+1`},
 	    unlocked(){return (hasUpgrade('r',45))},
         },
+    	52: {
+	    title: "Repeated Upgrade",
+  	    description: "Boost prestige point gain based on points (nerfed).",
+    	    cost: new Decimal(2.5e8),
+	    effect() {
+       		return player.points.add(1).log(10).pow(0.5).add(1)
+    		},
+  	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    tooltip(){return `log<sub>10</sub>((points+1)<sup>0.5</sup>)+1`},
+	    unlocked(){return (hasUpgrade('r',51))},
+        },
     },
 })
