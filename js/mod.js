@@ -17,7 +17,7 @@ let VERSION = {
 }
 
 let changelog = `<h1>Changelog:</h1><br/>
-	<h4>va.b.c</h4><br/>
+	<h2>va.b.c</h2><br/>
  	a is a major update,<br/>
   	b is a smaller update,<br/>
    	c is a bug fix or a balancing change.<br/>
