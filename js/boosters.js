@@ -84,7 +84,7 @@ addLayer("b", {
 	},
         23: {
 	    title: "Prestige+",
-	    description: "Prestige point gain is multiplied by 3.",
+	    description: "Prestige point gain is multiplied by 3. And autobuy prestige upgrades.",
 	    cost: new Decimal(7),
 	    unlocked(){return (hasUpgrade('b',22))}
 	},
