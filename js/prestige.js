@@ -13,7 +13,8 @@ addLayer("p", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     passiveGeneration(){
 	gen = new Decimal(0)
-	    if(hasUpgrade('r', 12)) gen = gen.add(0.5)
+	    if(hasUpgrade('g', 23)) gen = gen.add(0.25)
+	    if(hasUpgrade('r', 12)) gen = gen.add(0.75)
 	    if(hasUpgrade('r', 23)) gen = gen.add(1.5)
 	    if(hasUpgrade('p', 32)) gen = gen.times(5)
 	return gen
@@ -50,7 +51,7 @@ addLayer("p", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    autoUpgrade(){return (hasUpgrade('g', 23) || hasUpgrade('r',12))},
+    autoUpgrade(){return (hasUpgrade('b', 23) || hasUpgrade('r',13))},
     layerShown(){return true},
     upgrades: {
         11: {
