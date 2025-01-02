@@ -22,7 +22,7 @@ let changelog = `<h1>Changelog:</h1><br/>
   	b is a smaller update,<br/>
    	c is a bug fix or a balancing change.<br/>
  	<br/>
- 	<h2>v0.2.1: Balancing 1</h3><br/>
+ 	<h3>v0.2.1: Balancing 1</h3><br/>
   		- Balanced the game.<br/>
     		- Changed some upgrades, automation is earlier, some bases are a bit higher due to timewalls.<br/>
       		- Small balancing update to remove some timewalls.<br/>
