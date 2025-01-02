@@ -160,5 +160,11 @@ addLayer("r", {
 	    cost: new Decimal(1000000),
 	    unlocked(){ return(hasUpgrade('r',35) && hasChallenge('r', 12))}
 	},
+        42: {
+	    title: "Numbers are getting bigger and BIGGER!",
+	    description: "Point generation is boosted by x10. And divide booster and generator requirement by 1M. And you can buy max boosters.",
+	    cost: new Decimal(1.5e6),
+	    unlocked(){ return(hasUpgrade('r',41))}
+	},
     },
 })
