@@ -73,7 +73,7 @@ addLayer("r", {
 	},
         13: {
 	    title: "Still needs more automation.",
-	    description: "Automatically buys boosters.",
+	    description: "Automatically buys boosters and keep the second booster upgrade 7 effect.",
 	    cost: new Decimal(2),
 	    unlocked(){ return(hasUpgrade('r',12))}
 	},
