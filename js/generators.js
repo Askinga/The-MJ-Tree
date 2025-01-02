@@ -43,8 +43,8 @@ addLayer("g", {
 	return (player.g.gp.add(1).pow(0.5))
 		},
     effect(){
-       let base = 2
-	if(hasUpgrade('g',14)) base = 2.1
+       let base = 2.4
+	if(hasUpgrade('g',14)) base = 2.5
 	if(hasUpgrade('r',15)) base = 3
 	if(inChallenge('r',21)) base = 1.025
 	let eff = new Decimal(base).pow(player.g.points).sub(1)
@@ -106,7 +106,7 @@ addLayer("g", {
 	},
         14: {
 	    title: "Generator+",
-	    description: "Generator base is now 2.1 instead of 2.",
+	    description: "Generator base is now 2.5 instead of 2.4",
 	    cost: new Decimal(16125),
 	    currencyDisplayName: "Generator Power",
             currencyInternalName: "gp",
@@ -141,8 +141,8 @@ addLayer("g", {
 	    unlocked(){return (hasUpgrade('g', 21))}
 	},
         23: {
-	    title: "I don't like buying all the prestige upgrade every reset.",
-	    description: "Automate buying prestige upgrades!",
+	    title: "Layer 1 fully automated",
+	    description: "+25% Prestige Points on reset per second.",
 	    cost: new Decimal(9),
 	    unlocked(){return (hasUpgrade('g', 22))}
 	},
