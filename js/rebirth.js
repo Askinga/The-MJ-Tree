@@ -10,7 +10,7 @@ addLayer("r", {
     resource: "rebirth points",            // The name of this layer's main prestige resource.
     row: 2,              			// The row this layer is on (0 is the first row).
     passiveGeneration(){
-	let gain = 0
+	let gain = new Decimal(0)
 	 if(hasUpgrade('r',45)) gain = gain.add(0.01)
 	return gain
     },
