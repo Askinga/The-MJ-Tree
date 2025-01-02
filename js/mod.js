@@ -12,12 +12,22 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.2",
-	name: "Row 2",
+	num: "0.2.1",
+	name: "Balancing 1",
 }
 
 let changelog = `<h1>Changelog:</h1><br/>
-	<h2>v0.2: Row 1</h3><br/>
+	<h4>va.b.c</h4><br/>
+ 	a is a major update,<br/>
+  	b is a smaller update,<br/>
+   	c is a bug fix or a balancing change.<br/>
+ 	<br/>
+ 	<h2>v0.2.1: Balancing 1</h3><br/>
+  		- Balanced the game.<br/>
+    		- Changed some upgrades, automation is earlier, some bases are a bit higher due to timewalls.<br/>
+      		- Small balancing update to remove some timewalls.<br/>
+		<br/>
+  	<h2>v0.2: Row 1</h3><br/>
 		- Added Booster layer. Its formula is base^boosters<br/>
   		- Added Generator layer and Generator Power. It shares the same formula with boosters, but it is subtracted by 1.<br/>
     		- Added 20 new upgrades. 2 unlocking new layers.<br/>
