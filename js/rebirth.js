@@ -24,8 +24,9 @@ addLayer("r", {
     exponent: 0.1025,                          // "normal" prestige gain is (currency^exponent).
     gainMult() {                            // Returns your multiplier to your gain of the prestige resource.
         mult = new Decimal(1)    
-	if(hasUpgrade('p', 35)) mult = mult.times(2)// Factor in any bonuses multiplying gain here.
-    	return mult
+	if(hasUpgrade('p', 35)) mult = mult.times(2) // Factor in any bonuses multiplying gain here.
+    	if(hasUpgrade('r', 51)) mult = mult.times(upgradeEffect('r',51))
+	return mult
     },
     gainExp() {                             // Returns the exponent to your gain of the prestige resource.
         return new Decimal(1)
@@ -189,5 +190,16 @@ addLayer("r", {
 	    cost: new Decimal(2.5e7),
 	    unlocked(){ return(hasUpgrade('r',44))}
 	},
+        51: {
+	    title: "Reversed",
+  	    description: "Boost rebirth point gain based on points.",
+    	    cost: new Decimal(5e7),
+	    effect() {
+       		return player.points.add(1).log(10).pow(0.2).add(1)
+    		},
+  	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    tooltip(){return `log<sub>10</sub>((points+1)<sup>0.2</sup>)+1`},
+	    unlocked(){return (hasUpgrade('r',45))},
+        },
     },
 })
