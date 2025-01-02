@@ -67,7 +67,7 @@ addLayer("r", {
 	},
         12: {
 	    title: "Game needs more automation.",
-	    description: "Generator upgrade 8 effect is kept and generates 50% of prestige points per second.",
+	    description: "Point generation x2 and generates +75% of prestige points on reset per second.",
 	    cost: new Decimal(1),
 	    unlocked(){ return(hasUpgrade('r',11))}
 	},
