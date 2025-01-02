@@ -166,5 +166,11 @@ addLayer("r", {
 	    cost: new Decimal(1.5e6),
 	    unlocked(){ return(hasUpgrade('r',41))}
 	},
+        43: {
+	    title: "Generator QoL",
+	    description: "You can buy max generators. And generator base is 3.25 instead of 3.",
+	    cost: new Decimal(1e7),
+	    unlocked(){ return(hasUpgrade('r',42))}
+	},
     },
 })
