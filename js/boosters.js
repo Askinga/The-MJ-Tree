@@ -17,6 +17,7 @@ addLayer("b", {
 	if(hasUpgrade('b',21)) req = req.div(3.5)
 	if(hasUpgrade('b',32)) req = req.div(upgradeEffect('b',32))
 	if(hasUpgrade('b',35)) req = req.div(10000)
+	if(hasUpgrade('r',42)) req = req.div(1000000)
 	return req
     },              // The amount of the base needed to gain 1 of the prestige currency.                                    // Also the amount required to unlock the layer
     type: "static",                         // Determines the formula used for calculating prestige currency.
@@ -40,6 +41,7 @@ addLayer("b", {
     autoPrestige(){ return (hasUpgrade('r', 13))},
     autoUpgrade(){ return (hasUpgrade('r', 14))},
     resetsNothing(){ return (hasUpgrade('r', 14))},
+    canBuyMax(){ return (hasUpgrade('r', 42))},
     upgrades: {
         11: {
 	    title: "First booster upgrade.",
