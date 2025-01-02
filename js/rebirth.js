@@ -8,7 +8,12 @@ addLayer("r", {
     }},
     color: "#007bff",                       // The color for this layer, which affects many elements.
     resource: "rebirth points",            // The name of this layer's main prestige resource.
-    row: 2,                                 // The row this layer is on (0 is the first row).
+    row: 2,              			// The row this layer is on (0 is the first row).
+    passiveGeneration(){
+	let gain = 0
+	 if(hasUpgrade('r',45)) gain = gain.add(0.01)
+	return gain
+    },
     baseResource: "points",                 // The name of the resource your prestige gain is based on.
     baseAmount() { return player.points },  // A function to return the current amount of baseResource.
     requires(){
@@ -171,6 +176,18 @@ addLayer("r", {
 	    description: "You can buy max generators. And generator base is 3.25 instead of 3.",
 	    cost: new Decimal(1e7),
 	    unlocked(){ return(hasUpgrade('r',42))}
+	},
+        44: {
+	    title: "Point++++",
+	    description: "Point generation is multiplied by 100.",
+	    cost: new Decimal(1.5e7),
+	    unlocked(){ return(hasUpgrade('r',43))}
+	},
+        45: {
+	    title: "Rebirth QoL",
+	    description: "Get 1% of RP gain on reset per second!",
+	    cost: new Decimal(2.5e7),
+	    unlocked(){ return(hasUpgrade('r',44))}
 	},
     },
 })
