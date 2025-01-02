@@ -16,7 +16,7 @@ addLayer("r", {
 	return req
     },              // The amount of the base needed to gain 1 of the prestige currency.                                    // Also the amount required to unlock the layer
     type: "normal",                         // Determines the formula used for calculating prestige currency.
-    exponent: 0.1,                          // "normal" prestige gain is (currency^exponent).
+    exponent: 0.1025,                          // "normal" prestige gain is (currency^exponent).
     gainMult() {                            // Returns your multiplier to your gain of the prestige resource.
         mult = new Decimal(1)    
 	if(hasUpgrade('p', 35)) mult = mult.times(2)// Factor in any bonuses multiplying gain here.
@@ -153,6 +153,12 @@ addLayer("r", {
 	    description: "20x points.",
 	    cost: new Decimal(20000),
 	    unlocked(){ return(hasUpgrade('r',34))}
+	},
+   	41: {
+	    title: "Back to rebirth.",
+	    description: "Previous non-static layers and points and boosted by x3.",
+	    cost: new Decimal(1000000),
+	    unlocked(){ return(hasUpgrade('r',35) && hasChallenge('r', 12))}
 	},
     },
 })
