@@ -40,7 +40,7 @@ addLayer("a", {
     },
     layerShown(){
         let visible = false
-        if (hasUpgrade('r', 52) || player.a.unlocked) visible = true
+        if (hasChallenge('r', 22) || player.a.unlocked) visible = true
        return visible
 },          // Returns a bool for if this layer's node should be visible in the tree.
     branches: ["g"],
