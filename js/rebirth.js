@@ -59,7 +59,7 @@ addLayer("r", {
     	21: {
             name: "Rebirth Challenge 3",
             challengeDescription: "Booster and generator base is stuck to 1.025",
-            canComplete: function() {return player.points.gte(5e40)},
+            canComplete: function() {return player.points.gte(5e41)},
             goalDescription: "Reach 5e41 points.",
             rewardDescription: "Previous non-static layers are boosted by 10x while static layer requirements are divided by 1e5.",
 	    unlocked(){ return(hasChallenge('r',12))}
