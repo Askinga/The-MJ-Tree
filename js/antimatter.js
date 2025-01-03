@@ -46,7 +46,7 @@ addLayer("a", {
     branches: ["g"],
     canReset(){return true},
     hotkeys: [
-        {key: "a", description: "Sorry, no hotkey for this.", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "a", description: "Sorry, no hotkey for antimatter layer.", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     effect(){
        let base = 0
