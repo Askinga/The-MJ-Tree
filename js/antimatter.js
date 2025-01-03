@@ -7,7 +7,7 @@ addLayer("a", {
         points: new Decimal(10),         // "points" is the internal name for the main resource of the layer.
     }},
     nodeStyle() {
-      	{
+      	if (player.points.gte(0)) ? {
             'color': 'red',
             'background-image': 'url("resources/download.webp")',
             'background-position': 'center center',
