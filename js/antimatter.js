@@ -4,7 +4,31 @@ addLayer("a", {
     position: 1,
     startData() { return {                  // startData is a function that returns default data for a layer. 
         unlocked: false,                     // You can add more variables here to add them to your layer.
-        points: new Decimal(10),         // "points" is the internal name for the main resource of the layer.
+        points: new Decimal(10),   
+	dim1amo: new Decimal(0),// "points" is the internal name for the main resource of the layer.
+	dim2amo: new Decimal(0),
+	dim3amo: new Decimal(0),
+	dim4amo: new Decimal(0),
+	dim5amo: new Decimal(0),
+	dim6amo: new Decimal(0),
+	dim7amo: new Decimal(0),
+	dim8amo: new Decimal(0),
+	dim1gain: new Decimal(0),
+	dim2gain: new Decimal(0),
+	dim3gain: new Decimal(0),
+	dim4gain: new Decimal(0),
+	dim5gain: new Decimal(0),
+	dim6gain: new Decimal(0),
+	dim7gain: new Decimal(0),
+	dim8gain: new Decimal(0),
+	dim1mul: new Decimal(1),
+	dim2mul: new Decimal(1),
+	dim3mul: new Decimal(1),
+	dim4mul: new Decimal(1),
+	dim5mul: new Decimal(1),
+	dim6mul: new Decimal(1),
+	dim7mul: new Decimal(1),
+	dim8mul: new Decimal(1),
     }},
     nodeStyle() {
       	return options.imageNode ? {
