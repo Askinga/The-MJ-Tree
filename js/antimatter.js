@@ -44,7 +44,7 @@ addLayer("a", {
        return visible
 },          // Returns a bool for if this layer's node should be visible in the tree.
     branches: ["g"],
-    canReset(){return true},
+    canReset(){return (player.points.gte(1e100) && (!player.a.points.gt(0)))},
     hotkeys: [
         {key: "", description: "Sorry, no hotkey for antimatter layer.", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
