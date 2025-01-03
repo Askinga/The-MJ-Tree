@@ -82,4 +82,42 @@ addLayer("a", {
             let desc = "which is boosting Point generation by x" + format(tmp[this.layer].effect);
             return desc;
         },
+    buyables: {
+        11: {
+            title: "Dimension 1",
+            unlocked() { return (hasChallenge('r', 22)) },
+            cost(x) {
+                return new Decimal(11).mul(Decimal.pow(2, x)).floor()
+            },
+            display() {
+                let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Antimatter." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Dimension 1."
+                if (player.points.gte("1ee20") dis = dis + " Dimension 1 amount multiplies Antimatter generation by " + format(buyableEffect(this.layer, this.id)) + "."
+                return dis
+            },
+            canAfford() {
+                return player.a.points.gte(this.cost())
+            },
+            buy() {
+                let cost = new Decimal(1)
+                player.a.points = player.a.points.sub(this.cost().mul(cost))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            effect(x) {
+                gensqboost = new Decimal(1.0717734627)
+                if (player.points.gte("1ee20")) {
+                    eff = new Decimal(gensqboost).pow(x)
+                } else {
+                    eff = new Decimal(1)
+                }
+                return eff
+            },
+            tooltip() {
+                return "Cost Formula: 11 x 2^Amt. Generation formula: Dimension 1 amt."
+            },
+            style() {return {
+                'width': '250px',
+                'height': '115px',
+            }},
+        },
+    },
 })
