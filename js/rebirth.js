@@ -240,7 +240,7 @@ addLayer("r", {
 	},
 	55: {
 	    title: "LAST UPGRADE FOR REBIRTH!!!!",
-	    description: "10x Point generation and Prestige Point gain.",
+	    description: "250x Point generation and 25x Prestige Point gain.",
 	    cost: new Decimal(1e10),
 	    unlocked(){ return(hasUpgrade('r',54))}
 	},
