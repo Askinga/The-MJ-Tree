@@ -3,7 +3,7 @@ addLayer("a", {
     symbol: "A",
     position: 1,
     startData() { return {                  // startData is a function that returns default data for a layer. 
-        unlocked: true,                     // You can add more variables here to add them to your layer.
+        unlocked: false,                     // You can add more variables here to add them to your layer.
         points: new Decimal(10),         // "points" is the internal name for the main resource of the layer.
     }},
     nodeStyle() {
@@ -23,7 +23,7 @@ addLayer("a", {
     baseResource: "points",                 // The name of the resource your prestige gain is based on.
     baseAmount() { return player.points },  // A function to return the current amount of baseResource.
     requires(){
-	  let req = new Decimal(1e2000)
+	  let req = new Decimal("eeeeeeeeee2000")
     return req
     },              // The amount of the base needed to gain 1 of the prestige currency.                                    // Also the amount required to unlock the layer
     type: "normal",   
@@ -44,7 +44,7 @@ addLayer("a", {
        return visible
 },          // Returns a bool for if this layer's node should be visible in the tree.
     branches: ["g"],
-    canReset(){return false},
+    canReset(){return true},
     hotkeys: [
         {key: "a", description: "Sorry, no hotkey for this.", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
