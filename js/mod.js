@@ -94,7 +94,7 @@ function getPointGen() {
 	if(hasUpgrade('r',44)) gain = gain.times(100)
 	if (hasUpgrade('r', 53)) gain = gain.times(upgradeEffect('r', 53))
 	if(inChallenge('r',11) || inChallenge('r',22)) gain = gain.div(1000)
-	if(hasUpgrade('r',55)) gain = gain.times(10)
+	if(hasUpgrade('r',55)) gain = gain.times(250)
 	return gain
 }
 
