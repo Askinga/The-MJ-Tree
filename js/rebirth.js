@@ -26,6 +26,7 @@ addLayer("r", {
         mult = new Decimal(1)    
 	if(hasUpgrade('p', 35)) mult = mult.times(2) // Factor in any bonuses multiplying gain here.
     	if(hasUpgrade('r', 51)) mult = mult.times(upgradeEffect('r',51))
+	if(hasUpgrade('r', 54)) mult = mult.times(2)
 	return mult
     },
     gainExp() {                             // Returns the exponent to your gain of the prestige resource.
@@ -67,9 +68,9 @@ addLayer("r", {
     	22: {
             name: "Rebirth Challenge 4",
             challengeDescription: "You are stuck in Rebirth challenge 1, 2, and 3.",
-            canComplete: function() {return player.points.gte(5e100)},
-            goalDescription: "Reach ??? points.",
-            rewardDescription: "???",
+            canComplete: function() {return player.points.gte(1e24)},
+            goalDescription: "Reach Rebirth.",
+            rewardDescription: "Unlock something new.",
 	    unlocked(){ return(hasChallenge('r',21))}
 	},
     },
@@ -231,5 +232,17 @@ addLayer("r", {
 	    tooltip(){return `log<sub>10</sub>((points+1)<sup>1.25</sup>)+1`},
 	    unlocked(){return (hasChallenge('r',21))},
         },
+    	54: {
+	    title: "So close",
+	    description: "2x RP gain.",
+	    cost: new Decimal(5e9),
+	    unlocked(){ return(hasUpgrade('r',53))}
+	},
+	55: {
+	    title: "LAST UPGRADE FOR REBIRTH!!!!",
+	    description: "10x Point generation and Prestige Point gain.",
+	    cost: new Decimal(1e10),
+	    unlocked(){ return(hasUpgrade('r',54))}
+	},
     },
 })
