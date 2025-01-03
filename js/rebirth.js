@@ -59,10 +59,18 @@ addLayer("r", {
     	21: {
             name: "Rebirth Challenge 3",
             challengeDescription: "Booster and generator base is stuck to 1.025",
-            canComplete: function() {return player.points.gte(1e200)},
-            goalDescription: "Reach unknown.",
-            rewardDescription: "Booster base is 2.5 and unlock more booster upgrades.",
+            canComplete: function() {return player.points.gte(5e40)},
+            goalDescription: "Reach 5e41 points.",
+            rewardDescription: "Previous non-static layers are boosted by 10x while static layer requirements are divided by 1e5.",
 	    unlocked(){ return(hasChallenge('r',12))}
+	},
+    	22: {
+            name: "Rebirth Challenge 4",
+            challengeDescription: "You are stuck in Rebirth challenge 1, 2, and 3.",
+            canComplete: function() {return player.points.gte(5e100)},
+            goalDescription: "Reach ??? points.",
+            rewardDescription: "???",
+	    unlocked(){ return(hasChallenge('r',21))}
 	},
     },
     upgrades: {
@@ -211,6 +219,17 @@ addLayer("r", {
   	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
 	    tooltip(){return `log<sub>10</sub>((points+1)<sup>0.5</sup>)+1`},
 	    unlocked(){return (hasUpgrade('r',51))},
+        },
+    	53: {
+	    title: "Repeated Upgrade 2",
+  	    description: "Boost point generation based on points (nerfed).",
+    	    cost: new Decimal(2e9),
+	    effect() {
+       		return player.points.add(1).log(10).pow(1.25).add(1)
+    		},
+  	    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+	    tooltip(){return `log<sub>10</sub>((points+1)<sup>1.25</sup>)+1`},
+	    unlocked(){return (hasChallenge('r',21))},
         },
     },
 })
