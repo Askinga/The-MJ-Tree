@@ -85,14 +85,15 @@ function getPointGen() {
 	if(hasUpgrade('r',24)) gain = gain.times(10)
 	if(hasUpgrade('r',25)) gain = gain.times(5)
 	if(hasUpgrade('r',31)) gain = gain.times(5)
-	if (hasUpgrade('r', 33)) gain = gain.times(upgradeEffect('r', 33))
+	if (hasUpgrade('r', 33)) gain = gain.times(upgradeEffect('r', 33))9
 	if(hasUpgrade('r',34)) gain = gain.times(10)
 	if(hasUpgrade('r',35)) gain = gain.times(20)
 	if(hasUpgrade('b',33)) gain = gain.times(20)
 	if(hasUpgrade('r',41)) gain = gain.times(3)
 	if(hasUpgrade('r',42)) gain = gain.times(10)
 	if(hasUpgrade('r',44)) gain = gain.times(100)
-	if(inChallenge('r',11)) gain = gain.div(1000)
+	if (hasUpgrade('r', 53)) gain = gain.times(upgradeEffect('r', 53))
+	if(inChallenge('r',11) || inChallenge('r',22)) gain = gain.div(1000)
 	return gain
 }
 
