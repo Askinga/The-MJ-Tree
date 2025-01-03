@@ -42,6 +42,7 @@ addLayer("p", {
 	if(hasUpgrade('b',34)) mult = mult.times(10)
 	if(hasUpgrade('r',41)) mult = mult.times(3)
 	if (hasUpgrade('r', 52)) mult = mult.times(upgradeEffect('r', 52))
+	if(hasChallenge('r',21)) mult = mult.times(10)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -65,7 +66,7 @@ addLayer("p", {
 	    title: "That gain is kinda slow, Here is a boost.",
   	    description: "Double the point generation.",
     	    cost: new Decimal(1),
-	    unlocked(){return (hasUpgrade('p',11) && !inChallenge('r',12))},
+	    unlocked(){return (hasUpgrade('p',11) && !(inChallenge('r',12) || inChallenge('r',22)))},
         },
         13: {
 	    title: "Here is another boost.",
