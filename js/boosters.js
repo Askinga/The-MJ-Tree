@@ -18,6 +18,7 @@ addLayer("b", {
 	if(hasUpgrade('b',32)) req = req.div(upgradeEffect('b',32))
 	if(hasUpgrade('b',35)) req = req.div(10000)
 	if(hasUpgrade('r',42)) req = req.div(1000000)
+	if(hasChallenge('r',21)) req = req.div(100000)
 	return req
     },              // The amount of the base needed to gain 1 of the prestige currency.                                    // Also the amount required to unlock the layer
     type: "static",                         // Determines the formula used for calculating prestige currency.
@@ -149,7 +150,7 @@ addLayer("b", {
 	if(hasUpgrade('b',22)) base = 2.25
 	if(hasUpgrade('p',33)) base = 2.35
 	if(hasChallenge('r',12)) base = 2.5
-	if(inChallenge('r',21)) base = 1.025
+	if(inChallenge('r',12) || inChallenge('r',22)) base = 1.025
 	let eff = new Decimal(base).pow(player.b.points)
        return eff
        },
