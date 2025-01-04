@@ -76,6 +76,7 @@ addLayer("a", {
     ],
     effect(){
        let base = 0
+	if(hasMilestone('a',0)) base = 0.25
 	let eff = player.a.points.add(1).pow(base)
        return eff
        },
@@ -284,5 +285,12 @@ addLayer("a", {
             gain = gain.times(diff)
             player.a.points = player.a.points.add(gain)
    	  }
+    },
+    milestones: {
+    0: {
+        requirementDescription: "1 Second Dimension",
+        effectDescription: "Antimatter boosts points.",
+        done() { return getBuyableAmount("a", 12).gte(1) }
+        },
     },
 })
