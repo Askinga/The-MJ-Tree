@@ -91,7 +91,7 @@ addLayer("a", {
             },
             display() {
                 let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Antimatter." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Dimension 1."
-                if (player.points.gte("1ee20") dis = dis + " Dimension 1 amount multiplies Antimatter generation by " + format(buyableEffect(this.layer, this.id)) + "."
+                if (player.points.gte("1ee20")) dis = dis + " Dimension 1 amount multiplies Antimatter generation by " + format(buyableEffect(this.layer, this.id)) + "."
                 return dis
             },
             canAfford() {
