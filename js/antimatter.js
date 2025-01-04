@@ -83,6 +83,19 @@ addLayer("a", {
             let desc = "which is boosting Point generation by x" + format(tmp[this.layer].effect);
             return desc;
         },
+	tabFormat: [
+        "main-display",
+        "prestige-button",
+        "resource-display",
+	"blank",
+                ["display-text", function() {
+                    return "You have "+ format(player.a.dim1amo) +" Dimension 1. (+" + format(player.a.dim1gain) + "/s)" 
+                }], 
+        "blank",
+        "buyables",
+	"blank",
+	"upgrades"
+    ],
     buyables: {
         11: {
             title: "Dimension 1",
@@ -149,7 +162,7 @@ addLayer("a", {
                 return eff
             },
             tooltip() {
-                return "Cost Formula: 11 x 2.5^Amt. Generation formula: Dimension 2 amt."
+                return "Cost Formula: 100 x 2.5^Amt. Generation formula: Dimension 2 amt."
             },
             style() {return {
                 'width': '250px',
