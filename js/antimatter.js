@@ -103,6 +103,8 @@ addLayer("a", {
         "blank",
         "buyables",
 	"blank",
+	"milestones",
+	"blank",
 	"upgrades"
     ],
     buyables: {
