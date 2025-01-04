@@ -218,7 +218,7 @@ addLayer("a", {
             if (getBuyableAmount("a", 21).gte(1)) {
                 player.a.dim2amo = player.a.dim2amo.sub(getBuyableAmount("a", 12))
                 player.a.dim2gain = player.a.dim3amo.times(player.a.dim3mul)
-                player.a.dim2amo = player.a.dim2amo.add(player.a.dim1gain.times(diff))
+                player.a.dim2amo = player.a.dim2amo.add(player.a.dim2gain.times(diff))
                 player.a.dim2amo = player.a.dim2amo.add(getBuyableAmount("a", 12))
             } else {
                 player.a.dim2amo = getBuyableAmount("a", 12)
