@@ -105,6 +105,10 @@ addLayer("a", {
                     if (player.a.dim4amo.gte(1)) return "You have "+ format(player.a.dim4amo) +" Dimension 4. (+" + format(player.a.dim4gain) + "/s)" 
                 }],
         "blank",
+		["display-text", function() {
+                    if (player.a.dim5amo.gte(1)) return "You have "+ format(player.a.dim5amo) +" Dimension 5. (+" + format(player.a.dim5gain) + "/s)" 
+                }],
+	"blank",
         "buyables",
 	"blank",
 	"milestones",
@@ -256,13 +260,57 @@ addLayer("a", {
                 'height': '115px',
             }},
         },
+    	31: {
+            title: "Dimension 5",
+            unlocked() { return (getBuyableAmount("a", 22).gte(4)) },
+            cost(x) {
+                return new Decimal(1e10).mul(Decimal.pow(10, x)).floor()
+            },
+            display() {
+                let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Antimatter." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Dimension 5."
+                if (player.points.gte("1ee20")) dis = dis + " Dimension 5 amount multiplies Dim 4 generation by " + format(buyableEffect(this.layer, this.id)) + "."
+                return dis
+            },
+            canAfford() {
+                return player.a.points.gte(this.cost())
+            },
+            buy() {
+                let cost = new Decimal(1)
+                player.a.points = player.a.points.sub(this.cost().mul(cost))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            effect(x) {
+                gensqboost = new Decimal(1.0717734627)
+                if (player.points.gte("1ee20")) {
+                    eff = new Decimal(gensqboost).pow(x)
+                } else {
+                    eff = new Decimal(1)
+                }
+                return eff
+            },
+            tooltip() {
+                return "Cost Formula: 1B x 10^Amt. Generation formula: Dimension 5 amt."
+            },
+            style() {return {
+                'width': '250px',
+                'height': '115px',
+            }},
+        },
     },
     update(diff) {
 	if(player.a.unlocked){
 		
-		player.a.dim4amo = getBuyableAmount("a", 22)
+		player.a.dim5amo = getBuyableAmount("a", 31)
             // generation adding
-            if (getBuyableAmount("a", 22).gte(1)) {
+            if (getBuyableAmount("a", 31).gte(1)) {
+                player.a.dim4amo = player.a.dim4amo.sub(getBuyableAmount("a", 21))
+                player.a.dim4gain = player.a.dim5amo.times(player.a.dim5mul)
+                player.a.dim4amo = player.a.dim4amo.add(player.a.dim4gain.times(diff))
+                player.a.dim4amo = player.a.dim4amo.add(getBuyableAmount("a", 21))
+            } else {
+                player.a.dim3amo = getBuyableAmount("a", 22)
+	    }
+	    if (getBuyableAmount("a", 22).gte(1)) {
                 player.a.dim3amo = player.a.dim3amo.sub(getBuyableAmount("a", 21))
                 player.a.dim3gain = player.a.dim4amo.times(player.a.dim4mul)
                 player.a.dim3amo = player.a.dim3amo.add(player.a.dim3gain.times(diff))
