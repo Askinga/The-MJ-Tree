@@ -264,7 +264,7 @@ addLayer("a", {
             title: "Dimension 5",
             unlocked() { return (getBuyableAmount("a", 22).gte(4)) },
             cost(x) {
-                return new Decimal(1e10).mul(Decimal.pow(10, x)).floor()
+                return new Decimal(1e9).mul(Decimal.pow(10, x)).floor()
             },
             display() {
                 let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Antimatter." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Dimension 5."
