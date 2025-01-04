@@ -143,7 +143,7 @@ addLayer("a", {
         },
         12: {
             title: "Dimension 2",
-            unlocked() { return (getBuyableAmount("a", 12).gte(3)) },
+            unlocked() { return (getBuyableAmount("a", 11).gte(3)) },
             cost(x) {
                 return new Decimal(100).mul(Decimal.pow(2.5, x)).floor()
             },
