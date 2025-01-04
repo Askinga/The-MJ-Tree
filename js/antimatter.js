@@ -91,6 +91,10 @@ addLayer("a", {
                 ["display-text", function() {
                     return "You have "+ format(player.a.dim1amo) +" Dimension 1. (+" + format(player.a.dim1gain) + "/s)" 
                 }], 
+	"blank",
+		["display-text", function() {
+                    if (player.a.dim2amo.gte(1)) return "You have "+ format(player.a.dim2amo) +" Generator 2. (+" + format(player.a.dim2gain) + "/s)" 
+                }], 
         "blank",
         "buyables",
 	"blank",
@@ -135,13 +139,13 @@ addLayer("a", {
         },
         12: {
             title: "Dimension 2",
-            unlocked() { return (getBuyableAmount("a", 11).gte(3)) },
+            unlocked() { return (getBuyableAmount("a", 12).gte(3)) },
             cost(x) {
                 return new Decimal(100).mul(Decimal.pow(2.5, x)).floor()
             },
             display() {
-                let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Antimatter." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Dimension 1."
-                if (player.points.gte("1ee20")) dis = dis + " Dimension 1 amount multiplies Antimatter generation by " + format(buyableEffect(this.layer, this.id)) + "."
+                let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Antimatter." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Dimension 2."
+                if (player.points.gte("1ee20")) dis = dis + " Dimension 2 amount multiplies Dim 1 generation by " + format(buyableEffect(this.layer, this.id)) + "."
                 return dis
             },
             canAfford() {
@@ -169,13 +173,57 @@ addLayer("a", {
                 'height': '115px',
             }},
         },
+    	21: {
+            title: "Dimension 3",
+            unlocked() { return (getBuyableAmount("a", 12).gte(3)) },
+            cost(x) {
+                return new Decimal(10000).mul(Decimal.pow(4, x)).floor()
+            },
+            display() {
+                let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Antimatter." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Dimension 3."
+                if (player.points.gte("1ee20")) dis = dis + " Dimension 3 amount multiplies Dim 2 generation by " + format(buyableEffect(this.layer, this.id)) + "."
+                return dis
+            },
+            canAfford() {
+                return player.a.points.gte(this.cost())
+            },
+            buy() {
+                let cost = new Decimal(1)
+                player.a.points = player.a.points.sub(this.cost().mul(cost))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            effect(x) {
+                gensqboost = new Decimal(1.0717734627)
+                if (player.points.gte("1ee20")) {
+                    eff = new Decimal(gensqboost).pow(x)
+                } else {
+                    eff = new Decimal(1)
+                }
+                return eff
+            },
+            tooltip() {
+                return "Cost Formula: 10,000 x 4^Amt. Generation formula: Dimension 3 amt."
+            },
+            style() {return {
+                'width': '250px',
+                'height': '115px',
+            }},
+        },
     },
     update(diff) {
 	if(player.a.unlocked){
 		
 
             // generation adding
-            if (getBuyableAmount("a", 12).gte(1)) {
+            if (getBuyableAmount("a", 21).gte(1)) {
+                player.a.dim2amo = player.a.dim2amo.sub(getBuyableAmount("a", 12))
+                player.a.dim2gain = player.a.dim3amo.times(player.a.dim3mul)
+                player.a.dim2amo = player.a.dim2amo.add(player.a.dim1gain.times(diff))
+                player.a.dim2amo = player.a.dim2amo.add(getBuyableAmount("a", 12))
+            } else {
+                player.a.dim2amo = getBuyableAmount("a", 12)
+	    }
+	    if (getBuyableAmount("a", 12).gte(1)) {
                 player.a.dim1amo = player.a.dim1amo.sub(getBuyableAmount("a", 11))
                 player.a.dim1gain = player.a.dim2amo.times(player.a.dim2mul)
                 player.a.dim1amo = player.a.dim1amo.add(player.a.dim1gain.times(diff))
