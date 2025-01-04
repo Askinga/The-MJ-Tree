@@ -5,6 +5,7 @@ addLayer("a", {
     startData() { return {                  // startData is a function that returns default data for a layer. 
         unlocked: false,                     // You can add more variables here to add them to your layer.
         points: new Decimal(10),   
+	antigain: new Decimal(0),
 	dim1amo: new Decimal(0),// "points" is the internal name for the main resource of the layer.
 	dim2amo: new Decimal(0),
 	dim3amo: new Decimal(0),
@@ -119,5 +120,60 @@ addLayer("a", {
                 'height': '115px',
             }},
         },
+        12: {
+            title: "Dimension 2",
+            unlocked() { return (getBuyableAmount("a", 11).gte(3)) },
+            cost(x) {
+                return new Decimal(100).mul(Decimal.pow(2.5, x)).floor()
+            },
+            display() {
+                let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Antimatter." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Dimension 1."
+                if (player.points.gte("1ee20")) dis = dis + " Dimension 1 amount multiplies Antimatter generation by " + format(buyableEffect(this.layer, this.id)) + "."
+                return dis
+            },
+            canAfford() {
+                return player.a.points.gte(this.cost())
+            },
+            buy() {
+                let cost = new Decimal(1)
+                player.a.points = player.a.points.sub(this.cost().mul(cost))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            effect(x) {
+                gensqboost = new Decimal(1.0717734627)
+                if (player.points.gte("1ee20")) {
+                    eff = new Decimal(gensqboost).pow(x)
+                } else {
+                    eff = new Decimal(1)
+                }
+                return eff
+            },
+            tooltip() {
+                return "Cost Formula: 11 x 2.5^Amt. Generation formula: Dimension 2 amt."
+            },
+            style() {return {
+                'width': '250px',
+                'height': '115px',
+            }},
+        },
+    },
+    update(diff) {
+	if(player.a.unlocked){
+		
+
+            // generation adding
+            if (getBuyableAmount("a", 12).gte(1)) {
+                player.a.dim1amo = player.a.dim1amo.sub(getBuyableAmount("a", 11))
+                player.a.dim1gain = player.a.dim2amo.times(player.a.dim2mul)
+                player.a.dim1amo = player.a.dim1amo.add(player.a.dim1gain.times(diff))
+                player.a.dim1amo = player.a.dim1amo.add(getBuyableAmount("a", 11))
+            } else {
+                player.a.dim1amo = getBuyableAmount("a", 11)
+	    }
+	    let gain = player.a.dim1amo.times(1).times(player.a.dim1mul)
+	    player.a.antigain = gain
+            gain = gain.times(diff)
+            player.a.points = player.a.points.add(gain)
+   	  }
     },
 })
