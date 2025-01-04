@@ -101,6 +101,10 @@ addLayer("a", {
                     if (player.a.dim3amo.gte(1)) return "You have "+ format(player.a.dim3amo) +" Dimension 3. (+" + format(player.a.dim3gain) + "/s)" 
                 }],
         "blank",
+		["display-text", function() {
+                    if (player.a.dim4amo.gte(1)) return "You have "+ format(player.a.dim4amo) +" Dimension 4. (+" + format(player.a.dim4gain) + "/s)" 
+                }],
+        "blank",
         "buyables",
 	"blank",
 	"milestones",
@@ -256,7 +260,7 @@ addLayer("a", {
     update(diff) {
 	if(player.a.unlocked){
 		
-
+		player.a.dim4amo = getBuyableAmount("a", 22)
             // generation adding
             if (getBuyableAmount("a", 22).gte(1)) {
                 player.a.dim3amo = player.a.dim3amo.sub(getBuyableAmount("a", 21))
