@@ -93,8 +93,12 @@ addLayer("a", {
                 }], 
 	"blank",
 		["display-text", function() {
-                    if (player.a.dim2amo.gte(1)) return "You have "+ format(player.a.dim2amo) +" Generator 2. (+" + format(player.a.dim2gain) + "/s)" 
+                    if (player.a.dim2amo.gte(1)) return "You have "+ format(player.a.dim2amo) +" Dimension 2. (+" + format(player.a.dim2gain) + "/s)" 
                 }], 
+	"blank",
+		["display-text", function() {
+                    if (player.a.dim3amo.gte(1)) return "You have "+ format(player.a.dim3amo) +" Dimension 3. (+" + format(player.a.dim3gain) + "/s)" 
+                }],
         "blank",
         "buyables",
 	"blank",
