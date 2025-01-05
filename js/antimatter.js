@@ -88,6 +88,10 @@ addLayer("a", {
         "main-display",
         "prestige-button",
         "resource-display",
+		["display-text", function() {
+                    return "You are gaining "+ format(player.a.antigain) +" Antimatter per second." 
+                }], 
+	"blank",
 	"blank",
                 ["display-text", function() {
                     return "You have "+ format(player.a.dim1amo) +" Dimension 1. (+" + format(player.a.dim1gain) + "/s)" 
@@ -383,6 +387,7 @@ addLayer("a", {
                 player.a.dim1amo = getBuyableAmount("a", 11)
 	    }
 	    let gain = player.a.dim1amo.times(1).times(player.a.dim1mul)
+	    if(hasMilestone('a',1)) gain = gain.times(2)
 	    player.a.antigain = gain
             gain = gain.times(diff)
             player.a.points = player.a.points.add(gain)
@@ -393,6 +398,11 @@ addLayer("a", {
         requirementDescription: "1 Second Dimension",
         effectDescription: "Antimatter boosts points.",
         done() { return getBuyableAmount("a", 12).gte(1) }
+        },
+    1: {
+        requirementDescription: "2 Forth Dimensions",
+        effectDescription: "1st Dimension generates Antimatter x2 more quickly.",
+        done() { return getBuyableAmount("a", 22).gte(2) }
         },
     },
 })
