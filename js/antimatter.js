@@ -343,18 +343,18 @@ addLayer("a", {
 		player.a.dim6amo = getBuyableAmount("a", 32)
             // generation adding
             if (getBuyableAmount("a", 32).gte(1)) {
-                player.a.dim5amo = player.a.dim5amo.sub(getBuyableAmount("a", 21))
+                player.a.dim5amo = player.a.dim5amo.sub(getBuyableAmount("a", 31))
                 player.a.dim5gain = player.a.dim6amo.times(player.a.dim5mul)
                 player.a.dim5amo = player.a.dim5amo.add(player.a.dim4gain.times(diff))
-                player.a.dim5amo = player.a.dim5amo.add(getBuyableAmount("a", 21))
+                player.a.dim5amo = player.a.dim5amo.add(getBuyableAmount("a", 31))
             } else {
                 player.a.dim5amo = getBuyableAmount("a", 31)
 	    }
 	    if (getBuyableAmount("a", 31).gte(1)) {
-                player.a.dim4amo = player.a.dim4amo.sub(getBuyableAmount("a", 21))
+                player.a.dim4amo = player.a.dim4amo.sub(getBuyableAmount("a", 22))
                 player.a.dim4gain = player.a.dim5amo.times(player.a.dim5mul)
                 player.a.dim4amo = player.a.dim4amo.add(player.a.dim4gain.times(diff))
-                player.a.dim4amo = player.a.dim4amo.add(getBuyableAmount("a", 21))
+                player.a.dim4amo = player.a.dim4amo.add(getBuyableAmount("a", 22))
             } else {
                 player.a.dim4amo = getBuyableAmount("a", 22)
 	    }
