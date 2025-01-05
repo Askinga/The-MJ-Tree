@@ -340,13 +340,57 @@ addLayer("a", {
                 'height': '115px',
             }},
         },
+	41: {
+            title: "Dimension 7",
+            unlocked() { return (getBuyableAmount("a", 32).gte(2)) },
+            cost(x) {
+                return new Decimal(2e14).mul(Decimal.pow(250, x)).floor()
+            },
+            display() {
+                let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Antimatter." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Dimension 7."
+                if (player.points.gte("1ee20")) dis = dis + " Dimension 7 amount multiplies Dim 6 generation by " + format(buyableEffect(this.layer, this.id)) + "."
+                return dis
+            },
+            canAfford() {
+                return player.a.points.gte(this.cost())
+            },
+            buy() {
+                let cost = new Decimal(1)
+                player.a.points = player.a.points.sub(this.cost().mul(cost))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            effect(x) {
+                gensqboost = new Decimal(1.0717734627)
+                if (player.points.gte("1ee20")) {
+                    eff = new Decimal(gensqboost).pow(x)
+                } else {
+                    eff = new Decimal(1)
+                }
+                return eff
+            },
+            tooltip() {
+                return "Cost Formula: 250T x 250^Amt. Generation formula: Dimension 7 amt."
+            },
+            style() {return {
+                'width': '250px',
+                'height': '115px',
+            }},
+        },
     },
     update(diff) {
 	if(player.a.unlocked){
 		
-		player.a.dim6amo = getBuyableAmount("a", 32)
+		player.a.dim7amo = getBuyableAmount("a", 41)
             // generation adding
-            if (getBuyableAmount("a", 32).gte(1)) {
+            if (getBuyableAmount("a", 41).gte(1)) {
+                player.a.dim6amo = player.a.dim6amo.sub(getBuyableAmount("a", 32))
+                player.a.dim6gain = player.a.dim7amo.times(player.a.dim7mul)
+                player.a.dim6amo = player.a.dim6amo.add(player.a.dim6gain.times(diff))
+                player.a.dim6amo = player.a.dim6amo.add(getBuyableAmount("a", 32))
+            } else {
+                player.a.dim6amo = getBuyableAmount("a", 32)
+	    }
+	    if (getBuyableAmount("a", 32).gte(1)) {
                 player.a.dim5amo = player.a.dim5amo.sub(getBuyableAmount("a", 31))
                 player.a.dim5gain = player.a.dim6amo.times(player.a.dim5mul)
                 player.a.dim5amo = player.a.dim5amo.add(player.a.dim5gain.times(diff))
@@ -388,6 +432,7 @@ addLayer("a", {
 	    }
 	    let gain = player.a.dim1amo.times(1).times(player.a.dim1mul)
 	    if(hasMilestone('a',1)) gain = gain.times(2)
+	    if(hasMilestone('a',2)) gain = gain.times(1.25)
 	    player.a.antigain = gain
             gain = gain.times(diff)
             player.a.points = player.a.points.add(gain)
@@ -402,7 +447,15 @@ addLayer("a", {
     1: {
         requirementDescription: "2 Forth Dimensions",
         effectDescription: "1st Dimension generates Antimatter x2 more quickly.",
-        done() { return getBuyableAmount("a", 22).gte(2) }
+        done() { return getBuyableAmount("a", 22).gte(2) },
+	unlocked(){return hasMilestone('a',0)}
+        },
+    },
+    2: {
+        requirementDescription: "2 Sixth Dimensions",
+        effectDescription: "1st Dimension generates Antimatter x1.25 more quickly.",
+        done() { return getBuyableAmount("a", 32).gte(2) },
+	unlocked(){return hasMilestone('a',1)}
         },
     },
 })
