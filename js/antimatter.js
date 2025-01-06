@@ -450,7 +450,6 @@ addLayer("a", {
         done() { return getBuyableAmount("a", 22).gte(2) },
 	unlocked(){return hasMilestone('a',0)}
         },
-    },
     2: {
         requirementDescription: "2 Sixth Dimensions",
         effectDescription: "1st Dimension generates Antimatter x1.25 more quickly.",
