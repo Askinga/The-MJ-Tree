@@ -38,7 +38,8 @@ addLayer("p", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     passiveGeneration(){
 	gen = new Decimal(0)
-	    if(hasUpgrade('g', 23)) gen = gen.add(0.25)
+	    if(hasMilestone('b', 2)) gen = gen.add(0.15)
+	    if(hasUpgrade('g', 23)) gen = gen.add(0.10)
 	    if(hasUpgrade('r', 12)) gen = gen.add(0.75)
 	    if(hasUpgrade('r', 23)) gen = gen.add(1.5)
 	    if(hasUpgrade('p', 32)) gen = gen.times(5)
