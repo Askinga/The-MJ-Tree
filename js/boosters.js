@@ -165,9 +165,14 @@ addLayer("b", {
         done() { return player.b.points.gte(3) }
     },
     1: {
-        requirementDescription: "8 Boosters",
+        requirementDescription: "6 Boosters",
         effectDescription: "Keep second row of prestige upgrades.",
-        done() { return player.b.points.gte(8) }
+        done() { return player.b.points.gte(6) }
+    },
+    2: {
+        requirementDescription: "9 Boosters",
+        effectDescription: "15% Prestige Points on reset per second.",
+        done() { return player.b.points.gte(9) }
     },
     },
 })
