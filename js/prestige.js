@@ -12,7 +12,7 @@ addLayer("p", {
     
         // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
         let keptUpgrades = [];
-        for(i=1;i<5;i++){ //rows
+        for(i=1;i<6;i++){ //rows
             for(v=1;v<2;v++){ //columns
               if ((hasMilestone('b', 0)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
             }
