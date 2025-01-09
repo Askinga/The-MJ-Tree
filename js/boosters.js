@@ -162,7 +162,12 @@ addLayer("b", {
     0: {
         requirementDescription: "3 Boosters",
         effectDescription: "Keep first row of prestige upgrades.",
-        done() { return player.b.points.gte(1) }
+        done() { return player.b.points.gte(3) }
+    },
+    1: {
+        requirementDescription: "8 Boosters",
+        effectDescription: "Keep second row of prestige upgrades.",
+        done() { return player.b.points.gte(8) }
     },
     },
 })
