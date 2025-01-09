@@ -6,6 +6,28 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     }},
+    doReset(basic) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[basic].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        for(i=1;i<5;i++){ //rows
+            for(v=1;v<2;v++){ //columns
+              if ((hasMilestone('b', 0)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+            }
+	}
+            
+    
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+    
+        // Stage 4, do the actual data reset
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    }, 
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "prestige points", // Name of prestige currency
