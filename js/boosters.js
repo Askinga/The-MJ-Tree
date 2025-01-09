@@ -87,7 +87,7 @@ addLayer("b", {
 	},
         23: {
 	    title: "Prestige+",
-	    description: "Prestige point gain is multiplied by 3. And autobuy prestige upgrades.",
+	    description: "Prestige point gain is multiplied by 3. And 2x points",
 	    cost: new Decimal(7),
 	    unlocked(){return (hasUpgrade('b',22))}
 	},
@@ -158,4 +158,10 @@ addLayer("b", {
             let desc = "which is boosting Point generation by x" + format(tmp[this.layer].effect);
             return desc;
         },
+    milestones: {
+    0: {
+        requirementDescription: "3 Boosters",
+        effectDescription: "Keep first row of prestige upgrades.",
+        done() { return player.b.points.gte(1) }
+    },
 })
