@@ -6,9 +6,9 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    doReset(basic) {
+    doReset(p) {
         // Stage 1, almost always needed, makes resetting this layer not delete your progress
-        if (layers[basic].row <= this.row) return;
+        if (layers[p].row <= this.row) return;
     
         // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
         let keptUpgrades = [];
