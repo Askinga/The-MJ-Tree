@@ -164,4 +164,5 @@ addLayer("b", {
         effectDescription: "Keep first row of prestige upgrades.",
         done() { return player.b.points.gte(1) }
     },
+    },
 })
