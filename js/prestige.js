@@ -16,6 +16,9 @@ addLayer("p", {
             for(v=1;v<2;v++){ //columns
               if ((hasMilestone('b', 0)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
             }
+	    for(v=2;v<3;v++){ //columns
+              if ((hasMilestone('b', 1)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+	    }
 	}
             
     
@@ -77,7 +80,6 @@ addLayer("p", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    autoUpgrade(){return (hasUpgrade('b', 23) || hasUpgrade('r',13))},
     layerShown(){return true},
     upgrades: {
         11: {
