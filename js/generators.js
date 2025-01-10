@@ -146,7 +146,7 @@ addLayer("g", {
 	},
         23: {
 	    title: "Layer 1 fully automated",
-	    description: "+25% Prestige Points on reset per second.",
+	    description: "+10% Prestige Points on reset per second.",
 	    cost: new Decimal(9),
 	    unlocked(){return (hasUpgrade('g', 22))}
 	},
