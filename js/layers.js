@@ -12,7 +12,7 @@ addLayer("pr", {
     color: "#d17c36",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "Power Rank", // Name of prestige currency
-    baseResource: "points", // Name of resource prestige is based on
+    baseResource: "Strength", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 1, // Prestige currency exponent
@@ -34,7 +34,13 @@ addLayer("pr", {
        return eff
        },
         effectDescription() {
-            let desc = "which is boosting Point generation by x" + format(tmp[this.layer].effect);
+            let desc = "which is boosting Strength generation by x" + format(tmp[this.layer].effect);
             return desc;
         },
+    milestones: {
+    0: {
+        requirementDescription: "2 Power Rank",
+        effectDescription: "Power Rank Milestone 1: 2x strength.",
+        done() { return player.pr.points.gte(2) }
+    },
 })
