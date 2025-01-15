@@ -9,7 +9,7 @@ addLayer("pr", {
 	        best: new Decimal(0),
 	    	resets: new Decimal(0),
     }},
-    color: "#4BDC13",
+    color: "#d17c36",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "Power Rank", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
@@ -27,5 +27,14 @@ addLayer("pr", {
     hotkeys: [
         {key: "p", description: "P: Reset for Power Rank", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true}
+    layerShown(){return true},
+    effect(){
+	let base = 1.1
+	let eff = new Decimal(base).pow(player.pr.points)
+       return eff
+       },
+        effectDescription() {
+            let desc = "which is boosting Point generation by x" + format(tmp[this.layer].effect);
+            return desc;
+        },
 })
