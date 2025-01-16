@@ -38,9 +38,10 @@ addLayer("pr", {
             return desc;
         },
     milestones: {
-    0: {
+    	0: {
         requirementDescription: "2 Power Rank",
         effectDescription: "Power Rank Milestone 1: 2x strength.",
         done() { return player.pr.points.gte(2) }
+    	},
     },
 })
