@@ -49,7 +49,7 @@ addLayer("pr", {
 	"upgrades",
 	"blank",
 	["display-text",
-			function() {return "<h1>Milestones</h1>":""},
+			function() {return ''+(player.points.gte(0)?"<h1>Milestones</h1>":"")},
 				{}],
 	"blank",
 	"milestones"
