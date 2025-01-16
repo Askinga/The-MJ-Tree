@@ -67,4 +67,14 @@ addLayer("pr", {
 	unlocked(){ return (hasMilestone('pr',0))}
     	},
     },
+    upgrades:{
+	11:{
+	    title: "#1",
+	    description: "1.25x Strength",
+	    cost: new Decimal(200),
+	    currencyDisplayName: "Strength",
+            currencyInternalName: "points",
+	    unlocked(){ return (hasMilestone('pr',1))}
+	},
+    },
 })
