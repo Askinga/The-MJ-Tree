@@ -48,6 +48,10 @@ addLayer("pr", {
 	"blank",
 	"upgrades",
 	"blank",
+	["display-text",
+			function() {return "<h1>Milestones</h1>":"")},
+				{}],
+	"blank",
 	"milestones"
     ],
     milestones: {
