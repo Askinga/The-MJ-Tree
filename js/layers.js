@@ -76,5 +76,13 @@ addLayer("pr", {
             currencyInternalName: "points",
 	    unlocked(){ return (hasMilestone('pr',1))}
 	},
+    	12:{
+	    title: "#2",
+	    description: "1.5x Strength",
+	    cost: new Decimal(500),
+	    currencyDisplayName: "Strength",
+            currencyInternalName: "points",
+	    unlocked(){ return (hasUpgrade('pr',11))}
+	},
     },
 })
