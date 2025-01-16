@@ -46,7 +46,8 @@ addLayer("pr", {
     	1: {
         requirementDescription: "4 Power Rank",
         effectDescription: "Power Rank Milestone 2: Unlock Strength Upgrades and 2x Strength.",
-        done() { return player.pr.points.gte(4) }
+        done() { return player.pr.points.gte(4) },
+	unlocked(){ return (hasMilestone('pr',0))}
     	},
     },
 })
