@@ -37,6 +37,19 @@ addLayer("pr", {
             let desc = "which is boosting Strength generation by x" + format(tmp[this.layer].effect);
             return desc;
         },
+        tabFormat: [
+        "main-display",
+        "prestige-button",
+        "resource-display",
+	"blank",
+	["display-text",
+			function() {return ''+(hasMilestone('pr', 1)?"<h1>Strength Upgrades</h1>":"")},
+				{}],
+	"blank",
+	"upgrades",
+	"blank",
+	"milestones"
+    ],
     milestones: {
     	0: {
         requirementDescription: "2 Power Rank",
