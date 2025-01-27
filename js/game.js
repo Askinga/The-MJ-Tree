@@ -434,3 +434,73 @@ var interval = setInterval(function() {
 }, 50)
 
 setInterval(function() {needCanvasUpdate = true}, 500)
+
+let audio = new Audio();
+  let isAudioInitialized = false;
+  let currentAudioSrc = '';  // Track the currently playing audio source
+  let volume = 1.0; // Default volume
+  
+  // Load audio state from local storage on page load
+  window.onload = function() {
+	  const savedAudioSrc = localStorage.getItem('audioSrc');
+	  const savedVolume = localStorage.getItem('volume');
+  
+	  if (savedAudioSrc) {
+		  currentAudioSrc = savedAudioSrc;
+		  volume = savedVolume ? parseFloat(savedVolume) : 1.0; // Use saved volume or default to 1.0
+		  audio.src = currentAudioSrc;
+		  audio.volume = volume;
+		  audio.loop = true;
+		  isAudioInitialized = true;
+  
+		  // Attempt to play the audio
+		  audio.play().catch(function(err) {
+			  console.log("Audio playback failed: ", err);
+		  });
+	  }
+  };
+  
+  function playAndLoopAudio(audioSrc, newVolume) {
+	  // Only proceed if the new audioSrc is different from the current one
+	  if (audioSrc !== currentAudioSrc) {
+		  if (isAudioInitialized) {
+			  // Stop the currently playing audio before switching
+			  audio.pause();
+			  audio.currentTime = 0;
+			  isAudioInitialized = false;
+		  }
+  
+		  // Set the new audio source
+		  audio.src = audioSrc;
+		  currentAudioSrc = audioSrc; // Update the current playing audio source
+		  audio.loop = true;
+		  isAudioInitialized = true;
+		  audio.volume = newVolume; // Set initial volume
+		  localStorage.setItem('audioSrc', audioSrc); // Save to local storage
+		  localStorage.setItem('volume', newVolume); // Save volume to local storage
+		  
+		  // Play the new audio
+		  audio.play().catch(function(err) {
+			  console.log("Audio playback failed: ", err);
+		  });
+	  } else {
+		  // Update volume if the same audio source is called again
+		  audio.volume = newVolume;
+		  localStorage.setItem('volume', newVolume); // Update volume in local storage
+		  audio.play().catch(function(err) {
+			  console.log("Audio playback failed: ", err);
+		  });
+	  }
+  }
+  
+  function stopAudio() {
+	  if (isAudioInitialized) {
+		  audio.pause();
+		  audio.currentTime = 0;
+		  isAudioInitialized = false;
+		  currentAudioSrc = ''; // Reset the current audio source
+		  localStorage.removeItem('audioSrc'); // Clear the saved audio source
+		  localStorage.removeItem('volume'); // Clear the saved volume
+	  }
+  }
+  
