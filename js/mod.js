@@ -13,12 +13,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.3",
+	num: "0.3.0.1",
 	name: "Not Finished!",
 }
 
 let changelog = `<h1>Changelog:</h1><br/>
-              <h2>v0.3</h2><br/>
+              <h4>v0.3.0.1</h4><br/>
+	       - Migrated to TMT v2.7.<br/>
+	       <br/>
+	      <h2>v0.3</h2><br/>
 	       - Added MUSIC!!! 🎶 (currently has 2 songs, but will be adding more soon!)<br/>
 	       - Added the Achevements layer and added 10 achevements (one being a special one)<br/>
 	       - Added 1 layers: <spoiler>Division.</spoiler><br/>
