@@ -15,6 +15,7 @@ function getStartOptions() {
 		oldStyle: false,
 		forceTooltips: true,
 		hideMilestonePopups: false,
+		musicToggle: "true",
 	}
 }
 
@@ -27,6 +28,8 @@ function toggleOpt(name) {
 		changeTreeQuality();
 	if (name == "oldStyle")
 		updateStyle();
+	if (name == "musicToggle")
+		updateMusicToggle();	
 }
 var styleCooldown = 0;
 function updateStyle() {
@@ -79,3 +82,13 @@ function milestoneShown(layer, id) {
 }
 
 let formatOption = (opt) => opt ? 'ON' : 'OFF'
+function updateMusicToggle() {
+	switch (options.musicToggle) {
+		case "true":
+			options.musicToggle = "false"
+			break;
+		case "false":
+			options.musicToggle = "true"
+			break;
+	}
+}
