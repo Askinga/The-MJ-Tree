@@ -15,6 +15,7 @@ function getStartOptions() {
 		oldStyle: false,
 		forceTooltips: true,
 		hideMilestonePopups: false,
+		musicVolume: 2,
 		musicToggle: "true",
 	}
 }
