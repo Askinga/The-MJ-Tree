@@ -130,7 +130,7 @@ addLayer("pr", {
     buyables: {
     11: {
 	title: "Strength Buyable 1",
-        cost(x) { return new Decimal(10000).pow(x.mul(0.2)) },
+        cost(x) { return new Decimal(10000).pow(x.mul(0.25).add(1)) },
         display() {
             return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Strength." + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Strength gain by x" + format(buyableEffect(this.layer, this.id))
         },
