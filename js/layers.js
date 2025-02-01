@@ -84,5 +84,29 @@ addLayer("pr", {
             currencyInternalName: "points",
 	    unlocked(){ return (hasUpgrade('pr',11))}
 	},
+   	13:{
+	    title: "#3",
+	    description: "1.75x Strength",
+	    cost: new Decimal(1000),
+	    currencyDisplayName: "Strength",
+            currencyInternalName: "points",
+	    unlocked(){ return (hasUpgrade('pr',12))}
+	},
+    	14:{
+	    title: "#4",
+	    description: "2x Strength",
+	    cost: new Decimal(2000),
+	    currencyDisplayName: "Strength",
+            currencyInternalName: "points",
+	    unlocked(){ return (hasUpgrade('pr',13))}
+	},
+    	15:{
+	    title: "#5",
+	    description: "2.25x Strength",
+	    cost: new Decimal(4000),
+	    currencyDisplayName: "Strength",
+            currencyInternalName: "points",
+	    unlocked(){ return (hasUpgrade('pr',14))}
+	},
     },
 })
