@@ -74,9 +74,15 @@ addLayer("pr", {
     	},
         2: {
         requirementDescription: "10 Power Rank",
-        effectDescription: "Power Rank Milestone 2: Unlock Strength Buyables and 2x Strength.",
+        effectDescription: "Power Rank Milestone 2: Unlock Strength Buyables.",
         done() { return player.pr.points.gte(10) },
 	unlocked(){ return (hasMilestone('pr',1))}
+    	},
+	3: {
+        requirementDescription: "2 Strength Buyable 1",
+        effectDescription: "Power Rank Milestone 4: 1.5x Strength and unlock more Strength Upgrades",
+        done() { return getBuyableAmount('pr', 11).gte(2) },
+	unlocked(){ return (hasMilestone('pr',2))}
     	},
     },
     upgrades:{
@@ -123,6 +129,7 @@ addLayer("pr", {
     },
     buyables: {
     11: {
+	title: "Strength Buyable 1",
         cost(x) { return new Decimal(10000).pow(x.mul(0.2)) },
         display() { return "1.25x Strength." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Points." + "<br>Bought: " + getBuyableAmount(this.layer, this.id)},
         canAfford() { return player.points.gte(this.cost()) },
@@ -131,6 +138,13 @@ addLayer("pr", {
             setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
         },
         unlocked() { return (hasMilestone('pr', 2)) },
+	effect(x) {
+            let base1 = new Decimal(1.25)
+            let base2 = x
+	    let expo = new Decimal(1)
+            let eff = base1.pow(Decimal.pow(base2, expo))
+            return eff
+        },
     },
     },
 })
