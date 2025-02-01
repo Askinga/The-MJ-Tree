@@ -131,8 +131,10 @@ addLayer("pr", {
     11: {
 	title: "Strength Buyable 1",
         cost(x) { return new Decimal(10000).pow(x.mul(0.2)) },
-        display() { return "1.25x Strength." + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Points." + "<br>Bought: " + getBuyableAmount(this.layer, this.id)},
-        canAfford() { return player.points.gte(this.cost()) },
+        display() {
+            return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Strength." + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Strength gain by x" + format(buyableEffect(this.layer, this.id))
+        },
+	canAfford() { return player.points.gte(this.cost()) },
         buy() {
             player.points = player.points.sub(this.cost())
             setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
