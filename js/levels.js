@@ -66,11 +66,11 @@ addLayer("l", {
             instant: false,
             fillStyle: { 'background-color': "#8aff8a" },
 	    progress() {
-                let prog = player.points.log(getNextAt('l'))
+                let prog = player.l.xp.log(getNextAt('l'))
                 return prog
 	    },
             display() {
-                    return 'Progress to next Level: ' + format(player.points.log(getNextAt('l')).times(100)) + '%'
+                    return 'Progress to next Level: ' + format(player.l.xp.log(getNextAt('l')).times(100)) + '%'
             },
         },
     },
