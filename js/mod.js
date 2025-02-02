@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The Trove Tree",
 	author: "Askinga",
 	pointsName: "strength",
-	modFiles: ["layers.js", "tree.js"],
+	modFiles: ["layers.js", "levels.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
