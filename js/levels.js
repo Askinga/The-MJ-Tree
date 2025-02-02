@@ -38,6 +38,11 @@ addLayer("l", {
         },
         tabFormat: [
         "main-display",
+	"blank",
+	["bar", "bar1"],
+	"blank",
+	"prestige-button",
+	"blank",
         "resource-display",
     ],
     resetsNothing(){return true},
@@ -53,5 +58,21 @@ addLayer("l", {
             gain = gain.times(diff)
             player.l.xp = player.l.xp.add(gain)
         }
+    },
+    bars: {
+        bar1: {
+            direction: RIGHT,
+            width: 300,
+            height: 25,
+            instant: false,
+            fillStyle: { 'background-color': "#106b04" },
+	    progress() {
+                let prog = player.points.log(getNextAt('l'))
+                return prog
+	    },
+            display() {
+                    return 'Progress to next Level: ' + format(player.points.log(getNextAt('l')).times(100)) + '%'
+            },
+        },
     },
 })
