@@ -74,7 +74,7 @@ addLayer("pr", {
     	},
         2: {
         requirementDescription: "10 Power Rank",
-        effectDescription: "Power Rank Milestone 2: Unlock Strength Buyables.",
+        effectDescription: "Power Rank Milestone 3: Unlock Strength Buyables.",
         done() { return player.pr.points.gte(10) },
 	unlocked(){ return (hasMilestone('pr',1))}
     	},
@@ -126,6 +126,46 @@ addLayer("pr", {
             currencyInternalName: "points",
 	    unlocked(){ return (hasUpgrade('pr',14))}
 	},
+    	21:{
+	    title: "#6",
+	    description: "2x Strength",
+	    cost: new Decimal(100000),
+	    currencyDisplayName: "Strength",
+            currencyInternalName: "points",
+	    unlocked(){ return (hasMilestone('pr',3))}
+	},
+   	22:{
+	    title: "#7",
+	    description: "1.75x Strength",
+	    cost: new Decimal(200000),
+	    currencyDisplayName: "Strength",
+            currencyInternalName: "points",
+	    unlocked(){ return (hasUpgrade('pr',21))}
+	},
+   	23:{
+	    title: "#8",
+	    description: "1.5x Strength",
+	    cost: new Decimal(400000),
+	    currencyDisplayName: "Strength",
+            currencyInternalName: "points",
+	    unlocked(){ return (hasUpgrade('pr',22))}
+	},
+    	24:{
+	    title: "#9",
+	    description: "1.25x Strength",
+	    cost: new Decimal(750000),
+	    currencyDisplayName: "Strength",
+            currencyInternalName: "points",
+	    unlocked(){ return (hasUpgrade('pr',23))}
+	},
+    	25:{
+	    title: "#10",
+	    description: "Strength Buyable 1 gives 1.3x per bought instead of 1.25x.",
+	    cost: new Decimal(1200000),
+	    currencyDisplayName: "Strength",
+            currencyInternalName: "points",
+	    unlocked(){ return (hasUpgrade('pr',24))}
+	},
     },
     buyables: {
     11: {
@@ -142,6 +182,7 @@ addLayer("pr", {
         unlocked() { return (hasMilestone('pr', 2)) },
 	effect(x) {
             let base1 = new Decimal(1.25)
+	    if(hasUpgrade('pr',25)) base1 = 1.3
             let base2 = x
 	    let expo = new Decimal(1)
             let eff = base1.pow(Decimal.pow(base2, expo))
