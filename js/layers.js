@@ -84,6 +84,12 @@ addLayer("pr", {
         done() { return getBuyableAmount('pr', 11).gte(2) },
 	unlocked(){ return (hasMilestone('pr',2))}
     	},
+	4: {
+        requirementDescription: "Strength Upgrade 10 and 18 Power Rank",
+        effectDescription: "Power Rank Milestone 5: Unlock Levels",
+        done() { return (hasUpgrade('pr',25) && player.pr.points.gte(18)) },
+	unlocked(){ return (hasMilestone('pr',3))}
+    	},
     },
     upgrades:{
 	11:{
