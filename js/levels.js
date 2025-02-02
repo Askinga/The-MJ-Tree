@@ -25,7 +25,7 @@ addLayer("l", {
         return new Decimal(1)
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
-    canReset(){return false},
+    canReset(){return true},
     layerShown(){return hasMilestone('pr',4)},
     effect(){
 	let base = 1.2
