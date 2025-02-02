@@ -65,6 +65,7 @@ addLayer("l", {
             height: 25,
             instant: false,
             fillStyle: { 'background-color': "#8aff8a" },
+	    textStyle: { 'background-color': "#000000" },
 	    progress() {
                 let prog = player.l.xp.log(getNextAt('l'))
                 return prog
