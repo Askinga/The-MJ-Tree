@@ -65,7 +65,7 @@ addLayer("l", {
             width: 300,
             height: 25,
             instant: false,
-            fillStyle: { 'background-color': "#106b04" },
+            fillStyle: { 'background-color': "#8aff8a" },
 	    progress() {
                 let prog = player.points.log(getNextAt('l'))
                 return prog
