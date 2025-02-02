@@ -49,12 +49,12 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added Prestige Generators and Boosters.<br>
 	     
       
-      		<h2>v0.1.1</h2><br>
+      		<h3>v0.1.1</h3><br>
 		- Fixed a bug where the game is partially frozen<br>
     		- Changed the font to original<br>
 	     
       
-      		<h3>v0.1.0</h3><br>
+      		<h2>v0.1.0</h2><br>
 		- Added 21 upgrades<br>
 		- Added 2 milestones.<br>
   		- Added 1 layer.<br>
