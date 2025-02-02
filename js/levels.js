@@ -42,7 +42,7 @@ addLayer("l", {
 	"blank",
 	"prestige-button",
 	"blank",
-        "resource-display",
+	["display-text", function() { return 'You have ' + format(player.l.xp) + ' XP (' + format(player.l.xpg) + '/s)'}],
     ],
     resetsNothing(){return true},
   branches: ["pr"],
