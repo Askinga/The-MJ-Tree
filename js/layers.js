@@ -79,9 +79,9 @@ addLayer("pr", {
 	unlocked(){ return (hasMilestone('pr',1))}
     	},
 	3: {
-        requirementDescription: "2 Strength Buyable 1",
+        requirementDescription: "3 Strength Buyable 1",
         effectDescription: "Power Rank Milestone 4: 1.5x Strength and unlock more Strength Upgrades",
-        done() { return getBuyableAmount('pr', 11).gte(2) },
+        done() { return getBuyableAmount('pr', 11).gte(3) },
 	unlocked(){ return (hasMilestone('pr',2))}
     	},
 	4: {
@@ -135,7 +135,7 @@ addLayer("pr", {
     	21:{
 	    title: "#6",
 	    description: "2x Strength",
-	    cost: new Decimal(100000),
+	    cost: new Decimal(50000),
 	    currencyDisplayName: "Strength",
             currencyInternalName: "points",
 	    unlocked(){ return (hasMilestone('pr',3))}
@@ -143,7 +143,7 @@ addLayer("pr", {
    	22:{
 	    title: "#7",
 	    description: "1.75x Strength",
-	    cost: new Decimal(200000),
+	    cost: new Decimal(100000),
 	    currencyDisplayName: "Strength",
             currencyInternalName: "points",
 	    unlocked(){ return (hasUpgrade('pr',21))}
@@ -151,7 +151,7 @@ addLayer("pr", {
    	23:{
 	    title: "#8",
 	    description: "1.5x Strength",
-	    cost: new Decimal(400000),
+	    cost: new Decimal(200000),
 	    currencyDisplayName: "Strength",
             currencyInternalName: "points",
 	    unlocked(){ return (hasUpgrade('pr',22))}
@@ -159,7 +159,7 @@ addLayer("pr", {
     	24:{
 	    title: "#9",
 	    description: "1.25x Strength",
-	    cost: new Decimal(750000),
+	    cost: new Decimal(400000),
 	    currencyDisplayName: "Strength",
             currencyInternalName: "points",
 	    unlocked(){ return (hasUpgrade('pr',23))}
@@ -167,7 +167,7 @@ addLayer("pr", {
     	25:{
 	    title: "#10",
 	    description: "Strength Buyable 1 gives 1.3x per bought instead of 1.25x.",
-	    cost: new Decimal(1200000),
+	    cost: new Decimal(800000),
 	    currencyDisplayName: "Strength",
             currencyInternalName: "points",
 	    unlocked(){ return (hasUpgrade('pr',24))}
@@ -176,7 +176,7 @@ addLayer("pr", {
     buyables: {
     11: {
 	title: "Strength Buyable 1",
-        cost(x) { return new Decimal(10).pow(x.add(3)) },
+        cost(x) { return new Decimal(10).pow(x.add(2)) },
         display() {
             return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Strength." + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Strength gain by x" + format(buyableEffect(this.layer, this.id))
         },
