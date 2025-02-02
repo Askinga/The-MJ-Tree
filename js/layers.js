@@ -753,11 +753,38 @@ addLayer("A", {
     },
     clickables:{
         11:{
-            display(){return `Use this if you are stuck`},
-            style:{"height":"150px","width":"150px","border-radius":"0%","border":"6px solid","border-color":"#31aeb0","color":"#31aeb0","font-size":"15px","background-color":"#00000000"},
-            unlocked(){return true},
+            display(){return `Prestige`},
+            style:{"height":"150px","width":"150px","border-radius":"0%","border":"6px solid","border-color":"#ff0000","color":"#ff0000","font-size":"15px","background-color":"#00000000"},
+            unlocked(){return player.p.unlocked},
             onClick(){
-                player.tab='p'
+                player.tab='up'
+            },
+            canClick(){return true}
+        },
+    	12:{
+            display(){return `Upgraded Prestige`},
+            style:{"height":"150px","width":"150px","border-radius":"0%","border":"6px solid","border-color":"#ff3c00","color":"#ff3c00","font-size":"15px","background-color":"#00000000"},
+            unlocked(){return player.up.unlocked},
+            onClick(){
+                player.tab='up'
+            },
+            canClick(){return true}
+        },
+   	13:{
+            display(){return `Super Prestige`},
+            style:{"height":"150px","width":"150px","border-radius":"0%","border":"6px solid","border-color":"#ff5400","color":"#ff5400","font-size":"15px","background-color":"#00000000"},
+            unlocked(){return player.sp.unlocked},
+            onClick(){
+                player.tab='sp'
+            },
+            canClick(){return true}
+        },
+    	14:{
+            display(){return `Infinity`},
+            style:{"height":"150px","width":"150px","border-radius":"0%","border":"6px solid","border-color":"#bb00ff","color":"#bb00ff","font-size":"15px","background-color":"#00000000"},
+            unlocked(){return player.I.unlocked},
+            onClick(){
+                player.tab='I'
             },
             canClick(){return true}
         },
