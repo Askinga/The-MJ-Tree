@@ -18,7 +18,9 @@ let VERSION = {
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-            	<h3>v0.4.0</h3><br>
+            	 <h3>v0.4.1</h3><br>
+	        - Added 4 clickables in the achievement layer.<br>
+	    	 <h2>v0.4.0</h2><br>
 		- Added 12 upgrades<br>
   		- Added 1 progression layer.<br>
       		- Added 6 achievements.<br>
@@ -29,7 +31,7 @@ let changelog = `<h1>Changelog:</h1><br>
 	        - Added 3 options.<br>
 	     
       
-      		<h3>v0.3.0</h3><br>
+      		<h2>v0.3.0</h2><br>
 		- Added 16 upgrades<br>
   		- Added 1 layer.<br>
       		- Added 5 achievements.<br>
@@ -38,7 +40,7 @@ let changelog = `<h1>Changelog:</h1><br>
                 - Changed the font.<br>
 	     
       
-		<h3>v0.2.0</h3><br>
+		<h2>v0.2.0</h2><br>
 		- Added 16 upgrades<br>
 		- Added 1 milestones.<br>
   		- Added 1 layer.<br>
@@ -47,7 +49,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added Prestige Generators and Boosters.<br>
 	     
       
-      		<h3>v0.1.1</h3><br>
+      		<h2>v0.1.1</h2><br>
 		- Fixed a bug where the game is partially frozen<br>
     		- Changed the font to original<br>
 	     
@@ -59,7 +61,7 @@ let changelog = `<h1>Changelog:</h1><br>
     		- Changed the font.<br>
 	
 	     
-		<h3>v0.0.0</h3><br>
+		<h2>v0.0.0</h2><br>
 		- Added things.<br>
 		- Added stuff.`
 
