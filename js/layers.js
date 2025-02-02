@@ -757,7 +757,7 @@ addLayer("A", {
             style:{"height":"150px","width":"150px","border-radius":"0%","border":"6px solid","border-color":"#ff0000","color":"#ff0000","font-size":"15px","background-color":"#00000000"},
             unlocked(){return player.p.unlocked},
             onClick(){
-                player.tab='up'
+                player.tab='p'
             },
             canClick(){return true}
         },
