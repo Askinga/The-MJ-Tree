@@ -38,8 +38,20 @@ addLayer("l", {
         },
         tabFormat: [
         "main-display",
-        "prestige-button",
         "resource-display",
     ],
+    resetsNothing(){return true},
   branches: ["pr"],
+	update(diff) {
+        if (hasMilestone("pr", 4)) {
+            let gain = new Decimal(1)
+	    gain = gain.times(player.points.add(1).log(10).add(1))
+	    
+            
+	    // statements above this line
+            player.l.xpg = gain
+            gain = gain.times(diff)
+            player.l.xp = player.l.xp.add(gain)
+        }
+    },
 })
