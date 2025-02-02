@@ -170,7 +170,7 @@ addLayer("pr", {
     buyables: {
     11: {
 	title: "Strength Buyable 1",
-        cost(x) { return new Decimal(10000).pow(x.mul(0.25).add(1)) },
+        cost(x) { return new Decimal(10).pow(x.add(3)) },
         display() {
             return "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Strength." + "<br>Bought: " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Strength gain by x" + format(buyableEffect(this.layer, this.id))
         },
@@ -182,7 +182,7 @@ addLayer("pr", {
         unlocked() { return (hasMilestone('pr', 2)) },
 	effect(x) {
             let base1 = new Decimal(1.25)
-	    if(hasUpgrade('pr',25)) base1 = 1.3
+	    if(hasUpgrade('pr',25)) base1 = base1.add(0.05)
             let base2 = x
 	    let expo = new Decimal(1)
             let eff = base1.pow(Decimal.pow(base2, expo))
