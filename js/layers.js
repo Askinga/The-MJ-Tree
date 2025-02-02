@@ -621,6 +621,7 @@ addLayer("A", {
     tabFormat: {
         "Achievements": {
             content: [
+		"clickables",
                 "achievements",
                 "blank",
                 ],
@@ -749,6 +750,17 @@ addLayer("A", {
             done() { return (player.I.infinity.gte(20)) },
             tooltip: "Do your 20th infinity.",	   
         }, 
+    },
+    clickables:{
+        11:{
+            display(){return `Use this if you are stuck`},
+            style:{"height":"150px","width":"150px","border-radius":"0%","border":"6px solid","border-color":"#31aeb0","color":"#31aeb0","font-size":"15px","background-color":"#00000000"},
+            unlocked(){return true},
+            onClick(){
+                player.tab='p'
+            },
+            canClick(){return true}
+        },
     },
 })
 
