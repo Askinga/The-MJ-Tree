@@ -21,6 +21,9 @@ addLayer("l", {
         mult = new Decimal(1)
         return mult
     },
+    onPrestige() {
+	player.l.xp = player.l.xp.sub(player.l.points)
+    },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
