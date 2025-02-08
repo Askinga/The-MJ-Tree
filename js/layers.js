@@ -1438,7 +1438,7 @@ addLayer( "au", {
         13: {
             title: "A3",
 	    description: function() {return `<br>Unlock Auto Upgraded Prestige Upgrades`},
-	    cost: new Decimal(4),
+	    cost: new Decimal(5),
 	    unlocked() { return (hasUpgrade('au', 12)) },
 	},
     },
