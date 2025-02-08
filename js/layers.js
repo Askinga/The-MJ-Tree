@@ -60,6 +60,7 @@ addLayer("p", {
 	mult = mult.times(tmp.up.powerEff)
 	if (hasUpgrade('I', 12)) mult = mult.times(2)
         if (hasUpgrade('I', 22)) mult = mult.times(upgradeEffect('I', 22))
+	if (hasUpgrade('I', 33)) mult = mult.times(10)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -1338,6 +1339,12 @@ addLayer( "I", {
             tooltip: "(Total AP+1)<sup>2</sup>",
 	    unlocked() {return (hasUpgrade('I', 31))}
 	},
+	33: {
+            title: "Upgrade 63",
+	    description: function() {return `<br>More Mults, Multiply <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span> by 10.`},
+	    cost: new Decimal(7),
+	    unlocked() {return (hasUpgrade('I', 32))}
+	},
     },
 })
 
@@ -1431,7 +1438,7 @@ addLayer( "au", {
         13: {
             title: "A3",
 	    description: function() {return `<br>Unlock Auto Upgraded Prestige Upgrades`},
-	    cost: new Decimal(6),
+	    cost: new Decimal(4),
 	    unlocked() { return (hasUpgrade('au', 12)) },
 	},
     },
