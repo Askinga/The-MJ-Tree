@@ -1419,10 +1419,10 @@ addLayer( "I", {
             style:{"height":"200px","width":"200px","border-radius":"0%","border":"6px solid","border-color":"#bb00ff","color":"#bb00ff","font-size":"15px","background-color":"#00000000"},
             unlocked(){return hasUpgrade('I', 35)},
             onClick(){
-	      if {player.I.dilation.lt(1)} {
+	      if (player.I.dilation.lt(1)) {
                 player.I.dilation = player.I.dilation.add(1)
 		doReset(I)
-	      } else if {player.I.dilation.gte(1)} {
+	      } else if (player.I.dilation.gte(1)) {
 		player.I.dilation = player.I.dilation.sub(player.I.dilation)
 		doReset(I)
 	      }
