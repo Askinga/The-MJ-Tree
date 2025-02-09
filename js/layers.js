@@ -433,7 +433,8 @@ addLayer( "up", {
 
     gainExp() { // Calculate the exponent on main currency from bonuses
         let exp = new Decimal(1)
-	    if(player.I.dilation.gte(1)) exp = exp.times(0.6)
+	    if(player.I.dilation.gte(1)) exp = exp.times(0.5)
+	return exp
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     powerEff() {
@@ -831,6 +832,7 @@ addLayer( "sp", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         let exp = new Decimal(1)
 	 if(player.I.dilation.gte(1)) exp = exp.times(0.5)
+	return exp
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     powerEff() {
