@@ -1109,10 +1109,28 @@ addLayer( "I", {
     name: "Infinity",
     symbol: "∞",
     position: 0,
+    doReset(I) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[I].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+    
+        // Stage 4, do the actual data reset
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
   		infinity: new Decimal(0),
+	        dilation: new Decimal(0),
+	        bptsindil: new Decimal(0),
     }},
     nodeStyle: {
 	"border-radius": "100%",
@@ -1175,6 +1193,27 @@ addLayer( "I", {
 					{}],
 		"blank",
                 "upgrades"
+            ],
+        },
+    	"Infinity Dilation": {
+          unlocked() { return (hasUpgrade('I', 35)) },
+	    content: [
+                "main-display",
+		"blank",
+		"clickables",
+		"blank",
+		["display-text",
+				function() {return 'Entering Infinity Dilation does a forced Infinity Reset and the following things:'+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
+					{}],
+		["display-text", "^0.2 points"],
+		["display-text", "^0.5 prestige points"],
+		["display-text", "^0.6 upgraded prestige points"],
+		["display-text", "^0.5 super prestige points"],
+		["display-text", "and ^0.25 super points."],
+		"blank",
+		"prestige-button",
+                "blank",
+                "buyables"
             ],
         },
     },
@@ -1367,7 +1406,29 @@ addLayer( "I", {
             tooltip: "(Infinities+1)<sup>0.25</sup>",
 	    unlocked() {return (hasUpgrade('I', 33))}
 	},
+    	35: {
+            title: "Upgrade 65",
+	    description: function() {return `<br>Unlock Infinity Dilation`},
+	    cost: new Decimal(30),
+	    unlocked() {return (hasUpgrade('I', 34))}
+	},
     },
+    clickables: {
+	    11:{
+            display(){return `Infinity Dilation`},
+            style:{"height":"200px","width":"200px","border-radius":"0%","border":"6px solid","border-color":"#bb00ff","color":"#bb00ff","font-size":"15px","background-color":"#00000000"},
+            unlocked(){return hasUpgrade('I', 35)},
+            onClick(){
+	      if {player.I.dilation.lt(1)} {
+                player.I.dilation = player.I.dilation.add(1)
+		doReset(I)
+	      } else {
+		player.I.dilation = player.I.dilation.sub(player.I.dilation)
+		doReset(I)
+	      }
+            },
+            canClick(){return true}
+        },
 })
 
 addLayer( "au", {
