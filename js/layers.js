@@ -1136,6 +1136,7 @@ addLayer( "I", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('I', 25)) mult = mult.times(2)
+	if (hasUpgrade('I', 25)) mult = mult.times(upgradeEffect('I',34))
 	return mult
     },
 
@@ -1323,7 +1324,7 @@ addLayer( "I", {
 	    description: function() {return `<br>Total AP boosts <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">points</span>`},
 	    cost: new Decimal(5),
 	    effect(){
-                let expu3 = 0.5
+                let expu3 = 0.75
                 let eff = player.au.total.add(1).pow(expu3)
                 eff = softcap(eff, new Decimal("1e10"), 0.5)
                 return eff
@@ -1336,7 +1337,7 @@ addLayer( "I", {
 		}
 	        return "This upgrade boosts Points by " + format(upgEffect)+"x" + softcapDescription
 	    },
-            tooltip: "(Total AP+1)<sup>2</sup>",
+            tooltip: "(Total AP+1)<sup>0.75</sup>",
 	    unlocked() {return (hasUpgrade('I', 31))}
 	},
 	33: {
@@ -1344,6 +1345,27 @@ addLayer( "I", {
 	    description: function() {return `<br>More Mults, Multiply <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">prestige points</span> by 10.`},
 	    cost: new Decimal(7),
 	    unlocked() {return (hasUpgrade('I', 32))}
+	},
+   	34: {
+            title: "Upgrade 64",
+	    description: function() {return `<br>Better Infinities! Multiply <span style=\"color: rgb(187, 0, 255); text-shadow: rgb(187, 0, 255) 0px 0px 10px;\">IP</span> based on Infinities.`},
+	    cost: new Decimal(10),
+	    effect(){
+                let expu3 = 0.25
+                let eff = player.I.infinity.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e10"), 0.5)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e10")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts IP by " + format(upgEffect)+"x" + softcapDescription
+	    },
+            tooltip: "(Infinities+1)<sup>0.25</sup>",
+	    unlocked() {return (hasUpgrade('I', 33))}
 	},
     },
 })
