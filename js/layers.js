@@ -1206,6 +1206,9 @@ addLayer( "I", {
 	    content: [
                 "main-display",
 		"blank",
+		["display-text",
+				function() {return 'Your best points in Infinity Dilation is ' + format(player.I.bptsindil) + '.'+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
+					{}],
 		"clickables",
 		"blank",
 		["display-text",
@@ -1430,6 +1433,10 @@ addLayer( "I", {
 		doReset("I", true)
 	      } else if (player.I.dilation.gte(1)) {
 		player.I.dilation = player.I.dilation.sub(player.I.dilation)
+		if(player.points.gte(player.I.bptsindil){
+			player.I.bptsindil = player.I.bptsindil.sub(player.I.bptsindil)
+			player.I.bptsindil = player.I.bptsindil.add(player.points)
+		},
 		doReset("I", true)
 	      }
             },
