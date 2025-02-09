@@ -1422,7 +1422,8 @@ addLayer( "I", {
 	      if {player.I.dilation.lt(1)} {
                 player.I.dilation = player.I.dilation.add(1)
 		doReset(I)
-	      } else {
+	      } 
+	      else {
 		player.I.dilation = player.I.dilation.sub(player.I.dilation)
 		doReset(I)
 	      }
