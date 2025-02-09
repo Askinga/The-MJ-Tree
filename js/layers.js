@@ -1159,7 +1159,7 @@ addLayer( "I", {
     },
     update(diff) {
         if (player.I.dilation.gte(1)) {
-            if(player.points.gte(player.I.bptsindil){
+            if(player.points.gte(player.I.bptsindil)){
 			player.I.bptsindil = player.I.bptsindil.sub(player.I.bptsindil)
 			player.I.bptsindil = player.I.bptsindil.add(player.points)
 		},
