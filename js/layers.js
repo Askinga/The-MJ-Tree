@@ -1429,6 +1429,7 @@ addLayer( "I", {
             },
             canClick(){return true}
         },
+    },
 })
 
 addLayer( "au", {
