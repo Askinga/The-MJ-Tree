@@ -1163,8 +1163,7 @@ addLayer( "I", {
 			player.I.bptsindil = player.I.bptsindil.sub(player.I.bptsindil)
 			player.I.bptsindil = player.I.bptsindil.add(player.points)
 		},
-	},
-    },
+    }},
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('I', 25)) mult = mult.times(2)
