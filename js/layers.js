@@ -66,6 +66,7 @@ addLayer("p", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         let exp = new Decimal(1)
 	if(hasUpgrade('I', 31)) exp = exp.times(1.01)
+	if(player.I.dilation.gte(1)) exp = exp.times(0.5)
 	return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
@@ -431,7 +432,8 @@ addLayer( "up", {
 
 
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        exp = new Decimal(1)
+	    if(player.I.dilation.gte(1)) exp = exp.times(0.6)
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     powerEff() {
@@ -827,7 +829,8 @@ addLayer( "sp", {
 
 
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        exp = new Decimal(1)
+	    if(player.I.dilation.gte(1)) exp = exp.times(0.5)
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     powerEff() {
@@ -1053,6 +1056,7 @@ addLayer( "sp", {
      	    if (hasUpgrade('sp', 31)) gain = gain.times(upgradeEffect('sp', 31))
 	    if (hasUpgrade('I', 15)) gain = gain.times(2)
 	    if (hasUpgrade('I', 25)) gain = gain.times(upgradeEffect('I', 25))
+	    if(player.I.dilation.gte(1)) gain = gain.pow(0.25)
             
 	    // statements above this line
             player.sp.superpointsgain = gain
@@ -1421,10 +1425,10 @@ addLayer( "I", {
             onClick(){
 	      if (player.I.dilation.lt(1)) {
                 player.I.dilation = player.I.dilation.add(1)
-		doReset(I)
+		doReset("I", true)
 	      } else if (player.I.dilation.gte(1)) {
 		player.I.dilation = player.I.dilation.sub(player.I.dilation)
-		doReset(I)
+		doReset("I", true)
 	      }
             },
             canClick(){return true}
