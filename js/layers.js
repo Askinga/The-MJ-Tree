@@ -1137,6 +1137,7 @@ addLayer( "I", {
   		infinity: new Decimal(0),
 	        dilation: new Decimal(0),
 	        bptsindil: new Decimal(0),
+	        cptsindil: new Decimal(0),
     }},
     nodeStyle: {
 	"border-radius": "100%",
@@ -1186,6 +1187,11 @@ addLayer( "I", {
     branches:["sp"],
     powerEff() {
     return player.I.infinity.add(1).pow(1.5);
+    },
+    automate() {
+	if(player.I.dilation.gte(1){
+	    player.I.cptsindil = player.points
+	}
     },
     autoPrestige(){return true},
     tabFormat: {
@@ -1435,6 +1441,9 @@ addLayer( "I", {
 	      } else if (player.I.dilation.gte(1)) {
 		player.I.dilation = player.I.dilation.sub(player.I.dilation)
 		doReset("I", true)
+		if(player.points.gte(player.I.bptsindil){
+		    player.I.bptsindil = player.I.cptsindil
+		}
 	      }
             },
             canClick(){return true}
