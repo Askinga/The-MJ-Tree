@@ -1138,6 +1138,7 @@ addLayer( "I", {
 	        dilation: new Decimal(0),
 	        bptsindil: new Decimal(0),
 	        cptsindil: new Decimal(0),
+	        nextbpts: new Decimal(0),
     }},
     nodeStyle: {
 	"border-radius": "100%",
@@ -1190,6 +1191,7 @@ addLayer( "I", {
     },
     automate() {
 	if(player.I.dilation.gte(1){
+	    player.I.nextbpts = player.points.sub(player.I.bptsindil)
 	    player.I.cptsindil = player.points
 	}
     },
@@ -1441,7 +1443,7 @@ addLayer( "I", {
 	      } else if (player.I.dilation.gte(1)) {
 		player.I.dilation = player.I.dilation.sub(player.I.dilation)
 		doReset("I", true)
-		if(player.points.gte(player.I.bptsindil){
+		if(player.I.nextbpts.gte(0){
 		    player.I.bptsindil = player.I.cptsindil
 		}
 	      }
