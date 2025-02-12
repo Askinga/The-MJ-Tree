@@ -125,6 +125,7 @@ function getPointGen() {
 	if (hasUpgrade('I', 21)) gain = gain.times(upgradeEffect('I', 21))
 	gain = gain.times(tmp.I.powerEff)
 	if (hasUpgrade('I', 32)) gain = gain.times(upgradeEffect('I', 32))
+	gain = gain.times(tmp.I.powerEff2)
 	if(player.I.dilation.gte(1)) gain = gain.pow(0.2)
 	return gain
 }
