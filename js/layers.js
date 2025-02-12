@@ -61,6 +61,7 @@ addLayer("p", {
 	if (hasUpgrade('I', 12)) mult = mult.times(2)
         if (hasUpgrade('I', 22)) mult = mult.times(upgradeEffect('I', 22))
 	if (hasUpgrade('I', 33)) mult = mult.times(10)
+	if (hasUpgrade('I', 41)) mult = mult.times(3)
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -426,6 +427,7 @@ addLayer( "up", {
 	if (hasUpgrade('sp', 33)) mult = mult.times(upgradeEffect('sp', 33))
 	if (hasUpgrade('I', 13)) mult = mult.times(2)
 	if (hasUpgrade('I', 23)) mult = mult.times(upgradeEffect('I', 23))
+	if (hasUpgrade('I', 41)) mult = mult.times(3)
 	return mult
     },
 
@@ -824,6 +826,7 @@ addLayer( "sp", {
         mult = new Decimal(1)
 	if (hasUpgrade('I', 14)) mult = mult.times(2)
 	if (hasUpgrade('I', 24)) mult = mult.times(upgradeEffect('I', 24))
+	if (hasUpgrade('I', 41)) mult = mult.times(3)
 	return mult
     },
 
@@ -1439,6 +1442,12 @@ addLayer( "I", {
 	    description: function() {return `<br>Unlock Infinity Dilation`},
 	    cost: new Decimal(30),
 	    unlocked() {return (hasUpgrade('I', 34))}
+	},
+	41: {
+            title: "Upgrade 66",
+	    description: function() {return `<br>Boosts ALL previous prestige layers by x3.`},
+	    cost: new Decimal(60),
+	    unlocked() {return (hasUpgrade('I', 35))}
 	},
     },
     clickables: {
