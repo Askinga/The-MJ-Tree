@@ -1190,7 +1190,7 @@ addLayer( "I", {
     return player.I.infinity.add(1).pow(1.5);
     },
     automate() {
-	if(player.I.dilation.gte(1){
+	if(player.I.dilation.gte(1)){
 	    player.I.nextbpts = player.points.sub(player.I.bptsindil)
 	    player.I.cptsindil = player.points
 	}
@@ -1443,7 +1443,7 @@ addLayer( "I", {
 	      } else if (player.I.dilation.gte(1)) {
 		player.I.dilation = player.I.dilation.sub(player.I.dilation)
 		doReset("I", true)
-		if(player.I.nextbpts.gte(0){
+		if(player.I.nextbpts.gte(0)){
 		    player.I.bptsindil = player.I.cptsindil
 		}
 	      }
