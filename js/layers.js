@@ -1164,7 +1164,7 @@ addLayer( "I", {
         mult = new Decimal(1)
 	if (hasUpgrade('I', 25)) mult = mult.times(2)
 	if (hasUpgrade('I', 34)) mult = mult.times(upgradeEffect('I',34))
-	mult = mult.times(player.I.powerEff3)
+	mult = mult.times(tmp.I.powerEff3)
 	return mult
     },
 
