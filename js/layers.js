@@ -1164,7 +1164,6 @@ addLayer( "I", {
         mult = new Decimal(1)
 	if (hasUpgrade('I', 25)) mult = mult.times(2)
 	if (hasUpgrade('I', 34)) mult = mult.times(upgradeEffect('I',34)
-	mult = mult.times(tmp.I.powerEff3)
 	return mult
     },
 
@@ -1190,12 +1189,7 @@ addLayer( "I", {
     powerEff() {
     return player.I.infinity.add(1).pow(1.5);
     },
-    powerEff2() {
-    return player.I.bptsindil.add(1).pow(0.15);
-    },
-    powerEff3() {
-    return player.I.bptsindil.add(1).pow(0.075);
-    },
+    
     automate() {
 	if(player.I.dilation.gte(1)){
 	    player.I.nextbpts = player.points.sub(player.I.bptsindil)
@@ -1225,6 +1219,7 @@ addLayer( "I", {
 		["display-text",
 				function() {return 'Your best points in Infinity Dilation is ' + format(player.I.bptsindil) + '.'+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
 					{}],
+		
 		"clickables",
 		"blank",
 		["display-text",
