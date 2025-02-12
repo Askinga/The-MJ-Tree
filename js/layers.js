@@ -1226,7 +1226,7 @@ addLayer( "I", {
 				function() {return 'Your best points in Infinity Dilation is ' + format(player.I.bptsindil) + '.'+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
 					{}],
 		["display-text",
-				function() {return 'Your best points in Infinity Dilation boosts points by ' + format(tmp.I.powerEff2) + ' and IP by ' + format(tmp.I.powerEff3) + '.'+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
+				function() {return 'Your best points in Infinity Dilation boosts points by x' + format(tmp.I.powerEff2) + ' and IP by x' + format(tmp.I.powerEff3) + '.'+(hasUpgrade('p', 46)?" (Your super points are also boosting Upgrade Points by "+format(tmp.p.powerEff)+")":"")},
 					{}],
 		"clickables",
 		"blank",
