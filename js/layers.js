@@ -1460,7 +1460,7 @@ addLayer( "I", {
             cost: new Decimal(70),
             effect(){
                 let expu3 = 0.6
-                let eff = player.I.infinity.add(1).pow(expu3)
+                let eff = player.I.bptsindil.add(1).pow(expu3)
                 eff = softcap(eff, new Decimal("1e1000"), 0.4)
                 return eff
 	    },
