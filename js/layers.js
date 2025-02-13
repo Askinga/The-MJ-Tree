@@ -236,6 +236,7 @@ addLayer("p", {
                 let expu3 = 0.2
                 let eff = player.p.points.add(1).pow(expu3)
                 eff = softcap(eff, new Decimal("1e25"), 0.5)
+		eff = softcap(eff, new Decimal("1e35"), 0.7)
                 return eff
 	    },
             effectDisplay() { // Add formatting to the effect
@@ -243,6 +244,9 @@ addLayer("p", {
                 let upgEffect = upgradeEffect(this.layer, this.id)
                 if (upgEffect.gte(new Decimal("1e25")) ) {
                     softcapDescription = " (Softcapped)"
+		}
+		if (upgEffect.gte(new Decimal("1e35")) ) {
+                    softcapDescription = " (Supercapped)"
 		}
 	        return "This upgrade boosts Points by " + format(upgEffect)+"x" + softcapDescription
 	    },
@@ -262,7 +266,7 @@ addLayer("p", {
             effectDisplay() { // Add formatting to the effect
                 let softcapDescription = ""
                 let upgEffect = upgradeEffect(this.layer, this.id)
-                if (upgEffect.gte(new Decimal("1e25")) ) {
+                if (upgEffect.gte(new Decimal("1e10")) ) {
                     softcapDescription = " (Softcapped)"
 		}
 	        return "This upgrade boosts Prestige Points by " + format(upgEffect)+"x" + softcapDescription
