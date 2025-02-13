@@ -416,6 +416,10 @@ addLayer( "up", {
         let req = new Decimal(1e10)
         return req
     }, // Can be a function that takes requirement increases into account
+    passiveGeneration() {
+	 if (player.au.autoUpPrePoi && hasMilestone('au', 3)) return 0.05
+	 return 0
+    },
     resource: "upgraded prestige points", // Name of prestige currency
     baseResource: "prestige points", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
@@ -1587,6 +1591,12 @@ addLayer( "au", {
 	    cost: new Decimal(5),
 	    unlocked() { return (hasUpgrade('au', 12)) },
 	},
+	14: {
+            title: "A4",
+	    description: function() {return `<br>Unlock Passive 2`},
+	    cost: new Decimal(4),
+	    unlocked() { return (hasUpgrade('au', 13)) },
+	},
     },
     milestones: {
         0: {
@@ -1609,6 +1619,13 @@ addLayer( "au", {
             done() { return hasUpgrade('au', 13) },
             unlocked() { return (hasUpgrade('au', 13)) },
 	    toggles: [["au", "autoUpPreUp"]],
+   	},
+    	3: {
+            requirementDescription: "Passive 2",
+            effectDescription: "5% UpgradedPrestige Points per second",
+            done() { return hasUpgrade('au', 14) },
+            unlocked() { return (hasUpgrade('au', 14)) },
+	    toggles: [["au", "autoUpPrePoi"]],
    	},
     },
 })
