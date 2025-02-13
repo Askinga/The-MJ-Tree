@@ -62,6 +62,7 @@ addLayer("p", {
         if (hasUpgrade('I', 22)) mult = mult.times(upgradeEffect('I', 22))
 	if (hasUpgrade('I', 33)) mult = mult.times(10)
 	if (hasUpgrade('I', 41)) mult = mult.times(3)
+	if (hasUpgrade('I', 42)) mult = mult.times(upgradeEffect('I', 42))
 	return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -1449,6 +1450,27 @@ addLayer( "I", {
 	    cost: new Decimal(60),
 	    unlocked() {return (hasUpgrade('I', 35))}
 	},
+	42: { 
+	    title: "Upgrade 67",
+            description: function() {return `<br> Boost your <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\"><h3>prestige points</h3></span><br> based on your best points in Infinity Dilation<br>`},
+            cost: new Decimal(70),
+            effect(){
+                let expu3 = 0.6
+                let eff = player.I.infinity.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e1000"), 0.4)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e1000")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts Prestige Points by " + format(upgEffect)+"x" + softcapDescription
+	    },
+            tooltip: "(Best Pts In Inf-Dilation+1)<sup>0.6</sup>",
+	    unlocked() {return (hasUpgrade('I', 41))}
+        },
     },
     clickables: {
 	    11:{
