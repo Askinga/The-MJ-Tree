@@ -983,7 +983,9 @@ addLayer( "sp", {
             currencyInternalName: "superpoints",
             currencyLayer: "sp",
 	    effect() {
-                return player.sp.superpoints.add(1).pow(0.15)
+		let exp = 0.15
+		if(hasUpgrade('I',44)) exp = 0.2
+                return player.sp.superpoints.add(1).pow(exp)
             },
             effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
 	    tooltip: "(SP+1)<sup>0.15</sup>",
@@ -1181,6 +1183,9 @@ addLayer( "I", {
 	if (hasUpgrade('I', 25)) mult = mult.times(2)
 	if (hasUpgrade('I', 34)) mult = mult.times(upgradeEffect('I',34))
 	mult = mult.times(tmp.I.powerEff3)
+	if (hasUpgrade('I', 43)) mult = mult.times(1.25)
+	if (hasUpgrade('I', 44)) mult = mult.times(1.1)
+	if (hasUpgrade('I', 45)) mult = mult.times(upgradeEffect('I',45))
 	return mult
     },
 
@@ -1483,6 +1488,40 @@ addLayer( "I", {
             tooltip: "(Best Pts In Inf-Dilation+1)<sup>0.6</sup>",
 	    unlocked() {return (hasUpgrade('I', 41))}
         },
+    	43: {
+            title: "Upgrade 68",
+	    description: function() {return `<br>Boosts IP by x1.25.`},
+	    cost: new Decimal(75),
+	    unlocked() {return (hasUpgrade('I', 42))}
+	},
+	44: {
+            title: "Upgrade 69",
+	    description: function() {return `<br>Boosts IP by x1.1 and buffs Upgrade 46.`},
+	    cost: new Decimal(100),
+	    tooltip: "(SP+1)<sup>0.15</sup> to (SP+1)<sup>0.2</sup>",
+	    unlocked() {return (hasUpgrade('I', 43))}
+	},
+	45: { 
+	    title: "Upgrade 70",
+            description: function() {return `<br> Boost your <span style=\"color: rgb(187, 0, 255); text-shadow: rgb(187, 0, 255) 0px 0px 10px;\"><h3>IP</h3></span><br> based on your best points in Infinity Dilation<br>`},
+            cost: new Decimal(120),
+            effect(){
+                let expu3 = 0.03
+                let eff = player.I.bptsindil.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e15"), 0.4)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e15")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts IP by " + format(upgEffect)+"x" + softcapDescription
+	    },
+            tooltip: "(Best Pts In Inf-Dilation+1)<sup>0.03</sup>",
+	    unlocked() {return (hasUpgrade('I', 44))}
+        },
     },
     clickables: {
 	    11:{
@@ -1630,7 +1669,7 @@ addLayer( "au", {
    	},
     	3: {
             requirementDescription: "Passive 2",
-            effectDescription: "5% UpgradedPrestige Points per second",
+            effectDescription: "5% Upgraded Prestige Points per second",
             done() { return hasUpgrade('au', 14) },
             unlocked() { return (hasUpgrade('au', 14)) },
 	    toggles: [["au", "autoUpPrePoi"]],
