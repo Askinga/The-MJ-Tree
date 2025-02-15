@@ -1183,10 +1183,11 @@ addLayer( "I", {
 	if (hasUpgrade('I', 25)) mult = mult.times(2)
 	if (hasUpgrade('I', 34)) mult = mult.times(upgradeEffect('I',34))
 	mult = mult.times(tmp.I.powerEff3)
-	if (hasUpgrade('I', 43)) mult = mult.times(1.25)
 	if (hasUpgrade('I', 44)) mult = mult.times(1.1)
 	if (hasUpgrade('I', 45)) mult = mult.times(upgradeEffect('I',45))
 	if (hasUpgrade('I', 51)) mult = mult.times(upgradeEffect('I',51))
+	if (hasUpgrade('I', 53)) mult = mult.times(1.5)
+        if (hasUpgrade('I', 54)) mult = mult.times(1.75)
 	return mult
     },
 
@@ -1224,7 +1225,7 @@ addLayer( "I", {
 	    player.I.cptsindil = player.points
 	}
     },
-    autoPrestige(){return true},
+    autoPrestige(){return (!hasUpgrade('I',55))},
     tabFormat: {
         "Upgrades": {
             content: [
@@ -1566,6 +1567,24 @@ addLayer( "I", {
             tooltip: "(points+1)<sup>0.25</sup>",
 	    unlocked() {return (hasUpgrade('I', 51))}
         },
+	53: {
+            title: "Upgrade 73",
+	    description: function() {return `<br>Boosts IP by x1.5.`},
+	    cost: new Decimal(250),
+	    unlocked() {return (hasUpgrade('I', 52))}
+	},
+	54: {
+            title: "Upgrade 74",
+	    description: function() {return `<br>Boosts IP by x1.75.`},
+	    cost: new Decimal(500),
+	    unlocked() {return (hasUpgrade('I', 53))}
+	},
+	55: {
+            title: "Upgrade 75",
+	    description: function() {return `<br>Break Infinity.`},
+	    cost: new Decimal(1000),
+	    unlocked() {return (hasUpgrade('I', 54))}
+	},
     },
     clickables: {
 	    11:{
