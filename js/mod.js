@@ -137,12 +137,12 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
-	"Reach Infinity and get Infinity upgrade 10 to beat the game!"
+	"Reach 1e360 points to beat the game!"
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return (player.points.gte(new Decimal("1.79e308")) && hasUpgrade('I', 25))
+	return (player.points.gte(new Decimal("1e360")))
 }
 
 
