@@ -1186,6 +1186,7 @@ addLayer( "I", {
 	if (hasUpgrade('I', 43)) mult = mult.times(1.25)
 	if (hasUpgrade('I', 44)) mult = mult.times(1.1)
 	if (hasUpgrade('I', 45)) mult = mult.times(upgradeEffect('I',45))
+	if (hasUpgrade('I', 51)) mult = mult.times(upgradeEffect('I',51))
 	return mult
     },
 
@@ -1469,7 +1470,7 @@ addLayer( "I", {
 	},
 	42: { 
 	    title: "Upgrade 67",
-            description: function() {return `<br> Boost your <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\"><h3>prestige points</h3></span><br> based on your best points in Infinity Dilation<br>`},
+            description: function() {return `<br>Boost your <span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\"><h3>prestige points</h3></span><br> based on your best points in Infinity Dilation<br>`},
             cost: new Decimal(70),
             effect(){
                 let expu3 = 0.6
@@ -1503,7 +1504,7 @@ addLayer( "I", {
 	},
 	45: { 
 	    title: "Upgrade 70",
-            description: function() {return `<br> Boost your <span style=\"color: rgb(187, 0, 255); text-shadow: rgb(187, 0, 255) 0px 0px 10px;\"><h3>IP</h3></span><br> based on your best points in Infinity Dilation<br>`},
+            description: function() {return `<br>Boost your <span style=\"color: rgb(187, 0, 255); text-shadow: rgb(187, 0, 255) 0px 0px 10px;\"><h3>IP</h3></span><br> based on your best points in Infinity Dilation<br>`},
             cost: new Decimal(120),
             effect(){
                 let expu3 = 0.03
@@ -1521,6 +1522,49 @@ addLayer( "I", {
 	    },
             tooltip: "(Best Pts In Inf-Dilation+1)<sup>0.03</sup>",
 	    unlocked() {return (hasUpgrade('I', 44))}
+        },
+	51: {
+	    title: "Upgrade 71",
+            description: function() {return `<br>Boost your <span style=\"color: rgb(187, 0, 255); text-shadow: rgb(187, 0, 255) 0px 0px 10px;\"><h3>IP</h3></span><br> based on your current IP<br>`},
+            cost: new Decimal(150),
+            effect(){
+                let expu3 = 0.1
+                let eff = player.I.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e3"), 0.9)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e3")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts IP by " + format(upgEffect)+"x" + softcapDescription
+	    },
+            tooltip: "(IP+1)<sup>0.1</sup>",
+	    unlocked() {return (hasUpgrade('I', 45))}
+        },
+	52: { 
+	    title: "Upgrade 72",
+            description: function() {return `<br>While in Infinity Dilation, Boost your <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\"><h3>points</h3></span><br> based on your points<br>`},
+            cost: new Decimal(200),
+            effect(){
+                let expu3 = 0.25
+		if(player.I.dilation.lt(0)) expu3 = 0
+                let eff = player.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e6"), 0.8)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e6")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "This upgrade boosts Points by " + format(upgEffect)+"x" + softcapDescription
+	    },
+            tooltip: "(points+1)<sup>0.25</sup>",
+	    unlocked() {return (hasUpgrade('I', 51))}
         },
     },
     clickables: {
