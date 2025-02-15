@@ -765,10 +765,40 @@ addLayer("A", {
             tooltip: "Buy the 10th Infinity Upgrade.",	   
         },
         46: {
-            name: "Why are you still going?",
+            name: "More Infinities",
             done() { return (player.I.infinity.gte(20)) },
             tooltip: "Do your 20th infinity.",	   
         }, 
+	51: {
+            name: "More Infinities 2",
+            done() { return (player.I.infinity.gte(30)) },
+            tooltip: "Do your 30th infinity.",	   
+        }, 
+	52: {
+            name: "Dilated",
+            done() { return (player.I.dilation.gte(1)) },
+            tooltip: "Enter Infinity Dilation",	   
+        }, 
+	53: {
+            name: "So slow.",
+            done() { return (player.points.gte(10000) && player.I.dilation.gte(1)) },
+            tooltip: "Reach 10000 points in Infinity Dilation.",	   
+        }, 
+	54: {
+            name: "Too repetitive",
+            done() { return (hasUpgrade('I', 45)) },
+            tooltip: "Get Infinity Upgrade 20 (Upgrade 70).",	   
+        }, 
+	55: {
+            name: "That will give you a pretty big boost.",
+            done() { return (player.points.gte(1000000) && player.I.dilation.gte(1)) },
+            tooltip: "Reach 1e6 points in Infinity Dilation.",	   
+        },
+	56: {
+            name: "IT'S BROKEN!!!",
+            done() { return (hasUpgrade('I',55)) },
+            tooltip: "Break Infinity.",	   
+        },
     },
     clickables:{
         11:{
