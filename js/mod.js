@@ -13,12 +13,20 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.4.1",
-	name: "Infinite... Part 1",
+	num: "0.5.0",
+	name: "Infinite... Part 2",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-            	 <h3>v0.4.1</h3><br>
+            	<h2>v0.5.0</h2><br>
+		- Added 15 upgrades<br>
+  		- Added Infinity Dilation<br>
+    		- Added 6 achievements<br>
+      		- Removed 1 format because it was broken.<br>
+		- You can break infinity<br>
+  		- Hope you enjoy this update!<br>
+		
+  		<h3>v0.4.1</h3><br>
 	        - Added 4 clickables in the achievement layer.<br>
 	    	 <h2>v0.4.0</h2><br>
 		- Added 12 upgrades<br>
