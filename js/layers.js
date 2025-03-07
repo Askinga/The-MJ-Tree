@@ -96,6 +96,18 @@ addLayer("p", {
 	},
 	unlocked(){ return (hasUpgrade('p', 15))}
       },
+      22: {
+	title: "Growing 2",
+	description: "Boost points based on the current amount of Exponent 1.",
+	cost: new Decimal(100),
+	effect(){
+	    return getBuyableAmount('p', 11).add(1)
+	},
+	effectDisplay(){
+	    return format(upgradeEffect(this.layer, this.id))+'x'
+	},
+	unlocked(){ return (hasUpgrade('p', 21))}
+      },
     },
     buyables: {
         11: {
