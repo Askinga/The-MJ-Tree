@@ -85,4 +85,34 @@ addLayer("p", {
 	unlocked(){ return (hasUpgrade('p', 14))}
       },
     },
+    buyables: {
+        11: {
+            title: "Exponent 1",
+            unlocked() { return hasUpgrade("p", 15) },
+            cost(x) {
+                exp2 = 1.1    
+                return new Decimal(30).mul(Decimal.pow(1.25, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
+            },
+            display() {
+                return "Boost points by ^1.01 per level. (compounding) <br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " prestige points" + "<br>Level " + getBuyableAmount(this.layer, this.id) + "<br>Effect: Boost Point gain by ^" + format(buyableEffect(this.layer, this.id))
+            },
+            canAfford() {
+                return player[this.layer].points.gte(this.cost())
+            },
+            buy() {
+                let cost = new Decimal (1)
+                player[this.layer].points = player[this.layer].points.sub(this.cost().mul(cost))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            effect(x) {
+                base1 = new Decimal(1.01)
+                base2 = x
+                expo = new Decimal(1)
+                eff = base1.pow(Decimal.pow(base2, expo))
+                return eff
+            },
+            tooltip() {
+                return "Cost Formula: 30 x 1.25^Amt x Amt^(" + exp2 + "^Amt). Effect formula: " + format(base1) + "^(" + format(base2) + "^" + expo + ")."
+            }
+        },
 })
