@@ -17,6 +17,7 @@ addLayer("p", {
         mult = new Decimal(1)
 	if (hasUpgrade('p', 12)) mult = mult.times(2)
 	if (hasUpgrade('p', 13)) mult = mult.times(1.4)
+	if (hasUpgrade('p', 14)) mult = mult.times(1.4)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -27,6 +28,32 @@ addLayer("p", {
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
+    tabFormat: {
+	main: {
+	    content: [
+		"main-display",
+		"blank",
+		"prestige-button",
+		"resource-display",
+		"blank",
+		"upgrades",
+	    ]
+	},
+	exponents: {
+	    unlocked(){ return (hasUpgrade('p', 15))},
+		content: [
+		    "main-display",
+		    "blank",
+		    "prestige-button",
+		    "resource-display",
+		    "blank",
+		    ["display-text", 'Here are exponents. The buyables give a exponential boost to a resource. More buyables will appear here in the future.'],
+		    "blank",
+		    "buyables",
+		]
+	},
+    },
+		
     upgrades: {
       11: {
 	title: "Start The Prestige Zen",
@@ -44,6 +71,18 @@ addLayer("p", {
 	description: "x1.4 Prestige Points and Points",
 	cost: new Decimal(7),
 	unlocked(){ return (hasUpgrade('p', 12))}
+      },
+      14: {
+	title: "Better Boost",
+	description: "x1.75 Prestige Points and Points",
+	cost: new Decimal(13),
+	unlocked(){ return (hasUpgrade('p', 13))}
+      },
+      15: {
+	title: "Exponent",
+	description: "Unlock Exponents",
+	cost: new Decimal(25),
+	unlocked(){ return (hasUpgrade('p', 14))}
       },
     },
 })
