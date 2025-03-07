@@ -36,12 +36,14 @@ addLayer("p", {
       12: {
 	title: "Layer multiplier",
 	description: "x2 Prestige Points",
-	cost: new Decimal(3)
+	cost: new Decimal(3),
+	unlocked(){ return (hasUpgrade('p', 11))}
       },
       13: {
 	title: "Double Upgrade",
 	description: "x1.4 Prestige Points and Points",
-	cost: new Decimal(7)
+	cost: new Decimal(7),
+	unlocked(){ return (hasUpgrade('p', 12))}
       },
     },
 })
