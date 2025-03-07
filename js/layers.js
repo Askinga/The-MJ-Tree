@@ -128,7 +128,7 @@ addLayer("p", {
 	description: "Boost prestige points based on prestige points.",
 	cost: new Decimal(2500),
 	effect(){
-	    return player[this.layer].points.add(1).pow(0.085)
+	    return player[this.layer].points.add(1).pow(0.05)
 	},
 	effectDisplay(){
 	    return format(upgradeEffect(this.layer, this.id))+'x'
