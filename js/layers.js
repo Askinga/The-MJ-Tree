@@ -135,7 +135,7 @@ addLayer("p", {
 	},
 	unlocked(){ return (hasUpgrade('p', 23))}
       },
-      22: {
+      25: {
 	title: "Growing 5",
 	description: "Boost prestige points based on the current amount of Exponent 1.",
 	cost: new Decimal(6000),
