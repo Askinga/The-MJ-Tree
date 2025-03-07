@@ -84,13 +84,25 @@ addLayer("p", {
 	cost: new Decimal(25),
 	unlocked(){ return (hasUpgrade('p', 14))}
       },
+      21: {
+	title: "Growing",
+	description: "Boost points based on prestige points.",
+	cost: new Decimal(40),
+	effect(){
+	    return player[this.layer].points.add(1).pow(0.25)
+	},
+	effectDisplay(){
+	    return 'Currently: ' + format(this.effect) + 'x'
+	},
+	unlocked(){ return (hasUpgrade('p', 15))}
+      },
     },
     buyables: {
         11: {
             title: "Exponent 1",
             unlocked() { return hasUpgrade("p", 15) },
             cost(x) {
-                exp2 = 1.1    
+                exp2 = 1.04
                 return new Decimal(30).mul(Decimal.pow(1.25, x)).mul(Decimal.pow(x , Decimal.pow(exp2 , x))).floor()
             },
             display() {
