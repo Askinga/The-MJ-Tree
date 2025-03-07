@@ -7,7 +7,10 @@ addLayer("p", {
 		points: new Decimal(0),
     }},
     color: "#4BDC13",
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account
+    requires(){ 
+	let req = new Decimal(10) 
+	if (hasUpgrade('p', 32)) req = req.div(upgradeEffect('p', 32)) 
+    }, // Can be a function that takes requirement increases into account
     resource: "prestige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -21,6 +24,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 23)) mult = mult.times(upgradeEffect('p', 23))
 	if (hasUpgrade('p', 24)) mult = mult.times(upgradeEffect('p', 24))
 	if (hasUpgrade('p', 25)) mult = mult.times(upgradeEffect('p', 25))
+	if (hasUpgrade('p', 31)) mult = mult.times(5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -146,6 +150,24 @@ addLayer("p", {
 	    return format(upgradeEffect(this.layer, this.id))+'x'
 	},
 	unlocked(){ return (hasUpgrade('p', 24))}
+      },
+      31: {
+	title: "Mega Multiplier",
+	description: "x5 Points and Prestige Points",
+	cost: new Decimal(20000),
+	unlocked(){ return (hasUpgrade('p', 25))}
+      },
+      32: {
+	title: "Shrinking 1",
+	description: "Divide prestige point requirement based on points",
+	cost: new Decimal(1e6),
+	effect(){
+	    return new Decimal(1).div(player.points.add(1).pow(0.1)
+	},
+	effectDisplay(){
+	    return '/'+format(upgradeEffect(this.layer, this.id))
+	},
+	unlocked(){ return (hasUpgrade('p', 31))}
       },
     },
     buyables: {
