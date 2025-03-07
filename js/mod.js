@@ -47,6 +47,7 @@ function getPointGen() {
 	if (hasUpgrade('p',14)) gain = gain.times(1.75)
 	if (hasUpgrade('p',21)) gain = gain.times(upgradeEffect('p', 21))
 	if (hasUpgrade('p',22)) gain = gain.times(upgradeEffect('p', 22))
+	if (hasUpgrade('p',31)) gain = gain.times(5)
 	gain = gain.pow(buyableEffect('p', 11))
 	return gain
 }
