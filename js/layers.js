@@ -115,4 +115,5 @@ addLayer("p", {
                 return "Cost Formula: 30 x 1.25^Amt x Amt^(" + exp2 + "^Amt). Effect formula: " + format(base1) + "^(" + format(base2) + "^" + expo + ")."
             }
         },
+    },
 })
