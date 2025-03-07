@@ -170,6 +170,18 @@ addLayer("p", {
 	},
 	unlocked(){ return (hasUpgrade('p', 31))}
       },
+      33: {
+	title: "Growing 6",
+	description: "Boost points based on points.",
+	cost: new Decimal(2e6),
+	effect(){
+	    return player.points.add(1).pow(0.035)
+	},
+	effectDisplay(){
+	    return format(upgradeEffect(this.layer, this.id))+'x'
+	},
+	unlocked(){ return (hasUpgrade('p', 32))}
+      },
     },
     buyables: {
         11: {
