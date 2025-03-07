@@ -15,6 +15,8 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('p', 12)) mult = mult.times(2)
+	if (hasUpgrade('p', 13)) mult = mult.times(1.4)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -30,6 +32,16 @@ addLayer("p", {
 	title: "Start The Prestige Zen",
 	description: "x2 Points",
 	cost: new Decimal(1)
+      },
+      12: {
+	title: "Layer multiplier",
+	description: "x2 Prestige Points",
+	cost: new Decimal(3)
+      },
+      13: {
+	title: "Double Upgrade",
+	description: "x1.4 Prestige Points and Points",
+	cost: new Decimal(7)
       },
     },
 })
