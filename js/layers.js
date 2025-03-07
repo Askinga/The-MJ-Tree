@@ -162,7 +162,7 @@ addLayer("p", {
 	description: "Divide prestige point requirement based on points",
 	cost: new Decimal(1e6),
 	effect(){
-	    return new Decimal(1).div(player.points.add(1).pow(0.1)
+	    return new Decimal(1).div(player.points.add(1).pow(0.1))
 	},
 	effectDisplay(){
 	    return '/'+format(upgradeEffect(this.layer, this.id))
