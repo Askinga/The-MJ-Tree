@@ -18,6 +18,9 @@ addLayer("p", {
 	if (hasUpgrade('p', 12)) mult = mult.times(2)
 	if (hasUpgrade('p', 13)) mult = mult.times(1.4)
 	if (hasUpgrade('p', 14)) mult = mult.times(1.75)
+	if (hasUpgrade('p', 23)) mult = mult.times(upgradeEffect('p', 23))
+	if (hasUpgrade('p', 24)) mult = mult.times(upgradeEffect('p', 24))
+	if (hasUpgrade('p', 25)) mult = mult.times(upgradeEffect('p', 25))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -107,6 +110,42 @@ addLayer("p", {
 	    return format(upgradeEffect(this.layer, this.id))+'x'
 	},
 	unlocked(){ return (hasUpgrade('p', 21))}
+      },
+      23: {
+	title: "Growing 3",
+	description: "Boost prestige points based on points.",
+	cost: new Decimal(1000),
+	effect(){
+	    return player.points.add(1).pow(0.085)
+	},
+	effectDisplay(){
+	    return format(upgradeEffect(this.layer, this.id))+'x'
+	},
+	unlocked(){ return (hasUpgrade('p', 22))}
+      },
+      24: {
+	title: "Growing 4",
+	description: "Boost prestige points based on prestige points.",
+	cost: new Decimal(2500),
+	effect(){
+	    return player[this.layer].points.add(1).pow(0.085)
+	},
+	effectDisplay(){
+	    return format(upgradeEffect(this.layer, this.id))+'x'
+	},
+	unlocked(){ return (hasUpgrade('p', 23))}
+      },
+      22: {
+	title: "Growing 5",
+	description: "Boost prestige points based on the current amount of Exponent 1.",
+	cost: new Decimal(6000),
+	effect(){
+	    return getBuyableAmount('p', 11).add(1).pow(0.5)
+	},
+	effectDisplay(){
+	    return format(upgradeEffect(this.layer, this.id))+'x'
+	},
+	unlocked(){ return (hasUpgrade('p', 24))}
       },
     },
     buyables: {
