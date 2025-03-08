@@ -20,12 +20,15 @@ addLayer("s", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "s", description: "S: Superfy.", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-	  tooltip() {
-      return 'Superfy for '
+    tooltip() {
+      return 'Superfy'
+    },
+    resetDescription(){
+	return 'Superfy for'
     },
     branches: ["p"], 
     layerShown(){return (hasUpgrade('p', 35) || player.s.unlocked)}
