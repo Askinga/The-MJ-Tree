@@ -142,11 +142,19 @@ addLayer("p", {
 	description: "Boost points based on prestige points.",
 	cost: new Decimal(40),
 	effect(){
-	    return player[this.layer].points.add(1).pow(0.25)
-	},
-	effectDisplay(){
-	    return format(upgradeEffect(this.layer, this.id))+'x'
-	},
+                let expu3 = 0.25
+                let eff = player.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e6"), 0.4)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e6")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return format(upgEffect)+"x" + softcapDescription
+	    },
 	unlocked(){ return (hasUpgrade('p', 15))}
       },
       22: {
