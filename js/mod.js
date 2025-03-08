@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The Prestige Zen",
 	author: "Askinga",
 	pointsName: "points",
-	modFiles: ["layers.js", "tree.js"],
+	modFiles: ["layers.js", "superfy.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
