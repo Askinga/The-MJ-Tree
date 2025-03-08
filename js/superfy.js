@@ -43,4 +43,11 @@ addLayer("s", {
 	cost: new Decimal(1)
       },
     },
+    milestones: {
+        0: {
+            requirementDescription: "1 Super",
+            effectDescription: "Automate first row of prestige upgrades!",
+            done() {return player.s.points.gte(1)}
+        },
+    },
 })
