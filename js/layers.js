@@ -11,7 +11,7 @@ addLayer("p", {
 		points: new Decimal(0),
     }},
     passiveGeneration(){
-	    let passive = 0
+	    let passive = new Decimal(0)
 	    if(hasMilestone('s',3)) passive = passive.add(1)
             return passive
     },
