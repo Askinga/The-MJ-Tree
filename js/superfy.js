@@ -80,6 +80,18 @@ addLayer("s", {
 	cost: new Decimal(25),
 	unlocked(){ return (hasUpgrade('s', 21))}
       },
+      23: {
+	title: "Super Growing",
+	description: "Boost points based on super.",
+	cost: new Decimal(100),
+	effect(){
+	    return player[this.layer].points.add(1).pow(0.4)
+	},
+	effectDisplay(){
+	    return format(upgradeEffect(this.layer, this.id))+'x'
+	},
+	unlocked(){ return (hasUpgrade('s', 22))}
+      },
     },
     milestones: {
         0: {
