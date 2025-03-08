@@ -32,6 +32,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 31)) mult = mult.times(5)
 	if (hasUpgrade('p', 34)) mult = mult.times(5)
 	if (hasUpgrade('s', 11)) mult = mult.times(2)
+	if (hasUpgrade('s', 12)) mult = mult.times(3) 
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -74,6 +75,13 @@ addLayer("p", {
 		buyUpgrade('p', 13);
 		buyUpgrade('p', 14);
 		buyUpgrade('p', 15);
+	}
+	if (hasMilestone('s', 1)) {
+		buyUpgrade('p', 21);
+		buyUpgrade('p', 22);
+		buyUpgrade('p', 23);
+		buyUpgrade('p', 24);
+		buyUpgrade('p', 25);
 	}
     },
 
