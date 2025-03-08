@@ -1,7 +1,7 @@
 addLayer("s", {
     name: "superfy", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol(){ 
-	if (options.layerEmojis == "true") sym = "❇️"
+	if (options.layerEmojis == true) sym = "❇️"
 	else sym = "S"
 	return sym
     }, // This appears on the layer's node. Default is the id with the first letter capitalized
