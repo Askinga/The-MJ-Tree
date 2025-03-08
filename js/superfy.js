@@ -19,6 +19,7 @@ addLayer("s", {
     exponent: 0.15, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('s', 14)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -45,12 +46,26 @@ addLayer("s", {
       12: {
 	title: "Super gives big boosts!",
 	description: "x3 Points and Prestige Points",
-	cost: new Decimal(1)
+	cost: new Decimal(1),
+	unlocked(){ return (hasUpgrade('s', 11))}
       },
       13: {
 	title: "Super!",
 	description: "x4 Points.",
-	cost: new Decimal(2)
+	cost: new Decimal(2),
+	unlocked(){ return (hasUpgrade('s', 12))}
+      },
+      14: {
+	title: "Boost it.",
+	description: "x2 Super.",
+	cost: new Decimal(5),
+	unlocked(){ return (hasUpgrade('s', 13))}
+      },
+      15: {
+	title: "Classic boost",
+	description: "x2.5 Prestige Points.",
+	cost: new Decimal(10),
+	unlocked(){ return (hasUpgrade('s', 14))}
       },
     },
     milestones: {
@@ -63,6 +78,21 @@ addLayer("s", {
             requirementDescription: "5 Super",
             effectDescription: "Automate second row of prestige upgrades!",
             done() {return player.s.points.gte(5)}
+        },
+	2: {
+            requirementDescription: "100 Super",
+            effectDescription: "Automate third row of prestige upgrades!",
+            done() {return player.s.points.gte(100)}
+        },
+	3: {
+            requirementDescription: "1,000 Super",
+            effectDescription: "100% of Prestige Points every second!",
+            done() {return player.s.points.gte(1000)}
+        },
+	4: {
+            requirementDescription: "10,000 Super",
+            effectDescription: "Automatically buy Exponent 1!",
+            done() {return player.s.points.gte(10000)}
         },
     },
 })
