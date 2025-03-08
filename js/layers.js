@@ -10,6 +10,11 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     }},
+    passiveGeneration(){
+	    let passive = 0
+	    if(hasMilestone('s',3)) passive = passive.add(1)
+            return passive
+    },
     color: "#4BDC13",
     requires(){ 
 	let req = new Decimal(10) 
@@ -90,6 +95,11 @@ addLayer("p", {
 		buyUpgrade('p', 33);
 		buyUpgrade('p', 34);
 		buyUpgrade('p', 35);
+	}
+	if (hasMilestone('s', 4)) {
+		if (layers.p.buyables[11].canAfford()) {
+				layers.p.buyables[11].buy();
+			};
 	}
     },
 
