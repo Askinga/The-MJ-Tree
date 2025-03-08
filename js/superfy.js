@@ -31,5 +31,12 @@ addLayer("s", {
 	return 'Superfy for '
     },
     branches: ["p"], 
-    layerShown(){return (hasUpgrade('p', 35) || player.s.unlocked)}
+    layerShown(){return (hasUpgrade('p', 35) || player.s.unlocked)},
+    upgrades: {
+	11: {
+	title: "Start The Prestige Zen... again?",
+	description: "x2 Points and Prestige Points",
+	cost: new Decimal(1)
+      },
+    },
 })
