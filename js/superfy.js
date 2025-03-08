@@ -28,7 +28,7 @@ addLayer("s", {
       return 'Superfy'
     },
     resetDescription(){
-	return 'Superfy for'
+	return 'Superfy for '
     },
     branches: ["p"], 
     layerShown(){return (hasUpgrade('p', 35) || player.s.unlocked)}
