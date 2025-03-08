@@ -20,6 +20,7 @@ addLayer("s", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('s', 14)) mult = mult.times(2)
+	if (hasUpgrade('s', 22)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -72,6 +73,12 @@ addLayer("s", {
 	description: "x2 Points.",
 	cost: new Decimal(15),
 	unlocked(){ return (hasUpgrade('s', 15))}
+      },
+      22: {
+	title: "Classic boost",
+	description: "x3 Super.",
+	cost: new Decimal(25),
+	unlocked(){ return (hasUpgrade('s', 21))}
       },
     },
     milestones: {
