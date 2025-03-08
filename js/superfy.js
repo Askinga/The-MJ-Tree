@@ -27,5 +27,6 @@ addLayer("s", {
 	  tooltip() {
       return 'Superfy for '
     },
+    branches: ["p"], 
     layerShown(){return (hasUpgrade('p', 35) || player.s.unlocked)}
 })
