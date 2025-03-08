@@ -21,6 +21,7 @@ addLayer("s", {
         mult = new Decimal(1)
 	if (hasUpgrade('s', 14)) mult = mult.times(2)
 	if (hasUpgrade('s', 22)) mult = mult.times(3)
+	if (hasUpgrade('s', 24)) mult = mult.times(3)  
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -91,6 +92,12 @@ addLayer("s", {
 	    return format(upgradeEffect(this.layer, this.id))+'x'
 	},
 	unlocked(){ return (hasUpgrade('s', 22))}
+      },
+      24: {
+	title: "The Trio",
+	description: "x3 Super, Prestige Points and Points.",
+	cost: new Decimal(125),
+	unlocked(){ return (hasUpgrade('s', 23))}
       },
     },
     milestones: {
