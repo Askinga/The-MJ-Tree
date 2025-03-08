@@ -67,6 +67,12 @@ addLayer("s", {
 	cost: new Decimal(10),
 	unlocked(){ return (hasUpgrade('s', 14))}
       },
+      21: {
+	title: "Classic boost",
+	description: "x2 Points.",
+	cost: new Decimal(15),
+	unlocked(){ return (hasUpgrade('s', 15))}
+      },
     },
     milestones: {
         0: {
