@@ -24,6 +24,7 @@ addLayer("s", {
 	if (hasUpgrade('s', 24)) mult = mult.times(3)  
 	if (hasUpgrade('s', 31)) mult = mult.times(upgradeEffect('s', 31))  
 	if (hasUpgrade('s', 32)) mult = mult.times(6)  
+	if (hasUpgrade('s', 33)) mult = mult.times(upgradeEffect('s', 33))  
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -133,10 +134,10 @@ addLayer("s", {
       },
       33: {
 	title: "Super Growing 4",
-	description: "Boost prestige points based on super.",
+	description: "Boost super based on super.",
 	cost: new Decimal(200000),
 	effect(){
-	    return player[this.layer].points.add(1).pow(0.25)
+	    return player[this.layer].points.add(1).pow(0.1)
 	},
 	effectDisplay(){
 	    return format(upgradeEffect(this.layer, this.id))+'x'
