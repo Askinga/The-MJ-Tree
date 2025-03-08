@@ -25,6 +25,7 @@ addLayer("s", {
 	if (hasUpgrade('s', 31)) mult = mult.times(upgradeEffect('s', 31))  
 	if (hasUpgrade('s', 32)) mult = mult.times(6)  
 	if (hasUpgrade('s', 33)) mult = mult.times(upgradeEffect('s', 33))  
+	if (hasUpgrade('s', 34)) mult = mult.times(2.5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -143,6 +144,18 @@ addLayer("s", {
 	    return format(upgradeEffect(this.layer, this.id))+'x'
 	},
 	unlocked(){ return (hasUpgrade('s', 32))}
+      },
+      34: {
+	title: "Mega soon!",
+	description: "x2.5 Super",
+	cost: new Decimal(750000),
+	unlocked(){ return (hasUpgrade('s', 33))}
+      },
+      35: {
+	title: "Mega!",
+	description: "Unlock a new layer.",
+	cost: new Decimal(2e6),
+	unlocked(){ return (hasUpgrade('s', 34))}
       },
     },
     milestones: {
