@@ -67,6 +67,16 @@ addLayer("p", {
 		]
 	},
     },
+    automate(){
+	if (hasMilestone('s', 0)) {
+		buyUpgrade('p', 11);
+		buyUpgrade('p', 12);
+		buyUpgrade('p', 13);
+		buyUpgrade('p', 14);
+		buyUpgrade('p', 15);
+	}
+    },
+
 		
     upgrades: {
       11: {
