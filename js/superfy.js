@@ -37,10 +37,20 @@ addLayer("s", {
     branches: ["p"], 
     layerShown(){return (hasUpgrade('p', 35) || player.s.unlocked)},
     upgrades: {
-	11: {
+      11: {
 	title: "Start The Prestige Zen... again?",
 	description: "x2 Points and Prestige Points",
 	cost: new Decimal(1)
+      },
+      12: {
+	title: "Super gives big boosts!",
+	description: "x3 Points and Prestige Points",
+	cost: new Decimal(1)
+      },
+      13: {
+	title: "Super!",
+	description: "x4 Points.",
+	cost: new Decimal(2)
       },
     },
     milestones: {
@@ -48,6 +58,11 @@ addLayer("s", {
             requirementDescription: "1 Super",
             effectDescription: "Automate first row of prestige upgrades!",
             done() {return player.s.points.gte(1)}
+        },
+	1: {
+            requirementDescription: "5 Super",
+            effectDescription: "Automate second row of prestige upgrades!",
+            done() {return player.s.points.gte(5)}
         },
     },
 })
