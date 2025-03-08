@@ -26,6 +26,7 @@ addLayer("p", {
 	if (hasUpgrade('p', 24)) mult = mult.times(upgradeEffect('p', 24))
 	if (hasUpgrade('p', 25)) mult = mult.times(upgradeEffect('p', 25))
 	if (hasUpgrade('p', 31)) mult = mult.times(5)
+	if (hasUpgrade('p', 34)) mult = mult.times(5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -181,6 +182,18 @@ addLayer("p", {
 	    return format(upgradeEffect(this.layer, this.id))+'x'
 	},
 	unlocked(){ return (hasUpgrade('p', 32))}
+      },
+      34: {
+	title: "Mega Multiplier ^ 0.5",
+	description: "x5 Prestige Points",
+	cost: new Decimal(4e6),
+	unlocked(){ return (hasUpgrade('p', 33))}
+      },
+      35: {
+	title: "Layer 2",
+	description: "Unlock a new layer.",
+	cost: new Decimal(4e7),
+	unlocked(){ return (hasUpgrade('p', 34))}
       },
     },
     buyables: {
