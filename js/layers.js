@@ -13,7 +13,7 @@ addLayer("p", {
     color: "#4BDC13",
     requires(){ 
 	let req = new Decimal(10) 
-	if (hasUpgrade('p', 32)) req = req.times(upgradeEffect('p', 32)) 
+	if (hasUpgrade('p', 32)) req = req.div(upgradeEffect('p', 32)) 
 	return req
     }, // Can be a function that takes requirement increases into account
     resource: "prestige points", // Name of prestige currency
@@ -190,7 +190,7 @@ addLayer("p", {
 	    return new Decimal(1).times(player.points.add(1).pow(0.1))
 	},
 	effectDisplay(){
-	    return format(upgradeEffect(this.layer, this.id))+'x'
+	    return '/'+format(upgradeEffect(this.layer, this.id))
 	},
 	unlocked(){ return (hasUpgrade('p', 31))}
       },
