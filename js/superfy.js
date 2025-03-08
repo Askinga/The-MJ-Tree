@@ -22,6 +22,7 @@ addLayer("s", {
 	if (hasUpgrade('s', 14)) mult = mult.times(2)
 	if (hasUpgrade('s', 22)) mult = mult.times(3)
 	if (hasUpgrade('s', 24)) mult = mult.times(3)  
+	if (hasUpgrade('s', 31)) mult = mult.times(upgradeEffect('s', 31))  
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -100,7 +101,7 @@ addLayer("s", {
 	unlocked(){ return (hasUpgrade('s', 23))}
       },
       25: {
-	title: "Super Growing",
+	title: "Super Growing 2",
 	description: "Boost prestige points based on super.",
 	cost: new Decimal(500),
 	effect(){
@@ -110,6 +111,18 @@ addLayer("s", {
 	    return format(upgradeEffect(this.layer, this.id))+'x'
 	},
 	unlocked(){ return (hasUpgrade('s', 24))}
+      },
+      31: {
+	title: "Super Growing 3",
+	description: "Boost super based on the amount of Exponent 1.",
+	cost: new Decimal(1500),
+	effect(){
+	    return getBuyableAmount('p', 11).add(1).pow(0.25)
+	},
+	effectDisplay(){
+	    return format(upgradeEffect(this.layer, this.id))+'x'
+	},
+	unlocked(){ return (hasUpgrade('s', 25))}
       },
     },
     milestones: {
