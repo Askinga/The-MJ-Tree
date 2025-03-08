@@ -23,6 +23,7 @@ addLayer("s", {
 	if (hasUpgrade('s', 22)) mult = mult.times(3)
 	if (hasUpgrade('s', 24)) mult = mult.times(3)  
 	if (hasUpgrade('s', 31)) mult = mult.times(upgradeEffect('s', 31))  
+	if (hasUpgrade('s', 32)) mult = mult.times(6)  
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -123,6 +124,12 @@ addLayer("s", {
 	    return format(upgradeEffect(this.layer, this.id))+'x'
 	},
 	unlocked(){ return (hasUpgrade('s', 25))}
+      },
+      32: {
+	title: "BIG BOOST but nerf",
+	description: "x6 Super, Prestige Points and Points. but ^0.95 points.",
+	cost: new Decimal(10000),
+	unlocked(){ return (hasUpgrade('s', 31))}
       },
     },
     milestones: {
