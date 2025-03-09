@@ -37,4 +37,18 @@ addLayer("m", {
     },
     branches: ["s"], 
     layerShown(){return (hasUpgrade('s', 35) || player.m.unlocked)},
+    milestones: {
+        0: {
+            requirementDescription: "1 Mega",
+            effectDescription: "Automate all rows of prestige upgrades and the first row of super upgrades!",
+            done() {return player.m.points.gte(1)}
+        },
+    },
+    upgrades: {
+      11: {
+	title: "We reached mega!",
+	description: "x5 Points and Prestige Points and x3 Super.",
+	cost: new Decimal(1)
+      },
+	      },
 })
