@@ -12,7 +12,7 @@ addLayer("p", {
     }},
     passiveGeneration(){
 	    let passive = new Decimal(0)
-	    if(hasMilestone('s',3)) passive = passive.add(1)
+	    if(hasMilestone('s',3) || hasAchievement('A', 31)) passive = passive.add(1)
             return passive
     },
     color: "#4BDC13",
@@ -100,7 +100,7 @@ addLayer("p", {
 		buyUpgrade('p', 34);
 		buyUpgrade('p', 35);
 	}
-	if (hasMilestone('s', 4)) {
+	if (hasMilestone('s', 4) || hasAchievement('A', 31)) {
 		if (layers.p.buyables[11].canAfford()) {
 				layers.p.buyables[11].buy();
 			};
