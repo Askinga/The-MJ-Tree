@@ -88,7 +88,7 @@ addLayer("m", {
 	title: "Big Point Boost",
 	description: "x10 Points.",
 	cost: new Decimal(25),
-	unlocked(){ return hasUpgrade('m', 14)}
+	unlocked(){ return hasUpgrade('m', 15)}
       },
 	      },
       effect(){
