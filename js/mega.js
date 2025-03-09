@@ -22,6 +22,7 @@ addLayer("m", {
 	if(hasUpgrade('m',15)) mult = mult.times(2)
 	if(hasUpgrade('m',23)) mult = mult.times(3)
 	if(hasUpgrade('m',24)) mult = mult.times(2)
+	if(hasUpgrade('m',34)) mult = mult.times(upgradeEffect('m',34))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -139,6 +140,30 @@ addLayer("m", {
 	    return format(upgradeEffect(this.layer, this.id))+'x'
 	},
 	unlocked(){ return (hasUpgrade('m', 31))}
+      },
+      33: {
+	title: "Mega Growing 2",
+	description: "Boost Super based on Mega.",
+	cost: new Decimal(600),
+	effect(){
+	    return player[this.layer].points.add(1).pow(0.4)
+	},
+	effectDisplay(){
+	    return format(upgradeEffect(this.layer, this.id))+'x'
+	},
+	unlocked(){ return (hasUpgrade('m', 32))}
+      },
+      34: {
+	title: "Mega Growing 3",
+	description: "Boost Mega based on points.",
+	cost: new Decimal(1000),
+	effect(){
+	    return player.points.add(1).pow(0.005)
+	},
+	effectDisplay(){
+	    return format(upgradeEffect(this.layer, this.id))+'x'
+	},
+	unlocked(){ return (hasUpgrade('m', 33))}
       },
 	      },
       effect(){
