@@ -102,7 +102,7 @@ addLayer("p", {
 		buyUpgrade('p', 34);
 		buyUpgrade('p', 35);
 	}
-	if (hasMilestone('s', 4) || hasAchievement('A', 31)) {
+	if (hasMilestone('s', 4) || hasAchievement('A', 31) && getBuyableAmount('p',11).lte(99)) {
 		if (layers.p.buyables[11].canAfford()) {
 				layers.p.buyables[11].buy();
 			};
@@ -266,11 +266,9 @@ addLayer("p", {
                 return player[this.layer].points.gte(this.cost())
             },
             buy() {
-		if(getBuyableAmount('p',11)).lte(99) {
-                	let cost = new Decimal (1)
-                	player[this.layer].points = player[this.layer].points.sub(this.cost().mul(cost))
-                	setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
-		}
+                let cost = new Decimal (1)
+                player[this.layer].points = player[this.layer].points.sub(this.cost().mul(cost))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
             effect(x) {
                 base1 = new Decimal(1.01)
