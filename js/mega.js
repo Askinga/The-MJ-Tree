@@ -75,10 +75,10 @@ addLayer("m", {
 	      },
       effect(){
 	let effect = new Decimal(1.5)
-	return player[this.layer].points.add(1).pow(effect)
+	return player.m.points.add(1).pow(effect)
       },
       effectDescription(){
-	      return 'which is boosting points by x' + format(this.effect)
+	      return 'which is boosting points by x' + format(layers.m.effect())
       },
 	
 })
