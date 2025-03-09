@@ -196,7 +196,7 @@ addLayer("m", {
 	description: "Boost Points based on points.",
 	cost: new Decimal("10^^1000"),
 	effect(){
-	    return player.points.add(1).slog()
+	    return player.points.add(1).slog().add(1)
 	},
 	effectDisplay(){
 	    return '^^'+format(upgradeEffect(this.layer, this.id))
