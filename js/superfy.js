@@ -11,6 +11,11 @@ addLayer("s", {
                 points: new Decimal(0),
     }},
     color: "#36ad56",
+    passiveGeneration(){
+	    let passive = new Decimal(0)
+	    if (hasUpgrade('m', 12)) passive = passive.add(0.05)
+	    return passive
+    },
     requires: new Decimal(5e7), // Can be a function that takes requirement increases into account
     resource: "Super", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
@@ -27,6 +32,7 @@ addLayer("s", {
 	if (hasUpgrade('s', 33)) mult = mult.times(upgradeEffect('s', 33))  
 	if (hasUpgrade('s', 34)) mult = mult.times(2.5)
 	if (hasUpgrade('m', 11)) mult = mult.times(3)
+	if (hasUpgrade('m', 12)) mult = mult.times(4)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
