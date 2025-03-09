@@ -43,6 +43,16 @@ addLayer("m", {
             effectDescription: "Automate the first row of super upgrades!",
             done() {return player.m.points.gte(1)}
         },
+	1: {
+            requirementDescription: "25 Mega",
+            effectDescription: "Automate the second row of super upgrades!",
+            done() {return player.m.points.gte(25)}
+        },
+	2: {
+            requirementDescription: "250 Mega",
+            effectDescription: "Automate the third row of super upgrades!",
+            done() {return player.m.points.gte(250)}
+        },
     },
     upgrades: {
       11: {
