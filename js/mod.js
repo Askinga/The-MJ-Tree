@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The Prestige Zen",
 	author: "Askinga",
 	pointsName: "points",
-	modFiles: ["layers.js", "superfy.js", "mega.js", "tree.js"],
+	modFiles: ["layers.js", "superfy.js", "mega.js", "achievements.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -50,6 +50,7 @@ function getPointGen() {
 	if (hasUpgrade('p',31)) gain = gain.times(5)
 	if (hasUpgrade('p',33)) gain = gain.times(upgradeEffect('p', 33))
 	gain = gain.pow(buyableEffect('p', 11))
+	if(hasAchievement('A', 15)) gain = gain.times(2)
 	if (hasUpgrade('s', 11)) gain = gain.times(2)
 	if (hasUpgrade('s', 12)) gain = gain.times(3)
 	if (hasUpgrade('s', 13)) gain = gain.times(4)
