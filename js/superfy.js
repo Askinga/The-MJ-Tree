@@ -14,6 +14,7 @@ addLayer("s", {
     passiveGeneration(){
 	    let passive = new Decimal(0)
 	    if (hasUpgrade('m', 12)) passive = passive.add(0.05)
+	    if (hasUpgrade('m', 14)) passive = passive.times(5)
 	    return passive
     },
     requires: new Decimal(5e7), // Can be a function that takes requirement increases into account
@@ -33,6 +34,7 @@ addLayer("s", {
 	if (hasUpgrade('s', 34)) mult = mult.times(2.5)
 	if (hasUpgrade('m', 11)) mult = mult.times(3)
 	if (hasUpgrade('m', 12)) mult = mult.times(4)
+	if (hasUpgrade('m', 14)) mult = mult.times(3.5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
