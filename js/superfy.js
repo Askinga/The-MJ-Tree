@@ -58,6 +58,20 @@ addLayer("s", {
 		buyUpgrade('s', 14);
 		buyUpgrade('s', 15);
 	}
+	if (hasMilestone('m', 1)) {
+		buyUpgrade('s', 21);
+		buyUpgrade('s', 22);
+		buyUpgrade('s', 23);
+		buyUpgrade('s', 24);
+		buyUpgrade('s', 25);
+	}
+	if (hasMilestone('m', 2)) {
+		buyUpgrade('s', 31);
+		buyUpgrade('s', 32);
+		buyUpgrade('s', 33);
+		buyUpgrade('s', 34);
+		buyUpgrade('s', 35);
+	}
     },
     upgrades: {
       11: {
