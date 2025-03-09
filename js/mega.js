@@ -20,6 +20,7 @@ addLayer("m", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if(hasUpgrade('m',15)) mult = mult.times(2)
+	if(hasUpgrade('m',22)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -90,9 +91,22 @@ addLayer("m", {
 	cost: new Decimal(25),
 	unlocked(){ return hasUpgrade('m', 15)}
       },
+      22: {
+	title: "Effect Boost",
+	description: "+^0.25 Mega effect.",
+	cost: new Decimal(30),
+	unlocked(){ return hasUpgrade('m', 21)}
+      },
+      23: {
+	title: "More Mega!",
+	description: "x3 Mega",
+	cost: new Decimal(40),
+	unlocked(){ return hasUpgrade('m', 22)}
+      },
 	      },
       effect(){
 	let effect = new Decimal(1.5)
+	if(hasUpgrade('m', 22)) effect = effect.add(0.25)
 	return player.m.points.add(1).pow(effect)
       },
       effectDescription(){
