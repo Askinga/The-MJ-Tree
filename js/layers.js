@@ -78,21 +78,21 @@ addLayer("p", {
 	},
     },
     automate(){
-	if (hasMilestone('s', 0)) {
+	if (hasMilestone('s', 0) || hasAchievement('A', 26)) {
 		buyUpgrade('p', 11);
 		buyUpgrade('p', 12);
 		buyUpgrade('p', 13);
 		buyUpgrade('p', 14);
 		buyUpgrade('p', 15);
 	}
-	if (hasMilestone('s', 1)) {
+	if (hasMilestone('s', 1) || hasAchievement('A', 26)) {
 		buyUpgrade('p', 21);
 		buyUpgrade('p', 22);
 		buyUpgrade('p', 23);
 		buyUpgrade('p', 24);
 		buyUpgrade('p', 25);
 	}
-	if (hasMilestone('s', 2)) {
+	if (hasMilestone('s', 2) || hasAchievement('A', 26)) {
 		buyUpgrade('p', 31);
 		buyUpgrade('p', 32);
 		buyUpgrade('p', 33);
