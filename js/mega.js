@@ -66,5 +66,11 @@ addLayer("m", {
 	cost: new Decimal(1),
 	unlocked(){ return hasUpgrade('m', 11)}
       },
+      13: {
+	title: "Early speed up",
+	description: "x7.5 prestige points",
+	cost: new Decimal(2),
+	unlocked(){ return hasUpgrade('m', 12)}
+      },
 	      },
 })
