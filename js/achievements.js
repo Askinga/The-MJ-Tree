@@ -74,7 +74,7 @@ addLayer("A", {
         26: {
             name: "Mega!",
             done() { return (player.m.points.gte(1)) },
-            tooltip: "Get 1 Mega. Reward: PERMANTLY keep all prestige upgrade automation.",	   
+            tooltip: "Get 1 Mega. Reward: PERMANENTLY keep all prestige upgrade automation.",	   
         },
           },
           })
