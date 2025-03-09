@@ -40,7 +40,7 @@ addLayer("m", {
     milestones: {
         0: {
             requirementDescription: "1 Mega",
-            effectDescription: "Automate all rows of prestige upgrades and the first row of super upgrades!",
+            effectDescription: "Automate the first row of super upgrades!",
             done() {return player.m.points.gte(1)}
         },
     },
