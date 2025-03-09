@@ -26,6 +26,7 @@ addLayer("s", {
 	if (hasUpgrade('s', 32)) mult = mult.times(6)  
 	if (hasUpgrade('s', 33)) mult = mult.times(upgradeEffect('s', 33))  
 	if (hasUpgrade('s', 34)) mult = mult.times(2.5)
+	if (hasUpgrade('m', 11)) gain = gain.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -43,6 +44,15 @@ addLayer("s", {
     },
     branches: ["p"], 
     layerShown(){return (hasUpgrade('p', 35) || player.s.unlocked)},
+    automate(){
+	if (hasMilestone('m', 0)) {
+		buyUpgrade('s', 11);
+		buyUpgrade('s', 12);
+		buyUpgrade('s', 13);
+		buyUpgrade('s', 14);
+		buyUpgrade('s', 15);
+	}
+    },
     upgrades: {
       11: {
 	title: "Start The Prestige Zen... again?",
