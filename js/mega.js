@@ -172,7 +172,7 @@ addLayer("m", {
 	description: "Boost Points based on points.",
 	cost: new Decimal(1000),
 	effect(){
-	    return player.points.add(1).log(5).pow(2.5)
+	    return player.points.add(1).log(5).pow(2.5).add(1)
 	},
 	effectDisplay(){
 	    return format(upgradeEffect(this.layer, this.id))+'x'
@@ -184,7 +184,7 @@ addLayer("m", {
 	description: "Boost Mega Growing 3 based on points.",
 	cost: new Decimal(1250),
 	effect(){
-	    return player.points.add(1).log(10).pow(0.3)
+	    return player.points.add(1).log(10).pow(0.3).add(1)
 	},
 	effectDisplay(){
 	    return format(upgradeEffect(this.layer, this.id))+'x'
