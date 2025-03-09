@@ -266,9 +266,11 @@ addLayer("p", {
                 return player[this.layer].points.gte(this.cost())
             },
             buy() {
-                let cost = new Decimal (1)
-                player[this.layer].points = player[this.layer].points.sub(this.cost().mul(cost))
-                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+		if(getBuyableAmount('p',11)).lte(99) {
+                	let cost = new Decimal (1)
+                	player[this.layer].points = player[this.layer].points.sub(this.cost().mul(cost))
+                	setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+		}
             },
             effect(x) {
                 base1 = new Decimal(1.01)
