@@ -158,7 +158,9 @@ addLayer("m", {
 	description: "Boost Mega based on points.",
 	cost: new Decimal(1000),
 	effect(){
-	    return player.points.add(1).pow(0.005)
+	    mult = new Decimal(1)
+	    if(hasUpgrade('m',41)) mult = mult.times(upgradeEffect('m',41))
+	    return player.points.add(1).pow(0.005).times(mult)
 	},
 	effectDisplay(){
 	    return format(upgradeEffect(this.layer, this.id))+'x'
@@ -176,6 +178,18 @@ addLayer("m", {
 	    return format(upgradeEffect(this.layer, this.id))+'x'
 	},
 	unlocked(){ return (hasUpgrade('m', 34))}
+      },
+      41: {
+	title: "Mega Growing 5",
+	description: "Boost Mega Growing 3 based on points.",
+	cost: new Decimal(1250),
+	effect(){
+	    return player.points.add(1).log(10).pow(0.3)
+	},
+	effectDisplay(){
+	    return format(upgradeEffect(this.layer, this.id))+'x'
+	},
+	unlocked(){ return (hasUpgrade('m', 35))}
       },
 	      },
       effect(){
