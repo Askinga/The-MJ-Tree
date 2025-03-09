@@ -50,5 +50,10 @@ addLayer("m", {
 	description: "x5 Points and Prestige Points and x3 Super.",
 	cost: new Decimal(1)
       },
+      12: {
+	title: "Mega Boosts",
+	description: "x4 Super and 5% of Super per second.",
+	cost: new Decimal(1)
+      },
 	      },
 })
