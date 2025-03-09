@@ -199,7 +199,7 @@ addLayer("m", {
 	    return player.points.add(1).slog()
 	},
 	effectDisplay(){
-	    return format(upgradeEffect(this.layer, this.id))+'x'
+	    return '^^'+format(upgradeEffect(this.layer, this.id))
 	},
 	unlocked(){ return (hasUpgrade('m', 41))}
       },
