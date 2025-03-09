@@ -20,7 +20,8 @@ addLayer("m", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if(hasUpgrade('m',15)) mult = mult.times(2)
-	if(hasUpgrade('m',22)) mult = mult.times(3)
+	if(hasUpgrade('m',23)) mult = mult.times(3)
+	if(hasUpgrade('m',24)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -102,6 +103,18 @@ addLayer("m", {
 	description: "x3 Mega",
 	cost: new Decimal(40),
 	unlocked(){ return hasUpgrade('m', 22)}
+      },
+      24: {
+	title: "Even More Mega!",
+	description: "x2 Mega",
+	cost: new Decimal(100),
+	unlocked(){ return hasUpgrade('m', 23)}
+      },
+      2t: {
+	title: "Faster!",
+	description: "x5 Super.",
+	cost: new Decimal(250),
+	unlocked(){ return hasUpgrade('m', 24)}
       },
 	      },
       effect(){
