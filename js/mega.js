@@ -64,7 +64,7 @@ addLayer("m", {
 	title: "Mega Boosts",
 	description: "x4 Super and 5% of Super per second.",
 	cost: new Decimal(1),
-	unlocked(){ return hasUpgrade('m', 11))}
+	unlocked(){ return hasUpgrade('m', 11)}
       },
 	      },
 })
