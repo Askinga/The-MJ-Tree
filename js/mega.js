@@ -116,10 +116,35 @@ addLayer("m", {
 	cost: new Decimal(250),
 	unlocked(){ return hasUpgrade('m', 24)}
       },
+      31: {
+	title: "Effect Booster",
+	description: "Boost the Mega Effect based on points.",
+	cost: new Decimal(400),
+	effect(){
+	    return player.points.add(1).pow(0.001)
+	},
+	effectDisplay(){
+	    return '^'+format(upgradeEffect(this.layer, this.id))
+	},
+	unlocked(){ return (hasUpgrade('m', 25))}
+      },
+      32: {
+	title: "Mega Growing",
+	description: "Boost prestige points based on Mega.",
+	cost: new Decimal(500),
+	effect(){
+	    return player[this.layer].points.add(1).pow(0.75)
+	},
+	effectDisplay(){
+	    return '^'+format(upgradeEffect(this.layer, this.id))
+	},
+	unlocked(){ return (hasUpgrade('m', 31))}
+      },
 	      },
       effect(){
 	let effect = new Decimal(1.5)
 	if(hasUpgrade('m', 22)) effect = effect.add(0.25)
+	if(hasUpgrade('m', 31)) effect = effect.times(upgradeEffect('m', 31))
 	return player.m.points.add(1).pow(effect)
       },
       effectDescription(){
