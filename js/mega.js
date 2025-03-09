@@ -19,7 +19,7 @@ addLayer("m", {
     exponent: 0.075, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-	
+	if(hasUpgrade('m',15)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -77,6 +77,18 @@ addLayer("m", {
 	description: "x3.5 Super and x5 Super per second.",
 	cost: new Decimal(5),
 	unlocked(){ return hasUpgrade('m', 13)}
+      },
+      15: {
+	title: "Self Mega Boost",
+	description: "x2 Mega.",
+	cost: new Decimal(10),
+	unlocked(){ return hasUpgrade('m', 14)}
+      },
+      21: {
+	title: "Big Point Boost",
+	description: "x10 Points.",
+	cost: new Decimal(25),
+	unlocked(){ return hasUpgrade('m', 14)}
       },
 	      },
       effect(){
