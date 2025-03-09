@@ -110,7 +110,7 @@ addLayer("m", {
 	cost: new Decimal(100),
 	unlocked(){ return hasUpgrade('m', 23)}
       },
-      2t: {
+      25: {
 	title: "Faster!",
 	description: "x5 Super.",
 	cost: new Decimal(250),
