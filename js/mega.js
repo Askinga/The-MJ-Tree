@@ -165,6 +165,18 @@ addLayer("m", {
 	},
 	unlocked(){ return (hasUpgrade('m', 33))}
       },
+      35: {
+	title: "Mega Growing 4",
+	description: "Boost Points based on points.",
+	cost: new Decimal(1000),
+	effect(){
+	    return player.points.add(1).log(5).pow(2.5)
+	},
+	effectDisplay(){
+	    return format(upgradeEffect(this.layer, this.id))+'x'
+	},
+	unlocked(){ return (hasUpgrade('m', 34))}
+      },
 	      },
       effect(){
 	let effect = new Decimal(1.5)
