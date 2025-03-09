@@ -73,4 +73,12 @@ addLayer("m", {
 	unlocked(){ return hasUpgrade('m', 12)}
       },
 	      },
+      effect(){
+	let effect = new Decimal(1.5)
+	return player[this.layer].points.add(1).pow(effect)
+      },
+      effectDescription(){
+	      return 'which is boosting points by x' + format(this.effect)
+      },
+	
 })
