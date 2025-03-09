@@ -72,6 +72,12 @@ addLayer("m", {
 	cost: new Decimal(2),
 	unlocked(){ return hasUpgrade('m', 12)}
       },
+      14: {
+	title: "Mega Boosts 2",
+	description: "x3.5 Super and x5 Super per second.",
+	cost: new Decimal(5),
+	unlocked(){ return hasUpgrade('m', 13)}
+      },
 	      },
       effect(){
 	let effect = new Decimal(1.5)
