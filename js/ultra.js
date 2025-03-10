@@ -31,9 +31,38 @@ addLayer("u", {
 		tooltip(){
       return 'Ultrafy'
     },
+    milestones: {
+        0: {
+            requirementDescription: "1 Ultra",
+            effectDescription: "Automate the first row of mega upgrades!",
+            done() {return player.u.points.gte(1)}
+        },
+	1: {
+            requirementDescription: "25 Ultra",
+            effectDescription: "Automate the second row of mega upgrades!",
+            done() {return player.u.points.gte(25)}
+        },
+	2: {
+            requirementDescription: "250 Ultra",
+            effectDescription: "Automate the third row of mega upgrades!",
+            done() {return player.u.points.gte(250)}
+        },
+	3: {
+            requirementDescription: "1000 Ultra",
+            effectDescription: "Automate the fourth row of mega upgrades!",
+            done() {return player.u.points.gte(1000)}
+        },
+    },
     hotkeys: [
         {key: "u", description: "U: Ultrafy.", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return (hasUpgrade('m', 45) || player.u.unlocked)},
     branches: ["m"],
+    upgrades: {
+    11: {
+	title: "Recover",
+	description: "x10 Points and Super and x3 Mega.",
+	cost: new Decimal(1)
+      },
+    },
 })
