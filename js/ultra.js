@@ -19,6 +19,7 @@ addLayer("u", {
     exponent: 0.2, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if(hasUpgrade('u',15)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -78,6 +79,11 @@ addLayer("u", {
 	title: "Big boost",
 	description: "x100 Prestige Points.",
 	cost: new Decimal(5)
+      },
+    15: {
+	title: "Ultra is Slow.",
+	description: "x2 Ultra, x3 Mega and x5 Super.",
+	cost: new Decimal(10)
       },
     },
     effect(){
