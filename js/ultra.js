@@ -10,7 +10,7 @@ addLayer("u", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#006aff",
+    color: "#6a00ff",
     requires: new Decimal(20000), // Can be a function that takes requirement increases into account
     resource: "Ultra", // Name of prestige currency
     baseResource: "Mega", // Name of resource prestige is based on
