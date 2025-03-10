@@ -160,6 +160,7 @@ addLayer("m", {
 	effect(){
 	    mult = new Decimal(1)
 	    if(hasUpgrade('m',41)) mult = mult.times(upgradeEffect('m',41))
+	    if(hasUpgrade('m',43)) mult = mult.times(upgradeEffect('m',43))
 	    return player.points.add(1).pow(0.005).times(mult)
 	},
 	effectDisplay(){
@@ -196,6 +197,18 @@ addLayer("m", {
 	description: "x10 Super.",
 	cost: new Decimal(3000),
 	unlocked(){ return hasUpgrade('m', 41)}
+      },
+      43: {
+	title: "Mega Growing 5",
+	description: "Boost Mega Growing 3 based on prestige points.",
+	cost: new Decimal(3500),
+	effect(){
+	    return player.p.points.add(1).pow(0.01)
+	},
+	effectDisplay(){
+	    return format(upgradeEffect(this.layer, this.id))+'x'
+	},
+	unlocked(){ return (hasUpgrade('m', 42))}
       },
 	      },
       effect(){
