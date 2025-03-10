@@ -34,5 +34,6 @@ addLayer("u", {
     hotkeys: [
         {key: "u", description: "U: Ultrafy.", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasUpgrade('m', 45) || player.u.unlocked)}
+    layerShown(){return (hasUpgrade('m', 45) || player.u.unlocked)},
+    branches: ["m"],
 })
