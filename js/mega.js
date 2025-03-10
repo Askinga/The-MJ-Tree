@@ -191,6 +191,12 @@ addLayer("m", {
 	},
 	unlocked(){ return (hasUpgrade('m', 35))}
       },
+      42: {
+	title: "More Points",
+	description: "x10 Super.",
+	cost: new Decimal(3000),
+	unlocked(){ return hasUpgrade('m', 41)}
+      },
 	      },
       effect(){
 	let effect = new Decimal(1.5)
