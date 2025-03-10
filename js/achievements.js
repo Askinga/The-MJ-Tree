@@ -81,5 +81,55 @@ addLayer("A", {
             done() { return (player.m.points.gte(5)) },
             tooltip: "Get 5 Mega. Reward: PERMANENTLY keep ALL prestige automation.",	   
         },
+	32: {
+            name: "Even More Mega!",
+            done() { return (player.m.points.gte(25)) },
+            tooltip: "Get 25 Mega.",	   
+        },
+	33: {
+            name: "Row 1 mega upgrades done.",
+            done() { return (hasUpgrade('m',15)) },
+            tooltip: "Finish Row 1 Mega Upgrades.",	   
+        },
+	34: {
+            name: "Exponents 5",
+            done() { return (getBuyableAmount('p', 11).gte(70)) },
+            tooltip: "Buy 70 of the first Exponent.",	   
+        },
+	35: {
+            name: "Row 2 mega upgrades done.",
+            done() { return (hasUpgrade('m',25)) },
+            tooltip: "Finish Row 2 Mega Upgrades.",	   
+        },
+	36: {
+            name: "Row 3 mega upgrades done.",
+            done() { return (hasUpgrade('m',35)) },
+            tooltip: "Finish Row 3 Mega Upgrades.",	   
+        },
+	41: {
+            name: "Even More Mega 2!",
+            done() { return (player.m.points.gte(2500)) },
+            tooltip: "Get 2500 Mega.",	   
+        },
+	42: {
+            name: "Exponents 6",
+            done() { return (getBuyableAmount('p', 11).gte(80)) },
+            tooltip: "Buy 80 of the first Exponent.",	   
+        },
+	43: {
+            name: "Even More Mega 3!",
+            done() { return (player.m.points.gte(10000)) },
+            tooltip: "Get 25 Mega.",	   
+        },
+	44: {
+            name: "Row 4 mega upgrades done.",
+            done() { return (hasUpgrade('m',45)) },
+            tooltip: "Finish Row 4 Mega Upgrades.",	   
+        },
+	45: {
+            name: "Ultra!",
+            done() { return (player.u.points.gte(1)) },
+            tooltip: "Get 1 Ultra. Reward: PERMANENTLY keep ALL super automation.",	   
+        },
           },
           })
