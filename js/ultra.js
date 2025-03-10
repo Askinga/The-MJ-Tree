@@ -74,6 +74,11 @@ addLayer("u", {
 	description: "x2 Mega and x5 Mega per second.",
 	cost: new Decimal(2)
       },
+    14: {
+	title: "Big boost",
+	description: "x100 Prestige Points.",
+	cost: new Decimal(5)
+      },
     },
     effect(){
 	let effect = new Decimal(1.25)
