@@ -109,7 +109,7 @@ addLayer("A", {
 	41: {
             name: "Even More Mega 2!",
             done() { return (player.m.points.gte(2500)) },
-            tooltip: "Get 2500 Mega.",	   
+            tooltip: "Get 2,500 Mega.",	   
         },
 	42: {
             name: "Exponents 6",
@@ -119,7 +119,7 @@ addLayer("A", {
 	43: {
             name: "Even More Mega 3!",
             done() { return (player.m.points.gte(10000)) },
-            tooltip: "Get 25 Mega.",	   
+            tooltip: "Get 10,000 Mega.",	   
         },
 	44: {
             name: "Row 4 mega upgrades done.",
