@@ -13,7 +13,7 @@ addLayer("s", {
     color: "#36ad56",
     passiveGeneration(){
 	    let passive = new Decimal(0)
-	    if (hasUpgrade('m', 12)) passive = passive.add(0.05)
+	    if (hasUpgrade('m', 12) || hasAchievement('A', 45)) passive = passive.add(0.05)
 	    if (hasUpgrade('m', 14)) passive = passive.times(5)
 	    return passive
     },
@@ -55,21 +55,21 @@ addLayer("s", {
     branches: ["p"], 
     layerShown(){return (hasUpgrade('p', 35) || player.s.unlocked)},
     automate(){
-	if (hasMilestone('m', 0)) {
+	if (hasMilestone('m', 0) || hasAchievement('A', 45)) {
 		buyUpgrade('s', 11);
 		buyUpgrade('s', 12);
 		buyUpgrade('s', 13);
 		buyUpgrade('s', 14);
 		buyUpgrade('s', 15);
 	}
-	if (hasMilestone('m', 1)) {
+	if (hasMilestone('m', 1) || hasAchievement('A', 45)) {
 		buyUpgrade('s', 21);
 		buyUpgrade('s', 22);
 		buyUpgrade('s', 23);
 		buyUpgrade('s', 24);
 		buyUpgrade('s', 25);
 	}
-	if (hasMilestone('m', 2)) {
+	if (hasMilestone('m', 2) || hasAchievement('A', 45)) {
 		buyUpgrade('s', 31);
 		buyUpgrade('s', 32);
 		buyUpgrade('s', 33);
