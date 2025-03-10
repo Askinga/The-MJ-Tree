@@ -64,5 +64,10 @@ addLayer("u", {
 	description: "x10 Points and Super and x3 Mega.",
 	cost: new Decimal(1)
       },
+    12: {
+	title: "Faster.",
+	description: "x4 Mega and 5% of Mega per second.",
+	cost: new Decimal(1)
+      },
     },
 })
