@@ -40,6 +40,36 @@ addLayer("m", {
     },
     branches: ["s"], 
     layerShown(){return (hasUpgrade('s', 35) || player.m.unlocked)},
+    automate(){
+	if (hasMilestone('u', 0)) {
+		buyUpgrade('m', 11);
+		buyUpgrade('m', 12);
+		buyUpgrade('m', 13);
+		buyUpgrade('m', 14);
+		buyUpgrade('m', 15);
+	}
+	if (hasMilestone('u', 1)) {
+		buyUpgrade('m', 21);
+		buyUpgrade('m', 22);
+		buyUpgrade('m', 23);
+		buyUpgrade('m', 24);
+		buyUpgrade('m', 25);
+	}
+	if (hasMilestone('u', 2) ) {
+		buyUpgrade('m', 31);
+		buyUpgrade('m', 32);
+		buyUpgrade('m', 33);
+		buyUpgrade('m', 34);
+		buyUpgrade('m', 35);
+	}
+	if (hasMilestone('u', 3) ) {
+		buyUpgrade('m', 41);
+		buyUpgrade('m', 42);
+		buyUpgrade('m', 43);
+		buyUpgrade('m', 44);
+		buyUpgrade('m', 45);
+	}
+    },
     milestones: {
         0: {
             requirementDescription: "1 Mega",
