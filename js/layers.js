@@ -102,8 +102,8 @@ addLayer("p", {
 		buyUpgrade('p', 34);
 		buyUpgrade('p', 35);
 	}
-	if (hasMilestone('s', 4) || hasAchievement('A', 31) && getBuyableAmount('p',11).lte(99)) {
-		if (layers.p.buyables[11].canAfford()) {
+	if (hasMilestone('s', 4) || hasAchievement('A', 31)) {
+		if (layers.p.buyables[11].canAfford() && getBuyableAmount('p',11).lte(99)) {
 				layers.p.buyables[11].buy();
 			};
 	}
