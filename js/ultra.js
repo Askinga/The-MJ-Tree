@@ -69,6 +69,11 @@ addLayer("u", {
 	description: "x4 Mega and 5% of Mega per second.",
 	cost: new Decimal(1)
       },
+    13: {
+	title: "Faster!",
+	description: "x2 Mega and x5 Mega per second.",
+	cost: new Decimal(2)
+      },
     },
     effect(){
 	let effect = new Decimal(1.25)
