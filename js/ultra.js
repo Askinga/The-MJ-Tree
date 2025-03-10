@@ -70,4 +70,11 @@ addLayer("u", {
 	cost: new Decimal(1)
       },
     },
+    effect(){
+	let effect = new Decimal(1.25)
+	return player.u.points.add(1).pow(effect)
+      },
+      effectDescription(){
+	      return 'which is boosting Super by x' + format(layers.u.effect())
+      },
 })
