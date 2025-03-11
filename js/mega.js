@@ -274,4 +274,36 @@ addLayer("m", {
 	      return 'which is boosting points by x' + format(layers.m.effect())
       },
 	
+      buyables: {
+        11: {
+            title: "Upgrade Upgrader 1",
+            unlocked() { return hasUpgrade("u", 21) },
+            cost(x) {
+                base = 10
+                return new Decimal(1e7).mul(new Decimal(base).pow(x)).floor()
+            },
+            display() {
+                return "Boost Prestige Upgrade 1 by ^2 per level. (compounding) " + "<br>Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " Mega." + "<br>Level " + getBuyableAmount(this.layer, this.id) + "/1,000" + "<br>Effect: Boost Prestige Upgrade 1 by ^" + format(buyableEffect(this.layer, this.id))
+            },
+            canAfford() {
+                return player[this.layer].points.gte(this.cost())
+            },
+            buy() {
+                let cost = new Decimal (1)
+                player[this.layer].points = player[this.layer].points.sub(this.cost().mul(cost))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+            effect(x) {
+                base1 = new Decimal(2)
+                base2 = x
+                expo = new Decimal(1)
+                eff = base1.pow(Decimal.pow(base2, expo))
+                return eff
+            },
+            tooltip() {
+                return "Cost Formula: 1e7 * 10 ^ " + format(x) + ". Effect formula: " + format(base1) + "^(" + format(base2) + "^" + expo + ")."
+            },
+	    purchaseLimit(){ return new Decimal(1000)}
+        },
+    },
 })
