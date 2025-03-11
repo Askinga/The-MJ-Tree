@@ -301,7 +301,7 @@ addLayer("m", {
                 return eff
             },
             tooltip() {
-                return "Cost Formula: 1e7 * 10 ^ " + format(x) + ". Effect formula: " + format(base1) + "+(" + format(base2) + "^" + expo + ")."
+                return "Cost Formula: 1e7 * 10 ^ " + format(base2) + ". Effect formula: " + format(base1) + "+(" + format(base2) + "^" + expo + ")."
             },
 	    purchaseLimit(){ return new Decimal("1e1000") }
         },
