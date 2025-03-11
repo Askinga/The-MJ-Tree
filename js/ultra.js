@@ -85,7 +85,7 @@ addLayer("u", {
 	description: "x2 Ultra, x3 Mega and x5 Super.",
 	cost: new Decimal(10)
       },
-    15: {
+    21: {
 	title: "A new Buyable!",
 	description: "Unlock a buyable.",
 	cost: new Decimal(25)
