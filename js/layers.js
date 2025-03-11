@@ -114,7 +114,12 @@ addLayer("p", {
     upgrades: {
       11: {
 	title: "Start The Prestige Zen",
-	description: "x2 Points",
+	description(){ return "x" + format(this.effect) + " Points",
+	effect(){
+	    power = new Decimal(1)
+	    power = power.times(buyableEffect('m', 11))
+	    return new Decimal(2).pow(power)
+	},
 	cost: new Decimal(1)
       },
       12: {
