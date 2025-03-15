@@ -162,7 +162,7 @@ addLayer("m", {
 	description: "Boost the Mega Effect based on points.",
 	cost: new Decimal(400),
 	effect(){
-	    let eff2 = new Decimal(0.001)
+	    let eff2 = 0.001
 	    let eff player.points.add(1).pow(eff2)
 	    eff = softcap(eff, new Decimal("1.25"), 0)
 	    return eff
