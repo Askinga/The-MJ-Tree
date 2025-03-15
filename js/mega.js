@@ -162,10 +162,15 @@ addLayer("m", {
 	description: "Boost the Mega Effect based on points.",
 	cost: new Decimal(400),
 	effect(){
+	    eff = softcap(eff, new Decimal("1.25"), 0)
 	    return player.points.add(1).pow(0.001)
 	},
 	effectDisplay(){
-	    return '^'+format(upgradeEffect(this.layer, this.id))
+	    let softcapDescription = ''
+	    if (upgEffect.gte(new Decimal("1.25")) ) {
+                    softcapDescription = " (HARDCAPPED)"
+	    }
+	    return '^'+format(upgradeEffect(this.layer, this.id)) + softcapDescription
 	},
 	unlocked(){ return (hasUpgrade('m', 25))}
       },
