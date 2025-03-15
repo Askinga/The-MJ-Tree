@@ -90,6 +90,16 @@ addLayer("u", {
 	description: "Unlock a buyable.",
 	cost: new Decimal(25)
       },
+    22: {
+	title: "Upgrade Boost",
+	description: "+^2 Prestige Up 1 effect.",
+	cost: new Decimal(25)
+      },
+    23: {
+	title: "Xtra",
+	description: "+^0.01 Prestige Points.",
+	cost: new Decimal(30)
+      },
     },
     effect(){
 	let effect = new Decimal(1.25)
