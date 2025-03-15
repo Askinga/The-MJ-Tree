@@ -166,6 +166,7 @@ addLayer("m", {
 	    return player.points.add(1).pow(0.001)
 	},
 	effectDisplay(){
+	    let softcapDescription = ''
 	    if (upgEffect.gte(new Decimal("1.25")) ) {
                     softcapDescription = " (HARDCAPPED)"
 	    }
