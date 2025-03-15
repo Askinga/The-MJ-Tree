@@ -1,5 +1,5 @@
 let modInfo = {
-	name: "The Prestige Zen",
+	name: "TPZOBE",
 	author: "Askinga",
 	pointsName: "points",
 	modFiles: ["layers.js", "superfy.js", "mega.js", "ultra.js", "achievements.js", "tree.js"],
@@ -65,6 +65,7 @@ function getPointGen() {
 	if (hasUpgrade('m', 35)) gain = gain.times(upgradeEffect('m', 35))
  	if (hasUpgrade('m', 42)) gain = gain.times(10)
 	if (hasUpgrade('u', 11)) gain = gain.times(10)
+	gain = gain.pow(1.5)
 	return gain
 }
 
