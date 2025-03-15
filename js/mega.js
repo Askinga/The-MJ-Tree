@@ -169,6 +169,7 @@ addLayer("m", {
 	},
 	effectDisplay(){
 	    let softcapDescription = ''
+	    let upgEffect = upgradeEffect(this.layer, this.id)
 	    if (upgEffect.gte(new Decimal("1.25")) ) {
                     softcapDescription = " (HARDCAPPED)"
 	    }
