@@ -20,6 +20,7 @@ addLayer("u", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if(hasUpgrade('u',15)) mult = mult.times(2)
+	if(hasUpgrade('u',24)) mult = mult.times(5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -68,37 +69,50 @@ addLayer("u", {
     12: {
 	title: "Faster.",
 	description: "x4 Mega and 5% of Mega per second.",
-	cost: new Decimal(1)
+	cost: new Decimal(1),
+	unlocked(){ return (hasUpgrade('u',11))}
       },
     13: {
 	title: "Faster!",
 	description: "x2 Mega and x5 Mega per second.",
-	cost: new Decimal(2)
+	cost: new Decimal(2),
+	unlocked(){ return (hasUpgrade('u',12))}
       },
     14: {
 	title: "Big boost",
 	description: "x100 Prestige Points.",
-	cost: new Decimal(5)
+	cost: new Decimal(5),
+	unlocked(){ return (hasUpgrade('u',13))}
       },
     15: {
 	title: "Ultra is Slow.",
 	description: "x2 Ultra, x3 Mega and x5 Super.",
-	cost: new Decimal(10)
+	cost: new Decimal(10),
+	unlocked(){ return (hasUpgrade('u',14))}
       },
     21: {
 	title: "A new Buyable!",
 	description: "Unlock a buyable.",
-	cost: new Decimal(25)
+	cost: new Decimal(25),
+	unlocked(){ return (hasUpgrade('u',15))}
       },
     22: {
 	title: "Upgrade Boost",
 	description: "+^2 Prestige Up 1 effect.",
-	cost: new Decimal(25)
+	cost: new Decimal(25),
+	unlocked(){ return (hasUpgrade('u',21))}
       },
     23: {
 	title: "Xtra",
 	description: "+^0.01 Prestige Points.",
-	cost: new Decimal(30)
+	cost: new Decimal(30),
+	unlocked(){ return (hasUpgrade('u',22))}
+      },
+    24: {
+	title: "Xtra+",
+	description: "x5 Ultra.",
+	cost: new Decimal(35),
+	unlocked(){ return (hasUpgrade('u',23))}
       },
     },
     effect(){
