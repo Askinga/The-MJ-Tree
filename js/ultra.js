@@ -22,6 +22,7 @@ addLayer("u", {
         mult = new Decimal(1)
 	if(hasUpgrade('u',15)) mult = mult.times(2)
 	if(hasUpgrade('u',24)) mult = mult.times(5)
+	if(hasUpgrade('u',31)) mult = mult.times(5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -89,7 +90,7 @@ addLayer("u", {
     },
     automate(){
 	if(hasUpgrade('u',25)) {
-		player.u.ultraPoints = new Decimal(player.u.points.add(1).pow(0.1).times(player.points.add(1).log(10).add(1)).div(200))
+		player.u.ultraPoints = new Decimal(player.u.points.add(1).pow(0.1).times(player.points.add(1).log(10).add(1)).div(100))
 	}
     },
     hotkeys: [
@@ -156,6 +157,15 @@ addLayer("u", {
 	description: "Unlock Ultra Points.",
 	cost: new Decimal(200),
 	unlocked(){ return (hasUpgrade('u',24))}
+      },
+    31: {
+	title: "It costs Ultra Points!",
+	description: "x2 Ultra. Cost: 1.5",
+	cost: new Decimal(1.5),
+	unlocked(){ return (hasUpgrade('u',25))},
+        currencyDisplayName: "Ultra Points",
+        currencyInternalName: "ultraPoints",
+        currencyLayer: "u"
       },
     },
     effect(){
