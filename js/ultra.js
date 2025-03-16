@@ -56,6 +56,32 @@ addLayer("u", {
             done() {return player.u.points.gte(1000)}
         },
     },
+    tabFormat: {
+	main: {
+	    content: [
+		"main-display",
+		"blank",
+		"prestige-button",
+		"resource-display",
+		"blank",
+		"milestones",
+		"blank",
+		"upgrades",
+	    ]
+	},
+	UltraPoints: {
+	    unlocked(){ return (hasUpgrade('u', 25))},
+		content: [
+		    "main-display",
+		    "blank",
+		    "prestige-button",
+		    "resource-display",
+		    "blank",
+		    ["display-text", function(){ return 'You have ' + format(player.u.ultraPoints) + ' Ultra Points, which boost Points by x' + format(tmp.u.ultraPointsEffect)}],
+		    "blank",
+		]
+	},
+    },
     ultraPointsEffect(){
 	let pow = 3   
 	let eff = player.u.ultraPoints.add(1).pow(pow)
@@ -63,7 +89,7 @@ addLayer("u", {
     },
     automate(){
 	if(hasUpgrade('u',25)) {
-		player.u.ultraPoints = new Decimal(player.u.points.add(1).pow(0.1).times(player.points.add(1).log(10).add(1)))
+		player.u.ultraPoints = new Decimal(player.u.points.add(1).pow(0.1).times(player.points.add(1).log(10).add(1)).div(200))
 	}
     },
     hotkeys: [
