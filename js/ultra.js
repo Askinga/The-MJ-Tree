@@ -9,6 +9,7 @@ addLayer("u", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+	        ultraPoints: new Decimal(0)
     }},
     color: "#6a00ff",
     requires: new Decimal(20000), // Can be a function that takes requirement increases into account
@@ -54,6 +55,16 @@ addLayer("u", {
             effectDescription: "Automate the fourth row of mega upgrades!",
             done() {return player.u.points.gte(1000)}
         },
+    },
+    ultraPointsEffect(){
+	let pow = 3   
+	let eff = player.u.ultraPoints.add(1).pow(pow)
+	return eff
+    },
+    automate(){
+	if(hasUpgrade('u',25)) {
+		player.u.ultraPoints = new Decimal(player.u.points.add(1).pow(0.1).times(player.points.add(1).log(10).add(1)))
+	}
     },
     hotkeys: [
         {key: "u", description: "U: Ultrafy.", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -113,6 +124,12 @@ addLayer("u", {
 	description: "x5 Ultra.",
 	cost: new Decimal(35),
 	unlocked(){ return (hasUpgrade('u',23))}
+      },
+    25: {
+	title: "First Sub Currency!",
+	description: "Unlock Ultra Points.",
+	cost: new Decimal(200),
+	unlocked(){ return (hasUpgrade('u',24))}
       },
     },
     effect(){
