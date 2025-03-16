@@ -94,7 +94,7 @@ addLayer("u", {
 		let log = 10
 		let logPow = 1
 		let div = 100
-		let eff player.u.ultraPoints = new Decimal(player.u.points.add(1).pow(pow).times(player.points.add(1).log(log).add(1).pow(logPow)).div(div))
+		let eff = player.u.ultraPoints = new Decimal(player.u.points.add(1).pow(pow).times(player.points.add(1).log(log).add(1).pow(logPow)).div(div))
 		if (hasUpgrade('u', 32)) div = 90
 		return eff
 	}
