@@ -23,6 +23,7 @@ addLayer("u", {
 	if(hasUpgrade('u',15)) mult = mult.times(2)
 	if(hasUpgrade('u',24)) mult = mult.times(5)
 	if(hasUpgrade('u',31)) mult = mult.times(2)
+	if(hasUpgrade('u',33)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -96,6 +97,7 @@ addLayer("u", {
 		let div = 100
 		let eff = player.u.ultraPoints = new Decimal(player.u.points.add(1).pow(pow).times(player.points.add(1).log(log).add(1).pow(logPow)).div(div))
 		if (hasUpgrade('u', 32)) div = 90
+		if (hasUpgrade('u', 33)) pow = 0.125
 		return eff
 	}
     },
@@ -175,9 +177,18 @@ addLayer("u", {
       },
     32: {
 	title: "The amount is low.",
-	description: "Ultra Points formula is better. Cost: 1.7",
-	cost: new Decimal(1.7),
+	description: "Ultra Points formula is better. Cost: 1.65",
+	cost: new Decimal(1.65),
 	unlocked(){ return (hasUpgrade('u',31))},
+        currencyDisplayName: "Ultra Points",
+        currencyInternalName: "ultraPoints",
+        currencyLayer: "u"
+      },
+    33: {
+	title: "More Ultra",
+	description: "x3 Ultra and Ultra Points formula is better.. Cost: 1.75",
+	cost: new Decimal(1.75),
+	unlocked(){ return (hasUpgrade('u',32))},
         currencyDisplayName: "Ultra Points",
         currencyInternalName: "ultraPoints",
         currencyLayer: "u"
