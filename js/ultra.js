@@ -186,8 +186,8 @@ addLayer("u", {
       },
     33: {
 	title: "More Ultra",
-	description: "x3 Ultra and Ultra Points formula is better.. Cost: 1.75",
-	cost: new Decimal(1.75),
+	description: "x3 Ultra and Ultra Points formula is better.. Cost: 1.85",
+	cost: new Decimal(1.85),
 	unlocked(){ return (hasUpgrade('u',32))},
         currencyDisplayName: "Ultra Points",
         currencyInternalName: "ultraPoints",
