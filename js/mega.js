@@ -36,7 +36,9 @@ addLayer("m", {
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        exp = new Decimal(1)
+	if (hasUpgrade('u', 35)) exp = exp.add(0.05)
+	return exp
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
