@@ -204,6 +204,15 @@ addLayer("u", {
         currencyInternalName: "ultraPoints",
         currencyLayer: "u"
       },
+    35: {
+	title: "Xtra++",
+	description: "+^0.05 Mega. Cost: 2.5",
+	cost: new Decimal(2.5),
+	unlocked(){ return (hasUpgrade('u',34))},
+        currencyDisplayName: "Ultra Points",
+        currencyInternalName: "ultraPoints",
+        currencyLayer: "u"
+      },
     },
     effect(){
 	let effect = new Decimal(1.25)
