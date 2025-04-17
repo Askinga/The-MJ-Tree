@@ -31,4 +31,6 @@ addLayer("p", {
             description: "Double the MJs you get per second.",
             cost: new Decimal(1),
             
-		}
+		},
+	},
+})
