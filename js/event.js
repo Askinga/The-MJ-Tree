@@ -25,8 +25,7 @@ addLayer("event", {
     },
     tabFormat: [
       ["display-text", function(){ return "A new update, coming soon." }],
-      ["raw-html", function () { return "<img src='resources/update.png'>"  }],
     ],
     row: "side", // Only if "side" is valid in your framework
-    layerShown(){return true}
+    layerShown(){return false}
 })
