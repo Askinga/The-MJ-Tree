@@ -1,12 +1,12 @@
 let modInfo = {
-	name: "The ??? Tree",
-	author: "nobody",
+	name: "Reily Tree????",
+	author: "Reily",
 	pointsName: "points",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
@@ -42,6 +42,7 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	gain = gain.times(buyableEffect('r', 11))
 	return gain
 }
 
