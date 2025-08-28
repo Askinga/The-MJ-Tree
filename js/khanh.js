@@ -31,7 +31,7 @@ addLayer("kh", {
     ],
 	buyables: {
     11: {
-		title: "Khane",
+		title: "Khanh",
         cost(x) { return new Decimal(1.5).pow(x).times(1000) },
         display() { return "Boost point gain based on points. Gets stronger per level.<br>Cost: " + format(this.cost()) + " points<br>Bought: " + format(getBuyableAmount('kh', 11)) + "<br>Effect: x" + format(buyableEffect('kh', 11)) + " points" },
         canAfford() { return player.points.gte(this.cost()) },
