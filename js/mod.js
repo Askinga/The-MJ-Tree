@@ -2,7 +2,7 @@ let modInfo = {
 	name: "Reily Tree????",
 	author: "Reily",
 	pointsName: "points",
-	modFiles: ["layers.js", "tree.js"],
+	modFiles: ["layers.js", "tree.js", "khanh.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -43,6 +43,7 @@ function getPointGen() {
 
 	let gain = new Decimal(1)
 	gain = gain.times(buyableEffect('r', 11))
+	gain = gain.times(buyableEffect('kh', 11))
 	return gain
 }
 
