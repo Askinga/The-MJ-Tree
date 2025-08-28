@@ -31,7 +31,7 @@ addLayer("r", {
 	buyables: {
     11: {
 		title: "Reily",
-        cost(x) { return new Decimal(1.125).pow(x).times(10) },
+        cost(x) { return new Decimal(1.2).pow(x).times(10) },
         display() { return "x1.125 points<br>Cost: " + format(this.cost()) + " points<br>Bought: " + format(getBuyableAmount('r', 11)) + "<br>Effect: x" + format(buyableEffect('r', 11)) + " points" },
         canAfford() { return player.points.gte(this.cost()) },
         buy() {
