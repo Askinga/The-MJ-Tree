@@ -33,7 +33,7 @@ addLayer("d", {
 		difficulty: new Decimal(1),
 		started: new Decimal(0),
     }},
-    color: "#4BDC13",
+    color: "#660000",
     requires: new Decimal("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee10"), // Can be a function that takes requirement increases into account
     resource: "Difficulty", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
