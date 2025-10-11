@@ -87,7 +87,7 @@ addLayer("d", {
     },
 	13: {
 		title: "HARD",
-        display() {return "Hard mode: /3 all resources and /3.33 points"},
+        display() {return "Hard mode: /2 all resources and /3.33 points"},
         canClick(){ return true },
 		onClick(){ 
 			player.d.difficulty = new Decimal(2)
