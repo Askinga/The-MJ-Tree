@@ -76,7 +76,7 @@ addLayer("d", {
     },
 	12: {
 		title: "NORMAL",
-        display() {return "Normal mode: Normal TMT game"},
+        display() {return "Normal mode"},
         canClick(){ return true },
 		onClick(){ 
 			player.d.difficulty = new Decimal(1)
