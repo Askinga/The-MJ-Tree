@@ -1,24 +1,27 @@
 let easy = {
   width: "100px",
   height: "100px",
-  "min-height": "100px",
+  "min-height": "120px",
   "font-size": "10px",
+  margin: "10px",
   "border-radius": "33%",
   "background-color": "#00aaff"
 };
 let normal = {
   width: "100px",
   height: "100px",
-  "min-height": "100px",
+  "min-height": "120px",
   "font-size": "10px",
+  margin: "10px",
   "border-radius": "33%",
   "background-color": "#00aa00"
 };
 let hard = {
   width: "100px",
   height: "100px",
-  "min-height": "100px",
+  "min-height": "120px",
   "font-size": "10px",
+  margin: "10px",
   "border-radius": "33%",
   "background-color": "#aa0000"
 };
@@ -66,7 +69,7 @@ addLayer("d", {
     11: {
 		title: "EASY",
         display() {return "Easy mode: x2 all resources and points and ^1.01 points"},
-        canClick(){ return true },
+        canClick(){ return player.d.started.lt(1) },
 		onClick(){ 
 			player.d.difficulty = new Decimal(0)
 		},
@@ -77,7 +80,7 @@ addLayer("d", {
 	12: {
 		title: "NORMAL",
         display() {return "Normal mode"},
-        canClick(){ return true },
+        canClick(){ return player.d.started.lt(1) },
 		onClick(){ 
 			player.d.difficulty = new Decimal(1)
 		},
@@ -88,7 +91,7 @@ addLayer("d", {
 	13: {
 		title: "HARD",
         display() {return "Hard mode: /2 all resources and /3.33 points"},
-        canClick(){ return true },
+        canClick(){ return player.d.started.lt(1) },
 		onClick(){ 
 			player.d.difficulty = new Decimal(2)
 		},
