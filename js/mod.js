@@ -33,7 +33,7 @@ function getStartPoints(){
 
 // Determines if it should show points/sec
 function canGenPoints(){
-	return true
+	return player.d.started.gte(1)
 }
 
 // Calculate points/sec!
@@ -42,6 +42,8 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (player.d.difficulty.eq(0)) gain = gain.times(2)
+	if (player.d.difficulty.eq(2)) gain = gain.times(0.33)
 	return gain
 }
 
