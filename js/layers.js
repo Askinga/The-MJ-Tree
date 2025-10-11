@@ -1,27 +1,24 @@
 let easy = {
   width: "100px",
   height: "100px",
-  "min-height": "120px",
+  "min-height": "100px",
   "font-size": "10px",
-  margin: "10px",
   "border-radius": "33%",
   "background-color": "#00aaff"
 };
 let normal = {
   width: "100px",
   height: "100px",
-  "min-height": "120px",
+  "min-height": "100px",
   "font-size": "10px",
-  margin: "10px",
   "border-radius": "33%",
   "background-color": "#00aa00"
 };
 let hard = {
   width: "100px",
   height: "100px",
-  "min-height": "120px",
+  "min-height": "100px",
   "font-size": "10px",
-  margin: "10px",
   "border-radius": "33%",
   "background-color": "#aa0000"
 };
