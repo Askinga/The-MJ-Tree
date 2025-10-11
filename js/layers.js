@@ -22,6 +22,14 @@ let hard = {
   "border-radius": "33%",
   "background-color": "#aa0000"
 };
+let start = {
+  width: "250px",
+  height: "100px",
+  "min-height": "100px",
+  "font-size": "10px",
+  "border-radius": "33%",
+  "background-color": "#00aaaa"
+};
 
 addLayer("d", {
     name: "Difficulty", // This is optional, only used in a few places, If absent it just uses the layer id.
@@ -86,6 +94,16 @@ addLayer("d", {
 		},
 		style(){
 		   return { ...hard }
+		},
+    },
+	21: {
+		title: "START THE GAME",
+        canClick(){ return player.d.started.lt(1) },
+		onClick(){ 
+			player.d.started = new Decimal(1)
+		},
+		style(){
+		   return { ...start }
 		},
     },
 	},
