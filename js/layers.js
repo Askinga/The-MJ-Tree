@@ -41,7 +41,7 @@ addLayer("d", {
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
-		difficulty: new Decimal(1),
+		difficulty: new Decimal("-1"),
 		started: new Decimal(0),
     }},
     color: "#660000",
@@ -103,8 +103,12 @@ addLayer("d", {
 		title: "START THE GAME",
         canClick(){ return player.d.started.lt(1) },
 		onClick(){ 
-			if (!confirm("Are you sure you want to do this? This cannot be undone!")) return
-			player.d.started = new Decimal(1)
+			if (player.d.difficulty.lt(0)) {
+			    alert("You must choose a difficulty first!")
+		    } else {
+			    if (!confirm("Are you sure you want to do this? This cannot be undone!")) return
+			    player.d.started = new Decimal(1)
+			}
 		},
 		style(){
 		   return { ...start }
