@@ -26,5 +26,5 @@ addLayer("p", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return player.d.difficulty.eq(1)}
+    layerShown(){return player.d.started.eq(1)}
 })
