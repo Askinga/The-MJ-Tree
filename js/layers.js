@@ -64,7 +64,7 @@ addLayer("d", {
 		"clickables"
 	],
     row: "side", // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return true},
+    layerShown(){return player.d.started.lt(1)},
 	clickables: {
     11: {
 		title: "EASY",
@@ -108,6 +108,7 @@ addLayer("d", {
 		    } else {
 			    if (!confirm("Are you sure you want to do this? This cannot be undone!")) return
 			    player.d.started = new Decimal(1)
+				player.tab = "none"
 			}
 		},
 		style(){
