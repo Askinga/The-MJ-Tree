@@ -103,6 +103,7 @@ addLayer("d", {
 		title: "START THE GAME",
         canClick(){ return player.d.started.lt(1) },
 		onClick(){ 
+			if (!confirm("Are you sure you want to do this? This cannot be undone!")) return
 			player.d.started = new Decimal(1)
 		},
 		style(){
