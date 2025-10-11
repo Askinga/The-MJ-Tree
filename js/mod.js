@@ -44,6 +44,7 @@ function getPointGen() {
 	let gain = new Decimal(1)
 	if (player.d.difficulty.eq(0)) gain = gain.times(2)
 	if (player.d.difficulty.eq(2)) gain = gain.times(0.33)
+	if (player.d.difficulty.eq(0)) gain = gain.pow(1.01)
 	return gain
 }
 
