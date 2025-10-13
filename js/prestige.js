@@ -99,7 +99,7 @@ addLayer("p", {
         cost: new Decimal(7),
 		unlocked(){ return hasUpgrade(this.layer, 13) },
 		effect(){ return player.p.common.add(1).pow(0.4) },
-		effectDisplay(){ return "x"+format(upgradeEffect('p', 14))	 
+		effectDisplay(){ return "x"+format(upgradeEffect('p', 14)) },
     },
 	15: {
 		title: "New feature 2",
