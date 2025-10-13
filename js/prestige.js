@@ -59,6 +59,7 @@ addLayer("p", {
         + format(player.p.godly) + " Godly Runes<br>"
         + format(player.p.secret) + " Secret Runes</h3>";
             }],
+			"blank",
 		],
 	  },
 	},
