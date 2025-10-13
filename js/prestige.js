@@ -99,6 +99,7 @@ addLayer("p", {
         display() {return "Roll!<br>Cooldown: " + format(player.p.runeCooldown) + "s"},
         canClick(){ return player.p.runeCooldown.lte(0) },
 		onClick(){ 
+			player.p.runeCooldown = new Decimal(5); // 5 seconds cooldown
 			player.p.randomValue = new Decimal(Math.random())
 			if (player.p.randomValue.gt(0.46) && player.p.randomValue.lte(1)) {
 				player.p.common = player.p.common.add(1)
@@ -129,4 +130,11 @@ addLayer("p", {
 		   return "Common Rune: 54%<br>Uncommon Rune: 20%<br>Rare Rune: 10%<br>Epic Rune: 7.5%<br>Legendary Rune: 5%<br>Mythic Rune: 2.5%<br>Godly Rune: 0.99%<br>Secret Rune: ???%<br>"
 		},
     },
+	update(diff) {
+		// In your update loop
+if (player.p.runeCooldown.gt(0)) {
+    player.p.runeCooldown = player.p.runeCooldown.sub(diff); // diff = time since last tick
+    if (player.p.runeCooldown.lt(0)) player.p.runeCooldown = new Decimal(0);
+			}
+	},
 })
