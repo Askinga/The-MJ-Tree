@@ -62,13 +62,35 @@ addLayer("p", {
             }],
 			"blank",
 		],
-		buttonStyle() {
+	  },
+	  "Rune Skill Tree": {
+		unlocked(){ return hasUpgrade('p', 15) },  
+		content: [
+			"main-display",
+			"prestige-button",
+			"resource-display",
+			"blank",
+			["display-text", function(){ 
+    return "<h3>" 
+        + format(player.p.common) + " Common Runes<br>"
+        + format(player.p.uncommon) + " Uncommon Runes<br>"
+        + format(player.p.rare) + " Rare Runes<br>"
+        + format(player.p.epic) + " Epic Runes<br>"
+        + format(player.p.legendary) + " Legendary Runes<br>"
+        + format(player.p.mythic) + " Mythic Runes<br>"
+        + format(player.p.godly) + " Godly Runes<br>"
+        + format(player.p.secret) + " Secret Runes</h3>";
+            }],
+			"blank",
+			"upgrades",
+			buttonStyle() {
                     return {
                         'background': 'linear-gradient(90deg, #00aadd, black)',
                         'border-color': '#00aadd',
                         'color': 'white',
 					}
-		},
+						},
+		],
 	  },
 	},
     gainExp() { // Calculate the exponent on main currency from bonuses
