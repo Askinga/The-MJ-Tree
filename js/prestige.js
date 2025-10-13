@@ -47,8 +47,9 @@ addLayer("p", {
 			"prestige-button",
 			"resource-display",
 			"blank",
+			"clickables",
 			["display-text", function(){ 
-    return "" 
+    return "<h3>" 
         + format(player.p.common) + " Common Runes<br>"
         + format(player.p.uncommon) + " Uncommon Runes<br>"
         + format(player.p.rare) + " Rare Runes<br>"
@@ -56,10 +57,8 @@ addLayer("p", {
         + format(player.p.legendary) + " Legendary Runes<br>"
         + format(player.p.mythic) + " Mythic Runes<br>"
         + format(player.p.godly) + " Godly Runes<br>"
-        + format(player.p.secret) + " Secret Runes";
-            }],			
-			"blank",
-			"clickables",
+        + format(player.p.secret) + " Secret Runes</h3>";
+            }],
 		],
 	  },
 	},
