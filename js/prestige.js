@@ -92,28 +92,28 @@ addLayer("p", {
 			player.p.randomValue = new Decimal(Math.random())
 			if (player.p.randomValue.gt(0.46) && player.p.randomValue.lte(1)) {
 				player.p.common = player.p.common.add(1)
-			},
+			}
 		    if (player.p.randomValue.lte(0.46) && player.p.randomValue.gt(0.26)) {
 				player.p.uncommon = player.p.uncommon.add(1)
-			},
+			}
 		    if (player.p.randomValue.lte(0.26) && player.p.randomValue.gt(0.16)) {
 				player.p.rare = player.p.rare.add(1)
-			},
+			}
 		    if (player.p.randomValue.lte(0.16) && player.p.randomValue.gt(0.085)) {
 				player.p.epic = player.p.epic.add(1)
-			},
+			}
 		    if (player.p.randomValue.lte(0.085) && player.p.randomValue.gt(0.035)) {
 				player.p.legendary = player.p.legendary.add(1)
-			},
+			}
 		    if (player.p.randomValue.lte(0.035) && player.p.randomValue.gt(0.01)) {
 				player.p.mythic = player.p.mythic.add(1)
-			},
+			}
 		    if (player.p.randomValue.lte(0.01) && player.p.randomValue.gt(0.0001)) {
 				player.p.godly = player.p.godly.add(1)
-			},
+			}
 		    if (player.p.randomValue.lte(0.0001)) {
 				player.p.secret = player.p.secret.add(1)
-			},
+			}
 		},
 		tooltip(){
 		   return "Common Rune: 54%<br>Uncommon Rune: 20%<br>Rare Rune: 10%<br>Epic Rune: 7.5%<br>Legendary Rune: 5%<br>Mythic Rune: 2.5%<br>Godly Rune: 0.99%<br>Secret Rune: ???%<br>"
