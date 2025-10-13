@@ -229,7 +229,7 @@ addLayer("p", {
     },
 	242: {
 		title: "RST-8",
-        description: "Unlock a buyable. Lock RST-7 and RST-9",
+        description: "Unlock a clickable. Lock RST-7 and RST-9",
         cost: new Decimal(10),
 		unlocked(){ return (hasUpgrade(this.layer, 231) || hasUpgrade(this.layer, 232)) },
 		currencyDisplayName: "Mythic Runes",
@@ -291,7 +291,44 @@ addLayer("p", {
 		   return "Common Rune: 54%<br>Uncommon Rune: 20%<br>Rare Rune: 10%<br>Epic Rune: 7.5%<br>Legendary Rune: 5%<br>Mythic Rune: 2.5%<br>Godly Rune: 0.99%<br>Secret Rune: ???%<br>"
 		},
     },
-		21: {
+	12: {
+		title: "Roll Upgraded Rune",
+		unlocked(){ return hasUpgrade('p', 242) },
+        display() {return "Roll!<br>Cooldown: " + format(player.p.runeCooldown) + "s"},
+        canClick(){ return player.p.runeCooldown.lte(0) },
+		onClick(){ 
+			player.p.runeCooldown = player.p.baseRuneCooldown;
+			player.p.randomValue = new Decimal(Math.random())
+			if (player.p.randomValue.gt(0.9) && player.p.randomValue.lte(1)) {
+				player.p.common = player.p.common.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.9) && player.p.randomValue.gt(0.5)) {
+				player.p.uncommon = player.p.uncommon.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.5) && player.p.randomValue.gt(0.3)) {
+				player.p.rare = player.p.rare.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.3) && player.p.randomValue.gt(0.2)) {
+				player.p.epic = player.p.epic.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.2) && player.p.randomValue.gt(0.1)) {
+				player.p.legendary = player.p.legendary.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.1) && player.p.randomValue.gt(0.04)) {
+				player.p.mythic = player.p.mythic.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.04) && player.p.randomValue.gt(0.001)) {
+				player.p.godly = player.p.godly.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.001)) {
+				player.p.secret = player.p.secret.add(player.p.runeGain)
+			}
+		},
+		tooltip(){
+		   return "Common Rune: 10%<br>Uncommon Rune: 40%<br>Rare Rune: 20%<br>Epic Rune: 10%<br>Legendary Rune: 10%<br>Mythic Rune: 6%<br>Godly Rune: 3.9%<br>Secret Rune: ???%<br>"
+		},
+    },
+	21: {
 		display() {
 		return "Force an Prestige reset to respec Rune skill tree."
             },
