@@ -62,6 +62,13 @@ addLayer("p", {
             }],
 			"blank",
 		],
+		buttonStyle() {
+                    return {
+                        'background': 'linear-gradient(90deg, #f83a11, black)',
+                        'border-color': '#f83a11',
+                        'color': 'white',
+					}
+		},
 	  },
 	},
     gainExp() { // Calculate the exponent on main currency from bonuses
