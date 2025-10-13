@@ -130,6 +130,7 @@ addLayer("p", {
 		   return "Common Rune: 54%<br>Uncommon Rune: 20%<br>Rare Rune: 10%<br>Epic Rune: 7.5%<br>Legendary Rune: 5%<br>Mythic Rune: 2.5%<br>Godly Rune: 0.99%<br>Secret Rune: ???%<br>"
 		},
     },
+	},
 	update(diff) {
 		// In your update loop
 if (player.p.runeCooldown.gt(0)) {
