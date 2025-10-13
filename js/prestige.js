@@ -214,6 +214,45 @@ addLayer("p", {
 			else return true
 		},
     },
+	241: {
+		title: "RST-7",
+        description: "x3 points. Lock RST-8 and RST-9",
+        cost: new Decimal(1),
+		unlocked(){ return (hasUpgrade(this.layer, 231) || hasUpgrade(this.layer, 232)) },
+		currencyDisplayName: "Mythic Runes",
+		currencyInternalName: "mythic",
+		currencyLayer: "p",
+	    canAfford() {
+			if (hasUpgrade('p', 242) || hasUpgrade('p', 243)) return false
+			else return true
+		},
+    },
+	242: {
+		title: "RST-8",
+        description: "Unlock a buyable. Lock RST-7 and RST-9",
+        cost: new Decimal(5),
+		unlocked(){ return (hasUpgrade(this.layer, 231) || hasUpgrade(this.layer, 232)) },
+		currencyDisplayName: "Godly Runes",
+		currencyInternalName: "godly",
+		currencyLayer: "p",
+	    canAfford() {
+			if (hasUpgrade('p', 241) || hasUpgrade('p', 243)) return false
+			else return true
+		},
+    },
+	243: {
+		title: "RST-9",
+        description: "Double Rune gain again. Lock RST-7 and RST-8",
+        cost: new Decimal(8),
+		unlocked(){ return (hasUpgrade(this.layer, 231) || hasUpgrade(this.layer, 232))) },
+		currencyDisplayName: "Mythic Runes",
+		currencyInternalName: "godly",
+		currencyLayer: "p",
+	    canAfford() {
+			if (hasUpgrade('p', 241) || hasUpgrade('p', 242)) return false
+			else return true
+		},
+    },
 	},
 	clickables: {
     11: {
@@ -300,6 +339,7 @@ if (player.p.runeCooldown.gt(0)) {
 		
 		let gain = new Decimal(1)
 		if (hasUpgrade('p', 221)) gain = gain.times(2)
+		if (hasUpgrade('p', 243)) gain = gain.times(2)
 
 		player.p.runeGain = gain
 	},
