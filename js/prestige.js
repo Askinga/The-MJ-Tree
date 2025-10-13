@@ -82,7 +82,7 @@ addLayer("p", {
         + format(player.p.secret) + " Secret Runes</h3>";
             }],
 			"blank",
-			"upgrades",
+			["upgrades", ["20"]],
 		],
 		buttonStyle() {
                     return {
@@ -135,6 +135,16 @@ addLayer("p", {
         description: "Unlock the Rune Skill Tree.",
         cost: new Decimal(12),
 		unlocked(){ return hasUpgrade(this.layer, 14) },
+    },
+	// Skill Tree
+	201: {
+		title: "RST-1",
+        description: "x2 points.",
+        cost: new Decimal(3),
+		unlocked(){ return hasUpgrade(this.layer, 12) },
+		currencyDisplayName: "Common Runes",
+		currencyInternalName: "common",
+		currencyLayer: "p",
     },
 	},
 	clickables: {
