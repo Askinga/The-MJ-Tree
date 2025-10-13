@@ -28,6 +28,7 @@ addLayer("p", {
         if (player.d.difficulty.eq(0)) mult = mult.times(2)
         if (player.d.difficulty.eq(2)) mult = mult.times(0.5)
 		if (hasUpgrade('p', 12)) mult = mult.times(2)
+		if (hasUpgrade('p', 14)) mult = mult.times(upgradeEffect('p', 14))
         return mult
     },
 	tabFormat: {
@@ -90,6 +91,21 @@ addLayer("p", {
 		title: "New feature",
         description: "Unlock Runes.",
         cost: new Decimal(6),
+		unlocked(){ return hasUpgrade(this.layer, 12) },
+    },
+	14: {
+		title: "Runic prestige",
+        description: "Common Runes boost prestige points.",
+        cost: new Decimal(7),
+		unlocked(){ return hasUpgrade(this.layer, 13) },
+		effect(){ return player.p.common.add(1).pow(0.4) },
+		effectDisplay(){ return "x"+format(upgradeEffect('p', 14))	 
+    },
+	},
+	15: {
+		title: "New feature 2",
+        description: "Unlocl the Rune Skill Tree.",
+        cost: new Decimal(12),
 		unlocked(){ return hasUpgrade(this.layer, 12) },
     },
 	},
