@@ -186,6 +186,34 @@ addLayer("p", {
 		currencyInternalName: "epic",
 		currencyLayer: "p",
     },
+	231: {
+		title: "RST-5",
+        description: "Points boost themselves. Lock RST-6",
+        cost: new Decimal(25),
+		unlocked(){ return hasUpgrade(this.layer, 221) },
+		effect(){ return player.points.add(1).pow(0.075) },
+		effectDisplay(){ return "x"+format(upgradeEffect('p', 14)) },
+		currencyDisplayName: "Common Runes",
+		currencyInternalName: "common",
+		currencyLayer: "p",
+		canAfford() {
+			if (hasUpgrade('p', 232)) return false
+			else return true
+		},
+    },
+	232: {
+		title: "RST-6",
+        description: "Decrease Rune Cooldown by -0.5. Lock RST-5",
+        cost: new Decimal(3),
+		unlocked(){ return hasUpgrade(this.layer, 221) },
+		currencyDisplayName: "Legendary Runes",
+		currencyInternalName: "legendary",
+		currencyLayer: "p",
+	    canAfford() {
+			if (hasUpgrade('p', 231)) return false
+			else return true
+		},
+    },
 	},
 	clickables: {
     11: {
@@ -259,11 +287,17 @@ if (player.p.runeCooldown.gt(0)) {
     player.p.runeCooldown = player.p.runeCooldown.sub(diff); // diff = time since last tick
     if (player.p.runeCooldown.lt(0)) player.p.runeCooldown = new Decimal(0);
 			}
+
+        // Rune Cooldown
+		
 		let cool = new Decimal(5)
 		if (hasUpgrade('p', 212)) cool = cool.sub(1)
-
+        if (hasUpgrade('p', 232)) cool = cool.sub(0.5)
+		
 		player.p.baseRuneCooldown = cool
 
+		// Rune Gain
+		
 		let gain = new Decimal(1)
 		if (hasUpgrade('p', 221)) gain = gain.times(2)
 
