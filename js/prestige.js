@@ -35,7 +35,7 @@ addLayer("p", {
 		content: [
 			"main-display",
 			"prestige-button",
-			"resource-display"
+			"resource-display",
 			"blank",
 			"upgrades",
 		],
@@ -47,7 +47,17 @@ addLayer("p", {
 			"prestige-button",
 			"resource-display",
 			"blank",
-			["display-text", function(){ return "" + format(player.p.common) + " Common Runes<br>" + format(player.p.uncommon) + " Uncommon Runes<br>" + format(player.p.rare) + " Rare Runes<br>" + format(player.p.epic) + " Epic Runes<br>" + format(player.p.legendary) + " Legendary Runes<br>" + format(player.p.mythic) + " Mythic Runes<br>" + format(player.p.godly) + " Godly Runes<br>" + format(player.p.secret) + " Secret Runes<br>" }],
+			["display-text", function(){ 
+    return "" 
+        + format(player.p.common) + " Common Runes<br>"
+        + format(player.p.uncommon) + " Uncommon Runes<br>"
+        + format(player.p.rare) + " Rare Runes<br>"
+        + format(player.p.epic) + " Epic Runes<br>"
+        + format(player.p.legendary) + " Legendary Runes<br>"
+        + format(player.p.mythic) + " Mythic Runes<br>"
+        + format(player.p.godly) + " Godly Runes<br>"
+        + format(player.p.secret) + " Secret Runes";
+            }],			
 			"blank",
 			"clickables",
 		],
