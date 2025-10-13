@@ -15,6 +15,7 @@ addLayer("p", {
 		secret: new Decimal(0),
 		randomValue: new Decimal(0),
 		runeCooldown: new Decimal(0),
+		baseRuneCooldown: new Decimal(5)
     }},
     color: "#00aadd",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -29,6 +30,7 @@ addLayer("p", {
         if (player.d.difficulty.eq(2)) mult = mult.times(0.5)
 		if (hasUpgrade('p', 12)) mult = mult.times(2)
 		if (hasUpgrade('p', 14)) mult = mult.times(upgradeEffect('p', 14))
+		if (hasUpgrade('p', 211)) mult = mult.times(2)
         return mult
     },
 	tabFormat: {
@@ -48,7 +50,7 @@ addLayer("p", {
 			"prestige-button",
 			"resource-display",
 			"blank",
-			"clickables",
+			["clickables", ["1"]],
 			["display-text", function(){ 
     return "<h3>" 
         + format(player.p.common) + " Common Runes<br>"
@@ -69,6 +71,8 @@ addLayer("p", {
 			"main-display",
 			"prestige-button",
 			"resource-display",
+			"blank",
+			["clickables", ["2"]],
 			"blank",
 			["display-text", function(){ 
     return "<h3>" 
@@ -141,10 +145,36 @@ addLayer("p", {
 		title: "RST-1",
         description: "x2 points.",
         cost: new Decimal(3),
-		unlocked(){ return hasUpgrade(this.layer, 12) },
+		unlocked(){ return hasUpgrade(this.layer, 15) },
 		currencyDisplayName: "Common Runes",
 		currencyInternalName: "common",
 		currencyLayer: "p",
+    },
+	211: {
+		title: "RST-2",
+        description: "x2 Prestige. Lock RST-3",
+        cost: new Decimal(2),
+		unlocked(){ return hasUpgrade(this.layer, 201) },
+		currencyDisplayName: "Uncommon Runes",
+		currencyInternalName: "uncommon",
+		currencyLayer: "p",
+		canAfford() {
+			if (hasUpgrade('p', 212)) return false
+			else return true
+		},
+    },
+	212: {
+		title: "RST-3",
+        description: "Decrease Rune Cooldown by -1. Lock RST-2",
+        cost: new Decimal(1),
+		unlocked(){ return hasUpgrade(this.layer, 201) },
+		currencyDisplayName: "Rare Runes",
+		currencyInternalName: "rare",
+		currencyLayer: "p",
+	    canAfford() {
+			if (hasUpgrade('p', 211)) return false
+			else return true
+		},
     },
 	},
 	clickables: {
@@ -153,7 +183,7 @@ addLayer("p", {
         display() {return "Roll!<br>Cooldown: " + format(player.p.runeCooldown) + "s"},
         canClick(){ return player.p.runeCooldown.lte(0) },
 		onClick(){ 
-			player.p.runeCooldown = new Decimal(5); // 5 seconds cooldown
+			player.p.runeCooldown = player.p.baseRuneCooldown;
 			player.p.randomValue = new Decimal(Math.random())
 			if (player.p.randomValue.gt(0.46) && player.p.randomValue.lte(1)) {
 				player.p.common = player.p.common.add(1)
@@ -184,6 +214,34 @@ addLayer("p", {
 		   return "Common Rune: 54%<br>Uncommon Rune: 20%<br>Rare Rune: 10%<br>Epic Rune: 7.5%<br>Legendary Rune: 5%<br>Mythic Rune: 2.5%<br>Godly Rune: 0.99%<br>Secret Rune: ???%<br>"
 		},
     },
+		21: {
+		display() {
+		return "Force an Prestige reset to respec Rune skill tree."
+            },
+            tooltip: "You can't get Runes back, you can only respec when you can do a Prestige reset",
+            unlocked() {
+                return hasUpgrade("p", 15)
+            },
+            canClick() {
+                return canReset(this.layer)
+            },
+            onClick() {
+                player.p.upgrades.length
+                for (let i = 0; i < player.p.upgrades.length; i++) {
+                    if (+player.p.upgrades[i] > 196) {
+                        player.p.upgrades.splice(i, 1);
+                        i--;
+                    }
+                }
+                if (canReset(this.layer)) doReset(this.layer)
+            },
+            style: {
+                'min-height': '30px',
+                'width': '480px',
+                'border-radius': '5px',
+                'font-size': '20px',
+            },
+        },
 	},
 	update(diff) {
 		// In your update loop
@@ -191,5 +249,9 @@ if (player.p.runeCooldown.gt(0)) {
     player.p.runeCooldown = player.p.runeCooldown.sub(diff); // diff = time since last tick
     if (player.p.runeCooldown.lt(0)) player.p.runeCooldown = new Decimal(0);
 			}
+		let cool = new Decimal(5)
+		if (hasUpgrade('p', 212)) cool = cool.sub(1)
+
+		player.p.baseRuneCooldown = cool
 	},
 })
