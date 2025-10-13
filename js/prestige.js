@@ -282,7 +282,7 @@ addLayer("p", {
 	271: {
 		title: "RST-12",
         description: "You can buy 2 upgrades from the 5th row. Lock RST-13",
-        cost: new Decimal(300),
+        cost: new Decimal(200),
 		unlocked(){ return (hasUpgrade(this.layer, 261)) },
 		currencyDisplayName: "Common Runes",
 		currencyInternalName: "common",
