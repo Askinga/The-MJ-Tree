@@ -1,10 +1,19 @@
 addLayer("p", {
     name: "prestige", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "P", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "R", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
+		common: new Decimal(0),
+		uncommon: new Decimal(0),
+		rare: new Decimal(0),
+		epic: new Decimal(0),
+		legendary: new Decimal(0),
+		mythic: new Decimal(0),
+		godly: new Decimal(0),
+		secret: new Decimal(0),
+		randomValue: new Decimal(0),
     }},
     color: "#00aadd",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -26,5 +35,8 @@ addLayer("p", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return player.d.started.eq(1)}
+    layerShown(){return player.d.started.eq(1)},
+	tooltip() {
+		return "Runes & Prestige"
+	},
 })
