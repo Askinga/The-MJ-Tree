@@ -86,7 +86,7 @@ addLayer("p", {
         + format(player.p.secret) + " Secret Runes</h3>";
             }],
 			"blank",
-			["upgrades", ["20"]],
+			["upgrades", ["20", "21"]],
 		],
 		buttonStyle() {
                     return {
