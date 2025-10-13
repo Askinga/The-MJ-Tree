@@ -64,8 +64,8 @@ addLayer("p", {
 		],
 		buttonStyle() {
                     return {
-                        'background': 'linear-gradient(90deg, #f83a11, black)',
-                        'border-color': '#f83a11',
+                        'background': 'linear-gradient(90deg, #00aadd, black)',
+                        'border-color': '#00aadd',
                         'color': 'white',
 					}
 		},
