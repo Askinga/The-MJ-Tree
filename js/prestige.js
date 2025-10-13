@@ -83,14 +83,14 @@ addLayer("p", {
             }],
 			"blank",
 			"upgrades",
-			buttonStyle() {
+		],
+		buttonStyle() {
                     return {
                         'background': 'linear-gradient(90deg, #00aadd, black)',
                         'border-color': '#00aadd',
                         'color': 'white',
 					}
 		    },
-		],
 	  },
 	},
     gainExp() { // Calculate the exponent on main currency from bonuses
