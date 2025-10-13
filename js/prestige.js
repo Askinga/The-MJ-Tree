@@ -101,7 +101,6 @@ addLayer("p", {
 		effect(){ return player.p.common.add(1).pow(0.4) },
 		effectDisplay(){ return "x"+format(upgradeEffect('p', 14))	 
     },
-	},
 	15: {
 		title: "New feature 2",
         description: "Unlocl the Rune Skill Tree.",
