@@ -307,6 +307,15 @@ addLayer("p", {
 			else return true
 		},
     },
+	281: {
+		title: "RST-14",
+        description: "Triple your Rune Gain",
+        cost: new Decimal(150),
+		unlocked(){ return (hasUpgrade(this.layer, 271) || hasUpgrade(this.layer, 272)) },
+		currencyDisplayName: "Uncommon Runes",
+		currencyInternalName: "uncommon",
+		currencyLayer: "p",
+    },
 	},
 	clickables: {
     11: {
@@ -432,7 +441,8 @@ if (player.p.runeCooldown.gt(0)) {
 		let gain = new Decimal(1)
 		if (hasUpgrade('p', 221)) gain = gain.times(2)
 		if (hasUpgrade('p', 243)) gain = gain.times(2)
-
+        if (hasUpgrade('p', 281)) gain = gain.times(3)
+		
 		player.p.runeGain = gain
 
 		// Row 5
