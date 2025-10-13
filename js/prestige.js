@@ -17,6 +17,7 @@ addLayer("p", {
 		runeCooldown: new Decimal(0),
 		baseRuneCooldown: new Decimal(5),
 		runeGain: new Decimal(1),
+		rowFiveSum: new Decimal(0),
     }},
     color: "#00aadd",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -227,7 +228,8 @@ addLayer("p", {
 		currencyInternalName: "mythic",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 242) || hasUpgrade('p', 243)) return false
+			if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
+			else if (hasUpgrade('p', 242) || hasUpgrade('p', 243)) return false
 			else return true
 		},
     },
@@ -240,7 +242,8 @@ addLayer("p", {
 		currencyInternalName: "mythic",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 241) || hasUpgrade('p', 243)) return false
+			if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
+			else if (hasUpgrade('p', 241) || hasUpgrade('p', 243)) return false
 			else return true
 		},
     },
@@ -253,7 +256,8 @@ addLayer("p", {
 		currencyInternalName: "mythic",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 241) || hasUpgrade('p', 242)) return false
+			if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
+			else if (hasUpgrade('p', 241) || hasUpgrade('p', 242)) return false
 			else return true
 		},
     },
@@ -274,6 +278,34 @@ addLayer("p", {
 		currencyDisplayName: "Godly Runes",
 		currencyInternalName: "godly",
 		currencyLayer: "p",
+    },
+	271: {
+		title: "RST-12",
+        description: "You can buy 2 upgrades from the 5th row. Lock RST-13",
+        cost: new Decimal(300),
+		unlocked(){ return (hasUpgrade(this.layer, 261)) },
+		currencyDisplayName: "Common Runes",
+		currencyInternalName: "common",
+		currencyLayer: "p",
+		canAfford() {
+			if (hasUpgrade('p', 272)) return false
+			else return true
+		},
+    },
+	272: {
+		title: "RST-13",
+        description: "Boost points based on prestige points. Lock RST-12",
+        cost: new Decimal(50),
+		unlocked(){ return (hasUpgrade(this.layer, 261)) },
+		effect(){ return player.p.points.add(1).pow(0.3) },
+		effectDisplay(){ return "x"+format(upgradeEffect('p', 272)) },
+		currencyDisplayName: "Legendary Runes",
+		currencyInternalName: "legendary",
+		currencyLayer: "p",
+		canAfford() {
+			if (hasUpgrade('p', 271)) return false
+			else return true
+		},
     },
 	},
 	clickables: {
@@ -402,5 +434,15 @@ if (player.p.runeCooldown.gt(0)) {
 		if (hasUpgrade('p', 243)) gain = gain.times(2)
 
 		player.p.runeGain = gain
+
+		// Row 5
+		
+		let f = new Decimal(0)
+
+		if (hasUpgrade('p', 241)) f = f.add(1)
+		if (hasUpgrade('p', 242)) f = f.add(1)
+		if (hasUpgrade('p', 243)) f = f.add(1)
+
+		player.p.rowFiveSum = f
 	},
 })
