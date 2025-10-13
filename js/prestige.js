@@ -15,7 +15,8 @@ addLayer("p", {
 		secret: new Decimal(0),
 		randomValue: new Decimal(0),
 		runeCooldown: new Decimal(0),
-		baseRuneCooldown: new Decimal(5)
+		baseRuneCooldown: new Decimal(5),
+		runeGain: new Decimal(1),
     }},
     color: "#00aadd",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -86,7 +87,7 @@ addLayer("p", {
         + format(player.p.secret) + " Secret Runes</h3>";
             }],
 			"blank",
-			["upgrades", ["20", "21"]],
+			["upgrades", ["20", "21", "22"]],
 		],
 		buttonStyle() {
                     return {
@@ -176,6 +177,15 @@ addLayer("p", {
 			else return true
 		},
     },
+	221: {
+		title: "RST-4",
+        description: "Double the Runes you gain.",
+        cost: new Decimal(1),
+		unlocked(){ return (hasUpgrade(this.layer, 211) || hasUpgrade(this.layer, 212)) },
+		currencyDisplayName: "Epic Runes",
+		currencyInternalName: "epic",
+		currencyLayer: "p",
+    },
 	},
 	clickables: {
     11: {
@@ -186,28 +196,28 @@ addLayer("p", {
 			player.p.runeCooldown = player.p.baseRuneCooldown;
 			player.p.randomValue = new Decimal(Math.random())
 			if (player.p.randomValue.gt(0.46) && player.p.randomValue.lte(1)) {
-				player.p.common = player.p.common.add(1)
+				player.p.common = player.p.common.add(player.p.runeGain)
 			}
 		    if (player.p.randomValue.lte(0.46) && player.p.randomValue.gt(0.26)) {
-				player.p.uncommon = player.p.uncommon.add(1)
+				player.p.uncommon = player.p.uncommon.add(player.p.runeGain)
 			}
 		    if (player.p.randomValue.lte(0.26) && player.p.randomValue.gt(0.16)) {
-				player.p.rare = player.p.rare.add(1)
+				player.p.rare = player.p.rare.add(player.p.runeGain)
 			}
 		    if (player.p.randomValue.lte(0.16) && player.p.randomValue.gt(0.085)) {
-				player.p.epic = player.p.epic.add(1)
+				player.p.epic = player.p.epic.add(player.p.runeGain)
 			}
 		    if (player.p.randomValue.lte(0.085) && player.p.randomValue.gt(0.035)) {
-				player.p.legendary = player.p.legendary.add(1)
+				player.p.legendary = player.p.legendary.add(player.p.runeGain)
 			}
 		    if (player.p.randomValue.lte(0.035) && player.p.randomValue.gt(0.01)) {
-				player.p.mythic = player.p.mythic.add(1)
+				player.p.mythic = player.p.mythic.add(player.p.runeGain)
 			}
 		    if (player.p.randomValue.lte(0.01) && player.p.randomValue.gt(0.0001)) {
-				player.p.godly = player.p.godly.add(1)
+				player.p.godly = player.p.godly.add(player.p.runeGain)
 			}
 		    if (player.p.randomValue.lte(0.0001)) {
-				player.p.secret = player.p.secret.add(1)
+				player.p.secret = player.p.secret.add(player.p.runeGain)
 			}
 		},
 		tooltip(){
@@ -253,5 +263,10 @@ if (player.p.runeCooldown.gt(0)) {
 		if (hasUpgrade('p', 212)) cool = cool.sub(1)
 
 		player.p.baseRuneCooldown = cool
+
+		let gain = new Decimal(1)
+		if (hasUpgrade('p', 221)) gain = gain.times(2)
+
+		player.p.runeGain = gain
 	},
 })
