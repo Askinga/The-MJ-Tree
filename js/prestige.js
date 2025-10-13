@@ -230,10 +230,10 @@ addLayer("p", {
 	242: {
 		title: "RST-8",
         description: "Unlock a buyable. Lock RST-7 and RST-9",
-        cost: new Decimal(5),
+        cost: new Decimal(10),
 		unlocked(){ return (hasUpgrade(this.layer, 231) || hasUpgrade(this.layer, 232)) },
-		currencyDisplayName: "Godly Runes",
-		currencyInternalName: "godly",
+		currencyDisplayName: "Mythic Runes",
+		currencyInternalName: "mythic",
 		currencyLayer: "p",
 	    canAfford() {
 			if (hasUpgrade('p', 241) || hasUpgrade('p', 243)) return false
@@ -243,10 +243,10 @@ addLayer("p", {
 	243: {
 		title: "RST-9",
         description: "Double Rune gain again. Lock RST-7 and RST-8",
-        cost: new Decimal(8),
+        cost: new Decimal(4),
 		unlocked(){ return (hasUpgrade(this.layer, 231) || hasUpgrade(this.layer, 232)) },
 		currencyDisplayName: "Mythic Runes",
-		currencyInternalName: "godly",
+		currencyInternalName: "mythic",
 		currencyLayer: "p",
 	    canAfford() {
 			if (hasUpgrade('p', 241) || hasUpgrade('p', 242)) return false
