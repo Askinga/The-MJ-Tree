@@ -103,7 +103,7 @@ addLayer("p", {
     },
 	15: {
 		title: "New feature 2",
-        description: "Unlocl the Rune Skill Tree.",
+        description: "Unlock the Rune Skill Tree.",
         cost: new Decimal(12),
 		unlocked(){ return hasUpgrade(this.layer, 12) },
     },
