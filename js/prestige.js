@@ -192,7 +192,7 @@ addLayer("p", {
         cost: new Decimal(25),
 		unlocked(){ return hasUpgrade(this.layer, 221) },
 		effect(){ return player.points.add(1).pow(0.075) },
-		effectDisplay(){ return "x"+format(upgradeEffect('p', 14)) },
+		effectDisplay(){ return "x"+format(upgradeEffect('p', 231)) },
 		currencyDisplayName: "Common Runes",
 		currencyInternalName: "common",
 		currencyLayer: "p",
