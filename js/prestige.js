@@ -30,6 +30,26 @@ addLayer("p", {
 		if (hasUpgrade('p', 12)) mult = mult.times(2)
         return mult
     },
+	tabFormat: {
+	  "Main tab": {
+		content: [
+			"main-display",
+			"prestige-button",
+			"resource-display"
+			"blank",
+			"upgrades",
+		],
+	  },
+	  "Runes": {
+		content: [
+			"main-display",
+			"prestige-button",
+			"resource-display"
+			"blank",
+			"clickables",
+		],
+	  },
+	},
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
