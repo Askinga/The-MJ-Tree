@@ -87,7 +87,7 @@ addLayer("p", {
         + format(player.p.secret) + " Secret Runes</h3>";
             }],
 			"blank",
-			["upgrades", ["20", "21", "22", "23", "24", "25"]],
+			["upgrades", ["20", "21", "22", "23", "24", "25", "26"]],
 		],
 		buttonStyle() {
                     return {
@@ -160,7 +160,8 @@ addLayer("p", {
 		currencyInternalName: "uncommon",
 		currencyLayer: "p",
 		canAfford() {
-			if (hasUpgrade('p', 212)) return false
+			if (hasUpgrade('p', 261)) return true
+			else if (hasUpgrade('p', 212)) return false
 			else return true
 		},
     },
@@ -173,7 +174,8 @@ addLayer("p", {
 		currencyInternalName: "rare",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 211)) return false
+			if (hasUpgrade('p', 261)) return true
+			else if (hasUpgrade('p', 211)) return false
 			else return true
 		},
     },
@@ -197,7 +199,8 @@ addLayer("p", {
 		currencyInternalName: "common",
 		currencyLayer: "p",
 		canAfford() {
-			if (hasUpgrade('p', 232)) return false
+			if (hasUpgrade('p', 261)) return true
+			else if (hasUpgrade('p', 232)) return false
 			else return true
 		},
     },
@@ -210,7 +213,8 @@ addLayer("p", {
 		currencyInternalName: "legendary",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 231)) return false
+			if (hasUpgrade('p', 261)) return true
+			else if (hasUpgrade('p', 231)) return false
 			else return true
 		},
     },
@@ -230,7 +234,7 @@ addLayer("p", {
 	242: {
 		title: "RST-8",
         description: "Unlock a clickable. Lock RST-7 and RST-9",
-        cost: new Decimal(10),
+        cost: new Decimal(5),
 		unlocked(){ return (hasUpgrade(this.layer, 231) || hasUpgrade(this.layer, 232)) },
 		currencyDisplayName: "Mythic Runes",
 		currencyInternalName: "mythic",
@@ -258,6 +262,15 @@ addLayer("p", {
         description: "Decrease Rune Cooldown by -0.5",
         cost: new Decimal(1),
 		unlocked(){ return (hasUpgrade(this.layer, 241) || hasUpgrade(this.layer, 242) || hasUpgrade(this.layer, 243)) },
+		currencyDisplayName: "Godly Runes",
+		currencyInternalName: "godly",
+		currencyLayer: "p",
+    },
+	261: {
+		title: "RST-11",
+        description: "You can buy both RST-2 and RST-3. and both RST-5 and RST-6",
+        cost: new Decimal(3),
+		unlocked(){ return (hasUpgrade(this.layer, 251)) },
 		currencyDisplayName: "Godly Runes",
 		currencyInternalName: "godly",
 		currencyLayer: "p",
