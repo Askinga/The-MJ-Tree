@@ -41,6 +41,7 @@ addLayer("p", {
 		],
 	  },
 	  "Runes": {
+		unlocked(){ return hasUpgrade('p', 13) },  
 		content: [
 			"main-display",
 			"prestige-button",
