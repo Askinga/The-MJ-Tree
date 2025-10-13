@@ -48,6 +48,7 @@ function getPointGen() {
 	if (hasUpgrade('p', 201)) gain = gain.times(2)
 	if (hasUpgrade('p', 231)) gain = gain.times(upgradeEffect('p', 231))
 	if (hasUpgrade('p', 241)) gain = gain.times(2)
+	if (hasUpgrade('p', 272)) gain = gain.times(upgradeEffect('p', 272))
 	if (player.d.difficulty.eq(0)) gain = gain.pow(1.01)
 	return gain
 }
