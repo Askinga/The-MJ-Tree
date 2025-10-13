@@ -14,7 +14,7 @@ addLayer("p", {
 		godly: new Decimal(0),
 		secret: new Decimal(0),
 		randomValue: new Decimal(0),
-		runeCooldown: new Decimal(5),
+		runeCooldown: new Decimal(0),
     }},
     color: "#00aadd",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -45,7 +45,9 @@ addLayer("p", {
 		content: [
 			"main-display",
 			"prestige-button",
-			"resource-display"
+			"resource-display",
+			"blank",
+			["display-text", function(){ return "" + format(player.p.common) + " Common Runes<br>" + format(player.p.uncommon) + " Uncommon Runes<br>" + format(player.p.rare) + " Rare Runes<br>" + format(player.p.epic) + " Epic Runes<br>" + format(player.p.legendary) + " Legendary Runes<br>" + format(player.p.mythic) + " Mythic Runes<br>" + format(player.p.godly) + " Godly Runes<br>" + format(player.p.secret) + " Secret Runes<br>" }],
 			"blank",
 			"clickables",
 		],
@@ -81,4 +83,40 @@ addLayer("p", {
 		unlocked(){ return hasUpgrade(this.layer, 12) },
     },
 	},
+	clickables: {
+    11: {
+		title: "Roll Basic Rune",
+        display() {return "Roll!<br>Cooldown: " + format(player.p.runeCooldown) + "s"},
+        canClick(){ return player.p.runeCooldown.lte(0) },
+		onClick(){ 
+			player.p.randomValue = new Decimal(Math.random())
+			if (player.p.randomValue.gt(0.46) && player.p.randomValue.lte(1)) {
+				player.p.common = player.p.common.add(1)
+			},
+		    if (player.p.randomValue.lte(0.46) && player.p.randomValue.gt(0.26)) {
+				player.p.uncommon = player.p.uncommon.add(1)
+			},
+		    if (player.p.randomValue.lte(0.26) && player.p.randomValue.gt(0.16)) {
+				player.p.rare = player.p.rare.add(1)
+			},
+		    if (player.p.randomValue.lte(0.16) && player.p.randomValue.gt(0.085)) {
+				player.p.epic = player.p.epic.add(1)
+			},
+		    if (player.p.randomValue.lte(0.085) && player.p.randomValue.gt(0.035)) {
+				player.p.legendary = player.p.legendary.add(1)
+			},
+		    if (player.p.randomValue.lte(0.035) && player.p.randomValue.gt(0.01)) {
+				player.p.mythic = player.p.mythic.add(1)
+			},
+		    if (player.p.randomValue.lte(0.01) && player.p.randomValue.gt(0.0001)) {
+				player.p.godly = player.p.godly.add(1)
+			},
+		    if (player.p.randomValue.lte(0.0001)) {
+				player.p.secret = player.p.secret.add(1)
+			},
+		},
+		tooltip(){
+		   return "Common Rune: 54%<br>Uncommon Rune: 20%<br>Rare Rune: 10%<br>Epic Rune: 7.5%<br>Legendary Rune: 5%<br>Mythic Rune: 2.5%<br>Godly Rune: 0.99%<br>Secret Rune: ???%<br>"
+		},
+    },
 })
