@@ -14,6 +14,7 @@ addLayer("p", {
 		godly: new Decimal(0),
 		secret: new Decimal(0),
 		randomValue: new Decimal(0),
+		runeCooldown: new Decimal(5),
     }},
     color: "#00aadd",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -38,5 +39,12 @@ addLayer("p", {
     layerShown(){return player.d.started.eq(1)},
 	tooltip() {
 		return "Runes & Prestige"
+	},
+	upgrades: {
+    11: {
+		title: "Generic first upgrade",
+        description: "Boosts points by x2. As always.",
+        cost: new Decimal(1),
+    },
 	},
 })
