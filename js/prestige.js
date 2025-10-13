@@ -272,7 +272,7 @@ addLayer("p", {
     },
 	261: {
 		title: "RST-11",
-        description: "You can buy both RST-2 and RST-3. and both RST-5 and RST-6",
+        description: "You can buy both RST-2 and RST-3, and both RST-5 and RST-6",
         cost: new Decimal(3),
 		unlocked(){ return (hasUpgrade(this.layer, 251)) },
 		currencyDisplayName: "Godly Runes",
