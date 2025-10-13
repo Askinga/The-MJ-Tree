@@ -27,6 +27,7 @@ addLayer("p", {
         mult = new Decimal(1)
         if (player.d.difficulty.eq(0)) mult = mult.times(2)
         if (player.d.difficulty.eq(2)) mult = mult.times(0.5)
+		if (hasUpgrade('p', 12)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -45,6 +46,18 @@ addLayer("p", {
 		title: "Generic first upgrade",
         description: "Boosts points by x2. As always.",
         cost: new Decimal(1),
+    },
+    12: {
+		title: "It's prestige now",
+        description: "Boosts prestige points by x2.",
+        cost: new Decimal(3),
+		unlocked(){ return hasUpgrade(this.layer, 11) },
+    },
+	13: {
+		title: "New feature",
+        description: "Unlock Runes.",
+        cost: new Decimal(6),
+		unlocked(){ return hasUpgrade(this.layer, 12) },
     },
 	},
 })
