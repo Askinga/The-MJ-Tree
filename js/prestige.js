@@ -87,7 +87,7 @@ addLayer("p", {
         + format(player.p.secret) + " Secret Runes</h3>";
             }],
 			"blank",
-			["upgrades", ["20", "21", "22", "23", "24"]],
+			["upgrades", ["20", "21", "22", "23", "24", "25"]],
 		],
 		buttonStyle() {
                     return {
@@ -253,6 +253,15 @@ addLayer("p", {
 			else return true
 		},
     },
+	251: {
+		title: "RST-10",
+        description: "Decrease Rune Cooldown by -0.5",
+        cost: new Decimal(1),
+		unlocked(){ return (hasUpgrade(this.layer, 241) || hasUpgrade(this.layer, 242) || hasUpgrade(this.layer, 243)) },
+		currencyDisplayName: "Godly Runes",
+		currencyInternalName: "godly",
+		currencyLayer: "p",
+    },
 	},
 	clickables: {
     11: {
@@ -369,6 +378,7 @@ if (player.p.runeCooldown.gt(0)) {
 		let cool = new Decimal(5)
 		if (hasUpgrade('p', 212)) cool = cool.sub(1)
         if (hasUpgrade('p', 232)) cool = cool.sub(0.5)
+		if (hasUpgrade('p', 251)) cool = cool.sub(0.5)
 		
 		player.p.baseRuneCooldown = cool
 
