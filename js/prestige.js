@@ -244,7 +244,7 @@ addLayer("p", {
 		title: "RST-9",
         description: "Double Rune gain again. Lock RST-7 and RST-8",
         cost: new Decimal(8),
-		unlocked(){ return (hasUpgrade(this.layer, 231) || hasUpgrade(this.layer, 232))) },
+		unlocked(){ return (hasUpgrade(this.layer, 231) || hasUpgrade(this.layer, 232)) },
 		currencyDisplayName: "Mythic Runes",
 		currencyInternalName: "godly",
 		currencyLayer: "p",
