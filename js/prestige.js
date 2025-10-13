@@ -89,7 +89,7 @@ addLayer("p", {
                         'border-color': '#00aadd',
                         'color': 'white',
 					}
-						},
+		    },
 		],
 	  },
 	},
@@ -134,7 +134,7 @@ addLayer("p", {
 		title: "New feature 2",
         description: "Unlock the Rune Skill Tree.",
         cost: new Decimal(12),
-		unlocked(){ return hasUpgrade(this.layer, 12) },
+		unlocked(){ return hasUpgrade(this.layer, 14) },
     },
 	},
 	clickables: {
