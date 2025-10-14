@@ -603,6 +603,7 @@ if (player.s.autoRuneCooldown.gt(0)) {
 	    let base = new Decimal(2.5)
 
 	    if (player.p.runeChoose.gt(0) && player.s.autoRuneCooldown.lte(0)) {
+			player.s.autoRuneCooldown = base
 			if (player.p.runeChoose.eq(1)) {
 			player.p.randomValue = new Decimal(Math.random())
 			if (player.p.randomValue.gt(0.46) && player.p.randomValue.lte(1)) {
@@ -657,7 +658,6 @@ if (player.s.autoRuneCooldown.gt(0)) {
 				player.p.secret = player.p.secret.add(player.p.runeGain)
 			}
 			}
-			player.s.autoRuneCooldown = base
 		}
 	},
 })
