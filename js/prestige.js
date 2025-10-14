@@ -33,6 +33,7 @@ addLayer("p", {
 		if (hasUpgrade('p', 12)) mult = mult.times(2)
 		if (hasUpgrade('p', 14)) mult = mult.times(upgradeEffect('p', 14))
 		if (hasUpgrade('p', 211)) mult = mult.times(2)
+		if (hasUpgrade('p', 302)) mult = mult.times(4)
         return mult
     },
 	tabFormat: {
@@ -228,7 +229,7 @@ addLayer("p", {
 		currencyInternalName: "mythic",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 291)) return player.p.rowFiveSum.lt(3)
+			if (hasUpgrade('p', 291) && hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(3)
 			else if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
 			else if (hasUpgrade('p', 242) || hasUpgrade('p', 243)) return false
 			else return true
@@ -243,7 +244,7 @@ addLayer("p", {
 		currencyInternalName: "mythic",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 291)) return player.p.rowFiveSum.lt(3)
+			if (hasUpgrade('p', 291) && hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(3)
 			else if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
 			else if (hasUpgrade('p', 241) || hasUpgrade('p', 243)) return false
 			else return true
@@ -258,7 +259,7 @@ addLayer("p", {
 		currencyInternalName: "mythic",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 291)) return player.p.rowFiveSum.lt(3)
+			if (hasUpgrade('p', 291) && hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(3)
 			else if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
 			else if (hasUpgrade('p', 241) || hasUpgrade('p', 242)) return false
 			else return true
@@ -321,12 +322,51 @@ addLayer("p", {
     },
 	291: {
 		title: "RST-15",
-        description: "You can buy all the row 5 upgrades",
+        description: "You can buy all the row 5 upgrades. (Needs RST-12 to function.)",
         cost: new Decimal(100),
 		unlocked(){ return (hasUpgrade(this.layer, 281)) },
 		currencyDisplayName: "Legendary Runes",
 		currencyInternalName: "legendary",
 		currencyLayer: "p",
+    },
+	301: {
+		title: "RST-16",
+        description: "x1.5 Rune Gain and -0.5 Rune Cooldown. Lock RST-17 and RST-18",
+        cost: new Decimal(1250),
+		unlocked(){ return (hasUpgrade(this.layer, 291)) },
+		currencyDisplayName: "Common Runes",
+		currencyInternalName: "common",
+		currencyLayer: "p",
+		canAfford() {
+			else if (hasUpgrade('p', 302) || hasUpgrade('p', 303)) return false
+			else return true
+		},
+    },
+	302: {
+		title: "RST-17",
+        description: "Double Rune gain and x4 Prestige Points. Lock RST-16 and RST-18",
+        cost: new Decimal(100),
+		unlocked(){ return (hasUpgrade(this.layer, 291)) },
+		currencyDisplayName: "Mythic Runes",
+		currencyInternalName: "mythic",
+		currencyLayer: "p",
+		canAfford() {
+			else if (hasUpgrade('p', 301) || hasUpgrade('p', 303)) return false
+			else return true
+		},
+    },
+	303: {
+		title: "RST-18",
+        description: "Triple Rune Gain. Lock RST-16 and RST-17",
+        cost: new Decimal(30),
+		unlocked(){ return (hasUpgrade(this.layer, 291)) },
+		currencyDisplayName: "Godly Runes",
+		currencyInternalName: "godly",
+		currencyLayer: "p",
+		canAfford() {
+			else if (hasUpgrade('p', 301) || hasUpgrade('p', 302)) return false
+			else return true
+		},
     },
 	},
 	clickables: {
@@ -445,6 +485,7 @@ if (player.p.runeCooldown.gt(0)) {
 		if (hasUpgrade('p', 212)) cool = cool.sub(1)
         if (hasUpgrade('p', 232)) cool = cool.sub(0.5)
 		if (hasUpgrade('p', 251)) cool = cool.sub(0.5)
+		if (hasUpgrade('p', 301)) cool = cool.sub(0.5)
 		
 		player.p.baseRuneCooldown = cool
 
@@ -454,6 +495,9 @@ if (player.p.runeCooldown.gt(0)) {
 		if (hasUpgrade('p', 221)) gain = gain.times(2)
 		if (hasUpgrade('p', 243)) gain = gain.times(2)
         if (hasUpgrade('p', 281)) gain = gain.times(3)
+		if (hasUpgrade('p', 301)) gain = gain.times(1.5)
+		if (hasUpgrade('p', 302)) gain = gain.times(2)
+		if (hasUpgrade('p', 303)) gain = gain.times(3)
 		
 		player.p.runeGain = gain
 
