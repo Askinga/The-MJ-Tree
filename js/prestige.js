@@ -89,7 +89,7 @@ addLayer("p", {
         + format(player.p.secret) + " Secret Runes</h3>";
             }],
 			"blank",
-			["upgrades", ["20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"]],
+			["upgrades", ["20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"]],
 		],
 		buttonStyle() {
                     return {
@@ -368,6 +368,17 @@ addLayer("p", {
 			else return true
 		},
     },
+	311: {
+		title: "RST-19",
+        description: "Boost Rune Gain based on prestige points.",
+        cost: new Decimal(1000),
+		unlocked(){ return (hasUpgrade(this.layer, 301) || hasUpgrade(this.layer, 302) || hasUpgrade(this.layer, 303)) },
+		effect(){ return player.p.points.add(1).pow(0.1) },
+		effectDisplay(){ return "x"+format(upgradeEffect('p', 311)) },
+		currencyDisplayName: "Common Runes",
+		currencyInternalName: "common",
+		currencyLayer: "p",
+	}.
 	},
 	clickables: {
     11: {
@@ -498,6 +509,7 @@ if (player.p.runeCooldown.gt(0)) {
 		if (hasUpgrade('p', 301)) gain = gain.times(1.5)
 		if (hasUpgrade('p', 302)) gain = gain.times(2)
 		if (hasUpgrade('p', 303)) gain = gain.times(3)
+		if (hasUpgrade('p', 311)) gain = gain.times(upgradeEffect('p', 311))
 		
 		player.p.runeGain = gain
 
