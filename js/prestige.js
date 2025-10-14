@@ -24,7 +24,7 @@ addLayer("p", {
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "prestige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
-    baseAmount()	121	 {return player.points}, // Get the current amount of baseResource
+    baseAmount(){return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -511,34 +511,7 @@ addLayer("p", {
                 'border-radius': '5px',
                 'font-size': '20px',
             },
-        },
-			display() {
-		return "Force an Prestige reset to respec Rune skill tree."
-            },
-            tooltip: "You can't get Runes back, you can only respec when you can do a Prestige reset",
-            unlocked() {
-                return hasUpgrade("p", 15)
-            },
-            canClick() {
-                return canReset(this.layer)
-            },
-            onClick() {
-                player.p.upgrades.length
-                for (let i = 0; i < player.p.upgrades.length; i++) {
-                    if (+player.p.upgrades[i] > 196) {
-                        player.p.upgrades.splice(i, 1);
-                        i--;
-                    }
-                }
-                if (canReset(this.layer)) doReset(this.layer)
-            },
-            style: {
-                'min-height': '30px',
-                'width': '480px',
-                'border-radius': '5px',
-                'font-size': '20px',
-            },
-        },
+        },	
 		31: {
 			title: "Basic Rune",
 	    	display() {
@@ -586,7 +559,7 @@ if (player.p.runeCooldown.gt(0)) {
 			}
 if (player.s.autoRuneCooldown.gt(0)) {
     player.s.autoRuneCooldown = player.s.autoRuneCooldown.sub(diff); // diff = time since last tick
-    if (player.s.autoRuneCooldown.lt(0)) player.p.autoRuneCooldown = new Decimal(0);
+    if (player.s.autoRuneCooldown.lt(0)) player.s.autoRuneCooldown = new Decimal(0);
 }
 
         // Rune Cooldown
