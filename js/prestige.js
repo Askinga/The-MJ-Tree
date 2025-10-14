@@ -88,7 +88,7 @@ addLayer("p", {
         + format(player.p.secret) + " Secret Runes</h3>";
             }],
 			"blank",
-			["upgrades", ["20", "21", "22", "23", "24", "25", "26", "27", "28"]],
+			["upgrades", ["20", "21", "22", "23", "24", "25", "26", "27", "28", "29"]],
 		],
 		buttonStyle() {
                     return {
@@ -228,7 +228,8 @@ addLayer("p", {
 		currencyInternalName: "mythic",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
+			if (hasUpgrade('p', 291)) return player.p.rowFiveSum.lt(3)
+			else if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
 			else if (hasUpgrade('p', 242) || hasUpgrade('p', 243)) return false
 			else return true
 		},
@@ -242,7 +243,8 @@ addLayer("p", {
 		currencyInternalName: "mythic",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
+			if (hasUpgrade('p', 291)) return player.p.rowFiveSum.lt(3)
+			else if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
 			else if (hasUpgrade('p', 241) || hasUpgrade('p', 243)) return false
 			else return true
 		},
@@ -256,7 +258,8 @@ addLayer("p", {
 		currencyInternalName: "mythic",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
+			if (hasUpgrade('p', 291)) return player.p.rowFiveSum.lt(3)
+			else if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
 			else if (hasUpgrade('p', 241) || hasUpgrade('p', 242)) return false
 			else return true
 		},
@@ -314,6 +317,15 @@ addLayer("p", {
 		unlocked(){ return (hasUpgrade(this.layer, 271) || hasUpgrade(this.layer, 272)) },
 		currencyDisplayName: "Uncommon Runes",
 		currencyInternalName: "uncommon",
+		currencyLayer: "p",
+    },
+	291: {
+		title: "RST-15",
+        description: "You can buy all the row 5 upgrades",
+        cost: new Decimal(100),
+		unlocked(){ return (hasUpgrade(this.layer, 281)) },
+		currencyDisplayName: "Legendary Runes",
+		currencyInternalName: "legendary",
 		currencyLayer: "p",
     },
 	},
