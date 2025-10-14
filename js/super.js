@@ -6,7 +6,7 @@ addLayer("s", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#4BDC13",
+    color: "#dea8ff",
     requires: new Decimal(2500), // Can be a function that takes requirement increases into account
     resource: "Super Runes", // Name of prestige currency
     baseResource: "Common Runes", // Name of resource prestige is based on
@@ -27,5 +27,5 @@ addLayer("s", {
     layerShown(){return (hasUpgrade('p', 321) || player.s.unlocked)},
     branches: ["p"],
     effect(){ return player.s.points.add(1).pow(2) },
-    effectDescription(){ return "which is boosting Rune gain by x" + format(tmp.s.effect) },
+    effectDescription(){ return "which is boosting Rune gain by x" + format(layers.s.effect()) },
 })
