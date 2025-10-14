@@ -18,12 +18,13 @@ addLayer("p", {
 		baseRuneCooldown: new Decimal(5),
 		runeGain: new Decimal(1),
 		rowFiveSum: new Decimal(0),
+		runeChoose: new Decimal(0),
     }},
     color: "#00aadd",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "prestige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
-    baseAmount() {return player.points}, // Get the current amount of baseResource
+    baseAmount()	121	 {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -99,6 +100,25 @@ addLayer("p", {
                         'color': 'white',
 					}
 		    },
+	  },
+	  "Auto Runes": {
+		unlocked(){ return hasMilestone('s', 0) },
+		content: [
+			"main-display",
+			"prestige-button",
+			"resource-display",
+			"blank",
+			["display-text", function(){ return "In here, you can enable automation for runes! (Based on unlocked runes)<br>Auto Runes must wait " + format(player.s.autoRuneCooldown) + "s before rolling again." }],
+			"blank",
+			["clickables", ["3"]]
+		],
+		buttonStyle() {
+                    return {
+                        'background': 'linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, purple, magenta, pink)',
+                        'border-color': '#ffffff',
+                        'color': 'white',
+					}
+			},
 	  },
 	},
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -492,6 +512,71 @@ addLayer("p", {
                 'font-size': '20px',
             },
         },
+			display() {
+		return "Force an Prestige reset to respec Rune skill tree."
+            },
+            tooltip: "You can't get Runes back, you can only respec when you can do a Prestige reset",
+            unlocked() {
+                return hasUpgrade("p", 15)
+            },
+            canClick() {
+                return canReset(this.layer)
+            },
+            onClick() {
+                player.p.upgrades.length
+                for (let i = 0; i < player.p.upgrades.length; i++) {
+                    if (+player.p.upgrades[i] > 196) {
+                        player.p.upgrades.splice(i, 1);
+                        i--;
+                    }
+                }
+                if (canReset(this.layer)) doReset(this.layer)
+            },
+            style: {
+                'min-height': '30px',
+                'width': '480px',
+                'border-radius': '5px',
+                'font-size': '20px',
+            },
+        },
+		31: {
+			title: "Basic Rune",
+	    	display() {
+		return "Enable Automation for Basic Rune. (Click again to disable)"
+            },
+			unlocked() {
+                return hasUpgrade('p', 15)
+            },
+            canClick() {
+                return true
+            },
+            onClick() {
+                if (player.p.runeChoose.eq(1)) {
+					player.p.runeChoose = new Decimal(0)
+				} else {
+					player.p.runeChoose = new Decimal(1)
+				}
+            },
+        },
+	    32: {
+			title: "Upgraded Rune",
+	    	display() {
+		return "Enable Automation for Upgraded Rune. (Click again to disable)"
+            },
+			unlocked() {
+                return hasUpgrade('p', 242)
+            },
+            canClick() {
+                return true
+            },
+            onClick() {
+                if (player.p.runeChoose.eq(2)) {
+					player.p.runeChoose = new Decimal(0)
+				} else {
+					player.p.runeChoose = new Decimal(2)
+				}
+            },
+        },
 	},
 	update(diff) {
 		// In your update loop
@@ -499,6 +584,10 @@ if (player.p.runeCooldown.gt(0)) {
     player.p.runeCooldown = player.p.runeCooldown.sub(diff); // diff = time since last tick
     if (player.p.runeCooldown.lt(0)) player.p.runeCooldown = new Decimal(0);
 			}
+if (player.s.autoRuneCooldown.gt(0)) {
+    player.s.autoRuneCooldown = player.s.autoRuneCooldown.sub(diff); // diff = time since last tick
+    if (player.s.autoRuneCooldown.lt(0)) player.p.autoRuneCooldown = new Decimal(0);
+}
 
         // Rune Cooldown
 		
@@ -535,5 +624,67 @@ if (player.p.runeCooldown.gt(0)) {
 		if (hasUpgrade('p', 243)) f = f.add(1)
 
 		player.p.rowFiveSum = f
+
+	    // Automation
+
+	    let base = new Decimal(2.5)
+
+	    if (player.p.runeChoose.gt(0) && player.s.autoRuneCooldown.lte(0)) {
+			if (player.p.runeChoose.eq(1)) {
+			player.p.randomValue = new Decimal(Math.random())
+			if (player.p.randomValue.gt(0.46) && player.p.randomValue.lte(1)) {
+				player.p.common = player.p.common.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.46) && player.p.randomValue.gt(0.26)) {
+				player.p.uncommon = player.p.uncommon.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.26) && player.p.randomValue.gt(0.16)) {
+				player.p.rare = player.p.rare.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.16) && player.p.randomValue.gt(0.085)) {
+				player.p.epic = player.p.epic.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.085) && player.p.randomValue.gt(0.035)) {
+				player.p.legendary = player.p.legendary.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.035) && player.p.randomValue.gt(0.01)) {
+				player.p.mythic = player.p.mythic.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.01) && player.p.randomValue.gt(0.0001)) {
+				player.p.godly = player.p.godly.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.0001)) {
+				player.p.secret = player.p.secret.add(player.p.runeGain)
+			}
+			}
+			if (player.p.runeChoose.eq(2)) {
+			player.p.randomValue = new Decimal(Math.random())
+			if (player.p.randomValue.gt(0.9) && player.p.randomValue.lte(1)) {
+				player.p.common = player.p.common.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.9) && player.p.randomValue.gt(0.5)) {
+				player.p.uncommon = player.p.uncommon.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.5) && player.p.randomValue.gt(0.3)) {
+				player.p.rare = player.p.rare.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.3) && player.p.randomValue.gt(0.2)) {
+				player.p.epic = player.p.epic.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.2) && player.p.randomValue.gt(0.1)) {
+				player.p.legendary = player.p.legendary.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.1) && player.p.randomValue.gt(0.04)) {
+				player.p.mythic = player.p.mythic.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.04) && player.p.randomValue.gt(0.001)) {
+				player.p.godly = player.p.godly.add(player.p.runeGain)
+			}
+		    if (player.p.randomValue.lte(0.001)) {
+				player.p.secret = player.p.secret.add(player.p.runeGain)
+			}
+			}
+			player.s.autoRuneCooldown = base
+		}
 	},
 })
