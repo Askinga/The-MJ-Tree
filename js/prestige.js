@@ -52,6 +52,7 @@ addLayer("p", {
 			"main-display",
 			"prestige-button",
 			"resource-display",
+			["display-text", function() { return "You gain " + format(player.p.runeGain) + "Runes on rune roll." }],
 			"blank",
 			["clickables", ["1"]],
 			["display-text", function(){ 
