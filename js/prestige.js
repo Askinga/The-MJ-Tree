@@ -90,7 +90,7 @@ addLayer("p", {
         + format(player.p.secret) + " Secret Runes</h3>";
             }],
 			"blank",
-			["upgrades", ["20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"]],
+			["upgrades", ["20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32"]],
 		],
 		buttonStyle() {
                     return {
@@ -378,6 +378,15 @@ addLayer("p", {
 		effectDisplay(){ return "x"+format(upgradeEffect('p', 311)) },
 		currencyDisplayName: "Common Runes",
 		currencyInternalName: "common",
+		currencyLayer: "p",
+	},
+	321: {
+		title: "RST-20",
+        description: "Unlock a new layer.",
+        cost: new Decimal(150),
+		unlocked(){ return (hasUpgrade(this.layer, 311)) },
+		currencyDisplayName: "Godly Runes",
+		currencyInternalName: "godly",
 		currencyLayer: "p",
 	},
 	},
