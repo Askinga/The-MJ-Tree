@@ -521,6 +521,8 @@ if (player.p.runeCooldown.gt(0)) {
 		if (hasUpgrade('p', 303)) gain = gain.times(3)
 		if (hasUpgrade('p', 311)) gain = gain.times(upgradeEffect('p', 311))
 		gain = gain.times(layers.s.effect())
+		if (player.d.difficulty.eq(0)) gain = gain.times(2)
+        if (player.d.difficulty.eq(2)) gain = gain.times(0.5)
 		
 		player.p.runeGain = gain
 
