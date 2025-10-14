@@ -15,6 +15,8 @@ addLayer("s", {
     exponent: 0.1, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if (player.d.difficulty.eq(0)) mult = mult.times(2)
+        if (player.d.difficulty.eq(2)) mult = mult.times(0.5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -27,5 +29,5 @@ addLayer("s", {
     layerShown(){return (hasUpgrade('p', 321) || player.s.unlocked)},
     branches: ["p"],
     effect(){ return player.s.points.add(1).pow(2) },
-    effectDescription(){ return "which is boosting Rune gain by x" + format(layers.s.effect()) },
+    effectDescription(){ return "which is boosting Points and Rune gain by x" + format(layers.s.effect()) },
 })
