@@ -378,7 +378,7 @@ addLayer("p", {
 		currencyDisplayName: "Common Runes",
 		currencyInternalName: "common",
 		currencyLayer: "p",
-	}.
+	},
 	},
 	clickables: {
     11: {
