@@ -338,7 +338,7 @@ addLayer("p", {
 		currencyInternalName: "common",
 		currencyLayer: "p",
 		canAfford() {
-			else if (hasUpgrade('p', 302) || hasUpgrade('p', 303)) return false
+		    if (hasUpgrade('p', 302) || hasUpgrade('p', 303)) return false
 			else return true
 		},
     },
@@ -351,7 +351,7 @@ addLayer("p", {
 		currencyInternalName: "mythic",
 		currencyLayer: "p",
 		canAfford() {
-			else if (hasUpgrade('p', 301) || hasUpgrade('p', 303)) return false
+			if (hasUpgrade('p', 301) || hasUpgrade('p', 303)) return false
 			else return true
 		},
     },
@@ -364,7 +364,7 @@ addLayer("p", {
 		currencyInternalName: "godly",
 		currencyLayer: "p",
 		canAfford() {
-			else if (hasUpgrade('p', 301) || hasUpgrade('p', 302)) return false
+			if (hasUpgrade('p', 301) || hasUpgrade('p', 302)) return false
 			else return true
 		},
     },
