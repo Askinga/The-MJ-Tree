@@ -52,7 +52,7 @@ addLayer("p", {
 			"main-display",
 			"prestige-button",
 			"resource-display",
-			["display-text", function() { return "You gain " + format(player.p.runeGain) + "Runes on rune roll." }],
+			["display-text", function() { return "<h2>You gain " + format(player.p.runeGain) + " Runes on rune roll.</h2>" }],
 			"blank",
 			["clickables", ["1"]],
 			["display-text", function(){ 
