@@ -5,6 +5,7 @@ addLayer("s", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+		autoRuneCooldown: new Decimal(0),
     }},
     color: "#dea8ff",
     requires: new Decimal(2500), // Can be a function that takes requirement increases into account
@@ -26,8 +27,38 @@ addLayer("s", {
     hotkeys: [
         {key: "s", description: "s: Reset for super runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+	tabFormat: {
+		"Upgrades": {
+			content: [
+				"main-display",
+				"prestige-button",
+				"blank",
+				"upgrades",
+			],
+		},
+		"Milestones": {
+			content: [
+				"main-display",
+				"prestige-button",
+				"blank",
+				"milestones",
+			],
+		},
+	},
     layerShown(){return (hasUpgrade('p', 321) || player.s.unlocked)},
     branches: ["p"],
     effect(){ return player.s.points.add(1).pow(2) },
     effectDescription(){ return "which is boosting Points and Rune gain by x" + format(layers.s.effect()) },
+	milestones: {
+    0: {
+        requirementDescription: "2 Super Runes",
+        effectDescription: "Unlock Auto-Runes in Prestige Layer! Base cooldown: 2.5s",
+        done() { return player.s.points.gte(2) }
+	},
+	},
+	update(diff) {
+		let cool = new Decimal(2.5)
+
+		player.s.autoRuneCooldown = cool
+	},
 })
