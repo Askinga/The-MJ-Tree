@@ -251,7 +251,7 @@ addLayer("p", {
 		currencyInternalName: "mythic",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 291) && hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(3)
+			if ((hasUpgrade('p', 291) && hasUpgrade('p', 271)) || hasMilestone('s', 2)) return player.p.rowFiveSum.lt(3)
 			else if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
 			else if (hasUpgrade('p', 242) || hasUpgrade('p', 243)) return false
 			else return true
@@ -266,7 +266,7 @@ addLayer("p", {
 		currencyInternalName: "mythic",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 291) && hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(3)
+			if ((hasUpgrade('p', 291) && hasUpgrade('p', 271)) || hasMilestone('s', 2)) return player.p.rowFiveSum.lt(3)
 			else if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
 			else if (hasUpgrade('p', 241) || hasUpgrade('p', 243)) return false
 			else return true
@@ -281,7 +281,7 @@ addLayer("p", {
 		currencyInternalName: "mythic",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 291) && hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(3)
+			if ((hasUpgrade('p', 291) && hasUpgrade('p', 271)) || hasMilestone('s', 2)) return player.p.rowFiveSum.lt(3)
 			else if (hasUpgrade('p', 271)) return player.p.rowFiveSum.lt(2)
 			else if (hasUpgrade('p', 241) || hasUpgrade('p', 242)) return false
 			else return true
