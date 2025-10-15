@@ -566,6 +566,8 @@ if (player.p.runeCooldown.gt(0)) {
 if (player.p.autoRC.gt(0) && hasMilestone('s', 0) && player.p.runeChoose.gt(0)) {
     player.p.autoRC = player.p.autoRC.sub(diff); // diff = time since last tick
     if (player.p.autoRC.lt(0)) player.p.autoRC = new Decimal(0);
+} else {
+	player.p.autoRC = ARC
 }
         // Rune Cooldown
 		
