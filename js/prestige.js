@@ -603,8 +603,8 @@ if (player.s.autoRuneCooldown.gt(0)) {
 	    let base = new Decimal(2.5)
 
 	    if (player.p.runeChoose.gt(0) && player.s.autoRuneCooldown.lte(0)) {
-			player.s.autoRuneCooldown = base
 			if (player.p.runeChoose.eq(1)) {
+			player.s.autoRuneCooldown = base
 			player.p.randomValue = new Decimal(Math.random())
 			if (player.p.randomValue.gt(0.46) && player.p.randomValue.lte(1)) {
 				player.p.common = player.p.common.add(player.p.runeGain)
@@ -632,6 +632,7 @@ if (player.s.autoRuneCooldown.gt(0)) {
 			}
 			}
 			if (player.p.runeChoose.eq(2)) {
+			player.s.autoRuneCooldown = base
 			player.p.randomValue = new Decimal(Math.random())
 			if (player.p.randomValue.gt(0.9) && player.p.randomValue.lte(1)) {
 				player.p.common = player.p.common.add(player.p.runeGain)
