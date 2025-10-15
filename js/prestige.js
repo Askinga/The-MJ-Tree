@@ -557,7 +557,7 @@ if (player.p.runeCooldown.gt(0)) {
     player.p.runeCooldown = player.p.runeCooldown.sub(diff); // diff = time since last tick
     if (player.p.runeCooldown.lt(0)) player.p.runeCooldown = new Decimal(0);
 			}
-if (player.s.autoRuneCooldown.gt(0)) {
+if (player.s.autoRuneCooldown.gt(0) && hasMilestone('s', 0) && player.p.runeChoose.gt(0)) {
     player.s.autoRuneCooldown = player.s.autoRuneCooldown.sub(diff); // diff = time since last tick
     if (player.s.autoRuneCooldown.lt(0)) player.s.autoRuneCooldown = new Decimal(0);
 }
