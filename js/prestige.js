@@ -558,6 +558,7 @@ addLayer("p", {
 	    let ARC = new Decimal(2.5)
 
 		if (hasMilestone('s', 1)) ARC = ARC.sub(0.5)
+		if (hasMilestone('s', 3)) ARC = ARC.sub(0.5)
 		// In your update loop
 if (player.p.runeCooldown.gt(0)) {
     player.p.runeCooldown = player.p.runeCooldown.sub(diff); // diff = time since last tick
