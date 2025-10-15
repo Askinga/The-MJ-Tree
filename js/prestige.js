@@ -593,6 +593,7 @@ if (player.p.autoRC.gt(0) && hasMilestone('s', 0) && player.p.runeChoose.gt(0)) 
 		if (hasUpgrade('p', 311)) gain = gain.times(upgradeEffect('p', 311))
 		gain = gain.times(layers.s.effect())
 		if (hasUpgrade('s', 11)) gain = gain.times(4)
+		if (hasUpgrade('s', 12)) gain = gain.times(5)
 		if (player.d.difficulty.eq(0)) gain = gain.times(2)
         if (player.d.difficulty.eq(2)) gain = gain.times(0.5)
 		
