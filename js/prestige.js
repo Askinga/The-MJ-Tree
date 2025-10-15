@@ -519,7 +519,7 @@ addLayer("p", {
 		return "Enable Automation for Basic Rune. (Click again to disable)"
             },
 			unlocked() {
-                return hasUpgrade('p', 15)
+                return hasUpgrade('p', 13)
             },
             canClick() {
                 return true
