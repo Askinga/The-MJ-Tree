@@ -18,6 +18,7 @@ addLayer("s", {
 		if (player.d.difficulty.eq(0)) mult = mult.times(2)
         if (player.d.difficulty.eq(2)) mult = mult.times(0.5)
 		if (hasUpgrade('s', 11)) mult = mult.times(4)
+		if (hasUpgrade('s', 12)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -77,6 +78,12 @@ addLayer("s", {
 			description: "x4 Super Runes, x6 Points, x3 Prestige Points and x4 Rune Gain.",
 			cost: new Decimal(8),
 			unlocked(){ return hasMilestone('s', 3) },
+		},
+		12: {
+			title: "The runes will help you",
+			description: "x2 Super Runes, x5 Rune Gain",
+			cost: new Decimal(10),
+			unlocked(){ return hasUpgrade('s', 11) },
 		},
 	},
 })
