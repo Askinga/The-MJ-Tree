@@ -19,6 +19,7 @@ addLayer("p", {
 		runeGain: new Decimal(1),
 		rowFiveSum: new Decimal(0),
 		runeChoose: new Decimal(0),
+		autoRC: new Decimal(0)
     }},
     color: "#00aadd",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -558,9 +559,9 @@ if (player.p.runeCooldown.gt(0)) {
     player.p.runeCooldown = player.p.runeCooldown.sub(diff); // diff = time since last tick
     if (player.p.runeCooldown.lt(0)) player.p.runeCooldown = new Decimal(0);
 			}
-if (player.s.autoRuneCooldown.gt(0) && hasMilestone('s', 0) && player.p.runeChoose.gt(0)) {
-    player.s.autoRuneCooldown = player.s.autoRuneCooldown.sub(diff); // diff = time since last tick
-    if (player.s.autoRuneCooldown.lt(0)) player.s.autoRuneCooldown = new Decimal(0);
+if (player.p.autoRC.gt(0) && hasMilestone('s', 0) && player.p.runeChoose.gt(0)) {
+    player.p.autoRC = player.p.autoRC.sub(diff); // diff = time since last tick
+    if (player.p.autoRC.lt(0)) player.p.autoRC = new Decimal(0);
 }
         // Rune Cooldown
 		
@@ -600,7 +601,7 @@ if (player.s.autoRuneCooldown.gt(0) && hasMilestone('s', 0) && player.p.runeChoo
 
 	    // Automation
 
-	    if (player.p.runeChoose.gt(0) && player.s.autoRuneCooldown.lte(0)) {
+	    if (player.p.runeChoose.gt(0) && player.p.autoRC.lte(0)) {
 			if (player.p.runeChoose.eq(1)) {
 			player.p.randomValue = new Decimal(Math.random())
 			if (player.p.randomValue.gt(0.46) && player.p.randomValue.lte(1)) {
@@ -656,8 +657,8 @@ if (player.s.autoRuneCooldown.gt(0) && hasMilestone('s', 0) && player.p.runeChoo
 			}
 			}
 		}
-		if (player.s.autoRuneCooldown.lte(0)) {
-	player.s.autoRuneCooldown = base
+		if (player.p.autoRC.lte(0)) {
+	player.p.autoRC = base
 				}
 	},
 })
