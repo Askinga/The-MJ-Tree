@@ -109,14 +109,14 @@ addLayer("p", {
 			"prestige-button",
 			"resource-display",
 			"blank",
-			["display-text", function(){ return "In here, you can enable automation for runes! (Based on unlocked runes)<br>Auto Runes must wait " + format(player.s.autoRuneCooldown) + "s before rolling again." }],
+			["display-text", function(){ return "In here, you can enable automation for runes! (Based on unlocked runes)<br>Auto Runes must wait " + format(player.p.autoRC) + "s before rolling again." }],
 			"blank",
 			["clickables", ["3"]]
 		],
 		buttonStyle() {
                     return {
                         'background': 'linear-gradient(45deg, red, orange, yellow, lime, cyan, blue, purple, magenta, pink)',
-                        'border-color': '#ffffff',
+                        'border-color': '#00aadd',
                         'color': 'white',
 					}
 			},
