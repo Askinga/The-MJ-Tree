@@ -17,6 +17,7 @@ addLayer("s", {
         mult = new Decimal(1)
 		if (player.d.difficulty.eq(0)) mult = mult.times(2)
         if (player.d.difficulty.eq(2)) mult = mult.times(0.5)
+		if (hasUpgrade('s', 11)) mult = mult.times(4)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -64,5 +65,18 @@ addLayer("s", {
         effectDescription: "RST-15s effect is kept on Super Rune resets.",
         done() { return player.s.points.gte(5) }
 	},
+	3: {
+        requirementDescription: "7 Super Runes",
+        effectDescription: "-0.5s Auto Rune Cooldown and unlock 1st Super Rune Upgrade.",
+        done() { return player.s.points.gte(7) }
+	},
+	},
+	upgrades: {
+		11: {
+			title: "A super rune always comes in handy",
+			description: "x4 Super Runes, x6 Points, x3 Prestige Points and x4 Rune Gain.",
+			cost: new Decimal(8),
+			unlocked(){ return hasMilestone('s', 3) },
+		},
 	},
 })
