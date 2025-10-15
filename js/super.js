@@ -59,5 +59,10 @@ addLayer("s", {
         effectDescription: "You can buy both RST-12 and RST-13 and Auto Rune Cooldown -0.5s.",
         done() { return player.s.points.gte(4) }
 	},
+	2: {
+        requirementDescription: "5 Super Runes",
+        effectDescription: "RST-15s effect is kept on Super Rune resets.",
+        done() { return player.s.points.gte(5) }
+	},
 	},
 })
