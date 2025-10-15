@@ -9,8 +9,8 @@ addLayer("s", {
     color: "#dea8ff",
     requires: new Decimal(10000), // Can be a function that takes requirement increases into account
     resource: "Super Runes", // Name of prestige currency
-    baseResource: "Common Runes", // Name of resource prestige is based on
-    baseAmount() {return player.p.common}, // Get the current amount of baseResource
+    baseResource: "Prestige Points", // Name of resource prestige is based on
+    baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.075, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
