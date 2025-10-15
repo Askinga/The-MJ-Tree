@@ -552,6 +552,7 @@ addLayer("p", {
         },
 	},
 	update(diff) {
+	    let base = new Decimal(2.5)
 		// In your update loop
 if (player.p.runeCooldown.gt(0)) {
     player.p.runeCooldown = player.p.runeCooldown.sub(diff); // diff = time since last tick
@@ -561,7 +562,6 @@ if (player.s.autoRuneCooldown.gt(0) && hasMilestone('s', 0) && player.p.runeChoo
     player.s.autoRuneCooldown = player.s.autoRuneCooldown.sub(diff); // diff = time since last tick
     if (player.s.autoRuneCooldown.lt(0)) player.s.autoRuneCooldown = new Decimal(0);
 }
-
         // Rune Cooldown
 		
 		let cool = new Decimal(5)
@@ -600,11 +600,8 @@ if (player.s.autoRuneCooldown.gt(0) && hasMilestone('s', 0) && player.p.runeChoo
 
 	    // Automation
 
-	    let base = new Decimal(2.5)
-
 	    if (player.p.runeChoose.gt(0) && player.s.autoRuneCooldown.lte(0)) {
 			if (player.p.runeChoose.eq(1)) {
-			player.s.autoRuneCooldown = base
 			player.p.randomValue = new Decimal(Math.random())
 			if (player.p.randomValue.gt(0.46) && player.p.randomValue.lte(1)) {
 				player.p.common = player.p.common.add(player.p.runeGain)
@@ -632,7 +629,6 @@ if (player.s.autoRuneCooldown.gt(0) && hasMilestone('s', 0) && player.p.runeChoo
 			}
 			}
 			if (player.p.runeChoose.eq(2)) {
-			player.s.autoRuneCooldown = base
 			player.p.randomValue = new Decimal(Math.random())
 			if (player.p.randomValue.gt(0.9) && player.p.randomValue.lte(1)) {
 				player.p.common = player.p.common.add(player.p.runeGain)
@@ -660,5 +656,8 @@ if (player.s.autoRuneCooldown.gt(0) && hasMilestone('s', 0) && player.p.runeChoo
 			}
 			}
 		}
+		if (player.s.autoRuneCooldown.lte(0)) {
+	player.s.autoRuneCooldown = base
+				}
 	},
 })
