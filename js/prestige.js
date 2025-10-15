@@ -314,7 +314,8 @@ addLayer("p", {
 		currencyInternalName: "common",
 		currencyLayer: "p",
 		canAfford() {
-			if (hasUpgrade('p', 272)) return false
+			if (hasMilestone('s', 1)) return true
+			else if (hasUpgrade('p', 272)) return false
 			else return true
 		},
     },
@@ -329,7 +330,8 @@ addLayer("p", {
 		currencyInternalName: "legendary",
 		currencyLayer: "p",
 		canAfford() {
-			if (hasUpgrade('p', 271)) return false
+			if (hasMilestone('s', 1)) return true
+			else if (hasUpgrade('p', 271)) return false
 			else return true
 		},
     },
@@ -553,7 +555,9 @@ addLayer("p", {
         },
 	},
 	update(diff) {
-	    let base = new Decimal(2.5)
+	    let ARC = new Decimal(2.5)
+
+		if (hasMilestone('s', 1)) ARC = ARC.sub(0.5)
 		// In your update loop
 if (player.p.runeCooldown.gt(0)) {
     player.p.runeCooldown = player.p.runeCooldown.sub(diff); // diff = time since last tick
@@ -658,7 +662,7 @@ if (player.p.autoRC.gt(0) && hasMilestone('s', 0) && player.p.runeChoose.gt(0)) 
 			}
 		}
 		if (player.p.autoRC.lte(0)) {
-	player.p.autoRC = base
+	player.p.autoRC = ARC
 				}
 	},
 })
