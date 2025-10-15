@@ -5,7 +5,6 @@ addLayer("s", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
-		autoRuneCooldown: new Decimal(0),
     }},
     color: "#dea8ff",
     requires: new Decimal(2500), // Can be a function that takes requirement increases into account
@@ -55,10 +54,10 @@ addLayer("s", {
         effectDescription: "Unlock Auto-Runes in Prestige Layer! Base cooldown: 2.5s",
         done() { return player.s.points.gte(2) }
 	},
+	1: {
+        requirementDescription: "4 Super Runes",
+        effectDescription: "You can buy both RST-12 and RST-13 and Auto Rune Cooldown -0.5s.",
+        done() { return player.s.points.gte(4) }
 	},
-	update(diff) {
-		let cool = new Decimal(2.5)
-
-		player.s.autoRuneCooldown = cool
 	},
 })
