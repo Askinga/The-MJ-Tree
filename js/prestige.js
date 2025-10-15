@@ -114,7 +114,7 @@ addLayer("p", {
 		],
 		buttonStyle() {
                     return {
-                        'background': 'linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, purple, magenta, pink)',
+                        'background': 'linear-gradient(45deg, red, orange, yellow, lime, cyan, blue, purple, magenta, pink)',
                         'border-color': '#ffffff',
                         'color': 'white',
 					}
