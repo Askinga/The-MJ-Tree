@@ -14,6 +14,7 @@ addLayer("b", {
 		amazing: new Decimal(0),
 		best: new Decimal(0),
 		randomValue: new Decimal(0),
+		RG: new Decimal(0),
     }},
     color: "#6f36eb",
     requires: new Decimal("e20"), // Can be a function that takes requirement increases into account
@@ -55,6 +56,27 @@ addLayer("b", {
 			"blank",
     ],
 	},
+	"Runes": {
+		content: [
+			"main-display",
+			"prestige-button",
+			"resource-display",
+			"blank",
+			["clickables", ["1"]],
+			["display-text", function(){ 
+    return "<h3>" 
+        + "Terrible Rune: x" + format(tmp.b.terrible) + " points<br>"
+        + "Super Bad Rune: x" + format(tmp.b.super_bad) + " prestige points<br>"
+        + "Bad Rune: x" + format(tmp.b.bad) + " rune gain<br>"
+        + "Mid Runes: x" + format(tmp.b.mid) + " super runes<br>"
+        + "Kinda Good Runes: x" + format(tmp.b.kinda_good) + " points and prestige points<br>"
+        + "Good Runes: x" + format(tmp.b.good) + " rune gain and presting points<br>"
+        + "Amazing Runes: x" + format(tmp.b.amazing) + " super runes<br>"
+        + "Best Runes: x" + format(tmp.b.best) + " boost rune gain (Except Best Runes)</h3>";
+            }],
+			"blank",
+    ],
+	},
 },
 	terrible(){ // Boosts points
 		return player.b.terrible.add(1).pow(2)
@@ -91,25 +113,25 @@ addLayer("b", {
 			player.b.points = playr.b.points.sub(1)
 			player.b.randomValue = new Decimal(Math.random())
 			if (player.b.randomValue.gt(0.5) && player.b.randomValue.lte(1)) {
-				player.b.terrible = player.b.terrible.add(1)
+				player.b.terrible = player.b.terrible.add(player.b.RG)
 			}
 		    if (player.b.randomValue.lte(0.5) && player.b.randomValue.gt(0.225)) {
-				player.b.super_bad = player.b.super_bad.add(1)
+				player.b.super_bad = player.b.super_bad.add(player.b.RG)
 			}
 		    if (player.b.randomValue.lte(0.225) && player.b.randomValue.gt(0.145)) {
-				player.b.bad = player.b.bad.add(1)
+				player.b.bad = player.b.bad.add(player.b.RG)
 			}
 		    if (player.b.randomValue.lte(0.145) && player.b.randomValue.gt(0.085)) {
-				player.b.mid = player.b.mid.add(1)
+				player.b.mid = player.b.mid.add(player.b.RG)
 			}
 		    if (player.b.randomValue.lte(0.085) && player.b.randomValue.gt(0.045)) {
-				player.b.kinda_good = player.b.kinda_good.add(1)
+				player.b.kinda_good = player.b.kinda_good.add(player.b.RG)
 			}
 		    if (player.b.randomValue.lte(0.045) && player.b.randomValue.gt(0.015)) {
-				player.b.good = player.b.good.add(1)
+				player.b.good = player.b.good.add(player.b.RG)
 			}
 		    if (player.b.randomValue.lte(0.015) && player.b.randomValue.gt(0.0025)) {
-				player.b.amazing = player.b.amazing.add(1)
+				player.b.amazing = player.b.amazing.add(player.b.RG)
 			}
 		    if (player.b.randomValue.lte(0.0025)) {
 				player.b.best = player.b.best.add(1)
@@ -119,5 +141,12 @@ addLayer("b", {
 		   return "Terrible Rune: 50%<br>Super Bad Rune: 27.5%<br>Bad Rune: 8%<br>Mid Rune: 6%<br>Kinda Good Rune: 4%<br>Good Rune: 3%<br>Amazing Rune: 1.25%<br>Best Rune: 0.25%<br>"
 		},
     },
+	},
+	update(diff) {
+		let gain = new Decimal(1)
+
+		gain = gain.times(tmp.b.best)
+
+		player.b.RG = gain
 	},
 })
