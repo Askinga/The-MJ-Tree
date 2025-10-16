@@ -6,6 +6,11 @@ addLayer("s", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+	passiveGeneration(){
+		let p = new Decimal(0)
+		if (hasUpgrade('b', 13)) p = p.add(0.01)
+		return p
+	},
     color: "#dea8ff",
     requires: new Decimal(10000), // Can be a function that takes requirement increases into account
     resource: "Super Runes", // Name of prestige currency
