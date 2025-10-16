@@ -26,7 +26,7 @@ addLayer("s", {
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "s", description: "s: Reset for super runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "s", description: "S: Reset for super runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 	tabFormat: {
 		"Upgrades": {
@@ -92,6 +92,12 @@ addLayer("s", {
 			unlocked(){ return hasUpgrade('s', 12) },
 			effect(){ return player.s.points.add(1).pow(1.25) },
 			effectDisplay(){ return "x"+format(upgradeEffect('s', 13)) },
+		},
+		14: {
+			title: "Hey, I think you need this",
+			description: "25% Prestige Points per second, automate Prestige Upgrades and you can buy every upgrade in the Rune Skill Tree.<br>Hint: Use hotkeys P and S to get quickly. Don't be scared!",
+			cost: new Decimal(500),
+			unlocked(){ return hasUpgrade('s', 13) },
 		},
 	},
 })
