@@ -13,6 +13,7 @@ addLayer("b", {
 		good: new Decimal(0),
 		amazing: new Decimal(0),
 		best: new Decimal(0),
+		randomValue: new Decimal(0),
     }},
     color: "#6f36eb",
     requires: new Decimal("e20"), // Can be a function that takes requirement increases into account
@@ -81,4 +82,42 @@ addLayer("b", {
 	},
     layerShown(){return (hasUpgrade('s', 15) || player.b.unlocked)},
 	branches: ["p"],
+	clickables: {
+		11: {
+		title: "Roll Basic Boost Rune",
+        display() {return "Roll!<br>Cost: 1 Boost Rune"},
+        canClick(){ return player.b.points.gte(1) },
+		onClick(){ 
+			player.b.points = playr.b.points.sub(1)
+			player.b.randomValue = new Decimal(Math.random())
+			if (player.b.randomValue.gt(0.5) && player.b.randomValue.lte(1)) {
+				player.b.terrible = player.b.terrible.add(1)
+			}
+		    if (player.b.randomValue.lte(0.5) && player.b.randomValue.gt(0.225)) {
+				player.b.super_bad = player.b.super_bad.add(1)
+			}
+		    if (player.b.randomValue.lte(0.225) && player.b.randomValue.gt(0.145)) {
+				player.b.bad = player.b.bad.add(1)
+			}
+		    if (player.b.randomValue.lte(0.145) && player.b.randomValue.gt(0.085)) {
+				player.b.mid = player.b.mid.add(1)
+			}
+		    if (player.b.randomValue.lte(0.085) && player.b.randomValue.gt(0.045)) {
+				player.b.kinda_good = player.b.kinda_good.add(1)
+			}
+		    if (player.b.randomValue.lte(0.045) && player.b.randomValue.gt(0.015)) {
+				player.b.good = player.b.good.add(1)
+			}
+		    if (player.b.randomValue.lte(0.015) && player.b.randomValue.gt(0.0025)) {
+				player.b.amazing = player.b.amazing.add(1)
+			}
+		    if (player.b.randomValue.lte(0.0025)) {
+				player.b.best = player.b.best.add(1)
+			}
+		},
+		tooltip(){
+		   return "Terrible Rune: 50%<br>Super Bad Rune: 27.5%<br>Bad Rune: 8%<br>Mid Rune: 6%<br>Kinda Good Rune: 4%<br>Good Rune: 3%<br>Amazing Rune: 1.25%<br>Best Rune: 0.25%<br>"
+		},
+    },
+	},
 })
