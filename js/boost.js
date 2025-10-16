@@ -5,6 +5,14 @@ addLayer("b", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+		terrible: new Decimal(0),
+		super_bad: new Decimal(0),
+		bad: new Decimal(0),
+		mid: new Decimal(0),
+		kinda_good: new Decimal(0),
+		good: new Decimal(0),
+		amazing: new Decimal(0),
+		best: new Decimal(0),
     }},
     color: "#6f36eb",
     requires: new Decimal("e20"), // Can be a function that takes requirement increases into account
@@ -24,6 +32,18 @@ addLayer("b", {
     hotkeys: [
         {key: "b", description: "B: Reset for boost runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+	terrible(){ // Boosts points
+		return player.b.terrible.add(1).pow(2)
+	},
+	super_bad(){ // Boosts prestige points
+		return player.b.super_bad.add(1).pow(1.5)
+	},
+	bad(){ // Boosts rune gain
+		return player.b.bad.add(1).pow(1.25)
+	},
+	mid(){ // Boosts super runes
+		return player.b.mid.add(1).pow(1)
+	},
     layerShown(){return (hasUpgrade('s', 15) || player.b.unlocked)},
 	branches: ["p"],
 })
