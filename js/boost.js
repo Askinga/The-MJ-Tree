@@ -25,6 +25,7 @@ addLayer("b", {
     exponent: 0.02, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if (hasUpgrade('b', 12)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -42,6 +43,7 @@ addLayer("b", {
 			"resource-display",
 			"blank",
 			["clickables", ["1"]],
+			"blank",
 			"upgrades",
 			["display-text", function(){ 
     return "<h3>" 
@@ -154,6 +156,12 @@ addLayer("b", {
 			title: "I HATE RNG!",
 			description: "-1s Auto Rune Cooldown, making it 0s!",
 			cost: new Decimal(2),
+		},
+		12: {
+			title: "Runic boosts",
+			description: "x3 Boost Runes",
+			cost: new Decimal(5),
+			unlocked(){ return hasUpgrade('b', 11) },
 		},
 	},
 })
