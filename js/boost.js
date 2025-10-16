@@ -109,7 +109,7 @@ addLayer("b", {
         display() {return "Roll!<br>Cost: 1 Boost Rune"},
         canClick(){ return player.b.points.gte(1) },
 		onClick(){ 
-			player.b.points = playr.b.points.sub(1)
+			player.b.points = player.b.points.sub(1)
 			player.b.randomValue = new Decimal(Math.random())
 			if (player.b.randomValue.gt(0.5) && player.b.randomValue.lte(1)) {
 				player.b.terrible = player.b.terrible.add(player.b.RG)
