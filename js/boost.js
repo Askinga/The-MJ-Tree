@@ -35,13 +35,14 @@ addLayer("b", {
         {key: "b", description: "B: Reset for boost runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
 	tabFormat: {
-	"Runes": {
+	"Runes & Upgrades": {
 		content: [
 			"main-display",
 			"prestige-button",
 			"resource-display",
 			"blank",
 			["clickables", ["1"]],
+			"upgrades",
 			["display-text", function(){ 
     return "<h3>" 
         + format(player.b.terrible) + " Terrible Runes<br>"
