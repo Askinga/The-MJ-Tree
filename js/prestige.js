@@ -44,6 +44,7 @@ addLayer("p", {
 		if (hasUpgrade('p', 302)) mult = mult.times(4)
 		if (hasUpgrade('s', 11)) mult = mult.times(3)
 		if (hasUpgrade('s', 13)) mult = mult.times(upgradeEffect('s', 13))
+		mult = mult.times(tmp.b.super_bad)
         return mult
     },
 	tabFormat: {
@@ -605,6 +606,7 @@ if (player.p.autoRC.gt(0) && hasMilestone('s', 0) && player.p.runeChoose.gt(0)) 
 		gain = gain.times(layers.s.effect())
 		if (hasUpgrade('s', 11)) gain = gain.times(4)
 		if (hasUpgrade('s', 12)) gain = gain.times(5)
+		gain = gain.times(tmp.b.bad)
 		if (player.d.difficulty.eq(0)) gain = gain.times(2)
         if (player.d.difficulty.eq(2)) gain = gain.times(0.5)
 		
