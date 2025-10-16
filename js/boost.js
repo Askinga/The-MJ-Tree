@@ -93,13 +93,13 @@ addLayer("b", {
 		return player.b.kinda_good.add(1).pow(3)
 	},
 	good(){ // Boosts runes and prestige
-		return player.b.good.add(1).pow(1)
+		return player.b.good.add(1).pow(3.5)
 	},
 	amazing(){ // Boosts super runes... quite literally
-		return player.b.amazing.add(1).pow(1)
+		return player.b.amazing.add(1).pow(2)
 	},
 	bestR(){ // Boosts boost rune gain
-		return player.b.bestR.add(1).pow(0.2)
+		return player.b.bestR.add(1).pow(0.5)
 	},
     layerShown(){return (hasUpgrade('s', 15) || player.b.unlocked)},
 	branches: ["p"],
