@@ -160,7 +160,7 @@ addLayer("b", {
 		12: {
 			title: "Runic boosts",
 			description: "x3 Boost Runes",
-			cost: new Decimal(5),
+			cost: new Decimal(10),
 			unlocked(){ return hasUpgrade('b', 11) },
 		},
 	},
