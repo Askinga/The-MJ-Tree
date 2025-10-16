@@ -69,7 +69,7 @@ addLayer("b", {
         + "Bad Rune: x" + format(tmp.b.bad) + " rune gain<br>"
         + "Mid Runes: x" + format(tmp.b.mid) + " super runes<br>"
         + "Kinda Good Runes: x" + format(tmp.b.kinda_good) + " points and prestige points<br>"
-        + "Good Runes: x" + format(tmp.b.good) + " rune gain and presting points<br>"
+        + "Good Runes: x" + format(tmp.b.good) + " rune gain and prestige points<br>"
         + "Amazing Runes: x" + format(tmp.b.amazing) + " super runes<br>"
         + "Best Runes: x" + format(tmp.b.best) + " boost rune gain (Except Best Runes)</h3>";
             }],
