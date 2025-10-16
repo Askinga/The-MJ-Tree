@@ -573,6 +573,7 @@ addLayer("p", {
 		if (hasMilestone('s', 1)) ARC = ARC.sub(0.5)
 		if (hasMilestone('s', 3)) ARC = ARC.sub(0.5)
 		if (hasUpgrade('s', 15)) ARC = ARC.sub(0.5)
+		if (hasUpgrade('b', 11)) ARC = ARC.sub(1)
 		// In your update loop
 if (player.p.runeCooldown.gt(0)) {
     player.p.runeCooldown = player.p.runeCooldown.sub(diff); // diff = time since last tick
