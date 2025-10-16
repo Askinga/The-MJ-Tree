@@ -37,6 +37,7 @@ addLayer("p", {
 		if (hasUpgrade('p', 211)) mult = mult.times(2)
 		if (hasUpgrade('p', 302)) mult = mult.times(4)
 		if (hasUpgrade('s', 11)) mult = mult.times(3)
+		if (hasUpgrade('s', 13)) mult = mult.times(upgradeEffect('s', 13))
         return mult
     },
 	tabFormat: {
