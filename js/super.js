@@ -92,8 +92,19 @@ addLayer("s", {
 			description: "Boost prestige points based on super runes",
 			cost: new Decimal(50),
 			unlocked(){ return hasUpgrade('s', 12) },
-			effect(){ return player.s.points.add(1).pow(1.25) },
-			effectDisplay(){ return "x"+format(upgradeEffect('s', 13)) },
+			effect(){ 
+				let eff = player.s.points.add(1).pow(1.25);
+        		eff = softcap(eff, new Decimal("1e10"), 0.325)
+       		 	return eff 
+			},
+			effectDisplay(){
+				let s = ""
+        		let upgEffect = upgradeEffect(this.layer, this.id)
+        		if (upgEffect.gte(new Decimal("1e10")) ) {
+          		  s = " (Softcapped)"
+        		}
+        		return "x" + format(upgradeEffect("s", 13)) + s;
+			},
 		},
 		14: {
 			title: "Hey, I think you need this",
