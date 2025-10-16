@@ -21,6 +21,12 @@ addLayer("p", {
 		runeChoose: new Decimal(0),
 		autoRC: new Decimal(0)
     }},
+	passiveGeneration(){
+		let p = new Decimal(0)
+		if (hasUpgrade('s', 14)) p = p.add(0.25)
+		return p
+	},
+	autoUpgrade(){ return hasUpgrade('s', 14) },
     color: "#00aadd",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "prestige points", // Name of prestige currency
@@ -186,7 +192,7 @@ addLayer("p", {
 		currencyInternalName: "uncommon",
 		currencyLayer: "p",
 		canAfford() {
-			if (hasUpgrade('p', 261)) return true
+			if (hasUpgrade('p', 261) || hasUpgrade('s', 14)) return true
 			else if (hasUpgrade('p', 212)) return false
 			else return true
 		},
@@ -200,7 +206,7 @@ addLayer("p", {
 		currencyInternalName: "rare",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 261)) return true
+			if (hasUpgrade('p', 261) || hasUpgrade('s', 14)) return true
 			else if (hasUpgrade('p', 211)) return false
 			else return true
 		},
@@ -225,7 +231,7 @@ addLayer("p", {
 		currencyInternalName: "common",
 		currencyLayer: "p",
 		canAfford() {
-			if (hasUpgrade('p', 261)) return true
+			if (hasUpgrade('p', 261) || hasUpgrade('s', 14)) return true
 			else if (hasUpgrade('p', 232)) return false
 			else return true
 		},
@@ -239,7 +245,7 @@ addLayer("p", {
 		currencyInternalName: "legendary",
 		currencyLayer: "p",
 	    canAfford() {
-			if (hasUpgrade('p', 261)) return true
+			if (hasUpgrade('p', 261) || hasUpgrade('s', 14)) return true
 			else if (hasUpgrade('p', 231)) return false
 			else return true
 		},
@@ -364,7 +370,8 @@ addLayer("p", {
 		currencyInternalName: "common",
 		currencyLayer: "p",
 		canAfford() {
-		    if (hasUpgrade('p', 302) || hasUpgrade('p', 303)) return false
+			if (hasUpgrade('s', 14)) return true
+		    else if (hasUpgrade('p', 302) || hasUpgrade('p', 303)) return false
 			else return true
 		},
     },
@@ -377,7 +384,8 @@ addLayer("p", {
 		currencyInternalName: "mythic",
 		currencyLayer: "p",
 		canAfford() {
-			if (hasUpgrade('p', 301) || hasUpgrade('p', 303)) return false
+			if (hasUpgrade('s', 14)) return true
+			else if (hasUpgrade('p', 301) || hasUpgrade('p', 303)) return false
 			else return true
 		},
     },
@@ -390,7 +398,8 @@ addLayer("p", {
 		currencyInternalName: "godly",
 		currencyLayer: "p",
 		canAfford() {
-			if (hasUpgrade('p', 301) || hasUpgrade('p', 302)) return false
+			if (hasUpgrade('s', 14)) return true
+			else if (hasUpgrade('p', 301) || hasUpgrade('p', 302)) return false
 			else return true
 		},
     },
