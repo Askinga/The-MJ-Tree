@@ -32,6 +32,29 @@ addLayer("b", {
     hotkeys: [
         {key: "b", description: "B: Reset for boost runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+	tabFormat: {
+	"Runes": {
+		content: [
+			"main-display",
+			"prestige-button",
+			"resource-display",
+			"blank",
+			["clickables", ["1"]],
+			["display-text", function(){ 
+    return "<h3>" 
+        + format(player.b.terrible) + " Terrible Runes<br>"
+        + format(player.b.super_bad) + " Super Bad Runes<br>"
+        + format(player.b.bad) + " Bad Runes<br>"
+        + format(player.b.mid) + " Mid Runes<br>"
+        + format(player.b.kinda_good) + " Kinda Good Runes<br>"
+        + format(player.b.good) + " Good Runes<br>"
+        + format(player.b.amazing) + " Amazing Runes<br>"
+        + format(player.b.best) + " Best Runes</h3>";
+            }],
+			"blank",
+    ],
+	},
+},
 	terrible(){ // Boosts points
 		return player.b.terrible.add(1).pow(2)
 	},
@@ -43,6 +66,18 @@ addLayer("b", {
 	},
 	mid(){ // Boosts super runes
 		return player.b.mid.add(1).pow(1)
+	},
+	kinda_good(){ // Boosts points and prestige
+		return player.b.kinda_good.add(1).pow(3)
+	},
+	good(){ // Boosts runes and prestige
+		return player.b.good.add(1).pow(1)
+	},
+	amazing(){ // Boosts super runes... quite literally
+		return player.b.amazing.add(1).pow(1)
+	},
+	best(){ // Boosts boost rune gain
+		return player.b.best.add(1).pow(0.2)
 	},
     layerShown(){return (hasUpgrade('s', 15) || player.b.unlocked)},
 	branches: ["p"],
