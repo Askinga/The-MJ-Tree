@@ -148,4 +148,11 @@ addLayer("b", {
 
 		player.b.RG = gain
 	},
+	upgrades: {
+		11: {
+			title: "I HATE RNG!",
+			description: "-1s Auto Rune Cooldown, making it 0s!",
+			cost: new Decimal(2),
+		},
+	},
 })
