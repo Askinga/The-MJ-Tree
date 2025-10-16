@@ -26,6 +26,7 @@ addLayer("b", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasUpgrade('b', 12)) mult = mult.times(3)
+		if (hasUpgrade('b', 13)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -148,6 +149,7 @@ addLayer("b", {
 		let gain = new Decimal(1)
 
 		gain = gain.times(tmp.b.bestR)
+		if (hasUpgrade('b', 13)) gain = gain.times(4)
 
 		player.b.RG = gain
 	},
@@ -162,6 +164,12 @@ addLayer("b", {
 			description: "x3 Boost Runes",
 			cost: new Decimal(10),
 			unlocked(){ return hasUpgrade('b', 11) },
+		},
+		13: {
+			title: "The start of the grind...",
+			description: "1% of Super Runes per second and x2 Boost Runes and x4 Boost Rune Gain",
+			cost: new Decimal(500),
+			unlocked(){ return hasUpgrade('b', 12) },
 		},
 	},
 })
