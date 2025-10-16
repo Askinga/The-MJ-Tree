@@ -85,5 +85,13 @@ addLayer("s", {
 			cost: new Decimal(10),
 			unlocked(){ return hasUpgrade('s', 11) },
 		},
+		13: {
+			title: "Runic Prestige 2",
+			description: "Boost prestige points based on super runes",
+			cost: new Decimal(50),
+			unlocked(){ return hasUpgrade('s', 12) },
+			effect(){ return player.s.points.add(1).pow(1.25) },
+			effectDisplay(){ return "x"+format(upgradeEffect('s', 13)) },
+		},
 	},
 })
