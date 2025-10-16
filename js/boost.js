@@ -99,7 +99,7 @@ addLayer("b", {
 		return player.b.amazing.add(1).pow(1)
 	},
 	bestR(){ // Boosts boost rune gain
-		return player.b.best.add(1).pow(0.2)
+		return player.b.bestR.add(1).pow(0.2)
 	},
     layerShown(){return (hasUpgrade('s', 15) || player.b.unlocked)},
 	branches: ["p"],
@@ -144,7 +144,7 @@ addLayer("b", {
 	update(diff) {
 		let gain = new Decimal(1)
 
-		gain = gain.times(tmp.b.best)
+		gain = gain.times(tmp.b.bestR)
 
 		player.b.RG = gain
 	},
