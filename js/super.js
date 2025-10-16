@@ -99,5 +99,11 @@ addLayer("s", {
 			cost: new Decimal(500),
 			unlocked(){ return hasUpgrade('s', 13) },
 		},
+		15: {
+			title: "Rune Automation Automation",
+			description: "Auto Runes always chooses Basic Rune and -0.5s Auto Rune Cooldown. Unlock a new layer.",
+			cost: new Decimal(1000),
+			unlocked(){ return hasUpgrade('s', 14) },
+		},
 	},
 })
