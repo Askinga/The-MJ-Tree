@@ -12,7 +12,7 @@ addLayer("b", {
 		kinda_good: new Decimal(0),
 		good: new Decimal(0),
 		amazing: new Decimal(0),
-		best: new Decimal(0),
+		bestR: new Decimal(0),
 		randomValue: new Decimal(0),
 		RG: new Decimal(0),
     }},
@@ -51,7 +51,7 @@ addLayer("b", {
         + format(player.b.kinda_good) + " Kinda Good Runes<br>"
         + format(player.b.good) + " Good Runes<br>"
         + format(player.b.amazing) + " Amazing Runes<br>"
-        + format(player.b.best) + " Best Runes</h3>";
+        + format(player.b.bestR) + " Best Runes</h3>";
             }],
 			"blank",
     ],
@@ -71,7 +71,7 @@ addLayer("b", {
         + "Kinda Good Runes: x" + format(tmp.b.kinda_good) + " points and prestige points<br>"
         + "Good Runes: x" + format(tmp.b.good) + " rune gain and prestige points<br>"
         + "Amazing Runes: x" + format(tmp.b.amazing) + " super runes<br>"
-        + "Best Runes: x" + format(tmp.b.best) + " boost rune gain (Except Best Runes)</h3>";
+        + "Best Runes: x" + format(tmp.b.bestR) + " boost rune gain (Except Best Runes)</h3>";
             }],
 			"blank",
     ],
@@ -98,7 +98,7 @@ addLayer("b", {
 	amazing(){ // Boosts super runes... quite literally
 		return player.b.amazing.add(1).pow(1)
 	},
-	best(){ // Boosts boost rune gain
+	bestR(){ // Boosts boost rune gain
 		return player.b.best.add(1).pow(0.2)
 	},
     layerShown(){return (hasUpgrade('s', 15) || player.b.unlocked)},
@@ -133,7 +133,7 @@ addLayer("b", {
 				player.b.amazing = player.b.amazing.add(player.b.RG)
 			}
 		    if (player.b.randomValue.lte(0.0025)) {
-				player.b.best = player.b.best.add(1)
+				player.b.bestR = player.b.bestR.add(1)
 			}
 		},
 		tooltip(){
