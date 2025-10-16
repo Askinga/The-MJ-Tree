@@ -24,5 +24,6 @@ addLayer("b", {
     hotkeys: [
         {key: "b", description: "B: Reset for boost runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasUpgrade('s', 15) || player.b.unlocked)}
+    layerShown(){return (hasUpgrade('s', 15) || player.b.unlocked)},
+	branches: ["p"],
 })
