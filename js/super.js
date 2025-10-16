@@ -19,6 +19,8 @@ addLayer("s", {
         if (player.d.difficulty.eq(2)) mult = mult.times(0.5)
 		if (hasUpgrade('s', 11)) mult = mult.times(4)
 		if (hasUpgrade('s', 12)) mult = mult.times(2)
+        mult = mult.times(tmp.b.mid)
+		mult = mult.times(tmp.b.amazing)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
