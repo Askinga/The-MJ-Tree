@@ -166,8 +166,19 @@ addLayer("p", {
         description: "Common Runes boost prestige points.",
         cost: new Decimal(7),
 		unlocked(){ return hasUpgrade(this.layer, 13) },
-		effect(){ return player.p.common.add(1).pow(0.4) },
-		effectDisplay(){ return "x"+format(upgradeEffect('p', 14)) },
+		effect(){ 
+				let eff = player.p.common.add(1).pow(0.4);
+        		eff = softcap(eff, new Decimal("1e15"), 0.4)
+       		 	return eff 
+			},
+			effectDisplay(){
+				let s = ""
+        		let upgEffect = upgradeEffect(this.layer, this.id)
+        		if (upgEffect.gte(new Decimal("1e15")) ) {
+          		  s = " (Softcapped)"
+        		}
+        		return "x" + format(upgradeEffect("p", 14)) + s;
+			},
     },
 	15: {
 		title: "New feature 2",
