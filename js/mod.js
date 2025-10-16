@@ -52,6 +52,7 @@ function getPointGen() {
 	gain = gain.times(layers.s.effect())
 	if (hasUpgrade('s', 11)) gain = gain.times(6)
 	gain = gain.times(tmp.b.terrible)
+	gain = gain.times(tmp.b.kinda_good)
 	if (player.d.difficulty.eq(0)) gain = gain.pow(1.01)
 	return gain
 }
