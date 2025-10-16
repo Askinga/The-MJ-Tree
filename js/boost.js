@@ -56,13 +56,12 @@ addLayer("b", {
 			"blank",
     ],
 	},
-	"Runes": {
+	"Boosts": {
 		content: [
 			"main-display",
 			"prestige-button",
 			"resource-display",
 			"blank",
-			["clickables", ["1"]],
 			["display-text", function(){ 
     return "<h3>" 
         + "Terrible Rune: x" + format(tmp.b.terrible) + " points<br>"
