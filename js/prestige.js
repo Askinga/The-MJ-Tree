@@ -551,10 +551,10 @@ addLayer("p", {
 		return "Enable Automation for Upgraded Rune. (Click again to disable)"
             },
 			unlocked() {
-                return hasUpgrade('p', 242)
+                return (hasUpgrade('p', 242))
             },
             canClick() {
-                return true
+                return !hasUpgrade('s', 15)
             },
             onClick() {
                 if (player.p.runeChoose.eq(2)) {
@@ -570,6 +570,7 @@ addLayer("p", {
 
 		if (hasMilestone('s', 1)) ARC = ARC.sub(0.5)
 		if (hasMilestone('s', 3)) ARC = ARC.sub(0.5)
+		if (hasUpgrade('s', 15)) ARC = ARC.sub(0.5)
 		// In your update loop
 if (player.p.runeCooldown.gt(0)) {
     player.p.runeCooldown = player.p.runeCooldown.sub(diff); // diff = time since last tick
@@ -680,5 +681,8 @@ if (player.p.autoRC.gt(0) && hasMilestone('s', 0) && player.p.runeChoose.gt(0)) 
 		if (player.p.autoRC.lte(0)) {
 	player.p.autoRC = ARC
 				}
+		if (hasUpgrade('s', 15)) {
+			player.p.runeChoose = new Decimal(1)
+		}
 	},
 })
