@@ -32,6 +32,14 @@ addLayer("s", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+	softcap(){
+		let softStart = new Decimal(1e25)
+		return softStart
+	},
+	softcapPower(){
+		let pow = new Decimal(0.5)
+		return pow
+	},
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "s", description: "S: Reset for super runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
