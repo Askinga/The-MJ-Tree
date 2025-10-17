@@ -160,6 +160,7 @@ addLayer("b", {
 		gain = gain.times(tmp.b.bestR)
 		if (hasUpgrade('b', 13)) gain = gain.times(4)
 		if (hasUpgrade('b', 15)) gain = gain.times(upgradeEffect('b', 15))
+		if (hasMilestone('m', 0)) gain = gain.times(tmp.m.bonusEff1)
 
 		player.b.RG = gain
 	},
