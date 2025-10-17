@@ -37,5 +37,12 @@ addLayer("m", {
 		return "which is boosting Points by x" + format(layers.m.effect()) + " and boosting SR and BR by x" + format(tmp.m.bonusEff1)
 	},
     layerShown(){return (hasUpgrade('b', 15) || player.m.unlocked)},
-    branches: ["s"]
+    branches: ["s"],
+	milestones: {
+    0: {
+        requirementDescription: "2 Meta Runes",
+        effectDescription: "Meta Runes boost boost rune gain",
+        done() { return player.m.points.gte(2) }
+    },
+	},
 })
