@@ -41,8 +41,13 @@ addLayer("m", {
 	milestones: {
     0: {
         requirementDescription: "2 Meta Runes",
-        effectDescription: "Meta Runes boost boost rune gain",
+        effectDescription: "Meta Runes second effect boost boost rune gain",
         done() { return player.m.points.gte(2) }
+    },
+	1: {
+        requirementDescription: "3 Meta Runes",
+        effectDescription: "Keep all passive generations before third row and x3 PP",
+        done() { return player.m.points.gte(3) }
     },
 	},
 })
