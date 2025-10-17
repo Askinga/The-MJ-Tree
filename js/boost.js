@@ -16,6 +16,11 @@ addLayer("b", {
 		randomValue: new Decimal(0),
 		RG: new Decimal(0),
     }},
+	passiveGeneration(){
+		let p = new Decimal(0),
+		if (hasUpgrade('b', 14)) p = p.add(0.001)
+		return p
+	},
     color: "#6f36eb",
     requires: new Decimal("e20"), // Can be a function that takes requirement increases into account
     resource: "Boost Runes", // Name of prestige currency
@@ -27,6 +32,7 @@ addLayer("b", {
         mult = new Decimal(1)
 		if (hasUpgrade('b', 12)) mult = mult.times(3)
 		if (hasUpgrade('b', 13)) mult = mult.times(2)
+		if (hasUpgrade('b', 14)) mult = mult.times(4)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -170,6 +176,12 @@ addLayer("b", {
 			description: "1% of Super Runes per second and x2 Boost Runes and x4 Boost Rune Gain",
 			cost: new Decimal(500),
 			unlocked(){ return hasUpgrade('b', 12) },
+		},
+		14: {
+			title: "Lets rune ourselves",
+			description: "0.1% of Boost Runes per second and x4 Boost Runes",
+			cost: new Decimal(2000),
+			unlocked(){ return hasUpgrade('b', 13) },
 		},
 	},
 })
