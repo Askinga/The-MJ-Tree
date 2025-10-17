@@ -51,7 +51,7 @@ addLayer("m", {
     },
 	2: {
         requirementDescription: "6 Meta Runes",
-        effectDescription: "Keep all upgrade automations before row 3",
+        effectDescription: "Automate Row 2 Upgrades",
         done() { return player.m.points.gte(6) }
     },
 	},
