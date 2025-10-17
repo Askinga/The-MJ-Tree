@@ -8,7 +8,7 @@ addLayer("s", {
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
-		if (hasUpgrade('b', 13)) p = p.add(0.01)
+		if (hasUpgrade('b', 13) || hasMilestone('m', 1)) p = p.add(0.01)
 		return p
 	},
     color: "#dea8ff",
