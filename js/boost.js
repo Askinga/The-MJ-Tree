@@ -49,6 +49,8 @@ addLayer("b", {
 			"prestige-button",
 			"resource-display",
 			"blank",
+			["display-text", function(){ return "You gain " + format(player.b.RG) + " Boost Runes on boost rune roll" }],
+			"blank",
 			["clickables", ["1"]],
 			"blank",
 			"upgrades",
@@ -156,6 +158,7 @@ addLayer("b", {
 
 		gain = gain.times(tmp.b.bestR)
 		if (hasUpgrade('b', 13)) gain = gain.times(4)
+		if (hasUpgrade('b', 15)) gain = gain.times(upgradeEffect('b', 15))
 
 		player.b.RG = gain
 	},
@@ -182,6 +185,14 @@ addLayer("b", {
 			description: "0.1% of Boost Runes per second and x4 Boost Runes",
 			cost: new Decimal(2000),
 			unlocked(){ return hasUpgrade('b', 13) },
+		},
+		15: {
+			title: "Rune it.",
+			description: "Boost Boost Rune Gain based on Boost Runes",
+			cost: new Decimal(10000),
+			unlocked(){ return hasUpgrade('b', 14) },
+			effect(){ return player.b.points.add(1).pow(0.15) },
+			effectDisplay(){ return "x"+format(upgradeEffect('b', 15)) },
 		},
 	},
 })
