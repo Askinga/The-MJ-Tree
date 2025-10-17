@@ -17,7 +17,7 @@ addLayer("b", {
 		RG: new Decimal(0),
     }},
 	passiveGeneration(){
-		let p = new Decimal(0),
+		let p = new Decimal(0)
 		if (hasUpgrade('b', 14)) p = p.add(0.001)
 		return p
 	},
