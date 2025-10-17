@@ -49,5 +49,10 @@ addLayer("m", {
         effectDescription: "Keep all passive generations before third row and x3 PP",
         done() { return player.m.points.gte(3) }
     },
+	2: {
+        requirementDescription: "6 Meta Runes",
+        effectDescription: "Keep all upgrade automations before row 3",
+        done() { return player.m.points.gte(6) }
+    },
 	},
 })
