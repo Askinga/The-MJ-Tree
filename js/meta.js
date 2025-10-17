@@ -26,10 +26,16 @@ addLayer("m", {
         {key: "m", description: "M: Reset for meta runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     effect(){
-      let b = new Decimal(2.5)
+      let b = new Decimal(1000)
       let eff = new Decimal(b).pow(player.m.points)
       return eff
     },
+	bonusEff1(){
+		return new Decimal(3).pow(player.m.points)
+	},
+	effectDescription(){
+		return "which is boosting Points by x" + format(layers.m.effect()) + " and boosting SR and BR by x" + format(tmp.m.bonusEff1)
+	},
     layerShown(){return (hasUpgrade('b', 15) || player.m.unlocked)},
     branches: ["s"]
 })
