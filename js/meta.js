@@ -54,5 +54,10 @@ addLayer("m", {
         effectDescription: "Automate Row 2 Upgrades",
         done() { return player.m.points.gte(6) }
     },
+	3: {
+        requirementDescription: "12 Meta Runes",
+        effectDescription: "Unlock a new layer. Unlock Auto Boost Runes. Base cooldown: 0s",
+        done() { return player.m.points.gte(12) }
+    },
 	},
 })
