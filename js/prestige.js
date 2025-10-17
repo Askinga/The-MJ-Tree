@@ -46,6 +46,7 @@ addLayer("p", {
 		if (hasUpgrade('s', 13)) mult = mult.times(upgradeEffect('s', 13))
 		mult = mult.times(tmp.b.super_bad)
 		mult = mult.times(tmp.b.good)
+		if (hasMilestone('m', 1)) mult = mult.times(3)
         return mult
     },
 	tabFormat: {
