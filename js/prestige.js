@@ -23,7 +23,7 @@ addLayer("p", {
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
-		if (hasUpgrade('s', 14)) p = p.add(0.25)
+		if (hasUpgrade('s', 14) || hasMilestone('m', 1)) p = p.add(0.25)
 		return p
 	},
 	autoUpgrade(){ return hasUpgrade('s', 14) },
