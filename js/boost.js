@@ -188,7 +188,7 @@ addLayer("b", {
 		},
 		15: {
 			title: "Rune it.",
-			description: "Boost Boost Rune Gain based on Boost Runes",
+			description: "Boost Boost Rune Gain based on Boost Runes. Unlock a new layer.",
 			cost: new Decimal(10000),
 			unlocked(){ return hasUpgrade('b', 14) },
 			effect(){ return player.b.points.add(1).pow(0.15) },
