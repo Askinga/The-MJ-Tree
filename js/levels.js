@@ -5,12 +5,9 @@ addLayer("l", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+		level: new Decimal(0),
+		req: new Decimal(0),
     }},
-    onPrestige(){
-	let audio = new Audio("prestige.mp3");
-
-    audio.play()
-    },
     color: "#4BDC13",
     requires: new Decimal("e12"), // Can be a function that takes requirement increases into account
     resource: "XP", // Name of prestige currency
@@ -29,6 +26,27 @@ addLayer("l", {
     hotkeys: [
         {key: "x", description: "X: Reset for XP", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+	tabFormat: [
+		"main-display",
+		"prestige-button",
+		"resource-display",
+		"blank",
+		["display-text", function(){ return "You have " + format(player.l.level) + " Levels" }],
+		"blank",
+		"upgrades",
+    ],
     layerShown(){return (hasMilestone('m', 3) || player.l.unlocked)},
-	branches: ["b"]
+	branches: ["b"],
+	update(diff){
+		let audio = new Audio("prestige.mp3");
+
+		let req = new Decimal(2)
+
+		player.l.req = req
+		if (player.l.points.gte(player.l.req)) {
+			player.l.points = player.l.points.sub(req)
+			player.l.level = player.l.level.add(1)
+			audio.play()
+		}
+	},
 })
