@@ -9,7 +9,6 @@ addLayer("l", {
     onPrestige(){
 	let audio = new Audio("prestige.mp3");
 
-    audio.volume = 0.4;
     audio.play()
     },
     color: "#4BDC13",
