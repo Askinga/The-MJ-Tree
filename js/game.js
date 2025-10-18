@@ -35,6 +35,12 @@ function getResetGain(layer, useType = null) {
 	}
 }
 
+function levelUp() {
+	let audio = new Audio("prestige.mp3");
+
+	audio.play()
+}
+			
 function getNextAt(layer, canMax=false, useType = null) {
 	let type = useType
 	if (!useType) {
