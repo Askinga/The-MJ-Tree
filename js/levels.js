@@ -38,15 +38,13 @@ addLayer("l", {
     layerShown(){return (hasMilestone('m', 3) || player.l.unlocked)},
 	branches: ["b"],
 	update(diff){
-		let audio = new Audio("prestige.mp3");
-
 		let req = new Decimal(2)
 
 		player.l.req = req
 		if (player.l.points.gte(player.l.req)) {
 			player.l.points = player.l.points.sub(req)
 			player.l.level = player.l.level.add(1)
-			audio.play()
+			levelUp()
 		}
 	},
 })
