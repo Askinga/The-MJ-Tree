@@ -33,8 +33,9 @@ addLayer("l", {
 		"blank",
 		["display-text", function(){ return "<h3>" + format(player.l.req) + " XP required for next level.<br>You have " + format(player.l.level) + " Levels</h3>" }],
 		["bar", "bigBar"],
-		["display-text", function(){ return "<h3>Levels boost Boost Runes by x " + format(tmp.l.levelsEff) + " and Points by x " + format(tmp.l.lvlE2) + "</h3>" }],
+		["display-text", function(){ return "<h3>Levels boost Boost Runes by x" + format(tmp.l.levelsEff) + " and Points by x" + format(tmp.l.lvlE2) + "</h3>" }],
 		"blank",
+		"milestones",
 		"upgrades",
     ],
 	levelsEff(){
@@ -65,7 +66,14 @@ addLayer("l", {
         progress() { return player.l.points.div(player.l.req) },
 		display(){ return "" + format(player.l.points.div(player.l.req).times(100)) + "%" },
 		fillStyle: { 'background-color': "#25ff25" },
-	    baseStyle: { 'background-color': "#ff5555" },
+	    baseStyle: { 'background-color': "#aa5555" },
+    },
+	},
+	milestones: {
+    0: {
+        requirementDescription: "2 levels",
+        effectDescription: "Keep Row 1 Upgrades and x3 BR",
+        done() { return player.l.level.gte(2) }
     },
 	},
 })
