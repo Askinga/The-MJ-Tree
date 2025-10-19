@@ -75,5 +75,10 @@ addLayer("l", {
         effectDescription: "Keep Row 1 Upgrades and x3 BR",
         done() { return player.l.level.gte(2) }
     },
+	1: {
+        requirementDescription: "4 levels",
+        effectDescription: "Keep Row 2 Milestones and x2 SR",
+        done() { return player.l.level.gte(4) }
+    },
 	},
 })
