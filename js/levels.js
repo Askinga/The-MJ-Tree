@@ -65,8 +65,8 @@ addLayer("l", {
         height: 50,
         progress() { return player.l.points.div(player.l.req) },
 		display(){ return "" + format(player.l.points.div(player.l.req).times(100)) + "%" },
-		fillStyle: { 'background-color': "#25ff25" },
-	    baseStyle: { 'background-color': "#aa5555" },
+		fillStyle: { 'background-color': "#25aa25" },
+	    baseStyle: { 'background-color': "#ff5555" },
     },
 	},
 	milestones: {
