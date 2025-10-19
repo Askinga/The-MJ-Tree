@@ -41,7 +41,7 @@ addLayer("p", {
         
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
-	    if (hasUpgrade('l', 0)) keep.push("upgrades");
+	    if (hasMilestone('l', 0)) keep.push("upgrades");
     
         // Stage 4, do the actual data resetautomate() {
         layerDataReset(this.layer, keep);
