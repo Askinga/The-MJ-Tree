@@ -63,7 +63,7 @@ addLayer("l", {
         width: 250,
         height: 50,
         progress() { return player.l.points.div(player.r.req) },
-		display(){ return "" + format(player.l.points.div(player.r.req).times(100)) + "%" },
+		display(){ return "" + format(player.l.points.div(player.l.req).times(100)) + "%" },
 		fillStyle: { 'background-color': "#25ff25" },
 	    baseStyle: { 'background-color': "#ff5555" },
     },
