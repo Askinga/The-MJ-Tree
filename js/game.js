@@ -40,6 +40,15 @@ function levelUp(type = "level") {
     if (type == "level") {
 		audio = new Audio("resources/prestige.mp3");
 	}
+	if (type == "roll") {
+		audio = new Audio("resources/roll.mp3");
+	}
+	if (type == "upg") {
+		audio = new Audio("resources/upgrade.mp3");
+	}
+	if (type == "ms") {
+		audio = new Audio("resources/milestone.mp3");
+	}
 	
 	audio.play()
 }
