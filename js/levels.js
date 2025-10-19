@@ -18,6 +18,7 @@ addLayer("l", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasUpgrade('l', 11)) mult = mult.times(upgradeEffect('l', 11))
+		if (hasUpgrade('l', 12)) mult = mult.times(upgradeEffect('l', 12))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -92,6 +93,16 @@ addLayer("l", {
 		currencyDisplayName: "Levels",
 		currencyInternalName: "level",
 		currencyLayer: "l",
-	    },
+	  },
+	  12: {
+		title: "Leveling Up",
+		description: "Each Level boost XP by x1.15",
+		cost: new Decimal(8),
+		effect(){ return new Decimal(1.15).pow(player.l.level) },
+		effectDisplay(){ return "x"+format(upgradeEffect('l', 12)) },
+		currencyDisplayName: "Levels",
+		currencyInternalName: "level",
+		currencyLayer: "l",
+	  },
 	},
 })
