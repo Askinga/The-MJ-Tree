@@ -69,7 +69,7 @@ addLayer("s", {
 				"main-display",
 				"prestige-button",
 				"resource-display",
-				["display-text", "Softcap starts at 1e25 Super Runes"]
+				["display-text", "Softcap starts at 1e25 Super Runes"],
 				"blank",
 				"upgrades",
 			],
