@@ -78,7 +78,7 @@ addLayer("p", {
 			"main-display",
 			"prestige-button",
 			"resource-display",
-			["display-text", "Softcap starts at 1.79e308 Prestige Points"]
+			["display-text", "Softcap starts at 1.79e308 Prestige Points"],
 			"blank",
 			["upgrades", ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]]
 		],
