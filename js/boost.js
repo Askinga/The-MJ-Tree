@@ -36,6 +36,7 @@ addLayer("b", {
 		if (hasUpgrade('b', 14)) mult = mult.times(4)
 		mult = mult.times(tmp.m.bonusEff1)
 		mult = mult.times(tmp.l.levelsEff)
+		if (hasMilestone('l', 0)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
