@@ -19,6 +19,7 @@ addLayer("l", {
         mult = new Decimal(1)
 		if (hasUpgrade('l', 11)) mult = mult.times(upgradeEffect('l', 11))
 		if (hasUpgrade('l', 12)) mult = mult.times(upgradeEffect('l', 12))
+		if (hasUpgrade('l', 13)) mult = mult.times(upgradeEffect('l', 13))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -86,7 +87,7 @@ addLayer("l", {
 	upgrades: {
 	  11: {
 		title: "Leveling Up",
-		description: "Meta Runes boost XP",
+		description: "Each Meta Rune boosts XP by x1.06",
 		cost: new Decimal(6),
 		effect(){ return new Decimal(1.06).pow(player.m.points) },
 		effectDisplay(){ return "x"+format(upgradeEffect('l', 11)) },
@@ -95,11 +96,21 @@ addLayer("l", {
 		currencyLayer: "l",
 	  },
 	  12: {
-		title: "Leveling Up",
-		description: "Each Level boost XP by x1.15",
+		title: "Leveling Up 2",
+		description: "Each Level boosts XP by x1.15",
 		cost: new Decimal(8),
 		effect(){ return new Decimal(1.15).pow(player.l.level) },
 		effectDisplay(){ return "x"+format(upgradeEffect('l', 12)) },
+		currencyDisplayName: "Levels",
+		currencyInternalName: "level",
+		currencyLayer: "l",
+	  },
+	  13: {
+		title: "Leveling Up 3",
+		description: "Each OOM of Prestige boosts XP by x1.0035",
+		cost: new Decimal(10),
+		effect(){ return new Decimal(1.0035).pow(player.p.points.add(1).log(10).add(1)) },
+		effectDisplay(){ return "x"+format(upgradeEffect('l', 13)) },
 		currencyDisplayName: "Levels",
 		currencyInternalName: "level",
 		currencyLayer: "l",
