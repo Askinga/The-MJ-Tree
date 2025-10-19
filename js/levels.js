@@ -31,14 +31,24 @@ addLayer("l", {
 		"prestige-button",
 		"resource-display",
 		"blank",
-		["display-text", function(){ return "You have " + format(player.l.level) + " Levels" }],
+		["display-text", function(){ return "<h3>" + format(player.l.req) + " XP required for next level.<br>You have " + format(player.l.level) + " Levels</h3>" }],
+		["bar", "bigBar"],
+		["display-text", function(){ return "<h3>Levels boost Boost Runes by x " + format(tmp.l.levelsEff) + " and Points by x " + format(tmp.l.lvlE2) + "</h3>" }],
 		"blank",
 		"upgrades",
     ],
+	levelsEff(){
+		return new Decimal(1.75).pow(player.l.level)
+	},
+	lvlE2(){
+		return new Decimal(250).pow(player.l.level)
+	},
     layerShown(){return (hasMilestone('m', 3) || player.l.unlocked)},
 	branches: ["b"],
 	update(diff){
 		let req = new Decimal(2)
+
+	    req = new Decimal(2).pow(player.l.level)
 
 		player.l.req = req
 		if (player.l.points.gte(player.l.req)) {
@@ -46,5 +56,16 @@ addLayer("l", {
 			player.l.level = player.l.level.add(1)
 			levelUp()
 		}
+	},
+	bars: {
+    bigBar: {
+        direction: RIGHT,
+        width: 250,
+        height: 50,
+        progress() { return player.l.points.div(player.r.req) },
+		display(){ return "" + format(player.l.points.div(player.r.req).times(100)) + "%" },
+		fillStyle: { 'background-color': "#25ff25" },
+	    baseStyle: { 'background-color': "#ff5555" },
+    },
 	},
 })
