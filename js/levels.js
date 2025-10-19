@@ -88,7 +88,7 @@ addLayer("l", {
 		description: "Meta Runes boost XP",
 		cost: new Decimal(6),
 		effect(){ return new Decimal(1.06).pow(player.m.points) },
-		effectDisplay(){ return "z"+format(upgradeEffect('l', 11)) },
+		effectDisplay(){ return "x"+format(upgradeEffect('l', 11)) },
 		currencyDisplayName: "Levels",
 		currencyInternalName: "level",
 		currencyLayer: "l",
