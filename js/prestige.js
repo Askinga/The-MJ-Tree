@@ -21,6 +21,12 @@ addLayer("p", {
 		runeChoose: new Decimal(0),
 		autoRC: new Decimal(0)
     }},
+	softcap(){ 
+		return new Decimal("2^1024") 
+	},
+	softcapPower(){
+        return new Decimal(0.3)
+	},
 	passiveGeneration(){
 		let p = new Decimal(0)
 		if (hasMilestone('s', 14) || hasMilestone('m', 1)) p = p.add(0.25)
