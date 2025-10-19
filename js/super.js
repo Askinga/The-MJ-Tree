@@ -68,6 +68,8 @@ addLayer("s", {
 			content: [
 				"main-display",
 				"prestige-button",
+				"resource-display",
+				["display-text", "Softcap starts at 1e25 Super Runes"]
 				"blank",
 				"upgrades",
 			],
@@ -76,6 +78,7 @@ addLayer("s", {
 			content: [
 				"main-display",
 				"prestige-button",
+				"resource-display",
 				"blank",
 				"milestones",
 			],
