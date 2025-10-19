@@ -26,6 +26,23 @@ addLayer("p", {
 		if (hasUpgrade('s', 14) || hasMilestone('m', 1)) p = p.add(0.25)
 		return p
 	},
+	doReset(p) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[p].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	    if (hasUpgrade('l', 0)) keep.push("upgrades");
+    
+        // Stage 4, do the actual data resetautomate() {
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
 	autoUpgrade(){ return hasUpgrade('s', 14) },
     color: "#00aadd",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
