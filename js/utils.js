@@ -88,6 +88,7 @@ function buyUpg(layer, id) {
 	if (upg.onPurchase != undefined)
 		run(upg.onPurchase, upg)
 	needCanvasUpdate = true
+	levelUp('upg')
 }
 
 function buyMaxBuyable(layer, id) {
@@ -116,6 +117,7 @@ function clickClickable(layer, id) {
 
 	run(layers[layer].clickables[id].onClick, layers[layer].clickables[id])
 	updateClickableTemp(layer)
+	levelUp('roll')
 }
 
 function clickGrid(layer, id) {
@@ -263,6 +265,7 @@ function updateMilestones(layer) {
 			if (layers[layer].milestones[id].onComplete) layers[layer].milestones[id].onComplete()
 			if ((tmp[layer].milestonePopups || tmp[layer].milestonePopups === undefined) && !options.hideMilestonePopups) doPopup("milestone", tmp[layer].milestones[id].requirementDescription, "Milestone Gotten!", 3, tmp[layer].color);
 			player[layer].lastMilestone = id
+			levelUp('ms')
 		}
 	}
 }
