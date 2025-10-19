@@ -164,6 +164,34 @@ addLayer("b", {
 		if (hasMilestone('m', 0)) gain = gain.times(tmp.m.bonusEff1)
 
 		player.b.RG = gain
+
+		if (hasMilestone('m', 3)) {
+            player.b.randomValue = new Decimal(Math.random())
+			if (player.b.randomValue.gt(0.5) && player.b.randomValue.lte(1)) {
+				player.b.terrible = player.b.terrible.add(player.b.RG)
+			}
+		    if (player.b.randomValue.lte(0.5) && player.b.randomValue.gt(0.225)) {
+				player.b.super_bad = player.b.super_bad.add(player.b.RG)
+			}
+		    if (player.b.randomValue.lte(0.225) && player.b.randomValue.gt(0.145)) {
+				player.b.bad = player.b.bad.add(player.b.RG)
+			}
+		    if (player.b.randomValue.lte(0.145) && player.b.randomValue.gt(0.085)) {
+				player.b.mid = player.b.mid.add(player.b.RG)
+			}
+		    if (player.b.randomValue.lte(0.085) && player.b.randomValue.gt(0.045)) {
+				player.b.kinda_good = player.b.kinda_good.add(player.b.RG)
+			}
+		    if (player.b.randomValue.lte(0.045) && player.b.randomValue.gt(0.015)) {
+				player.b.good = player.b.good.add(player.b.RG)
+			}
+		    if (player.b.randomValue.lte(0.015) && player.b.randomValue.gt(0.0025)) {
+				player.b.amazing = player.b.amazing.add(player.b.RG)
+			}
+		    if (player.b.randomValue.lte(0.0025)) {
+				player.b.bestR = player.b.bestR.add(1)
+			}
+		}
 	},
 	upgrades: {
 		11: {
