@@ -2,7 +2,9 @@ let modInfo = {
 	name: "Rune Tree",
 	author: "Askinga/Sanas",
 	pointsName: "points",
-	modFiles: ["layers.js", "tree.js", "prestige.js", "super.js", "boost.js", "meta.js", "levels.js"],
+	modFiles: ["layers.js", "tree.js", "prestige.js", "super.js", "boost.js", "meta.js", "levels.js",
+	"ultra.js"		  
+	],
 
 	discordName: "",
 	discordLink: "",
