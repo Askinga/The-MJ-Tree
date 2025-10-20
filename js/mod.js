@@ -58,6 +58,7 @@ function getPointGen() {
 	gain = gain.times(layers.m.effect())
 	gain = gain.times(tmp.l.lvlE2)
 	if (hasUpgrade('u', 11)) gain = gain.times("e100")
+	if (hasUpgrade('u', 12)) gain = gain.times("e50")
 	if (player.d.difficulty.eq(0)) gain = gain.pow(1.01)
 	return gain
 }
