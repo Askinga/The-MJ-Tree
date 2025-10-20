@@ -11,6 +11,7 @@ addLayer("l", {
 	passiveGeneration(){
 		let p = new Decimal(0)
 		if (hasUpgrade('l', 22)) p = p.add(1)
+		if (hasUpgrade('l', 25)) p = p.times(5)
 		return p
 	},
     color: "#4BDC13",
@@ -31,6 +32,7 @@ addLayer("l", {
 		if (hasUpgrade('l', 22)) mult = mult.times(15)
 		if (hasUpgrade('l', 23)) mult = mult.times(20)
 		if (hasUpgrade('l', 24)) mult = mult.times(25)
+		if (hasUpgrade('l', 25)) mult = mult.times(10000)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -180,6 +182,15 @@ addLayer("l", {
 		description: "x25 XP",
 		cost: new Decimal(42),
 		unlocked(){ return hasUpgrade('l', 23) },
+		currencyDisplayName: "Levels",
+		currencyInternalName: "level",
+		currencyLayer: "l",
+	  },
+	  25: {
+		title: "Are U ready for a big boost???",
+		description: "x10000 XP and x5 XP generation",
+		cost: new Decimal(50),
+		unlocked(){ return hasUpgrade('l', 24) },
 		currencyDisplayName: "Levels",
 		currencyInternalName: "level",
 		currencyLayer: "l",
