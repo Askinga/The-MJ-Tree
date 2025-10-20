@@ -26,6 +26,7 @@ addLayer("u", {
 		if (hasUpgrade('u', 15)) mult = mult.times(upgradeEffect('u', 15))
 		if (hasUpgrade('u', 15)) mult = mult.times(5)
 		if (hasUpgrade('u', 21)) mult = mult.times(10)
+		if (hasUpgrade('u', 22)) mult = mult.times(20)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -85,6 +86,12 @@ addLayer("u", {
 		description: "xe200 Points, x10 Ultra Runes and 100% of Ultra Runes per second.",
 		cost: new Decimal(15000),
 		unlocked(){ return hasUpgrade('u', 15) },
+	  },
+	  22: {
+		title: "We are going too far",
+		description: "xe250 Points and x20 Ultra Runes",
+		cost: new Decimal(10000000),
+		unlocked(){ return hasUpgrade('u', 21) },
 	  },
 	},
 })
