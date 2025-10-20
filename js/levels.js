@@ -188,7 +188,7 @@ addLayer("l", {
 	  },
 	  25: {
 		title: "Are U ready for a big boost???",
-		description: "x10000 XP and x5 XP generation",
+		description: "x10000 XP and x5 XP generation. Unlock a new layer.",
 		cost: new Decimal(50),
 		unlocked(){ return hasUpgrade('l', 24) },
 		currencyDisplayName: "Levels",
