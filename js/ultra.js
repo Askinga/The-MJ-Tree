@@ -15,6 +15,7 @@ addLayer("u", {
     exponent: 0.03, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if (hasUpgrade('u', 12)) mult = mult.times(5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -38,6 +39,12 @@ addLayer("u", {
 		description: "xe100 Points",
 		cost: new Decimal(5),
 		unlocked(){ return true },
+	  },
+	  12: {
+		title: "Unlimited xp",
+		description: "xe50 Points and x5 Ultra Runes",
+		cost: new Decimal(15),
+		unlocked(){ return hasUpgrade('u', 11) },
 	  },
 	},
 })
