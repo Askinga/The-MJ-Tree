@@ -18,6 +18,8 @@ addLayer("u", {
 		if (hasUpgrade('u', 12)) mult = mult.times(5)
 		if (hasUpgrade('u', 13)) mult = mult.times(upgradeEffect('u', 13))
 		if (hasUpgrade('u', 14)) mult = mult.times(upgradeEffect('u', 14))
+		if (hasUpgrade('u', 15)) mult = mult.times(upgradeEffect('u', 15))
+		if (hasUpgrade('u', 15)) mult = mult.times(5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -62,6 +64,14 @@ addLayer("u", {
 		cost: new Decimal(300),
 		unlocked(){ return hasUpgrade('u', 13) },
 		effect(){ return new Decimal(1.01).pow(player.l.level) },
+		effectDisplay(){ return "x"+format(upgradeEffect('u', 14)) },
+	  },
+	  15: {
+		title: "Ultimate Ultrafy",
+		description: "Each Level boosts Ultra Runes by x1.005. Also, x5 Ultra Runes and xe75 points",
+		cost: new Decimal(100),
+		unlocked(){ return hasUpgrade('u', 14) },
+		effect(){ return new Decimal(1.005).pow(player.l.level) },
 		effectDisplay(){ return "x"+format(upgradeEffect('u', 14)) },
 	  },
 	},
