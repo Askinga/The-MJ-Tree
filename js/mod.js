@@ -60,6 +60,7 @@ function getPointGen() {
 	if (hasUpgrade('u', 11)) gain = gain.times("e100")
 	if (hasUpgrade('u', 12)) gain = gain.times("e50")
 	if (hasUpgrade('u', 15)) gain = gain.times("e75")
+	if (hasUpgrade('u', 21)) gain = gain.times("e200")
 	if (player.d.difficulty.eq(0)) gain = gain.pow(1.01)
 	return gain
 }
