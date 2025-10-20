@@ -72,7 +72,7 @@ addLayer("u", {
 		cost: new Decimal(1000),
 		unlocked(){ return hasUpgrade('u', 14) },
 		effect(){ return new Decimal(1.005).pow(player.l.level) },
-		effectDisplay(){ return "x"+format(upgradeEffect('u', 14)) },
+		effectDisplay(){ return "x"+format(upgradeEffect('u', 15)) },
 	  },
 	},
 })
