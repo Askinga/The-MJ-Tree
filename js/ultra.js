@@ -32,4 +32,12 @@ addLayer("u", {
     effectDescription(){
       return "which is boosting XP by x" + format(layers.u.effect())
     },
+	upgrades: {
+	  11: {
+		title: "The ultimate",
+		description: "xe100 Points",
+		cost: new Decimal(5),
+		unlocked(){ return true },
+	  },
+	},
 })
