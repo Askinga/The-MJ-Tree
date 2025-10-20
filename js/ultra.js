@@ -69,7 +69,7 @@ addLayer("u", {
 	  15: {
 		title: "Ultimate Ultrafy",
 		description: "Each Level boosts Ultra Runes by x1.005. Also, x5 Ultra Runes and xe75 points",
-		cost: new Decimal(100),
+		cost: new Decimal(1000),
 		unlocked(){ return hasUpgrade('u', 14) },
 		effect(){ return new Decimal(1.005).pow(player.l.level) },
 		effectDisplay(){ return "x"+format(upgradeEffect('u', 14)) },
