@@ -30,6 +30,7 @@ addLayer("l", {
 		if (hasUpgrade('l', 21)) mult = mult.times(10)
 		if (hasUpgrade('l', 22)) mult = mult.times(15)
 		if (hasUpgrade('l', 23)) mult = mult.times(20)
+		if (hasUpgrade('l', 24)) mult = mult.times(25)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -170,6 +171,15 @@ addLayer("l", {
 		description: "x20 XP",
 		cost: new Decimal(34),
 		unlocked(){ return hasUpgrade('l', 22) },
+		currencyDisplayName: "Levels",
+		currencyInternalName: "level",
+		currencyLayer: "l",
+	  },
+	  24: {
+		title: "Leveling Up 9",
+		description: "x25 XP",
+		cost: new Decimal(42),
+		unlocked(){ return hasUpgrade('l', 23) },
 		currencyDisplayName: "Levels",
 		currencyInternalName: "level",
 		currencyLayer: "l",
