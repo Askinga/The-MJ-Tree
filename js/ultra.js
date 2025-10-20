@@ -17,6 +17,7 @@ addLayer("u", {
         mult = new Decimal(1)
 		if (hasUpgrade('u', 12)) mult = mult.times(5)
 		if (hasUpgrade('u', 13)) mult = mult.times(upgradeEffect('u', 13))
+		if (hasUpgrade('u', 14)) mult = mult.times(upgradeEffect('u', 14))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -54,6 +55,14 @@ addLayer("u", {
 		unlocked(){ return hasUpgrade('u', 12) },
 		effect(){ return new Decimal(1.0015).pow(player.points.add(1).log(10).add(1)) },
 		effectDisplay(){ return "x"+format(upgradeEffect('u', 13)) },
+	  },
+	  14: {
+		title: "Ultrafy 2",
+		description: "Each Level boosts Ultra Runes by x1.01",
+		cost: new Decimal(300),
+		unlocked(){ return hasUpgrade('u', 13) },
+		effect(){ return new Decimal(1.01).pow(player.l.level) },
+		effectDisplay(){ return "x"+format(upgradeEffect('u', 14)) },
 	  },
 	},
 })
