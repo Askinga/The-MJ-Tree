@@ -8,6 +8,11 @@ addLayer("l", {
 		level: new Decimal(0),
 		req: new Decimal(0),
     }},
+	passiveGeneration(){
+		let p = new Decimal(0)
+		if (hasUpgrade('l', 22)) p = p.add(1)
+		return p
+	},
     color: "#4BDC13",
     requires: new Decimal("e12"), // Can be a function that takes requirement increases into account
     resource: "XP", // Name of prestige currency
@@ -23,6 +28,7 @@ addLayer("l", {
 		if (hasUpgrade('l', 14)) mult = mult.times(upgradeEffect('l', 14))
 		if (hasUpgrade('l', 15)) mult = mult.times(5)
 		if (hasUpgrade('l', 21)) mult = mult.times(10)
+		if (hasUpgrade('l', 22)) mult = mult.times(15)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -145,6 +151,15 @@ addLayer("l", {
 		description: "x10 XP",
 		cost: new Decimal(19),
 		unlocked(){ return hasUpgrade('l', 15) },
+		currencyDisplayName: "Levels",
+		currencyInternalName: "level",
+		currencyLayer: "l",
+	  },
+	  22: {
+		title: "Leveling Up 7",
+		description: "x15 XP and 100% of XP per second",
+		cost: new Decimal(22),
+		unlocked(){ return hasUpgrade('l', 21) },
 		currencyDisplayName: "Levels",
 		currencyInternalName: "level",
 		currencyLayer: "l",
