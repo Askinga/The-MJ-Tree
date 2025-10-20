@@ -28,6 +28,7 @@ addLayer("u", {
 		if (hasUpgrade('u', 21)) mult = mult.times(10)
 		if (hasUpgrade('u', 22)) mult = mult.times(20)
 		if (hasUpgrade('u', 23)) mult = mult.times(50)
+		if (hasUpgrade('u', 24)) mult = mult.times(100)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -99,6 +100,12 @@ addLayer("u", {
 		description: "xe500 Points and x50 Ultra Runes",
 		cost: new Decimal("e9"),
 		unlocked(){ return hasUpgrade('u', 22) },
+	  },
+	  24: {
+		title: "Inflation",
+		description: "xe750 Points and x100 Ultra Runes",
+		cost: new Decimal("5e11"),
+		unlocked(){ return hasUpgrade('u', 23) },
 	  },
 	},
 })
