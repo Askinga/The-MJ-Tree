@@ -29,6 +29,7 @@ addLayer("u", {
 		if (hasUpgrade('u', 22)) mult = mult.times(20)
 		if (hasUpgrade('u', 23)) mult = mult.times(50)
 		if (hasUpgrade('u', 24)) mult = mult.times(100)
+		if (hasUpgrade('u', 25)) mult = mult.times(1000)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -106,6 +107,12 @@ addLayer("u", {
 		description: "xe750 Points and x100 Ultra Runes",
 		cost: new Decimal("5e11"),
 		unlocked(){ return hasUpgrade('u', 23) },
+	  },
+	  25: {
+		title: "This is too insane.",
+		description: "xe1000 Points and x1000 Ultra Runes. Unlock a new layer.",
+		cost: new Decimal("3e15"),
+		unlocked(){ return hasUpgrade('u', 24) },
 	  },
 	},
 })
