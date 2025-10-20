@@ -6,6 +6,11 @@ addLayer("u", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+	passiveGeneration(){
+		let p = new Decimal(0)
+		if (hasUpgrade('u', 21)) p = p.add(1)
+		return p
+	},
     color: "#ff6f98",
     requires: new Decimal("e60"), // Can be a function that takes requirement increases into account
     resource: "Ultra Runes", // Name of prestige currency
@@ -20,6 +25,7 @@ addLayer("u", {
 		if (hasUpgrade('u', 14)) mult = mult.times(upgradeEffect('u', 14))
 		if (hasUpgrade('u', 15)) mult = mult.times(upgradeEffect('u', 15))
 		if (hasUpgrade('u', 15)) mult = mult.times(5)
+		if (hasUpgrade('u', 21)) mult = mult.times(10)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -73,6 +79,12 @@ addLayer("u", {
 		unlocked(){ return hasUpgrade('u', 14) },
 		effect(){ return new Decimal(1.005).pow(player.l.level) },
 		effectDisplay(){ return "x"+format(upgradeEffect('u', 15)) },
+	  },
+	  21: {
+		title: "The ultimate^2",
+		description: "xe200 Points, x10 Ultra Runes and 100% of Ultra Runes per second.",
+		cost: new Decimal(15000),
+		unlocked(){ return hasUpgrade('u', 15) },
 	  },
 	},
 })
