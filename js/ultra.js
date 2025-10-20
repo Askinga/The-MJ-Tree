@@ -16,6 +16,7 @@ addLayer("u", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasUpgrade('u', 12)) mult = mult.times(5)
+		if (hasUpgrade('u', 13)) mult = mult.times(upgradeEffect('u', 13))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -45,6 +46,14 @@ addLayer("u", {
 		description: "xe50 Points and x5 Ultra Runes",
 		cost: new Decimal(15),
 		unlocked(){ return hasUpgrade('u', 11) },
+	  },
+	  13: {
+		title: "Ultrafy",
+		description: "Each OoM of Points boosts Ultra Runes by x1.0015",
+		cost: new Decimal(100),
+		unlocked(){ return hasUpgrade('u', 12) },
+		effect(){ return new Decimal(1.0015).pow(player.points.add(1).log(10).add(1)) },
+		effectDisplay(){ return "x"+format(upgradeEffect('u', 13)) },
 	  },
 	},
 })
