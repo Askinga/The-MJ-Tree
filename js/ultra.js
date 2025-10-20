@@ -27,6 +27,7 @@ addLayer("u", {
 		if (hasUpgrade('u', 15)) mult = mult.times(5)
 		if (hasUpgrade('u', 21)) mult = mult.times(10)
 		if (hasUpgrade('u', 22)) mult = mult.times(20)
+		if (hasUpgrade('u', 23)) mult = mult.times(50)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -92,6 +93,12 @@ addLayer("u", {
 		description: "xe250 Points and x20 Ultra Runes",
 		cost: new Decimal(10000000),
 		unlocked(){ return hasUpgrade('u', 21) },
+	  },
+	  23: {
+		title: "Point overflow",
+		description: "xe500 Points and x50 Ultra Runes",
+		cost: new Decimal("e9"),
+		unlocked(){ return hasUpgrade('u', 22) },
 	  },
 	},
 })
