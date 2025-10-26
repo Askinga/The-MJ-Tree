@@ -31,13 +31,23 @@ addLayer("e", {
 	milestones: {
     0: {
         requirementDescription: "1 extreme rune",
-        effectDescription: "Keep Level Milestones, x2.5 UP",
+        effectDescription: "Keep Level Milestones, x2.5 UR",
         done() { return player.e.points.gte(1) }
     },
 	1: {
         requirementDescription: "2 extreme runes",
         effectDescription: "Keep Meta Rune Milestones, autobuy it and it resets nothing. x10 UR",
         done() { return player.e.points.gte(2) }
+    },
+	2: {
+        requirementDescription: "3 extreme runes",
+        effectDescription: "Keep Level and Ultra Rune Passive Generation x10000 BR",
+        done() { return player.e.points.gte(3) }
+    },
+	3: {
+        requirementDescription: "4 extreme runes",
+        effectDescription: "Autobuy Row 3 Upgrades",
+        done() { return player.e.points.gte(4) }
     },
 	},
 })
