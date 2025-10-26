@@ -27,10 +27,11 @@ addLayer("l", {
     },
 	passiveGeneration(){
 		let p = new Decimal(0)
-		if (hasUpgrade('l', 22)) p = p.add(1)
+		if (hasUpgrade('l', 22) || hasMilestone('e', 2)) p = p.add(1)
 		if (hasUpgrade('l', 25)) p = p.times(5)
 		return p
 	},
+	autoUpgrade(){ return hasMilestone('e', 3) },
     color: "#4BDC13",
     requires: new Decimal("e12"), // Can be a function that takes requirement increases into account
     resource: "XP", // Name of prestige currency
