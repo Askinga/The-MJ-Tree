@@ -6,6 +6,25 @@ addLayer("m", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+    doReset(m) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[m].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	    if (hasMilestone('e', 1)) keep.push("milestones");
+    
+        // Stage 4, do the actual data resetautomate() {
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
+	autoPrestige(){ return (hasMilestone('e', 1)) },
+	resetsNothing(){ return (hasMilestone('e', 1)) },
     color: "#b8b8b8",
     requires: new Decimal(1e17), // Can be a function that takes requirement increases into account
     resource: "Meta Runes", // Name of prestige currency
