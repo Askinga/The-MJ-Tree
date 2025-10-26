@@ -27,7 +27,7 @@ addLayer("e", {
     layerShown(){return hasUpgrade('u', 25)},
 	  branches: ["l"],
     effect(){ return player.e.points.add(1).pow(20) },
-    effectDescription(){ return "which is boosting XP and points by x" + format(layer.e.effect()) },
+    effectDescription(){ return "which is boosting XP and points by x" + format(layers.e.effect()) },
 	milestones: {
     0: {
         requirementDescription: "1 extreme rune",
