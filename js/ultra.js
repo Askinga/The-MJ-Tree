@@ -8,9 +8,10 @@ addLayer("u", {
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
-		if (hasUpgrade('u', 21)) p = p.add(1)
+		if (hasUpgrade('u', 21) || hasMilestone('e', 2)) p = p.add(1)
 		return p
 	},
+	autoUpgrade(){ return hasMilestone('e', 3) },
     color: "#ff6f98",
     requires: new Decimal("e60"), // Can be a function that takes requirement increases into account
     resource: "Ultra Runes", // Name of prestige currency
