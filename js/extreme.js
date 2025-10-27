@@ -27,6 +27,7 @@ addLayer("e", {
 		if (hasUpgrade('e', 15)) mult = mult.times(10)
 		if (hasUpgrade('e', 21)) mult = mult.times(20)
 		if (hasUpgrade('e', 22)) mult = mult.times(40)
+		if (hasUpgrade('e', 23)) mult = mult.times(100)
 		mult = mult.times(buyableEffect('e', 11))
         return mult
     },
@@ -44,7 +45,7 @@ addLayer("e", {
 	milestones: {
     0: {
         requirementDescription: "1 extreme rune",
-        effectDescription: "Keep Level Milestones, x2.5 UR",
+        effectDescription: "Keep Level Milestones, x2.5 UR. (Timewall)",
         done() { return player.e.points.gte(1) }
     },
 	1: {
@@ -112,6 +113,12 @@ addLayer("e", {
         description: "x40 Extreme Runes. :(",
         cost: new Decimal("e9"),
 		unlocked(){ return hasUpgrade('e', 21) },
+    },
+	23: {
+		title: ":(",
+        description: "x100 Extreme Runes and xe4000 Points.",
+        cost: new Decimal("e11"),
+		unlocked(){ return hasUpgrade('e', 22) },
     },
 	},
 	buyables: {
