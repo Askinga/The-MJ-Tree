@@ -56,7 +56,7 @@ addLayer("l", {
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        let exp new Decimal(1)
+        let exp = new Decimal(1)
 		if (hasUpgrade('e', 15)) exp = exp.add(buyableEffect('e', 13))
 		return exp
     },
