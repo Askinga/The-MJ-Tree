@@ -22,6 +22,8 @@ addLayer("e", {
         mult = new Decimal(1)
 		if (hasUpgrade('e', 11)) mult = mult.times(4)
 		if (hasUpgrade('e', 12)) mult = mult.times(2.5)
+		if (hasUpgrade('e', 13)) mult = mult.times(3)
+		mult = mult.times(buyableEffect('e', 11))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -68,6 +70,31 @@ addLayer("e", {
         description: "xe1000 point gain, x2.5 extreme runes and 100% Extreme Runes per second.",
         cost: new Decimal(50),
 		unlocked(){ return hasUpgrade('e', 11) },
+    },
+	13: {
+		title: "The extreme 3",
+        description: "xe2000 point gain, x3 extreme runes and unlock a buyable.",
+        cost: new Decimal(2000),
+		unlocked(){ return hasUpgrade('e', 12) },
+    },
+	},
+	buyables: {
+	11: {
+		unlocked(){ return hasUpgrade('e', 13) },
+		title: "The First Buyable",
+        cost(x) { return new Decimal(25).pow(x) },
+        display() { return "x2 Extreme Runes per purchase<br>Cost: " + format(this.cost()) + " Extreme Runes<br>Bought: " + format(getBuyableAmount('e', 11)) + "<br>Effect: x" + format(buyableEffect('e', 11)) + " Extreme Runes" },
+        canAfford() { return player.e.points.gte(this.cost()) },
+        buy() {
+            player.e.points = player.e.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(2)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
     },
 	},
 })
