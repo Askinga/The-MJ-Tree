@@ -15,6 +15,7 @@ addLayer("e", {
     exponent: 0.7, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if (hasUpgrade('e', 11)) mult = mult.times(4)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -48,6 +49,13 @@ addLayer("e", {
         requirementDescription: "4 extreme runes",
         effectDescription: "Autobuy Row 3 Upgrades",
         done() { return player.e.points.gte(4) }
+    },
+	},
+	upgrades: {
+    11: {
+		title: "The extreme",
+        description: "xe1500 point gain, x4 extreme runes and set levels to your best XP.",
+        cost: new Decimal(5),
     },
 	},
 })
