@@ -24,6 +24,7 @@ addLayer("e", {
 		if (hasUpgrade('e', 12)) mult = mult.times(2.5)
 		if (hasUpgrade('e', 13)) mult = mult.times(3)
 		if (hasUpgrade('e', 14)) mult = mult.times(4)
+		if (hasUpgrade('e', 15)) mult = mult.times(10)
 		mult = mult.times(buyableEffect('e', 11))
         return mult
     },
@@ -84,6 +85,12 @@ addLayer("e", {
         cost: new Decimal(100000),
 		unlocked(){ return hasUpgrade('e', 13) },
     },
+	15: {
+		title: "Insane.",
+        description: "x10 Extreme Runes and xe2500 points. Unlock a buyable",
+        cost: new Decimal(500000),
+		unlocked(){ return hasUpgrade('e', 14) },
+    },
 	},
 	buyables: {
 	11: {
@@ -118,6 +125,22 @@ addLayer("e", {
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.pow(Decimal.pow(base2, expo))
+		},
+    },
+	13: {
+		unlocked(){ return hasUpgrade('e', 15) },
+		title: "The Third Buyable",
+        cost(x) { return new Decimal(30).pow(x.pow(1.3)) },
+        display() { return "+^0.005 XP per purchase<br>Cost: " + format(this.cost()) + " Extreme Runes<br>Bought: " + format(getBuyableAmount('e', 13)) + "<br>Effect: +^" + format(buyableEffect('e', 13)) + " XP" },
+        canAfford() { return player.e.points.gte(this.cost()) },
+        buy() {
+            player.e.points = player.e.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal("0.005")
+			let base2 = x
+			return base1.times(base2)
 		},
     },
 	},
