@@ -95,7 +95,7 @@ addLayer("l", {
 			player.l.points = player.l.points.sub(req)
 			player.l.level = player.l.level.add(1)
 			levelUp()
-		  },
+		  }
 		}
 	},
 	bars: {
