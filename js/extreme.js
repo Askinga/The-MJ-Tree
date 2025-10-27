@@ -26,6 +26,7 @@ addLayer("e", {
 		if (hasUpgrade('e', 14)) mult = mult.times(4)
 		if (hasUpgrade('e', 15)) mult = mult.times(10)
 		if (hasUpgrade('e', 21)) mult = mult.times(20)
+		if (hasUpgrade('e', 22)) mult = mult.times(40)
 		mult = mult.times(buyableEffect('e', 11))
         return mult
     },
@@ -94,17 +95,23 @@ addLayer("e", {
     },
 	15: {
 		title: "Insane.",
-        description: "x10 Extreme Runes and xe2500 points. Unlock a buyable",
+        description: "x10 Extreme Runes and xe2500 points. Unlock a buyable.",
         cost: new Decimal(500000),
 		unlocked(){ return hasUpgrade('e', 14) },
     },	
 	21: {
 		title: "I wish it went slower!",
-        description: "x20 Extreme Runes and xe3000 points. Boost UR based on ER",
+        description: "x20 Extreme Runes and xe3000 points. Boost UR based on ER.",
         cost: new Decimal("e7"),
 		unlocked(){ return hasUpgrade('e', 15) },
 		effect(){ return player.e.points.add(1).pow(3) },
 		effectDisplay(){ return "x"+format(upgradeEffect('e', 21)) },
+    },
+	22: {
+		title: "Please.",
+        description: "x40 Extreme Runes. :(",
+        cost: new Decimal("e9"),
+		unlocked(){ return hasUpgrade('e', 21) },
     },
 	},
 	buyables: {
