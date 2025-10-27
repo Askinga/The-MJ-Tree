@@ -108,6 +108,7 @@ function buyBuyable(layer, id) {
 
 	run(layers[layer].buyables[id].buy, layers[layer].buyables[id])
 	updateBuyableTemp(layer)
+	levelUp('buy')
 }
 
 function clickClickable(layer, id) {
