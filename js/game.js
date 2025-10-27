@@ -49,6 +49,9 @@ function levelUp(type = "level") {
 	if (type == "ms") {
 		audio = new Audio("resources/milestone.mp3");
 	}
+	if (type == "buy") {
+		audio = new Audio("resources/buy.mp3");
+	}
 	
 	audio.play()
 }
