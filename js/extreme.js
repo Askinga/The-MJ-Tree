@@ -6,6 +6,11 @@ addLayer("e", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+	passiveGeneration(){
+		let p = new Decimal(0)
+		if (hasUpgrade('e', 12)) p = p.add(1)
+		return p
+	},
     color: "#ff5252",
     requires: new Decimal(390), // Can be a function that takes requirement increases into account
     resource: "Extreme Runes", // Name of prestige currency
@@ -16,6 +21,7 @@ addLayer("e", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasUpgrade('e', 11)) mult = mult.times(4)
+		if (hasUpgrade('e', 12)) mult = mult.times(2.5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -56,6 +62,12 @@ addLayer("e", {
 		title: "The extreme",
         description: "xe1500 point gain, x4 extreme runes and set levels to your best XP.",
         cost: new Decimal(5),
+    },
+	12: {
+		title: "The extreme 2",
+        description: "xe1000 point gain, x2.5 extreme runes and 100% Extreme Runes per second.",
+        cost: new Decimal(50),
+		unlocked(){ return hasUpgrade('e', 11) },
     },
 	},
 })
