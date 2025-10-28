@@ -58,6 +58,7 @@ addLayer("l", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         let exp = new Decimal(1)
 		if (hasUpgrade('e', 15)) exp = exp.add(buyableEffect('e', 13))
+		if (hasUpgrade('e', 32)) exp = exp.add(0.02)
 		return exp
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
