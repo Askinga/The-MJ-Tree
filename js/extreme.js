@@ -30,6 +30,7 @@ addLayer("e", {
 		if (hasUpgrade('e', 23)) mult = mult.times(100)
 		if (hasUpgrade('e', 24)) mult = mult.times(1000)
 		if (hasUpgrade('e', 25)) mult = mult.times(10000)
+		if (hasUpgrade('e', 31)) mult = mult.times(25000)
 		mult = mult.times(buyableEffect('e', 11))
         return mult
     },
@@ -133,6 +134,12 @@ addLayer("e", {
         description: "x10000 Extreme Runes and xe7500 Points.",
         cost: new Decimal("5e17"),
 		unlocked(){ return hasUpgrade('e', 24) },
+    },
+	31: {
+		title: ">:(",
+        description: "x25000 Extreme Runes and xe10000 Points.",
+        cost: new Decimal("5e22"),
+		unlocked(){ return hasUpgrade('e', 25) },
     },
 	},
 	buyables: {
