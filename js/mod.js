@@ -73,6 +73,7 @@ function getPointGen() {
 	if (hasUpgrade('e', 21)) gain = gain.times("e3000")
 	if (hasUpgrade('e', 23)) gain = gain.times("e4000")
 	if (hasUpgrade('e', 24)) gain = gain.times("e5000")
+	if (hasUpgrade('e', 25)) gain = gain.times("e7500")
 	gain = gain.times(buyableEffect('e', 12))
 	if (player.d.difficulty.eq(0)) gain = gain.pow(1.01)
 	return gain
