@@ -53,6 +53,7 @@ addLayer("l", {
 		if (hasUpgrade('l', 25)) mult = mult.times(10000)
 		mult = mult.times(layers.u.effect())
 		mult = mult.times(layers.e.effect())
+		mult = mult.times(layers.XP.effect())
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
