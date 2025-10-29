@@ -32,6 +32,7 @@ addLayer("e", {
 		if (hasUpgrade('e', 25)) mult = mult.times(10000)
 		if (hasUpgrade('e', 31)) mult = mult.times(25000)
 		if (hasUpgrade('e', 32)) mult = mult.times(50000)
+		if (hasUpgrade('e', 33)) mult = mult.times(upgradeEffect('e', 33))
 		mult = mult.times(buyableEffect('e', 11))
         return mult
     },
@@ -147,6 +148,14 @@ addLayer("e", {
         description: "x50000 Extreme Runes and xe12000 Points. +^0.02 XP",
         cost: new Decimal("2e28"),
 		unlocked(){ return hasUpgrade('e', 31) },
+    },
+	33: {
+		title: ":)",
+        description: "Boost Extreme Runes based on points.",
+        cost: new Decimal("4e34"),
+		unlocked(){ return hasUpgrade('e', 32) },
+		effect(){ return player.points.add(1).log(10).add(1).pow(1.2.5) },
+		effectDisplay(){ return "x"+format(upgradeEffect('e', 33)) },
     },
 	},
 	buyables: {
