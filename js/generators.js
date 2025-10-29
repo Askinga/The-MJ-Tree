@@ -30,7 +30,7 @@ addLayer("XP", {
         return new Decimal(1)
     },
     gen(){
-      return player.XP.points.add(1).pow(2)
+      return player.XP.points.pow(2)
     },
     effect(){
       return player.XP.gen.add(1).pow(20)
