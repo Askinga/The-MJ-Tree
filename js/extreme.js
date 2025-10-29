@@ -157,6 +157,14 @@ addLayer("e", {
 		effect(){ return player.points.add(1).log(10).add(1).pow(1.25) },
 		effectDisplay(){ return "x"+format(upgradeEffect('e', 33)) },
     },
+	34: {
+		title: ":D",
+        description: "Boost Points based on Prestige Points.",
+        cost: new Decimal("7e42"),
+		unlocked(){ return hasUpgrade('e', 33) },
+		effect(){ return player.p.points.add(1).pow(0.5) },
+		effectDisplay(){ return "x"+format(upgradeEffect('e', 34)) },
+    },
 	},
 	buyables: {
 	11: {
