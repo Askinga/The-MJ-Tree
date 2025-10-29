@@ -154,7 +154,7 @@ addLayer("e", {
         description: "Boost Extreme Runes based on points.",
         cost: new Decimal("4e34"),
 		unlocked(){ return hasUpgrade('e', 32) },
-		effect(){ return player.points.add(1).log(10).add(1).pow(1.2.5) },
+		effect(){ return player.points.add(1).log(10).add(1).pow(1.25) },
 		effectDisplay(){ return "x"+format(upgradeEffect('e', 33)) },
     },
 	},
