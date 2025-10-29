@@ -35,7 +35,7 @@ addLayer("XP", {
     effect(){
       return player.XP.gen.add(1).pow(20)
     },
-    effectDisplay(){
+    effectDescription(){
       return "which is generating " + format(tmp.XP.gen) + " XP Boosters per second"
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
