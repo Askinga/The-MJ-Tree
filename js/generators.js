@@ -24,7 +24,7 @@ addLayer("XP", {
       "resource-display",
       ["display-text", function(){ return "You have " + format(player.XP.gen) + " XP Boosters, boosting XP by x" + format(layers.XP.effect()) }],
       "blank",
-      "upgrades"
+      "milestones"
       ],
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
@@ -47,8 +47,12 @@ addLayer("XP", {
 	bigI(){
 		return player.XP.gen.add(10).log(10).log(10).add(1).pow(0.4)
 	},
+	boost1(){
+		return new Decimal(1.00035).pow(player.l.level)
+	},
     update(diff) {
       let gain = tmp.XP.gen
+	  if (hasMilestone('XP', 1)) gain = gain.times(tmp.XP.boost1)
 
       gain = gain.times(diff)
       player.XP.gen = player.XP.gen.add(gain)
@@ -56,8 +60,13 @@ addLayer("XP", {
 	milestones: {
     0: {
         requirementDescription: "5 XP Generators",
-        effectDescription(){ return "Boost points based on XP Boosters. Currently: ^" + format(tmp.XP.bigI) },
+        effectDescription(){ return "Boost points based on XP Boosters. Currently: ^" + format(tmp.XP.boost1) },
         done() { return player.XP.points.gte(5) }
+    },
+	1: {
+        requirementDescription: "20 XP Generators",
+        effectDescription(){ return "Boost XP Boosters based on Levels. Currently: ^" + format(tmp.XP.bigI) },
+        done() { return player.XP.points.gte(20) }
     },
 	},
 })
