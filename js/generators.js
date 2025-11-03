@@ -44,10 +44,21 @@ addLayer("XP", {
     ],
     layerShown(){return (hasUpgrade('e', 35) || player.XP.unlocked)},
 	  branches: ["u"],
+	power(){
+		let eff = player.XP.gen.add(10).log(10).log(10).add(1).pow(0.4)
+		return eff
+	},
     update(diff) {
       let gain = tmp.XP.gen
 
       gain = gain.times(diff)
       player.XP.gen = player.XP.gen.add(gain)
     },
+	milestones: {
+    0: {
+        requirementDescription: "5 XP Generators",
+        effectDescription(){ return "Boost points based on XP Boosters. Currently: ^" + format(tmp.XP.power) },
+        done() { return player.XP.points.gte(5) }
+    },
+	},
 })
