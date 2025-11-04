@@ -25,6 +25,7 @@ addLayer("m", {
     },
 	autoPrestige(){ return (hasMilestone('e', 1)) },
 	resetsNothing(){ return (hasMilestone('e', 1)) },
+	canBuyMax(){ return (hasMilestone('XP', 2)) },
     color: "#b8b8b8",
     requires: new Decimal(1e17), // Can be a function that takes requirement increases into account
     resource: "Meta Runes", // Name of prestige currency
