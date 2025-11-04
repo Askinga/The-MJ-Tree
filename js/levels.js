@@ -82,7 +82,9 @@ addLayer("l", {
 		return new Decimal(1.75).pow(player.l.level)
 	},
 	lvlE2(){
-		return new Decimal(250).pow(player.l.level)
+		let base = new Decimal(250)
+		if (hasMilestone('XP', 7)) base = base.times(tmp.XP.boost4)
+		return new Decimal(base).pow(player.l.level)
 	},
     layerShown(){return (hasMilestone('m', 3) || player.l.unlocked)},
 	branches: ["b"],
