@@ -60,12 +60,12 @@ addLayer("XP", {
 	milestones: {
     0: {
         requirementDescription: "5 XP Generators",
-        effectDescription(){ return "Boost points based on XP Boosters. Currently: ^" + format(tmp.XP.boost1) },
+        effectDescription(){ return "Boost points based on XP Boosters. Currently: ^" + format(tmp.XP.bigI) },
         done() { return player.XP.points.gte(5) }
     },
 	1: {
         requirementDescription: "20 XP Generators",
-        effectDescription(){ return "Boost XP Boosters based on Levels. Currently: ^" + format(tmp.XP.bigI) },
+        effectDescription(){ return "Boost XP Boosters based on Levels. Currently: ^" + format(tmp.XP.boost1) },
         done() { return player.XP.points.gte(20) }
     },
 	},
