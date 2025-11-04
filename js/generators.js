@@ -16,6 +16,7 @@ addLayer("XP", {
     exponent: 0.005, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if (hasMilestone('XP', 2)) mult = mult.times(tmp.XP.boost2)
         return mult
     },
     tabFormat: [
@@ -53,6 +54,9 @@ addLayer("XP", {
 	boost1(){
 		return new Decimal(1.00035).pow(player.l.level)
 	},
+	boost2(){
+		return player.XP.gen.add(1).log(10).add(1)
+	},
     update(diff) {
       let gain = tmp.XP.gen
 		
@@ -69,6 +73,11 @@ addLayer("XP", {
         requirementDescription: "20 XP Generators",
         effectDescription(){ return "Boost XP Boosters based on Levels. Currently: x" + format(tmp.XP.boost1) },
         done() { return player.XP.points.gte(20) }
+    },
+	2: {
+        requirementDescription: "40 XP Generators",
+        effectDescription(){ return "Buy max Meta Runes and boost XP Generators based on XP Boosters. Currently: x" + format(tmp.XP.boost2) },
+        done() { return player.XP.points.gte(40) }
     },
 	},
 })
