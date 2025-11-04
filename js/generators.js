@@ -30,7 +30,10 @@ addLayer("XP", {
         return new Decimal(1)
     },
     gen(){
-      return player.XP.points.pow(2)
+      let eff = player.XP.points.pow(2)
+	  if (hasMilestone('XP', 1)) eff = eff.times(tmp.XP.boost1)
+	  
+	  return eff
     },
     effect(){
       return player.XP.gen.add(1).pow(20)
@@ -52,8 +55,7 @@ addLayer("XP", {
 	},
     update(diff) {
       let gain = tmp.XP.gen
-	  if (hasMilestone('XP', 1)) gain = gain.times(tmp.XP.boost1)
-
+		
       gain = gain.times(diff)
       player.XP.gen = player.XP.gen.add(gain)
     },
