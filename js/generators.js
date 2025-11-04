@@ -69,7 +69,7 @@ addLayer("XP", {
 		return player.points.add(1).log(10).add(1)
 	},
 	boost4(){
-		return player.points.add(1).log(10).div(20).add(1)
+		return player.XP.gen.add(1).log(10).div(20).add(1)
 	},
     update(diff) {
       let gain = tmp.XP.gen
