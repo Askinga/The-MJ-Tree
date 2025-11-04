@@ -65,7 +65,7 @@ addLayer("XP", {
     },
 	1: {
         requirementDescription: "20 XP Generators",
-        effectDescription(){ return "Boost XP Boosters based on Levels. Currently: ^" + format(tmp.XP.boost1) },
+        effectDescription(){ return "Boost XP Boosters based on Levels. Currently: x" + format(tmp.XP.boost1) },
         done() { return player.XP.points.gte(20) }
     },
 	},
