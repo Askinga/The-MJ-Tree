@@ -35,12 +35,13 @@ addLayer("XP", {
     gen(){
       let eff = player.XP.points.pow(2)
 	  if (hasMilestone('XP', 1)) eff = eff.times(tmp.XP.boost1)
-	  
+	  if (hasMilestone('XP', 6)) eff = eff.times(tmp.XP.boost3)
 	  return eff
     },
     effect(){
 	  let pow = new Decimal(20)
 	  if (hasMilestone('XP', 3)) pow = pow.times(tmp.XP.bigI2)
+	  if (hasMilestone('XP', 6)) pow = pow.add(10)
       return player.XP.gen.add(1).pow(pow)
     },
     effectDescription(){
@@ -63,6 +64,9 @@ addLayer("XP", {
 	},
 	boost2(){
 		return player.XP.gen.add(1).log(10).add(1)
+	},
+	boost3(){
+		return player.points.add(1).log(10).add(1)
 	},
     update(diff) {
       let gain = tmp.XP.gen
@@ -100,6 +104,11 @@ addLayer("XP", {
         requirementDescription: "10000 XP Generators",
         effectDescription(){ return "Boost XP Generators by x10 and Points by xe35000." },
         done() { return player.XP.points.gte(10000) }
+    },
+	6: {
+        requirementDescription: "e400k points",
+        effectDescription(){ return "Boost XP Boosters based on Points and +10 XP Booster base. Currently: x" + format(tmp.XP.boost3) },
+        done() { return player.points.gte("e400000") }
     },
 	},
 })
