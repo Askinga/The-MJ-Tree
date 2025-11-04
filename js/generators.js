@@ -37,7 +37,9 @@ addLayer("XP", {
 	  return eff
     },
     effect(){
-      return player.XP.gen.add(1).pow(20)
+	  let pow = new Decimal(20)
+	  if (hasMilestone('XP', 3)) pow = pow.times(tmp.XP.bigI2)
+      return player.XP.gen.add(1).pow(pow)
     },
     effectDescription(){
       return "which is generating " + format(tmp.XP.gen) + " XP Boosters per second"
@@ -50,6 +52,9 @@ addLayer("XP", {
 	  branches: ["u"],
 	bigI(){
 		return player.XP.gen.add(10).log(10).log(10).add(1).pow(0.4)
+	},
+	bigI2(){
+		return player.XP.gen.add(10).log(10).log(10).add(1).pow(0.6)
 	},
 	boost1(){
 		return new Decimal(1.00035).pow(player.l.level)
@@ -78,6 +83,11 @@ addLayer("XP", {
         requirementDescription: "40 XP Generators",
         effectDescription(){ return "Buy max Meta Runes and boost XP Generators based on XP Boosters. Currently: x" + format(tmp.XP.boost2) },
         done() { return player.XP.points.gte(40) }
+    },
+	3: {
+        requirementDescription: "500 XP Generators",
+        effectDescription(){ return "Boost XP Boosters power based on XP Boosters. Currently: x" + format(tmp.XP.bigI2) },
+        done() { return player.XP.points.gte(500) }
     },
 	},
 })
