@@ -18,6 +18,7 @@ addLayer("XP", {
         mult = new Decimal(1)
 		if (hasMilestone('XP', 2)) mult = mult.times(tmp.XP.boost2)
 		if (hasMilestone('XP', 4)) mult = mult.times(5)
+		if (hasMilestone('XP', 5)) mult = mult.times(10)
         return mult
     },
     tabFormat: [
@@ -94,6 +95,11 @@ addLayer("XP", {
         requirementDescription: "1250 XP Generators",
         effectDescription(){ return "Boost XP Generators by x5." },
         done() { return player.XP.points.gte(1250) }
+    },
+	5: {
+        requirementDescription: "10000 XP Generators",
+        effectDescription(){ return "Boost XP Generators by x10 and Points by xe35000." },
+        done() { return player.XP.points.gte(10000) }
     },
 	},
 })
