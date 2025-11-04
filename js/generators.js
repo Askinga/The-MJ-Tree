@@ -68,6 +68,9 @@ addLayer("XP", {
 	boost3(){
 		return player.points.add(1).log(10).add(1)
 	},
+	boost4(){
+		return player.points.add(1).log(10).div(20).add(1)
+	},
     update(diff) {
       let gain = tmp.XP.gen
 		
@@ -96,12 +99,12 @@ addLayer("XP", {
         done() { return player.XP.points.gte(500) }
     },
 	4: {
-        requirementDescription: "1250 XP Generators",
+        requirementDescription: "1,250 XP Generators",
         effectDescription(){ return "Boost XP Generators by x5." },
         done() { return player.XP.points.gte(1250) }
     },
 	5: {
-        requirementDescription: "10000 XP Generators",
+        requirementDescription: "10,000 XP Generators",
         effectDescription(){ return "Boost XP Generators by x10 and Points by xe35000." },
         done() { return player.XP.points.gte(10000) }
     },
@@ -109,6 +112,11 @@ addLayer("XP", {
         requirementDescription: "e400k points",
         effectDescription(){ return "Boost XP Boosters based on Points and +10 XP Booster base. Currently: x" + format(tmp.XP.boost3) },
         done() { return player.points.gte("e400000") }
+    },
+	7: {
+        requirementDescription: "1,000,000 XP Boosters",
+        effectDescription(){ return "Boost 2nd Level Effect Base based on XP Boosters. Currently: x" + format(tmp.XP.boost4) },
+        done() { return player.XP.points.gte(1e6) }
     },
 	},
 })
