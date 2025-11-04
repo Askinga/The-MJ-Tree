@@ -17,6 +17,7 @@ addLayer("XP", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasMilestone('XP', 2)) mult = mult.times(tmp.XP.boost2)
+		if (hasMilestone('XP', 4)) mult = mult.times(5)
         return mult
     },
     tabFormat: [
@@ -71,7 +72,7 @@ addLayer("XP", {
 	milestones: {
     0: {
         requirementDescription: "5 XP Generators",
-        effectDescription(){ return "Boost points based on XP Boosters. Currently: ^" + format(tmp.XP.bigI) },
+        effectDescription(){ return "Boost points based on XP Boosters. Currently: ^" + format(tmp.XP.bigI, 5) },
         done() { return player.XP.points.gte(5) }
     },
 	1: {
@@ -86,8 +87,13 @@ addLayer("XP", {
     },
 	3: {
         requirementDescription: "500 XP Generators",
-        effectDescription(){ return "Boost XP Boosters power based on XP Boosters. Currently: x" + format(tmp.XP.bigI2) },
+        effectDescription(){ return "Boost XP Boosters power based on XP Boosters. Currently: x" + format(tmp.XP.bigI2, 5) },
         done() { return player.XP.points.gte(500) }
+    },
+	4: {
+        requirementDescription: "1250 XP Generators",
+        effectDescription(){ return "Boost XP Generators by x5." },
+        done() { return player.XP.points.gte(1250) }
     },
 	},
 })
