@@ -7,6 +7,11 @@ addLayer("XP", {
 		points: new Decimal(0),
     gen: new Decimal(0),
     }},
+	passiveGeneration(){
+		let p = new Decimal(0)
+		if (hasMilestone('XP', 11)) p = p.add(1)
+		return p
+	},
     color: "#24e0d1",
     requires: new Decimal("e458"), // Can be a function that takes requirement increases into account
     resource: "XP Generators", // Name of prestige currency
@@ -20,6 +25,7 @@ addLayer("XP", {
 		if (hasMilestone('XP', 4)) mult = mult.times(5)
 		if (hasMilestone('XP', 5)) mult = mult.times(10)
 		if (hasMilestone('XP', 8)) mult = mult.times(20)
+		if (hasMilestone('XP', 11)) mult = mult.times(100)
         return mult
     },
     tabFormat: [
@@ -142,6 +148,11 @@ addLayer("XP", {
         requirementDescription: "1e10 XP Boosters",
         effectDescription(){ return "Boost XP Generator effect power base based on XP Boosters. Currently: x" + format(tmp.XP.bigI3, 5) },
         done() { return player.XP.points.gte("1e10") }
+    },
+	11: {
+        requirementDescription: "1e15 XP Generators",
+        effectDescription(){ return "Boost XP Generators by x100 and 100% XP Generators per second." },
+        done() { return player.XP.points.gte("1e15") }
     },
 	},
 })
