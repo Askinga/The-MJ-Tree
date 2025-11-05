@@ -34,7 +34,7 @@ addLayer("e", {
 		if (hasUpgrade('e', 32)) mult = mult.times(50000)
 		if (hasUpgrade('e', 33)) mult = mult.times(upgradeEffect('e', 33))
 		if (hasUpgrade('e', 35)) mult = mult.times(100000)
-		if (hasMilestone('XP', 10)) mult = mult.times(tmp.XP.boost5)
+		if (hasMilestone('XP', 9)) mult = mult.times(tmp.XP.boost5)
 		mult = mult.times(buyableEffect('e', 11))
         return mult
     },
