@@ -6,15 +6,21 @@ addLayer("logs", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+	passiveGeneration(){
+		let p = new Decimal(0)
+		p = p.add(buyableEffect('logs', 13))
+		return p
+	},
     color: "#735245",
     requires: new Decimal("e1.8e6"), // Can be a function that takes requirement increases into account
     resource: "Logs", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.0000002, // Prestige currency exponent
+    exponent: 0, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		mult = mult.times(buyableEffect('logs', 11))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -25,9 +31,61 @@ addLayer("logs", {
     layerShown(){return (hasMilestone('XP', 12) || player.logs.unlocked)},
 	branches: ["m"],
     effect(){
-      return player.logs.points.add(1).pow(25000)
+	  let pow = new Decimal(25000)
+	  pow = pow.add(buyableEffect('logs', 12))
+      return player.logs.points.add(1).pow(pow)
     },
     effectDescription(){
       return 'which is boosting Points by x' + format(layers.logs.effect())
     },
+	buyables: {
+	11: {
+		title: "Stronger Axe",
+        cost(x) { return new Decimal(10).pow(x).times(100) },
+        display() { return "x2 Logs<br>Cost: " + format(this.cost()) + " Logs<br>Bought: " + format(getBuyableAmount('logs', 11)) + "<br>Effect: x" + format(buyableEffect('logs', 11)) + " Logs" },
+        canAfford() { return player.logs.points.gte(this.cost()) },
+        buy() {
+            player.logs.points = player.logs.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(2)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
+    },
+	12: {
+		title: "Pointy Logs",
+        cost(x) { return new Decimal(1.125).pow(x).times(10) },
+        display() { return "+100 Log effect power<br>Cost: " + format(this.cost()) + " Logs<br>Bought: " + format(getBuyableAmount('logs', 12)) + "<br>Effect: +" + format(buyableEffect('logs', 12)) + " Log effect power" },
+        canAfford() { return player.logs.points.gte(this.cost()) },
+        buy() {
+            player.logs.points = player.logs.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(100)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.times(Decimal.times(base2, expo))
+		},
+    },
+	13: {
+		title: "Auto Cutting Robot",
+        cost(x) { return new Decimal(1.2).pow(x).times(100) },
+        display() { return "+0.1% Logs per second.<br>Cost: " + format(this.cost()) + " Logs<br>Bought: " + format(getBuyableAmount('logs', 13)) + "<br>Effect: +" + format(buyableEffect('logs', 13)) + "% Log passive gain" },
+        canAfford() { return player.logs.points.gte(this.cost()) },
+        buy() {
+            player.logs.points = player.logs.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(0.1)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.times(Decimal.times(base2, expo))
+		},
+    },
+	},
 })
