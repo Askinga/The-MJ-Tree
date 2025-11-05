@@ -213,7 +213,7 @@ addLayer("e", {
 		unlocked(){ return hasUpgrade('e', 15) },
 		title: "The Third Buyable",
         cost(x) { return new Decimal(30).pow(x.pow(1.3)) },
-        display() { return "+^0.005 XP per purchase<br>Cost: " + format(this.cost()) + " Extreme Runes<br>Bought: " + format(getBuyableAmount('e', 13)) + "<br>Effect: +^" + format(buyableEffect('e', 13)) + " XP" },
+        display() { return "+^0.005 XP per purchase<br>Cost: " + format(this.cost()) + " Extreme Runes<br>Bought: " + format(getBuyableAmount('e', 13)) + "/30<br>Effect: +^" + format(buyableEffect('e', 13)) + " XP" },
         canAfford() { return player.e.points.gte(this.cost()) },
         buy() {
             player.e.points = player.e.points.sub(this.cost())
@@ -224,6 +224,7 @@ addLayer("e", {
 			let base2 = x
 			return base1.times(base2)
 		},
+		purchaseLimit: 30,
     },
 	},
 })
