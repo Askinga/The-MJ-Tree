@@ -27,7 +27,7 @@ addLayer("logs", {
     effect(){
       return player.logs.points.add(1).pow(25000)
     },
-    effectDesciption(){
+    effectDescription(){
       return 'which is boosting Points by x' + format(layers.logs.effect())
     },
 })
