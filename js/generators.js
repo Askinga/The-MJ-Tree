@@ -19,7 +19,7 @@ addLayer("XP", {
 		if (hasMilestone('XP', 2)) mult = mult.times(tmp.XP.boost2)
 		if (hasMilestone('XP', 4)) mult = mult.times(5)
 		if (hasMilestone('XP', 5)) mult = mult.times(10)
-		if (hasMilestone('XP', 9)) mult = mult.times(20)
+		if (hasMilestone('XP', 8)) mult = mult.times(20)
         return mult
     },
     tabFormat: [
@@ -35,7 +35,7 @@ addLayer("XP", {
     },
     gen(){
 	  let pow = new Decimal(2)
-	  if (hasMilestone('XP', 9)) pow = pow.add(1)
+	  if (hasMilestone('XP', 8)) pow = pow.add(1)
       let eff = player.XP.points.pow(pow)
 	  if (hasMilestone('XP', 1)) eff = eff.times(tmp.XP.boost1)
 	  if (hasMilestone('XP', 6)) eff = eff.times(tmp.XP.boost3)
@@ -122,19 +122,14 @@ addLayer("XP", {
 	7: {
         requirementDescription: "1,000,000 XP Boosters",
         effectDescription(){ return "Boost 2nd Level Effect Base based on XP Boosters. Currently: x" + format(tmp.XP.boost4) },
-        done() { return player.XP.points.gte(1e6) }
-    },
-	8: {
-        requirementDescription: "1,000,000 XP Boosters",
-        effectDescription(){ return "Boost 2nd Level Effect Base based on XP Boosters. Currently: x" + format(tmp.XP.boost4) },
         done() { return player.XP.points.gte("1e6") }
     },
-	9: {
+	8: {
         requirementDescription: "2,500,000 XP Generators",
         effectDescription(){ return "Boost XP Generators by x20 and +1 XP Generator effect power base." },
         done() { return player.XP.points.gte("2.5e6") }
     },
-	10: {
+	9: {
         requirementDescription: "100,000,000 XP Boosters",
         effectDescription(){ return "Boost Extreme Runes based on XP Boosters. Currently: x" + format(tmp.XP.boost5) },
         done() { return player.XP.points.gte("1e8") }
