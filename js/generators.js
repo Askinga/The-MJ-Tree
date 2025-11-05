@@ -125,7 +125,7 @@ addLayer("XP", {
         done() { return player.XP.points.gte(10000) }
     },
 	6: {
-        requirementDescription: "e400k points",
+        requirementDescription: "e400K points",
         effectDescription(){ return "Boost XP Boosters based on Points and +10 XP Booster base. Currently: x" + format(tmp.XP.boost3) },
         done() { return player.points.gte("e400000") }
     },
@@ -153,6 +153,11 @@ addLayer("XP", {
         requirementDescription: "1e15 XP Generators",
         effectDescription(){ return "Boost XP Generators by x100 and 100% XP Generators per second." },
         done() { return player.XP.points.gte("1e15") }
+    },
+	12: {
+        requirementDescription: "e1.8M points",
+        effectDescription(){ return "Unlock a new layer" },
+        done() { return player.points.gte("e1.8e6") }
     },
 	},
 })
