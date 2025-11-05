@@ -36,6 +36,7 @@ addLayer("XP", {
     gen(){
 	  let pow = new Decimal(2)
 	  if (hasMilestone('XP', 8)) pow = pow.add(1)
+	  if (hasMilestone('XP', 10)) pow = pow.times(tmp.XP.bigI3)
       let eff = player.XP.points.pow(pow)
 	  if (hasMilestone('XP', 1)) eff = eff.times(tmp.XP.boost1)
 	  if (hasMilestone('XP', 6)) eff = eff.times(tmp.XP.boost3)
@@ -62,6 +63,9 @@ addLayer("XP", {
 	bigI2(){
 		return player.XP.gen.add(10).log(10).log(10).add(1).pow(0.6)
 	},
+	bigI3(){
+		return player.XP.gen.add(10).log(10).log(10).add(1).pow(0.5)
+	},
 	boost1(){
 		return new Decimal(1.00035).pow(player.l.level)
 	},
@@ -76,7 +80,7 @@ addLayer("XP", {
 	},
 	boost5(){
 		return player.XP.gen.add(1).pow(0.5)
-	},
+    },
     update(diff) {
       let gain = tmp.XP.gen
 		
@@ -133,6 +137,11 @@ addLayer("XP", {
         requirementDescription: "100,000,000 XP Boosters",
         effectDescription(){ return "Boost Extreme Runes based on XP Boosters. Currently: x" + format(tmp.XP.boost5) },
         done() { return player.XP.points.gte("1e8") }
+    },
+	10: {
+        requirementDescription: "1e10 XP Boosters",
+        effectDescription(){ return "Boost XP Generator effect power base based on XP Boosters. Currently: x" + format(tmp.XP.bigI3, 5) },
+        done() { return player.XP.points.gte("1e10") }
     },
 	},
 })
