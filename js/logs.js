@@ -8,7 +8,7 @@ addLayer("logs", {
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
-		p = p.add(buyableEffect('logs', 13))
+		p = p.add(buyableEffect('logs', 13).div(100))
 		return p
 	},
     color: "#735245",
@@ -23,6 +23,7 @@ addLayer("logs", {
 		mult = mult.times(buyableEffect('logs', 11))
 		if (hasUpgrade('logs', 11)) mult = mult.times(3)
 		if (hasUpgrade('logs', 12)) mult = mult.times(2)
+		if (hasUpgrade('logs', 13)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -83,7 +84,7 @@ addLayer("logs", {
             setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
         },
 		effect(x){
-			let base1 = new Decimal(0.1)
+			let base1 = new Decimal(10)
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.times(Decimal.times(base2, expo))
@@ -101,6 +102,12 @@ addLayer("logs", {
 			description: "x2 Wood",
 			cost: new Decimal(1000),
 			unlocked(){ return hasUpgrade('logs', 11) },
+		},
+		13: {
+			title: "3-Headed Axe",
+			description: "x3 Wood",
+			cost: new Decimal(5000),
+			unlocked(){ return hasUpgrade('logs', 12) },
 		},
 	},
 })
