@@ -21,6 +21,8 @@ addLayer("logs", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		mult = mult.times(buyableEffect('logs', 11))
+		if (hasUpgrade('logs', 11)) mult = mult.times(3)
+		if (hasUpgrade('logs', 12)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -74,7 +76,7 @@ addLayer("logs", {
 	13: {
 		title: "Auto Cutting Robot",
         cost(x) { return new Decimal(1.2).pow(x).times(100) },
-        display() { return "+0.1% Logs per second.<br>Cost: " + format(this.cost()) + " Logs<br>Bought: " + format(getBuyableAmount('logs', 13)) + "<br>Effect: +" + format(buyableEffect('logs', 13)) + "% Log passive gain" },
+        display() { return "+10% Logs per second.<br>Cost: " + format(this.cost()) + " Logs<br>Bought: " + format(getBuyableAmount('logs', 13)) + "<br>Effect: +" + format(buyableEffect('logs', 13)) + "% Log passive gain" },
         canAfford() { return player.logs.points.gte(this.cost()) },
         buy() {
             player.logs.points = player.logs.points.sub(this.cost())
@@ -87,5 +89,18 @@ addLayer("logs", {
 			return base1.times(Decimal.times(base2, expo))
 		},
     },
+	},
+	upgrades: {
+		11: {
+			title: "Efficient Axe",
+			description: "x3 Wood",
+			cost: new Decimal(300)
+		},
+		12: {
+			title: "2-Headed Axe",
+			description: "x2 Wood",
+			cost: new Decimal(1000),
+			unlocked(){ return hasUpgrade('logs', 11) },
+		},
 	},
 })
