@@ -6,6 +6,7 @@ addLayer("logs", {
         unlocked: false,
 		points: new Decimal(0),
 		wood: new Decimal(0),
+		woodGain: new Decimal(0),
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
@@ -262,6 +263,12 @@ addLayer("logs", {
 			cost: new Decimal("2e31"),
 			unlocked(){ return hasUpgrade('logs', 25) },
 		},
+		32: {
+			title: "Supreme Wood",
+			description: "1000% of Wood per second and x5 Wood",
+			cost: new Decimal("1e36"),
+			unlocked(){ return hasUpgrade('logs', 31) },
+		},
 	},
 	clickables: {
 		11: {
@@ -277,6 +284,8 @@ addLayer("logs", {
             prestigeGain() {
                 let mult = new Decimal(1)
 				if (hasUpgrade('logs', 31)) mult = mult.times(5)
+				if (hasUpgrade('logs', 32)) mult = mult.times(5)
+				player.logs.woodGain = mult
 	         	return mult
             },
             onClick() {
@@ -286,5 +295,14 @@ addLayer("logs", {
 				player.logs.wood = player.logs.wood.add(this.prestigeGain())
             },
         },
+	},
+	update(diff) {
+		let passive = new Decimal(0)
+		if (hasUpgrade('logs', 32)) passive = passive.add(10)
+
+		passive = passive.times(diff)
+		if (hasUpgrade('logs', 32)) {
+			player.logs.wood = player.logs.wood.add(player.logs.woodGain.times(passive))
+		}
 	},
 })
