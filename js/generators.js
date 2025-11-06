@@ -64,13 +64,13 @@ addLayer("XP", {
     layerShown(){return (hasUpgrade('e', 35) || player.XP.unlocked)},
 	  branches: ["u"],
 	bigI(){
-		return player.XP.gen.add(10).log(10).log(10).add(1).pow(0.4)
+		return player.XP.gen.add(10).log(10).log(10).add(1).pow(0.4).min(1.7)
 	},
 	bigI2(){
-		return player.XP.gen.add(10).log(10).log(10).add(1).pow(0.6)
+		return player.XP.gen.add(10).log(10).log(10).add(1).pow(0.6).min(2.2)
 	},
 	bigI3(){
-		return player.XP.gen.add(10).log(10).log(10).add(1).pow(0.5)
+		return player.XP.gen.add(10).log(10).log(10).add(1).pow(0.5).min(1.9)
 	},
 	boost1(){
 		return new Decimal(1.00035).pow(player.l.level)
@@ -96,7 +96,7 @@ addLayer("XP", {
 	milestones: {
     0: {
         requirementDescription: "5 XP Generators",
-        effectDescription(){ return "Boost points based on XP Boosters. Currently: ^" + format(tmp.XP.bigI, 5) },
+        effectDescription(){ return "Boost points based on XP Boosters. (Hardcap: ^1.7) Currently: ^" + format(tmp.XP.bigI, 5) },
         done() { return player.XP.points.gte(5) }
     },
 	1: {
@@ -111,7 +111,7 @@ addLayer("XP", {
     },
 	3: {
         requirementDescription: "500 XP Generators",
-        effectDescription(){ return "Boost XP Boosters power based on XP Boosters. Currently: x" + format(tmp.XP.bigI2, 5) },
+        effectDescription(){ return "Boost XP Boosters power based on XP Boosters. (Hardcap: x2.2) Currently: x" + format(tmp.XP.bigI2, 5) },
         done() { return player.XP.points.gte(500) }
     },
 	4: {
@@ -146,7 +146,7 @@ addLayer("XP", {
     },
 	10: {
         requirementDescription: "1e10 XP Boosters",
-        effectDescription(){ return "Boost XP Generator effect power base based on XP Boosters. Currently: x" + format(tmp.XP.bigI3, 5) },
+        effectDescription(){ return "Boost XP Generator effect power base based on XP Boosters. (Hardcap: x1.9) Currently: x" + format(tmp.XP.bigI3, 5) },
         done() { return player.XP.points.gte("1e10") }
     },
 	11: {
