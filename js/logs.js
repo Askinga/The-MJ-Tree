@@ -30,6 +30,7 @@ addLayer("logs", {
 		if (hasUpgrade('logs', 15)) mult = mult.times(5)
 		if (hasUpgrade('logs', 21)) mult = mult.times(6)
 		if (hasUpgrade('logs', 22)) mult = mult.times(7)
+		if (hasUpgrade('logs', 23)) mult = mult.times(8)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -190,6 +191,12 @@ addLayer("logs", {
 			description: "x7 Logs",
 			cost: new Decimal("1e15"),
 			unlocked(){ return hasUpgrade('logs', 21) },
+		},
+		23: {
+			title: "Efficiency 3",
+			description: "x8 Logs",
+			cost: new Decimal("1e18"),
+			unlocked(){ return hasUpgrade('logs', 22) },
 		},
 	},
 })
