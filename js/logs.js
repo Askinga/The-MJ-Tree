@@ -41,6 +41,7 @@ addLayer("logs", {
     },
 	woodEffect(){
 		let pow = new Decimal(1)
+		if (hasUpgrade('logs', 33)) pow = pow.add(0.5)
 		return player.logs.wood.add(1).pow(pow)
 	},
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -268,6 +269,12 @@ addLayer("logs", {
 			description: "1000% of Wood per second and x5 Wood",
 			cost: new Decimal("1e36"),
 			unlocked(){ return hasUpgrade('logs', 31) },
+		},
+		33: {
+			title: "Compact Wood",
+			description: "+0.5 Wood effect exponent",
+			cost: new Decimal("1e39"),
+			unlocked(){ return hasUpgrade('logs', 32) },
 		},
 	},
 	clickables: {
