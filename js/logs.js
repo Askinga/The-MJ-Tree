@@ -5,6 +5,7 @@ addLayer("logs", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+		wood: new Decimal(0),
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
@@ -32,8 +33,13 @@ addLayer("logs", {
 		if (hasUpgrade('logs', 22)) mult = mult.times(7)
 		if (hasUpgrade('logs', 23)) mult = mult.times(8)
 		if (hasUpgrade('logs', 24)) mult = mult.times(9)
+		mult = mult.times(tmp.logs.woodEffect)
         return mult
     },
+	woodEffect(){
+		let pow = new Decimal(1)
+		return player.logs.wood.add(1).pow(pow)
+	},
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
@@ -50,6 +56,34 @@ addLayer("logs", {
     effectDescription(){
       return 'which is boosting Points by x' + format(layers.logs.effect())
     },
+	tabFormat: {
+		"Upgrades & Buyables": {
+			content: [
+				"main-display",
+				"prestige-button"
+				"resource-display",
+				"blank",
+				"buyables",
+				"upgrades",
+			],
+		},
+		"Wood": {
+			unlocked(){ return hasUpgrade('logs', 25) },
+			content: [
+			"main-display",
+				"prestige-button"
+				"resource-display",
+				"blank",
+				["display-text", function () { return (
+                'You have <span style=" color: rgb(255,193,140)); text-shadow: rgb(255,193,140)) 0px 0px 10px"><h2>' +
+                format(player.logs.wood) +
+                "</h2></span> Wood, boosting Logs by x" + format(tmp.logs.woodEffect)
+                );
+                },
+                ],
+				"blank",
+				"clickables",
+	},
 	buyables: {
 	11: {
 		title: "Stronger Axe",
@@ -205,5 +239,33 @@ addLayer("logs", {
 			cost: new Decimal("5e19"),
 			unlocked(){ return hasUpgrade('logs', 23) },
 		},
+		25: {
+			title: "Efficiency 5",
+			description: "x10 Logs. Unlock subtab 'Wood'",
+			cost: new Decimal("1e21"),
+			unlocked(){ return hasUpgrade('logs', 24) },
+		},
+	},
+	clickables: {
+		11: {
+            display() {
+                return `Gain ${formatWhole(this.prestigeGain())} Wood`
+            },
+            unlocked() {
+                return hasUpgrade("logs", 25)
+            },
+            canClick() {
+                return true
+            },
+            prestigeGain() {
+                let mul = new Decimal(1)
+	         	return mul
+            },
+            onClick() {
+                player.logs.wood = player.logs.wood.add(this.prestigeGain())
+            },
+            onHold() {
+            },
+        },
 	},
 })
