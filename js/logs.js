@@ -61,7 +61,7 @@ addLayer("logs", {
 		"Upgrades & Buyables": {
 			content: [
 				"main-display",
-				"prestige-button"
+				"prestige-button",
 				"resource-display",
 				"blank",
 				"buyables",
@@ -72,7 +72,7 @@ addLayer("logs", {
 			unlocked(){ return hasUpgrade('logs', 25) },
 			content: [
 			"main-display",
-				"prestige-button"
+				"prestige-button",
 				"resource-display",
 				"blank",
 				["display-text", function () { return (
@@ -85,7 +85,6 @@ addLayer("logs", {
 				"blank",
 				"clickables",
 			],
-		},
 		buttonStyle() {
                     return {
                         'background': '#ffc18c',
@@ -93,6 +92,7 @@ addLayer("logs", {
                         'color': 'white',
 					}
 		    },
+		},
 	},
 	buyables: {
 	11: {
