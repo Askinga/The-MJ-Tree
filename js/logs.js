@@ -84,6 +84,15 @@ addLayer("logs", {
                 ],
 				"blank",
 				"clickables",
+			],
+		},
+		buttonStyle() {
+                    return {
+                        'background': '#ffc18c',
+                        'border-color': '#735245',
+                        'color': 'white',
+					}
+		    },
 	},
 	buyables: {
 	11: {
