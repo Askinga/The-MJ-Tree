@@ -76,7 +76,7 @@ addLayer("logs", {
 				"resource-display",
 				"blank",
 				["display-text", function () { return (
-                'You have <span style=" color: rgb(255,193,140)); text-shadow: rgb(255,193,140)) 0px 0px 10px"><h2>' +
+                'You have <span style=" color: rgb(255,193,140); text-shadow: rgb(255,193,140) 0px 0px 10px"><h2>' +
                 format(player.logs.wood) +
                 "</h2></span> Wood, boosting Logs by x" + format(tmp.logs.woodEffect)
                 );
