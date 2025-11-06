@@ -33,6 +33,7 @@ addLayer("logs", {
 		if (hasUpgrade('logs', 22)) mult = mult.times(7)
 		if (hasUpgrade('logs', 23)) mult = mult.times(8)
 		if (hasUpgrade('logs', 24)) mult = mult.times(9)
+		if (hasUpgrade('logs', 25)) mult = mult.times(10)
 		mult = mult.times(tmp.logs.woodEffect)
         return mult
     },
