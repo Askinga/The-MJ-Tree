@@ -85,7 +85,9 @@ addLayer("XP", {
 		return player.XP.gen.add(1).log(10).div(20).add(1)
 	},
 	boost5(){
-		return player.XP.gen.add(1).pow(0.5)
+		let eff = player.XP.gen.add(1).pow(0.5)
+        eff = softcap(eff, new Decimal("e200"), 0.3)
+		return eff
     },
     update(diff) {
       let gain = tmp.XP.gen
@@ -141,7 +143,7 @@ addLayer("XP", {
     },
 	9: {
         requirementDescription: "100,000,000 XP Boosters",
-        effectDescription(){ return "Boost Extreme Runes based on XP Boosters. Currently: x" + format(tmp.XP.boost5) },
+        effectDescription(){ return "Boost Extreme Runes based on XP Boosters. (Softcap: xe200) Currently: x" + format(tmp.XP.boost5) },
         done() { return player.XP.points.gte("1e8") }
     },
 	10: {
