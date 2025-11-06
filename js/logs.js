@@ -24,6 +24,7 @@ addLayer("logs", {
 		if (hasUpgrade('logs', 11)) mult = mult.times(3)
 		if (hasUpgrade('logs', 12)) mult = mult.times(2)
 		if (hasUpgrade('logs', 13)) mult = mult.times(3)
+		if (hasUpgrade('logs', 14)) mult = mult.times(4)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -108,6 +109,12 @@ addLayer("logs", {
 			description: "x3 Logs",
 			cost: new Decimal(5000),
 			unlocked(){ return hasUpgrade('logs', 12) },
+		},
+		14: {
+			title: "Fire Axe",
+			description: "x4 Logs",
+			cost: new Decimal(100000),
+			unlocked(){ return hasUpgrade('logs', 13) },
 		},
 	},
 })
