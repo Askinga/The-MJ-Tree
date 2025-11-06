@@ -275,6 +275,7 @@ addLayer("logs", {
                 player.logs.wood = player.logs.wood.add(this.prestigeGain())
             },
             onHold() {
+				player.logs.wood = player.logs.wood.add(this.prestigeGain())
             },
         },
 	},
