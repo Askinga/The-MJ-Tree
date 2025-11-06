@@ -66,7 +66,7 @@ addLayer("logs", {
 	12: {
 		title: "Pointy Logs",
         cost(x) { return new Decimal(1.125).pow(x).times(10) },
-        display() { return "+100 Log effect power.<br>Cost: " + format(this.cost()) + " Logs<br>Bought: " + format(getBuyableAmount('logs', 12)) + "<br>Effect: +" + format(buyableEffect('logs', 12)) + " Log effect power" },
+        display() { return "+100 Log effect exponent.<br>Cost: " + format(this.cost()) + " Logs<br>Bought: " + format(getBuyableAmount('logs', 12)) + "<br>Effect: +" + format(buyableEffect('logs', 12)) + " Log effect exponent" },
         canAfford() { return player.logs.points.gte(this.cost()) },
         buy() {
             player.logs.points = player.logs.points.sub(this.cost())
@@ -116,7 +116,7 @@ addLayer("logs", {
 		unlocked(){ return hasUpgrade('logs', 15) },
 		title: "Pointer Logs",
         cost(x) { return new Decimal(1.3).pow(x).times(1000000) },
-        display() { return "+250 Log effect power.<br>Cost: " + format(this.cost()) + " Logs<br>Bought: " + format(getBuyableAmount('logs', 22)) + "<br>Effect: +" + format(buyableEffect('logs', 22)) + " Log effect power" },
+        display() { return "+250 Log effect exponent.<br>Cost: " + format(this.cost()) + " Logs<br>Bought: " + format(getBuyableAmount('logs', 22)) + "<br>Effect: +" + format(buyableEffect('logs', 22)) + " Log effect exponent" },
         canAfford() { return player.logs.points.gte(this.cost()) },
         buy() {
             player.logs.points = player.logs.points.sub(this.cost())
