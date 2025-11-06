@@ -132,7 +132,7 @@ addLayer("logs", {
 	23: {
 		unlocked(){ return hasUpgrade('logs', 15) },
 		title: "Send out more robots",
-        cost(x) { return new Decimal(1.4).pow(x.pow(x.div(200))).times(1000000) },
+        cost(x) { return new Decimal(1.4).pow(x.pow(x.div(200).add(1))).times(1000000) },
         display() { return "+x1 Logs per second.<br>Cost: " + format(this.cost()) + " Logs<br>Bought: " + format(getBuyableAmount('logs', 23)) + "<br>Effect: +x" + format(buyableEffect('logs', 23)) + " Log passive gain" },
         canAfford() { return player.logs.points.gte(this.cost()) },
         buy() {
