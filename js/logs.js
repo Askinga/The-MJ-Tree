@@ -35,6 +35,7 @@ addLayer("logs", {
 		if (hasUpgrade('logs', 24)) mult = mult.times(9)
 		if (hasUpgrade('logs', 25)) mult = mult.times(10)
 		mult = mult.times(tmp.logs.woodEffect)
+		if (hasUpgrade('logs', 31)) mult = mult.times(15)
         return mult
     },
 	woodEffect(){
@@ -255,6 +256,12 @@ addLayer("logs", {
 			cost: new Decimal("1e21"),
 			unlocked(){ return hasUpgrade('logs', 24) },
 		},
+		31: {
+			title: "Blue Fire Axe",
+			description: "x5 Wood and x15 Logs.",
+			cost: new Decimal("2e31"),
+			unlocked(){ return hasUpgrade('logs', 25) },
+		},
 	},
 	clickables: {
 		11: {
@@ -268,8 +275,9 @@ addLayer("logs", {
                 return true
             },
             prestigeGain() {
-                let mul = new Decimal(1)
-	         	return mul
+                let mult = new Decimal(1)
+				if (hasUpgrade('logs', 31)) mult = mult.times(5)
+	         	return mult
             },
             onClick() {
                 player.logs.wood = player.logs.wood.add(this.prestigeGain())
