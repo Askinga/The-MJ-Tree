@@ -94,18 +94,18 @@ addLayer("logs", {
 	upgrades: {
 		11: {
 			title: "Efficient Axe",
-			description: "x3 Wood",
+			description: "x3 Logs",
 			cost: new Decimal(300)
 		},
 		12: {
 			title: "2-Headed Axe",
-			description: "x2 Wood",
+			description: "x2 Logs",
 			cost: new Decimal(1000),
 			unlocked(){ return hasUpgrade('logs', 11) },
 		},
 		13: {
 			title: "3-Headed Axe",
-			description: "x3 Wood",
+			description: "x3 Logs",
 			cost: new Decimal(5000),
 			unlocked(){ return hasUpgrade('logs', 12) },
 		},
