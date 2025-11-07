@@ -49,5 +49,10 @@ addLayer("su", {
         effectDescription: "Keep Extreme Rune Milestones",
         done() { return player.su.points.gte(1) }
     },
+    1: {
+        requirementDescription: "2 Supreme Runes",
+        effectDescription: "xe1e6 points",
+        done() { return player.su.points.gte(2) }
+    },
     },
 })
