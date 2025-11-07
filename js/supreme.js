@@ -9,15 +9,9 @@ addLayer("su", {
     myColor: "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0'),
   }
 },
-    randomHex(){
-        let randomColor = Math.floor(Math.random() * 16777215);
-        let hexCode = randomColor.toString(16);
-        let hexColor = hexCode.padStart(6, '0');
-        return "#" + hexColor;
-    },
     color() {
   return player.su.myColor || "#FFFFFF"; // fallback to white
-}
+},
     requires: new Decimal("e1000000"), 
     resource: "Supreme Runes", 
     baseResource: "boost runes", 
