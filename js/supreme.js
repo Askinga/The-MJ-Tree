@@ -16,7 +16,7 @@ addLayer("su", {
         return "#" + hexColor;
     },
     color() {
-  return tmp.su.randomHex() || "#FFFFFF"; // fallback to white
+  return tmp.su.randomHex || "#FFFFFF"; // fallback to white
 },
     requires: new Decimal("e1000000"), 
     resource: "Supreme Runes", 
