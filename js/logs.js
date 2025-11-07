@@ -300,7 +300,7 @@ addLayer("logs", {
                 return hasUpgrade("logs", 25)
             },
             canClick() {
-                return true
+                return hasUpgrade("logs", 25)
             },
             prestigeGain() {
                 let mult = new Decimal(1)
