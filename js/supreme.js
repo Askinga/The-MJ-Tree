@@ -4,7 +4,7 @@ addLayer("su", {
     position: 0, 
     startData() { 
   return {
-    unlocked: true,
+    unlocked: false,
     points: new Decimal(0),
     myColor: "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0'),
   }
