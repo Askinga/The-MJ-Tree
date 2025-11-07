@@ -283,6 +283,12 @@ addLayer("logs", {
 			cost: new Decimal("1e46"),
 			unlocked(){ return hasUpgrade('logs', 33) },
 		},
+		35: {
+			title: "Are U ready for supreme??",
+			description: "Unlock a new layer",
+			cost: new Decimal("1e52"),
+			unlocked(){ return hasUpgrade('logs', 34) },
+		},
 	},
 	clickables: {
 		11: {
