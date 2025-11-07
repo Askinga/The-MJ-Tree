@@ -36,5 +36,18 @@ addLayer("su", {
         {key: "S", description: "Shift+S: Reset for supreme runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return (hasUpgrade('logs', 35) || player.su.unlocked)},
-    branches: ["logs"]
+    branches: ["logs"],
+    effect(){
+        return player.su.points.add(1).pow(3)
+    },
+    effectDescription(){
+        return "which is boosting 4th row currencies by x" + format(layers.su.effect())
+    },
+    milestones: {
+    0: {
+        requirementDescription: "1 Supreme Rune",
+        effectDescription: "Keep Extreme Rune Milestones",
+        done() { return player.su.points.gte(1) }
+    },
+    },
 })
