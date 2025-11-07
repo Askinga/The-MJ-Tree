@@ -37,6 +37,7 @@ addLayer("logs", {
 		if (hasUpgrade('logs', 25)) mult = mult.times(10)
 		mult = mult.times(tmp.logs.woodEffect)
 		if (hasUpgrade('logs', 31)) mult = mult.times(15)
+		mult = mult.times(layers.su.effect())
         return mult
     },
 	woodEffect(){
@@ -305,6 +306,7 @@ addLayer("logs", {
                 let mult = new Decimal(1)
 				if (hasUpgrade('logs', 31)) mult = mult.times(5)
 				if (hasUpgrade('logs', 32)) mult = mult.times(5)
+				mult = mult.times(layers.su.effect())
 				player.logs.woodGain = mult
 	         	return mult
             },
