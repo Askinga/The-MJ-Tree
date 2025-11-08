@@ -11,6 +11,13 @@ addLayer("e", {
 		if (hasUpgrade('e', 12) || hasMilestone('su', 3)) p = p.add(1)
 		return p
 	},
+	automate(){
+		if (hasMilestone('su', 4)) {
+		    if (canBuyBuyable("e", 11)) setBuyableAmount("e", 11, player.e.points.max(2).log(25).sub(1).root(1).floor().add(1))
+			if (canBuyBuyable("e", 12)) setBuyableAmount("e", 12, player.e.points.max(2).log(50).sub(1).root(1).floor().add(1))
+			if (canBuyBuyable("e", 13)) setBuyableAmount("e", 13, player.e.points.max(2).log(30).sub(1).root(1.3).floor().add(1))
+		}
+	},
 	autoUpgrade(){ return hasMilestone('su', 3) },
 	doReset(e) {
         // Stage 1, almost always needed, makes resetting this layer not delete your progress
