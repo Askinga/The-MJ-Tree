@@ -29,10 +29,14 @@ addLayer("su", {
         if (hasUpgrade('su', 11)) mult = mult.times(4)
         if (hasUpgrade('su', 12)) mult = mult.times(5)
         if (hasUpgrade('su', 13)) mult = mult.times(6)
+        if (hasMilestone('su', 5)) mult = mult.times(6)
         return mult;
     },
     gainExp() { 
         return new Decimal(1);
+    },
+    eBillion(){
+        return player.su.points.pow(0.1).sub(1)
     },
     row: 4,
     hotkeys: [
@@ -71,6 +75,11 @@ addLayer("su", {
         requirementDescription: "5 Supreme Runes",
         effectDescription: "Autobuy Extreme Rune Buyables and keep ER upgrade 1 third effect",
         done() { return player.su.points.gte(5) }
+    },
+    5: {
+        requirementDescription: "e1.000e9 points",
+        effectDescription(){ return "x4 Supreme Runes and boost Wood effect exponent based on Supreme Runes. Currently: x" + format(tmp.su.eBillion)},
+        done() { return player.points.gte("ee9") }
     },
     },
     upgrades: {
