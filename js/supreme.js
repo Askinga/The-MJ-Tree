@@ -26,6 +26,7 @@ addLayer("su", {
     exponent: 0, 
     gainMult() { 
         let mult = new Decimal(1); // Declare with let
+        if (hasUpgrade('su', 11)) mult = mult.times(4)
         return mult;
     },
     gainExp() { 
@@ -59,5 +60,19 @@ addLayer("su", {
         effectDescription: "Autobuy Log Buyables",
         done() { return player.su.points.gte(3) }
     },
+    3: {
+        requirementDescription: "4 Supreme Runes",
+        effectDescription: "Autobuy 4th row upgrades and keep their passive generation. +10% Logs per second",
+        done() { return player.su.points.gte(4) }
+    },
+    },
+    upgrades: {
+        11: {
+            title: "Thats a lot",
+            description: "x4 Supreme Runes, x1000 Logs and Wood, boost Logs based on Supreme Runes",
+            cost: new Decimal(5),
+            effect(){ return player.su.points.add(1).pow(4) },
+            effectDisplay(){ return "x"+format(upgradeEffect('su', 11)) },
+        },
     },
 })
