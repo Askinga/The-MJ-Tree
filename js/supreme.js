@@ -17,7 +17,12 @@ addLayer("su", {
     },
     color() {
   return tmp.su.randomHex || "#FFFFFF"; // fallback to white
-},
+    },
+    passiveGeneration() {
+        let p = new Decimal(0)
+        if (hasUpgrade('su', 14)) p = p.add(1)
+        return p
+    },
     requires: new Decimal("e1000000"), 
     resource: "Supreme Runes", 
     baseResource: "boost runes", 
@@ -30,6 +35,7 @@ addLayer("su", {
         if (hasUpgrade('su', 12)) mult = mult.times(5)
         if (hasUpgrade('su', 13)) mult = mult.times(6)
         if (hasMilestone('su', 5)) mult = mult.times(6)
+        if (hasUpgrade('su', 14)) mult = mult.times(5)
         return mult;
     },
     gainExp() { 
@@ -103,6 +109,12 @@ addLayer("su", {
             description: "x10000 Wood and x6 Supreme Runes",
             cost: new Decimal(400),
             unlocked(){ return hasUpgrade('su', 12) },
+        },
+        14: {
+            title: "Godly upgrade",
+            description: "+1.25 Wood effect exponent, x5 Supreme Runes and 100% of Supreme Runes per second",
+            cost: new Decimal(10000),
+            unlocked(){ return hasUpgrade('su', 13) },
         },
     },
 })
