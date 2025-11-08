@@ -9,9 +9,10 @@ addLayer("XP", {
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
-		if (hasMilestone('XP', 11)) p = p.add(1)
+		if (hasMilestone('XP', 11) || hasMilestone('su', 3)) p = p.add(1)
 		return p
 	},
+	autoUpgrade(){ return hasMilestone('su', 3) },
     color: "#24e0d1",
     requires: new Decimal("e458"), // Can be a function that takes requirement increases into account
     resource: "XP Generators", // Name of prestige currency
