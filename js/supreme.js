@@ -36,7 +36,7 @@ addLayer("su", {
         return new Decimal(1);
     },
     eBillion(){
-        return player.su.points.pow(0.1).sub(1)
+        return player.su.points.add(1).log(10).div(2)
     },
     row: 4,
     hotkeys: [
