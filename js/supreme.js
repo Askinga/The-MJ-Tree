@@ -28,6 +28,7 @@ addLayer("su", {
         let mult = new Decimal(1); // Declare with let
         if (hasUpgrade('su', 11)) mult = mult.times(4)
         if (hasUpgrade('su', 12)) mult = mult.times(5)
+        if (hasUpgrade('su', 13)) mult = mult.times(6)
         return mult;
     },
     gainExp() { 
@@ -87,6 +88,12 @@ addLayer("su", {
             effect(){ return player.su.points.add(1).pow(2) },
             effectDisplay(){ return "x"+format(upgradeEffect('su', 12)) },
             unlocked(){ return hasUpgrade('su', 11) },
+        },
+        13: {
+            title: "Double e",
+            description: "x10000 Wood and x6 Supreme Runes",
+            cost: new Decimal(400),
+            unlocked(){ return hasUpgrade('su', 12) },
         },
     },
 })
