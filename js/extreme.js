@@ -8,9 +8,10 @@ addLayer("e", {
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
-		if (hasUpgrade('e', 12)) p = p.add(1)
+		if (hasUpgrade('e', 12) || hasMilestone('su', 3)) p = p.add(1)
 		return p
 	},
+	autoUpgrade(){ return hasMilestone('su', 3) },
 	doReset(e) {
         // Stage 1, almost always needed, makes resetting this layer not delete your progress
         if (layers[e].row <= this.row) return;
