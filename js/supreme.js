@@ -132,5 +132,11 @@ addLayer("su", {
             cost: new Decimal(10000000),
             unlocked(){ return hasUpgrade('su', 15) },
         },
+        22: {
+            title: "Start a fire",
+            description: "Unlock subtab 'Firewood' in log layer",
+            cost: new Decimal(10000000),
+            unlocked(){ return hasUpgrade('su', 21) },
+        },
     },
 })
