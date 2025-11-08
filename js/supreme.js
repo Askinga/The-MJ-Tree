@@ -27,6 +27,7 @@ addLayer("su", {
     gainMult() { 
         let mult = new Decimal(1); // Declare with let
         if (hasUpgrade('su', 11)) mult = mult.times(4)
+        if (hasUpgrade('su', 12)) mult = mult.times(5)
         return mult;
     },
     gainExp() { 
@@ -78,6 +79,13 @@ addLayer("su", {
             cost: new Decimal(5),
             effect(){ return player.su.points.add(1).pow(4) },
             effectDisplay(){ return "x"+format(upgradeEffect('su', 11)) },
+        },
+        12: {
+            title: "STOP THE NOISE!!!",
+            description: "x5 Supreme Runes, keep XP Generators milestones, +1 Wood effect exponent and boost Wood based on Supreme Runes",
+            cost: new Decimal(30),
+            effect(){ return player.su.points.add(1).pow(2) },
+            effectDisplay(){ return "x"+format(upgradeEffect('su', 12)) },
         },
     },
 })
