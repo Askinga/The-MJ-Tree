@@ -95,7 +95,7 @@ addLayer("l", {
 
 		player.l.req = req
 		if (player.l.points.gte(player.l.req)) {
-		  if (hasUpgrade('e', 11)) {
+		  if (hasUpgrade('e', 11) || hasMilestone('su', 4)) {
 			  player.l.level = player.l.points.add(1).log(2).floor().add(1)
 		  } else {
 			player.l.points = player.l.points.sub(req)
