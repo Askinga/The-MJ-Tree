@@ -86,6 +86,7 @@ addLayer("su", {
             cost: new Decimal(30),
             effect(){ return player.su.points.add(1).pow(2) },
             effectDisplay(){ return "x"+format(upgradeEffect('su', 12)) },
+            unlocked(){ return hasUpgrade('su', 11) },
         },
     },
 })
