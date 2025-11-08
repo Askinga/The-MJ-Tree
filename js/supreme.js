@@ -65,6 +65,11 @@ addLayer("su", {
         effectDescription: "Autobuy 4th row upgrades and keep their passive generation. +10% Logs per second",
         done() { return player.su.points.gte(4) }
     },
+    4: {
+        requirementDescription: "5 Supreme Runes",
+        effectDescription: "Autobuy Extreme Rune Buyables and keep ER upgrade 1 third effect",
+        done() { return player.su.points.gte(5) }
+    },
     },
     upgrades: {
         11: {
