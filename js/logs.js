@@ -60,6 +60,7 @@ addLayer("logs", {
 		let pow = new Decimal(1)
 		if (hasUpgrade('logs', 33)) pow = pow.add(0.5)
 		if (hasUpgrade('logs', 34)) pow = pow.add(0.5)
+		if (hasUpgrade('su', 12)) pow = pow.add(1)
 		return player.logs.wood.add(1).pow(pow)
 	},
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -324,6 +325,7 @@ addLayer("logs", {
 				if (hasUpgrade('logs', 32)) mult = mult.times(5)
 				mult = mult.times(layers.su.effect())
 				if (hasUpgrade('su', 11)) mult = mult.times(1000)
+				if (hasUpgrade('su', 12)) mult = mult.times(upgradeEffect('su', 12))
 				player.logs.woodGain = mult
 	         	return mult
             },
