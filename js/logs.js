@@ -63,6 +63,8 @@ addLayer("logs", {
 		if (hasUpgrade('su', 12)) pow = pow.add(1)
 		if (hasMilestone('su', 5)) pow = pow.add(tmp.su.eBillion)
 		if (hasUpgrade('su', 14)) pow = pow.add(1.25)
+		if (hasUpgrade('su', 15)) pow = pow.add(1)
+		if (hasUpgrade('su', 21)) pow = pow.times(1.25)
 		return player.logs.wood.add(1).pow(pow)
 	},
     gainExp() { // Calculate the exponent on main currency from bonuses
