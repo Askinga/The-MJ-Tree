@@ -8,6 +8,18 @@ addLayer("logs", {
 		wood: new Decimal(0),
 		woodGain: new Decimal(0),
     }},
+	automate(){
+		if (hasMilestone('su', 2)) {
+		    if (buyableCanAfford("logs", 11)) setBuyableAmount("logs", 11, player.logs.points.max(100).log(10).sub(1).root(1).floor().add(1))
+			if (buyableCanAfford("logs", 12)) setBuyableAmount("logs", 12, player.logs.points.max(10).log(1.125).sub(1).root(1).floor().add(1))
+			if (buyableCanAfford("logs", 13)) setBuyableAmount("logs", 13, player.logs.points.max(100).log(1.2).sub(1).root(1).floor().add(1))
+			if (hasUpgrade('logs', 15)) {
+			    if (buyableCanAfford("logs", 21)) setBuyableAmount("logs", 21, player.logs.points.max(1000000).log(10).sub(6).root(1.1).floor().add(1))
+				if (buyableCanAfford("logs", 22)) setBuyableAmount("logs", 22, player.logs.points.max(1000000).log(1.3).sub(6).root(1).floor().add(1))
+				if (buyableCanAfford("logs", 23)) setBuyableAmount("logs", 23, player.logs.points.max(1000000).log(1.4).sub(6).root(1.2).floor().add(1))
+			}
+		}
+	},
 	passiveGeneration(){
 		let p = new Decimal(0)
 		p = p.add(buyableEffect('logs', 13).div(100))
@@ -185,7 +197,7 @@ addLayer("logs", {
 	23: {
 		unlocked(){ return hasUpgrade('logs', 15) },
 		title: "Send out more robots",
-        cost(x) { return new Decimal(1.4).pow(x.pow(x.div(200).add(1))).times(1000000) },
+        cost(x) { return new Decimal(1.4).pow(x.pow(1.2)).times(1000000) },
         display() { return "+x1 Logs per second.<br>Cost: " + format(this.cost()) + " Logs<br>Bought: " + format(getBuyableAmount('logs', 23)) + "<br>Effect: +x" + format(buyableEffect('logs', 23)) + " Log passive gain" },
         canAfford() { return player.logs.points.gte(this.cost()) },
         buy() {
