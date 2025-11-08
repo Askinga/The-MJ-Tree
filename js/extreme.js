@@ -15,7 +15,7 @@ addLayer("e", {
 		if (hasMilestone('su', 4)) {
 		    if (canBuyBuyable("e", 11)) setBuyableAmount("e", 11, player.e.points.max(2).log(25).sub(1).root(1).floor().add(1))
 			if (canBuyBuyable("e", 12)) setBuyableAmount("e", 12, player.e.points.max(2).log(50).sub(1).root(1).floor().add(1))
-			if (canBuyBuyable("e", 13)) setBuyableAmount("e", 13, player.e.points.max(2).log(30).sub(1).root(1.3).floor().add(1))
+			if (canBuyBuyable("e", 13)) buyBuyable('e', 13)
 		}
 	},
 	autoUpgrade(){ return hasMilestone('su', 3) },
