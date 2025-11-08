@@ -7,6 +7,8 @@ addLayer("logs", {
 		points: new Decimal(0),
 		wood: new Decimal(0),
 		woodGain: new Decimal(0),
+		firewood: new Decimal(0),
+		FiWS: new Decimal(0),
     }},
 	automate(){
 		if (hasMilestone('su', 2)) {
@@ -64,8 +66,16 @@ addLayer("logs", {
 		if (hasMilestone('su', 5)) pow = pow.add(tmp.su.eBillion)
 		if (hasUpgrade('su', 14)) pow = pow.add(1.25)
 		if (hasUpgrade('su', 15)) pow = pow.add(1)
+		pow = pow.add(tmp.logs.firewoodEffect)
 		if (hasUpgrade('su', 21)) pow = pow.times(1.25)
 		return player.logs.wood.add(1).pow(pow)
+	},
+	firewoodEffect(){
+		let pow = new Decimal(1)
+		return player.logs.firewood.add(1).log(10).pow(pow)
+	},
+	FWS(){
+		return player.logs.wood.add(1).log(10).div(50)
 	},
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
@@ -119,6 +129,29 @@ addLayer("logs", {
 					}
 		    },
 		},
+		"Firewood": {
+			unlocked(){ return hasUpgrade('su', 22) },
+			content: [
+			"main-display",
+				"prestige-button",
+				"resource-display",
+				"blank",
+				["display-text", "Firewood generation is based on Wood"],
+				["display-text", function () { return (
+                'You have <span style=" color: rgb(153, 92, 26); text-shadow: rgb(153, 92, 26) 0px 0px 10px"><h2>' +
+                format(player.logs.firewood) +
+                "</h2></span> Firewood boosting Wood effect exponent by +" + format(tmp.logs.firewoodEffect) + " (before multipliers)<br>(" + format(player.logs.FiWS) + "/sec)"
+                );
+                },
+                ],
+			],
+		buttonStyle() {
+                    return {
+                        'background': 'linear-gradient(90deg, #995c1a, black)',
+                        'border-color': '#735245',
+                        'color': 'white',
+					}
+		    },
 	},
 	buyables: {
 	11: {
@@ -349,6 +382,14 @@ addLayer("logs", {
 		passive = passive.times(diff)
 		if (hasUpgrade('logs', 32)) {
 			player.logs.wood = player.logs.wood.add(player.logs.woodGain.times(passive))
+		}
+
+		if (hasUpgrade('su', 22)) {
+		let FWS = tmp.logs.FWS
+		
+        player.logs.FiWS = FWS
+		FWS = FWS.times(diff)
+		player.logs.firewood = player.logs.firewood.add(FWS)
 		}
 	},
 })
