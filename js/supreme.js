@@ -54,5 +54,10 @@ addLayer("su", {
         effectDescription: "xe1e6 points",
         done() { return player.su.points.gte(2) }
     },
+    2: {
+        requirementDescription: "3 Supreme Runes",
+        effectDescription: "Autobuy Log Buyables",
+        done() { return player.su.points.gte(3) }
+    },
     },
 })
