@@ -24,8 +24,10 @@ addLayer("logs", {
 		let p = new Decimal(0)
 		p = p.add(buyableEffect('logs', 13).div(100))
 		p = p.times(buyableEffect('logs', 23).add(1))
+		if (hasMilestone('su', 3)) p = p.add(0.1)
 		return p
 	},
+	autoUpgrade(){ return hasMilestone('su', 3) },
     color: "#735245",
     requires: new Decimal("e1.8e6"), // Can be a function that takes requirement increases into account
     resource: "Logs", // Name of prestige currency
