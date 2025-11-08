@@ -1,6 +1,6 @@
 addLayer("su", {
     name: "Supreme Runes", 
-    symbol: "SR", 
+    symbol: "SuR", 
     position: 0, 
     startData() { 
   return {
@@ -36,6 +36,8 @@ addLayer("su", {
         if (hasUpgrade('su', 13)) mult = mult.times(6)
         if (hasMilestone('su', 5)) mult = mult.times(6)
         if (hasUpgrade('su', 14)) mult = mult.times(5)
+        if (hasUpgrade('su', 15)) mult = mult.times(2)
+        if (hasUpgrade('su', 15)) mult = mult.times(upgradeEffect('su', 15))
         return mult;
     },
     gainExp() { 
@@ -115,6 +117,20 @@ addLayer("su", {
             description: "+1.25 Wood effect exponent, x5 Supreme Runes and 100% of Supreme Runes per second",
             cost: new Decimal(10000),
             unlocked(){ return hasUpgrade('su', 13) },
+        },
+        15: {
+            title: "We are in the INFLATION phase of the game",
+            description: "+1 Wood effect exponent, x2 SuR, boost Supreme Runes based on Points",
+            cost: new Decimal(500000),
+            effect(){ return player.points.add(1).log(10).log(10).add(1) },
+            effectDisplay(){ return "x"+format(upgradeEffect('su', 15)) },
+            unlocked(){ return hasUpgrade('su', 14) },
+        },
+        21: {
+            title: "Godly upgrade 2",
+            description: "x1.25 Wood effect exponent",
+            cost: new Decimal(10000000),
+            unlocked(){ return hasUpgrade('su', 15) },
         },
     },
 })
