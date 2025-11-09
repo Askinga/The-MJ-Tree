@@ -151,6 +151,7 @@ addLayer("logs", {
 					}
 		    },
 	},
+			},
 	buyables: {
 	11: {
 		title: "Stronger Axe",
