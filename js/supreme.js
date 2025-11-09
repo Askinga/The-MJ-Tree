@@ -144,8 +144,14 @@ addLayer("su", {
             description: "Boost Firewood based on Points, x5 Firewood and x7 SuR",
             cost: new Decimal(10000000),
             unlocked(){ return hasUpgrade('su', 22) },
-            effect(){ return player.points.add(1).log(10).log(10).div(2).add(1) },
+            effect(){ return player.points.add(10).log(10).log(10).add(1) },
             effectDisplay(){ return "x"+format(upgradeEffect('su', 23)) },
+        },
+        24: {
+            title: "Blue firewood",
+            description: "x1.5 Firewood effect, x1.3 Wood effect exponent",
+            cost: new Decimal(100000000),
+            unlocked(){ return hasUpgrade('su', 23) },
         },
     },
 })
