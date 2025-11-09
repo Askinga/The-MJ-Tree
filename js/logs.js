@@ -111,7 +111,7 @@ addLayer("logs", {
 				["display-text", function () { return (
                 'You have <span style=" color: rgb(255,193,140); text-shadow: rgb(255,193,140) 0px 0px 10px"><h2>' +
                 format(player.logs.wood) +
-                "</h2></span> Wood, boosting Logs by x" + format(tmp.logs.woodEffect)
+                '</h2></span> Wood, boosting Logs by x' + format(tmp.logs.woodEffect)
                 );
                 },
                 ],
@@ -133,14 +133,15 @@ addLayer("logs", {
 				"prestige-button",
 				"resource-display",
 				"blank",
-				["display-text", function(){ return "Firewood generation is based on Wood" }],
+				["display-text", "Firewood generation is based on Wood" ],
 				["display-text", function () { return (
                 'You have <span style=" color: rgb(153,92,26); text-shadow: rgb(153,92,26) 0px 0px 10px"><h2>' +
                 format(player.logs.firewood) +
-                "</h2></span> Firewood, boosting Wood effect exponent by +" + format(tmp.logs.fireWoodEffect) + " (before multipliers)<br>(" + format(player.logs.FiWS) + "/sec)"
+                '</h2></span> Firewood, boosting Wood effect exponent by +' + format(tmp.logs.fireWoodEffect) + ' (before multipliers)'
                 );
                 },
                 ],
+				["display-text", function(){ return "(" + format(player.logs.FiWS) + "/sec)" }],
 			],
 		buttonStyle() {
                     return {
