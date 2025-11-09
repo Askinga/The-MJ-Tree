@@ -377,7 +377,7 @@ addLayer("logs", {
 	},
 	update(diff) {
 		let passive = new Decimal(0)
-		let ire = new Decimal(tmp.logs.FirWS)
+		let ire = new Decimal(player.logs.wood.add(1).log(10).div(50))
 		if (hasUpgrade('logs', 32)) passive = passive.add(10)
 
 		passive = passive.times(diff)
