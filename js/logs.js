@@ -136,7 +136,7 @@ addLayer("logs", {
 				"prestige-button",
 				"resource-display",
 				"blank",
-				["display-text", "Firewood generation is based on Wood"],
+				["display-text", function(){ return "Firewood generation is based on Wood" }],
 				["display-text", function () { return (
                 'You have <span style=" color: rgb(153, 92, 26); text-shadow: rgb(153, 92, 26) 0px 0px 10px"><h2>' +
                 format(player.logs.firewood) +
@@ -377,6 +377,7 @@ addLayer("logs", {
 	},
 	update(diff) {
 		let passive = new Decimal(0)
+		let FWS = tmp.logs.FirWS
 		if (hasUpgrade('logs', 32)) passive = passive.add(10)
 
 		passive = passive.times(diff)
@@ -384,9 +385,7 @@ addLayer("logs", {
 			player.logs.wood = player.logs.wood.add(player.logs.woodGain.times(passive))
 		}
 
-		if (hasUpgrade('su', 22)) {
-		let FWS = tmp.logs.FirWS
-		
+		if (hasUpgrade('su', 22)) {	
         player.logs.FiWS = FWS
 		FWS = FWS.times(diff)
 		player.logs.firewood = player.logs.firewood.add(FWS)
