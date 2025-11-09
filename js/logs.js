@@ -145,7 +145,7 @@ addLayer("logs", {
 			],
 		buttonStyle() {
                     return {
-                        'background': '#995c1a',
+                        'background': 'linear-gradient(45deg, #995c1a, black)',
                         'border-color': '#735245',
                         'color': 'white',
 					}
