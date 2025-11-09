@@ -377,7 +377,7 @@ addLayer("logs", {
 	},
 	update(diff) {
 		let passive = new Decimal(0)
-		let FWS = tmp.logs.FirWS
+		let FurWS = tmp.logs.FirWS
 		if (hasUpgrade('logs', 32)) passive = passive.add(10)
 
 		passive = passive.times(diff)
@@ -386,9 +386,9 @@ addLayer("logs", {
 		}
 
 		if (hasUpgrade('su', 22)) {	
-        player.logs.FiWS = FWS
-		FWS = FWS.times(diff)
-		player.logs.firewood = player.logs.firewood.add(FWS)
+        player.logs.FiWS = FurWS
+		FurWS = FurWS.times(diff)
+		player.logs.firewood = player.logs.firewood.add(FurWS)
 		}
 	},
 })
