@@ -68,11 +68,14 @@ addLayer("logs", {
 		if (hasUpgrade('su', 15)) pow = pow.add(1)
 		pow = pow.add(tmp.logs.fireWoodEffect)
 		if (hasUpgrade('su', 21)) pow = pow.times(1.25)
+		if (hasUpgrade('su', 24)) pow = pow.times(1.3)
 		return player.logs.wood.add(1).pow(pow)
 	},
 	fireWoodEffect(){
 		let pow = new Decimal(1)
-		return player.logs.firewood.add(1).log(10).pow(pow)
+		let mult = new Decimal(1)
+		if (hasUpgrade('su', 24)) mult = mult.times(1.5)
+		return player.logs.firewood.add(1).log(10).pow(pow).times(mult)
 	},
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
