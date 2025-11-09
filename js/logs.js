@@ -378,6 +378,8 @@ addLayer("logs", {
 		let passive = new Decimal(0)
 		let ire = new Decimal(player.logs.wood.add(1).log(10).div(50))
 		if (hasUpgrade('logs', 32)) passive = passive.add(10)
+		if (hasUpgrade('su', 23)) ire = ire.times(5)
+		if (hasUpgrade('su', 23)) ire = ire.times(upgradeEffect('su', 23))
 
 		passive = passive.times(diff)
 		if (hasUpgrade('logs', 32)) {
