@@ -66,16 +66,13 @@ addLayer("logs", {
 		if (hasMilestone('su', 5)) pow = pow.add(tmp.su.eBillion)
 		if (hasUpgrade('su', 14)) pow = pow.add(1.25)
 		if (hasUpgrade('su', 15)) pow = pow.add(1)
-		pow = pow.add(tmp.logs.firewoodEffect)
+		pow = pow.add(tmp.logs.fireWoodEffect)
 		if (hasUpgrade('su', 21)) pow = pow.times(1.25)
 		return player.logs.wood.add(1).pow(pow)
 	},
-	firewoodEffect(){
+	fireWoodEffect(){
 		let pow = new Decimal(1)
 		return player.logs.firewood.add(1).log(10).pow(pow)
-	},
-	FirWS(){
-		return player.logs.wood.add(1).log(10).div(50)
 	},
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
@@ -140,7 +137,7 @@ addLayer("logs", {
 				["display-text", function () { return (
                 'You have <span style=" color: rgb(153,92,26); text-shadow: rgb(153,92,26) 0px 0px 10px"><h2>' +
                 format(player.logs.firewood) +
-                "</h2></span> Firewood, boosting Wood effect exponent by +" + format(tmp.logs.firewoodEffect) + " (before multipliers)<br>(" + format(player.logs.FiWS) + "/sec)"
+                "</h2></span> Firewood, boosting Wood effect exponent by +" + format(tmp.logs.fireWoodEffect) + " (before multipliers)<br>(" + format(player.logs.FiWS) + "/sec)"
                 );
                 },
                 ],
