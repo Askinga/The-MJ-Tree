@@ -38,6 +38,7 @@ addLayer("su", {
         if (hasUpgrade('su', 14)) mult = mult.times(5)
         if (hasUpgrade('su', 15)) mult = mult.times(2)
         if (hasUpgrade('su', 15)) mult = mult.times(upgradeEffect('su', 15))
+        if (hasUpgrade('su', 23)) mult = mult.times(7)
         return mult;
     },
     gainExp() { 
@@ -137,6 +138,14 @@ addLayer("su", {
             description: "Unlock subtab 'Firewood' in log layer",
             cost: new Decimal(10000000),
             unlocked(){ return hasUpgrade('su', 21) },
+        },
+        23: {
+            title: "Gather more",
+            description: "Boost Firewood based on Points, x5 Firewood and x7 SuR",
+            cost: new Decimal(10000000),
+            unlocked(){ return hasUpgrade('su', 22) },
+            effect(){ return player.points.add(1).log(10).log(10).div(2).add(1) },
+            effectDisplay(){ return "x"+format(upgradeEffect('su', 23)) },
         },
     },
 })
