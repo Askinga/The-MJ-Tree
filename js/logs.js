@@ -74,7 +74,7 @@ addLayer("logs", {
 		let pow = new Decimal(1)
 		return player.logs.firewood.add(1).log(10).pow(pow)
 	},
-	FWS(){
+	FirWS(){
 		return player.logs.wood.add(1).log(10).div(50)
 	},
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -385,7 +385,7 @@ addLayer("logs", {
 		}
 
 		if (hasUpgrade('su', 22)) {
-		let FWS = tmp.logs.FWS
+		let FWS = tmp.logs.FirWS
 		
         player.logs.FiWS = FWS
 		FWS = FWS.times(diff)
