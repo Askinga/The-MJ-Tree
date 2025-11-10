@@ -29,7 +29,7 @@ addLayer("su", {
         return player.su.timeSubtab.add(1).pow(2)
     },
     timeEffect2(){
-        return player.su.timeSubtab.add(1).log(10).div(12)
+        return player.su.timeSubtab.add(1).log(10).div(12).add(1)
     },
     onPrestige(){
         player.su.timeSubtab = new Decimal(0)
@@ -78,7 +78,7 @@ addLayer("su", {
                 "main-display",
                 "prestige-button",
                 "resource-display",
-                ["display-text", function() { return "Time gets reset on row 5 (or higher) reset<br>You have " + format(player.su.timeSubtab) + " Time, boosting Firewood by x" + format(tmp.su.timeEffect) + " and it's effect exponent by +" + format(tmp.su.timeEffect2) + "<br>(" + format(player.su.timeGain) + "/sec)" }]
+                ["display-text", function() { return "Time gets reset on row 5 (or higher) reset<br>You have " + format(player.su.timeSubtab) + " Time, boosting Firewood by x" + format(tmp.su.timeEffect) + " and it's effect by x" + format(tmp.su.timeEffect2) + "<br>(" + format(player.su.timeGain) + "/sec)" }]
             ],
             buttonStyle() {
                     return {
