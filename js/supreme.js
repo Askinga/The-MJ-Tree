@@ -7,6 +7,8 @@ addLayer("su", {
     unlocked: false,
     points: new Decimal(0),
     myColor: "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0'),
+    timeSubtab: new Decimal(0),
+    timeGain: new Decimal(0)
   }
 },
     randomHex(){
@@ -22,6 +24,15 @@ addLayer("su", {
         let p = new Decimal(0)
         if (hasUpgrade('su', 14)) p = p.add(1)
         return p
+    },
+    timeEffect(){
+        return player.su.timeSubtab.add(1).pow(2)
+    },
+    timeEffect2(){
+        return player.su.timeSubtab.add(1).log(10).div(12)
+    },
+    onPrestige(){
+        player.su.timeSubtab = new Decimal(0)
     },
     requires: new Decimal("e1000000"), 
     resource: "Supreme Runes", 
@@ -51,6 +62,33 @@ addLayer("su", {
     hotkeys: [
         {key: "S", description: "Shift+S: Reset for supreme runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    tabFormat: {
+        "Upgrades & Milestones": {
+            content: [
+                "main-display",
+                "prestige-button",
+                "resource-display",
+                "milestones",
+                "upgrades",
+            ],
+        },
+        "Time": {
+            unlocked(){ return hasUpgrade('su', 25) },
+            content: [
+                "main-display",
+                "prestige-button",
+                "resource-display",
+                ["display-text", function() { return "Time gets reset on row 5 (or higher) reset<br>You have " + format(player.su.timeSubtab) + " Time, boosting Firewood by x" + format(tmp.su.timeEffect) + " and it's effect exponent by +" + format(tmp.su.timeEffect2) + "<br>(" + format(player.su.timeGain) + "/sec)" }]
+            ],
+            buttonStyle() {
+                    return {
+                        'background': 'linear-gradient(45deg, white, black)',
+                        'border-color': '#ffffff',
+                        'color': 'gray',
+					}
+		    },
+        },
+    },
     layerShown(){return (hasUpgrade('logs', 35) || player.su.unlocked)},
     branches: ["logs"],
     effect(){
@@ -153,5 +191,20 @@ addLayer("su", {
             cost: new Decimal(100000000),
             unlocked(){ return hasUpgrade('su', 23) },
         },
+        25: {
+            title: "[Time]wall",
+            description: "Unlock subtab 'Time'",
+            cost: new Decimal(100000000),
+            unlocked(){ return hasUpgrade('su', 24) },
+        },
+    },
+    update(diff) {
+        let timeG = new Decimal(0)
+
+        if (hasUpgrade('su', 25)) {
+        player.su.timeGain = timeG
+		timeG = timeG.times(diff)
+		player.su.timeSubtab = player.su.timeSubtab.add(timeG)
+        }
     },
 })
