@@ -199,7 +199,7 @@ addLayer("su", {
         },
     },
     update(diff) {
-        let timeG = new Decimal(0)
+        let timeG = new Decimal(1)
 
         if (hasUpgrade('su', 25)) {
         player.su.timeGain = timeG
