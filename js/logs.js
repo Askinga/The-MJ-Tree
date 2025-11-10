@@ -75,6 +75,7 @@ addLayer("logs", {
 		let pow = new Decimal(1)
 		let mult = new Decimal(1)
 		if (hasUpgrade('su', 24)) mult = mult.times(1.5)
+		if (hasUpgrade('su', 25)) mult = mult.times(tmp.su.timeEffect2)
 		return player.logs.firewood.add(1).log(10).pow(pow).times(mult)
 	},
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -383,6 +384,7 @@ addLayer("logs", {
 		if (hasUpgrade('logs', 32)) passive = passive.add(10)
 		if (hasUpgrade('su', 23)) ire = ire.times(5)
 		if (hasUpgrade('su', 23)) ire = ire.times(upgradeEffect('su', 23))
+		if (hasUpgrade('su', 25)) ire = ire.times(tmp.su.timeEffect)
 
 		passive = passive.times(diff)
 		if (hasUpgrade('logs', 32)) {
