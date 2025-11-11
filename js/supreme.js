@@ -50,6 +50,7 @@ addLayer("su", {
         if (hasUpgrade('su', 15)) mult = mult.times(2)
         if (hasUpgrade('su', 15)) mult = mult.times(upgradeEffect('su', 15))
         if (hasUpgrade('su', 23)) mult = mult.times(7)
+		if (hasUpgrade('su', 31)) mult = mult.times(8)
         return mult;
     },
     gainExp() { 
@@ -197,9 +198,19 @@ addLayer("su", {
             cost: new Decimal(100000000),
             unlocked(){ return hasUpgrade('su', 24) },
         },
+		31: {
+            title: "Time warp",
+            description: "Boost Time based on Time, x4 Time and x8 SuR",
+            cost: new Decimal(1e8),
+            unlocked(){ return hasUpgrade('su', 25) },
+            effect(){ return player.su.timeSubtab.add(1).pow(0.2) },
+            effectDisplay(){ return "x"+format(upgradeEffect('su', 23)) },
+        },
     },
     update(diff) {
         let timeG = new Decimal(1)
+		if (hasUpgrade('su', 31)) timeG = timeG.times(upgradeEffect('su', 31))
+		if (hasUpgrade('su', 31)) timeG = timeG.times(4)
 
         if (hasUpgrade('su', 25)) {
         player.su.timeGain = timeG
