@@ -204,7 +204,7 @@ addLayer("su", {
             cost: new Decimal(1e8),
             unlocked(){ return hasUpgrade('su', 25) },
             effect(){ return player.su.timeSubtab.add(1).pow(0.2) },
-            effectDisplay(){ return "x"+format(upgradeEffect('su', 23)) },
+            effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
     },
     update(diff) {
