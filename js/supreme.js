@@ -52,6 +52,7 @@ addLayer("su", {
         if (hasUpgrade('su', 23)) mult = mult.times(7)
 		if (hasUpgrade('su', 31)) mult = mult.times(8)
 		if (hasChallenge('su', 11)) mult = mult.times(15)
+		if (hasUpgrade('su', 33)) mult = mult.times(11)
         return mult;
     },
     gainExp() { 
@@ -91,7 +92,7 @@ addLayer("su", {
 		    },
         },
 		"Challenges": {
-            unlocked(){ return hasUpgrade('su', 32) },
+            unlocked(){ return true },
             content: [
                 "main-display",
                 "prestige-button",
@@ -229,13 +230,21 @@ addLayer("su", {
             cost: new Decimal(7e8),
             unlocked(){ return hasUpgrade('su', 31) },
         },
+		33: {
+            title: "Supreme the Firewood",
+            description: "Boost Firewood based on SuR, x10 Time and x11 SuR",
+            cost: new Decimal(1e10),
+            unlocked(){ return hasUpgrade('su', 32) },
+            effect(){ return player.su.points.add(1).pow(0.2) },
+            effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
+        },
     },
     update(diff) {
         let timeG = new Decimal(1)
 		if (hasUpgrade('su', 31)) timeG = timeG.times(upgradeEffect('su', 31))
 		if (hasUpgrade('su', 31)) timeG = timeG.times(4)
         if (hasChallenge('su', 11)) timeG = timeG.times(15)
-		
+		if (hasUpgrade('su', 33)) timeG = timeG.times(10)
 		
         if (hasUpgrade('su', 25) && !inChallenge('su', 11)) {
         player.su.timeGain = timeG
