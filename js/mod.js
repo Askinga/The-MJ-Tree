@@ -83,6 +83,7 @@ function getPointGen() {
 	if (hasMilestone('XP', 5)) gain = gain.times("e35000")
 	gain = gain.times(layers.logs.effect())
 	if (hasMilestone('su', 1)) gain = gain.times("e1e6")
+	if (inChallenge('su', 11)) gain = gain.pow(0.01)
 	if (player.d.difficulty.eq(0)) gain = gain.pow(1.01)
 	return gain
 }
