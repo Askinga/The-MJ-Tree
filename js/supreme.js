@@ -53,6 +53,7 @@ addLayer("su", {
 		if (hasUpgrade('su', 31)) mult = mult.times(8)
 		if (hasChallenge('su', 11)) mult = mult.times(15)
 		if (hasUpgrade('su', 33)) mult = mult.times(11)
+		if (hasUpgrade('su', 34)) mult = mult.times(12)
         return mult;
     },
     gainExp() { 
@@ -238,6 +239,14 @@ addLayer("su", {
             effect(){ return player.su.points.add(1).pow(0.2) },
             effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
+		34: {
+            title: "Wormhole",
+            description: "Boost Time based on SuR, x100 Time and x12 SuR",
+            cost: new Decimal(1e11),
+            unlocked(){ return hasUpgrade('su', 33) },
+            effect(){ return player.su.points.add(1).pow(0.075) },
+            effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
+        },
     },
     update(diff) {
         let timeG = new Decimal(1)
@@ -245,6 +254,8 @@ addLayer("su", {
 		if (hasUpgrade('su', 31)) timeG = timeG.times(4)
         if (hasChallenge('su', 11)) timeG = timeG.times(15)
 		if (hasUpgrade('su', 33)) timeG = timeG.times(10)
+		if (hasUpgrade('su', 34)) timeG = timeG.times(upgradeEffect('su', 34))
+		if (hasUpgrade('su', 34)) timeG = timeG.times(100)
 		
         if (hasUpgrade('su', 25) && !inChallenge('su', 11)) {
         player.su.timeGain = timeG
