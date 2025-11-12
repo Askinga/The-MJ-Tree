@@ -248,8 +248,8 @@ addLayer("su", {
 		unlocked(){ return hasUpgrade('su', 32) },
         name: "Time dilation",
         challengeDescription: "^0.01 points, pause time gain and disable logs",
-        canComplete: function() {return player.points.gte("eee88")},
-		goalDescription: "Get ??? points.",
+        canComplete: function() {return player.points.gte("e12000")},
+		goalDescription: "Get e12K points.",
         rewardDescription: "x15 Time and SuR, ^1.2 points, x1000 Firewood, x1.3 Wood effect exponent"
     },
 	},
