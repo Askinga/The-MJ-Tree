@@ -70,6 +70,7 @@ addLayer("logs", {
 		pow = pow.add(tmp.logs.fireWoodEffect)
 		if (hasUpgrade('su', 21)) pow = pow.times(1.25)
 		if (hasUpgrade('su', 24)) pow = pow.times(1.3)
+		if (hasChallenge('su', 11)) pow = pow.times(1.3)
 		return player.logs.wood.add(1).pow(pow)
 	},
 	fireWoodEffect(){
@@ -387,6 +388,7 @@ addLayer("logs", {
 		if (hasUpgrade('su', 23)) ire = ire.times(5)
 		if (hasUpgrade('su', 23)) ire = ire.times(upgradeEffect('su', 23))
 		if (hasUpgrade('su', 25)) ire = ire.times(tmp.su.timeEffect)
+		if (hasChallenge('su', 11)) ire = ire.times(1000)
 
 		passive = passive.times(diff)
 		if (hasUpgrade('logs', 32)) {
