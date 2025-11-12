@@ -51,6 +51,7 @@ addLayer("su", {
         if (hasUpgrade('su', 15)) mult = mult.times(upgradeEffect('su', 15))
         if (hasUpgrade('su', 23)) mult = mult.times(7)
 		if (hasUpgrade('su', 31)) mult = mult.times(8)
+		if (hasChallenge('su', 11)) mult = mult.times(15)
         return mult;
     },
     gainExp() { 
@@ -86,6 +87,22 @@ addLayer("su", {
                         'background': 'linear-gradient(45deg, white, black)',
                         'border-color': '#ffffff',
                         'color': 'gray',
+					}
+		    },
+        },
+		"Challenges": {
+            unlocked(){ return hasUpgrade('su', 32) },
+            content: [
+                "main-display",
+                "prestige-button",
+                "resource-display",
+				"challenges",
+            ],
+            buttonStyle() {
+                    return {
+                        'background': 'linear-gradient(45deg, #4aba36, black)',
+                        'border-color': '#ffffff',
+                        'color': 'white',
 					}
 		    },
         },
@@ -206,16 +223,34 @@ addLayer("su", {
             effect(){ return player.su.timeSubtab.add(1).pow(0.2) },
             effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
+		32: {
+            title: "Time dilation",
+            description: "Unlock a challenge",
+            cost: new Decimal(7e8),
+            unlocked(){ return hasUpgrade('su', 31) },
+        },
     },
     update(diff) {
         let timeG = new Decimal(1)
 		if (hasUpgrade('su', 31)) timeG = timeG.times(upgradeEffect('su', 31))
 		if (hasUpgrade('su', 31)) timeG = timeG.times(4)
-
-        if (hasUpgrade('su', 25)) {
+        if (hasChallenge('su', 11)) timeG = timeG.times(15)
+		
+		
+        if (hasUpgrade('su', 25) && !inChallenge('su', 11)) {
         player.su.timeGain = timeG
 		timeG = timeG.times(diff)
 		player.su.timeSubtab = player.su.timeSubtab.add(timeG)
         }
     },
+	challenges: {
+    11: {
+		unlocked(){ return hasUpgrade('su', 32) },
+        name: "Time dilation",
+        challengeDescription: "^0.01 points, pause time gain and disable logs",
+        canComplete: function() {return player.points.gte("eee88")},
+		goalDescription: "Get ??? points.",
+        rewardDescription: "x15 Time and SuR, ^1.2 points, x1000 Firewood, x1.3 Wood effect exponent"
+    },
+	},
 })
