@@ -56,6 +56,7 @@ addLayer("logs", {
 		mult = mult.times(layers.su.effect())
 		if (hasUpgrade('su', 11)) mult = mult.times(1000)
 		if (hasUpgrade('su', 11)) mult = mult.times(upgradeEffect('su', 11))
+		if (inChallenge('su', 11)) mult = mult.times(0)
         return mult
     },
 	woodEffect(){
@@ -379,6 +380,7 @@ addLayer("logs", {
         },
 	},
 	update(diff) {
+		if (!inChallenge('su', 11)) {
 		let passive = new Decimal(0)
 		let ire = new Decimal(player.logs.wood.add(1).log(10).div(50))
 		if (hasUpgrade('logs', 32)) passive = passive.add(10)
@@ -395,6 +397,7 @@ addLayer("logs", {
         player.logs.FiWS = ire
 		ire = ire.times(diff)
 		player.logs.firewood = player.logs.firewood.add(ire)
+		}
 		}
 	},
 })
