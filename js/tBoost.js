@@ -6,6 +6,18 @@ addLayer("tb", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+	nodeStyle() {return {
+        "background": "radial-gradient(#ffffff, #888888)",
+        "width": "100px",
+        "height": "100px",
+    }
+},
+	componentStyles: {
+    "prestige-button"() {return { "background": "radial-gradient(#ffffff, #888888)",
+        "width": "200px",
+        "height": "150px",
+    }},
+},
     color: "#ffffff",
     requires: new Decimal(1e13), // Can be a function that takes requirement increases into account
     resource: "Time Boosters", // Name of prestige currency
