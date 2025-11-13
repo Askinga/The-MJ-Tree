@@ -369,6 +369,7 @@ addLayer("logs", {
 				if (hasUpgrade('su', 11)) mult = mult.times(1000)
 				if (hasUpgrade('su', 12)) mult = mult.times(upgradeEffect('su', 12))
 				if (hasUpgrade('su', 13)) mult = mult.times(10000)
+				if (hasUpgrade('su', 35)) mult = mult.times(upgradeEffect('su', 35))
 				player.logs.woodGain = mult
 	         	return mult
             },
