@@ -18,6 +18,9 @@ addLayer("tb", {
         "height": "150px",
     }},
 },
+	onPrestige(){
+        player.su.timeSubtab = new Decimal(0)
+    },
     color: "#ffffff",
     requires: new Decimal(1e13), // Can be a function that takes requirement increases into account
     resource: "Time Boosters", // Name of prestige currency
