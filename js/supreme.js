@@ -55,6 +55,7 @@ addLayer("su", {
 		if (hasUpgrade('su', 33)) mult = mult.times(11)
 		if (hasUpgrade('su', 34)) mult = mult.times(12)
 		if (hasUpgrade('su', 35)) mult = mult.times(20)
+		mult = mult.times(layers.tb.effect())
         return mult;
     },
     gainExp() { 
@@ -271,6 +272,7 @@ addLayer("su", {
 		if (hasUpgrade('su', 34)) timeG = timeG.times(upgradeEffect('su', 34))
 		if (hasUpgrade('su', 34)) timeG = timeG.times(100)
 		if (hasUpgrade('su', 35)) timeG = timeG.times(1000)
+		timeG = timeG.times(layers.tb.effect())
 		
         if (hasUpgrade('su', 25) && !inChallenge('su', 11)) {
         player.su.timeGain = timeG
