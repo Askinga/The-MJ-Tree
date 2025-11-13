@@ -149,6 +149,11 @@ addLayer("su", {
         effectDescription(){ return "x4 Supreme Runes and boost Wood effect exponent based on Supreme Runes. Currently: +" + format(tmp.su.eBillion)},
         done() { return player.points.gte("ee9") }
     },
+	6: {
+        requirementDescription: "e2.000e13 points",
+        effectDescription(){ return "Unlock a new layer."},
+        done() { return player.points.gte("e2e13") }
+    },
     },
     upgrades: {
         11: {
