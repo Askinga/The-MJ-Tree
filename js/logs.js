@@ -72,6 +72,7 @@ addLayer("logs", {
 		if (hasUpgrade('su', 24)) pow = pow.times(1.3)
 		if (hasChallenge('su', 11)) pow = pow.times(1.3)
 		if (inChallenge('su', 12)) pow = pow.div(100)
+		if (hasUpgrade('su', 43)) pow = pow.times(upgradeEffect('su', 43))
 		return player.logs.wood.add(1).pow(pow)
 	},
 	fireWoodEffect(){
