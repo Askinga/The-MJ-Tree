@@ -268,6 +268,12 @@ addLayer("su", {
             cost: new Decimal(2.5e17),
             unlocked(){ return hasUpgrade('su', 35) },
         },
+		42: {
+            title: "Time freeze",
+            description: "Unlock a challenge",
+            cost: new Decimal(1e20),
+            unlocked(){ return hasUpgrade('su', 41) },
+        },
     },
     update(diff) {
         let timeG = new Decimal(1)
@@ -280,7 +286,7 @@ addLayer("su", {
 		if (hasUpgrade('su', 35)) timeG = timeG.times(1000)
 		timeG = timeG.times(layers.tb.effect())
 		
-        if (hasUpgrade('su', 25) && !inChallenge('su', 11)) {
+        if (hasUpgrade('su', 25) && !(inChallenge('su', 11) || inChallenge('su', 12))) {
         player.su.timeGain = timeG
 		timeG = timeG.times(diff)
 		player.su.timeSubtab = player.su.timeSubtab.add(timeG)
@@ -294,6 +300,15 @@ addLayer("su", {
         canComplete: function() {return player.points.gte("e12000")},
 		goalDescription: "Get e12K points.",
         rewardDescription: "x15 Time and SuR, ^1.2 points, x1000 Firewood, x1.3 Wood effect exponent"
+    },
+	12: {
+		unlocked(){ return hasUpgrade('su', 42) },
+        name: "No time",
+        challengeDescription: "Pause time gain and sets time to 0 on enter. /100 Wood effect exponent",
+        canComplete: function() {return player.points.gte("ee4445")},
+		goalDescription: "Get ??? points.",
+        rewardDescription: "x100 TB",
+		onEnter() { return player.su.timeSubtab = new Decimal(0) },
     },
 	},
 })
