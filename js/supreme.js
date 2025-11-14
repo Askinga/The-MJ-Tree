@@ -274,6 +274,14 @@ addLayer("su", {
             cost: new Decimal(1e20),
             unlocked(){ return hasUpgrade('su', 41) },
         },
+		43: {
+            title: "Wood.exe",
+            description: "Boost Wood effect exponent based on Time",
+            cost: new Decimal(1e24),
+            unlocked(){ return hasUpgrade('su', 42) },
+            effect(){ return player.su.timeSubtab.add(1).log(10).div(20).add(1) },
+            effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
+        },
     },
     update(diff) {
         let timeG = new Decimal(1)
