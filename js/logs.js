@@ -9,6 +9,7 @@ addLayer("logs", {
 		woodGain: new Decimal(0),
 		firewood: new Decimal(0),
 		FiWS: new Decimal(0),
+		woodPower: new Decimal(0),
     }},
 	automate(){
 		if (hasMilestone('su', 2)) {
@@ -73,6 +74,7 @@ addLayer("logs", {
 		if (hasChallenge('su', 11)) pow = pow.times(1.3)
 		if (inChallenge('su', 12)) pow = pow.div(100)
 		if (hasUpgrade('su', 43)) pow = pow.times(upgradeEffect('su', 43))
+		player.logs.woodPower = pow
 		return player.logs.wood.add(1).pow(pow)
 	},
 	fireWoodEffect(){
@@ -119,7 +121,7 @@ addLayer("logs", {
 				["display-text", function () { return (
                 'You have <span style=" color: rgb(255,193,140); text-shadow: rgb(255,193,140) 0px 0px 10px"><h2>' +
                 format(player.logs.wood) +
-                '</h2></span> Wood, boosting Logs by x' + format(tmp.logs.woodEffect)
+                '</h2></span> Wood, raised by <span style=" color: rgb(200,150,100); text-shadow: rgb(200,150,100) 0px 0px 10px"><h1>^' + format(player.logs.woodPower) + ' for a x' + format(tmp.logs.woodEffect) + ' Logs'
                 );
                 },
                 ],
