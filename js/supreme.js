@@ -262,6 +262,12 @@ addLayer("su", {
             effect(){ return player.logs.firewood.add(1).pow(0.15) },
             effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
+		41: {
+            title: "Times",
+            description: "x20 TB",
+            cost: new Decimal(2.5e17),
+            unlocked(){ return hasUpgrade('su', 35) },
+        },
     },
     update(diff) {
         let timeG = new Decimal(1)
