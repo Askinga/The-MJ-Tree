@@ -121,7 +121,7 @@ addLayer("logs", {
 				["display-text", function () { return (
                 'You have <span style=" color: rgb(255,193,140); text-shadow: rgb(255,193,140) 0px 0px 10px"><h2>' +
                 format(player.logs.wood) +
-                '</h2></span> Wood, raised by <span style=" color: rgb(200,150,100); text-shadow: rgb(200,150,100) 0px 0px 10px"><h1>^' + format(player.logs.woodPower) + '</h1> for a x' + format(tmp.logs.woodEffect) + ' Logs multiplier'
+                '</h2></span> Wood, raised by <span style=" color: rgb(200,150,100); text-shadow: rgb(200,150,100) 0px 0px 10px"><h1>^' + format(player.logs.woodPower) + '</h1></span> for a x' + format(tmp.logs.woodEffect) + ' Logs multiplier'
                 );
                 },
                 ],
