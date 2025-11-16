@@ -8,6 +8,8 @@ addLayer("money", {
 		stockTimer: new Decimal(0),
         moneyBoosterStock: new Decimal(0),
 		MBStock: new Decimal(1),
+		PWStock: new Decimal(0),
+		polishedStock: new Decimal(1),
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
@@ -91,16 +93,30 @@ addLayer("money", {
             cost: new Decimal(6000),
             unlocked(){ return hasUpgrade('money', 13) },
         },
+		15: {
+            title: "More shop items!",
+            description: "Increase MB stock by +1 and unlock item 'Polished Wood' in shop",
+            cost: new Decimal(300000),
+            unlocked(){ return hasUpgrade('money', 15) },
+        },
 	},
 	update(diff) {
 		let stock = new Decimal(1)
-		
+		let aS = new Decimal(1)
+		let bS = new Decimal(1)
+		if (hasUpgrade('money', 15)) aS = aS.add(1) 
+
+		player.money.MBStock = aS
+		player.money.polishedStock = aS
 		stock = stock.times(diff)
 		player.money.stockTimer = player.money.stockTimer.sub(stock)
 		if (player.money.stockTimer.lte(0)) {
 			player.money.stockTimer = new Decimal(30)
 			if (hasUpgrade('money', 14)) {
 				player.money.moneyBoosterStock = new Decimal(player.money.MBStock)
+			}
+			if (hasUpgrade('money', 15)) {
+				player.money.PWStock = new Decimal(player.money.polishedStock)
 			}
 		}
 	},
@@ -120,6 +136,24 @@ addLayer("money", {
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.times(Decimal.times(base2, expo)).add(1)
+		},
+    },
+	12: {
+		unlocked(){ return hasUpgrade('money', 15) },
+		title: "Polished Wood",
+        cost(x) { return new Decimal(10).pow(x).add(1) },
+        display() { return "x1.1 Wood effect exponent.<br>Cost: " + format(this.cost()) + " Money<br>Bought: " + format(getBuyableAmount('money', 12)) + "<br>Effect: x" + format(buyableEffect('money', 12)) + " Wood effect exponent<br>" + format(player.money.PWStock) + " in stock" },
+        canAfford() { return ((player.money.points.gte(this.cost())) && player.money.PWStock.gt(0) ) },
+        buy() {
+            player.money.points = player.money.points.sub(this.cost())
+			player.money.PWStock = player.money.PWStock.sub(1)
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1.1)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
 		},
     },
 	},
