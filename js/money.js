@@ -122,4 +122,5 @@ addLayer("money", {
 			return base1.times(Decimal.times(base2, expo)).add(1)
 		},
     },
+	},
 })
