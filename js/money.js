@@ -6,6 +6,11 @@ addLayer("money", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+	passiveGeneration(){
+		let p = new Decimal(0)
+		if (hasUpgrade('money', 12)) p = p.add(1)
+		return p
+	},
     color: "#278013",
     requires: new Decimal(3000), // Can be a function that takes requirement increases into account
     resource: "$", // Name of prestige currency
@@ -15,6 +20,7 @@ addLayer("money", {
     exponent: 0.125, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if (hasUpgrade('money', 12)) mult = mult.times(6)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -34,5 +40,11 @@ addLayer("money", {
 			effect(){ return player.money.points.add(2).pow(0.18) },
 			effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
 		},
+		12: {
+            title: "Passive money (OP)",
+            description: "x6 $ and 100% of Money per second",
+            cost: new Decimal(10),
+            unlocked(){ return hasUpgrade('money', 11) },
+        },
 	},
 })
