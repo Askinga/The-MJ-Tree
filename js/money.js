@@ -7,6 +7,7 @@ addLayer("money", {
 		points: new Decimal(0),
 		stockTimer: new Decimal(0),
         moneyBoosterStock: new Decimal(0),
+		MBStock: new Decimal(1),
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
@@ -86,7 +87,7 @@ addLayer("money", {
         },
 		14: {
             title: "Buy stuff",
-            description: "Unlock subtab 'The Shop' and x5 $. Also unlock Money Booster in Shop",
+            description: "Unlock subtab 'The Shop' and x5 $. Also unlock Money Booster in Shop (Base stock: 1)",
             cost: new Decimal(6000),
             unlocked(){ return hasUpgrade('money', 13) },
         },
@@ -99,7 +100,7 @@ addLayer("money", {
 		if (player.money.stockTimer.lte(0)) {
 			player.money.stockTimer = new Decimal(30)
 			if (hasUpgrade('money', 14)) {
-				player.money.moneyBoosterStock = new Decimal(((Math.random() *9) +1).floor())
+				player.money.moneyBoosterStock = player.money.MBStock
 			}
 		}
 	},
