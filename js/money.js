@@ -109,7 +109,7 @@ addLayer("money", {
 		title: "Money Booster",
         cost(x) { return new Decimal(1.5).pow(x) },
         display() { return "+x1 Money.<br>Cost: " + format(this.cost()) + " Money<br>Bought: " + format(getBuyableAmount('money', 11)) + "<br>Effect: x" + format(buyableEffect('money', 11)) + " Money<br>" + format(player.money.moneyBoosterStock) + " in stock" },
-        canAfford() { return (player.money.points.gte(this.cost()) && player.money.moneyBoosterStock.gt(0) ) },
+        canAfford() { return ((player.money.points.gte(this.cost())) && player.money.moneyBoosterStock.gt(0) ) },
         buy() {
             player.money.points = player.money.points.sub(this.cost())
 			player.money.moneyBoosterStock = player.money.moneyBoosterStock.sub(1)
