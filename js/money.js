@@ -10,6 +10,8 @@ addLayer("money", {
 		MBStock: new Decimal(1),
 		PWStock: new Decimal(0),
 		polishedStock: new Decimal(1),
+		ffStock: new Decimal(0),
+		fFStock: new Decimal(0),
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
@@ -29,6 +31,7 @@ addLayer("money", {
 		if (hasUpgrade('money', 13)) mult = mult.times(10)
 		if (hasUpgrade('money', 14)) mult = mult.times(5)
 		mult = mult.times(buyableEffect('money', 11))
+		if (hasUpgrade('money', 21)) mult = mult.times(10)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -99,15 +102,24 @@ addLayer("money", {
             cost: new Decimal(300000),
             unlocked(){ return hasUpgrade('money', 14) },
         },
+		21: {
+            title: "$$$",
+            description: "x10 $, x1.4 Wood effect exponent, +2 MB stock and unlock item 'Firefirewood' in shop (Base stock: 2)",
+            cost: new Decimal(10000000),
+            unlocked(){ return hasUpgrade('money', 15) },
+        },
 	},
 	update(diff) {
 		let stock = new Decimal(1)
 		let aS = new Decimal(1)
 		let bS = new Decimal(1)
+		let cS = new Decimal(2)
 		if (hasUpgrade('money', 15)) aS = aS.add(1) 
+		if (hasUpgrade('money', 21)) aS = aS.add(2) 
 
 		player.money.MBStock = aS
 		player.money.polishedStock = bS
+		player.money.fFStock = cS
 		stock = stock.times(diff)
 		player.money.stockTimer = player.money.stockTimer.sub(stock)
 		if (player.money.stockTimer.lte(0)) {
@@ -117,6 +129,9 @@ addLayer("money", {
 			}
 			if (hasUpgrade('money', 15)) {
 				player.money.PWStock = new Decimal(player.money.polishedStock)
+			}
+			if (hasUpgrade('money', 21)) {
+				player.money.ffStock = new Decimal(player.money.fFStock)
 			}
 		}
 	},
@@ -151,6 +166,24 @@ addLayer("money", {
         },
 		effect(x){
 			let base1 = new Decimal(1.1)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
+    },
+	13: {
+		unlocked(){ return hasUpgrade('money', 21) },
+		title: "Firefirewood",
+        cost(x) { return new Decimal(20).pow(x) },
+        display() { return "xe10 Firewood.<br>Cost: " + format(this.cost()) + " Money<br>Bought: " + format(getBuyableAmount('money', 13)) + "<br>Effect: x" + format(buyableEffect('money', 13)) + " Firewood<br>" + format(player.money.ffStock) + " in stock" },
+        canAfford() { return ((player.money.points.gte(this.cost())) && player.money.ffStock.gt(0) ) },
+        buy() {
+            player.money.points = player.money.points.sub(this.cost())
+			player.money.ffStock = player.money.ffStock.sub(1)
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1e10)
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.pow(Decimal.pow(base2, expo))
