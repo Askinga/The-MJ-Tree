@@ -74,6 +74,7 @@ addLayer("logs", {
 		if (hasChallenge('su', 11)) pow = pow.times(1.3)
 		if (inChallenge('su', 12)) pow = pow.div(100)
 		if (hasUpgrade('su', 43)) pow = pow.times(upgradeEffect('su', 43))
+		if (hasUpgrade('money', 11)) pow = pow.times(upgradeEffect('money', 11))
 		player.logs.woodPower = pow
 		return player.logs.wood.add(1).pow(pow)
 	},
