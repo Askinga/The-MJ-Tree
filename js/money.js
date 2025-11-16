@@ -95,7 +95,7 @@ addLayer("money", {
         },
 		15: {
             title: "More shop items!",
-            description: "Increase MB stock by +1 and unlock item 'Polished Wood' in shop",
+            description: "Increase MB stock by +1 and unlock item 'Polished Wood' in shop. (Base stock: 1)",
             cost: new Decimal(300000),
             unlocked(){ return hasUpgrade('money', 15) },
         },
