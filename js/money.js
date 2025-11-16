@@ -5,6 +5,8 @@ addLayer("money", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+		stockTimer: new Decimal(0),
+        moneyBoosterStock: new Decimal(0),
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
@@ -23,6 +25,7 @@ addLayer("money", {
 		if (hasUpgrade('money', 12)) mult = mult.times(6)
 		if (hasUpgrade('money', 13)) mult = mult.times(10)
 		if (hasUpgrade('money', 14)) mult = mult.times(5)
+		mult = mult.times(buyableEffect('money', 11))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -32,6 +35,33 @@ addLayer("money", {
     hotkeys: [
         {key: "M", description: "Shift+M: Reset for $", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+	tabFormat: {
+        "Upgrades": {
+            content: [
+                "main-display",
+                "prestige-button",
+                "resource-display",
+                "upgrades",
+            ],
+        },
+        "The Shop": {
+            unlocked(){ return hasUpgrade('money', 14) },
+            content: [
+                "main-display",
+                "prestige-button",
+                "resource-display",
+                ["display-text", function() { return "Here are the items on stock! (30s cooldown) and items get more expensive the more you buy them!<br>Stock resets in " + format(player.money.stockTimer) + 's' }],
+				"buyables",
+            ],
+            buttonStyle() {
+                    return {
+                        'background': 'linear-gradient(45deg, #4287f5, black)',
+                        'border-color': '#278013',
+                        'color': 'white',
+					}
+		    },
+        },
+	},
     layerShown(){return (hasUpgrade('su', 45) || player.money.unlocked)},
 	branches: ["logs"],
 	upgrades: {
@@ -55,10 +85,40 @@ addLayer("money", {
             unlocked(){ return hasUpgrade('money', 12) },
         },
 		14: {
-            title: "Money boosters",
-            description: "Unlock a new subtab 'Boosters' and x5 $",
+            title: "Buy stuff",
+            description: "Unlock subtab 'The Shop' and x5 $. Also unlock Money Booster in Shop",
             cost: new Decimal(6000),
             unlocked(){ return hasUpgrade('money', 13) },
         },
 	},
+	update(diff) {
+		let stock = new Decimal(1)
+		
+		stock = stock.times(diff)
+		player.money.stockTimer = player.money.stockTimer.sub(stock)
+		if (player.money.stockTimer.lte(0)) {
+			player.money.stockTimer = new Decimal(30)
+			if (hasUpgrade('money', 14)) {
+				player.money.moneyBoosterStock = new Decimal(((Math.random() *9) +1).floor())
+			}
+		}
+	},
+	buyables: {
+	11: {
+		title: "Money Booster",
+        cost(x) { return new Decimal(1.5).pow(x) },
+        display() { return "+x1 Money.<br>Cost: " + format(this.cost()) + " Money<br>Bought: " + format(getBuyableAmount('money', 11)) + "<br>Effect: x" + format(buyableEffect('money', 11)) + " Money<br>" + format(player.money.moneyBoosterStock) + " in stock" },
+        canAfford() { return (player.money.points.gte(this.cost()) && player.money.moneyBoosterStock.gt(0) ) },
+        buy() {
+            player.money.points = player.money.points.sub(this.cost())
+			player.money.moneyBoosterStock = player.money.moneyBoosterStock.sub(1)
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.times(Decimal.times(base2, expo)).add(1)
+		},
+    },
 })
