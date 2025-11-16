@@ -100,7 +100,7 @@ addLayer("money", {
 		if (player.money.stockTimer.lte(0)) {
 			player.money.stockTimer = new Decimal(30)
 			if (hasUpgrade('money', 14)) {
-				player.money.moneyBoosterStock = player.money.MBStock
+				player.money.moneyBoosterStock = new Decimal(player.money.MBStock)
 			}
 		}
 	},
