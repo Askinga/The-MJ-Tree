@@ -397,6 +397,7 @@ addLayer("logs", {
 		if (hasUpgrade('su', 25)) ire = ire.times(tmp.su.timeEffect)
 		if (hasChallenge('su', 11)) ire = ire.times(1000)
 		if (hasUpgrade('su', 33)) ire = ire.times(upgradeEffect('su', 33))
+		ire = ire.times(buyableEffect('money', 13))
 
 		passive = passive.times(diff)
 		if (hasUpgrade('logs', 32)) {
