@@ -282,6 +282,18 @@ addLayer("su", {
             effect(){ return player.su.timeSubtab.add(1).log(10).div(20).add(1) },
             effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
+		44: {
+            title: "Times 2",
+            description: "x1000000 Time",
+            cost: new Decimal(1e24),
+            unlocked(){ return hasUpgrade('su', 43) },
+        },
+		45: {
+            title: "$",
+            description: "Unlock a new layer",
+            cost: new Decimal(1e24),
+            unlocked(){ return hasUpgrade('su', 44) },
+        },
     },
     update(diff) {
         let timeG = new Decimal(1)
@@ -293,6 +305,7 @@ addLayer("su", {
 		if (hasUpgrade('su', 34)) timeG = timeG.times(100)
 		if (hasUpgrade('su', 35)) timeG = timeG.times(1000)
 		timeG = timeG.times(layers.tb.effect())
+		if (hasUpgrade('su', 44)) timeG = timeG.times(1000000)
 		
         if (hasUpgrade('su', 25) && !(inChallenge('su', 11) || inChallenge('su', 12))) {
         player.su.timeGain = timeG
