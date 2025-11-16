@@ -97,7 +97,7 @@ addLayer("money", {
             title: "More shop items!",
             description: "Increase MB stock by +1 and unlock item 'Polished Wood' in shop. (Base stock: 1)",
             cost: new Decimal(300000),
-            unlocked(){ return hasUpgrade('money', 15) },
+            unlocked(){ return hasUpgrade('money', 14) },
         },
 	},
 	update(diff) {
@@ -107,7 +107,7 @@ addLayer("money", {
 		if (hasUpgrade('money', 15)) aS = aS.add(1) 
 
 		player.money.MBStock = aS
-		player.money.polishedStock = aS
+		player.money.polishedStock = bS
 		stock = stock.times(diff)
 		player.money.stockTimer = player.money.stockTimer.sub(stock)
 		if (player.money.stockTimer.lte(0)) {
@@ -141,7 +141,7 @@ addLayer("money", {
 	12: {
 		unlocked(){ return hasUpgrade('money', 15) },
 		title: "Polished Wood",
-        cost(x) { return new Decimal(10).pow(x).add(1) },
+        cost(x) { return new Decimal(10).pow(x).times(100) },
         display() { return "x1.1 Wood effect exponent.<br>Cost: " + format(this.cost()) + " Money<br>Bought: " + format(getBuyableAmount('money', 12)) + "<br>Effect: x" + format(buyableEffect('money', 12)) + " Wood effect exponent<br>" + format(player.money.PWStock) + " in stock" },
         canAfford() { return ((player.money.points.gte(this.cost())) && player.money.PWStock.gt(0) ) },
         buy() {
