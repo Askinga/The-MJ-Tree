@@ -21,6 +21,8 @@ addLayer("money", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasUpgrade('money', 12)) mult = mult.times(6)
+		if (hasUpgrade('money', 13)) mult = mult.times(10)
+		if (hasUpgrade('money', 14)) mult = mult.times(5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -45,6 +47,18 @@ addLayer("money", {
             description: "x6 $ and 100% of Money per second",
             cost: new Decimal(10),
             unlocked(){ return hasUpgrade('money', 11) },
+        },
+		13: {
+            title: "Money incremental",
+            description: "x10 $",
+            cost: new Decimal(500),
+            unlocked(){ return hasUpgrade('money', 12) },
+        },
+		14: {
+            title: "Money boosters",
+            description: "Unlock a new subtab 'Boosters' and x5 $",
+            cost: new Decimal(6000),
+            unlocked(){ return hasUpgrade('money', 13) },
         },
 	},
 })
