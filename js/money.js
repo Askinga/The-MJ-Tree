@@ -12,6 +12,8 @@ addLayer("money", {
 		polishedStock: new Decimal(1),
 		ffStock: new Decimal(0),
 		fFStock: new Decimal(0),
+		SLStock: new Decimal(0),
+		slStock: new Decimal(0),
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
@@ -33,6 +35,7 @@ addLayer("money", {
 		mult = mult.times(buyableEffect('money', 11))
 		if (hasUpgrade('money', 21)) mult = mult.times(10)
 		if (hasUpgrade('money', 22)) mult = mult.times(25)
+		if (hasUpgrade('money', 23)) mult = mult.times(25)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -115,18 +118,25 @@ addLayer("money", {
             cost: new Decimal(20000000),
             unlocked(){ return hasUpgrade('money', 21) },
         },
+		23: {
+			title: "Logged",
+            description: "x25 $, unlock item 'Super Logs' in shop (Base stock: 1)",
+            cost: new Decimal(5e8),
+            unlocked(){ return hasUpgrade('money', 22) },
 	},
 	update(diff) {
 		let stock = new Decimal(1)
 		let aS = new Decimal(1)
 		let bS = new Decimal(1)
 		let cS = new Decimal(2)
+		let dS = new Decimal(1)
 		if (hasUpgrade('money', 15)) aS = aS.add(1) 
 		if (hasUpgrade('money', 21)) aS = aS.add(2) 
 
 		player.money.MBStock = aS
 		player.money.polishedStock = bS
 		player.money.fFStock = cS
+		player.money.slStock = dS
 		stock = stock.times(diff)
 		player.money.stockTimer = player.money.stockTimer.sub(stock)
 		if (player.money.stockTimer.lte(0)) {
@@ -139,6 +149,9 @@ addLayer("money", {
 			}
 			if (hasUpgrade('money', 21)) {
 				player.money.ffStock = new Decimal(player.money.fFStock)
+			}
+			if (hasUpgrade('money', 23)) {
+				player.money.SLStock = new Decimal(player.money.slStock)
 			}
 		}
 	},
@@ -191,6 +204,24 @@ addLayer("money", {
         },
 		effect(x){
 			let base1 = new Decimal(1e10)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
+    },
+	21: {
+		unlocked(){ return hasUpgrade('money', 23) },
+		title: "Super Logs",
+        cost(x) { return new Decimal(100).pow(x) },
+        display() { return "x1.05 Log effect exponent.<br>Cost: " + format(this.cost()) + " Money<br>Bought: " + format(getBuyableAmount('money', 21)) + "<br>Effect: x" + format(buyableEffect('money', 21)) + " Log effect exponent<br>" + format(player.money.SLStock) + " in stock" },
+        canAfford() { return ((player.money.points.gte(this.cost())) && player.money.SLStock.gt(0) ) },
+        buy() {
+            player.money.points = player.money.points.sub(this.cost())
+			player.money.SLStock = player.money.SLStock.sub(1)
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1.05)
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.pow(Decimal.pow(base2, expo))
