@@ -32,6 +32,7 @@ addLayer("money", {
 		if (hasUpgrade('money', 14)) mult = mult.times(5)
 		mult = mult.times(buyableEffect('money', 11))
 		if (hasUpgrade('money', 21)) mult = mult.times(10)
+		if (hasUpgrade('money', 22)) mult = mult.times(25)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -105,8 +106,14 @@ addLayer("money", {
 		21: {
             title: "$$$",
             description: "x10 $, x1.4 Wood effect exponent, +2 MB stock and unlock item 'Firefirewood' in shop (Base stock: 2)",
-            cost: new Decimal(10000000),
+            cost: new Decimal(1000000),
             unlocked(){ return hasUpgrade('money', 15) },
+        },
+		22: {
+            title: "I love $!",
+            description: "x25 $",
+            cost: new Decimal(20000000),
+            unlocked(){ return hasUpgrade('money', 21) },
         },
 	},
 	update(diff) {
