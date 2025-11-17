@@ -14,6 +14,8 @@ addLayer("money", {
 		fFStock: new Decimal(0),
 		SLStock: new Decimal(0),
 		slStock: new Decimal(0),
+		SRStock: new Decimal(0),
+		srStock: new Decimal(0),
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
@@ -124,6 +126,12 @@ addLayer("money", {
             cost: new Decimal(5e8),
             unlocked(){ return hasUpgrade('money', 22) },
 		},
+		24: {
+			title: "Supreme Booster",
+            description: "x30 $, unlock item 'Supreme Rune^2' in shop (Base stock: 1)",
+            cost: new Decimal(2.5e10),
+            unlocked(){ return hasUpgrade('money', 23) },
+		},
 	},
 	update(diff) {
 		let stock = new Decimal(1)
@@ -131,6 +139,7 @@ addLayer("money", {
 		let bS = new Decimal(1)
 		let cS = new Decimal(2)
 		let dS = new Decimal(1)
+		let eS = new Decimal(1)
 		if (hasUpgrade('money', 15)) aS = aS.add(1) 
 		if (hasUpgrade('money', 21)) aS = aS.add(2) 
 
@@ -138,6 +147,7 @@ addLayer("money", {
 		player.money.polishedStock = bS
 		player.money.fFStock = cS
 		player.money.slStock = dS
+		player.money.srStock = eS
 		stock = stock.times(diff)
 		player.money.stockTimer = player.money.stockTimer.sub(stock)
 		if (player.money.stockTimer.lte(0)) {
@@ -153,6 +163,9 @@ addLayer("money", {
 			}
 			if (hasUpgrade('money', 23)) {
 				player.money.SLStock = new Decimal(player.money.slStock)
+			}
+			if (hasUpgrade('money', 24)) {
+				player.money.SRStock = new Decimal(player.money.srStock)
 			}
 		}
 	},
@@ -223,6 +236,24 @@ addLayer("money", {
         },
 		effect(x){
 			let base1 = new Decimal(1.05)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
+    },
+	22: {
+		unlocked(){ return hasUpgrade('money', 24) },
+		title: "Supreme Rune^2",
+        cost(x) { return new Decimal(1000).pow(x) },
+        display() { return "x1000 Supreme Runes.<br>Cost: " + format(this.cost()) + " Money<br>Bought: " + format(getBuyableAmount('money', 22)) + "<br>Effect: x" + format(buyableEffect('money', 22)) + " Supreme Runes<br>" + format(player.money.SRStock) + " in stock" },
+        canAfford() { return ((player.money.points.gte(this.cost())) && player.money.SRStock.gt(0) ) },
+        buy() {
+            player.money.points = player.money.points.sub(this.cost())
+			player.money.SRStock = player.money.SRStock.sub(1)
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1000)
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.pow(Decimal.pow(base2, expo))
