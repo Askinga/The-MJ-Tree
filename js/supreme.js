@@ -56,6 +56,7 @@ addLayer("su", {
 		if (hasUpgrade('su', 34)) mult = mult.times(12)
 		if (hasUpgrade('su', 35)) mult = mult.times(20)
 		mult = mult.times(layers.tb.effect())
+		mult = mult.times(buyableEffect('money', 22))
         return mult;
     },
     gainExp() { 
