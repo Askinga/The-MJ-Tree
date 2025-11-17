@@ -123,6 +123,7 @@ addLayer("money", {
             description: "x25 $, unlock item 'Super Logs' in shop (Base stock: 1)",
             cost: new Decimal(5e8),
             unlocked(){ return hasUpgrade('money', 22) },
+		},
 	},
 	update(diff) {
 		let stock = new Decimal(1)
