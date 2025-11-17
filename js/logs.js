@@ -76,6 +76,7 @@ addLayer("logs", {
 		if (hasUpgrade('su', 43)) pow = pow.times(upgradeEffect('su', 43))
 		if (hasUpgrade('money', 11)) pow = pow.times(upgradeEffect('money', 11))
 		pow = pow.times(buyableEffect('money', 12))
+		if (hasUpgrade('money', 21)) pow = pow.times(1.4)
 		player.logs.woodPower = pow
 		return player.logs.wood.add(1).pow(pow)
 	},
