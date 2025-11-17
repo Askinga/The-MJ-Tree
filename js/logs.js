@@ -98,6 +98,7 @@ addLayer("logs", {
 	  let pow = new Decimal(25000)
 	  pow = pow.add(buyableEffect('logs', 12))
 	  pow = pow.add(buyableEffect('logs', 22))
+	  pow = pow.times(buyableEffect('money', 21))
       return player.logs.points.add(1).pow(pow)
     },
     effectDescription(){
