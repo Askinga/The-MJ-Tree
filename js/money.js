@@ -42,6 +42,7 @@ addLayer("money", {
 		if (hasUpgrade('money', 23)) mult = mult.times(25)
 		if (hasUpgrade('money', 24)) mult = mult.times(30)
 		if (hasUpgrade('money', 25)) mult = mult.times(50)
+		if (hasUpgrade('money', 31)) mult = mult.times(100)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -142,6 +143,12 @@ addLayer("money", {
             cost: new Decimal(1e12),
             unlocked(){ return hasUpgrade('money', 24) },
 		},
+		31: {
+			title: "GaG stock is way worse than this",
+            description: "x100 $, /2 Stock cooldown",
+            cost: new Decimal(5e13),
+            unlocked(){ return hasUpgrade('money', 25) },
+		},
 	},
 	update(diff) {
 		let stock = new Decimal(1)
@@ -151,8 +158,10 @@ addLayer("money", {
 		let dS = new Decimal(1)
 		let eS = new Decimal(1)
 		let fS = new Decimal(2)
+		let cool = new Decimal(30)
 		if (hasUpgrade('money', 15)) aS = aS.add(1) 
 		if (hasUpgrade('money', 21)) aS = aS.add(2) 
+		if (hasUpgrade('money', 31)) cool = cool.div(2)
 
 		player.money.MBStock = aS
 		player.money.polishedStock = bS
@@ -163,7 +172,7 @@ addLayer("money", {
 		stock = stock.times(diff)
 		player.money.stockTimer = player.money.stockTimer.sub(stock)
 		if (player.money.stockTimer.lte(0)) {
-			player.money.stockTimer = new Decimal(30)
+			player.money.stockTimer = cool
 			if (hasUpgrade('money', 14)) {
 				player.money.moneyBoosterStock = new Decimal(player.money.MBStock)
 			}
