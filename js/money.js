@@ -43,6 +43,7 @@ addLayer("money", {
 		if (hasUpgrade('money', 24)) mult = mult.times(30)
 		if (hasUpgrade('money', 25)) mult = mult.times(50)
 		if (hasUpgrade('money', 31)) mult = mult.times(100)
+		if (hasUpgrade('money', 32)) mult = mult.times(upgradeEffect('money', 32))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -148,6 +149,14 @@ addLayer("money", {
             description: "x100 $, /2 Stock cooldown",
             cost: new Decimal(5e13),
             unlocked(){ return hasUpgrade('money', 25) },
+		},
+		32: {
+			title: "Make them useful",
+            description: "For every 10 Money Boosters, x2 Money.",
+            cost: new Decimal(6e15),
+            unlocked(){ return hasUpgrade('money', 25) },
+			effect(){ return new Decimal(2).pow(getBuyableAmount(this.layer, 11).div(10).floor()) },
+			effectDisplay(){ return "x"+format(upgradeEffect('money', 32)) },
 		},
 	},
 	update(diff) {
