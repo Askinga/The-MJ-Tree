@@ -16,6 +16,8 @@ addLayer("money", {
 		slStock: new Decimal(0),
 		SRStock: new Decimal(0),
 		srStock: new Decimal(0),
+		PoWStock: new Decimal(0),
+		pwStock: new Decimal(0),
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
@@ -39,6 +41,7 @@ addLayer("money", {
 		if (hasUpgrade('money', 22)) mult = mult.times(25)
 		if (hasUpgrade('money', 23)) mult = mult.times(25)
 		if (hasUpgrade('money', 24)) mult = mult.times(30)
+		if (hasUpgrade('money', 25)) mult = mult.times(50)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -133,6 +136,12 @@ addLayer("money", {
             cost: new Decimal(2.5e10),
             unlocked(){ return hasUpgrade('money', 23) },
 		},
+		25: {
+			title: "Wood Booster",
+            description: "x50 $, unlock item 'Powered Wood' in shop (Base stock: 2)",
+            cost: new Decimal(1e12),
+            unlocked(){ return hasUpgrade('money', 24) },
+		},
 	},
 	update(diff) {
 		let stock = new Decimal(1)
@@ -141,6 +150,7 @@ addLayer("money", {
 		let cS = new Decimal(2)
 		let dS = new Decimal(1)
 		let eS = new Decimal(1)
+		let fS = new Decimal(2)
 		if (hasUpgrade('money', 15)) aS = aS.add(1) 
 		if (hasUpgrade('money', 21)) aS = aS.add(2) 
 
@@ -149,6 +159,7 @@ addLayer("money", {
 		player.money.fFStock = cS
 		player.money.slStock = dS
 		player.money.srStock = eS
+		player.money.pwStock = fS
 		stock = stock.times(diff)
 		player.money.stockTimer = player.money.stockTimer.sub(stock)
 		if (player.money.stockTimer.lte(0)) {
@@ -167,6 +178,9 @@ addLayer("money", {
 			}
 			if (hasUpgrade('money', 24)) {
 				player.money.SRStock = new Decimal(player.money.srStock)
+			}
+			if (hasUpgrade('money', 25)) {
+				player.money.PoWStock = new Decimal(player.money.pwStock)
 			}
 		}
 	},
@@ -255,6 +269,24 @@ addLayer("money", {
         },
 		effect(x){
 			let base1 = new Decimal(1000)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
+    },
+	23: {
+		unlocked(){ return hasUpgrade('money', 25) },
+		title: "Powered Wood",
+        cost(x) { return new Decimal(2).pow(x) },
+        display() { return "^1.01 Wood.<br>Cost: " + format(this.cost()) + " Money<br>Bought: " + format(getBuyableAmount('money', 23)) + "<br>Effect: ^" + format(buyableEffect('money', 23)) + " Wood<br>" + format(player.money.PoWStock) + " in stock" },
+        canAfford() { return ((player.money.points.gte(this.cost())) && player.money.PoWStock.gt(0) ) },
+        buy() {
+            player.money.points = player.money.points.sub(this.cost())
+			player.money.PoWStock = player.money.PoWStock.sub(1)
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1.01)
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.pow(Decimal.pow(base2, expo))
