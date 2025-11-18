@@ -1,4 +1,4 @@
-addLayer("money", {
+vaddLayer("money", {
     name: "Money", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "$", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
@@ -44,6 +44,7 @@ addLayer("money", {
 		if (hasUpgrade('money', 25)) mult = mult.times(50)
 		if (hasUpgrade('money', 31)) mult = mult.times(100)
 		if (hasUpgrade('money', 32)) mult = mult.times(upgradeEffect('money', 32))
+		if (hasUpgrade('money', 33)) mult = mult.times(1000)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -154,9 +155,15 @@ addLayer("money", {
 			title: "Make them useful",
             description: "For every 10 Money Boosters, x2 Money.",
             cost: new Decimal(6e15),
-            unlocked(){ return hasUpgrade('money', 25) },
+            unlocked(){ return hasUpgrade('money', 31) },
 			effect(){ return new Decimal(2).pow(getBuyableAmount(this.layer, 11).div(10).floor()) },
 			effectDisplay(){ return "x"+format(upgradeEffect('money', 32)) },
+		},
+		33: {
+			title: "The money",
+            description: "x1000 $",
+            cost: new Decimal(1e19),
+            unlocked(){ return hasUpgrade('money', 32) },
 		},
 	},
 	update(diff) {
