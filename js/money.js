@@ -168,7 +168,7 @@ addLayer("money", {
 		},
 		34: {
 			title: "The money 2",
-            description: "x5000 $",
+            description: "x500 $",
             cost: new Decimal(1e23),
             unlocked(){ return hasUpgrade('money', 33) },
 		},
