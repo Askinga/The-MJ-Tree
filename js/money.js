@@ -47,6 +47,7 @@ addLayer("money", {
 		if (hasUpgrade('money', 33)) mult = mult.times(1000)
 		if (hasUpgrade('money', 34)) mult = mult.times(500)
 		if (hasUpgrade('money', 35)) mult = mult.times(2500)
+		if (hasUpgrade('money', 41)) mult = mult.times(10000)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -178,6 +179,12 @@ addLayer("money", {
             description: "x2500 $",
             cost: new Decimal(2e26),
             unlocked(){ return hasUpgrade('money', 34) },
+		},
+		41: {
+			title: "The money 4",
+            description: "x10000 $",
+            cost: new Decimal(5e30),
+            unlocked(){ return hasUpgrade('money', 35) },
 		},
 	},
 	update(diff) {
