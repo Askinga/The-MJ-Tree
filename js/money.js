@@ -188,7 +188,7 @@ addLayer("money", {
             unlocked(){ return hasUpgrade('money', 35) },
 		},
 		42: {
-			title: "We have money!",
+			title: "Pointy Money",
 			description: "Boost $ based on OoM^2 of points",
 			cost: new Decimal(5e25),
 			unlocked(){ return hasUpgrade('money', 41) },
