@@ -48,6 +48,7 @@ addLayer("money", {
 		if (hasUpgrade('money', 34)) mult = mult.times(500)
 		if (hasUpgrade('money', 35)) mult = mult.times(2500)
 		if (hasUpgrade('money', 41)) mult = mult.times(10000)
+		if (hasUpgrade('money', 42)) mult = mult.times(upgradeEffect('money', 42))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -185,6 +186,14 @@ addLayer("money", {
             description: "x10000 $",
             cost: new Decimal(5e30),
             unlocked(){ return hasUpgrade('money', 35) },
+		},
+		42: {
+			title: "We have money!",
+			description: "Boost $ based on OoM^2 of points",
+			cost: new Decimal(5e25),
+			unlocked(){ return hasUpgrade('money', 41) },
+			effect(){ return player.points.add(1).log(10).log(10).add(1).pow(2) },
+			effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
 		},
 	},
 	update(diff) {
