@@ -192,7 +192,7 @@ addLayer("money", {
 			description: "Boost $ based on OoM^2 of points",
 			cost: new Decimal(5e25),
 			unlocked(){ return hasUpgrade('money', 41) },
-			effect(){ return player.points.add(1).log(10).log(10).add(1).pow(2) },
+			effect(){ return player.points.add(10).log(10).log(10).add(1).pow(2) },
 			effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
 		},
 	},
