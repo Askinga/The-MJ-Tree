@@ -30,7 +30,7 @@ addLayer("uni", {
     effectDescription(){
       return "which is boosting 5th row currencies and wood effect exponent by x"+format(layers.uni.effect())
     },
-    layerShown(){return (player.points.gte("e1e60") || player.uni.unlocked)},
+    layerShown(){return ((player.points.gte("e1e60") && hasUpgrade('money', 45)) || player.uni.unlocked)},
 	branches: ["money"],
   milestones: {
     0: {
