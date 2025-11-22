@@ -24,6 +24,9 @@ addLayer("money", {
 		if (hasUpgrade('money', 12)) p = p.add(1)
 		return p
 	},
+	onPrestige(){
+        player.su.timeSubtab = new Decimal(0)
+    },
     color: "#278013",
     requires: new Decimal(3000), // Can be a function that takes requirement increases into account
     resource: "$", // Name of prestige currency
@@ -51,6 +54,7 @@ addLayer("money", {
 		if (hasUpgrade('money', 42)) mult = mult.times(upgradeEffect('money', 42))
 		if (hasUpgrade('money', 43)) mult = mult.times(100000)
 		if (hasUpgrade('money', 44)) mult = mult.times(1000000)
+		mult = mult.times(layers.uni.effect())
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
