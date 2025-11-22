@@ -57,7 +57,7 @@ addLayer("logs", {
 		mult = mult.times(layers.su.effect())
 		if (hasUpgrade('su', 11)) mult = mult.times(1000)
 		if (hasUpgrade('su', 11)) mult = mult.times(upgradeEffect('su', 11))
-		mult = mult.times(layers.uni.effect())
+		if (hasMilestone('uni', 0)) mult = mult.times("e2500")
 		if (inChallenge('su', 11)) mult = mult.times(0)
         return mult
     },
