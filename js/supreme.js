@@ -20,6 +20,23 @@ addLayer("su", {
     color() {
   return tmp.su.randomHex || "#FFFFFF"; // fallback to white
     },
+	doReset(su) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[su].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	    if (hasMilestone('uni', 0)) keep.push("milestones");
+    
+        // Stage 4, do the actual data resetautomate() {
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     passiveGeneration() {
         let p = new Decimal(0)
         if (hasUpgrade('su', 14)) p = p.add(1)
@@ -57,6 +74,7 @@ addLayer("su", {
 		if (hasUpgrade('su', 35)) mult = mult.times(20)
 		mult = mult.times(layers.tb.effect())
 		mult = mult.times(buyableEffect('money', 22))
+		mult = mult.times(layers.uni.effect())
         return mult;
     },
     gainExp() { 
