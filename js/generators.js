@@ -6,6 +6,7 @@ addLayer("XP", {
         unlocked: false,
 		points: new Decimal(0),
     gen: new Decimal(0),
+	mil8Hard: new Decimal(0)
     }},
 	doReset(XP) {
         // Stage 1, almost always needed, makes resetting this layer not delete your progress
@@ -101,7 +102,7 @@ addLayer("XP", {
 		return player.points.add(1).log(10).add(1)
 	},
 	boost4(){
-		return player.XP.gen.add(1).log(10).div(20).add(1)
+		return player.XP.gen.add(1).log(10).div(20).add(1).min(player.XP.mil8Hard)
 	},
 	boost5(){
 		let eff = player.XP.gen.add(1).pow(0.5)
@@ -180,5 +181,10 @@ addLayer("XP", {
         effectDescription(){ return "Unlock a new layer" },
         done() { return player.points.gte("e1.8e6") }
     },
+	},
+	update(diff) {
+		let h = new Decimal("e50") 
+
+		player.XP.mil8Hard = h
 	},
 })
