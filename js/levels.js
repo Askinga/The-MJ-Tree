@@ -84,6 +84,7 @@ addLayer("l", {
 	lvlE2(){
 		let base = new Decimal(250)
 		if (hasMilestone('XP', 7)) base = base.times(tmp.XP.boost4)
+		base = softcap(base, new Decimal("ee60"), 0.1)
 		return new Decimal(base).pow(player.l.level)
 	},
     layerShown(){return (hasMilestone('m', 3) || player.l.unlocked)},
