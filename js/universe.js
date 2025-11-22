@@ -35,7 +35,7 @@ addLayer("uni", {
   milestones: {
     0: {
         requirementDescription: "1 Universal Rune",
-        effectDescription: "Keep Supreme Rune Milestones",
+        effectDescription: "Keep Supreme Rune Milestones and xe2500 Logs",
         done() { return player.uni.points.gte(1) }
     },
   },
