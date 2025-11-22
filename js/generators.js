@@ -153,7 +153,7 @@ addLayer("XP", {
     },
 	7: {
         requirementDescription: "1,000,000 XP Boosters",
-        effectDescription(){ return "Boost 2nd Level Effect Base based on XP Boosters. Currently: x" + format(tmp.XP.boost4) },
+        effectDescription(){ return "Boost 2nd Level Effect Base based on XP Boosters. Currently: x" + format(tmp.XP.boost4) + "First hardcap starts at x1e50. :("},
         done() { return player.XP.points.gte("1e6") }
     },
 	8: {
