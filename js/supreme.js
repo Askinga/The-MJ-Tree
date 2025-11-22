@@ -189,7 +189,7 @@ addLayer("su", {
             title: "We are in the INFLATION phase of the game",
             description: "+1 Wood effect exponent, x2 SuR, boost Supreme Runes based on Points",
             cost: new Decimal(500000),
-            effect(){ return player.points.add(1).log(10).log(10).add(1) },
+            effect(){ return player.points.add(10).log(10).log(10).add(1) },
             effectDisplay(){ return "x"+format(upgradeEffect('su', 15)) },
             unlocked(){ return hasUpgrade('su', 14) },
         },
