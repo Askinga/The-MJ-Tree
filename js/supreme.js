@@ -325,6 +325,7 @@ addLayer("su", {
 		if (hasUpgrade('su', 35)) timeG = timeG.times(1000)
 		timeG = timeG.times(layers.tb.effect())
 		if (hasUpgrade('su', 44)) timeG = timeG.times(1000000)
+		timeG = timeG.times(layers.uni.effect())
 		
         if (hasUpgrade('su', 25) && !(inChallenge('su', 11) || inChallenge('su', 12))) {
         player.su.timeGain = timeG
