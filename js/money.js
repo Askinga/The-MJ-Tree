@@ -50,6 +50,7 @@ addLayer("money", {
 		if (hasUpgrade('money', 41)) mult = mult.times(10000)
 		if (hasUpgrade('money', 42)) mult = mult.times(upgradeEffect('money', 42))
 		if (hasUpgrade('money', 43)) mult = mult.times(100000)
+		if (hasUpgrade('money', 44)) mult = mult.times(1000000)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -201,6 +202,12 @@ addLayer("money", {
             description: "x100000 $",
             cost: new Decimal(1e40),
             unlocked(){ return hasUpgrade('money', 42) },
+		},
+		44: {
+			title: "OMG",
+            description: "x1e10 TB and x1e6 $",
+            cost: new Decimal(1e46),
+            unlocked(){ return hasUpgrade('money', 43) },
 		},
 	},
 	update(diff) {
