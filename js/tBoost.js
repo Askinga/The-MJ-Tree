@@ -32,6 +32,7 @@ addLayer("tb", {
         mult = new Decimal(1)
 		if (hasUpgrade('su', 41)) mult = mult.times(20)
 		if (hasChallenge('su', 12)) mult = mult.times(100)
+		if (hasUpgrade('money', 44)) mult = mult.times(1e10)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
