@@ -6,7 +6,7 @@ addLayer("XP", {
         unlocked: false,
 		points: new Decimal(0),
     gen: new Decimal(0),
-	mil8Hard: new Decimal(0)
+	mil8Hard: new Decimal(0),
     }},
 	doReset(XP) {
         // Stage 1, almost always needed, makes resetting this layer not delete your progress
@@ -111,7 +111,9 @@ addLayer("XP", {
     },
     update(diff) {
       let gain = tmp.XP.gen
-		
+	  let h = new Decimal("e50") 
+
+	  player.XP.mil8Hard = h
       gain = gain.times(diff)
       player.XP.gen = player.XP.gen.add(gain)
     },
@@ -153,7 +155,7 @@ addLayer("XP", {
     },
 	7: {
         requirementDescription: "1,000,000 XP Boosters",
-        effectDescription(){ return "Boost 2nd Level Effect Base based on XP Boosters. Currently: x" + format(tmp.XP.boost4) + "First hardcap starts at x1e50. :("},
+        effectDescription(){ return "Boost 2nd Level Effect Base based on XP Boosters. Currently: x" + format(tmp.XP.boost4) + " First hardcap starts at x1e50. :("},
         done() { return player.XP.points.gte("1e6") }
     },
 	8: {
@@ -181,10 +183,5 @@ addLayer("XP", {
         effectDescription(){ return "Unlock a new layer" },
         done() { return player.points.gte("e1.8e6") }
     },
-	},
-	update(diff) {
-		let h = new Decimal("e50") 
-
-		player.XP.mil8Hard = h
 	},
 })
