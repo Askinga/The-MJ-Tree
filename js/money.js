@@ -213,6 +213,12 @@ addLayer("money", {
             cost: new Decimal(1e46),
             unlocked(){ return hasUpgrade('money', 43) },
 		},
+		45: {
+			title: "The universe",
+            description: "Free upgrade! Unlock a new layer at e1.000e60 points",
+            cost: new Decimal(0),
+            unlocked(){ return hasUpgrade('money', 44) },
+		},
 	},
 	update(diff) {
 		let stock = new Decimal(1)
