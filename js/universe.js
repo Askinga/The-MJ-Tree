@@ -6,6 +6,11 @@ addLayer("uni", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+	passiveGeneration(){
+		let p = new Decimal(0)
+		if (hasUpgrade('uni', 12)) p = p.add(1)
+		return p
+	},
     color: "#7a49d6",
     requires: new Decimal("ee60"), // Can be a function that takes requirement increases into account
     resource: "Universal Runes", // Name of prestige currency
@@ -58,16 +63,16 @@ addLayer("uni", {
   },
   upgrades: {
     11: {
-		title: "Create a new universe",
-        description: "x8 UnR (universal runes), x1e20 $ (OP)",
+		title: "Create a new universe (OP)",
+        description: "x8 UnR (universal runes), x1e20 $ ",
         cost: new Decimal(5),
     },
 	12: {
-		title: "Celestial stuff",
-        description: "x4 UnR, boost $ based on UnR",
+		title: "Celestial stuff (VERY OP)",
+        description: "x4 UnR, boost $ based on UnR, 100% UnR per second",
         cost: new Decimal(100),
 		unlocked(){ return hasUpgrade('uni', 11) },
-		effect(){ return player.uni.points.add(10).log(10).log(10).pow(0.3).div(5.5).add(1) },
+		effect(){ return player.uni.points.add(10).log(10).log(10).pow(0.3).div(5).add(1) },
 		effectDisplay(){ return "^"+format(upgradeEffect('uni', 12)) },
     },
   }
