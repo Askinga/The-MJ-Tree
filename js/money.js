@@ -24,6 +24,16 @@ addLayer("money", {
 		if (hasUpgrade('money', 12) || hasMilestone('uni', 2)) p = p.add(1)
 		return p
 	},
+	automate(){
+		if (hasMilestone('uni', 3)) {
+		    if (canBuyBuyable("money", 11)) setBuyableAmount("money", 11, player.money.points.max(10).log(1.5).sub(1).root(1).floor().add(1))
+			if (canBuyBuyable("money", 12)) setBuyableAmount("money", 12, player.money.points.max(10).log(10).sub(1).root(1).floor().add(1))
+			if (canBuyBuyable("money", 13)) setBuyableAmount("money", 13, player.money.points.max(10).log(20).sub(1).root(1).floor().add(1))
+			if (canBuyBuyable("money", 21)) setBuyableAmount("money", 21, player.money.points.max(10).log(100).sub(1).root(1).floor().add(1))
+			if (canBuyBuyable("money", 22)) setBuyableAmount("money", 22, player.money.points.max(10).log(1000).sub(1).root(1).floor().add(1))
+			if (canBuyBuyable("money", 23)) setBuyableAmount("money", 23, player.money.points.max(10).log(2).sub(1).root(1).floor().add(1))
+		}
+	},
 	autoUpgrade(){ return hasMilestone('uni', 2) },
 	onPrestige(){
         player.su.timeSubtab = new Decimal(0)
