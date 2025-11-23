@@ -15,6 +15,7 @@ addLayer("uni", {
     exponent: 0, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if (hasUpgrade('uni', 11)) mult = mult.times(8)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -54,4 +55,11 @@ addLayer("uni", {
         done() { return player.uni.points.gte(4) }
     },
   },
+  upgrades: {
+    11: {
+		title: "Create a new universe",
+        description: "x8 UnR (universal runes), x1e20 $ (OP)",
+        cost: new Decimal(5),
+    },
+  }
 })
