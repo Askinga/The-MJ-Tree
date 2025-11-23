@@ -232,6 +232,7 @@ addLayer("money", {
 		if (hasUpgrade('money', 15)) aS = aS.add(1) 
 		if (hasUpgrade('money', 21)) aS = aS.add(2) 
 		if (hasUpgrade('money', 31)) cool = cool.div(2)
+		if (hasMilestone('uni', 1)) cool = cool.div(30)
 
 		player.money.MBStock = aS
 		player.money.polishedStock = bS
