@@ -30,6 +30,7 @@ addLayer("su", {
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
 	    if (hasMilestone('uni', 0)) keep.push("milestones");
+		if (hasMilestone('uni', 1)) keep.push("challenges");
     
         // Stage 4, do the actual data resetautomate() {
         layerDataReset(this.layer, keep);
@@ -39,9 +40,10 @@ addLayer("su", {
     },
     passiveGeneration() {
         let p = new Decimal(0)
-        if (hasUpgrade('su', 14)) p = p.add(1)
+        if (hasUpgrade('su', 14) || hasMilestone('uni', 2)) p = p.add(1)
         return p
     },
+	autoUpgrade(){ return hasMilestone('uni', 2) },
     timeEffect(){
         return player.su.timeSubtab.add(1).pow(2)
     },
