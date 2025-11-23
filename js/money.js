@@ -21,9 +21,10 @@ addLayer("money", {
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
-		if (hasUpgrade('money', 12)) p = p.add(1)
+		if (hasUpgrade('money', 12) || hasMilestone('uni', 2)) p = p.add(1)
 		return p
 	},
+	autoUpgrade(){ return hasMilestone('uni', 2) },
 	onPrestige(){
         player.su.timeSubtab = new Decimal(0)
     },
