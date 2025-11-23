@@ -67,7 +67,7 @@ addLayer("uni", {
         description: "x4 UnR, boost $ based on UnR",
         cost: new Decimal(100),
 		unlocked(){ return hasUpgrade('uni', 11) },
-		effect(){ return player.uni.points.add(10).log(10).log(10).pow(0.3).add(1) },
+		effect(){ return player.uni.points.add(10).log(10).log(10).pow(0.3).div(20).add(1) },
 		effectDisplay(){ return "^"+format(upgradeEffect('uni', 12)) },
     },
   }
