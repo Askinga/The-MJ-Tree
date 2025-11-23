@@ -38,5 +38,10 @@ addLayer("uni", {
         effectDescription: "Keep Supreme Rune Milestones and xe2500 Logs",
         done() { return player.uni.points.gte(1) }
     },
+	1: {
+        requirementDescription: "2 Universal Runes",
+        effectDescription: "/30 Stock cooldown (OP)",
+        done() { return player.uni.points.gte(2) }
+    },
   },
 })
