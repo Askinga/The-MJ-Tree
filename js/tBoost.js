@@ -21,6 +21,11 @@ addLayer("tb", {
 	onPrestige(){
         player.su.timeSubtab = new Decimal(0)
     },
+	passiveGeneration() {
+        let p = new Decimal(0)
+        if (hasMilestone('uni', 2)) p = p.add(1)
+        return p
+    },
     color: "#ffffff",
     requires: new Decimal(1e13), // Can be a function that takes requirement increases into account
     resource: "Time Boosters", // Name of prestige currency
