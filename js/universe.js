@@ -16,6 +16,7 @@ addLayer("uni", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasUpgrade('uni', 11)) mult = mult.times(8)
+		if (hasUpgrade('uni', 12)) mult = mult.times(4)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -54,12 +55,25 @@ addLayer("uni", {
         effectDescription: "Autobuy Money Buyables (regardless of stock)",
         done() { return player.uni.points.gte(4) }
     },
+	4: {
+        requirementDescription: "5 Universal Runes",
+        effectDescription: "Keep SuR upgrades",
+        done() { return player.uni.points.gte(5) }
+    },
   },
   upgrades: {
     11: {
 		title: "Create a new universe",
         description: "x8 UnR (universal runes), x1e20 $ (OP)",
         cost: new Decimal(5),
+    },
+	12: {
+		title: "Celestial stuff",
+        description: "x4 UnR, boost $ based on UnR",
+        cost: new Decimal(100),
+		unlocked(){ return hasUpgrade('uni', 11) },
+		effect(){ return player.uni.points.add(10).log(10).log(10).pow(0.3).add(1) },
+		effectDisplay(){ return "^"+format(upgradeEffect('uni', 12)) },
     },
   }
 })
