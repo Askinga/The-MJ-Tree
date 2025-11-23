@@ -45,8 +45,13 @@ addLayer("uni", {
     },
 	2: {
         requirementDescription: "3 Universal Runes",
-        effectDescription: "Autobuy 5th row upgrades, keep Supreme Rune Challenges and keep their passive generation. 100% Time Boosters per second.",
+        effectDescription: "Autobuy 5th row upgrades, keep Supreme Rune Challenges and keep their passive generation, 100% Time Boosters per second",
         done() { return player.uni.points.gte(3) }
+    },
+	3: {
+        requirementDescription: "4 Universal Runes",
+        effectDescription: "Autobuy Money Buyables (regardless of stock)",
+        done() { return player.uni.points.gte(4) }
     },
   },
 })
