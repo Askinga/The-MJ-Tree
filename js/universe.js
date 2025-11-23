@@ -55,11 +55,6 @@ addLayer("uni", {
         effectDescription: "Autobuy Money Buyables (regardless of stock)",
         done() { return player.uni.points.gte(4) }
     },
-	4: {
-        requirementDescription: "5 Universal Runes",
-        effectDescription: "Keep SuR upgrades",
-        done() { return player.uni.points.gte(5) }
-    },
   },
   upgrades: {
     11: {
