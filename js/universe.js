@@ -22,6 +22,8 @@ addLayer("uni", {
         mult = new Decimal(1)
 		if (hasUpgrade('uni', 11)) mult = mult.times(8)
 		if (hasUpgrade('uni', 12)) mult = mult.times(4)
+		if (hasUpgrade('uni', 13)) mult = mult.times(10)
+		if (hasUpgrade('uni', 13)) mult = mult.times(upgradeEffect('uni', 13))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -75,5 +77,13 @@ addLayer("uni", {
 		effect(){ return player.uni.points.add(10).log(10).log(10).pow(0.3).div(5).add(1) },
 		effectDisplay(){ return "^"+format(upgradeEffect('uni', 12)) },
     },
-  }
+	13: {
+		title: "Infuse points into your universe",
+        description: "x10 UnR, boost UnR based on Points",
+        cost: new Decimal(3000),
+		unlocked(){ return hasUpgrade('uni', 12) },
+		effect(){ return player.points.add(10).log(10).log(10).pow(0.7).add(1) },
+		effectDisplay(){ return "x"+format(upgradeEffect('uni', 13)) },
+    },
+  },
 })
