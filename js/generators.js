@@ -81,7 +81,7 @@ addLayer("XP", {
     hotkeys: [
         {key: "g", description: "G: Reset for XP Generators", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasUpgrade('e', 35) || player.XP.unlocked)},
+    layerShown(){return (hasUpgrade('e', 35) || player.XP.unlocked && !(inChallenge('universes', 11)))},
 	  branches: ["u"],
 	bigI(){
 		return player.XP.gen.add(10).log(10).log(10).add(1).pow(0.4).min(1.7)
