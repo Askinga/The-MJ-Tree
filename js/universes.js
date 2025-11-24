@@ -26,12 +26,15 @@ addLayer("universes", {
     layerShown(){return hasUpgrade('uni', 14)},
     tabFormat: [
       ["display-text", "Here are the different universes you can go to."],
+	  "blank",
       "challenges",
     ],
     challenges: {
     11: {
         name: "Universe 2: Alternate Runes",
-        challengeDescription: "Enter the universe of alternate runes, where there will be new stuff.",
+        fullDisplay(){
+			return '"Alternate runes, alternate stuff"'
+	    },
         canComplete: function() {return false},
     },
     },
