@@ -43,7 +43,7 @@ addLayer("u", {
     hotkeys: [
         {key: "u", description: "U: Reset for ultra runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasUpgrade('l', 25) || player.u.unlocked)},
+    layerShown(){return ((hasUpgrade('l', 25) || player.u.unlocked)) && !(inChallenge('universes', 11))},
    	branches: ["s"],
     effect(){
       return player.u.points.add(1).pow(2.5)
