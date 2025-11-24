@@ -94,7 +94,7 @@ addLayer("logs", {
     },
     resetsNothing(){ return true },
     row: 3, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return (hasMilestone('XP', 12) || player.logs.unlocked)},
+    layerShown(){return (hasMilestone('XP', 12) || player.logs.unlocked && !(inChallenge('universes', 11)))},
 	branches: ["m"],
     effect(){
 	  let pow = new Decimal(25000)
