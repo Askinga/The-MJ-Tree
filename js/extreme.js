@@ -71,7 +71,7 @@ addLayer("e", {
     hotkeys: [
         {key: "e", description: "E: Reset for extreme runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return (hasUpgrade('u', 25) || player.e.unlocked && !(inChallenge('universes', 11)))},
+    layerShown(){return ((hasUpgrade('u', 25) || player.e.unlocked) && !(inChallenge('universes', 11)))},
 	  branches: ["l"],
     effect(){ return player.e.points.add(1).pow(20) },
     effectDescription(){ return "which is boosting XP and points by x" + format(layers.e.effect()) },
