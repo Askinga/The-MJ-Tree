@@ -6,7 +6,7 @@ addLayer("universes", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    color: "#4BDC13",
+    color: "#fcba03",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "Hello", // Name of prestige currency
     baseResource: "You", // Name of resource prestige is based on
