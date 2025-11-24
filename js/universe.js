@@ -24,6 +24,7 @@ addLayer("uni", {
 		if (hasUpgrade('uni', 12)) mult = mult.times(4)
 		if (hasUpgrade('uni', 13)) mult = mult.times(10)
 		if (hasUpgrade('uni', 13)) mult = mult.times(upgradeEffect('uni', 13))
+		if (hasUpgrade('uni', 14)) mult = mult.times(10)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -84,6 +85,12 @@ addLayer("uni", {
 		unlocked(){ return hasUpgrade('uni', 12) },
 		effect(){ return player.points.add(10).log(10).log(10).pow(0.7).add(1) },
 		effectDisplay(){ return "x"+format(upgradeEffect('uni', 13)) },
+    },
+	14: {
+		title: "Universe creator",
+        description: "x10 UnR, unlock subtab 'Universes'",
+        cost: new Decimal(1000000),
+		unlocked(){ return hasUpgrade('uni', 13) },
     },
   },
 })
