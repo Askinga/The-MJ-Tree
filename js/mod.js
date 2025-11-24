@@ -53,7 +53,7 @@ function getPointGen() {
 	if (hasUpgrade('p', 241) && !(inChallenge('universes', 11))) gain = gain.times(2)
 	if (hasUpgrade('p', 272) && !(inChallenge('universes', 11))) gain = gain.times(upgradeEffect('p', 272))
 	if (!(inChallenge('universes', 11))) gain = gain.times(layers.s.effect())
-	if (hasUpgrade('s', 11)) gain = gain.times(6)
+	if (hasUpgrade('s', 11) && !(inChallenge('universes', 11))) gain = gain.times(6)
 	if (!(inChallenge('universes', 11))) gain = gain.times(tmp.b.terrible)
 	if (!(inChallenge('universes', 11))) gain = gain.times(tmp.b.kinda_good)
 	if (!(inChallenge('universes', 11))) gain = gain.times(layers.m.effect())
