@@ -35,6 +35,9 @@ addLayer("universes", {
         fullDisplay(){
 			return '"Alternate runes, alternate stuff"'
 	    },
+		onEnter(){
+			player.points = new Decimal(0)
+		},
         canComplete: function() {return false},
     },
     },
