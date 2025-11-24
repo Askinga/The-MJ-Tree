@@ -118,7 +118,7 @@ addLayer("b", {
 	bestR(){ // Boosts boost rune gain
 		return player.b.bestR.add(1).pow(0.5)
 	},
-    layerShown(){return (hasUpgrade('s', 15) || player.b.unlocked && !(inChallenge('universes', 11)))},
+    layerShown(){return ((hasUpgrade('s', 15) || player.b.unlocked) && !(inChallenge('universes', 11)))},
 	branches: ["p"],
 	clickables: {
 		11: {
