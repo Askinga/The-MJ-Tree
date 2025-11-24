@@ -105,7 +105,7 @@ addLayer("money", {
 		    },
         },
 	},
-    layerShown(){return (hasUpgrade('su', 45) || player.money.unlocked && !(inChallenge('universes', 11)))},
+    layerShown(){return ((hasUpgrade('su', 45) || player.money.unlocked) && !(inChallenge('universes', 11)))},
 	branches: ["logs"],
 	upgrades: {
 		11: {
