@@ -56,7 +56,7 @@ addLayer("m", {
 	effectDescription(){
 		return "which is boosting Points by x" + format(layers.m.effect()) + " and boosting SR and BR by x" + format(tmp.m.bonusEff1)
 	},
-    layerShown(){return (hasUpgrade('b', 15) || player.m.unlocked && !(inChallenge('universes', 11)))},
+    layerShown(){return ((hasUpgrade('b', 15) || player.m.unlocked) && !(inChallenge('universes', 11)))},
     branches: ["s"],
 	milestones: {
     0: {
