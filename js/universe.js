@@ -8,7 +8,7 @@ addLayer("uni", {
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
-		if (hasUpgrade('uni', 12)) p = p.add(1)
+		if (hasUpgrade('uni', 12) && !(inChallenge('universes', 11))) p = p.add(1)
 		return p
 	},
     color: "#7a49d6",
@@ -40,7 +40,7 @@ addLayer("uni", {
     effectDescription(){
       return "which is boosting 5th row currencies and wood effect exponent by x"+format(layers.uni.effect())
     },
-    layerShown(){return ((player.points.gte("e1e60") && hasUpgrade('money', 45)) || player.uni.unlocked)},
+    layerShown(){return (((player.points.gte("e1e60") && hasUpgrade('money', 45)) || player.uni.unlocked)) && !(inChallenge('universes', 11))},
 	branches: ["money"],
   milestones: {
     0: {
@@ -87,8 +87,8 @@ addLayer("uni", {
 		effectDisplay(){ return "x"+format(upgradeEffect('uni', 13)) },
     },
 	14: {
-		title: "Universe creator",
-        description: "x10 UnR, unlock subtab 'Universes'",
+		title: "Enter different universes",
+        description: "x10 UnR, unlock side layer 'Universes'",
         cost: new Decimal(1000000),
 		unlocked(){ return hasUpgrade('uni', 13) },
     },
