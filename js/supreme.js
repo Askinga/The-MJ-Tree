@@ -132,7 +132,7 @@ addLayer("su", {
 		    },
         },
     },
-    layerShown(){return (hasUpgrade('logs', 35) || player.su.unlocked)},
+    layerShown(){return (hasUpgrade('logs', 35) || player.su.unlocked && !(inChallenge('universes', 11)))},
     branches: ["logs"],
     effect(){
         return player.su.points.add(1).pow(3)
