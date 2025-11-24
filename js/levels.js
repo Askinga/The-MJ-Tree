@@ -88,7 +88,7 @@ addLayer("l", {
         eff = softcap(eff, new Decimal("ee60"), 0.1)
 		return eff
 	},
-    layerShown(){return (hasMilestone('m', 3) || player.l.unlocked && !(inChallenge('universes', 11)))},
+    layerShown(){return ((hasMilestone('m', 3) || player.l.unlocked) && !(inChallenge('universes', 11)))},
 	branches: ["b"],
 	update(diff){
 		let req = new Decimal(2)
