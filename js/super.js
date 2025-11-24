@@ -84,7 +84,7 @@ addLayer("s", {
 			],
 		},
 	},
-    layerShown(){return (hasUpgrade('p', 321) || player.s.unlocked && !(inChallenge('universes', 11)))},
+    layerShown(){return ((hasUpgrade('p', 321) || player.s.unlocked) && !(inChallenge('universes', 11)))},
     branches: ["p"],
     effect(){ return player.s.points.add(1).pow(2) },
     effectDescription(){ return "which is boosting Points and Rune gain by x" + format(layers.s.effect()) },
