@@ -4,7 +4,7 @@ let modInfo = {
 	pointsName: "points",
 	modFiles: ["layers.js", "tree.js", "prestige.js", "super.js", "boost.js", "meta.js", "levels.js",
 	"ultra.js", "extreme.js", "generators.js", "logs.js", "supreme.js", "tBoost.js", "money.js",
-	"universe.js", "universes.js",
+	"universe.js", "universes.js", "different.js",
 	],
 
 	discordName: "",
