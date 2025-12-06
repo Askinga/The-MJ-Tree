@@ -6,6 +6,16 @@ addLayer("dr", {
         unlocked: true,
 		points: new Decimal(0),
     }},
+	doReset(reset) {
+        let keep = [];
+        if (! inChallenge("universes", 11)) keep.push("upgrades")
+        if (! inChallenge("universes", 11)) keep.push("points")
+        if (! inChallenge("universes", 11)) keep.push("milestones")
+        if (! inChallenge("universes", 11)) keep.push("buyables")
+        if (layers[reset].row > this.row) {
+            layerDataReset("dr", keep);
+        }
+    },
     color: "#3acb02",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "Different Runes", // Name of prestige currency
@@ -15,6 +25,7 @@ addLayer("dr", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if (hasUpgrade('dr', 12)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -25,4 +36,17 @@ addLayer("dr", {
         {key: "d", description: "D: Reset for different runes (Uni. 2)", onPress(){if (canReset(this.layer) && inChallenge('universes', 11)) doReset(this.layer)}},
     ],
     layerShown(){return inChallenge('universes', 11)},
+	upgrades: {
+		11: {
+			title: "Off to a different start",
+			description: "x2 Points",
+			cost: new Decimal(1),
+		},
+		12: {
+			title: "This feels different",
+			description: "x2 Different Runes",
+			cost: new Decimal(3),
+			unlocked(){ return hasUpgrade('dr', 11) },
+		},
+	},
 })
