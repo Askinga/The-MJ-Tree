@@ -61,7 +61,7 @@ addLayer("s", {
 	},
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "s", description: "S: Reset for super runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "s", description: "S: Reset for super runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
 	tabFormat: {
 		"Upgrades": {
