@@ -37,19 +37,19 @@ function getResetGain(layer, useType = null) {
 
 function levelUp(type = "level") {
 	let audio = new Audio("resources/prestige.mp3");
-    if (type == "level") {
+    if (type == "levela") {
 		audio = new Audio("resources/prestige.mp3");
 	}
-	if (type == "roll") {
+	if (type == "rolla") {
 		audio = new Audio("resources/roll.mp3");
 	}
-	if (type == "upg") {
+	if (type == "upga") {
 		audio = new Audio("resources/upgrade.mp3");
 	}
-	if (type == "ms") {
+	if (type == "msa") {
 		audio = new Audio("resources/milestone.mp3");
 	}
-	if (type == "buy") {
+	if (type == "buya") {
 		audio = new Audio("resources/buy.mp3");
 	}
 	
