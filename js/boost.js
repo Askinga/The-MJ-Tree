@@ -45,7 +45,7 @@ addLayer("b", {
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "b", description: "B: Reset for boost runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "b", description: "B: Reset for boost runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
 	tabFormat: {
 	"Runes & Upgrades": {
