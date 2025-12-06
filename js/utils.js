@@ -88,7 +88,6 @@ function buyUpg(layer, id) {
 	if (upg.onPurchase != undefined)
 		run(upg.onPurchase, upg)
 	needCanvasUpdate = true
-	levelUp('upg')
 }
 
 function buyMaxBuyable(layer, id) {
@@ -108,7 +107,6 @@ function buyBuyable(layer, id) {
 
 	run(layers[layer].buyables[id].buy, layers[layer].buyables[id])
 	updateBuyableTemp(layer)
-	levelUp('buy')
 }
 
 function clickClickable(layer, id) {
@@ -118,7 +116,6 @@ function clickClickable(layer, id) {
 
 	run(layers[layer].clickables[id].onClick, layers[layer].clickables[id])
 	updateClickableTemp(layer)
-	levelUp('roll')
 }
 
 function clickGrid(layer, id) {
