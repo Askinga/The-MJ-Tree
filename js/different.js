@@ -48,5 +48,11 @@ addLayer("dr", {
 			cost: new Decimal(3),
 			unlocked(){ return hasUpgrade('dr', 11) },
 		},
+		13: {
+			title: "I want to get out",
+			description: "Unlock more Universal Rune upgrades",
+			cost: new Decimal(10),
+			unlocked(){ return hasUpgrade('dr', 12) },
+		},
 	},
 })
