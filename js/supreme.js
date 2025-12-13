@@ -87,7 +87,7 @@ addLayer("su", {
     },
     row: 4,
     hotkeys: [
-        {key: "S", description: "Shift+S: Reset for supreme runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "S", description: "Shift+S: Reset for supreme runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
     tabFormat: {
         "Upgrades & Milestones": {
