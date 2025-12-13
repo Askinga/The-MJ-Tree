@@ -64,7 +64,7 @@ addLayer("l", {
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "x", description: "X: Reset for XP", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "x", description: "X: Reset for XP (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
 	tabFormat: [
 		"main-display",
