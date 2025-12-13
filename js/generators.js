@@ -79,7 +79,7 @@ addLayer("XP", {
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "g", description: "G: Reset for XP Generators", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "g", description: "G: Reset for XP Generators (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
     layerShown(){return ((hasUpgrade('e', 35) || player.XP.unlocked) && !(inChallenge('universes', 11)))},
 	  branches: ["u"],
