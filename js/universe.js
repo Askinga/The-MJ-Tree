@@ -32,7 +32,7 @@ addLayer("uni", {
     },
     row: 5, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "n", description: "N: Reset for universal runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "n", description: "N: Reset for universal runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
     effect(){
       return player.uni.points.add(1).pow(4)
