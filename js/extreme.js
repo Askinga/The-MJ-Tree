@@ -69,7 +69,7 @@ addLayer("e", {
     },
     row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "e", description: "E: Reset for extreme runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "e", description: "E: Reset for extreme runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
     layerShown(){return ((hasUpgrade('u', 25) || player.e.unlocked) && !(inChallenge('universes', 11)))},
 	  branches: ["l"],
