@@ -92,6 +92,7 @@ function getPointGen() {
 	if (inChallenge('universes', 11)) gain = new Decimal(1)
 	// Universe 2
 	if (hasUpgrade('dr', 11) && (inChallenge('universes', 11))) gain = gain.times(2)
+	if (hasUpgrade('dr', 14) && (inChallenge('universes', 11))) gain = gain.times(upgradeEffect('dr', 14))
 	if (player.d.difficulty.eq(0)) gain = gain.pow(1.01)
 	return gain
 }
