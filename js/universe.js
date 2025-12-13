@@ -99,7 +99,15 @@ addLayer("uni", {
         cost: new Decimal(1500000),
 		unlocked(){ return hasUpgrade('dr', 13) },
 		effect(){ return player.logs.woodPower.add(1).log(10).div(6.7).add(1) },
-		effectDisplay(){ return "^"+format(upgradeEffect('uni', 12)) },
+		effectDisplay(){ return "^"+format(upgradeEffect('uni', 15)) },
+    },
+	21: {
+		title: "Firewoodverse",
+        description: "Boost UnR based on Firewood",
+        cost: new Decimal(1500000),
+		unlocked(){ return hasUpgrade('uni', 15) },
+		effect(){ return player.logs.firewood.add(1).log(10).div(400).add(1) },
+		effectDisplay(){ return "^"+format(upgradeEffect('uni', 15)) },
     },
   },
 })
