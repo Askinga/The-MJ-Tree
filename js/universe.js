@@ -27,6 +27,7 @@ addLayer("uni", {
 		if (hasUpgrade('uni', 14)) mult = mult.times(10)
 		if (hasUpgrade('uni', 15)) mult = mult.times(upgradeEffect('uni', 15))
 		if (hasUpgrade('uni', 21)) mult = mult.times(upgradeEffect('uni', 21))
+		if (hasUpgrade('uni', 22)) mult = mult.times(upgradeEffect('uni', 22))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -100,7 +101,7 @@ addLayer("uni", {
         cost: new Decimal(15000000),
 		unlocked(){ return hasUpgrade('dr', 13) },
 		effect(){ return player.logs.woodPower.add(1).log(10).div(6.7).add(1) },
-		effectDisplay(){ return "^"+format(upgradeEffect('uni', 15)) },
+		effectDisplay(){ return "x"+format(upgradeEffect('uni', 15)) },
     },
 	21: {
 		title: "Firewoodverse",
@@ -108,7 +109,15 @@ addLayer("uni", {
         cost: new Decimal(150000000),
 		unlocked(){ return hasUpgrade('uni', 15) },
 		effect(){ return player.logs.firewood.add(1).log(10).div(400).add(1) },
-		effectDisplay(){ return "^"+format(upgradeEffect('uni', 21)) },
+		effectDisplay(){ return "x"+format(upgradeEffect('uni', 21)) },
+    },
+	22: {
+		title: "Levelverse",
+        description: "Boost UnR based on Levels",
+        cost: new Decimal(1e9),
+		unlocked(){ return hasUpgrade('uni', 21) },
+		effect(){ return player.l.level.add(1).log(10).div(10).add(1) },
+		effectDisplay(){ return "x"+format(upgradeEffect('uni', 22)) },
     },
   },
 })
