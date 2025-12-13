@@ -25,6 +25,7 @@ addLayer("uni", {
 		if (hasUpgrade('uni', 13)) mult = mult.times(10)
 		if (hasUpgrade('uni', 13)) mult = mult.times(upgradeEffect('uni', 13))
 		if (hasUpgrade('uni', 14)) mult = mult.times(10)
+		if (hasUpgrade('uni', 15)) mult = mult.times(upgradeEffect('uni', 15))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -91,6 +92,14 @@ addLayer("uni", {
         description: "x10 UnR, unlock side layer 'Universes'",
         cost: new Decimal(1000000),
 		unlocked(){ return hasUpgrade('uni', 13) },
+    },
+	15: {
+		title: "Woodverse",
+        description: "Boost UnR based on Wood effect exponent",
+        cost: new Decimal(1500000),
+		unlocked(){ return hasUpgrade('dr', 13) },
+		effect(){ return player.logs.woodPower.add(1).log(10).div(6.7).add(1) },
+		effectDisplay(){ return "^"+format(upgradeEffect('uni', 12)) },
     },
   },
 })
