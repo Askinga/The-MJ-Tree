@@ -26,6 +26,7 @@ addLayer("dr", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasUpgrade('dr', 12)) mult = mult.times(2)
+		if (hasUpgrade('dr', 14)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -53,6 +54,14 @@ addLayer("dr", {
 			description: "Unlock more Universal Rune upgrades",
 			cost: new Decimal(10),
 			unlocked(){ return hasUpgrade('dr', 12) },
+		},
+		14: {
+			title: "Not this again",
+			description: "Boost points based on DR and x3 DR",
+			cost: new Decimal(15),
+			unlocked(){ return hasUpgrade('uni', 23) },
+			effect(){ return player.dr.points.add(1).pow(0.4) },
+			effectDisplay(){ return "x"+format(upgradeEffect('dr', 14)) },
 		},
 	},
 })
