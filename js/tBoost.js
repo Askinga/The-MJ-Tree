@@ -46,7 +46,7 @@ addLayer("tb", {
     },
     row: 4, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "t", description: "T: Reset for time boosters", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "M", description: "Shift+M: Reset for $ (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
     effect(){ return player.tb.points.add(1).pow(2) },
     effectDescription(){ return "which is boosting Time and SuR by x" + format(layers.tb.effect()) },
