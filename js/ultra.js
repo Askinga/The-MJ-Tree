@@ -41,7 +41,7 @@ addLayer("u", {
     },
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "u", description: "U: Reset for ultra runes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "u", description: "U: Reset for ultra runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
     layerShown(){return ((hasUpgrade('l', 25) || player.u.unlocked) && !(inChallenge('universes', 11)))},
    	branches: ["s"],
