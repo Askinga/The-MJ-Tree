@@ -119,5 +119,11 @@ addLayer("uni", {
 		effect(){ return player.l.level.add(1).log(10).div(10).add(1) },
 		effectDisplay(){ return "x"+format(upgradeEffect('uni', 22)) },
     },
+	23: {
+		title: "Lets go back in there",
+        description: "Unlock more Different Rune upgrades",
+        cost: new Decimal(2e10),
+		unlocked(){ return hasUpgrade('uni', 22) },
+    },
   },
 })
