@@ -76,7 +76,7 @@ addLayer("money", {
     },
     row: 4, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "M", description: "Shift+M: Reset for $", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "M", description: "Shift+M: Reset for $ (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
 	tabFormat: {
         "Upgrades": {
