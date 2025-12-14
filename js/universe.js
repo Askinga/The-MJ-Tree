@@ -5,6 +5,11 @@ addLayer("uni", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+		galaxies: new Decimal(0),
+		stars: new Decimal(0),
+		planets: new Decimal(0),
+		CR: new Decimal(0),
+		CRg: new Decimal(0),
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
@@ -28,6 +33,7 @@ addLayer("uni", {
 		if (hasUpgrade('uni', 15)) mult = mult.times(upgradeEffect('uni', 15))
 		if (hasUpgrade('uni', 21)) mult = mult.times(upgradeEffect('uni', 21))
 		if (hasUpgrade('uni', 22)) mult = mult.times(upgradeEffect('uni', 22))
+		if (hasUpgrade('uni', 24)) mult = mult.times(5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -43,6 +49,47 @@ addLayer("uni", {
     effectDescription(){
       return "which is boosting 5th row currencies and wood effect exponent by x"+format(layers.uni.effect())
     },
+	tabFormat: {
+		"Upgrades & Milestones": {
+			content: [
+				"main-display",
+				"prestige-button",
+				"resource-display",
+				"blank",
+				"milestones",
+				"upgrades",
+			],
+		},
+		"The Universe": {
+			unlocked(){ return hasUpgrade('uni', 25) },
+			content: [
+				"main-display",
+				["display-text", function() { return 'You have <span style=" color: rgb(22, 222, 222); text-shadow: rgb(22, 222, 222) 0px 0px 10px"><h2>' +
+                format(player.uni.CR) +
+                '</h2></span> Celestial Runes.<br>(' + format(player.uni.CRg) + '/sec)' }],
+				"blank",
+				["display-text", function () { return (
+                'The universe currently has <span style=" color: rgb(87, 23, 156); text-shadow: rgb(87, 23, 156) 0px 0px 10px"><h2>' +
+                format(player.uni.galaxies) +
+                '</h2></span> Galaxies, <span style=" color: rgb(233, 226, 20); text-shadow: rgb(233, 226, 20) 0px 0px 10px"><h2>' +
+                format(player.uni.stars) +
+                '</h2></span> Stars and <span style=" color: rgb(166, 98, 27); text-shadow: rgb(166, 98, 27) 0px 0px 10px"><h2>' +
+                format(player.uni.planets) +
+                '</h2></span> Planets.'
+                );
+                },
+                ],
+				"clickables",
+			],
+		buttonStyle() {
+                    return {
+                        'background': 'linear-gradient(45deg, #c016de, black)',
+                        'border-color': '#7a49d6',
+                        'color': 'white',
+					}
+		    },
+	},
+	},
     layerShown(){return (((player.points.gte("e1e60") && hasUpgrade('money', 45)) || player.uni.unlocked)) && !(inChallenge('universes', 11))},
 	branches: ["money"],
   milestones: {
@@ -125,5 +172,25 @@ addLayer("uni", {
         cost: new Decimal(2e10),
 		unlocked(){ return hasUpgrade('uni', 22) },
     },
+	24: {
+		title: "Were back",
+        description: "x5 UnR",
+        cost: new Decimal(2e10),
+		unlocked(){ return hasUpgrade('dr', 15) },
+    },
+	25: {
+		title: "Please like Universe #1967",
+        description: "Unlock subtab 'The Universe'",
+        cost: new Decimal(1e11),
+		unlocked(){ return hasUpgrade('uni', 24) },
+    },
+  },
+  update(diff){
+	  let gain = new Decimal(0)
+	  if (hasUpgrade('uni', 25)) gain = gain.add(1)
+
+	  player.uni.CRg = gain
+	  gain = gain.times(diff)
+	  player.uni.CR = player.uni.CR.add(gain)
   },
 })
