@@ -26,7 +26,9 @@ addLayer("uni", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0, // Prestige currency exponent
 	Pb() {
-		return player.uni.planets.add(1).pow(0.3)
+		let pow = new Decimal(0.3)
+		if (hasUpgrade('uni', 31)) pow = pow.add(0.05)
+		return player.uni.planets.add(1).pow(pow)
 	},
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -40,6 +42,7 @@ addLayer("uni", {
 		if (hasUpgrade('uni', 22)) mult = mult.times(upgradeEffect('uni', 22))
 		if (hasUpgrade('uni', 24)) mult = mult.times(5)
 		mult = mult.times(tmp.uni.Pb)
+		if (hasUpgrade('uni', 31)) mult = mult.times(10)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -193,6 +196,17 @@ addLayer("uni", {
         cost: new Decimal(1e11),
 		unlocked(){ return hasUpgrade('uni', 24) },
     },
+	31: {
+		title: "A cool feature",
+		description: "Planets boost $ and x10 UnR and increase Planet Exponent by +0.05.",
+		cost: new Decimal(100000),
+		unlocked(){ return hasUpgrade('uni', 25) },
+		currencyDisplayName: "Planets",
+		currencyInternalName: "planets",
+		currencyLayer: "uni",
+		effect(){ return player.uni.planets.add(1).pow(0.5) },
+		effectDisplay(){ return "x"+format(upgradeEffect('uni', 31)) },
+	  },
   },
   update(diff){
 	  let gain = new Decimal(0)
