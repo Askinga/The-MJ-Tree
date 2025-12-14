@@ -27,6 +27,8 @@ addLayer("dr", {
         mult = new Decimal(1)
 		if (hasUpgrade('dr', 12)) mult = mult.times(2)
 		if (hasUpgrade('dr', 14)) mult = mult.times(3)
+		if (hasUpgrade('dr', 15)) mult = mult.times(4)
+		if (hasUpgrade('dr', 15)) mult = mult.times(upgradeEffect('dr', 15))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -62,6 +64,14 @@ addLayer("dr", {
 			unlocked(){ return hasUpgrade('uni', 23) },
 			effect(){ return player.dr.points.add(1).pow(0.4) },
 			effectDisplay(){ return "x"+format(upgradeEffect('dr', 14)) },
+		},
+		15: {
+			title: "*sigh",
+			description: "boost DR based on points and x4 DR",
+			cost: new Decimal(333),
+			unlocked(){ return hasUpgrade('dr', 14) },
+			effect(){ return player.points.add(1).pow(0.05) },
+			effectDisplay(){ return "x"+format(upgradeEffect('dr', 15)) },
 		},
 	},
 })
