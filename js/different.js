@@ -67,7 +67,7 @@ addLayer("dr", {
 		},
 		15: {
 			title: "*sigh",
-			description: "boost DR based on points and x4 DR",
+			description: "boost DR based on points and x4 DR and unlock more Universal Rune upgrades!",
 			cost: new Decimal(333),
 			unlocked(){ return hasUpgrade('dr', 14) },
 			effect(){ return player.points.add(1).pow(0.05) },
