@@ -10,6 +10,8 @@ addLayer("uni", {
 		planets: new Decimal(0),
 		CR: new Decimal(0),
 		CRg: new Decimal(0),
+		Sg: new Decimal(0),
+		Pg: new Decimal(0),
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
@@ -23,6 +25,9 @@ addLayer("uni", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0, // Prestige currency exponent
+	Pb() {
+		return player.uni.planets.add(1).pow(0.3)
+	},
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasUpgrade('uni', 11)) mult = mult.times(8)
@@ -34,6 +39,7 @@ addLayer("uni", {
 		if (hasUpgrade('uni', 21)) mult = mult.times(upgradeEffect('uni', 21))
 		if (hasUpgrade('uni', 22)) mult = mult.times(upgradeEffect('uni', 22))
 		if (hasUpgrade('uni', 24)) mult = mult.times(5)
+		mult = mult.times(tmp.uni.Pb)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -79,7 +85,10 @@ addLayer("uni", {
                 );
                 },
                 ],
-				"clickables",
+				"blank",
+				"buyables",
+				"blank",
+				["display-text", function(){ return "Galaxies generate " + format(player.uni.Sg) + " Stars per second<br>Stars generate " + format(player.uni.Pg) + " Planets per second<br>Planets boost Celestial Runes and Universal Runes by x" + format(tmp.uni.Pb) }],
 			],
 		buttonStyle() {
                     return {
@@ -187,10 +196,33 @@ addLayer("uni", {
   },
   update(diff){
 	  let gain = new Decimal(0)
+	  let Stg = new Decimal(0)
+	  let Plg = new Decimal(0)
 	  if (hasUpgrade('uni', 25)) gain = gain.add(1)
+	  gain = gain.times(tmp.uni.Pb)
 
 	  player.uni.CRg = gain
+	  Stg = player.uni.galaxies
+	  Plg = player.uni.stars
+	  player.uni.Sg = Stg
+	  player.uni.Pg = Plg
 	  gain = gain.times(diff)
+	  Stg = Stg.times(diff)
+	  Plg = Plg.times(diff)
 	  player.uni.CR = player.uni.CR.add(gain)
+	  player.uni.stars = player.uni.stars.add(Stg)
+	  player.uni.planets = player.uni.planets.add(Plg)
   },
+  buyables: {
+	11: {
+		title: "Buy a Galaxy",
+        cost(x) { return new Decimal(2).pow(x) },
+        display() { return "Cost: " + format(this.cost()) + " Celestial Runes" },
+        canAfford() { return player.uni.CR.gte(this.cost()) },
+        buy() {
+            player.uni.CR = player.uni.CR.sub(this.cost())
+			player.uni.galaxies = player.uni.galaxies.add(1)
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+    },
 })
