@@ -216,7 +216,7 @@ addLayer("uni", {
   buyables: {
 	11: {
 		title: "Buy a Galaxy",
-        cost(x) { return new Decimal(2).pow(x) },
+        cost(x) { return new Decimal(2).pow(x).times(10) },
         display() { return "Cost: " + format(this.cost()) + " Celestial Runes" },
         canAfford() { return player.uni.CR.gte(this.cost()) },
         buy() {
