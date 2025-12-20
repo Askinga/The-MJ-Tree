@@ -43,6 +43,7 @@ addLayer("uni", {
 		if (hasUpgrade('uni', 24)) mult = mult.times(5)
 		mult = mult.times(tmp.uni.Pb)
 		if (hasUpgrade('uni', 31)) mult = mult.times(10)
+		if (hasUpgrade('uni', 33)) mult = mult.times(upgradeEffect('uni', 33))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -53,7 +54,9 @@ addLayer("uni", {
         {key: "n", description: "N: Reset for universal runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
     effect(){
-      return player.uni.points.add(1).pow(4)
+	  let pow = new Decimal(4)
+	  if (hasUpgrade('uni', 32)) pow = pow.add(1)
+      return player.uni.points.add(1).pow(pow)
     },
     effectDescription(){
       return "which is boosting 5th row currencies and wood effect exponent by x"+format(layers.uni.effect())
@@ -206,7 +209,21 @@ addLayer("uni", {
 		currencyLayer: "uni",
 		effect(){ return player.uni.planets.add(1).pow(0.5) },
 		effectDisplay(){ return "x"+format(upgradeEffect('uni', 31)) },
-	  },
+	},
+	32: {
+		title: "Hyperinflate",
+        description: "+1 UnR effect exponent!",
+        cost: new Decimal(1e15),
+		unlocked(){ return hasUpgrade('uni', 31) },
+    },
+	33: {
+		title: "Universeverse?",
+        description: "Boost UnR based on UnR.",
+        cost: new Decimal(1e15),
+		unlocked(){ return hasUpgrade('uni', 32) },
+		effect(){ return player.uni.points.add(1).log(10).add(1) },
+		effectDisplay(){ return "x"+format(upgradeEffect('uni', 33)) },
+    },
   },
   update(diff){
 	  let gain = new Decimal(0)
