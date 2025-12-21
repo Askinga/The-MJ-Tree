@@ -10,6 +10,7 @@ addLayer("logs", {
 		firewood: new Decimal(0),
 		FiWS: new Decimal(0),
 		woodPower: new Decimal(0),
+		noMore: new Decimal(0),
     }},
 	automate(){
 		if (hasMilestone('su', 2)) {
@@ -24,11 +25,13 @@ addLayer("logs", {
 		}
 	},
 	passiveGeneration(){
+		if (!hasMilestone('logs', 0)) {
 		let p = new Decimal(0)
 		p = p.add(buyableEffect('logs', 13).div(100))
 		p = p.times(buyableEffect('logs', 23).add(1))
 		if (hasMilestone('su', 3)) p = p.add(0.1)
 		return p
+		}
 	},
 	autoUpgrade(){ return hasMilestone('su', 3) },
     color: "#735245",
@@ -90,17 +93,23 @@ addLayer("logs", {
 		return player.logs.firewood.add(1).log(10).pow(pow).times(mult)
 	},
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+		let exp = new Decimal(1)
+		if (hasMilestone('logs', 0)) exp = new Decimal(0)
+        return exp
     },
     resetsNothing(){ return true },
     row: 3, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return ((hasMilestone('XP', 12) || player.logs.unlocked) && !(inChallenge('universes', 11)))},
 	branches: ["m"],
+	noTrees(){
+		return player.logs.noMore.add(1).pow(2)
+	},
     effect(){
 	  let pow = new Decimal(25000)
 	  pow = pow.add(buyableEffect('logs', 12))
 	  pow = pow.add(buyableEffect('logs', 22))
 	  pow = pow.times(buyableEffect('money', 21))
+	  if (hasMilestone('logs', 0)) pow = pow.times(tmp.logs.noTrees)
       return player.logs.points.add(1).pow(pow)
     },
     effectDescription(){
@@ -113,6 +122,7 @@ addLayer("logs", {
 				"prestige-button",
 				"resource-display",
 				"blank",
+				"milestones",
 				"buyables",
 				"upgrades",
 			],
@@ -168,6 +178,13 @@ addLayer("logs", {
 		    },
 	},
 			},
+	milestones: {
+    0: {
+        requirementDescription: "A HUGE amount of logs",
+        effectDescription() { return "We ran out of trees! You can't gain logs, but the effect increases over time. Currently: ^" + format(tmp.logs.noTrees) },
+        done() { return player.logs.points.gte("ee167") }
+    },
+	},
 	buyables: {
 	11: {
 		title: "Stronger Axe",
@@ -393,8 +410,12 @@ addLayer("logs", {
         },
 	},
 	update(diff) {
+		if (hasMilestone("logs", 0)) {
+			player.logs.points = new Decimal("ee167")
+		}
 		if (!inChallenge('su', 11)) {
 		let passive = new Decimal(0)
+		let waste = new Decimal(0)
 		let ire = new Decimal(player.logs.wood.add(1).log(10).div(50))
 		if (hasUpgrade('logs', 32)) passive = passive.add(10)
 		if (hasUpgrade('su', 23)) ire = ire.times(5)
@@ -403,6 +424,7 @@ addLayer("logs", {
 		if (hasChallenge('su', 11)) ire = ire.times(1000)
 		if (hasUpgrade('su', 33)) ire = ire.times(upgradeEffect('su', 33))
 		ire = ire.times(buyableEffect('money', 13))
+		if (hasMilestone("logs", 0)) waste = waste.add(1)
 
 		passive = passive.times(diff)
 		if (hasUpgrade('logs', 32)) {
@@ -414,6 +436,8 @@ addLayer("logs", {
 		ire = ire.times(diff)
 		player.logs.firewood = player.logs.firewood.add(ire)
 		}
+		waste = waste.times(diff)
+		player.logs.noMore = player.logs.noMore.add(waste)
 		}
 	},
 })
