@@ -33,6 +33,13 @@ addLayer("logs", {
 		return p
 		}
 	},
+	doReset(reset) {
+        let keep = [];
+        keep.push("milestones")
+        if (layers[reset].row > this.row) {
+            layerDataReset("logs", keep);
+        }
+    },
 	autoUpgrade(){ return hasMilestone('su', 3) },
     color: "#735245",
     requires: new Decimal("e1.8e6"), // Can be a function that takes requirement increases into account
@@ -181,7 +188,7 @@ addLayer("logs", {
 	milestones: {
     0: {
         requirementDescription: "A HUGE amount of logs",
-        effectDescription() { return "We ran out of trees! You can't gain logs, but the effect increases over time. Currently: ^" + format(tmp.logs.noTrees) },
+        effectDescription() { return "We ran out of trees! Logs are stuck at e1.000e167, but the effect increases over time. Currently: ^" + format(tmp.logs.noTrees) + " (PERMANENT MILESTONE)" },
         done() { return player.logs.points.gte("ee167") }
     },
 	},
