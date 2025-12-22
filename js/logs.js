@@ -433,6 +433,7 @@ addLayer("logs", {
 		if (hasUpgrade('su', 33)) ire = ire.times(upgradeEffect('su', 33))
 		ire = ire.times(buyableEffect('money', 13))
 		if (hasMilestone("logs", 0)) waste = waste.add(1)
+		waste = waste.times(layers.pr.effect())
 
 		passive = passive.times(diff)
 		if (hasUpgrade('logs', 32)) {
