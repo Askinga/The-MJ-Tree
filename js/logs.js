@@ -111,6 +111,7 @@ addLayer("logs", {
 	noTrees(){
 		let pow = new Decimal(2)
 		if (hasUpgrade('pr', 11)) pow = pow.add(1)
+		if (hasUpgrade('pr', 12)) pow = pow.add(0.5)
 		return player.logs.noMore.add(1).pow(pow)
 	},
     effect(){
