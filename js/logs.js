@@ -109,7 +109,9 @@ addLayer("logs", {
     layerShown(){return ((hasMilestone('XP', 12) || player.logs.unlocked) && !(inChallenge('universes', 11)))},
 	branches: ["m"],
 	noTrees(){
-		return player.logs.noMore.add(1).pow(2)
+		let pow = new Decimal(2)
+		if (hasUpgrade('pr', 11)) pow = pow.add(1)
+		return player.logs.noMore.add(1).pow(pow)
 	},
     effect(){
 	  let pow = new Decimal(25000)
