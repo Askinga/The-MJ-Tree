@@ -35,5 +35,11 @@ addLayer("pr", {
   	        description: "+1 Log milestone 1 effect exponent",
     	    cost: new Decimal(2),
   	  	},
+		12: {
+			title: "Get even more powerful",
+  	        description: "+0.5 Log milestone 1 effect exponent",
+    	    cost: new Decimal(5),
+			unlocked(){ return hasUpgrade('pr', 11) },
+  	  	},
 	},
 })
