@@ -7,7 +7,7 @@ addLayer("pr", {
 		points: new Decimal(0),
     }},
     color: "#ffe042",
-    requires: new Decimal("e345"), // Can be a function that takes requirement increases into account
+    requires: new Decimal("e348"), // Can be a function that takes requirement increases into account
     resource: "Power Runes", // Name of prestige currency
     baseResource: "OoMs of points", // Name of resource prestige is based on
     baseAmount() {return player.points.add(1).log(10)}, // Get the current amount of baseResource
