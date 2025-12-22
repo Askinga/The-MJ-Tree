@@ -44,6 +44,7 @@ addLayer("uni", {
 		mult = mult.times(tmp.uni.Pb)
 		if (hasUpgrade('uni', 31)) mult = mult.times(10)
 		if (hasUpgrade('uni', 33)) mult = mult.times(upgradeEffect('uni', 33))
+		if (hasUpgrade('uni', 34)) mult = mult.times(10)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -223,6 +224,20 @@ addLayer("uni", {
 		unlocked(){ return hasUpgrade('uni', 32) },
 		effect(){ return player.uni.points.add(1).log(10).add(1) },
 		effectDisplay(){ return "x"+format(upgradeEffect('uni', 33)) },
+    },
+    34: {
+		title: "Galactic Logs",
+        description: "x10 UnR and each Galaxy boosts Logs effect exponent by x1.5.",
+        cost: new Decimal(1e16),
+		unlocked(){ return hasUpgrade('uni', 33) },
+		effect(){ return new Decimal(1.5).pow(player.uni.galaxies) },
+		effectDisplay(){ return "x"+format(upgradeEffect('uni', 34)) },
+    },
+	35: {
+		title: "Powers",
+        description: "Unlock a new layer.",
+        cost: new Decimal(1e17),
+		unlocked(){ return hasUpgrade('uni', 34) },
     },
   },
   update(diff){
