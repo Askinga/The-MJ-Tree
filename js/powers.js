@@ -28,5 +28,12 @@ addLayer("pr", {
     effect(){ return new Decimal(4).pow(player.pr.points) },
     effectDescription(){ return "which is boosting Log milestone 1 time by x" + format(layers.pr.effect()) },
     layerShown(){return (hasUpgrade('uni', 35) || player.pr.unlocked) && !(inChallenge('universes', 11))},
-	branches: ["su"]
+	branches: ["su"],
+	upgrades: {
+	    11: {
+			title: "Get more powerful",
+  	        description: "+1 Log milestone 1 effect exponent",
+    	    cost: new Decimal(2),
+  	  	},
+	},
 })
