@@ -117,6 +117,7 @@ addLayer("logs", {
 	  pow = pow.add(buyableEffect('logs', 22))
 	  pow = pow.times(buyableEffect('money', 21))
 	  if (hasMilestone('logs', 0)) pow = pow.times(tmp.logs.noTrees)
+	  if (hasUpgrade('uni', 34)) pow = pow.times(upgradeEffect('uni', 34))
       return player.logs.points.add(1).pow(pow)
     },
     effectDescription(){
