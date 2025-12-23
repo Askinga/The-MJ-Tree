@@ -5,6 +5,7 @@ addLayer("pr", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+		resetTime: new Decimal(0),
     }},
     color: "#ffe042",
     requires: new Decimal("e348"), // Can be a function that takes requirement increases into account
@@ -48,6 +49,14 @@ addLayer("pr", {
 			unlocked(){ return hasUpgrade('pr', 12) },
 			effect(){ return player.pr.points.div(12).pow(0.9) },
 			effectDisplay(){ return "+"+format(upgradeEffect('pr', 13)) }
+  	  	},
+		14: {
+			title: "Timed Strength",
+  	        description: "Time since last reset boosts Log milestone 1 effect exponent.",
+    	    cost: new Decimal(10),
+			unlocked(){ return hasUpgrade('pr', 13) },
+			effect(){ return player.pr.resetTime.add(1).pow(0.05) },
+			effectDisplay(){ return "x"+format(upgradeEffect('pr', 14)) }
   	  	},
 	},
 })
