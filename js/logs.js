@@ -112,6 +112,7 @@ addLayer("logs", {
 		let pow = new Decimal(2)
 		if (hasUpgrade('pr', 11)) pow = pow.add(1)
 		if (hasUpgrade('pr', 12)) pow = pow.add(0.5)
+		if (hasUpgrade('pr', 13)) pow = pow.add(upgradeEffect('pr', 13))
 		return player.logs.noMore.add(1).pow(pow)
 	},
     effect(){
