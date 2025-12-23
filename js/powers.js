@@ -8,7 +8,7 @@ addLayer("pr", {
 		upg4: new Decimal(0),
     }},
 	onPrestige(){
-		player.pr.upg4 = new Decimal(0),
+		player.pr.upg4 = new Decimal(0)
 	},
     color: "#ffe042",
     requires: new Decimal("e348"), // Can be a function that takes requirement increases into account
