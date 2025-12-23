@@ -41,5 +41,13 @@ addLayer("pr", {
     	    cost: new Decimal(5),
 			unlocked(){ return hasUpgrade('pr', 11) },
   	  	},
+		13: {
+			title: "Get even stronger",
+  	        description: "Power Runes boost Log milestone 1 effect exponent.",
+    	    cost: new Decimal(7),
+			unlocked(){ return hasUpgrade('pr', 12) },
+			effect(){ return player.pr.points.div(12).pow(0.9) },
+			effectDisplay(){ return "+"+format(upgradeEffect('pr', 13)) }
+  	  	},
 	},
 })
