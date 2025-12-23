@@ -5,8 +5,11 @@ addLayer("pr", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
-		resetTime: new Decimal(0),
+		upg4: new Decimal(0),
     }},
+	onPrestige(){
+		player.pr.upg4 = new Decimal(0),
+	},
     color: "#ffe042",
     requires: new Decimal("e348"), // Can be a function that takes requirement increases into account
     resource: "Power Runes", // Name of prestige currency
@@ -55,8 +58,15 @@ addLayer("pr", {
   	        description: "Time since last reset boosts Log milestone 1 effect exponent.",
     	    cost: new Decimal(10),
 			unlocked(){ return hasUpgrade('pr', 13) },
-			effect(){ return player.pr.resetTime.add(1).pow(0.05) },
+			effect(){ return player.pr.upg4.add(1).pow(0.05) },
 			effectDisplay(){ return "x"+format(upgradeEffect('pr', 14)) }
   	  	},
+	},
+	update(diff){
+		let upg4 = new Decimal(0)
+        if (hasUpgrade('pr', 14)) upg4 = upg4.add(1)
+		
+		upg4 = upg4.times(diff)
+		player.pr.upg4 = player.pr.upg4.add(upg4)
 	},
 })
