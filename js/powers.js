@@ -85,7 +85,7 @@ addLayer("pr", {
 		21: {
 			title: "Booster 1",
   	        description: "Add +0.5 to the pervious upgrades exponent. Add +0.01 to 'Timed Strength' effect exponent.",
-    	    cost: new Decimal(16),
+    	    cost: new Decimal(20),
 			unlocked(){ return hasUpgrade('pr', 15) },
   	  	},
 	},
