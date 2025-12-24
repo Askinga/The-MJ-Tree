@@ -36,7 +36,7 @@ addLayer("pr", {
     ],
     effect(){
 		let base = new Decimal(4)
-		if (hasUpgrade('pr', 22)) base = base.add(1)
+		if (hasUpgrade('pr', 22)) base = base.add(0.05)
 		return new Decimal(base).pow(player.pr.points)
 	},
     effectDescription(){ return "which is boosting Log milestone 1 time by x" + format(layers.pr.effect()) },
@@ -95,7 +95,7 @@ addLayer("pr", {
   	  	},
 		22: {
 			title: "Booster 2",
-  	        description: "Add +0.5 to 'Timed Strength 2's effect exponent. Add +1 to this layer's effect base.",
+  	        description: "Add +0.5 to 'Timed Strength 2's effect exponent. Add +0.05 to this layer's effect base.",
     	    cost: new Decimal(30),
 			unlocked(){ return hasUpgrade('pr', 21) },
   	  	},
