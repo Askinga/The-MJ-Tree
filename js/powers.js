@@ -63,7 +63,11 @@ addLayer("pr", {
   	        description: "Time since last reset boosts Log milestone 1 effect exponent.",
     	    cost: new Decimal(10),
 			unlocked(){ return hasUpgrade('pr', 13) },
-			effect(){ return player.pr.upg4.add(1).pow(0.05) },
+			effect(){  
+				let pow = new Decimal(0.05)
+				if (hasUpgrade('pr', 21)) pow = pow.add(0.01)
+				return player.pr.upg4.add(1).pow(pow) 
+			},
 			effectDisplay(){ return "x"+format(upgradeEffect('pr', 14)) }
   	  	},
 		15: {
@@ -71,8 +75,18 @@ addLayer("pr", {
   	        description: "Time since last reset divides Power Rune cost. Auto reset for Power Runes and they reset nothing.",
     	    cost: new Decimal(16),
 			unlocked(){ return hasUpgrade('pr', 14) },
-			effect(){ return player.pr.upg4.add(1).pow(0.5) },
+			effect(){ 
+				let pow = new Decimal(0.5)
+				if (hasUpgrade('pr', 21)) pow = pow.add(0.5)
+				return player.pr.upg4.add(1).pow(pow) 
+			},
 			effectDisplay(){ return "x"+format(upgradeEffect('pr', 15)) }
+  	  	},
+		21: {
+			title: "Booster 1",
+  	        description: "Add +0.5 to the pervious upgrades exponent. Add +0.01 to 'Timed Strength' effect exponent.",
+    	    cost: new Decimal(16),
+			unlocked(){ return hasUpgrade('pr', 15) },
   	  	},
 	},
 	update(diff){
