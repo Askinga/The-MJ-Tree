@@ -21,7 +21,9 @@ addLayer("pr", {
     baseAmount() {return player.points.add(1).log(10)}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
 	base: 10,
-    exponent: 1.5, // Prestige currency exponent
+    exponent() { 
+		return new Decimal(1.5).add(player.pr.points.max(50).sub(50).div(100))
+	}, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasUpgrade('pr', 15)) mult = mult.div(upgradeEffect('pr', 15))
