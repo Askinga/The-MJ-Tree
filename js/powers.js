@@ -10,6 +10,8 @@ addLayer("pr", {
 	onPrestige(){
 		player.pr.upg4 = new Decimal(0)
 	},
+	autoPrestige(){ return hasUpgrade('pr', 15) },
+	resetsNothing(){ return hasUpgrade('pr', 15) },
     color: "#ffe042",
     requires: new Decimal("e348"), // Can be a function that takes requirement increases into account
     resource: "Power Runes", // Name of prestige currency
@@ -20,6 +22,7 @@ addLayer("pr", {
     exponent: 1.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if (hasUpgrade('pr', 15)) mult = mult.times(upgradeEffect('pr', 15))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -60,6 +63,14 @@ addLayer("pr", {
 			unlocked(){ return hasUpgrade('pr', 13) },
 			effect(){ return player.pr.upg4.add(1).pow(0.05) },
 			effectDisplay(){ return "x"+format(upgradeEffect('pr', 14)) }
+  	  	},
+		15: {
+			title: "Timed Strength 2",
+  	        description: "Time since last reset divides Power Rune cost. Auto reset for Power Runes and they reset nothing.",
+    	    cost: new Decimal(16),
+			unlocked(){ return hasUpgrade('pr', 14) },
+			effect(){ return player.pr.upg4.add(1).pow(0.5) },
+			effectDisplay(){ return "x"+format(upgradeEffect('pr', 15)) }
   	  	},
 	},
 	update(diff){
