@@ -83,6 +83,7 @@ addLayer("pr", {
 				let pow = new Decimal(0.5)
 				if (hasUpgrade('pr', 21)) pow = pow.add(0.5)
 				if (hasUpgrade('pr', 22)) pow = pow.add(0.5)
+				if (hasUpgrade('pr', 23)) pow = pow.add(0.5)
 				return player.pr.upg4.add(1).pow(pow) 
 			},
 			effectDisplay(){ return "x"+format(upgradeEffect('pr', 15)) }
@@ -98,6 +99,12 @@ addLayer("pr", {
   	        description: "Add +0.5 to 'Timed Strength 2's effect exponent. Add +0.05 to this layer's effect base.",
     	    cost: new Decimal(30),
 			unlocked(){ return hasUpgrade('pr', 21) },
+  	  	},
+		23: {
+			title: "Booster 3",
+  	        description: "Add +0.5 to 'Timed Strength 2's effect exponent. x1.2 Log milestone 1 effect exponent.",
+    	    cost: new Decimal(40),
+			unlocked(){ return hasUpgrade('pr', 22) },
   	  	},
 	},
 	update(diff){
