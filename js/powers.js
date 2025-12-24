@@ -8,7 +8,9 @@ addLayer("pr", {
 		upg4: new Decimal(0),
     }},
 	onPrestige(){
-		player.pr.upg4 = new Decimal(0)
+		if (!hasUpgrade('pr', 15)) {
+			player.pr.upg4 = new Decimal(0)
+		}
 	},
 	autoPrestige(){ return hasUpgrade('pr', 15) },
 	resetsNothing(){ return hasUpgrade('pr', 15) },
