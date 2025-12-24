@@ -34,7 +34,11 @@ addLayer("pr", {
     hotkeys: [
         {key: "o", description: "O: Reset for power runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
-    effect(){ return new Decimal(4).pow(player.pr.points) },
+    effect(){
+		let base = new Decimal(4)
+		if (hasUpgrade('pr', 22)) base = base.add(1)
+		return new Decimal(base).pow(player.pr.points)
+	},
     effectDescription(){ return "which is boosting Log milestone 1 time by x" + format(layers.pr.effect()) },
     layerShown(){return (hasUpgrade('uni', 35) || player.pr.unlocked) && !(inChallenge('universes', 11))},
 	branches: ["su"],
@@ -78,6 +82,7 @@ addLayer("pr", {
 			effect(){ 
 				let pow = new Decimal(0.5)
 				if (hasUpgrade('pr', 21)) pow = pow.add(0.5)
+				if (hasUpgrade('pr', 22)) pow = pow.add(0.5)
 				return player.pr.upg4.add(1).pow(pow) 
 			},
 			effectDisplay(){ return "x"+format(upgradeEffect('pr', 15)) }
@@ -87,6 +92,12 @@ addLayer("pr", {
   	        description: "Add +0.5 to the pervious upgrades exponent. Add +0.01 to 'Timed Strength' effect exponent.",
     	    cost: new Decimal(20),
 			unlocked(){ return hasUpgrade('pr', 15) },
+  	  	},
+		22: {
+			title: "Booster 2",
+  	        description: "Add +0.5 to 'Timed Strength 2's effect exponent. Add +1 to this layer's effect base.",
+    	    cost: new Decimal(30),
+			unlocked(){ return hasUpgrade('pr', 21) },
   	  	},
 	},
 	update(diff){
