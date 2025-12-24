@@ -114,6 +114,7 @@ addLayer("logs", {
 		if (hasUpgrade('pr', 12)) pow = pow.add(0.5)
 		if (hasUpgrade('pr', 13)) pow = pow.add(upgradeEffect('pr', 13))
 		if (hasUpgrade('pr', 14)) pow = pow.times(upgradeEffect('pr', 14))
+		if (hasUpgrade('pr', 23)) pow = pow.times(1.2)
 		return player.logs.noMore.add(1).pow(pow)
 	},
     effect(){
