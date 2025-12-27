@@ -24,6 +24,7 @@ addLayer("pr", {
     exponent() { 
 		let softcap = new Decimal(50)
 		if (hasUpgrade('pr', 24)) softcap = softcap.add(5)
+		if (hasUpgrade('pr', 25)) softcap = softcap.add(5)
 		return new Decimal(1.5).add(player.pr.points.max(softcap).sub(softcap).div(100))
 	}, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -74,6 +75,7 @@ addLayer("pr", {
 			effect(){  
 				let pow = new Decimal(0.05)
 				if (hasUpgrade('pr', 21)) pow = pow.add(0.01)
+				if (hasUpgrade('pr', 25)) pow = pow.add(0.01)
 				return player.pr.upg4.add(1).pow(pow) 
 			},
 			effectDisplay(){ return "x"+format(upgradeEffect('pr', 14)) }
@@ -89,6 +91,7 @@ addLayer("pr", {
 				if (hasUpgrade('pr', 22)) pow = pow.add(0.5)
 				if (hasUpgrade('pr', 23)) pow = pow.add(0.5)
 				if (hasUpgrade('pr', 24)) pow = pow.add(1)
+				if (hasUpgrade('pr', 25)) pow = pow.add(1.5)
 				return player.pr.upg4.add(1).pow(pow) 
 			},
 			effectDisplay(){ return "x"+format(upgradeEffect('pr', 15)) }
@@ -116,6 +119,12 @@ addLayer("pr", {
   	        description: "Add +1 to 'Timed Strength 2's effect exponent. Delay the Power Rune softcap by +5.",
     	    cost: new Decimal(55),
 			unlocked(){ return hasUpgrade('pr', 23) },
+  	  	},
+		25: {
+			title: "Booster 5",
+  	        description: "Add +1.5 to 'Timed Strength 2's effect exponent. Delay the Power Rune softcap by +5 and +0.01 'Timed Strength's effect exponent.",
+    	    cost: new Decimal(60),
+			unlocked(){ return hasUpgrade('pr', 24) },
   	  	},
 	},
 	update(diff){
