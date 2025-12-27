@@ -27,6 +27,7 @@ addLayer("pr", {
 		if (hasUpgrade('pr', 25)) softcap = softcap.add(5)
 		if (hasUpgrade('pr', 31)) softcap = softcap.add(10)
 		if (hasUpgrade('pr', 32)) softcap = softcap.add(8)
+		if (hasUpgrade('pr', 33)) softcap = softcap.add(10)
 		return new Decimal(1.5).add(player.pr.points.max(softcap).sub(softcap).div(100))
 	}, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -140,10 +141,17 @@ addLayer("pr", {
     	    cost: new Decimal(77),
 			unlocked(){ return hasUpgrade('pr', 31) },
   	  	},
+		33: {
+			title: "Delayer 3",
+  	        description: "Delay the Power Rune softcap by +10 and x100 Upg 4 & 5 effect time",
+    	    cost: new Decimal(86),
+			unlocked(){ return hasUpgrade('pr', 32) },
+  	  	},
 	},
 	update(diff){
 		let upg4 = new Decimal(0)
         if (hasUpgrade('pr', 14)) upg4 = upg4.add(1)
+		if (hasUpgrade('pr', 33)) upg4 = upg4.times(100)
 		
 		upg4 = upg4.times(diff)
 		player.pr.upg4 = player.pr.upg4.add(upg4)
