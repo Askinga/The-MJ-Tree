@@ -25,6 +25,7 @@ addLayer("pr", {
 		let softcap = new Decimal(50)
 		if (hasUpgrade('pr', 24)) softcap = softcap.add(5)
 		if (hasUpgrade('pr', 25)) softcap = softcap.add(5)
+		if (hasUpgrade('pr', 31)) softcap = softcap.add(10)
 		return new Decimal(1.5).add(player.pr.points.max(softcap).sub(softcap).div(100))
 	}, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -125,6 +126,12 @@ addLayer("pr", {
   	        description: "Add +1.5 to 'Timed Strength 2's effect exponent. Delay the Power Rune softcap by +5 and +0.01 'Timed Strength's effect exponent.",
     	    cost: new Decimal(60),
 			unlocked(){ return hasUpgrade('pr', 24) },
+  	  	},
+		31: {
+			title: "Delayer 1",
+  	        description: "Delay the Power Rune softcap by +10. I don't like the cost.",
+    	    cost: new Decimal(67),
+			unlocked(){ return hasUpgrade('pr', 25) },
   	  	},
 	},
 	update(diff){
