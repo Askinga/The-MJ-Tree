@@ -30,6 +30,7 @@ addLayer("pr", {
 		if (hasUpgrade('pr', 32)) softcap = softcap.add(8)
 		if (hasUpgrade('pr', 33)) softcap = softcap.add(10)
 		if (hasUpgrade('pr', 34)) softcap = softcap.add(upgradeEffect('pr', 34))
+		if (hasUpgrade('pr', 35)) softcap = softcap.add(upgradeEffect('pr', 35))
 		player.pr.soft = softcap
 		return new Decimal(1.5).add(player.pr.points.max(softcap).sub(softcap).div(100))
 	}, // Prestige currency exponent
@@ -166,12 +167,21 @@ addLayer("pr", {
 			effect(){ return player.pr.upg4.add(1).log(3) },
 			effectDisplay(){ return "+"+format(upgradeEffect('pr', 34)) },
   	  	},
+		35: {
+			title: "Delayer 5",
+  	        description: "Delay the Power Rune softcap based on Power Runes and x10 Layer reset time",
+    	    cost: new Decimal(111),
+			unlocked(){ return hasUpgrade('pr', 34) },
+			effect(){ return player.pr.points.div(16) },
+			effectDisplay(){ return "+"+format(upgradeEffect('pr', 35)) },
+  	  	},
 	},
 	update(diff){
 		let upg4 = new Decimal(0)
         if (hasUpgrade('pr', 14)) upg4 = upg4.add(1)
 		if (hasUpgrade('pr', 33)) upg4 = upg4.times(100)
 		if (hasUpgrade('pr', 34)) upg4 = upg4.times(10)
+		if (hasUpgrade('pr', 35)) upg4 = upg4.times(10)
 		
 		upg4 = upg4.times(diff)
 		player.pr.upg4 = player.pr.upg4.add(upg4)
