@@ -22,7 +22,9 @@ addLayer("pr", {
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
 	base: 10,
     exponent() { 
-		return new Decimal(1.5).add(player.pr.points.max(50).sub(50).div(100))
+		let softcap = new Decimal(50)
+		if (hasUpgrade('pr', 24)) softcap = softcap.add(5)
+		return new Decimal(1.5).add(player.pr.points.max(softcap).sub(softcap).div(100))
 	}, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -86,6 +88,7 @@ addLayer("pr", {
 				if (hasUpgrade('pr', 21)) pow = pow.add(0.5)
 				if (hasUpgrade('pr', 22)) pow = pow.add(0.5)
 				if (hasUpgrade('pr', 23)) pow = pow.add(0.5)
+				if (hasUpgrade('pr', 24)) pow = pow.add(1)
 				return player.pr.upg4.add(1).pow(pow) 
 			},
 			effectDisplay(){ return "x"+format(upgradeEffect('pr', 15)) }
@@ -107,6 +110,12 @@ addLayer("pr", {
   	        description: "Add +0.5 to 'Timed Strength 2's effect exponent. x1.2 Log milestone 1 effect exponent.",
     	    cost: new Decimal(40),
 			unlocked(){ return hasUpgrade('pr', 22) },
+  	  	},
+		24: {
+			title: "Booster 4",
+  	        description: "Add +1 to 'Timed Strength 2's effect exponent. Delay the Power Rune softcap by +5.",
+    	    cost: new Decimal(55),
+			unlocked(){ return hasUpgrade('pr', 23) },
   	  	},
 	},
 	update(diff){
