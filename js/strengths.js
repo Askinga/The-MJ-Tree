@@ -40,5 +40,11 @@ addLayer("st", {
 			effect(){ return player.st.points.times(3) },
 			effectDisplay(){ return "+"+format(upgradeEffect('st', 11)) },
 		},
+		12: {
+			title: "Multiply",
+			description: "Delay Power Rune softcap by x1.075.",
+			cost: new Decimal(10),
+			unlocked(){ return hasUpgrade('st', 11) },
+		},
 	},
 })
