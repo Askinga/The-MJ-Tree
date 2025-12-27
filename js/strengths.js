@@ -46,5 +46,11 @@ addLayer("st", {
 			cost: new Decimal(10),
 			unlocked(){ return hasUpgrade('st', 11) },
 		},
+		13: {
+			title: "Multiply 2",
+			description: "Delay Power Rune softcap by x1.1.",
+			cost: new Decimal(14),
+			unlocked(){ return hasUpgrade('st', 12) },
+		},
 	},
 })
