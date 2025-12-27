@@ -182,6 +182,7 @@ addLayer("pr", {
 		if (hasUpgrade('pr', 33)) upg4 = upg4.times(100)
 		if (hasUpgrade('pr', 34)) upg4 = upg4.times(10)
 		if (hasUpgrade('pr', 35)) upg4 = upg4.times(10)
+		upg4 = upg4.times(layers.st.effect())
 		
 		upg4 = upg4.times(diff)
 		player.pr.upg4 = player.pr.upg4.add(upg4)
