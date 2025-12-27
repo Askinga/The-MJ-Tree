@@ -32,4 +32,13 @@ addLayer("st", {
     effectDescription(){ return "which is boosting Power Rune reset time by x" + format(layers.st.effect()) },
     layerShown(){return (hasUpgrade('pr', 35) || player.st.unlocked) && !(inChallenge('universes', 11))},
 	branches: ["su"],
+	upgrades: {
+		11: {
+			title: "Some new strengths appear",
+			description: "Delay Power Rune softcap based on Strength Runes!",
+			cost: new Decimal(2),
+			effect(){ return player.st.points.times(3) },
+			effectDisplay(){ return "+"+format(upgradeEffect('st', 11)) },
+		},
+	},
 })
