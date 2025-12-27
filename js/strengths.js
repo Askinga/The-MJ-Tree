@@ -12,7 +12,7 @@ addLayer("st", {
     baseResource: "Power Runes", // Name of resource prestige is based on
     baseAmount() {return player.pr.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    base: 1.02,
+    base: 1.025,
     exponent: 1.2, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
