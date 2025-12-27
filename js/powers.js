@@ -6,6 +6,7 @@ addLayer("pr", {
         unlocked: false,
 		points: new Decimal(0),
 		upg4: new Decimal(0),
+		soft: new Decimal(0),
     }},
 	onPrestige(){
 		if (!hasUpgrade('pr', 15)) {
@@ -28,6 +29,8 @@ addLayer("pr", {
 		if (hasUpgrade('pr', 31)) softcap = softcap.add(10)
 		if (hasUpgrade('pr', 32)) softcap = softcap.add(8)
 		if (hasUpgrade('pr', 33)) softcap = softcap.add(10)
+		if (hasUpgrade('pr', 34)) softcap = softcap.add(upgradeEffect('pr', 34))
+		player.pr.soft = softcap
 		return new Decimal(1.5).add(player.pr.points.max(softcap).sub(softcap).div(100))
 	}, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -42,6 +45,14 @@ addLayer("pr", {
     hotkeys: [
         {key: "o", description: "O: Reset for power runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
+	tabFormat: [
+		"main-display",
+		"prestige-button",
+		"resource-display",
+		["display-text", function(){ return "Softcap starts at " + format(player.pr.soft) + " Power Runes" }],
+		"blank",
+		"upgrades",
+	],
     effect(){
 		let base = new Decimal(4)
 		if (hasUpgrade('pr', 22)) base = base.add(0.05)
@@ -143,15 +154,24 @@ addLayer("pr", {
   	  	},
 		33: {
 			title: "Delayer 3",
-  	        description: "Delay the Power Rune softcap by +10 and x100 Upg 4 & 5 effect time",
+  	        description: "Delay the Power Rune softcap by +10 and x100 Layer reset time",
     	    cost: new Decimal(86),
 			unlocked(){ return hasUpgrade('pr', 32) },
+  	  	},
+		34: {
+			title: "Delayer 4",
+  	        description: "Delay the Power Rune softcap based on layer reset time and x10 Layer reset time",
+    	    cost: new Decimal(98),
+			unlocked(){ return hasUpgrade('pr', 33) },
+			effect(){ return player.pr.upg4.add(1).log(3) },
+			effectDisplay(){ return "+"+format(upgradeEffect('pr', 34)) },
   	  	},
 	},
 	update(diff){
 		let upg4 = new Decimal(0)
         if (hasUpgrade('pr', 14)) upg4 = upg4.add(1)
 		if (hasUpgrade('pr', 33)) upg4 = upg4.times(100)
+		if (hasUpgrade('pr', 34)) upg4 = upg4.times(10)
 		
 		upg4 = upg4.times(diff)
 		player.pr.upg4 = player.pr.upg4.add(upg4)
