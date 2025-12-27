@@ -169,7 +169,7 @@ addLayer("pr", {
   	  	},
 		35: {
 			title: "Delayer 5",
-  	        description: "Delay the Power Rune softcap based on Power Runes and x10 Layer reset time",
+  	        description: "Delay the Power Rune softcap based on Power Runes and x10 Layer reset time. Unlock a new layer.",
     	    cost: new Decimal(111),
 			unlocked(){ return hasUpgrade('pr', 34) },
 			effect(){ return player.pr.points.div(16) },
