@@ -154,7 +154,7 @@ addLayer("XP", {
         done() { return player.points.gte("e400000") }
     },
 	7: {
-        requirementDescription: "1,000,000 XP Boosters",
+        requirementDescription: "1,000,000 XP Generators",
         effectDescription(){ return "Boost 2nd Level Effect Base based on XP Boosters. Currently: x" + format(tmp.XP.boost4) + " First hardcap starts at x1e50. :("},
         done() { return player.XP.points.gte("1e6") }
     },
@@ -164,12 +164,12 @@ addLayer("XP", {
         done() { return player.XP.points.gte("2.5e6") }
     },
 	9: {
-        requirementDescription: "100,000,000 XP Boosters",
+        requirementDescription: "100,000,000 XP Generators",
         effectDescription(){ return "Boost Extreme Runes based on XP Boosters. (Softcap: xe200) Currently: x" + format(tmp.XP.boost5) },
         done() { return player.XP.points.gte("1e8") }
     },
 	10: {
-        requirementDescription: "1e10 XP Boosters",
+        requirementDescription: "1e10 XP Generators",
         effectDescription(){ return "Boost XP Generator effect power base based on XP Boosters. (Hardcap: x1.9) Currently: x" + format(tmp.XP.bigI3, 5) },
         done() { return player.XP.points.gte("1e10") }
     },
