@@ -189,7 +189,7 @@ addLayer("uni", {
 		unlocked(){ return hasUpgrade('uni', 22) },
     },
 	24: {
-		title: "Were back",
+		title: "We're back",
         description: "x5 UnR",
         cost: new Decimal(2e10),
 		unlocked(){ return hasUpgrade('dr', 15) },
