@@ -214,7 +214,7 @@ addLayer("uni", {
 	32: {
 		title: "Hyperinflate",
         description: "+1 UnR effect exponent!",
-        cost: new Decimal(1e15),
+        cost: new Decimal(2e14),
 		unlocked(){ return hasUpgrade('uni', 31) },
     },
 	33: {
