@@ -58,5 +58,11 @@ addLayer("st", {
 			cost: new Decimal(17),
 			unlocked(){ return hasUpgrade('st', 13) },
 		},
+		15: {
+			title: "Endurance",
+			description: "Unlock a new layer that delays Power Rune softcap FURTHER.",
+			cost: new Decimal(21),
+			unlocked(){ return hasUpgrade('st', 14) },
+		},
 	},
 })
