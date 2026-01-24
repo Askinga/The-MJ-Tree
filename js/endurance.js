@@ -29,7 +29,7 @@ addLayer("en", {
     ],
     effect(){
 		let exp = new Decimal(0.125)
-		return player.en.points.add(1).pow(exp).div(100)
+		return player.en.points.pow(exp).div(100).add(1)
 	  },
     effectDescription(){ return "which is delaying Power Rune softcap by x" + format(layers.en.effect()) },
     layerShown(){return (hasUpgrade('st', 15) || player.en.unlocked)},
