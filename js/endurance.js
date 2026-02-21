@@ -29,8 +29,7 @@ addLayer("en", {
         {key: "E", description: "Shift+E: Reset for endurance runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
     effect(){
-		let exp = new Decimal(0.125)
-		return player.en.points.pow(exp).div(100).add(1)
+		return new Decimal(1.08613).pow(player.en.points.add(1).log10())
 	  },
     effectDescription(){ return "which is delaying Power Rune softcap by x" + format(layers.en.effect()) },
     layerShown(){return ((hasUpgrade('st', 15) || player.en.unlocked) && !(inChallenge('universes', 11)))},
@@ -40,8 +39,33 @@ addLayer("en", {
 			title: "The HP grind is here",
 			description: "x2 Endurance Runes per OoM of Endurance Runes.",
 			cost: new Decimal(5),
-			effect(){ return new Decimal(2).pow(player.en.points.log(10).add(1)) },
+			effect(){ return new Decimal(2).pow(player.en.points.add(1).log10()) },
 			effectDisplay(){ return "x"+format(upgradeEffect('en', 11)) },
 		},
+		12: {
+			title: "Bring out the buyables",
+			description: "Unlock a buyable.",
+			cost: new Decimal(7),
+			unlocked(){ return hasUpgrade('en', 11) },
+		},
+	},
+	buyables: {
+	11: {
+		unlocked(){ return hasUpgrade('en', 12) },
+		title: "Endurance 1",
+        cost(x) { return new Decimal(2).pow(x) },
+        display() { return "x1.25 Endurance Runes per purchase<br>Cost: " + format(this.cost()) + " Endurance Runes<br>Bought: " + format(getBuyableAmount('en', 11)) + "<br>Effect: x" + format(buyableEffect('en', 11)) + " Endurance Runes" },
+        canAfford() { return player.e.points.gte(this.cost()) },
+        buy() {
+            player.e.points = player.e.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1.25)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
+    },
 	},
 })
