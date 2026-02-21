@@ -33,7 +33,7 @@ addLayer("en", {
 		return player.en.points.pow(exp).div(100).add(1)
 	  },
     effectDescription(){ return "which is delaying Power Rune softcap by x" + format(layers.en.effect()) },
-    layerShown(){return (hasUpgrade('st', 15) || player.en.unlocked)},
+    layerShown(){return ((hasUpgrade('st', 15) || player.en.unlocked) && !(inChallenge('universes', 11)))},
 	branches: ["su"],
 	upgrades: {
 		11: {
