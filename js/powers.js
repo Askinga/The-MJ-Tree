@@ -13,6 +13,7 @@ addLayer("pr", {
 			player.pr.upg4 = new Decimal(0)
 		}
 	},
+	canBuyMax(){ return hasUpgrade('en', 13) },
 	autoPrestige(){ return hasUpgrade('pr', 15) },
 	resetsNothing(){ return hasUpgrade('pr', 15) },
     color: "#ffe042",
@@ -32,6 +33,7 @@ addLayer("pr", {
 		if (hasUpgrade('pr', 34)) softcap = softcap.add(upgradeEffect('pr', 34))
 		if (hasUpgrade('pr', 35)) softcap = softcap.add(upgradeEffect('pr', 35))
 		if (hasUpgrade('st', 11)) softcap = softcap.add(upgradeEffect('st', 11))
+		if (hasUpgrade('en', 13)) softcap = softcap.times(1.02)
 		if (hasUpgrade('st', 12)) softcap = softcap.times(1.075)
 		if (hasUpgrade('st', 13)) softcap = softcap.times(1.1)
 		if (hasUpgrade('st', 14)) softcap = softcap.times(1.125)
