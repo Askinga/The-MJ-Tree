@@ -18,6 +18,7 @@ addLayer("en", {
     exponent: 3, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if (hasUpgrade('en', 11)) mult = mult.times(upgradeEffect('en', 11))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -33,5 +34,14 @@ addLayer("en", {
 	  },
     effectDescription(){ return "which is delaying Power Rune softcap by x" + format(layers.en.effect()) },
     layerShown(){return (hasUpgrade('st', 15) || player.en.unlocked)},
-	branches: ["su"]
+	branches: ["su"],
+	upgrades: {
+		11: {
+			title: "The HP grind is here",
+			description: "x2 Endurance Runes per OoM of Endurance Runes.",
+			cost: new Decimal(5),
+			effect(){ return new Decimal(2).pow(player.en.points.log(10).add(1)) },
+			effectDisplay(){ return "x"+format(upgradeEffect('en', 11)) },
+		},
+	},
 })
