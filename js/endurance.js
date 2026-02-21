@@ -30,7 +30,7 @@ addLayer("en", {
         {key: "E", description: "Shift+E: Reset for endurance runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
     effect(){
-		return new Decimal(1.08613).pow(player.en.points.add(1).log10())
+		return new Decimal(1.04613).pow(player.en.points.add(1).log10())
 	  },
     effectDescription(){ return "which is delaying Power Rune softcap by x" + format(layers.en.effect()) },
     layerShown(){return ((hasUpgrade('st', 15) || player.en.unlocked) && !(inChallenge('universes', 11)))},
@@ -48,6 +48,12 @@ addLayer("en", {
 			description: "Unlock a buyable.",
 			cost: new Decimal(7),
 			unlocked(){ return hasUpgrade('en', 11) },
+		},
+		13: {
+			title: "Get closer to your max potential",
+			description: "Max buy Power Runes. Lets add in a little x1.02 Softcap Delay too?",
+			cost: new Decimal(50),
+			unlocked(){ return hasUpgrade('en', 12) },
 		},
 	},
 	buyables: {
