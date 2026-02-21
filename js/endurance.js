@@ -19,6 +19,7 @@ addLayer("en", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasUpgrade('en', 11)) mult = mult.times(upgradeEffect('en', 11))
+		mult = mult.times(buyableEffect('en', 11))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -55,9 +56,9 @@ addLayer("en", {
 		title: "Endurance 1",
         cost(x) { return new Decimal(2).pow(x) },
         display() { return "x1.25 Endurance Runes per purchase<br>Cost: " + format(this.cost()) + " Endurance Runes<br>Bought: " + format(getBuyableAmount('en', 11)) + "<br>Effect: x" + format(buyableEffect('en', 11)) + " Endurance Runes" },
-        canAfford() { return player.e.points.gte(this.cost()) },
+        canAfford() { return player.en.points.gte(this.cost()) },
         buy() {
-            player.e.points = player.e.points.sub(this.cost())
+            player.en.points = player.en.points.sub(this.cost())
             setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
         },
 		effect(x){
