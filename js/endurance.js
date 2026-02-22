@@ -51,7 +51,7 @@ addLayer("en", {
 		},
 		13: {
 			title: "Get closer to your max potential",
-			description: "Max buy Power Runes. Lets add in a little x1.02 Softcap Delay too?",
+			description: "Set your Power Runes to your current point amount. Lets add in a little x1.02 Softcap Delay too?",
 			cost: new Decimal(50),
 			unlocked(){ return hasUpgrade('en', 12) },
 		},
