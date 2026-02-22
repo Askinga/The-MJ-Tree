@@ -24,7 +24,6 @@ addLayer("pr", {
 			player.pr.upg4 = new Decimal(0)
 		}
 	},
-	canBuyMax(){ return hasUpgrade('en', 13) },
 	autoPrestige(){ return hasUpgrade('pr', 15) },
 	resetsNothing(){ return hasUpgrade('pr', 15) },
     color: "#ffe042",
