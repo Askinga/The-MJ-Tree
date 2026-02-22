@@ -7,18 +7,7 @@ addLayer("pr", {
 		points: new Decimal(0),
 		upg4: new Decimal(0),
 		soft: new Decimal(0),
-		best: new Decimal(0),
     }},
-	doReset(pr){
-		let keptUpgrades = [];
-		
-		let keep = [];
-		keep.push(best)
-
-		layerDataReset(this.layer, keep)
-
-		player[this.layer].upgrades.push(...keptUpgrades)
-	},
 	onPrestige(){
 		if (!hasUpgrade('pr', 15)) {
 			player.pr.upg4 = new Decimal(0)
