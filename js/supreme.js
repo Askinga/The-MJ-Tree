@@ -29,7 +29,7 @@ addLayer("su", {
         
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
-	    if (hasMilestone('uni', 0)) keep.push("milestones");
+	    if (hasMilestone('uni', 0) || hasMilestone('limit', 0)) keep.push("milestones");
 		if (hasMilestone('uni', 1)) keep.push("challenges");
     
         // Stage 4, do the actual data resetautomate() {
