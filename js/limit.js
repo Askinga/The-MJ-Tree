@@ -32,11 +32,11 @@ addLayer("limit", {
       return "THE LIMIT"
     },
 	limitBoost(){
-		if (player.limit.l.lte(10)) {
+		if (player.limit.l.lte(6)) {
 		    return new Decimal(10).pow(player.limit.l)
 		}
 		else {
-			return new Decimal(1e10).times(player.limit.l.sub(9).pow(6))
+			return new Decimal(1e6).times(player.limit.l.sub(9).pow(3))
 		}
 	},
 	tabFormat: {
