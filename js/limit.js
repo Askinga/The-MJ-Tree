@@ -49,6 +49,14 @@ addLayer("limit", {
 				"upgrades",
 			],
 		},
+		"QoL": {
+			content: [
+				"main-display",
+				"blank",
+				["display-text", function(){ return "You have reached the limit " + format(player.limit.l) + " times."}],
+				"milestones",
+			],
+		},
 	},
 	upgrades: {
 		11: {
@@ -56,5 +64,17 @@ addLayer("limit", {
 			description: "You've reached the limit, gain x10 bonus to every non-static currency. (Row 5 & 6)",
 			cost: new Decimal(1)
 		},
+	},
+	milestones: {
+    0: {
+        requirementDescription: "Limit reached 1 time",
+        effectDescription: "Keep Supreme Rune milestones",
+        done() { return player.limit.l.gte(1) }
+    },
+	1: {
+        requirementDescription: "Limit reached 2 times",
+        effectDescription: "Keep Universal Rune milestones",
+        done() { return player.limit.l.gte(2) }
+    },
 	},
 })
