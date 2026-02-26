@@ -13,6 +13,23 @@ addLayer("uni", {
 		Sg: new Decimal(0),
 		Pg: new Decimal(0),
     }},
+	doReset(uni) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[uni].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	    if (hasMilestone('limit', 1)) keep.push("milestones");
+		
+        // Stage 4, do the actual data resetautomate() {
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
 	passiveGeneration(){
 		let p = new Decimal(0)
 		if (hasUpgrade('uni', 12) && !(inChallenge('universes', 11))) p = p.add(1)
