@@ -431,6 +431,8 @@ addLayer("logs", {
 		let passive = new Decimal(0)
 		let waste = new Decimal(0)
 		let ire = new Decimal(player.logs.wood.add(1).log(10).div(50))
+		let mult = new Decimal(1)
+		mult = mult.times(tmp.limit.limitBoost)
 		if (hasUpgrade('logs', 32)) passive = passive.add(10)
 		if (hasUpgrade('su', 23)) ire = ire.times(5)
 		if (hasUpgrade('su', 23)) ire = ire.times(upgradeEffect('su', 23))
@@ -439,7 +441,7 @@ addLayer("logs", {
 		if (hasUpgrade('su', 33)) ire = ire.times(upgradeEffect('su', 33))
 		ire = ire.times(buyableEffect('money', 13))
 		if (hasMilestone("logs", 0)) waste = waste.add(1)
-		waste = waste.times(layers.pr.effect())
+		waste = waste.times(layers.pr.effect().times(mult))
 
 		passive = passive.times(diff)
 		if (hasUpgrade('logs', 32)) {
