@@ -39,6 +39,7 @@ addLayer("tb", {
 		if (hasChallenge('su', 12)) mult = mult.times(100)
 		if (hasUpgrade('money', 44)) mult = mult.times(1e10)
 		mult = mult.times(layers.uni.effect())
+		if (hasUpgrade('limit', 11)) mult = mult.times(10)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
