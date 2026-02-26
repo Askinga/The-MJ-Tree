@@ -41,7 +41,7 @@ addLayer("limit", {
 	upgrades: {
 		11: {
 			title: "Congrats.",
-			description: "You've reached the limit, gain x10 bonus to every non-static currency.",
+			description: "You've reached the limit, gain x10 bonus to every non-static currency. (Row 5 & 6)",
 			cost: new Decimal(1)
 		},
 	},
