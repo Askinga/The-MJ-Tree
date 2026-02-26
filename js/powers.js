@@ -192,7 +192,7 @@ addLayer("pr", {
 		
 		upg4 = upg4.times(diff)
 		player.pr.upg4 = player.pr.upg4.add(upg4)
-		if (hasUpgrade('en', 13)) {
+		if (hasUpgrade('en', 102)) {
 			player.pr.points = player.points.log10().div("1e348").div(new Decimal(10).pow(player.pr.points.pow(tmp.pr.exponent))).add(1)
 		}
 	},
