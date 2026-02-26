@@ -5,7 +5,11 @@ addLayer("limit", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+		l: new Decimal(0)
     }},
+	onPrestige(){
+		player.limit.l = player.limit.l.add(1)
+	},
     color: "#e841a0",
     autoPrestige(){ return true },
     requires: new Decimal("ee200000"), // Can be a function that takes requirement increases into account
@@ -27,12 +31,20 @@ addLayer("limit", {
     tooltip(){
       return "THE LIMIT"
     },
+	limitBoost(){
+		if (player.limit.l.lte(10)) {
+		    return new Decimal(10).pow(player.limit.l)
+		}
+		else {
+			return new Decimal(1e10).times(player.limit.l.sub(9).pow(6))
+		}
+	},
 	tabFormat: {
 		"LIMIT": {
 			content: [
 				"main-display",
 				"blank",
-				["display-text", "<h1>e1e200000</h1>"],
+				["display-text", function(){ return "<h1>e1e200000</h1><br>You have reached the limit " + format(player.limit.l) + " times, boosting Log milestone 1 time and Power Rune reset time by x" + format(tmp.limit.limitBoost)}],
 				"blank",
 				"upgrades",
 			],
