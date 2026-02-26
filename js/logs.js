@@ -44,7 +44,7 @@ addLayer("logs", {
     color: "#735245",
     requires: new Decimal("e1.8e6"), // Can be a function that takes requirement increases into account
     resource: "Logs", // Name of prestige currency
-    baseResource: "Rune Fragments", // Name of resource prestige is based on
+    baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0, // Prestige currency exponent
