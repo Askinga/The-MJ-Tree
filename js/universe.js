@@ -45,6 +45,7 @@ addLayer("uni", {
 		if (hasUpgrade('uni', 31)) mult = mult.times(10)
 		if (hasUpgrade('uni', 33)) mult = mult.times(upgradeEffect('uni', 33))
 		if (hasUpgrade('uni', 34)) mult = mult.times(10)
+		if (hasUpgrade('limit', 11)) mult = mult.times(10)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -244,12 +245,14 @@ addLayer("uni", {
 	  let gain = new Decimal(0)
 	  let Stg = new Decimal(0)
 	  let Plg = new Decimal(0)
+	  let mult = new Decimal(1)
 	  if (hasUpgrade('uni', 25)) gain = gain.add(1)
+	  if (hasUpgrade('limit', 11)) mult = mult.times(10)
 	  gain = gain.times(tmp.uni.Pb)
 
-	  player.uni.CRg = gain
-	  Stg = player.uni.galaxies
-	  Plg = player.uni.stars
+	  player.uni.CRg = gain.times(mult)
+	  Stg = player.uni.galaxies.times(mult)
+	  Plg = player.uni.stars.times(mult)
 	  player.uni.Sg = Stg
 	  player.uni.Pg = Plg
 	  gain = gain.times(diff)
