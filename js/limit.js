@@ -64,6 +64,12 @@ addLayer("limit", {
 			description: "You've reached the limit, gain x10 bonus to every non-static currency. (Row 5 & 6)",
 			cost: new Decimal(1)
 		},
+		12: {
+			title: "Lets get to boosting",
+			description: "x200 Universal Runes",
+			cost: new Decimal(1),
+			unlocked(){ return hasUpgrade("limit", 11) },
+		},
 	},
 	milestones: {
     0: {
