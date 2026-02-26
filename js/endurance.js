@@ -50,8 +50,8 @@ addLayer("en", {
 			unlocked(){ return hasUpgrade('en', 11) },
 		},
 		13: {
-			title: "Get closer to your max potential",
-			description: "Set your Power Runes to your current point amount. Lets add in a little x1.02 Softcap Delay too?",
+			title: "Get closer to your <del>max potential</del>",
+			description: "<del>Set your Power Runes to your current point amount.</del> Lets add in a little x1.02 Softcap Delay too?",
 			cost: new Decimal(50),
 			unlocked(){ return hasUpgrade('en', 12) },
 		},
