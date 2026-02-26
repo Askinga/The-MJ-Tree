@@ -27,4 +27,22 @@ addLayer("limit", {
     tooltip(){
       return "THE LIMIT"
     },
+	tabFormat: {
+		"LIMIT": {
+			content: [
+				"main-display",
+				"blank",
+				["display-text", "<h1>e1e200000</h1>"],
+				"blank",
+				"upgrades",
+			],
+		},
+	},
+	upgrades: {
+		11: {
+			title: "Congrats.",
+			description: "You've reached the limit, gain x10 bonus to every non-static currency.",
+			cost: new Decimal(1)
+		},
+	},
 })
