@@ -1,7 +1,7 @@
 let modInfo = {
 	name: "Rune Tree",
 	author: "Askinga/Sanas",
-	pointsName: "points",
+	pointsName: "Rune Fragments",
 	modFiles: ["layers.js", "tree.js", "prestige.js", "super.js", "boost.js", "meta.js", "levels.js",
 	"ultra.js", "extreme.js", "generators.js", "logs.js", "supreme.js", "tBoost.js", "money.js",
 	"universe.js", "universes.js", "different.js", "powers.js", "strengths.js", "endurance.js", "limit.js"
