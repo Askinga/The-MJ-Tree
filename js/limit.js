@@ -24,6 +24,7 @@ addLayer("limit", {
     exponent: 0, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		mult = mult.times(tmp.limit.powerBoost)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -45,6 +46,9 @@ addLayer("limit", {
 	},
 	LIMIT(){
 		return new Decimal("ee200000").pow(new Decimal(12).pow(player.limit.power.times(67).pow(1.87921)))
+	},
+	powerBoost(){
+		return new Decimal(1.1).pow(player.limit.power).times(player.limit.power.div(3).add(1))
 	},
 	tabFormat: {
 		"LIMIT": {
@@ -69,7 +73,7 @@ addLayer("limit", {
 			content: [
 				"main-display",
 				"blank",
-				["display-text", function(){ return "You have " + format(player.limit.power) + " Limit Power, increasing the Limit to " + format(tmp.limit.LIMIT) }],
+				["display-text", function(){ return "You have " + format(player.limit.power) + " Limit Power, increasing the Limit to " + format(tmp.limit.LIMIT) + ", but giving x" + format(tmp.limit.powerBoost) + " Limit Points"}],
 				"clickables",
 			],
 		},
