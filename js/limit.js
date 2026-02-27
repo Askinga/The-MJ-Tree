@@ -47,6 +47,11 @@ addLayer("limit", {
 	LIMIT(){
 		return new Decimal("ee200000").pow(new Decimal(12).pow(player.limit.power.times(124.8731).pow(1.87921)))
 	},
+	extra(){
+		let extra = new Decimal(0)
+		if (hasUpgrade('limit', 15)) extra = extra.add(1)
+		return extra
+	},
 	powerBoost(){
 		return new Decimal(1.0751).pow(player.limit.power).times(player.limit.power.div(7).add(1))
 	},
@@ -77,6 +82,14 @@ addLayer("limit", {
 				"clickables",
 			],
 		},
+		"CONTROL PANEL": {
+			unlocked(){ return hasUpgrade('limit', 15) },
+			content: [
+				"main-display",
+				"blank",
+				"clickables",
+			],
+		},
 	},
 	upgrades: {
 		11: {
@@ -101,6 +114,12 @@ addLayer("limit", {
 			description: "Unlock Limit Power (max amount is based on upgrades)",
 			cost: new Decimal(10),
 			unlocked(){ return hasUpgrade("limit", 13) },
+		},
+		15: {
+			title: "Take control",
+			description: "Unlock the CONTROL PANEL. Also this upgrade gives 2 extra Limit Power instead of 1!",
+			cost: new Decimal(20),
+			unlocked(){ return hasUpgrade("limit", 14) },
 		},
 	},
 	milestones: {
@@ -145,7 +164,7 @@ addLayer("limit", {
     },
 	12: {
         title: "+1 Limit Power",
-        canClick(){ return player.limit.power.lt(player.limit.upgrades.length) },
+        canClick(){ return player.limit.power.lt(player.limit.upgrades.length.add(tmp.limit.extra)) },
 		onClick(){ 
 		   player.limit.power = player.limit.power.add(1) 
 		},
