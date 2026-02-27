@@ -13,6 +13,11 @@ addLayer("pr", {
 			player.pr.upg4 = new Decimal(0)
 		}
 	},
+	directMult(){
+		let mult = new Decimal(1)
+        if (hasUpgrade('limit', 13)) mult = mult.times(2)
+		return mult
+	},
 	autoPrestige(){ return (hasUpgrade('pr', 15) || hasMilestone('limit', 2)) },
 	resetsNothing(){ return (hasUpgrade('pr', 15) || hasMilestone('limit', 2)) },
 	autoUpgrade(){ return hasMilestone('limit', 3) },
