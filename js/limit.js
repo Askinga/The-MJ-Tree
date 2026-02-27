@@ -5,7 +5,8 @@ addLayer("limit", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
-		l: new Decimal(0)
+		l: new Decimal(0),
+		power: new Decimal(0),
     }},
 	onPrestige(){
 		player.limit.l = player.limit.l.add(1)
@@ -39,12 +40,15 @@ addLayer("limit", {
 			return new Decimal(1e6).times(player.limit.l.sub(5).pow(3))
 		}
 	},
+	LIMIT(){
+		return new Decimal("ee200000").pow(new Decimal(12).pow(player.limit.power.times(67).pow(1.87921)))
+	},
 	tabFormat: {
 		"LIMIT": {
 			content: [
 				"main-display",
 				"blank",
-				["display-text", function(){ return "<h1>e1e200000</h1><br>You have reached the limit " + format(player.limit.l) + " times, boosting Log milestone 1 time and Power Rune reset time by x" + format(tmp.limit.limitBoost)}],
+				["display-text", function(){ return "<h1>" + format(tmp.limit.LIMIT) + "</h1><br>You have reached the limit " + format(player.limit.l) + " times, boosting Log milestone 1 time and Power Rune reset time by x" + format(tmp.limit.limitBoost)}],
 				"blank",
 				"upgrades",
 			],
@@ -55,6 +59,15 @@ addLayer("limit", {
 				"blank",
 				["display-text", function(){ return "You have reached the limit " + format(player.limit.l) + " times."}],
 				"milestones",
+			],
+		},
+		"POWER": {
+			unlocked(){ return hasUpgrade('limit', 14) },
+			content: [
+				"main-display",
+				"blank",
+				["display-text", function(){ return "You have " + format(player.limit.power) + " Limit Power, increasing the Limit to " + format(tmp.limit.LIMIT) }],
+				"clickables",
 			],
 		},
 	},
@@ -75,6 +88,12 @@ addLayer("limit", {
 			description: "Power Runes are doubled",
 			cost: new Decimal(8),
 			unlocked(){ return hasUpgrade("limit", 12) },
+		},
+		14: {
+			title: "Power it up",
+			description: "Unlock Limit Power (max amount is based on upgrades)",
+			cost: new Decimal(10),
+			unlocked(){ return hasUpgrade("limit", 13) },
 		},
 	},
 	milestones: {
@@ -109,4 +128,20 @@ addLayer("limit", {
         done() { return player.limit.l.gte(20) }
     },
 	},
+	clickables: {
+    11: {
+        title: "-1 Limit Power",
+        canClick(){ return player.limit.power.gt(0) },
+		onClick(){ 
+		   player.limit.power = player.limit.power.sub(1) 
+		},
+    },
+	12: {
+        title: "+1 Limit Power",
+        canClick(){ return player.limit.power.lt(player.limit.upgrades.length) },
+		onClick(){ 
+		   player.limit.power = player.limit.power.add(1) 
+		},
+    },
+    },
 })
