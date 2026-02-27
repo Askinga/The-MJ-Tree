@@ -103,5 +103,10 @@ addLayer("limit", {
         effectDescription: "Autobuy Strength Runes",
         done() { return player.limit.l.gte(10) }
     },
+	5: {
+        requirementDescription: "Limit reached 20 times",
+        effectDescription: "Autobuy Strength Rune upgrades",
+        done() { return player.limit.l.gte(20) }
+    },
 	},
 })
