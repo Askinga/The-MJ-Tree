@@ -13,7 +13,10 @@ addLayer("limit", {
 	},
     color: "#e841a0",
     autoPrestige(){ return true },
-    requires: new Decimal("ee200000"), // Can be a function that takes requirement increases into account
+    requires(){
+		let req = tmp.limit.LIMIT
+		return req
+	}, // Can be a function that takes requirement increases into account
     resource: "limit points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
