@@ -267,6 +267,7 @@ addLayer("uni", {
 	  if (hasUpgrade('uni', 25)) gain = gain.add(1)
 	  if (hasUpgrade('limit', 11)) mult = mult.times(10)
 	  gain = gain.times(tmp.uni.Pb)
+	  gain = gain.times(mult)
 
 	  player.uni.CRg = gain.times(mult)
 	  Stg = player.uni.galaxies.times(mult)
