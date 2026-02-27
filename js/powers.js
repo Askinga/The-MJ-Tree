@@ -15,6 +15,7 @@ addLayer("pr", {
 	},
 	autoPrestige(){ return (hasUpgrade('pr', 15) || hasMilestone('limit', 2)) },
 	resetsNothing(){ return (hasUpgrade('pr', 15) || hasMilestone('limit', 2)) },
+	autoUpgrade(){ return hasMilestone('limit', 3) },
     color: "#ffe042",
     requires: new Decimal("e348"), // Can be a function that takes requirement increases into account
     resource: "Power Runes", // Name of prestige currency
