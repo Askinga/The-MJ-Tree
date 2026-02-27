@@ -143,6 +143,12 @@ addLayer("limit", {
 			effect(){ return player.limit.points.add(1).pow(2.67) },
 			effectDisplay(){ return "x"+format(upgradeEffect('limit', 23)) },
 		},
+		24: {
+			title: "Double 2",
+			description: "Power Runes are doubled again",
+			cost: new Decimal(40),
+			unlocked(){ return hasUpgrade("limit", 23) },
+		},
 	},
 	milestones: {
     0: {
