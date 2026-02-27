@@ -103,9 +103,18 @@ addLayer("pr", {
 				let pow = new Decimal(0.05)
 				if (hasUpgrade('pr', 21)) pow = pow.add(0.01)
 				if (hasUpgrade('pr', 25)) pow = pow.add(0.01)
-				return player.pr.upg4.add(1).pow(pow) 
+				let eff = player.pr.upg4.add(1).pow(pow);
+        		eff = softcap(eff, new Decimal("100"), 0)
+       		 	return eff  
 			},
-			effectDisplay(){ return "x"+format(upgradeEffect('pr', 14)) }
+			effectDisplay(){ 
+				let s = ""
+        		let upgEffect = upgradeEffect(this.layer, this.id)
+        		if (upgEffect.gte(new Decimal("100")) ) {
+          		  s = " (Hardcapped)"
+        		}
+        		return "x" + format(upgradeEffect("pr", 14)) + s;
+			}
   	  	},
 		15: {
 			title: "Timed Strength 2",
