@@ -48,7 +48,7 @@ addLayer("limit", {
 		return new Decimal("ee200000").pow(new Decimal(12).pow(player.limit.power.times(124.8731).pow(1.87921)))
 	},
 	powerBoost(){
-		return new Decimal(1.1).pow(player.limit.power).times(player.limit.power.div(3).add(1))
+		return new Decimal(1.0751).pow(player.limit.power).times(player.limit.power.div(7).add(1))
 	},
 	tabFormat: {
 		"LIMIT": {
