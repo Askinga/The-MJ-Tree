@@ -233,6 +233,7 @@ addLayer("pr", {
 		upg4 = upg4.times(layers.st.effect())
 		upg4 = upg4.times(tmp.limit.limitBoost)
 		if (hasUpgrade('limit', 23)) upg4 = upg4.times(upgradeEffect('limit', 23))
+		if (hasUpgrade('limit', 25)) upg4 = upg4.times(upgradeEffect('limit', 25))
 		
 		upg4 = upg4.times(diff)
 		player.pr.upg4 = player.pr.upg4.add(upg4)
