@@ -87,5 +87,10 @@ addLayer("limit", {
         effectDescription: "Power Rune Upgrade 5's QoL is kept",
         done() { return player.limit.l.gte(4) }
     },
+	3: {
+        requirementDescription: "Limit reached 6 times",
+        effectDescription: "Autobuy Power Rune upgrades",
+        done() { return player.limit.l.gte(6) }
+    },
 	},
 })
