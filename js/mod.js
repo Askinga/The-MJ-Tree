@@ -36,7 +36,7 @@ function getStartPoints(){
 
 // Determines if it should show points/sec
 function canGenPoints(){
-	return player.d.started.gte(1)
+	return (player.d.started.gte(1) && !player.points.gte(tmp.limit.LIMIT))
 }
 
 // Calculate points/sec!
@@ -95,6 +95,12 @@ function getPointGen() {
 	if (hasUpgrade('dr', 14) && (inChallenge('universes', 11))) gain = gain.times(upgradeEffect('dr', 14))
 	if (player.d.difficulty.eq(0)) gain = gain.pow(1.01)
 	return gain
+}
+
+function setPointstoLimit() {
+	if(player.points.gte(tmp.limit.LIMIT)) {
+		player.points = tmp.limit.LIMIT
+	}
 }
 
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
