@@ -26,6 +26,7 @@ addLayer("limit", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		mult = mult.times(tmp.limit.powerBoost)
+		if (hasUpgrade('limit', 22)) mult = mult.times(1.4)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -122,6 +123,26 @@ addLayer("limit", {
 			cost: new Decimal(20),
 			unlocked(){ return hasUpgrade("limit", 14) },
 		},
+		21: {
+			title: "umm?",
+			description: "This upgrade is useless, its only purpose is the +1 power thing...",
+			cost: new Decimal(20),
+			unlocked(){ return hasUpgrade("limit", 15) },
+		},
+		22: {
+			title: "A little boost",
+			description: "x1.4 Limit Points",
+			cost: new Decimal(30),
+			unlocked(){ return hasUpgrade("limit", 21) },
+		},
+		23: {
+			title: "Someone is coming...",
+			description: "Seems like a Rune God is coming... we must prepare! Boost Power Rune reset time based on Limit Points!",
+			cost: new Decimal(30),
+			unlocked(){ return hasUpgrade("limit", 22) },
+			effect(){ return player.limit.points.add(1).pow(2.67) },
+			effectDisplay(){ return "x"+format(upgradeEffect('limit', 23)) },
+		},
 	},
 	milestones: {
     0: {
@@ -153,6 +174,21 @@ addLayer("limit", {
         requirementDescription: "Limit reached 20 times",
         effectDescription: "Autobuy Strength Rune upgrades",
         done() { return player.limit.l.gte(20) }
+    },
+	6: {
+        requirementDescription: "Limit reached 30 times",
+        effectDescription: "Keep the first row of Power Rune upgrades!",
+        done() { return player.limit.l.gte(30) }
+    },
+	7: {
+        requirementDescription: "Limit reached 40 times",
+        effectDescription: "Keep the second row of Power Rune upgrades!",
+        done() { return player.limit.l.gte(40) }
+    },
+	8: {
+        requirementDescription: "Limit reached 50 times",
+        effectDescription: "Keep the third row of Power Rune upgrades!",
+        done() { return player.limit.l.gte(50) }
     },
 	},
 	clickables: {
