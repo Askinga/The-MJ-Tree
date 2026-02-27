@@ -185,4 +185,9 @@ addLayer("limit", {
 		},
     },
     },
+	update(diff) {
+		if(player.points.gte(tmp.limit.LIMIT)) {
+		player.points = tmp.limit.LIMIT
+		}
+	},
 })
