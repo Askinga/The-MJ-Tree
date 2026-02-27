@@ -82,5 +82,10 @@ addLayer("limit", {
         effectDescription: "Keep Universal Rune milestones",
         done() { return player.limit.l.gte(2) }
     },
+	2: {
+        requirementDescription: "Limit reached 4 times",
+        effectDescription: "Power Rune Upgrade 5's QoL is kept",
+        done() { return player.limit.l.gte(4) }
+    },
 	},
 })
