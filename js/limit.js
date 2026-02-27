@@ -36,7 +36,7 @@ addLayer("limit", {
 		    return new Decimal(10).pow(player.limit.l)
 		}
 		else {
-			return new Decimal(1e6).times(player.limit.l.sub(9).pow(3))
+			return new Decimal(1e6).times(player.limit.l.sub(6).pow(3))
 		}
 	},
 	tabFormat: {
