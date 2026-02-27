@@ -6,7 +6,8 @@ addLayer("st", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-	autoPrestige(){ return hasUpgrade('limit', 13) },
+	autoPrestige(){ return hasMilestone('limit', 4) },
+	autoUpgrade(){ return hasMilestone('limit', 5) },
     color: "#ff6600",
     requires: new Decimal(125), // Can be a function that takes requirement increases into account
     resource: "Strength Runes", // Name of prestige currency
