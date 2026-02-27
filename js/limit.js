@@ -70,6 +70,12 @@ addLayer("limit", {
 			cost: new Decimal(1),
 			unlocked(){ return hasUpgrade("limit", 11) },
 		},
+		13: {
+			title: "Double",
+			description: "Power Runes are doubled",
+			cost: new Decimal(8),
+			unlocked(){ return hasUpgrade("limit", 12) },
+		},
 	},
 	milestones: {
     0: {
@@ -91,6 +97,11 @@ addLayer("limit", {
         requirementDescription: "Limit reached 6 times",
         effectDescription: "Autobuy Power Rune upgrades",
         done() { return player.limit.l.gte(6) }
+    },
+	4: {
+        requirementDescription: "Limit reached 10 times",
+        effectDescription: "Autobuy Strength Runes",
+        done() { return player.limit.l.gte(10) }
     },
 	},
 })
