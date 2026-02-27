@@ -7,12 +7,13 @@ addLayer("limit", {
 		points: new Decimal(0),
 		l: new Decimal(0),
 		power: new Decimal(0),
+		limitOff: new Decimal(0),
     }},
 	onPrestige(){
 		player.limit.l = player.limit.l.add(1)
 	},
     color: "#e841a0",
-    autoPrestige(){ return true },
+    autoPrestige(){ return player.limit.limitOff.eq(0) },
     requires(){
 		let req = tmp.limit.LIMIT
 		return req
@@ -79,7 +80,7 @@ addLayer("limit", {
 				"main-display",
 				"blank",
 				["display-text", function(){ return "You have " + format(player.limit.power) + " Limit Power, increasing the Limit to " + format(tmp.limit.LIMIT) + ", but giving x" + format(tmp.limit.powerBoost) + " Limit Points"}],
-				"clickables",
+				["clickables", ["1"]],
 			],
 		},
 		"CONTROL PANEL": {
@@ -87,7 +88,7 @@ addLayer("limit", {
 			content: [
 				"main-display",
 				"blank",
-				"clickables",
+				["clickables", ["20"]],
 			],
 		},
 	},
@@ -167,6 +168,20 @@ addLayer("limit", {
         canClick(){ return player.limit.power.lt(player.limit.upgrades.length.add(tmp.limit.extra)) },
 		onClick(){ 
 		   player.limit.power = player.limit.power.add(1) 
+		},
+    },
+	201: {
+        title: "Turn the Limit OFF",
+        canClick(){ return player.limit.limitOff.eq(0) },
+		onClick(){ 
+		   player.limit.limitOff = player.limit.limitOff.add(1)
+		},
+    },
+	202: {
+        title: "Turn the Limit ON",
+        canClick(){ return player.limit.limitOff.eq(1) },
+		onClick(){ 
+		   player.limit.limitOff = player.limit.limitOff.sub(1)
 		},
     },
     },
