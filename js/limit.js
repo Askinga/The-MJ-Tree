@@ -80,7 +80,7 @@ addLayer("limit", {
 				"main-display",
 				"blank",
 				["display-text", function(){ return "You have " + format(player.limit.power) + " Limit Power, increasing the Limit to " + format(tmp.limit.LIMIT) + ", but giving x" + format(tmp.limit.powerBoost) + " Limit Points"}],
-				["clickables", ["11", "12"]],
+				["clickables", ["1"]],
 			],
 		},
 		"CONTROL PANEL": {
@@ -88,7 +88,7 @@ addLayer("limit", {
 			content: [
 				"main-display",
 				"blank",
-				["clickables", ["201", "202"]],
+				["clickables", ["20"]],
 			],
 		},
 	},
@@ -165,7 +165,7 @@ addLayer("limit", {
     },
 	12: {
         title: "+1 Limit Power",
-        canClick(){ return player.limit.power.lt(player.limit.upgrades.length.add(tmp.limit.extra)) },
+        canClick(){ return player.limit.power.lt((player.limit.upgrades.length).add(tmp.limit.extra)) },
 		onClick(){ 
 		   player.limit.power = player.limit.power.add(1) 
 		},
