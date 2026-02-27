@@ -8,6 +8,32 @@ addLayer("pr", {
 		upg4: new Decimal(0),
 		soft: new Decimal(0),
     }},
+	doReset(pr) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[pr].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        for(i=1;i<6;i++){ //rows
+            for(v=1;v<2;v++){ //columns
+              if ((hasMilestone('limit', 6)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+            }
+	    for(v=2;v<3;v++){ //columns
+                if ((hasMilestone('limit', 7)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+	    }
+	    for(v=3;v<4;v++){ //columns
+                if ((hasMilestone('limit', 8)) && hasUpgrade(this.layer, i+v*10)) keptUpgrades.push(i+v*10)
+	    }
+	}
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+    
+        // Stage 4, do the actual data reset
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
 	onPrestige(){
 		if (!hasUpgrade('pr', 15)) {
 			player.pr.upg4 = new Decimal(0)
