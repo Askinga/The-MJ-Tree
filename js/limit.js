@@ -165,7 +165,7 @@ addLayer("limit", {
     },
 	12: {
         title: "+1 Limit Power",
-        canClick(){ return player.limit.power.lt((player.limit.upgrades.length).add(tmp.limit.extra)) },
+        canClick(){ return player.limit.power.lt(new Decimal(player.limit.upgrades.length).add(tmp.limit.extra)) },
 		onClick(){ 
 		   player.limit.power = player.limit.power.add(1) 
 		},
