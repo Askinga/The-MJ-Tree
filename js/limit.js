@@ -157,6 +157,14 @@ addLayer("limit", {
 			effect(){ return new Decimal(1.025).pow(player.limit.l.min(1000)) },
 			effectDisplay(){ return "x"+format(upgradeEffect('limit', 25)) },
 		},
+		31: {
+			title: "Exponential Boost 2",
+			description: "x2 Power Rune reset time for each Limit Power until 100",
+			cost: new Decimal(60),
+			unlocked(){ return hasUpgrade("limit", 25) },
+			effect(){ return new Decimal(2).pow(player.limit.power.min(100)) },
+			effectDisplay(){ return "x"+format(upgradeEffect('limit', 31)) },
+		},
 	},
 	milestones: {
     0: {
