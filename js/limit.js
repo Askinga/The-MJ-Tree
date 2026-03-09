@@ -167,7 +167,7 @@ addLayer("limit", {
 		},
 		32: {
 			title: "Unhardcap",
-			description: "Power Rune Upgrade 4's hardcap is now a softcap!",
+			description: "Power Rune Upgrade 4's hardcap is now a softcap",
 			cost: new Decimal(66),
 			unlocked(){ return hasUpgrade("limit", 31) },
 		},
