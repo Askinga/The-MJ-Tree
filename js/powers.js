@@ -141,7 +141,7 @@ addLayer("pr", {
 			effectDisplay(){ 
 				let s = ""
         		let upgEffect = upgradeEffect(this.layer, this.id)
-        		if (upgEffect.gte(new Decimal("100") && hasUpgrade('limit', 32)) ) {
+        		if (upgEffect.gte(new Decimal("100")) && hasUpgrade('limit', 32) ) {
           		  s = " (Softcapped)"
         		} else {
 				  s = " (Hardcapped)"
