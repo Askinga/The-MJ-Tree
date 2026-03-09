@@ -131,15 +131,21 @@ addLayer("pr", {
 				if (hasUpgrade('pr', 21)) pow = pow.add(0.01)
 				if (hasUpgrade('pr', 25)) pow = pow.add(0.01)
 				let eff = player.pr.upg4.add(1).pow(pow);
-        		eff = softcap(eff, new Decimal("100"), 0)
+				if (hasUpgrade('limit', 32)) {
+					eff = softcap(eff, new Decimal("100"), 0.1)
+				} else {
+        		    eff = softcap(eff, new Decimal("100"), 0)
+				}
        		 	return eff  
 			},
 			effectDisplay(){ 
 				let s = ""
         		let upgEffect = upgradeEffect(this.layer, this.id)
-        		if (upgEffect.gte(new Decimal("100")) ) {
-          		  s = " (Hardcapped)"
-        		}
+        		if (upgEffect.gte(new Decimal("100") && hasUpgrade('limit', 32)) ) {
+          		  s = " (Softcapped)"
+        		} else {
+				  s = " (Hardcapped)"
+				}
         		return "x" + format(upgradeEffect("pr", 14)) + s;
 			}
   	  	},
