@@ -137,7 +137,7 @@ addLayer("limit", {
 		},
 		23: {
 			title: "Someone is coming...",
-			description: "Seems like a Rune God is coming... we must prepare! Boost Power Rune reset time based on Limit Points!",
+			description: "Boost Power Rune reset time based on Limit Points!",
 			cost: new Decimal(30),
 			unlocked(){ return hasUpgrade("limit", 22) },
 			effect(){ return player.limit.points.add(1).pow(2.67) },
@@ -164,6 +164,12 @@ addLayer("limit", {
 			unlocked(){ return hasUpgrade("limit", 25) },
 			effect(){ return new Decimal(2).pow(player.limit.power.min(30)) },
 			effectDisplay(){ return "x"+format(upgradeEffect('limit', 31)) },
+		},
+		32: {
+			title: "Unhardcap",
+			description: "Power Rune Upgrade 4's hardcap is now a softcap!",
+			cost: new Decimal(66),
+			unlocked(){ return hasUpgrade("limit", 31) },
 		},
 	},
 	milestones: {
