@@ -27,6 +27,7 @@ addLayer("limit", {
         mult = new Decimal(1)
 		mult = mult.times(tmp.limit.powerBoost)
 		if (hasUpgrade('limit', 22)) mult = mult.times(1.4)
+		if (hasUpgrade('limit', 34)) mult = mult.times(1.33)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -176,6 +177,12 @@ addLayer("limit", {
 			description: "Delay Power Rune softcap by x1.25",
 			cost: new Decimal(80),
 			unlocked(){ return hasUpgrade("limit", 32) },
+		},
+		34: {
+			title: "Limit Boost",
+			description: "x1.33 Limit Points",
+			cost: new Decimal(125),
+			unlocked(){ return hasUpgrade("limit", 33) },
 		},
 	},
 	milestones: {
