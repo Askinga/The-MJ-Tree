@@ -171,6 +171,12 @@ addLayer("limit", {
 			cost: new Decimal(66),
 			unlocked(){ return hasUpgrade("limit", 31) },
 		},
+		33: {
+			title: "Unsoftcap",
+			description: "Delay Power Rune softcap by x1.25",
+			cost: new Decimal(80),
+			unlocked(){ return hasUpgrade("limit", 32) },
+		},
 	},
 	milestones: {
     0: {
