@@ -27,6 +27,7 @@ addLayer("pr", {
 	}
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
+		if (hasMilestone('limit', 10)) keep.push("upgrades")
     
         // Stage 4, do the actual data reset
         layerDataReset(this.layer, keep);
