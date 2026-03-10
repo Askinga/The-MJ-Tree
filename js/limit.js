@@ -224,6 +224,11 @@ addLayer("limit", {
         effectDescription: "Keep the third row of Power Rune upgrades!",
         done() { return player.limit.l.gte(50) }
     },
+	9: {
+        requirementDescription: "Limit reached 100 times",
+        effectDescription: "Strength Runes don't reset anymore",
+        done() { return player.limit.l.gte(100) }
+    },
 	},
 	clickables: {
     11: {
