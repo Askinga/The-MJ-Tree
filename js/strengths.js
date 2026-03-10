@@ -6,6 +6,7 @@ addLayer("st", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+	resetsNothing(){ return hasMilestone('limit', 9) },
 	autoPrestige(){ return hasMilestone('limit', 4) },
 	autoUpgrade(){ return hasMilestone('limit', 5) },
     color: "#ff6600",
