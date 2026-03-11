@@ -368,10 +368,17 @@ addLayer("limit", {
     },
     },
 	update(diff) {
-		if(player.points.gte(tmp.limit.LIMIT)) {
-		player.points = tmp.limit.LIMIT
+		if (player.points.gte(tmp.limit.LIMIT)) {
+			player.points = tmp.limit.LIMIT
 		}
-	player.limit.allocate = tmp.limit.alloCate
+	    player.limit.allocate = tmp.limit.alloCate
+		
+		if (player.limit.allocate.lt(0)) {
+		    alert("No cheating, player!")
+			player.limit.allo1 = new Decimal(0)
+			player.limit.allo2 = new Decimal(0)
+			player.limit.allo3 = new Decimal(0)
+		}
 	},
 	bars: {
     ao1: {
