@@ -73,13 +73,13 @@ addLayer("limit", {
 		if (hasUpgrade('limit', 35)) t = t.add(1)
 		return t
 	},
-	allo1(){
+	alo1(){
 		return new Decimal(1).add(new Decimal(0.02).times(player.limit.allo1))
 	},
-	allo2(){
+	alo2(){
 		return new Decimal(1.15).pow(player.limit.allo2)
 	},
-	allo3(){
+	alo3(){
 		return new Decimal(1.1).pow(player.limit.allo3)
 	},
 	powerBoost(){
@@ -126,16 +126,16 @@ addLayer("limit", {
 				"main-display",
 				"blank",
 				["display-text", function(){ return "You have " + format(player.limit.allocate) + " Allocations left to spend"],
-				["bar", "allo1"],
-			    ["display-text", function(){ return "Softcap Delayers delay Power Rune softcap by x" + format(tmp.limit.allo1)],																  
+				["bar", "ao1"],
+			    ["display-text", function(){ return "Softcap Delayers delay Power Rune softcap by x" + format(tmp.limit.alo1)],																  
 				["clickables", ["30"]],
 				"blank",
-				["bar", "allo2"],
-				["display-text", function(){ return "Limit Point Boosters boost Limit Points by x" + format(tmp.limit.allo2)],
+				["bar", "ao2"],
+				["display-text", function(){ return "Limit Point Boosters boost Limit Points by x" + format(tmp.limit.alo2)],
 				["clickables", ["31"]],
 				"blank",
-				["bar", "allo3"],
-				["display-text", function(){ return "Limit Boosters boost Limit resets by x" + format(tmp.limit.allo3)],
+				["bar", "ao3"],
+				["display-text", function(){ return "Limit Boosters boost Limit resets by x" + format(tmp.limit.alo3)],
 				["clickables", ["32"]],
 			],
 		},
@@ -373,21 +373,21 @@ addLayer("limit", {
 	player.limit.allocate = tmp.limit.alloCate
 	},
 	bars: {
-    allo1: {
+    ao1: {
         direction: RIGHT,
         width: 200,
         height: 50,
         progress() { return player.limit.allo1.div(tmp.limit.total) },
 		display(){ return format(player.limit.allo1) + " Softcap Delayers" },
     },
-	allo2: {
+	ao2: {
         direction: RIGHT,
         width: 200,
         height: 50,
         progress() { return player.limit.allo2.div(tmp.limit.total) },
 		display(){ return format(player.limit.allo2) + " Limit Point Boosters" },
     },
-	allo3: {
+	ao3: {
         direction: RIGHT,
         width: 200,
         height: 50,
