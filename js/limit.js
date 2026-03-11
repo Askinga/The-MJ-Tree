@@ -8,9 +8,13 @@ addLayer("limit", {
 		l: new Decimal(0),
 		power: new Decimal(0),
 		limitOff: new Decimal(0),
+		allocate: new Decimal(0),
+		allo1: new Decimal(0),
+		allo2: new Decimal(0),
+		allo3: new Decimal(0),
     }},
 	onPrestige(){
-		player.limit.l = player.limit.l.add(1)
+		player.limit.l = player.limit.l.add(tmp.limit.allo3)
 	},
     color: "#e841a0",
     autoPrestige(){ return player.limit.limitOff.eq(0) },
@@ -28,6 +32,7 @@ addLayer("limit", {
 		mult = mult.times(tmp.limit.powerBoost)
 		if (hasUpgrade('limit', 22)) mult = mult.times(1.4)
 		if (hasUpgrade('limit', 34)) mult = mult.times(1.33)
+		mult = mult.times(tmp.limit.allo2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -55,10 +60,27 @@ addLayer("limit", {
 		if (hasUpgrade('limit', 15)) extra = extra.add(1)
 		return extra
 	},
-	allocate(){
+	alloCate(){
 		let extra = new Decimal(0)
 		if (hasUpgrade('limit', 35)) extra = extra.add(1)
+		extra = extra.sub(player.limit.allo1)
+		extra = extra.sub(player.limit.allo2)
+		extra = extra.sub(player.limit.allo3)
 		return extra
+	},
+	total(){
+		let t = new Decimal(0)
+		if (hasUpgrade('limit', 35)) t = t.add(1)
+		return t
+	},
+	allo1(){
+		return new Decimal(1).add(new Decimal(0.02).times(player.limit.allo1))
+	},
+	allo2(){
+		return new Decimal(1.15).pow(player.limit.allo2)
+	},
+	allo3(){
+		return new Decimal(1.1).pow(player.limit.allo3)
 	},
 	powerBoost(){
 		return new Decimal(1.0751).pow(player.limit.power).times(player.limit.power.div(7).add(1))
@@ -103,12 +125,18 @@ addLayer("limit", {
 			content: [
 				"main-display",
 				"blank",
+				["display-text", function(){ return "You have " + format(player.limit.allocate) + " Allocations left to spend"],
+				["bar", "allo1"]
+			    ["display-text", function(){ return "Softcap Delayers delay Power Rune softcap by x" + format(tmp.limit.allo1)],																																  
 				["clickables", ["30"]],
 				"blank",
+				["bar", "allo2"],
+				["display-text", function(){ return "Limit Point Boosters boost Limit Points by x" + format(tmp.limit.allo2)],
 				["clickables", ["31"]],
 				"blank",
+				["bar", "allo3"],
+				["display-text", function(){ return "Limit Boosters boost Limit resets by x" + format(tmp.limit.allo3)],
 				["clickables", ["32"]],
-				"blank",
 			],
 		},
 	},
@@ -295,10 +323,76 @@ addLayer("limit", {
 		   player.limit.limitOff = player.limit.limitOff.sub(1)
 		},
     },
+	301: {
+        title: "-1 Softcap Delayer",
+        canClick(){ return player.limit.allo1.gt(new Decimal(0)) },
+		onClick(){ 
+		   player.limit.allo1 = player.limit.allo1.sub(1) 
+		},
+    },
+	302: {
+        title: "+1 Softcap Delayer",
+        canClick(){ return player.limit.allocate.gt(new Decimal(0)) },
+		onClick(){ 
+		   player.limit.allo1 = player.limit.allo1.add(1) 
+		},
+    },
+	311: {
+        title: "-1 Limit Point Booster",
+        canClick(){ return player.limit.allo2.gt(new Decimal(0)) },
+		onClick(){ 
+		   player.limit.allo2 = player.limit.allo2.sub(1) 
+		},
+    },
+	312: {
+        title: "+1 Limit Point Booster",
+        canClick(){ return player.limit.allocate.gt(new Decimal(0)) },
+		onClick(){ 
+		   player.limit.allo2 = player.limit.allo2.add(1) 
+		},
+    },
+	321: {
+        title: "-1 Limit Booster",
+        canClick(){ return player.limit.allo3.gt(new Decimal(0)) },
+		onClick(){ 
+		   player.limit.allo3 = player.limit.allo3.sub(1) 
+		},
+    },
+	322: {
+        title: "+1 Limit Booster",
+        canClick(){ return player.limit.allocate.gt(new Decimal(0)) },
+		onClick(){ 
+		   player.limit.allo3 = player.limit.allo3.add(1) 
+		},
+    },
     },
 	update(diff) {
 		if(player.points.gte(tmp.limit.LIMIT)) {
 		player.points = tmp.limit.LIMIT
 		}
+	player.limit.allocate = tmp.limit.alloCate
+	},
+	bars: {
+    allo1: {
+        direction: RIGHT,
+        width: 200,
+        height: 50,
+        progress() { return player.limit.allo1.div(tmp.limit.total) },
+		display(){ return format(player.limit.allo1) + " Softcap Delayers" },
+    },
+	allo2: {
+        direction: RIGHT,
+        width: 200,
+        height: 50,
+        progress() { return player.limit.allo2.div(tmp.limit.total) },
+		display(){ return format(player.limit.allo2) + " Limit Point Boosters" },
+    },
+	allo3: {
+        direction: RIGHT,
+        width: 200,
+        height: 50,
+        progress() { return player.limit.allo3.div(tmp.limit.total) },
+		display(){ return format(player.limit.allo3) + " Limit Boosters" },
+    },
 	},
 })
