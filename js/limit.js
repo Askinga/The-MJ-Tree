@@ -126,7 +126,7 @@ addLayer("limit", {
 				"main-display",
 				"blank",
 				["display-text", function(){ return "You have " + format(player.limit.allocate) + " Allocations left to spend"],
-				["bar", "allo1"]
+				["bar", "allo1"],
 			    ["display-text", function(){ return "Softcap Delayers delay Power Rune softcap by x" + format(tmp.limit.allo1)],																																  
 				["clickables", ["30"]],
 				"blank",
