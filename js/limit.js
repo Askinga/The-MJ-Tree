@@ -64,6 +64,7 @@ addLayer("limit", {
 	alloCate(){
 		let extra = new Decimal(0)
 		if (hasUpgrade('limit', 35)) extra = extra.add(1)
+		if (hasUpgrade('limit', 42)) extra = extra.add(1)
 		extra = extra.sub(player.limit.allo1)
 		extra = extra.sub(player.limit.allo2)
 		extra = extra.sub(player.limit.allo3)
@@ -72,6 +73,7 @@ addLayer("limit", {
 	total(){
 		let t = new Decimal(0)
 		if (hasUpgrade('limit', 35)) t = t.add(1)
+		if (hasUpgrade('limit', 42)) t = t.add(1)
 		return t
 	},
 	alo1(){
@@ -245,6 +247,12 @@ addLayer("limit", {
 			unlocked(){ return hasUpgrade("limit", 35) },
 			effect(){ return new Decimal(1).add(player.limit.l.div(1000)) },
 			effectDisplay(){ return "x"+format(upgradeEffect('limit', 41)) },
+		},
+		42: {
+			title: "Use is wisely",
+			description: "+1 Allocation",
+			cost: new Decimal(500),
+			unlocked(){ return hasUpgrade("limit", 41) },
 		},
 	},
 	milestones: {
