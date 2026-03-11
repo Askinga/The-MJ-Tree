@@ -33,6 +33,7 @@ addLayer("limit", {
 		if (hasUpgrade('limit', 22)) mult = mult.times(1.4)
 		if (hasUpgrade('limit', 34)) mult = mult.times(1.33)
 		mult = mult.times(tmp.limit.alo2)
+		if (hasUpgrade('limit', 41)) mult = mult.times(upgradeEffect('limit', 41))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -236,6 +237,14 @@ addLayer("limit", {
 			description: "Unlock Allocations",
 			cost: new Decimal(200),
 			unlocked(){ return hasUpgrade("limit", 34) },
+		},
+		41: {
+			title: "The grind begins",
+			description: "+x1 Limit Points per 1000 Limit Resets",
+			cost: new Decimal(355),
+			unlocked(){ return hasUpgrade("limit", 35) },
+			effect(){ return new Decimal(1).add(player.limit.l.div(1000)) },
+			effectDisplay(){ return "x"+format(upgradeEffect('limit', 41)) },
 		},
 	},
 	milestones: {
