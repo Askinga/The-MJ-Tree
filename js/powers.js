@@ -72,6 +72,7 @@ addLayer("pr", {
 		if (hasUpgrade('st', 14)) softcap = softcap.times(1.125)
 		if (hasUpgrade('limit', 33)) softcap = softcap.times(1.25)
 		softcap = softcap.times(layers.en.effect())
+		softcap = softcap.times(tmp.limit.allo1)
 		player.pr.soft = softcap
 		return new Decimal(1.5).add(player.pr.points.max(softcap).sub(softcap).div(100))
 	}, // Prestige currency exponent
