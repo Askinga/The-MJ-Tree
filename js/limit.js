@@ -14,7 +14,7 @@ addLayer("limit", {
 		allo3: new Decimal(0),
     }},
 	onPrestige(){
-		player.limit.l = player.limit.l.add(tmp.limit.allo3)
+		player.limit.l = player.limit.l.add(tmp.limit.alo3)
 	},
     color: "#e841a0",
     autoPrestige(){ return player.limit.limitOff.eq(0) },
