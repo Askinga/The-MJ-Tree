@@ -32,7 +32,7 @@ addLayer("limit", {
 		mult = mult.times(tmp.limit.powerBoost)
 		if (hasUpgrade('limit', 22)) mult = mult.times(1.4)
 		if (hasUpgrade('limit', 34)) mult = mult.times(1.33)
-		mult = mult.times(tmp.limit.allo2)
+		mult = mult.times(tmp.limit.alo2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
