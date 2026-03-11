@@ -125,7 +125,8 @@ addLayer("limit", {
 			content: [
 				"main-display",
 				"blank",
-				["display-text", function(){ return "You have " + format(player.limit.allocate) + " Allocations left to spend" }],
+				["display-text", function(){ return "<h3>You have " + format(player.limit.allocate) + " Allocations left to spend</h3>" }],
+				"blank",
 				["bar", "ao1"],
 			    ["display-text", function(){ return "Softcap Delayers delay Power Rune softcap by x" + format(tmp.limit.alo1)}],																  
 				["clickables", ["30"]],
@@ -375,7 +376,7 @@ addLayer("limit", {
 	bars: {
     ao1: {
         direction: RIGHT,
-        width: 200,
+        width: 250,
         height: 50,
         progress() { return player.limit.allo1.div(tmp.limit.total) },
 		fillStyle: { 'background-color': "#cc2525" },
@@ -383,7 +384,7 @@ addLayer("limit", {
     },
 	ao2: {
         direction: RIGHT,
-        width: 200,
+        width: 250,
         height: 50,
         progress() { return player.limit.allo2.div(tmp.limit.total) },
 		fillStyle: { 'background-color': "#cc2525" },
@@ -391,7 +392,7 @@ addLayer("limit", {
     },
 	ao3: {
         direction: RIGHT,
-        width: 200,
+        width: 250,
         height: 50,
         progress() { return player.limit.allo3.div(tmp.limit.total) },
 		fillStyle: { 'background-color': "#cc2525" },
