@@ -378,6 +378,7 @@ addLayer("limit", {
         width: 200,
         height: 50,
         progress() { return player.limit.allo1.div(tmp.limit.total) },
+		fillStyle: { 'background-color': "#cc2525" },
 		display(){ return format(player.limit.allo1) + " Softcap Delayers" },
     },
 	ao2: {
@@ -385,6 +386,7 @@ addLayer("limit", {
         width: 200,
         height: 50,
         progress() { return player.limit.allo2.div(tmp.limit.total) },
+		fillStyle: { 'background-color': "#cc2525" },
 		display(){ return format(player.limit.allo2) + " Limit Point Boosters" },
     },
 	ao3: {
@@ -392,6 +394,7 @@ addLayer("limit", {
         width: 200,
         height: 50,
         progress() { return player.limit.allo3.div(tmp.limit.total) },
+		fillStyle: { 'background-color': "#cc2525" },
 		display(){ return format(player.limit.allo3) + " Limit Boosters" },
     },
 	},
