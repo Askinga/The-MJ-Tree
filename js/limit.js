@@ -55,6 +55,11 @@ addLayer("limit", {
 		if (hasUpgrade('limit', 15)) extra = extra.add(1)
 		return extra
 	},
+	allocate(){
+		let extra = new Decimal(0)
+		if (hasUpgrade('limit', 35)) extra = extra.add(1)
+		return extra
+	},
 	powerBoost(){
 		return new Decimal(1.0751).pow(player.limit.power).times(player.limit.power.div(7).add(1))
 	},
@@ -91,6 +96,19 @@ addLayer("limit", {
 				"main-display",
 				"blank",
 				["clickables", ["20"]],
+			],
+		},
+		"ALLOCATIONS": {
+			unlocked(){ return hasUpgrade('limit', 35) },
+			content: [
+				"main-display",
+				"blank",
+				["clickables", ["30"]],
+				"blank",
+				["clickables", ["31"]],
+				"blank",
+				["clickables", ["32"]],
+				"blank",
 			],
 		},
 	},
@@ -183,6 +201,12 @@ addLayer("limit", {
 			description: "x1.33 Limit Points",
 			cost: new Decimal(125),
 			unlocked(){ return hasUpgrade("limit", 33) },
+		},
+		35: {
+			title: "Management becomes important",
+			description: "Unlock Allocations",
+			cost: new Decimal(200),
+			unlocked(){ return hasUpgrade("limit", 34) },
 		},
 	},
 	milestones: {
