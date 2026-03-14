@@ -460,14 +460,14 @@ addLayer("limit", {
       goalDescription: function () {
         return (
           format(
-            new Decimal(10).pow(new Decimal(2).pow(new Decimal(challengeCompletions("limit", 11)).add(999)))
+            new Decimal(10).pow(new Decimal(2).pow(new Decimal(challengeCompletions("limit", 11))).add(7249))
           ) + " Points"
         );
       },
       completionLimit: 10,
       canComplete: function () {
         return player.points.gte(
-          new Decimal(10).pow(new Decimal(2).pow(new Decimal(challengeCompletions("limit", 11)).add(999)))
+          new Decimal(10).pow(new Decimal(2).pow(new Decimal(challengeCompletions("limit", 11))).add(7249))
         );
       },
       unlocked() {
