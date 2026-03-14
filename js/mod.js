@@ -88,6 +88,7 @@ function getPointGen() {
 	if (hasMilestone('su', 1)) gain = gain.times("e1e6")
 	if (inChallenge('su', 11)) gain = gain.pow(0.01)
 	if (hasChallenge('su', 11)) gain = gain.pow(1.2)
+	if (inChallenge('limit', 11)) gain = gain.log10()
 
 	if (inChallenge('universes', 11)) gain = new Decimal(1)
 	// Universe 2
