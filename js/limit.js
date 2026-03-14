@@ -34,6 +34,7 @@ addLayer("limit", {
 		if (hasUpgrade('limit', 34)) mult = mult.times(1.33)
 		mult = mult.times(tmp.limit.alo2)
 		if (hasUpgrade('limit', 41)) mult = mult.times(upgradeEffect('limit', 41))
+		mult = mult.times(new Decimal(1.1).pow(challengeCompletions("limit", 11), 2));
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -98,7 +99,7 @@ addLayer("limit", {
 				"upgrades",
 			],
 		},
-		"QoL": {
+		"QOL": {
 			content: [
 				"main-display",
 				"blank",
@@ -141,6 +142,14 @@ addLayer("limit", {
 				["bar", "ao3"],
 				["display-text", function(){ return "Limit Boosters boost Limit resets by x" + format(tmp.limit.alo3)}],
 				["clickables", ["32"]],
+			],
+		},
+		"CHALLENGES": {
+			unlocked(){ return hasUpgrade('limit', 43) },
+			content: [
+				"main-display",
+				"blank",
+				"challenges"
 			],
 		},
 	},
@@ -253,6 +262,12 @@ addLayer("limit", {
 			description: "+1 Allocation",
 			cost: new Decimal(500),
 			unlocked(){ return hasUpgrade("limit", 41) },
+		},
+		43: {
+			title: "New challenges await",
+			description: "Unlock a repeating challenge",
+			cost: new Decimal(750),
+			unlocked(){ return hasUpgrade("limit", 42) },
 		},
 	},
 	milestones: {
@@ -423,4 +438,40 @@ addLayer("limit", {
 		display(){ return format(player.limit.allo3) + " Limit Boosters" },
     },
 	},
+	challenges: {
+    11: {
+      name: "Deceased Points",
+      challengeDescription: function () {
+        return (
+          "Point gain is now log<sub>10</sub>(point gain).<br>" +
+          challengeCompletions(this.layer, this.id) +
+          "/" +
+          this.completionLimit +
+          " completions"
+        );
+      },
+      rewardDescription: function () {
+        return (
+          "x" +
+          format(new Decimal(1.1).pow(challengeCompletions("limit", 11), 2)) +
+          " to Limit Points."
+        );
+      },
+      goalDescription: function () {
+        return (
+          format(
+            new Decimal(10).pow(new Decimal(2).pow(challengeCompletions("h", 11)).add(999))
+          ) + " Points"
+        );
+      },
+      completionLimit: 10,
+      canComplete: function () {
+        return player.points.gte(
+          new Decimal(10).pow(new Decimal(2).pow(challengeCompletions("h", 11)).add(999))
+        );
+      },
+      unlocked() {
+        return hasUpgrade("limit", 43);
+      },
+    },
 })
