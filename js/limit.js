@@ -526,7 +526,7 @@ addLayer("limit", {
 		13: {
     	    name: "Corrupt Powers",
       	    challengeDescription: "Gain only 1 Power Rune on reset and Power Rune softcap starts instantly.",
-			goalDescription: "10^2^17 Points (e1e131,072)",
+			goalDescription: "10^10^2^17 Points (e1e131,072)",
 			rewardDescription: "x2 Power Runes on reset, x1.3 Limit Points, and x1.178 Limit resets. Also unlock more upgrades",
       	  	canComplete: function() {return player.points.gte("ee131072")},
 			unlocked(){ return hasUpgrade('limit', 52) },
