@@ -66,6 +66,7 @@ addLayer("limit", {
 		let extra = new Decimal(0)
 		if (hasUpgrade('limit', 35)) extra = extra.add(1)
 		if (hasUpgrade('limit', 42)) extra = extra.add(1)
+		if (hasUpgrade('limit', 45)) extra = extra.add(1)
 		extra = extra.sub(player.limit.allo1)
 		extra = extra.sub(player.limit.allo2)
 		extra = extra.sub(player.limit.allo3)
@@ -75,6 +76,7 @@ addLayer("limit", {
 		let t = new Decimal(0)
 		if (hasUpgrade('limit', 35)) t = t.add(1)
 		if (hasUpgrade('limit', 42)) t = t.add(1)
+		if (hasUpgrade('limit', 45)) t = t.add(1)
 		return t
 	},
 	alo1(){
@@ -274,6 +276,12 @@ addLayer("limit", {
 			description: "Unlock a challenge",
 			cost: new Decimal(1000),
 			unlocked(){ return hasUpgrade("limit", 43) },
+		},
+		45: {
+			title: "Another allocation",
+			description: "+1 Allocation per final row upgrade",
+			cost: new Decimal(2000),
+			unlocked(){ return hasUpgrade("limit", 44) },
 		},
 	},
 	milestones: {
