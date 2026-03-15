@@ -35,6 +35,7 @@ addLayer("limit", {
 		mult = mult.times(tmp.limit.alo2)
 		if (hasUpgrade('limit', 41)) mult = mult.times(upgradeEffect('limit', 41))
 		mult = mult.times(new Decimal(1.1).pow(challengeCompletions("limit", 11), 2));
+		if (hasChallenge('limit', 13)) mult = mult.times(1.3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -86,6 +87,8 @@ addLayer("limit", {
 		return new Decimal(1.15).pow(player.limit.allo2)
 	},
 	alo3(){
+		let extra = new Decimal(1)
+		if (hasChallenge('limit', 13)) extra = extra.times(1.178)
 		return new Decimal(1.1).pow(player.limit.allo3)
 	},
 	powerBoost(){
@@ -292,6 +295,12 @@ addLayer("limit", {
 			unlocked(){ return hasUpgrade("limit", 45) },
 			effect(){ return new Decimal(1).add(player.limit.points.slog().div(300)) },
 			effectDisplay(){ return "^"+format(upgradeEffect('limit', 51)) },
+		},
+		52: {
+			title: "Another one",
+			description: "Unlock a challenge",
+			cost: new Decimal(3250),
+			unlocked(){ return hasUpgrade("limit", 51) },
 		},
 	},
 	milestones: {
@@ -513,6 +522,14 @@ addLayer("limit", {
 			rewardDescription: "Power Rune softcap starts x1.15 later.",
       	  	canComplete: function() {return player.points.gte("ee610000")},
 			unlocked(){ return hasUpgrade('limit', 44) },
-   		 },
+   		},
+		13: {
+    	    name: "Corrupt Powers",
+      	    challengeDescription: "Power Rune softcap starts instantly.",
+			goalDescription: "umm?",
+			rewardDescription: "x2 Power Runes on reset, x1.3 Limit Points, and x1.178 Limit resets.",
+      	  	canComplete: function() {return player.points.gte("ee61000000")},
+			unlocked(){ return hasUpgrade('limit', 52) },
+ 	    },
 	},
 })
