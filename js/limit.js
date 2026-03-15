@@ -98,6 +98,8 @@ addLayer("limit", {
 				"blank",
 				["display-text", function(){ return "<h1>" + format(tmp.limit.LIMIT) + "</h1><br>You have reached the limit " + format(player.limit.l) + " times, boosting Log milestone 1 time and Power Rune reset time by x" + format(tmp.limit.limitBoost)}],
 				"blank",
+				["bar", "LIMIT"],
+				"blank"
 				"upgrades",
 			],
 		},
@@ -458,6 +460,14 @@ addLayer("limit", {
         progress() { return player.limit.allo3.div(tmp.limit.total) },
 		fillStyle: { 'background-color': "#cc2525" },
 		display(){ return format(player.limit.allo3) + " Limit Boosters" },
+    },
+	LIMIT: {
+        direction: RIGHT,
+        width: 400,
+        height: 50,
+        progress() { return player.points.log(10).log(tmp.limit.LIMIT.log10()) },
+		fillStyle: { 'background-color': "#e841a0" },
+		display(){ return format(player.points.log(10).log(tmp.limit.LIMIT.log10()).times(100)) + "% to the LIMIT" },
     },
 	},
 	challenges: {
