@@ -72,7 +72,7 @@ addLayer("pr", {
 		if (hasUpgrade('st', 14)) softcap = softcap.times(1.125)
 		if (hasUpgrade('limit', 33)) softcap = softcap.times(1.25)
 		if (inChallenge('limit', 12)) softcap = softcap.div(2.3)
-		if (hasChallenge('limit', 12)) softcap = softcap.tines(1.15)
+		if (hasChallenge('limit', 12)) softcap = softcap.times(1.15)
 		softcap = softcap.times(layers.en.effect())
 		softcap = softcap.times(tmp.limit.alo1)
 		player.pr.soft = softcap
