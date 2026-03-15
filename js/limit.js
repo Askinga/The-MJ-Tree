@@ -99,7 +99,7 @@ addLayer("limit", {
 				["display-text", function(){ return "<h1>" + format(tmp.limit.LIMIT) + "</h1><br>You have reached the limit " + format(player.limit.l) + " times, boosting Log milestone 1 time and Power Rune reset time by x" + format(tmp.limit.limitBoost)}],
 				"blank",
 				["bar", "LIMIT"],
-				"blank"
+				"blank",
 				"upgrades",
 			],
 		},
