@@ -42,9 +42,10 @@ addLayer("pr", {
 	},
 	onPrestige(){
 		let add = new Decimal(0)
-		if (hasUpgrade('limit', 13)) add = add.add(1)
-		if (hasUpgrade('limit', 24)) add = add.add(2)
-		if (hasChallenge('limit', 13)) add = add.add(4)
+		if (hasUpgrade('limit', 13)) add = add.add("2^0")
+		if (hasUpgrade('limit', 24)) add = add.add("2^1")
+		if (hasChallenge('limit', 13)) add = add.add("2^2")
+		if (inChallenge('limit', 13)) add = new Decimal(0)
 		return player.pr.points = player.pr.points.add(add)
 	},
 	autoPrestige(){ return (hasUpgrade('pr', 15) || hasMilestone('limit', 2)) },
