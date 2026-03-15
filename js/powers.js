@@ -44,6 +44,7 @@ addLayer("pr", {
 		let add = new Decimal(0)
 		if (hasUpgrade('limit', 13)) add = add.add(1)
 		if (hasUpgrade('limit', 24)) add = add.add(2)
+		if (hasUpgrade('limit', 24)) add = add.add(4)
 		return player.pr.points = player.pr.points.add(add)
 	},
 	autoPrestige(){ return (hasUpgrade('pr', 15) || hasMilestone('limit', 2)) },
@@ -76,6 +77,7 @@ addLayer("pr", {
 		if (hasUpgrade('limit', 51)) softcap = softcap.pow(upgradeEffect('limit', 51))
 		softcap = softcap.times(layers.en.effect())
 		softcap = softcap.times(tmp.limit.alo1)
+		if (inChallenge('limit', 13)) softcap = new Decimal(0)
 		player.pr.soft = softcap
 		return new Decimal(1.5).add(player.pr.points.max(softcap).sub(softcap).div(100))
 	}, // Prestige currency exponent
