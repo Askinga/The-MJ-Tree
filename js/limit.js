@@ -89,7 +89,7 @@ addLayer("limit", {
 	alo3(){
 		let extra = new Decimal(1)
 		if (hasChallenge('limit', 13)) extra = extra.times(1.178)
-		return new Decimal(1.1).pow(player.limit.allo3)
+		return new Decimal(1.1).pow(player.limit.allo3).times(extra)
 	},
 	powerBoost(){
 		return new Decimal(1.0751).pow(player.limit.power).times(player.limit.power.div(7).add(1))
