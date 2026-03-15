@@ -283,6 +283,14 @@ addLayer("limit", {
 			cost: new Decimal(2000),
 			unlocked(){ return hasUpgrade("limit", 44) },
 		},
+		51: {
+			title: "Exponents, finally",
+			description: "Delay Power Rune softcap based on Limit Points",
+			cost: new Decimal(2500),
+			unlocked(){ return hasUpgrade("limit", 45) },
+			effect(){ return new Decimal(1).add(player.limit.points.slog().div(300)) },
+			effectDisplay(){ return "^"+format(upgradeEffect('limit', 51)) },
+		},
 	},
 	milestones: {
     0: {
