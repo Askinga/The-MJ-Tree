@@ -264,10 +264,16 @@ addLayer("limit", {
 			unlocked(){ return hasUpgrade("limit", 41) },
 		},
 		43: {
-			title: "New challenges await",
+			title: "New types of challenges await",
 			description: "Unlock a repeating challenge",
 			cost: new Decimal(750),
 			unlocked(){ return hasUpgrade("limit", 42) },
+		},
+		44: {
+			title: "One time only",
+			description: "Unlock a challenge",
+			cost: new Decimal(1000),
+			unlocked(){ return hasUpgrade("limit", 43) },
 		},
 	},
 	milestones: {
@@ -474,5 +480,13 @@ addLayer("limit", {
         return hasUpgrade("limit", 43);
       },
     },
+		12: {
+    	    name: "Deceased Powers",
+      	    challengeDescription: "Power Rune softcap starts x2.3 earlier.",
+			goalDescription: "umm?",
+			rewardDescription: "Power Rune softcap starts x1.15 later.",
+      	  	canComplete: function() {return player.points.gte("eee7")},
+			unlocked(){ return hasUpgrade('limit', 44) },
+   		 },
 	},
 })
