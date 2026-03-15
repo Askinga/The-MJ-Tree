@@ -483,9 +483,9 @@ addLayer("limit", {
 		12: {
     	    name: "Deceased Powers",
       	    challengeDescription: "Power Rune softcap starts x2.3 earlier.",
-			goalDescription: "umm?",
+			goalDescription: "e1e610,000 points",
 			rewardDescription: "Power Rune softcap starts x1.15 later.",
-      	  	canComplete: function() {return player.points.gte("eee7")},
+      	  	canComplete: function() {return player.points.gte("ee610000")},
 			unlocked(){ return hasUpgrade('limit', 44) },
    		 },
 	},
