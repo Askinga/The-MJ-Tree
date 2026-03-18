@@ -104,6 +104,11 @@ addLayer("limit", {
 	powerBoost(){
 		return new Decimal(1.0751).pow(player.limit.power).times(player.limit.power.div(7).add(1))
 	},
+	tabFormat: [
+        ["blank", "10px"],
+        ["microtabs", "MAIN"],
+        ["blank", "20px"],
+    ],
 	microtabs: {
 	  "MAIN": {
 		"LIMIT": {
