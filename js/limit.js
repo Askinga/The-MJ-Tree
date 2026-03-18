@@ -104,8 +104,7 @@ addLayer("limit", {
 	powerBoost(){
 		return new Decimal(1.0751).pow(player.limit.power).times(player.limit.power.div(7).add(1))
 	},
-	microtabs: {
-	  MAIN: {
+	tabFormat: {
 		"LIMIT": {
 			content: [
 				"main-display",
@@ -178,10 +177,7 @@ addLayer("limit", {
 				"buyables"
 			],
 		},
-	  },
-	  "SUPER": {
-		  unlocked(){ return hasUpgrade('limit', 55) },
-		  "LIMIT": {
+		  "SUPER": {
 			  embedLayer: "sl",
 			  unlocked(){ return hasUpgrade('limit', 55) },
 			  buttonStyle: {
@@ -189,17 +185,7 @@ addLayer("limit", {
 			  "border": "2px solid #2d51e0"
          	  },
 		  },
-		  buttonStyle: {
-			"color": "#2d51e0",
-			"border": "2px solid #2d51e0"
-		},
-		  },
 	},
-	tabFormat: [
-        ["blank", "10px"],
-        ["microtabs", "MAIN"],
-        ["blank", "20px"],
-    ],
 	upgrades: {
 		11: {
 			title: "Congrats.",
@@ -356,7 +342,7 @@ addLayer("limit", {
 		},
 		55: {
 			title: "Now what?",
-			description: "Unlock a new set of tabs!",
+			description: "Unlock something new",
 			cost: new Decimal(20000),
 			unlocked(){ return hasUpgrade("limit", 54) },
 		},
