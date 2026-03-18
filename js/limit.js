@@ -105,7 +105,7 @@ addLayer("limit", {
 		return new Decimal(1.0751).pow(player.limit.power).times(player.limit.power.div(7).add(1))
 	},
 	microtabs: {
-	  "MAIN": {
+	  MAIN: {
 		"LIMIT": {
 			content: [
 				"main-display",
