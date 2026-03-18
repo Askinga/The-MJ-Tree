@@ -182,7 +182,7 @@ addLayer("limit", {
 	  "SUPER": {
 		  unlocked(){ return hasUpgrade('limit', 55) },
 		  "LIMIT": {
-			  embedLayer: "SL",
+			  embedLayer: "sl",
 			  unlocked(){ return hasUpgrade('limit', 55) },
 			  buttonStyle: {
 			  "color": "#2d51e0",
@@ -300,7 +300,7 @@ addLayer("limit", {
 			effectDisplay(){ return "x"+format(upgradeEffect('limit', 41)) },
 		},
 		42: {
-			title: "Use is wisely",
+			title: "Use it wisely",
 			description: "+1 Allocation",
 			cost: new Decimal(500),
 			unlocked(){ return hasUpgrade("limit", 41) },
@@ -621,7 +621,7 @@ addLayer("limit", {
     requires: new Decimal(20000), // Can be a function that takes requirement increases into account
     resource: "super limit points", // Name of prestige currency
     baseResource: "limit points", // Name of resource prestige is based on
-    baseAmount() {return player.points}, // Get the current amount of baseResource
+    baseAmount() {return player.limit.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.3, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
