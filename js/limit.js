@@ -61,6 +61,7 @@ addLayer("limit", {
 	extra(){
 		let extra = new Decimal(0)
 		if (hasUpgrade('limit', 15)) extra = extra.add(1)
+		if (hasUpgrade('limit', 53)) extra = extra.add(3)
 		return extra
 	},
 	alloCate(){
@@ -301,6 +302,12 @@ addLayer("limit", {
 			description: "Unlock a challenge",
 			cost: new Decimal(3250),
 			unlocked(){ return hasUpgrade("limit", 51) },
+		},
+		53: {
+			title: "Time to go BIG!",
+			description: "Each completed challenge adds +1 max Limit Power",
+			cost: new Decimal(5000),
+			unlocked(){ return hasUpgrade("limit", 52) },
 		},
 	},
 	milestones: {
