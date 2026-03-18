@@ -32,7 +32,6 @@ addLayer("SCH", {
             canComplete: function() {return player.points.gte("e10805")},
             goalDescription: "Get e10805 MJs.",
             rewardDescription: "Beat v2.1.0. Tip: If you reach a certain amount of MJs, you will see a glimpse of the creater, <span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">about challenges</span><br>",
-            unlocked() { return (hasChallenge('GLA', 11)) },
 	},
     },
 })
