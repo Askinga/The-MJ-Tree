@@ -58,6 +58,7 @@ addLayer("limit", {
 	LIMIT(){
 		if (player.limit.power.gte(30)) {
 		    return new Decimal("ee200000").pow(new Decimal(12).pow(player.limit.power.times(124.8731).pow(new Decimal(1.87921).add(player.limit.power.sub(29).div(94.2847)))))
+		}
 		else {
 			return new Decimal("ee200000").pow(new Decimal(12).pow(player.limit.power.times(124.8731).pow(1.87921)))
 		}
