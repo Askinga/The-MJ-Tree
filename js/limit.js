@@ -56,12 +56,17 @@ addLayer("limit", {
 		}
 	},
 	LIMIT(){
-		return new Decimal("ee200000").pow(new Decimal(12).pow(player.limit.power.times(124.8731).pow(1.87921)))
+		if (player.limit.power.gte(30)) {
+		    return new Decimal("ee200000").pow(new Decimal(12).pow(player.limit.power.times(124.8731).pow(new Decimal(1.87921).add(player.limit.power.sub(29).div(94.2847)))))
+		else {
+			return new Decimal("ee200000").pow(new Decimal(12).pow(player.limit.power.times(124.8731).pow(1.87921)))
+		}
 	},
 	extra(){
 		let extra = new Decimal(0)
 		if (hasUpgrade('limit', 15)) extra = extra.add(1)
 		if (hasUpgrade('limit', 53)) extra = extra.add(3)
+		extra = extra.add(buyableEffect('limit', 11))
 		return extra
 	},
 	alloCate(){
@@ -158,6 +163,14 @@ addLayer("limit", {
 				"main-display",
 				"blank",
 				"challenges"
+			],
+		},
+		"BUYABLES": {
+			unlocked(){ return hasUpgrade('limit', 54) },
+			content: [
+				"main-display",
+				"blank",
+				"buyables"
 			],
 		},
 	},
@@ -308,6 +321,12 @@ addLayer("limit", {
 			description: "Each completed challenge adds +1 max Limit Power",
 			cost: new Decimal(5000),
 			unlocked(){ return hasUpgrade("limit", 52) },
+		},
+		54: {
+			title: "Power stacking",
+			description: "Unlock a buyable",
+			cost: new Decimal(10000),
+			unlocked(){ return hasUpgrade("limit", 53) },
 		},
 	},
 	milestones: {
@@ -538,5 +557,24 @@ addLayer("limit", {
       	  	canComplete: function() {return player.points.gte("ee131072")},
 			unlocked(){ return hasUpgrade('limit', 52) },
  	    },
+	},
+	buyables: {
+	11: {
+		unlocked(){ return hasUpgrade('limit', 54) },
+		title: "Limit Power Increaser",
+        cost(x) { return new Decimal(2500).times(new Decimal(2).pow(x)) },
+        display() { return "+1 max Limit Power per purchase<br>Cost: " + format(this.cost()) + " Limit Points<br>Bought: " + format(getBuyableAmount('limit', 11)) + "<br>Effect: +" + format(buyableEffect('limit', 11)) + " max Limit Power" },
+        canAfford() { return player.limit.points.gte(this.cost()) },
+        buy() {
+            player.limit.points = player.limit.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.times(Decimal.times(base2, expo))
+		},
+    },
 	},
 })
