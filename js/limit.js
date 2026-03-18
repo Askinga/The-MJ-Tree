@@ -99,6 +99,7 @@ addLayer("limit", {
 	alo3(){
 		let extra = new Decimal(1)
 		if (hasChallenge('limit', 13)) extra = extra.times(1.178)
+		if (hasUpgrade('sl', 12)) extra = extra.times(2)
 		return new Decimal(1.1).pow(player.limit.allo3).times(extra)
 	},
 	powerBoost(){
@@ -632,6 +633,12 @@ addLayer("limit", {
 			title: "Time to go super",
 			description: "These upgrades will be way stronger than normal upgrades. x1.5 Limit Points.",
 			cost: new Decimal(1)
+		},
+		12: {
+			title: "Very limity",
+			description: "x2 Limit Resets!",
+			cost: new Decimal(2),
+			unlocked(){ return hasUpgrade('sl', 11) },
 		},
 	},
 })
