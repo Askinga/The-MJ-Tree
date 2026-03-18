@@ -200,6 +200,11 @@ addLayer("limit", {
 		},
 		  },
 	},
+	tabFormat: [
+        ["blank", "10px"],
+        ["microtabs", "MAIN"],
+        ["blank", "20px"],
+    ],
 	upgrades: {
 		11: {
 			title: "Congrats.",
