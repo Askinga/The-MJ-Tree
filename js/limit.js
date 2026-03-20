@@ -643,8 +643,14 @@ addLayer("limit", {
 		13: {
 			title: "The doubling won't stop",
 			description: "x2 Power Runes",
-			cost: new Decimal(5),
+			cost: new Decimal(3),
 			unlocked(){ return hasUpgrade('sl', 12) },
+		},
+		14: {
+			title: "Very limity",
+			description: "x1.3 Power Rune softcap delay",
+			cost: new Decimal(5),
+			unlocked(){ return hasUpgrade('sl', 13) },
 		},
 	},
 })
