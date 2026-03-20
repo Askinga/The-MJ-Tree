@@ -640,5 +640,11 @@ addLayer("limit", {
 			cost: new Decimal(2),
 			unlocked(){ return hasUpgrade('sl', 11) },
 		},
+		13: {
+			title: "The doubling won't stop",
+			description: "x2 Power Runes",
+			cost: new Decimal(5),
+			unlocked(){ return hasUpgrade('sl', 12) },
+		},
 	},
 })
