@@ -646,7 +646,7 @@ addLayer("limit", {
 				"upgrades",
 			],
 		},
-		"Generators": {
+		"GENERATORS": {
 			unlocked(){ return hasUpgrade('sl', 15) },
 			content: [
 				"main-display",
