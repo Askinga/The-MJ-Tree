@@ -37,6 +37,7 @@ addLayer("limit", {
 		mult = mult.times(new Decimal(1.1).pow(challengeCompletions("limit", 11), 2));
 		if (hasChallenge('limit', 13)) mult = mult.times(1.3)
 		if (hasUpgrade('sl', 11)) mult = mult.times(1.5)
+		if (hasUpgrade('sl', 15)) mult = mult.times(2)
 		mult = mult.times(tmp.sl.power1)
         return mult
     },
@@ -685,7 +686,7 @@ addLayer("limit", {
 		},
 		15: {
 			title: "Generate v2",
-			description: "Unlock a new tab",
+			description: "Unlock a new tab and x2 Limit points!",
 			cost: new Decimal(7),
 			unlocked(){ return hasUpgrade('sl', 14) },
 		},
