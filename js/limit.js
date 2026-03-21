@@ -644,6 +644,7 @@ addLayer("limit", {
 			content: [
 				"main-display",
 				"prestige-button",
+				"resource-display",
 				"blank",
 				"upgrades",
 			],
