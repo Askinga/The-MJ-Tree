@@ -607,6 +607,8 @@ addLayer("limit", {
         unlocked: false,
 		points: new Decimal(0),
 		power: new Decimal(0),
+		gen1: new Decimal(0),
+		powerg: new Decimal(0),
     }},
 	onPrestige(){
 		player.limit.points = new Decimal(0)
@@ -651,7 +653,7 @@ addLayer("limit", {
 			content: [
 				"main-display",
 				"blank",
-				["display-text", function(){ return "You have " + format(player.sl.power) + " limit generator power, boosting Limit Points by x" + format(tmp.sl.power1) + " and Super Limit Points by x" + format(tmp.sl.power2)}],
+				["display-text", function(){ return "You have " + format(player.sl.power) + " limit generator power, boosting Limit Points by x" + format(tmp.sl.power1) + " and Super Limit Points by x" + format(tmp.sl.power2) + " (" + format(player.sl.powerg) + "/sec)"}],
 				"buyables",
 			],
 		},
@@ -686,5 +688,49 @@ addLayer("limit", {
 			cost: new Decimal(7),
 			unlocked(){ return hasUpgrade('sl', 14) },
 		},
+	},
+	buyables: {
+	 11: {
+            title: "Generator 1",
+            unlocked() { return (hasUpgrade('sl', 15)) },
+            cost(x) {
+                return new Decimal(5).mul(Decimal.pow(2, x)).floor()
+            },
+            display() {
+                let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " super limit points." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Generator 1.<br>You have " + format(player.sl.gen1) + " Generator 1."
+                if (player.points.lte("-10")) dis = dis + " Dimension 1 amount multiplies Antimatter generation by " + format(buyableEffect(this.layer, this.id)) + "."
+                return dis
+            },
+            canAfford() {
+                return player.sl.points.gte(this.cost())
+            },
+            buy() {
+                let cost = new Decimal(1)
+                player.sl.points = player.sl.points.sub(this.cost().mul(cost))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+				player.sl.gen1 = player.sl.gen1.add(1)
+            },
+            effect(x) {
+                gensqboost = new Decimal(1.0717734627)
+                if (player.points.lte("-20")) {
+                    eff = new Decimal(gensqboost).pow(x)
+                } else {
+                    eff = new Decimal(1)
+                }
+                return eff
+            },
+            tooltip() {
+                return "Cost Formula: 5 x 2^Amt. Generation formula: Generator 1 amt."
+            },
+            style() {return {
+                'width': '250px',
+                'height': '115px',
+            }},
+        },
+    },
+	update(diff) {
+		let gain = player.sl.gen1
+		player.sl.powerg = gain
+		player.sl.power = player.sl.power.add(gain.times(diff))
 	},
 })
