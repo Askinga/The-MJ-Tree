@@ -37,6 +37,7 @@ addLayer("limit", {
 		mult = mult.times(new Decimal(1.1).pow(challengeCompletions("limit", 11), 2));
 		if (hasChallenge('limit', 13)) mult = mult.times(1.3)
 		if (hasUpgrade('sl', 11)) mult = mult.times(1.5)
+		mult = mult.times(tmp.sl.power1)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -605,6 +606,7 @@ addLayer("limit", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+		power: new Decimal(0),
     }},
 	onPrestige(){
 		player.limit.points = new Decimal(0)
@@ -618,6 +620,7 @@ addLayer("limit", {
     exponent: 0.3, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		mult = mult.times(tmp.sl.power2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -628,6 +631,31 @@ addLayer("limit", {
         {key: "l", description: "L: Reset for super limit points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return false},
+	power1(){
+		return player.sl.power.add(1).pow(0.2)
+	},
+	power2(){
+		return player.sl.power.add(1).pow(0.1)
+	},
+	tabFormat: {
+	 "MAIN": {
+			content: [
+				"main-display",
+				"prestige-button"
+				"blank",
+				"upgrades",
+			],
+		},
+		"Generators": {
+			unlocked(){ return hasUpgrade('sl', 15) },
+			content: [
+				"main-display",
+				"blank",
+				["display-text", function(){ return "You have " + format(player.sl.power) + " limit generator power, boosting Limit Points by x" + format(tmp.sl.power1) + " and Super Limit Points by x" + format(tmp.sl.power2)}],
+				"buyables",
+			],
+		},
+    },
 	upgrades: {
 		11: {
 			title: "Time to go super",
@@ -647,10 +675,16 @@ addLayer("limit", {
 			unlocked(){ return hasUpgrade('sl', 12) },
 		},
 		14: {
-			title: "Very limity",
+			title: "Very softcappy",
 			description: "x1.3 Power Rune softcap delay",
 			cost: new Decimal(5),
 			unlocked(){ return hasUpgrade('sl', 13) },
+		},
+		15: {
+			title: "Generate v2",
+			description: "Unlock a new tab",
+			cost: new Decimal(7),
+			unlocked(){ return hasUpgrade('sl', 14) },
 		},
 	},
 })
