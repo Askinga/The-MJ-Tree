@@ -19,7 +19,7 @@ addLayer("limit", {
 	},
 	passiveGeneration(){
 		let p = new Decimal(0)
-		if (hasUpgrade('sl', 22)) p = p.add(1)
+		if (hasUpgrade('sl', 22)) p = p.add(0.01)
 		return p
 	},
     color: "#e841a0",
