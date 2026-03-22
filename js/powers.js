@@ -46,6 +46,7 @@ addLayer("pr", {
 		if (hasUpgrade('limit', 24)) add = add.add("2^1")
 		if (hasChallenge('limit', 13)) add = add.add("2^2")
 		if (hasUpgrade('sl', 13)) add = add.add("2^3")
+		if (hasUpgrade('sl', 21)) add = add.add("2^4")
 		if (inChallenge('limit', 13)) add = new Decimal(0)
 		return player.pr.points = player.pr.points.add(add)
 	},
