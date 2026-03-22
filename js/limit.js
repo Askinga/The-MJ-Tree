@@ -747,7 +747,7 @@ addLayer("limit", {
                 return new Decimal(30).mul(Decimal.pow(3, x)).floor()
             },
             display() {
-                let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " super limit points." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Generator 2.<br>You have " + format(player.sl.gen1) + " Generator 2."
+                let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " super limit points." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Generator 2.<br>You have " + format(player.sl.gen2) + " Generator 2."
                 if (player.points.lte("-10")) dis = dis + " Dimension 1 amount multiplies Antimatter generation by " + format(buyableEffect(this.layer, this.id)) + "."
                 return dis
             },
