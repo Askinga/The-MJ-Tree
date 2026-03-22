@@ -5,6 +5,7 @@ addLayer("limit", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+		best: new Decimal(0),
 		l: new Decimal(0),
 		power: new Decimal(0),
 		limitOff: new Decimal(0),
@@ -15,6 +16,11 @@ addLayer("limit", {
     }},
 	onPrestige(){
 		player.limit.l = player.limit.l.add(tmp.limit.alo3)
+	},
+	passiveGeneration(){
+		let p = new Decimal(0)
+		if (hasUpgrade('sl', 22)) p = p.add(1)
+		return p
 	},
     color: "#e841a0",
     autoPrestige(){ return player.limit.limitOff.eq(0) },
@@ -115,6 +121,7 @@ addLayer("limit", {
 				["display-text", function(){ return "<h1>" + format(tmp.limit.LIMIT) + "</h1><br>You have reached the limit " + format(player.limit.l) + " times, boosting Log milestone 1 time and Power Rune reset time by x" + format(tmp.limit.limitBoost)}],
 				"blank",
 				["bar", "LIMIT"],
+				"resource-display",
 				"blank",
 				"upgrades",
 			],
@@ -609,6 +616,7 @@ addLayer("limit", {
 		points: new Decimal(0),
 		power: new Decimal(0),
 		gen1: new Decimal(0),
+		gen2: new Decimal(0),
 		powerg: new Decimal(0),
     }},
 	onPrestige(){
@@ -696,6 +704,12 @@ addLayer("limit", {
 			cost: new Decimal(20),
 			unlocked(){ return hasUpgrade('sl', 15) },
 		},
+		22: {
+			title: "Well, new generator at least",
+			description: "Unlock a new generator and gain 1% of Limit Points per second",
+			cost: new Decimal(30),
+			unlocked(){ return hasUpgrade('sl', 21) },
+		},
 	},
 	buyables: {
 	 11: {
@@ -718,17 +732,36 @@ addLayer("limit", {
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
 				player.sl.gen1 = player.sl.gen1.add(1)
             },
-            effect(x) {
-                gensqboost = new Decimal(1.0717734627)
-                if (player.points.lte("-20")) {
-                    eff = new Decimal(gensqboost).pow(x)
-                } else {
-                    eff = new Decimal(1)
-                }
-                return eff
-            },
             tooltip() {
                 return "Cost Formula: 5 x 2^Amt. Generation formula: Generator 1 amt."
+            },
+            style() {return {
+                'width': '250px',
+                'height': '115px',
+            }},
+        },
+		12: {
+            title: "Generator 2",
+            unlocked() { return (hasUpgrade('sl', 22)) },
+            cost(x) {
+                return new Decimal(30).mul(Decimal.pow(3, x)).floor()
+            },
+            display() {
+                let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " super limit points." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Generator 2.<br>You have " + format(player.sl.gen1) + " Generator 2."
+                if (player.points.lte("-10")) dis = dis + " Dimension 1 amount multiplies Antimatter generation by " + format(buyableEffect(this.layer, this.id)) + "."
+                return dis
+            },
+            canAfford() {
+                return player.sl.points.gte(this.cost())
+            },
+            buy() {
+                let cost = new Decimal(1)
+                player.sl.points = player.sl.points.sub(this.cost().mul(cost))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+				player.sl.gen2 = player.sl.gen2.add(1)
+            },
+            tooltip() {
+                return "Cost Formula: 30 x 3^Amt. Generation formula: Generator 2 amt."
             },
             style() {return {
                 'width': '250px',
@@ -738,6 +771,7 @@ addLayer("limit", {
     },
 	update(diff) {
 		let gain = player.sl.gen1
+		player.sl.gen1 = player.sl.gen1.add(player.sl.gen2.times(diff))
 		player.sl.powerg = gain
 		player.sl.power = player.sl.power.add(gain.times(diff))
 	},
