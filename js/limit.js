@@ -690,6 +690,12 @@ addLayer("limit", {
 			cost: new Decimal(7),
 			unlocked(){ return hasUpgrade('sl', 14) },
 		},
+		21: {
+			title: "...",
+			description: "x2 Power Runes. I should make a buyable soon...",
+			cost: new Decimal(20),
+			unlocked(){ return hasUpgrade('sl', 15) },
+		},
 	},
 	buyables: {
 	 11: {
