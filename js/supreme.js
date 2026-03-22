@@ -116,6 +116,17 @@ addLayer("su", {
 					}
 		    },
         },
+		"Time Boosters": {
+            unlocked(){ return hasMilestone('su', 26) },
+			embedLayer: "tb",
+            buttonStyle() {
+                    return {
+                        'background': 'linear-gradient(45deg, white, black)',
+                        'border-color': '#ffffff',
+                        'color': 'gray',
+					}
+		    },
+        },
 		"Challenges": {
             unlocked(){ return true },
             content: [
@@ -174,7 +185,7 @@ addLayer("su", {
     },
 	6: {
         requirementDescription: "e2.000e13 points",
-        effectDescription(){ return "Unlock a new layer."},
+        effectDescription(){ return "Unlock a new sub-layer."},
         done() { return player.points.gte("e2e13") }
     },
     },
