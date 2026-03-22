@@ -117,7 +117,7 @@ addLayer("su", {
 		    },
         },
 		"Time Boosters": {
-            unlocked(){ return hasMilestone('su', 26) },
+            unlocked(){ return hasMilestone('su', 6) },
 			embedLayer: "tb",
             buttonStyle() {
                     return {
