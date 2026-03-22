@@ -51,6 +51,6 @@ addLayer("tb", {
     ],
     effect(){ return player.tb.points.add(1).pow(2) },
     effectDescription(){ return "which is boosting Time and SuR by x" + format(layers.tb.effect()) },
-    layerShown(){return ((hasMilestone('su', 6) || player.tb.unlocked) && !(inChallenge('universes', 11)))},
+    layerShown(){return false},
   	branches: ["su"]
 })
