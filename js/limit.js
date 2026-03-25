@@ -617,6 +617,7 @@ addLayer("limit", {
 		power: new Decimal(0),
 		gen1: new Decimal(0),
 		gen2: new Decimal(0),
+		gen3: new Decimal(0),
 		powerg: new Decimal(0),
     }},
 	onPrestige(){
@@ -710,6 +711,12 @@ addLayer("limit", {
 			cost: new Decimal(30),
 			unlocked(){ return hasUpgrade('sl', 21) },
 		},
+		23: {
+			title: "too big",
+			description: "Unlock a new generator and x2 Power rune softcap",
+			cost: new Decimal(100),
+			unlocked(){ return hasUpgrade('sl', 22) },
+		},
 	},
 	buyables: {
 	 11: {
@@ -768,10 +775,39 @@ addLayer("limit", {
                 'height': '115px',
             }},
         },
+		21: {
+            title: "Generator 3",
+            unlocked() { return (hasUpgrade('sl', 23)) },
+            cost(x) {
+                return new Decimal(100).mul(Decimal.pow(10, x)).floor()
+            },
+            display() {
+                let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " super limit points." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Generator 3.<br>You have " + format(player.sl.gen3) + " Generator 3."
+                if (player.points.lte("-10")) dis = dis + " Dimension 1 amount multiplies Antimatter generation by " + format(buyableEffect(this.layer, this.id)) + "."
+                return dis
+            },
+            canAfford() {
+                return player.sl.points.gte(this.cost())
+            },
+            buy() {
+                let cost = new Decimal(1)
+                player.sl.points = player.sl.points.sub(this.cost().mul(cost))
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+				player.sl.gen3 = player.sl.gen3.add(1)
+            },
+            tooltip() {
+                return "Cost Formula: 10 x 10^Amt. Generation formula: Generator 3 amt."
+            },
+            style() {return {
+                'width': '250px',
+                'height': '115px',
+            }},
+        },
     },
 	update(diff) {
 		let gain = player.sl.gen1
 		player.sl.gen1 = player.sl.gen1.add(player.sl.gen2.times(diff))
+		player.sl.gen2 = player.sl.gen2.add(player.sl.gen3.times(diff))
 		player.sl.powerg = gain
 		player.sl.power = player.sl.power.add(gain.times(diff))
 	},
