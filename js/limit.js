@@ -713,8 +713,8 @@ addLayer("limit", {
 		},
 		23: {
 			title: "too big",
-			description: "Unlock a new generator and x2 Power rune softcap",
-			cost: new Decimal(100),
+			description: "Unlock a new generator and x2 Power rune softcap delay",
+			cost: new Decimal(50),
 			unlocked(){ return hasUpgrade('sl', 22) },
 		},
 	},
@@ -779,7 +779,7 @@ addLayer("limit", {
             title: "Generator 3",
             unlocked() { return (hasUpgrade('sl', 23)) },
             cost(x) {
-                return new Decimal(100).mul(Decimal.pow(10, x)).floor()
+                return new Decimal(40).mul(Decimal.pow(4, x)).floor()
             },
             display() {
                 let dis = "Cost: " + format(tmp[this.layer].buyables[this.id].cost) + " super limit points." + "<br>You have bought " + getBuyableAmount(this.layer, this.id) + " Generator 3.<br>You have " + format(player.sl.gen3) + " Generator 3."
@@ -796,7 +796,7 @@ addLayer("limit", {
 				player.sl.gen3 = player.sl.gen3.add(1)
             },
             tooltip() {
-                return "Cost Formula: 10 x 10^Amt. Generation formula: Generator 3 amt."
+                return "Cost Formula: 40 x 4^Amt. Generation formula: Generator 3 amt."
             },
             style() {return {
                 'width': '250px',
