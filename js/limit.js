@@ -739,6 +739,8 @@ addLayer("limit", {
 			description: "x10 Limit Points. Also, each Limit Power delays Power Rune softcap by x1.005.",
 			cost: new Decimal(1000),
 			unlocked(){ return hasUpgrade('sl', 25) },
+			effect(){ return new Decimal(1.005).pow(player.limit.power) },
+			effectDisplay(){ return "x"+format(upgradeEffect('sl', 31)) },
 		},
 	},
 	buyables: {
