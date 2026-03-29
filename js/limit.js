@@ -46,6 +46,7 @@ addLayer("limit", {
 		if (hasUpgrade('sl', 15)) mult = mult.times(2)
 		mult = mult.times(tmp.sl.power1)
 		if (hasUpgrade('sl', 24)) mult = mult.times(5)
+		if (hasUpgrade('sl', 31)) mult = mult.times(10)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -732,6 +733,12 @@ addLayer("limit", {
 			description: "Unlock a new generator. Limit Upgrade 20 is applied with these upgrades too.",
 			cost: new Decimal(250),
 			unlocked(){ return hasUpgrade('sl', 24) },
+		},
+		31: {
+			title: "too big the third",
+			description: "x10 Limit Points. Also, each Limit Power delays Power Rune softcap by x1.005.",
+			cost: new Decimal(1000),
+			unlocked(){ return hasUpgrade('sl', 25) },
 		},
 	},
 	buyables: {
