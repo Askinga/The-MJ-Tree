@@ -79,6 +79,7 @@ addLayer("pr", {
 		if (hasChallenge('limit', 12)) softcap = softcap.times(1.15)
 		if (hasUpgrade('sl', 14)) softcap = softcap.times(1.3)
 		if (hasUpgrade('sl', 23)) softcap = softcap.times(2)
+		if (hasUpgrade('sl', 31)) softcap = softcap.times(upgradeEffect('sl', 31))
 		if (hasUpgrade('limit', 51)) softcap = softcap.pow(upgradeEffect('limit', 51))
 		softcap = softcap.times(layers.en.effect())
 		softcap = softcap.times(tmp.limit.alo1)
