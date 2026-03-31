@@ -47,6 +47,7 @@ addLayer("limit", {
 		mult = mult.times(tmp.sl.power1)
 		if (hasUpgrade('sl', 24)) mult = mult.times(5)
 		if (hasUpgrade('sl', 31)) mult = mult.times(10)
+		if (hasUpgrade('sl', 33)) mult = mult.times(20)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -749,9 +750,15 @@ addLayer("limit", {
 		},
 		32: {
 			title: "too big, 4?",
-			description: "The Limit Power boost has a better formula.",
+			description: "The Limit Power boost has a better formula. Use rot13 to translate the next upgrade. :)",
 			cost: new Decimal(2000),
 			unlocked(){ return hasUpgrade('sl', 31) },
+		},
+		33: {
+			title: "gbb ovt gur svsgu",
+			description: "x20 Yvzvg Cbvagf. >:D",
+			cost: new Decimal(3500),
+			unlocked(){ return hasUpgrade('sl', 32) },
 		},
 	},
 	buyables: {
