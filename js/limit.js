@@ -115,7 +115,12 @@ addLayer("limit", {
 		return new Decimal(1.1).pow(player.limit.allo3).times(extra)
 	},
 	powerBoost(){
-		return new Decimal(1.0751).pow(player.limit.power).times(player.limit.power.div(7).add(1))
+		let newPower = new Decimal(1.15)
+		if (hasUpgrade('sl', 32)) {
+			return new Decimal(newPower).pow(player.limit.power)
+		} else {
+			return new Decimal(1.0751).pow(player.limit.power).times(player.limit.power.div(7).add(1))
+		}
 	},
 	tabFormat: {
 		"LIMIT": {
@@ -741,6 +746,12 @@ addLayer("limit", {
 			unlocked(){ return hasUpgrade('sl', 25) },
 			effect(){ return new Decimal(1.005).pow(player.limit.power) },
 			effectDisplay(){ return "x"+format(upgradeEffect('sl', 31)) },
+		},
+		32: {
+			title: "too big, 4?",
+			description: "The Limit Power boost has a better formula.",
+			cost: new Decimal(2000),
+			unlocked(){ return hasUpgrade('sl', 31) },
 		},
 	},
 	buyables: {
