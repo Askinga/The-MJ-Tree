@@ -48,6 +48,7 @@ addLayer("limit", {
 		if (hasUpgrade('sl', 24)) mult = mult.times(5)
 		if (hasUpgrade('sl', 31)) mult = mult.times(10)
 		if (hasUpgrade('sl', 33)) mult = mult.times(20)
+		if (hasUpgrade('sl', 34)) mult = mult.times(25)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -759,6 +760,18 @@ addLayer("limit", {
 			description: "x20 Yvzvg Cbvagf. >:D",
 			cost: new Decimal(3500),
 			unlocked(){ return hasUpgrade('sl', 32) },
+		},
+		34: {
+			title: "cold...",
+			description: "x25 Limit Points",
+			cost: new Decimal(15000),
+			unlocked(){ return hasUpgrade('sl', 33) },
+		},
+		35: {
+			title: "ice time",
+			description: "Unlock Ice",
+			cost: new Decimal(50000),
+			unlocked(){ return hasUpgrade('sl', 34) },
 		},
 	},
 	buyables: {
