@@ -49,6 +49,7 @@ addLayer("limit", {
 		if (hasUpgrade('sl', 31)) mult = mult.times(10)
 		if (hasUpgrade('sl', 33)) mult = mult.times(20)
 		if (hasUpgrade('sl', 34)) mult = mult.times(25)
+		if (hasUpgrade('sl', 35)) mult = mult.times(5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -769,7 +770,7 @@ addLayer("limit", {
 		},
 		35: {
 			title: "ice time",
-			description: "Unlock Ice",
+			description: "Unlock Ice, and x5 Limit Points",
 			cost: new Decimal(50000),
 			unlocked(){ return hasUpgrade('sl', 34) },
 		},
