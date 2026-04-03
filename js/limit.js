@@ -53,7 +53,9 @@ addLayer("limit", {
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        let exp = new Decimal(1)
+		if (hasUpgrade('ice', 11)) exp = exp.times(1.1)
+		return exp
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return (player.limit.unlocked) && !(inChallenge('universes', 11))},
