@@ -34,4 +34,11 @@ addLayer("ice", {
     effectDescription(){
       return "which is boosting Log milestone 1 effect exponent by x" + format(layers.ice.effect())
     },
+	upgrades: {
+		11: {
+			title: "ice 1",
+			description: "^1.1 Limit Points. Yeah, exponent time.",
+			cost: new Decimal(3)
+		},
+	},
 })
