@@ -15,6 +15,7 @@ addLayer("ice", {
     exponent: 0, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if (hasUpgrade('ice', 13)) mult = mult.times(upgradeEffect('ice', 13))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -36,16 +37,31 @@ addLayer("ice", {
     },
 	upgrades: {
 		11: {
-			title: "ice 1",
+			title: "ice cream",
 			description: "^1.1 Limit Points. Yeah, exponent time.",
 			cost: new Decimal(3)
 		},
 		12: {
-			title: "ice 2",
+			title: "slippery",
 			description: "^1.02 Limit Points per Ice upgrade.",
 			cost: new Decimal(5),
 			unlocked(){ return hasUpgrade('ice', 11) },
 			effect(){ return new Decimal(1).add(new Decimal(player.ice.upgrades.length).div(50)) },
+			effectDisplay(){ return "^"+format(upgradeEffect('ice', 12)) },
+		},
+		13: {
+			title: "icicles",
+			description: "x2 Ice per triple log10 of Points past 8.",
+			cost: new Decimal(7),
+			unlocked(){ return hasUpgrade('ice', 12) },
+			effect(){
+				if (player.points.log10().log10().log10().sub(8).floor().gte(1)) {
+				    return new Decimal(2).pow(player.points.log10().log10().log10().sub(8).floor()) 
+				}
+			    else {
+					return new Decimal(1)
+				}
+			},
 			effectDisplay(){ return "^"+format(upgradeEffect('ice', 12)) },
 		},
 	},
