@@ -42,7 +42,7 @@ addLayer("ice", {
 			cost: new Decimal(3)
 		},
 		12: {
-			title: "slippery",
+			title: "slippery ice",
 			description: "^1.02 Limit Points per Ice upgrade.",
 			cost: new Decimal(5),
 			unlocked(){ return hasUpgrade('ice', 11) },
