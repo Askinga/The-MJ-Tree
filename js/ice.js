@@ -40,5 +40,13 @@ addLayer("ice", {
 			description: "^1.1 Limit Points. Yeah, exponent time.",
 			cost: new Decimal(3)
 		},
+		12: {
+			title: "ice 2",
+			description: "^1.02 Limit Points per Ice upgrade.",
+			cost: new Decimal(5),
+			unlocked(){ return hasUpgrade('ice', 11) },
+			effect(){ return new Decimal(1).add(new Decimal(player.ice.upgrades.length).div(50)) },
+			effectDisplay(){ return "^"+format(upgradeEffect('ice', 12)) },
+		},
 	},
 })
