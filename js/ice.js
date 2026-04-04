@@ -62,7 +62,7 @@ addLayer("ice", {
 					return new Decimal(1)
 				}
 			},
-			effectDisplay(){ return "^"+format(upgradeEffect('ice', 12)) },
+			effectDisplay(){ return "x"+format(upgradeEffect('ice', 13)) },
 		},
 	},
 })
