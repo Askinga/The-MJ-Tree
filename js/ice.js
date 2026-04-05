@@ -79,5 +79,13 @@ addLayer("ice", {
 			cost: new Decimal(20),
 	    	unlocked(){ return hasUpgrade('ice', 14) },
 		},
+		21: {
+			title: "thin ice",
+			description: "Boost Limit Points based on Super Limit Points.",
+			cost: new Decimal(100),
+			unlocked(){ return hasUpgrade('ice', 15) },
+			effect(){ return player.sl.points.add(1).pow(0.142857) },
+			effectDisplay(){ return "+"+format(upgradeEffect('ice', 21)) },
+		},
 	},
 })
