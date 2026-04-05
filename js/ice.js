@@ -24,7 +24,7 @@ addLayer("ice", {
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "i", description: "I: Reset for ice", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "i", description: "I: Reset for ice (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
     layerShown(){return (hasUpgrade('sl', 35) || player.ice.unlocked) && !(inChallenge('universes', 11))},
 	  branches: ["pr"],
