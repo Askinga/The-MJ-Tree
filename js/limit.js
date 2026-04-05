@@ -658,7 +658,7 @@ addLayer("limit", {
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "l", description: "L: Reset for super limit points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "l", description: "L: Reset for super limit points (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
     layerShown(){return false},
 	power1(){
