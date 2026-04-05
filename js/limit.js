@@ -122,6 +122,7 @@ addLayer("limit", {
 	},
 	powerBoost(){
 		let newPower = new Decimal(1.15)
+		if (hasUpgrade('ice', 14)) newPower = newPower.add(upgradeEffect('ice', 14))
 		if (hasUpgrade('sl', 32)) {
 			return new Decimal(newPower).pow(player.limit.power)
 		} else {
