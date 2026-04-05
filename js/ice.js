@@ -16,6 +16,7 @@ addLayer("ice", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasUpgrade('ice', 13)) mult = mult.times(upgradeEffect('ice', 13))
+		if (hasUpgrade('ice', 15)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -71,6 +72,12 @@ addLayer("ice", {
 			unlocked(){ return hasUpgrade('ice', 13) },
 			effect(){ return new Decimal(0).add(new Decimal(player.ice.upgrades.length).div(100)) },
 			effectDisplay(){ return "+"+format(upgradeEffect('ice', 14)) },
+		},
+		15: {
+			title: "ice cream sandwich",
+			description: "^1.05 Limit Points and x3 Ice.",
+			cost: new Decimal(20),
+	    	unlocked(){ return hasUpgrade('ice', 14) },
 		},
 	},
 })
