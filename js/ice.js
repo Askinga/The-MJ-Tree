@@ -18,6 +18,7 @@ addLayer("ice", {
 		if (hasUpgrade('ice', 13)) mult = mult.times(upgradeEffect('ice', 13))
 		if (hasUpgrade('ice', 15)) mult = mult.times(3)
 		if (hasUpgrade('ice', 22)) mult = mult.times(upgradeEffect('ice', 22))
+		if (hasUpgrade('ice', 23)) mult = mult.times(upgradeEffect('ice', 23))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -95,6 +96,21 @@ addLayer("ice", {
 			unlocked(){ return hasUpgrade('ice', 21) },
 			effect(){ return player.limit.points.add(1).pow(0.01) },
 			effectDisplay(){ return "x"+format(upgradeEffect('ice', 22)) },
+		},
+        23: {
+			title: "dangerous icicles",
+			description: "x1.2 Ice per log10 Limit Points past 20.",
+			cost: new Decimal(200),
+			unlocked(){ return hasUpgrade('ice', 22) },
+			effect(){
+				if (player.limit.points.add(1).log10().sub(19).floor().gte(1)) {
+				    return new Decimal(1.2).pow(player.limit.points.add(1).log10().sub(19).floor()) 
+				}
+			    else {
+					return new Decimal(1)
+				}
+			},
+			effectDisplay(){ return "x"+format(upgradeEffect('ice', 23)) },
 		},
 	},
 })
