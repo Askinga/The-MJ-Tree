@@ -17,6 +17,7 @@ addLayer("ice", {
         mult = new Decimal(1)
 		if (hasUpgrade('ice', 13)) mult = mult.times(upgradeEffect('ice', 13))
 		if (hasUpgrade('ice', 15)) mult = mult.times(3)
+		if (hasUpgrade('ice', 22)) mult = mult.times(upgradeEffect('ice', 22))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -86,6 +87,14 @@ addLayer("ice", {
 			unlocked(){ return hasUpgrade('ice', 15) },
 			effect(){ return player.sl.points.add(1).pow(0.142857) },
 			effectDisplay(){ return "x"+format(upgradeEffect('ice', 21)) },
+		},
+		22: {
+			title: "thick ice",
+			description: "Boost Ice based on Limit Points.",
+			cost: new Decimal(120),
+			unlocked(){ return hasUpgrade('ice', 21) },
+			effect(){ return player.limit.points.add(1).pow(0.01) },
+			effectDisplay(){ return "x"+format(upgradeEffect('ice', 22)) },
 		},
 	},
 })
