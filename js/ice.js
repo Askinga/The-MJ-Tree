@@ -71,10 +71,10 @@ addLayer("ice", {
 		},
 		14: {
 			title: "hollow ice",
-			description: "+0.01 Limit Power exponent per Ice upgrade.",
+			description: "+0.01 Limit Power exponent per Ice upgrade. (minimum: 10)",
 			cost: new Decimal(15),
 			unlocked(){ return hasUpgrade('ice', 13) },
-			effect(){ return new Decimal(0).add(new Decimal(player.ice.upgrades.length).div(100)) },
+			effect(){ return new Decimal(0).add(new Decimal(player.ice.upgrades.length.min(10)).div(100)) },
 			effectDisplay(){ return "+"+format(upgradeEffect('ice', 14)) },
 		},
 		15: {
