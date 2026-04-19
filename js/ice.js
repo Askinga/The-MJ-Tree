@@ -22,7 +22,9 @@ addLayer("ice", {
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        let exp = new Decimal(1)
+		if (hasUpgrade('ice', 24)) exp = exp.times(1.125)
+		return exp
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -111,6 +113,12 @@ addLayer("ice", {
 				}
 			},
 			effectDisplay(){ return "x"+format(upgradeEffect('ice', 23)) },
+		},
+		24: {
+			title: "flash freeze",
+			description: "^1.125 Ice.",
+			cost: new Decimal(700),
+	    	unlocked(){ return hasUpgrade('ice', 23) },
 		},
 	},
 })
