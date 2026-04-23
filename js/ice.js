@@ -20,6 +20,7 @@ addLayer("ice", {
 		if (hasUpgrade('ice', 22)) mult = mult.times(upgradeEffect('ice', 22))
 		if (hasUpgrade('ice', 23)) mult = mult.times(upgradeEffect('ice', 23))
 		if (hasUpgrade('ice', 25)) mult = mult.times(4)
+		if (hasUpgrade('ice', 31)) mult = mult.times(7)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -126,6 +127,12 @@ addLayer("ice", {
 			description: "x4 Ice.",
 			cost: new Decimal(5000),
 	    	unlocked(){ return hasUpgrade('ice', 24) },
+		},
+		31: {
+			title: "hailstorm",
+			description: "x7 Ice.",
+			cost: new Decimal(100000),
+	    	unlocked(){ return hasUpgrade('ice', 25) },
 		},
 	},
 })
