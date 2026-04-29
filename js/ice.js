@@ -5,6 +5,7 @@ addLayer("ice", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+		squareIce: new Decimal(0),
     }},
     color: "#7debff",
     requires: new Decimal("eee9"), // Can be a function that takes requirement increases into account
@@ -24,6 +25,7 @@ addLayer("ice", {
 		if (hasUpgrade('ice', 32)) mult = mult.times(10)
 		if (hasUpgrade('ice', 33)) mult = mult.times(4)
 		if (hasUpgrade('ice', 34)) mult = mult.times(15)
+		mult = mult.times(tmp.ice.squareBoost)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -45,6 +47,29 @@ addLayer("ice", {
     effectDescription(){
       return "which is boosting Log milestone 1 effect exponent by x" + format(layers.ice.effect())
     },
+	squareBoost(){
+		return player.ice.squareIce.add(1).pow(0.3)
+	},
+	tabFormat: {
+		"Main": {
+		  content: [
+			"main-display",
+			"prestige-button",
+			"resource-display",
+			"blank",
+			"upgrades",
+		  ],
+		},
+		"Ice Field": {
+		  unlocked(){ return hasUpgrade('ice', 35) },
+		  content: [
+			"main-display",
+			["display-text", function(){ return "You have " + format(player.ice.squareIce) + " cm² of Ice, boosting Ice by x" + format(tmp.ice.squareBoost)]
+			"blank",
+			"clickables",
+		  ],
+		},
+	},
 	upgrades: {
 		11: {
 			title: "ice cream",
@@ -155,5 +180,33 @@ addLayer("ice", {
 			cost: new Decimal("5e8"),
 	    	unlocked(){ return hasUpgrade('ice', 33) },
 		},
+		35: {
+			title: "ice age",
+			description: "Unlock a new tab (Time to click again!)",
+			cost: new Decimal("e10"),
+	    	unlocked(){ return hasUpgrade('ice', 34) },
+		},
 	},
+	clickables: {
+	    11: {
+            display() {
+                return `Click for ${formatWhole(this.prestigeGain())} cm² of Ice.`
+            },
+            unlocked() {
+                return hasUpgrade("ice", 35)
+            },
+            canClick() {
+                return true
+            },
+            prestigeGain() {
+                let mul = new Decimal(1)
+		        return mul
+            },
+            onClick() {
+                player.ice.squareIce = player.ice.squareIce.add(this.prestigeGain())
+            },
+            onHold() {
+            },
+        },
+    }, 
 })
