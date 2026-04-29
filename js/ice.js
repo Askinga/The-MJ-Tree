@@ -208,7 +208,7 @@ addLayer("ice", {
             },
             prestigeGain() {
                 let mul = new Decimal(1)
-				mult = mult.times(buyableEffect('ice', 11))
+				mul = mul.times(buyableEffect('ice', 11))
 		        return mul
             },
             onClick() {
