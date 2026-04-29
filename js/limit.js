@@ -96,6 +96,7 @@ addLayer("limit", {
 		if (hasUpgrade('limit', 45)) extra = extra.add(1)
 		if (hasUpgrade('limit', 55)) extra = extra.add(1)
 		if (hasUpgrade('sl', 25)) extra = extra.add(2)
+		if (hasUpgrade('sl', 35)) extra = extra.add(1)
 		extra = extra.sub(player.limit.allo1)
 		extra = extra.sub(player.limit.allo2)
 		extra = extra.sub(player.limit.allo3)
@@ -108,6 +109,7 @@ addLayer("limit", {
 		if (hasUpgrade('limit', 45)) t = t.add(1)
 		if (hasUpgrade('limit', 55)) t = t.add(1)
 		if (hasUpgrade('sl', 25)) t = t.add(2)
+		if (hasUpgrade('sl', 35)) t = t.add(1)
 		return t
 	},
 	alo1(){
