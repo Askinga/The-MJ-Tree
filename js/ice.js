@@ -64,7 +64,7 @@ addLayer("ice", {
 		  unlocked(){ return hasUpgrade('ice', 35) },
 		  content: [
 			"main-display",
-			["display-text", function(){ return "You have " + format(player.ice.squareIce) + " cm² of Ice, boosting Ice by x" + format(tmp.ice.squareBoost)]
+			["display-text", function(){ return "You have " + format(player.ice.squareIce) + " cm² of Ice, boosting Ice by x" + format(tmp.ice.squareBoost) }],
 			"blank",
 			"clickables",
 		  ],
