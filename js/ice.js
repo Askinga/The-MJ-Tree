@@ -186,6 +186,12 @@ addLayer("ice", {
 			cost: new Decimal("e10"),
 	    	unlocked(){ return hasUpgrade('ice', 34) },
 		},
+		41: {
+			title: "ice covers",
+			description: "Unlock a buyable",
+			cost: new Decimal("2.5e11"),
+	    	unlocked(){ return hasUpgrade('ice', 35) },
+		},
 	},
 	clickables: {
 	    11: {
@@ -200,6 +206,7 @@ addLayer("ice", {
             },
             prestigeGain() {
                 let mul = new Decimal(1)
+				mult = mult.times(buyableEffect('ice', 11))
 		        return mul
             },
             onClick() {
@@ -209,4 +216,23 @@ addLayer("ice", {
             },
         },
     }, 
+	buyables: {
+	11: {
+		unlocked(){ return hasUpgrade('ice', 41) },
+		title: "freeze nearby land",
+        cost(x) { return new Decimal(1.2).pow(x) },
+        display() { return "x1.125 cm² Ice per purchase<br>Cost: " + format(this.cost()) + " cm² Ice<br>Bought: " + format(getBuyableAmount('ice', 11)) + "<br>Effect: x" + format(buyableEffect('ice', 11)) + " cm² Ice" },
+        canAfford() { return player.ice.squareIce.gte(this.cost()) },
+        buy() {
+            player.ice.squareIce = player.ice.squareIce.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1.125)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
+    },
+	},
 })
