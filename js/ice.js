@@ -194,6 +194,14 @@ addLayer("ice", {
 			cost: new Decimal("2.5e11"),
 	    	unlocked(){ return hasUpgrade('ice', 35) },
 		},
+		42: {
+			title: "ice synergy",
+			description: "Ice boosts cm² Ice.",
+			cost: new Decimal("5e12"),
+	    	unlocked(){ return hasUpgrade('ice', 41) },
+			effect(){ return player.ice.points.add(1).pow(0.06) },
+			effectDisplay(){ return "x"+format(upgradeEffect('ice', 42)) },
+		},
 	},
 	clickables: {
 	    11: {
@@ -209,6 +217,7 @@ addLayer("ice", {
             prestigeGain() {
                 let mul = new Decimal(1)
 				mul = mul.times(buyableEffect('ice', 11))
+				if (hasUpgrade('ice', 42)) mul = mul.times(upgradeEffect('ice', 42))
 		        return mul
             },
             onClick() {
