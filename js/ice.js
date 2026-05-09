@@ -250,8 +250,7 @@ addLayer("ice", {
 			let expo = new Decimal(1)
 			return base1.pow(Decimal.pow(base2, expo))
 		},
-    },
-	buyables: {
+	},
 	12: {
 		unlocked(){ return hasUpgrade('ice', 43) },
 		title: "increase the limit of ice",
