@@ -202,6 +202,12 @@ addLayer("ice", {
 			effect(){ return player.ice.points.add(1).pow(0.06) },
 			effectDisplay(){ return "x"+format(upgradeEffect('ice', 42)) },
 		},
+		43: {
+			title: "ice layers",
+			description: "Unlock a buyable",
+			cost: new Decimal("5e13"),
+	    	unlocked(){ return hasUpgrade('ice', 42) },
+		},
 	},
 	clickables: {
 	    11: {
@@ -240,6 +246,24 @@ addLayer("ice", {
         },
 		effect(x){
 			let base1 = new Decimal(1.125)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
+    },
+	buyables: {
+	12: {
+		unlocked(){ return hasUpgrade('ice', 43) },
+		title: "increase the limit of ice",
+        cost(x) { return new Decimal(1.5).pow(x).times(1000000) },
+        display() { return "x1.2 Limit Points per purchase<br>Cost: " + format(this.cost()) + " cm² Ice<br>Bought: " + format(getBuyableAmount('ice', 12)) + "<br>Effect: x" + format(buyableEffect('ice', 12)) + " Limit Points" },
+        canAfford() { return player.ice.squareIce.gte(this.cost()) },
+        buy() {
+            player.ice.squareIce = player.ice.squareIce.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1.2)
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.pow(Decimal.pow(base2, expo))
