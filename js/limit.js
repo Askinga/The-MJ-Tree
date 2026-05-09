@@ -51,6 +51,7 @@ addLayer("limit", {
 		if (hasUpgrade('sl', 34)) mult = mult.times(25)
 		if (hasUpgrade('sl', 35)) mult = mult.times(5)
 		if (hasUpgrade('ice', 21)) mult = mult.times(upgradeEffect('ice', 21))
+		mult = mult.times(buyableEffect('ice', 12))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
