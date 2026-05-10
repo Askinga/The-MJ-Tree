@@ -262,7 +262,7 @@ addLayer("limit", {
 			unlocked(){ return hasUpgrade("limit", 21) },
 		},
 		23: {
-			title: "Someone is coming...",
+			title: "<del>Someone is coming...</del>",
 			description: "Boost Power Rune reset time based on Limit Points!",
 			cost: new Decimal(30),
 			unlocked(){ return hasUpgrade("limit", 22) },
