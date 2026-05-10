@@ -53,6 +53,7 @@ addLayer("limit", {
 		if (hasUpgrade('ice', 21)) mult = mult.times(upgradeEffect('ice', 21))
 		mult = mult.times(buyableEffect('ice', 12))
 		if (hasUpgrade('ice', 44)) mult = mult.times(upgradeEffect('ice', 44))
+		mult = mult.times(layers.water.effect())
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
