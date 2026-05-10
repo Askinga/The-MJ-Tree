@@ -216,6 +216,12 @@ addLayer("ice", {
 			effect(){ return player.ice.points.add(1).pow(0.1) },
 			effectDisplay(){ return "x"+format(upgradeEffect('ice', 44)) },
 		},
+		45: {
+			title: "melt the ice",
+			description: "Unlock the final layer before TRUE META",
+			cost: new Decimal("1e15"),
+	    	unlocked(){ return hasUpgrade('ice', 44) },
+		},
 	},
 	clickables: {
 	    11: {
