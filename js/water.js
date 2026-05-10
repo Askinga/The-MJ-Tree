@@ -42,7 +42,7 @@ addLayer("water", {
 		11: {
 			title: "we get water",
 			description: "x2 Water",
-			cost: new Decimal(1)
+			cost: new Decimal(2)
 		},
 		12: {
 			title: "auto-freeze",
