@@ -116,6 +116,7 @@ addLayer("logs", {
 		if (hasUpgrade('pr', 14)) pow = pow.times(upgradeEffect('pr', 14))
 		if (hasUpgrade('pr', 23)) pow = pow.times(1.2)
 		pow = pow.times(layers.ice.effect())
+		if (hasUpgrade('water', 13)) pow = pow.times(3)
 		return player.logs.noMore.add(1).pow(pow)
 	},
     effect(){
