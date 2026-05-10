@@ -211,7 +211,7 @@ addLayer("ice", {
 		44: {
 			title: "increasing ice limits",
 			description: "Ice boosts Limit Points.",
-			cost: new Decimal("2.5e14"),
+			cost: new Decimal("4e14"),
 	    	unlocked(){ return hasUpgrade('ice', 43) },
 			effect(){ return player.squareIce.points.add(1).pow(0.1) },
 			effectDisplay(){ return "x"+format(upgradeEffect('ice', 44)) },
