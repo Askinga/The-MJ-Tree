@@ -50,5 +50,11 @@ addLayer("water", {
 			cost: new Decimal(4),
 			unlocked(){ return hasUpgrade("water", 11) },
 		},
+		13: {
+			title: "waterlogged",
+			description: "x3 Log milestone 1 effect exponent",
+			cost: new Decimal(7),
+			unlocked(){ return hasUpgrade("water", 12) },
+		},
 	},
 })
