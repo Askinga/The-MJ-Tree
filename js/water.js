@@ -6,6 +6,9 @@ addLayer("water", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+	onPrestige(){
+		player.ice.points = new Decimal(0)
+	},
     color: "#4053ff",
     requires: new Decimal("e15"), // Can be a function that takes requirement increases into account
     resource: "water", // Name of prestige currency
