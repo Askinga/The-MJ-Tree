@@ -18,6 +18,7 @@ addLayer("water", {
     exponent: 0.2, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if (hasUpgrade('water', 11)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -37,4 +38,17 @@ addLayer("water", {
     effectDescription(){
       return "which is boosting Limit Points by x" + format(layers.water.effect())
     },
+	upgrades: {
+		11: {
+			title: "we get water",
+			description: "x2 Water",
+			cost: new Decimal(1)
+		},
+		12: {
+			title: "auto-freeze",
+			description: "100% Ice per second",
+			cost: new Decimal(4),
+			unlocked(){ return hasUpgrade("water", 11) },
+		},
+	},
 })
