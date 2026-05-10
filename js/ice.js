@@ -7,6 +7,11 @@ addLayer("ice", {
 		points: new Decimal(0),
 		squareIce: new Decimal(0),
     }},
+	passiveGeneration(){
+		let p = new Decimal(0)
+		if (hasUpgrade('water', 12)) p = p.add(1)
+		return p
+	},
     color: "#7debff",
     requires: new Decimal("eee9"), // Can be a function that takes requirement increases into account
     resource: "ice", // Name of prestige currency
