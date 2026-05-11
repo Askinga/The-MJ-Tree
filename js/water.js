@@ -72,5 +72,13 @@ addLayer("water", {
 			effect(){ return player.water.points.add(1).pow(0.2) },
 			effectDisplay(){ return "x"+format(upgradeEffect('water', 15)) },
 		},
+		21: {
+			title: "water freezing action",
+			description: "Water boosts Ice",
+			cost: new Decimal(200),
+			unlocked(){ return hasUpgrade("water", 15) },
+			effect(){ return player.water.points.add(1).pow(0.75) },
+			effectDisplay(){ return "x"+format(upgradeEffect('water', 21)) },
+		},
 	},
 })
