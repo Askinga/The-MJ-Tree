@@ -36,6 +36,7 @@ addLayer("water", {
     effect(){
       let pow = new Decimal(0.4)
 	  if (hasUpgrade('water', 22)) pow = pow.add(0.2)
+	  if (hasUpgrade('water', 24)) pow = pow.add(0.1)
       let eff = player.water.points.add(1).pow(pow)
       return eff
     },
@@ -93,6 +94,12 @@ addLayer("water", {
 			description: "x3 water",
 			cost: new Decimal(1250),
 			unlocked(){ return hasUpgrade("water", 22) },
+		},
+		24: {
+			title: "create a big pond",
+			description: "Water effect is better",
+			cost: new Decimal(10000),
+			unlocked(){ return hasUpgrade("water", 23) },
 		},
 	},
 })
