@@ -20,6 +20,7 @@ addLayer("water", {
         mult = new Decimal(1)
 		if (hasUpgrade('water', 11)) mult = mult.times(2)
 		if (hasUpgrade('water', 14)) mult = mult.times(3)
+		if (hasUpgrade('water', 15)) mult = mult.times(upgradeEffect('water', 15))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -62,6 +63,14 @@ addLayer("water", {
 			description: "x3 water",
 			cost: new Decimal(20),
 			unlocked(){ return hasUpgrade("water", 13) },
+		},
+		15: {
+			title: "water cycle",
+			description: "Water boosts itself",
+			cost: new Decimal(50),
+			unlocked(){ return hasUpgrade("water", 14) },
+			effect(){ return player.water.points.add(1).pow(0.2) },
+			effectDisplay(){ return "x"+format(upgradeEffect('water', 15)) },
 		},
 	},
 })
