@@ -31,9 +31,10 @@ addLayer("water", {
         {key: "w", description: "W: Reset for water (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
     ],
     layerShown(){return (hasUpgrade('ice', 45) || player.water.unlocked) && !(inChallenge('universes', 11))},
-	  branches: ["st"],
+	branches: ["st"],
     effect(){
       let pow = new Decimal(0.4)
+	  if (hasUpgrade('water', 22)) pow = pow.add(0.2)
       let eff = player.water.points.add(1).pow(pow)
       return eff
     },
@@ -79,6 +80,12 @@ addLayer("water", {
 			unlocked(){ return hasUpgrade("water", 15) },
 			effect(){ return player.water.points.add(1).pow(0.75) },
 			effectDisplay(){ return "x"+format(upgradeEffect('water', 21)) },
+		},
+		22: {
+			title: "create a pond",
+			description: "Water effect is better",
+			cost: new Decimal(1000),
+			unlocked(){ return hasUpgrade("water", 21) },
 		},
 	},
 })
