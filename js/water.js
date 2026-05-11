@@ -21,6 +21,7 @@ addLayer("water", {
 		if (hasUpgrade('water', 11)) mult = mult.times(2)
 		if (hasUpgrade('water', 14)) mult = mult.times(3)
 		if (hasUpgrade('water', 15)) mult = mult.times(upgradeEffect('water', 15))
+		if (hasUpgrade('water', 23)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -86,6 +87,12 @@ addLayer("water", {
 			description: "Water effect is better",
 			cost: new Decimal(1000),
 			unlocked(){ return hasUpgrade("water", 21) },
+		},
+		23: {
+			title: "more rain",
+			description: "x3 water",
+			cost: new Decimal(1250),
+			unlocked(){ return hasUpgrade("water", 22) },
 		},
 	},
 })
