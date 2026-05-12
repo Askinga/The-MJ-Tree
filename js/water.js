@@ -123,7 +123,7 @@ addLayer("water", {
 			unlocked(){ return hasUpgrade("water", 31) },
 		},
 		33: {
-			title: "freeze action",
+			title: "more freezing action",
 			description: "Unlock a buyable",
 			cost: new Decimal("5e8"),
 			unlocked(){ return hasUpgrade("water", 32) },
