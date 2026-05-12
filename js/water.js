@@ -39,6 +39,7 @@ addLayer("water", {
       let pow = new Decimal(0.4)
 	  if (hasUpgrade('water', 22)) pow = pow.add(0.2)
 	  if (hasUpgrade('water', 24)) pow = pow.add(0.1)
+	  if (hasUpgrade('water', 32)) pow = pow.add(0.1)
       let eff = player.water.points.add(1).pow(pow)
       return eff
     },
@@ -114,6 +115,12 @@ addLayer("water", {
 			description: "100% Super Limit Points and Limit Points per second and x3 Water.",
 			cost: new Decimal(100000),
 			unlocked(){ return hasUpgrade("water", 25) },
+		},
+		32: {
+			title: "create a bigger pond",
+			description: "Water effect is better",
+			cost: new Decimal(5000000),
+			unlocked(){ return hasUpgrade("water", 31) },
 		},
 	},
 	buyables: {
