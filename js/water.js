@@ -122,6 +122,12 @@ addLayer("water", {
 			cost: new Decimal(7500000),
 			unlocked(){ return hasUpgrade("water", 31) },
 		},
+		33: {
+			title: "freeze action",
+			description: "Unlock a buyable",
+			cost: new Decimal("5e8"),
+			unlocked(){ return hasUpgrade("water", 32) },
+		},
 	},
 	buyables: {
 	11: {
@@ -136,6 +142,23 @@ addLayer("water", {
         },
 		effect(x){
 			let base1 = new Decimal(2)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
+	},
+	12: {
+		unlocked(){ return hasUpgrade('water', 33) },
+		title: "freeze water",
+        cost(x) { return new Decimal(6).pow(x).times("e8") },
+        display() { return "x1.25 cm² Ice per purchase<br>Cost: " + format(this.cost()) + " Water<br>Bought: " + format(getBuyableAmount('water', 12)) + "<br>Effect: x" + format(buyableEffect('water', 12)) + " cm² Ice" },
+        canAfford() { return player.water.points.gte(this.cost()) },
+        buy() {
+            player.water.points = player.water.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1.25)
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.pow(Decimal.pow(base2, expo))
