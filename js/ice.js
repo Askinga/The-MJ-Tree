@@ -244,6 +244,7 @@ addLayer("ice", {
                 let mul = new Decimal(1)
 				mul = mul.times(buyableEffect('ice', 11))
 				if (hasUpgrade('ice', 42)) mul = mul.times(upgradeEffect('ice', 42))
+				mul = mul.times(buyableEffect('water', 12))
 		        return mul
             },
             onClick() {
