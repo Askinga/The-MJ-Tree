@@ -20,6 +20,7 @@ addLayer("limit", {
 	passiveGeneration(){
 		let p = new Decimal(0)
 		if (hasUpgrade('sl', 22)) p = p.add(0.01)
+		if (hasUpgrade('water', 31)) p = p.times(100)
 		return p
 	},
     color: "#e841a0",
@@ -644,6 +645,11 @@ addLayer("limit", {
 		gen4: new Decimal(0),
 		powerg: new Decimal(0),
     }},
+	passiveGeneration(){
+		let p = new Decimal(0)
+		if (hasUpgrade('water', 31)) p = p.add(1)
+		return p
+	},
 	onPrestige(){
 		player.limit.points = new Decimal(0)
 	},
