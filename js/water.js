@@ -22,6 +22,7 @@ addLayer("water", {
 		if (hasUpgrade('water', 14)) mult = mult.times(3)
 		if (hasUpgrade('water', 15)) mult = mult.times(upgradeEffect('water', 15))
 		if (hasUpgrade('water', 23)) mult = mult.times(3)
+		mult = mult.times(buyableEffect('water', 11))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -107,5 +108,24 @@ addLayer("water", {
 			cost: new Decimal(15000),
 			unlocked(){ return hasUpgrade("water", 24) },
 		},
+	},
+	buyables: {
+	11: {
+		unlocked(){ return hasUpgrade('water', 25) },
+		title: "water spread",
+        cost(x) { return new Decimal(10).pow(x).times(10000) },
+        display() { return "x2 Water per purchase<br>Cost: " + format(this.cost()) + " Water<br>Bought: " + format(getBuyableAmount('water', 11)) + "<br>Effect: x" + format(buyableEffect('water', 11)) + " Water" },
+        canAfford() { return player.water.points.gte(this.cost()) },
+        buy() {
+            player.water.points = player.water.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(2)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
+	},
 	},
 })
