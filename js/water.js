@@ -101,5 +101,11 @@ addLayer("water", {
 			cost: new Decimal(10000),
 			unlocked(){ return hasUpgrade("water", 23) },
 		},
+		25: {
+			title: "create more water",
+			description: "Unlock a buyable",
+			cost: new Decimal(15000),
+			unlocked(){ return hasUpgrade("water", 24) },
+		},
 	},
 })
