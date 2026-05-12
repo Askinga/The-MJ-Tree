@@ -119,7 +119,7 @@ addLayer("water", {
 		32: {
 			title: "create a bigger pond",
 			description: "Water effect is better",
-			cost: new Decimal(5000000),
+			cost: new Decimal(7500000),
 			unlocked(){ return hasUpgrade("water", 31) },
 		},
 	},
