@@ -23,6 +23,7 @@ addLayer("water", {
 		if (hasUpgrade('water', 15)) mult = mult.times(upgradeEffect('water', 15))
 		if (hasUpgrade('water', 23)) mult = mult.times(3)
 		mult = mult.times(buyableEffect('water', 11))
+		if (hasUpgrade('water', 31)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -107,6 +108,12 @@ addLayer("water", {
 			description: "Unlock a buyable",
 			cost: new Decimal(15000),
 			unlocked(){ return hasUpgrade("water", 24) },
+		},
+		31: {
+			title: "limits' glamour",
+			description: "100% Super Limit Points and Limit Points per second and x3 Water.",
+			cost: new Decimal(100000),
+			unlocked(){ return hasUpgrade("water", 25) },
 		},
 	},
 	buyables: {
