@@ -135,6 +135,12 @@ addLayer("water", {
 			cost: new Decimal("3e9"),
 			unlocked(){ return hasUpgrade("water", 33) },
 		},
+		35: {
+			title: "fill a container",
+			description: "Unlock the Water Tank",
+			cost: new Decimal("1e10"),
+			unlocked(){ return hasUpgrade("water", 34) },
+		},
 	},
 	buyables: {
 	11: {
