@@ -40,6 +40,7 @@ addLayer("water", {
 	  if (hasUpgrade('water', 22)) pow = pow.add(0.2)
 	  if (hasUpgrade('water', 24)) pow = pow.add(0.1)
 	  if (hasUpgrade('water', 32)) pow = pow.add(0.1)
+	  if (hasUpgrade('water', 34)) pow = pow.add(0.075)
       let eff = player.water.points.add(1).pow(pow)
       return eff
     },
@@ -127,6 +128,12 @@ addLayer("water", {
 			description: "Unlock a buyable",
 			cost: new Decimal("5e8"),
 			unlocked(){ return hasUpgrade("water", 32) },
+		},
+		34: {
+			title: "create a even bigger pond",
+			description: "Water effect is better",
+			cost: new Decimal("3e9"),
+			unlocked(){ return hasUpgrade("water", 33) },
 		},
 	},
 	buyables: {
