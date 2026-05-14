@@ -172,6 +172,12 @@ addLayer("water", {
 			cost: new Decimal("1e10"),
 			unlocked(){ return hasUpgrade("water", 34) },
 		},
+		41: {
+			title: "fill it faster",
+			description: "Unlock a buyable",
+			cost: new Decimal("1e12"),
+			unlocked(){ return hasUpgrade("water", 35) },
+		},
 	},
 	buyables: {
 	11: {
@@ -203,6 +209,23 @@ addLayer("water", {
         },
 		effect(x){
 			let base1 = new Decimal(1.25)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
+	},
+	13: {
+		unlocked(){ return hasUpgrade('water', 41) },
+		title: "faster water",
+        cost(x) { return new Decimal(1.5).pow(x).times(10) },
+        display() { return "x1.3 ml Water in Tank per purchase<br>Cost: " + format(this.cost()) + " ml Water<br>Bought: " + format(getBuyableAmount('water', 13)) + "<br>Effect: x" + format(buyableEffect('water', 13)) + " ml Water" },
+        canAfford() { return player.water.tankWater.gte(this.cost()) },
+        buy() {
+            player.water.tankWater = player.water.tankWater.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1.3)
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.pow(Decimal.pow(base2, expo))
@@ -263,6 +286,7 @@ addLayer("water", {
     update(diff){
 		let gain = new Decimal(0)
 		if (hasUpgrade('water', 35)) gain = gain.add(1)
+		if (hasUpgrade('water', 41)) gain = gain.times(buyableEffect('water', 13))
 		
         player.water.tankGain = gain
 		gain = gain.times(diff)
