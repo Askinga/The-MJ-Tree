@@ -259,7 +259,7 @@ addLayer("water", {
 	},
 	},
     update(diff){
-		let gain = new Decimal(0),
+		let gain = new Decimal(0)
 		if (hasUpgrade('water', 35)) gain = gain.add(1)
 		
         player.water.tankGain = gain
