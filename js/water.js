@@ -5,6 +5,11 @@ addLayer("water", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+		tankWater: new Decimal(0),
+		tankX: new Decimal(0),
+		tankY: new Decimal(0),
+		tankZ: new Decimal(0),
+		tankCapacity: new Decimal(0),
     }},
 	onPrestige(){
 		player.ice.points = new Decimal(0)
@@ -47,6 +52,30 @@ addLayer("water", {
     effectDescription(){
       return "which is boosting Limit Points by x" + format(layers.water.effect())
     },
+	tankBoost(){
+		return player.water.tankWater.add(1).pow(0.25)
+	},
+	tabFormat: {
+		"Main": {
+		  content: [
+			"main-display",
+			"prestige-button",
+			"resource-display",
+			"buyables",
+			"blank",
+			"upgrades",
+		  ],
+		},
+		"The Water Tank": {
+		  unlocked(){ return hasUpgrade('water', 35) },
+		  content: [
+			"main-display",
+			["display-text", function(){ return "You have " + format(player.water.tankWater) + " ml of Water in the Tank, boosting Water by x" + format(tmp.water.tankBoost) + "<br>There can be a maximum of " + format(player.water.maxCapacity) + "ml of Water in the Tank<br>Tank X: " + format(player.water.tankX) + "<br>Tank Y: " + format(player.water.tankY) + "<br>Tank Z: " + format(player.water.tankZ) }],
+			"blank",
+			"clickables",
+		  ],
+		},
+	},
 	upgrades: {
 		11: {
 			title: "we get water",
@@ -177,5 +206,73 @@ addLayer("water", {
 			return base1.pow(Decimal.pow(base2, expo))
 		},
 	},
+	21: {
+		unlocked(){ return hasUpgrade('water', 35) },
+		title: "Tank X",
+        cost(x) { return new Decimal(2).pow(x).times("e10") },
+        display() { return "Add 1 to Tank X per purchase<br>Cost: " + format(this.cost()) + " Water<br>Bought: " + format(getBuyableAmount('water', 21)) + "<br>Effect: +" + format(buyableEffect('water', 21)) + " Tank X" },
+        canAfford() { return player.water.points.gte(this.cost()) },
+        buy() {
+            player.water.points = player.water.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.times(Decimal.times(base2, expo))
+		},
+	},
+	22: {
+		unlocked(){ return hasUpgrade('water', 35) },
+		title: "Tank Y",
+        cost(x) { return new Decimal(2).pow(x).times("e10") },
+        display() { return "Add 1 to Tank Y per purchase<br>Cost: " + format(this.cost()) + " Water<br>Bought: " + format(getBuyableAmount('water', 22)) + "<br>Effect: +" + format(buyableEffect('water', 22)) + " Tank Y" },
+        canAfford() { return player.water.points.gte(this.cost()) },
+        buy() {
+            player.water.points = player.water.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.times(Decimal.times(base2, expo))
+		},
+	},
+	23: {
+		unlocked(){ return hasUpgrade('water', 35) },
+		title: "Tank Z",
+        cost(x) { return new Decimal(2).pow(x).times("e10") },
+        display() { return "Add 1 to Tank Z per purchase<br>Cost: " + format(this.cost()) + " Water<br>Bought: " + format(getBuyableAmount('water', 23)) + "<br>Effect: +" + format(buyableEffect('water', 23)) + " Tank Z" },
+        canAfford() { return player.water.points.gte(this.cost()) },
+        buy() {
+            player.water.points = player.water.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.times(Decimal.times(base2, expo))
+		},
+	},
+	},
+    update(diff){
+		let gain = new Decimal(0),
+		if (hasUpgrade('water', 35)) gain = gain.add(1)
+		
+        player.water.tankGain = gain
+		gain = gain.times(diff)
+		if (player.water.tankWater.lt(player.water.tankCapacity)) {
+		    player.water.tankWater = player.water.tankWater.add(gain)
+		}
+		if (player.water.tankWater.gt(player.water.tankCapacity)) {
+		    player.water.tankWater = player.water.tankCapacity
+		}
+		player.water.tankX = getBuyableAmount('water', 21).add(1)
+		player.water.tankY = getBuyableAmount('water', 22).add(1)
+		player.water.tankZ = getBuyableAmount('water', 23).add(1)
+		player.water.tankCapacity = player.water.tankX.times(player.water.tankY.times(player.water.tankZ))
 	},
 })
