@@ -6,6 +6,7 @@ addLayer("water", {
         unlocked: false,
 		points: new Decimal(0),
 		tankWater: new Decimal(0),
+		tankGain: new Decimal(0),
 		tankX: new Decimal(0),
 		tankY: new Decimal(0),
 		tankZ: new Decimal(0),
@@ -70,7 +71,7 @@ addLayer("water", {
 		  unlocked(){ return hasUpgrade('water', 35) },
 		  content: [
 			"main-display",
-			["display-text", function(){ return "You have " + format(player.water.tankWater) + " ml of Water in the Tank, boosting Water by x" + format(tmp.water.tankBoost) + "<br>There can be a maximum of " + format(player.water.tankCapacity) + " ml of Water in the Tank<br>Tank X: " + format(player.water.tankX) + "<br>Tank Y: " + format(player.water.tankY) + "<br>Tank Z: " + format(player.water.tankZ) }],
+			["display-text", function(){ return "You have " + format(player.water.tankWater) + " ml of Water in the Tank (" + format(player.water.tankGain) + "/sec), boosting Water by x" + format(tmp.water.tankBoost) + "<br>There can be a maximum of " + format(player.water.tankCapacity) + " ml of Water in the Tank<br>Tank X: " + format(player.water.tankX) + "<br>Tank Y: " + format(player.water.tankY) + "<br>Tank Z: " + format(player.water.tankZ) }],
 			"blank",
 			"clickables",
 		  ],
