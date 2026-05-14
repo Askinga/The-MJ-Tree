@@ -30,6 +30,7 @@ addLayer("water", {
 		if (hasUpgrade('water', 23)) mult = mult.times(3)
 		mult = mult.times(buyableEffect('water', 11))
 		if (hasUpgrade('water', 31)) mult = mult.times(3)
+		gain = gain.times(tmp.water.tankBoost)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
