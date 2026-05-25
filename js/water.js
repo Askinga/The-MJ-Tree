@@ -222,6 +222,12 @@ addLayer("water", {
         		return "x" + format(upgradeEffect("water", 42)) + s;
 			},
 		},
+		43: {
+			title: "Faster power runes (I'm back!)",
+			description: "Set Power Rune amount to it's softcap.",
+			cost: new Decimal("1e16"),
+			unlocked(){ return hasUpgrade("water", 42) },
+		},
 	},
 	buyables: {
 	11: {
