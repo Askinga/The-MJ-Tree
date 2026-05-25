@@ -224,7 +224,7 @@ addLayer("water", {
 		},
 		43: {
 			title: "Faster power runes (I'm back!)",
-			description: "Set Power Rune amount to it's softcap.",
+			description: "Set Power Rune amount to it's softcap. But disable Power Rune upgrade 'Delayer 5'.",
 			cost: new Decimal("1e16"),
 			unlocked(){ return hasUpgrade("water", 42) },
 		},
