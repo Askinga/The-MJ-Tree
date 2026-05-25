@@ -241,7 +241,10 @@ addLayer("pr", {
   	        description: "Delay the Power Rune softcap based on Power Runes and x10 Layer reset time. Unlock a new layer.",
     	    cost: new Decimal(111),
 			unlocked(){ return hasUpgrade('pr', 34) },
-			effect(){ return player.pr.points.div(16) },
+			effect(){ if (!hasUpgrade('water', 43)) { 
+				return player.pr.points.div(16)
+			} else { return new Decimal(0) }
+			},
 			effectDisplay(){ return "+"+format(upgradeEffect('pr', 35)) },
   	  	},
 	},
