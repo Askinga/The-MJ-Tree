@@ -107,16 +107,38 @@ addLayer("water", {
 			description: "Water boosts itself",
 			cost: new Decimal(50),
 			unlocked(){ return hasUpgrade("water", 14) },
-			effect(){ return player.water.points.add(1).pow(0.2) },
-			effectDisplay(){ return "x"+format(upgradeEffect('water', 15)) },
+			effect(){ 
+				let eff = player.water.points.add(1).pow(0.2);
+        		eff = softcap(eff, new Decimal("1000"), 0.4)
+       		 	return eff 
+			},
+			effectDisplay(){
+				let s = ""
+        		let upgEffect = upgradeEffect(this.layer, this.id)
+        		if (upgEffect.gte(new Decimal("1000")) ) {
+          		  s = " (Softcapped)"
+        		}
+        		return "x" + format(upgradeEffect("water", 15)) + s;
+			},
 		},
 		21: {
 			title: "water freezing action",
 			description: "Water boosts Ice",
 			cost: new Decimal(200),
 			unlocked(){ return hasUpgrade("water", 15) },
-			effect(){ return player.water.points.add(1).pow(0.75) },
-			effectDisplay(){ return "x"+format(upgradeEffect('water', 21)) },
+			effect(){ 
+				let eff = player.water.points.add(1).pow(0.75);
+        		eff = softcap(eff, new Decimal("1e10"), 0.35)
+       		 	return eff 
+			},
+			effectDisplay(){
+				let s = ""
+        		let upgEffect = upgradeEffect(this.layer, this.id)
+        		if (upgEffect.gte(new Decimal("1e10")) ) {
+          		  s = " (Softcapped)"
+        		}
+        		return "x" + format(upgradeEffect("water", 21)) + s;
+			},
 		},
 		22: {
 			title: "create a pond",
@@ -177,6 +199,28 @@ addLayer("water", {
 			description: "Unlock a buyable",
 			cost: new Decimal("1e12"),
 			unlocked(){ return hasUpgrade("water", 35) },
+		},
+		42: {
+			title: "tanky limits",
+			description: "ml of Water boosts Limit Points",
+			cost: new Decimal(2744),
+			unlocked(){ return hasUpgrade("water", 41) },
+	        currencyDisplayName: "ml of Water in Tank",
+			currencyInternalName: "tankWater",
+			currencyLayer: "water",
+			effect(){ 
+				let eff = player.water.tankWater.add(1).pow(0.5);
+        		eff = softcap(eff, new Decimal("1e10"), 0.5)
+       		 	return eff 
+			},
+			effectDisplay(){
+				let s = ""
+        		let upgEffect = upgradeEffect(this.layer, this.id)
+        		if (upgEffect.gte(new Decimal("1e10")) ) {
+          		  s = " (Softcapped)"
+        		}
+        		return "x" + format(upgradeEffect("water", 42)) + s;
+			},
 		},
 	},
 	buyables: {
