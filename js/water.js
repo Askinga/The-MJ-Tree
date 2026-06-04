@@ -236,7 +236,7 @@ addLayer("water", {
 			unlocked(){ return hasUpgrade("water", 43) },
 		},
 		45: {
-			title: "The ocean",
+			title: "A lake",
 			description: "Water effect is better yet again.",
 			cost: new Decimal("5e18"),
 			unlocked(){ return hasUpgrade("water", 44) },
