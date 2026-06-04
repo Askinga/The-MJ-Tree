@@ -228,6 +228,12 @@ addLayer("water", {
 			cost: new Decimal("1e16"),
 			unlocked(){ return hasUpgrade("water", 42) },
 		},
+		44: {
+			title: "Even more limits",
+			description: "^1.03 Limit Points.",
+			cost: new Decimal("3e17"),
+			unlocked(){ return hasUpgrade("water", 43) },
+		},
 	},
 	buyables: {
 	11: {
