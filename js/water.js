@@ -48,6 +48,7 @@ addLayer("water", {
 	  if (hasUpgrade('water', 24)) pow = pow.add(0.1)
 	  if (hasUpgrade('water', 32)) pow = pow.add(0.1)
 	  if (hasUpgrade('water', 34)) pow = pow.add(0.075)
+	  if (hasUpgrade('water', 45)) pow = pow.add(0.125)
       let eff = player.water.points.add(1).pow(pow)
       return eff
     },
@@ -233,6 +234,12 @@ addLayer("water", {
 			description: "^1.03 Limit Points.",
 			cost: new Decimal("3e17"),
 			unlocked(){ return hasUpgrade("water", 43) },
+		},
+		45: {
+			title: "The ocean",
+			description: "Water effect is better yet again.",
+			cost: new Decimal("5e18"),
+			unlocked(){ return hasUpgrade("water", 44) },
 		},
 	},
 	buyables: {
