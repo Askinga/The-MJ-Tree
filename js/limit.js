@@ -63,7 +63,7 @@ addLayer("limit", {
 		if (hasUpgrade('ice', 11)) exp = exp.times(1.1)
 		if (hasUpgrade('ice', 12)) exp = exp.times(upgradeEffect('ice', 12))
 		if (hasUpgrade('ice', 15)) exp = exp.times(1.05)
-		if (hasUpgrade('wate', 44)) exp = exp.times(1.03)
+		if (hasUpgrade('water', 44)) exp = exp.times(1.03)
 		return exp
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
