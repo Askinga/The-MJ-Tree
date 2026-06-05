@@ -49,6 +49,7 @@ addLayer("water", {
 	  if (hasUpgrade('water', 32)) pow = pow.add(0.1)
 	  if (hasUpgrade('water', 34)) pow = pow.add(0.075)
 	  if (hasUpgrade('water', 45)) pow = pow.add(0.125)
+	  if (hasUpgrade('water', 51)) pow = pow.add(upgradeEffect('water', 51))
       let eff = player.water.points.add(1).pow(pow)
       return eff
     },
@@ -240,6 +241,28 @@ addLayer("water", {
 			description: "Water effect is better yet again.",
 			cost: new Decimal("5e18"),
 			unlocked(){ return hasUpgrade("water", 44) },
+		},
+		51: {
+			title: "Tanky booster",
+			description: "ml of Water boosts Water effect exponent",
+			cost: new Decimal(29791),
+			unlocked(){ return hasUpgrade("water", 45) },
+	        currencyDisplayName: "ml of Water in Tank",
+			currencyInternalName: "tankWater",
+			currencyLayer: "water",
+			effect(){ 
+				let eff = player.water.tankWater.add(1).log10().div(100)
+        		eff = softcap(eff, new Decimal("100"), 0.5)
+       		 	return eff 
+			},
+			effectDisplay(){
+				let s = ""
+        		let upgEffect = upgradeEffect(this.layer, this.id)
+        		if (upgEffect.gte(new Decimal("100")) ) {
+          		  s = " (Softcapped)"
+        		}
+        		return "+" + format(upgradeEffect("water", 51)) + s;
+			},
 		},
 	},
 	buyables: {
