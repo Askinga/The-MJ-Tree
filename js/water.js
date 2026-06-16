@@ -11,6 +11,7 @@ addLayer("water", {
 		tankY: new Decimal(0),
 		tankZ: new Decimal(0),
 		tankCapacity: new Decimal(0),
+		total: new Decimal(0),
     }},
 	onPrestige(){
 		player.ice.points = new Decimal(0)
@@ -53,6 +54,7 @@ addLayer("water", {
 	  if (hasUpgrade('water', 34)) pow = pow.add(0.075)
 	  if (hasUpgrade('water', 45)) pow = pow.add(0.125)
 	  if (hasUpgrade('water', 51)) pow = pow.add(upgradeEffect('water', 51))
+	  if (hasUpgrade('water', 55)) pow = pow.add(tmp.water.ocean1)
       let eff = player.water.points.add(1).pow(pow)
       return eff
     },
@@ -61,6 +63,9 @@ addLayer("water", {
     },
 	tankBoost(){
 		return player.water.tankWater.add(1).pow(0.25)
+	},
+	ocean1(){
+		return player.water.total.add(1).log10().pow(0.5).div(50)
 	},
 	tabFormat: {
 		"Main": {
@@ -78,6 +83,15 @@ addLayer("water", {
 		  content: [
 			"main-display",
 			["display-text", function(){ return "You have " + format(player.water.tankWater) + " ml of Water in the Tank (" + format(player.water.tankGain) + "/sec), boosting Water by x" + format(tmp.water.tankBoost) + "<br>There can be a maximum of " + format(player.water.tankCapacity) + " ml of Water in the Tank<br>Tank X: " + format(player.water.tankX) + "<br>Tank Y: " + format(player.water.tankY) + "<br>Tank Z: " + format(player.water.tankZ) }],
+			"blank",
+			"clickables",
+		  ],
+		},
+		"The Ocean": {
+		  unlocked(){ return hasUpgrade('water', 55) },
+		  content: [
+			"main-display",
+			["display-text", function(){ return "Ocean boosts are based on total water<br><br><h3>Ocean Booster 1: +" + format(player.water.ocean1) + " Water effect exponent</h3>" }],
 			"blank",
 			"clickables",
 		  ],
@@ -297,6 +311,12 @@ addLayer("water", {
 			description: "cm² Ice effect is better and x10 W.I.T.",
 			cost: new Decimal("2e24"),
 			unlocked(){ return hasUpgrade("water", 53) },
+		},
+		55: {
+			title: "The ocean",
+			description: "Unlock a new subtab",
+			cost: new Decimal("1e30"),
+			unlocked(){ return hasUpgrade("water", 54) },
 		},
 	},
 	buyables: {
