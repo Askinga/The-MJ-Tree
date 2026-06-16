@@ -31,6 +31,7 @@ addLayer("water", {
 		mult = mult.times(buyableEffect('water', 11))
 		if (hasUpgrade('water', 31)) mult = mult.times(3)
 		mult = mult.times(tmp.water.tankBoost)
+		if (hasUpgrade('water', 53)) mult = mult.times(upgradeEffect('water', 53))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -271,6 +272,25 @@ addLayer("water", {
 			description: "Unlock a buyable",
 			cost: new Decimal("5e20"),
 			unlocked(){ return hasUpgrade("water", 51) },
+		},
+		53: {
+			title: "Water synergy",
+			description: "Limit Points boosts Water",
+			cost: new Decimal("7.5e21"),
+			unlocked(){ return hasUpgrade("water", 52) },
+			effect(){ 
+				let eff = player.limit.points.add(1).pow(0.003);
+        		eff = softcap(eff, new Decimal("1000000"), 0.5)
+       		 	return eff 
+			},
+			effectDisplay(){
+				let s = ""
+        		let upgEffect = upgradeEffect(this.layer, this.id)
+        		if (upgEffect.gte(new Decimal("1000000")) ) {
+          		  s = " (Softcapped)"
+        		}
+        		return "x" + format(upgradeEffect("water", 53)) + s;
+			},
 		},
 	},
 	buyables: {
