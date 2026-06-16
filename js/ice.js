@@ -54,7 +54,9 @@ addLayer("ice", {
       return "which is boosting Log milestone 1 effect exponent by x" + format(layers.ice.effect())
     },
 	squareBoost(){
-		return player.ice.squareIce.add(1).pow(0.3)
+		let pow = new Decimal(0.3)
+		if (hasUpgrade('water', 54)) pow = pow.add(0.2)
+		return player.ice.squareIce.add(1).pow(pow)
 	},
 	tabFormat: {
 		"Main": {
