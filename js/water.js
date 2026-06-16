@@ -73,7 +73,7 @@ addLayer("water", {
 			"main-display",
 			"prestige-button",
 			"resource-display",
-			"buyables",
+			["buyables", ["1", "2"]],
 			"blank",
 			"upgrades",
 		  ],
@@ -91,9 +91,9 @@ addLayer("water", {
 		  unlocked(){ return hasUpgrade('water', 55) },
 		  content: [
 			"main-display",
-			["display-text", function(){ return "Ocean boosts are based on total water<br><br><h3>Ocean Booster 1: +" + format(player.water.ocean1) + " Water effect exponent</h3>" }],
+			["display-text", function(){ return "Ocean boosts are based on total water<br><br><h3>Ocean Booster 1: +" + format(tmp.water.ocean1) + " Water effect exponent</h3>" }],
 			"blank",
-			"clickables",
+			["buyables", ["10"]],
 		  ],
 		},
 	},
@@ -437,6 +437,23 @@ addLayer("water", {
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.times(Decimal.times(base2, expo))
+		},
+	},
+	101: {
+		unlocked(){ return hasUpgrade('water', 55) },
+		title: "Unlock a new Ocean Booster",
+        cost(x) { return new Decimal("1e10").pow(x.add(1).pow(x.add(1).div(1.25))).times("1e30") },
+        display() { return "Unlock a new Ocean Booster.<br>Cost: " + format(this.cost()) + " Water<br>Bought: " + format(getBuyableAmount('water', 101)) + "<br>Effect: Unlocks " + format(buyableEffect('water', 101)) + " Ocean Boosters" },
+        canAfford() { return player.water.points.gte(this.cost()) },
+        buy() {
+            player.water.points = player.water.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(2)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
 		},
 	},
 	},
