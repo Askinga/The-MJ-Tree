@@ -328,7 +328,7 @@ addLayer("water", {
 	14: {
 		unlocked(){ return hasUpgrade('water', 52) },
 		title: "water cycle extreme",
-        cost(x) { return new Decimal(12).pow(x.pow(x.div(17).add(1))).times("1e21") },
+        cost(x) { return new Decimal(12).pow(x.pow(x.div(17).add(1))).times("1e20") },
         display() { return "^1.01 Water per purchase<br>Cost: " + format(this.cost()) + " Water<br>Bought: " + format(getBuyableAmount('water', 14)) + "<br>Effect: ^" + format(buyableEffect('water', 14)) + " Water" },
         canAfford() { return player.water.points.gte(this.cost()) },
         buy() {
