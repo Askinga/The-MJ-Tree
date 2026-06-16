@@ -292,6 +292,12 @@ addLayer("water", {
         		return "x" + format(upgradeEffect("water", 53)) + s;
 			},
 		},
+		54: {
+			title: "Stronger fields",
+			description: "cm² Ice effect is better and x10 W.I.T.",
+			cost: new Decimal("2e24"),
+			unlocked(){ return hasUpgrade("water", 53) },
+		},
 	},
 	buyables: {
 	11: {
@@ -418,6 +424,7 @@ addLayer("water", {
 		let gain = new Decimal(0)
 		if (hasUpgrade('water', 35)) gain = gain.add(1)
 		if (hasUpgrade('water', 41)) gain = gain.times(buyableEffect('water', 13))
+		if (hasUpgrade('water', 54)) gain = gain.times(10)
 		
         player.water.tankGain = gain
 		gain = gain.times(diff)
