@@ -34,7 +34,9 @@ addLayer("water", {
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        let exp = new Decimal(1)
+		exp = exp.times(buyableEffect('water', 14))
+		return exp
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -264,6 +266,12 @@ addLayer("water", {
         		return "+" + format(upgradeEffect("water", 51)) + s;
 			},
 		},
+		52: {
+			title: "Exponential growth",
+			description: "Unlock a buyable",
+			cost: new Decimal("1e21"),
+			unlocked(){ return hasUpgrade("water", 51) },
+		},
 	},
 	buyables: {
 	11: {
@@ -312,6 +320,23 @@ addLayer("water", {
         },
 		effect(x){
 			let base1 = new Decimal(1.3)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
+	},
+	14: {
+		unlocked(){ return hasUpgrade('water', 52) },
+		title: "water cycle extreme",
+        cost(x) { return new Decimal(12).pow(x.pow(x.div(17).add(1))).times("1e21") },
+        display() { return "^1.01 Water per purchase<br>Cost: " + format(this.cost()) + " Water<br>Bought: " + format(getBuyableAmount('water', 14)) + "<br>Effect: ^" + format(buyableEffect('water', 14)) + " Water" },
+        canAfford() { return player.water.points.gte(this.cost()) },
+        buy() {
+            player.water.points = player.water.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1.01)
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.pow(Decimal.pow(base2, expo))
