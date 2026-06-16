@@ -269,7 +269,7 @@ addLayer("water", {
 		52: {
 			title: "Exponential growth",
 			description: "Unlock a buyable",
-			cost: new Decimal("1e21"),
+			cost: new Decimal("5e20"),
 			unlocked(){ return hasUpgrade("water", 51) },
 		},
 	},
