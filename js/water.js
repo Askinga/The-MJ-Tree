@@ -450,10 +450,10 @@ addLayer("water", {
             setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
         },
 		effect(x){
-			let base1 = new Decimal(2)
+			let base1 = new Decimal(1)
 			let base2 = x
 			let expo = new Decimal(1)
-			return base1.pow(Decimal.pow(base2, expo))
+			return base1.times(Decimal.times(base2, expo))
 		},
 		style() {return { "background": "linear-gradient(90deg, #2021dd, #4053ff)",
         "width": "225px",
