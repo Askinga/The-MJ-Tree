@@ -455,6 +455,11 @@ addLayer("water", {
 			let expo = new Decimal(1)
 			return base1.pow(Decimal.pow(base2, expo))
 		},
+		style() {return { "background": "linear-gradient(90deg, #2021dd, #4053ff)",
+        "width": "225px",
+        "height": "150px",
+	    "border-radius": "10%",
+        }},
 	},
 	},
     update(diff){
