@@ -14,6 +14,12 @@ addLayer("limit", {
 		allo2: new Decimal(0),
 		allo3: new Decimal(0),
     }},
+	softcap(){ 
+		return new Decimal("e250") 
+	},
+	softcapPower(){
+        return new Decimal(0.25)
+	},
 	onPrestige(){
 		player.limit.l = player.limit.l.add(tmp.limit.alo3)
 	},
@@ -144,7 +150,7 @@ addLayer("limit", {
 			content: [
 				"main-display",
 				"blank",
-				["display-text", function(){ return "<h1>" + format(tmp.limit.LIMIT) + "</h1><br>You have reached the limit " + format(player.limit.l) + " times, boosting Log milestone 1 time and Power Rune reset time by x" + format(tmp.limit.limitBoost)}],
+				["display-text", function(){ return "<h1>" + format(tmp.limit.LIMIT) + "</h1><br>You have reached the limit " + format(player.limit.l) + " times, boosting Log milestone 1 time and Power Rune reset time by x" + format(tmp.limit.limitBoost) + "<br>Limit Points has a big softcap at e250."}],
 				"blank",
 				["bar", "LIMIT"],
 				"resource-display",
