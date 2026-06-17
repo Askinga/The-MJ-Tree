@@ -318,6 +318,20 @@ addLayer("water", {
 			cost: new Decimal("1e30"),
 			unlocked(){ return hasUpgrade("water", 54) },
 		},
+		61: {
+			title: "Oceanic freeze",
+			description: "Ocean Booster 1 boosts Ice at a better rate",
+			cost: new Decimal("2.5e31"),
+			unlocked(){ return hasUpgrade("water", 55) },
+			effect(){ 
+				let power = new Decimal(40)
+				let eff = (new Decimal(1).add(tmp.water.ocean1)).pow(power);
+       		 	return eff 
+			},
+			effectDisplay(){
+        		return "x" + format(upgradeEffect("water", 61))
+			},
+		},
 	},
 	buyables: {
 	11: {
