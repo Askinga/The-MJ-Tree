@@ -38,6 +38,7 @@ addLayer("ice", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         let exp = new Decimal(1)
 		if (hasUpgrade('ice', 24)) exp = exp.times(1.125)
+		exp = exp.times(tmp.water.ocean2)
 		return exp
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
