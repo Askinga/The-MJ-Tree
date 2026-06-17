@@ -374,7 +374,7 @@ addLayer("water", {
 			title: "To the next boost",
 			description: "x4 Water.",
 			cost: new Decimal("1e39"),
-			unlocked(){ return hasUpgrade("water", 63) },
+			unlocked(){ return hasUpgrade("water", 64) },
 		},
 	},
 	buyables: {
