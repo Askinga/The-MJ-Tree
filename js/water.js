@@ -62,7 +62,9 @@ addLayer("water", {
       return "which is boosting Limit Points by x" + format(layers.water.effect())
     },
 	tankBoost(){
-		return player.water.tankWater.add(1).pow(0.25)
+		let power = new Decimal(0.25)
+		if (hasUpgrade('water', 62)) power = power.add(tmp.water.ocean1)
+		return player.water.tankWater.add(1).pow(power)
 	},
 	ocean1(){
 		return player.water.total.add(1).log10().pow(0.5).div(50)
@@ -331,6 +333,12 @@ addLayer("water", {
 			effectDisplay(){
         		return "x" + format(upgradeEffect("water", 61))
 			},
+		},
+		62: {
+			title: "Tanky ocean",
+			description: "Ocean Booster 1 affects W.I.T effect.",
+			cost: new Decimal("1e33"),
+			unlocked(){ return hasUpgrade("water", 61) },
 		},
 	},
 	buyables: {
