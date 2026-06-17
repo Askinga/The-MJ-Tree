@@ -32,6 +32,7 @@ addLayer("ice", {
 		if (hasUpgrade('ice', 34)) mult = mult.times(15)
 		mult = mult.times(tmp.ice.squareBoost)
 		if (hasUpgrade('water', 21)) mult = mult.times(upgradeEffect('water', 21))
+		if (hasUpgrade('water', 61)) mult = mult.times(upgradeEffect('water', 61))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
