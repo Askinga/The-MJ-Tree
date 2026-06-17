@@ -33,6 +33,7 @@ addLayer("water", {
 		if (hasUpgrade('water', 31)) mult = mult.times(3)
 		mult = mult.times(tmp.water.tankBoost)
 		if (hasUpgrade('water', 53)) mult = mult.times(upgradeEffect('water', 53))
+		if (hasUpgrade('water', 65)) mult = mult.times(4)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -359,6 +360,12 @@ addLayer("water", {
 			title: "Exponents",
 			description: "^1.025 Water.",
 			cost: new Decimal("7.5e35"),
+			unlocked(){ return hasUpgrade("water", 63) },
+		},
+		65: {
+			title: "To the next boost",
+			description: "x4 Water.",
+			cost: new Decimal("1e39"),
 			unlocked(){ return hasUpgrade("water", 63) },
 		},
 	},
