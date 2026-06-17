@@ -38,6 +38,7 @@ addLayer("water", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         let exp = new Decimal(1)
 		exp = exp.times(buyableEffect('water', 14))
+		if (hasUpgrade('water', 64)) exp = exp.times(1.025)
 		return exp
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
@@ -353,6 +354,12 @@ addLayer("water", {
 			effectDisplay(){
         		return "+" + format(upgradeEffect("water", 63))
 			},
+		},
+		64: {
+			title: "Exponents",
+			description: "^1.025 Water.",
+			cost: new Decimal("7.5e35"),
+			unlocked(){ return hasUpgrade("water", 63) },
 		},
 	},
 	buyables: {
