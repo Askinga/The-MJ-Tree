@@ -376,6 +376,12 @@ addLayer("water", {
 			cost: new Decimal("1e39"),
 			unlocked(){ return hasUpgrade("water", 64) },
 		},
+		71: {
+			title: "Oceanic limits",
+			description: "Ocean Booster 2 affects Limit Points.",
+			cost: new Decimal("1e45"),
+			unlocked(){ return hasUpgrade("water", 65) },
+		},
 	},
 	buyables: {
 	11: {
