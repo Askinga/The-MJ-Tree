@@ -72,7 +72,7 @@ addLayer("water", {
 		return player.water.total.add(1).log10().pow(0.5).div(50)
 	},
 	ocean2(){
-		if (getBuyableAmount('water', 101)).gte(1) {
+		if (getBuyableAmount('water', 101).gte(1)) {
 			return player.water.total.add(1).log10().pow(0.4).div(67)
 		} else {
 			return new Decimal(1)
@@ -103,7 +103,7 @@ addLayer("water", {
 		  content: [
 			"main-display",
 			["display-text", function(){ return "Ocean boosts are based on total water<br><br><h3>Ocean Booster 1: +" + format(tmp.water.ocean1) + " Water effect exponent</h3>" }],
-			["display-text", function(){ if (getBuyableAmount('water', 101)).gte(1) return "<h3>Ocean Booster 2: ^" + format(tmp.water.ocean2) + " Ice</h3>" }],
+			["display-text", function(){ if (getBuyableAmount('water', 101).gte(1)) return "<h3>Ocean Booster 2: ^" + format(tmp.water.ocean2) + " Ice</h3>" }],
 			"blank",
 			["buyables", ["10"]],
 		  ],
