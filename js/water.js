@@ -103,7 +103,7 @@ addLayer("water", {
 		  content: [
 			"main-display",
 			["display-text", function(){ return "Ocean boosts are based on total water<br><br><h3>Ocean Booster 1: +" + format(tmp.water.ocean1) + " Water effect exponent</h3>" }],
-			["display-text", function(){ if (getBuyableAmount('water',101)).gte(1) return "<h3>Ocean Booster 2: ^" + format(tmp.water.ocean2) + " Ice</h3>" }],
+			["display-text", function(){ if (getBuyableAmount('water', 101)).gte(1) return "<h3>Ocean Booster 2: ^" + format(tmp.water.ocean2) + " Ice</h3>" }],
 			"blank",
 			["buyables", ["10"]],
 		  ],
