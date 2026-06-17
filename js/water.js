@@ -327,6 +327,7 @@ addLayer("water", {
 			unlocked(){ return hasUpgrade("water", 55) },
 			effect(){ 
 				let power = new Decimal(40)
+				if (hasUpgrade('water', 63)) power = power.add(upgradeEffect('water', 63))
 				let eff = (new Decimal(1).add(tmp.water.ocean1)).pow(power);
        		 	return eff 
 			},
@@ -339,6 +340,19 @@ addLayer("water", {
 			description: "Ocean Booster 1 affects W.I.T effect.",
 			cost: new Decimal("1e33"),
 			unlocked(){ return hasUpgrade("water", 61) },
+		},
+		63: {
+			title: "Oceanic froster",
+			description: "Water adds to 'Oceanic freeze' exponent.",
+			cost: new Decimal("1e35"),
+			unlocked(){ return hasUpgrade("water", 62) },
+			effect(){ 
+				let eff = player.water.points.add(1).log10().pow(0.75)
+       		 	return eff 
+			},
+			effectDisplay(){
+        		return "+" + format(upgradeEffect("water", 63))
+			},
 		},
 	},
 	buyables: {
