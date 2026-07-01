@@ -71,7 +71,7 @@ addLayer("water", {
 	ocean1(){
 		let add = new Decimal(0)
 		if (hasUpgrade('water', 72)) add = add.add(tmp.water.ocean2)
-		return player.water.total.add(1).log10().pow(0.5).div(50).add(add)
+		return player.water.total.add(1).log10().pow(0.5).div(50).times(add)
 	},
 	ocean2(){
 		if (getBuyableAmount('water', 101).gte(1)) {
@@ -386,7 +386,7 @@ addLayer("water", {
 		},
 		72: {
 			title: "Oceanic oceans",
-			description: "Ocean Booster 2 adds to Ocean Booster 1.",
+			description: "Ocean Booster 2 multiplies Ocean Booster 1.",
 			cost: new Decimal("1e46"),
 			unlocked(){ return hasUpgrade("water", 71) },
 		},
