@@ -81,6 +81,13 @@ addLayer("water", {
 			return new Decimal(1)
 		}
 	},
+	ocean3(){
+		if (getBuyableAmount('water', 101).gte(2)) {
+			return player.water.total.div("1e60").pow(0.1).add(1)
+		} else {
+			return new Decimal(1)
+		}
+	},
 	tabFormat: {
 		"Main": {
 		  content: [
@@ -107,6 +114,7 @@ addLayer("water", {
 			"main-display",
 			["display-text", function(){ return "Ocean boosts are based on total water<br><br><h3>Ocean Booster 1: +" + format(tmp.water.ocean1) + " Water effect exponent</h3>" }],
 			["display-text", function(){ if (getBuyableAmount('water', 101).gte(1)) return "<h3>Ocean Booster 2: ^" + format(tmp.water.ocean2) + " Ice</h3>" }],
+		    ["display-text", function(){ if (getBuyableAmount('water', 101).gte(2)) return "<h3>Ocean Booster 3: x" + format(tmp.water.ocean3) + " Different Runes</h3>" }],
 			"blank",
 			["buyables", ["10"]],
 		  ],
@@ -429,6 +437,12 @@ addLayer("water", {
 			effectDisplay(){
         		return "x" + format(upgradeEffect("water", 74))
 			},
+		},
+		75: {
+			title: "Alternate spam",
+			description: "x3 Water and unlock new Different Rune upgrades.",
+			cost: new Decimal("1e59"),
+			unlocked(){ return hasUpgrade("water", 74) },
 		},
 	},
 	buyables: {
