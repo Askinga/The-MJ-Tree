@@ -34,6 +34,7 @@ addLayer("water", {
 		mult = mult.times(tmp.water.tankBoost)
 		if (hasUpgrade('water', 53)) mult = mult.times(upgradeEffect('water', 53))
 		if (hasUpgrade('water', 65)) mult = mult.times(4)
+		if (hasUpgrade('water', 73)) mult = mult.times(upgradeEffect('water', 73))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -389,6 +390,19 @@ addLayer("water", {
 			description: "Ocean Booster 2 multiplies Ocean Booster 1.",
 			cost: new Decimal("1e46"),
 			unlocked(){ return hasUpgrade("water", 71) },
+		},
+		73: {
+			title: "Multiversal boost",
+			description: "Different Runes boost Water.",
+			cost: new Decimal("1e48"),
+			unlocked(){ return hasUpgrade("water", 72) },
+			effect(){ 
+				let eff = player.dr.points.add(1).pow(0.75)
+       		 	return eff 
+			},
+			effectDisplay(){
+        		return "+" + format(upgradeEffect("water", 73))
+			},
 		},
 	},
 	buyables: {
