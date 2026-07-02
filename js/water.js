@@ -84,7 +84,7 @@ addLayer("water", {
 	},
 	ocean3(){
 		if (getBuyableAmount('water', 101).gte(2)) {
-			return player.water.total.div("1e60").pow(0.1).add(1)
+			return player.water.total.div("1e52").pow(0.13).add(1)
 		} else {
 			return new Decimal(1)
 		}
