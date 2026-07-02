@@ -23,7 +23,7 @@ addLayer("universes", {
         return new Decimal(1)
     },
     row: "side", // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return hasUpgrade('uni', 14)},
+    layerShown(){return (hasUpgrade('uni', 14) || getBuyableAmount('water', 101).gte(2))},
     tabFormat: [
       ["display-text", "Here are the different universes you can go to."],
 	  "blank",
