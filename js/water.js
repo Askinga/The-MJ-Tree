@@ -35,6 +35,7 @@ addLayer("water", {
 		if (hasUpgrade('water', 53)) mult = mult.times(upgradeEffect('water', 53))
 		if (hasUpgrade('water', 65)) mult = mult.times(4)
 		if (hasUpgrade('water', 73)) mult = mult.times(upgradeEffect('water', 73))
+		if (hasUpgrade('water', 75)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
