@@ -404,6 +404,32 @@ addLayer("water", {
         		return "x" + format(upgradeEffect("water", 73))
 			},
 		},
+		73: {
+			title: "Multiversal boost",
+			description: "Different Runes boost Water.",
+			cost: new Decimal("1e48"),
+			unlocked(){ return hasUpgrade("water", 72) },
+			effect(){ 
+				let eff = player.dr.points.add(1).pow(0.75)
+       		 	return eff 
+			},
+			effectDisplay(){
+        		return "x" + format(upgradeEffect("water", 73))
+			},
+		},
+		74: {
+			title: "Multiversal boost 2",
+			description: "Limit Power boosts Different Runes.",
+			cost: new Decimal("1e56"),
+			unlocked(){ return hasUpgrade("water", 73) },
+			effect(){ 
+				let eff = new Decimal(1.002).pow(player.limit.power)
+       		 	return eff 
+			},
+			effectDisplay(){
+        		return "x" + format(upgradeEffect("water", 74))
+			},
+		},
 	},
 	buyables: {
 	11: {
