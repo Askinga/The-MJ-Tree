@@ -401,7 +401,7 @@ addLayer("water", {
        		 	return eff 
 			},
 			effectDisplay(){
-        		return "+" + format(upgradeEffect("water", 73))
+        		return "x" + format(upgradeEffect("water", 73))
 			},
 		},
 	},
