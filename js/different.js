@@ -75,5 +75,13 @@ addLayer("dr", {
 			effect(){ return player.points.add(1).pow(0.05) },
 			effectDisplay(){ return "x"+format(upgradeEffect('dr', 15)) },
 		},
+		21: {
+			title: "Multiversal boost 3",
+			description: "Points are boosted based on water.",
+			cost: new Decimal("5e6"),
+			unlocked(){ return hasUpgrade('water', 75) },
+			effect(){ return player.water.points.div("e60").pow(0.1).add(1) },
+			effectDisplay(){ return "x"+format(upgradeEffect('dr', 21)) },
+		},
 	},
 })
