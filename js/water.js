@@ -445,6 +445,12 @@ addLayer("water", {
 			cost: new Decimal("1e59"),
 			unlocked(){ return hasUpgrade("water", 74) },
 		},
+		81: {
+			title: "Oceanic glaciers",
+			description: "Ocean Booster 3 affects Ice as well.",
+			cost: new Decimal("1e70"),
+			unlocked(){ return hasUpgrade("dr", 21) },
+		},
 	},
 	buyables: {
 	11: {
