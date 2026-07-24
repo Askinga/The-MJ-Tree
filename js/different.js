@@ -87,6 +87,7 @@ addLayer("dr", {
 			title: "New layer!?",
 			description: "Unlock a new layer. In this universe of course.",
 			cost: new Decimal("5e8"),
+			unlocked(){ return hasUpgrade('water', 81) },
 		},
 	},
 })
