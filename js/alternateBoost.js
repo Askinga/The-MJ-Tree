@@ -28,7 +28,7 @@ addLayer("bo", {
             layerDataReset("bo", keep);
         }
     },
-    color: "#3acb02",
+    color: "#7c30ff",
     requires: new Decimal("e9"), // Can be a function that takes requirement increases into account
     resource: "boosters", // Name of prestige currency
     baseResource: "Different Runes", // Name of resource prestige is based on
