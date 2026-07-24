@@ -6,6 +6,18 @@ addLayer("bo", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+	nodeStyle() {return {
+        "background": "linear-gradient(#ff0077, #4230ff)",
+        "width": "100px",
+        "height": "100px",
+    }
+},
+	componentStyles: {
+    "prestige-button"() {return { "background": "linear-gradient(#ff0077, #4230ff)",
+        "width": "200px",
+        "height": "150px",
+    }},
+},
 	doReset(reset) {
         let keep = [];
         if (! inChallenge("universes", 11)) keep.push("upgrades")
@@ -18,7 +30,7 @@ addLayer("bo", {
     },
     color: "#3acb02",
     requires: new Decimal("e9"), // Can be a function that takes requirement increases into account
-    resource: "Boosters", // Name of prestige currency
+    resource: "boosters", // Name of prestige currency
     baseResource: "Different Runes", // Name of resource prestige is based on
     baseAmount() {return player.dr.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -44,4 +56,5 @@ addLayer("bo", {
     effectDescription(){
       return "which is boosting Different Runes by x" + format(layers.bo.effect())
     },
+	branches: ["dr"],
 })
