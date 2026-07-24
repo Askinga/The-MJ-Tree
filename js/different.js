@@ -83,5 +83,10 @@ addLayer("dr", {
 			effect(){ return player.water.points.div("e60").pow(0.1).add(1) },
 			effectDisplay(){ return "x"+format(upgradeEffect('dr', 21)) },
 		},
+		22: {
+			title: "New layer!?",
+			description: "Unlock a new layer. In this universe of course.",
+			cost: new Decimal("5e8"),
+		},
 	},
 })
