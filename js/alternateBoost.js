@@ -45,7 +45,7 @@ addLayer("bo", {
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "b", description: "B: Reset for boosters (Uni. 2)", onPress(){if (canReset(this.layer) && inChallenge('universes', 11)) doReset(this.layer)}},
+        {key: "B", description: "Shift+B: Reset for boosters (Uni. 2)", onPress(){if (canReset(this.layer) && inChallenge('universes', 11)) doReset(this.layer)}},
     ],
     layerShown(){return (hasUpgrade('dr', 22) && inChallenge('universes', 11))},
     effect(){
