@@ -54,7 +54,7 @@ addLayer("bo", {
       return eff
     },
     effectDescription(){
-      return "which is boosting Different Runes by x" + format(layers.bo.effect())
+      return "which is boosting Different Runes and Points by x" + format(layers.bo.effect())
     },
 	branches: ["dr"],
 })
