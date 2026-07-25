@@ -57,4 +57,11 @@ addLayer("bo", {
       return "which is boosting Different Runes and Points by x" + format(layers.bo.effect())
     },
 	branches: ["dr"],
+	milestones: {
+  	  0: {
+     	 requirementDescription: "2 boosters",
+         effectDescription: "Different Rune Upgrade 4 is always unlocked",
+       	 done() { return player.bo.points.gte(2) },
+  	  },
+	},
 })
