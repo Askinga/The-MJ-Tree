@@ -95,5 +95,11 @@ addLayer("dr", {
 			cost: new Decimal("5e8"),
 			unlocked(){ return hasUpgrade('water', 81) },
 		},
+		23: {
+			title: "The opposite way..?",
+			description: "ɿɘγɒl wɘn ɒ ʞɔolnU.",
+			cost: new Decimal("1e40"),
+			unlocked(){ return hasUpgrade('water', 82) },
+		},
 	},
 })
