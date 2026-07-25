@@ -29,7 +29,7 @@ addLayer("senur", {
         }
     },
     color: "#4c89ba",
-    requires: new Decimal("e9"), // Can be a function that takes requirement increases into account
+    requires: new Decimal("e40"), // Can be a function that takes requirement increases into account
     resource: "Яυnɘƨ", // Name of prestige currency
     baseResource: "Different Runes", // Name of resource prestige is based on
     baseAmount() {return player.dr.points}, // Get the current amount of baseResource
