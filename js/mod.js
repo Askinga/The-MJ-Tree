@@ -5,7 +5,7 @@ let modInfo = {
 	modFiles: ["layers.js", "tree.js", "prestige.js", "super.js", "boost.js", "meta.js", "levels.js",
 	"ultra.js", "extreme.js", "generators.js", "logs.js", "supreme.js", "tBoost.js", "money.js",
 	"universe.js", "universes.js", "different.js", "powers.js", "strengths.js", "endurance.js", "limit.js",
-	"ice.js", "water.js", "alternateBoost.js"
+	"ice.js", "water.js", "alternateBoost.js", "senur.js"
 	],
 
 	discordName: "",
