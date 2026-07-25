@@ -102,7 +102,7 @@ addLayer("water", {
 			"main-display",
 			"prestige-button",
 			"resource-display",
-			["display-text", "Water containers start overfilling at 1e125 water, causing a softcap of ^0.375!"]
+			["display-text", "Water containers start overfilling at 1e125 water, causing a softcap of ^0.375!"],
 			["buyables", ["1", "2"]],
 			"blank",
 			"upgrades",
