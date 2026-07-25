@@ -42,6 +42,7 @@ addLayer("water", {
         let exp = new Decimal(1)
 		exp = exp.times(buyableEffect('water', 14))
 		if (hasUpgrade('water', 64)) exp = exp.times(1.025)
+		if (hasUpgrade('water', 82)) exp = exp.times(1.05)
 		return exp
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
@@ -450,6 +451,12 @@ addLayer("water", {
 			description: "Ocean Booster 3 affects Ice as well.",
 			cost: new Decimal("1e70"),
 			unlocked(){ return hasUpgrade("dr", 21) },
+		},
+		82: {
+			title: "I can smell INFLATION!",
+			description: "An extra ^1.05 water just for you.",
+			cost: new Decimal("1e80"),
+			unlocked(){ return hasUpgrade("dr", 22) },
 		},
 	},
 	buyables: {
