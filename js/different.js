@@ -16,6 +16,11 @@ addLayer("dr", {
             layerDataReset("dr", keep);
         }
     },
+	passiveGeneration() {
+		let p = new Decimal(0)
+		if ((player.points.gt(0) && hasMilestone('bo', 1)) && inChallenge('universes', 11)) p = p.add(1)
+		return p
+	},
     color: "#3acb02",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "Different Runes", // Name of prestige currency
