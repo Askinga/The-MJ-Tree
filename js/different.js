@@ -64,7 +64,7 @@ addLayer("dr", {
 			title: "Not this again",
 			description: "Boost points based on DR and x3 DR",
 			cost: new Decimal(15),
-			unlocked(){ return hasUpgrade('uni', 23) },
+			unlocked(){ return (hasUpgrade('uni', 23) || hasMilestone('bo', 0)) },
 			effect(){ return player.dr.points.add(1).pow(0.4) },
 			effectDisplay(){ return "x"+format(upgradeEffect('dr', 14)) },
 		},
