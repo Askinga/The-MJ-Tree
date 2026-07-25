@@ -47,7 +47,7 @@ addLayer("bo", {
     hotkeys: [
         {key: "B", description: "Shift+B: Reset for boosters (Uni. 2)", onPress(){if (canReset(this.layer) && inChallenge('universes', 11)) doReset(this.layer)}},
     ],
-    layerShown(){return ((hasUpgrade('dr', 22) && inChallenge('universes', 11)) || player.bo.unlocked)},
+    layerShown(){return ((hasUpgrade('dr', 22) || player.bo.unlocked) && inChallenge('universes', 11)) },
     effect(){
       let base = new Decimal(2)
       let eff = new Decimal(base).pow(player.bo.points)
