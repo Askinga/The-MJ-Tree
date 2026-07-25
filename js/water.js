@@ -466,6 +466,12 @@ addLayer("water", {
 			cost: new Decimal("1e80"),
 			unlocked(){ return hasUpgrade("dr", 22) },
 		},
+		83: {
+			title: "Multiversal buyable",
+			description: "Unlock a buyable.",
+			cost: new Decimal("1e140"),
+			unlocked(){ return hasUpgrade("dr", 23) },
+		},
 	},
 	buyables: {
 	11: {
@@ -585,6 +591,23 @@ addLayer("water", {
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.times(Decimal.times(base2, expo))
+		},
+	},
+	31: {
+		unlocked(){ return hasUpgrade('water', 83) },
+		title: "Gift to another universe",
+        cost(x) { return new Decimal(2).pow(x.pow(1.25)).times("1e140") },
+        display() { return "x1.2 Different Runes per purchase<br>Cost: " + format(this.cost()) + " Water<br>Bought: " + format(getBuyableAmount('water', 31)) + "<br>Effect: x" + format(buyableEffect('water', 31)) + " Different Runes" },
+        canAfford() { return player.water.points.gte(this.cost()) },
+        buy() {
+            player.water.points = player.water.points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(1.5)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
 		},
 	},
 	101: {
