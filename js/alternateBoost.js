@@ -68,5 +68,11 @@ addLayer("bo", {
          effectDescription: "Automatically generate Different Runes",
        	 done() { return player.bo.points.gte(15) },
   	  },
+	  2: {
+     	 requirementDescription: "24 boosters",
+         effectDescription: "Яυnɘƨ also boost water",
+       	 done() { return player.bo.points.gte(24) },
+		 unlocked() { return player.senur.unlocked },
+  	  },
 	},
 })
