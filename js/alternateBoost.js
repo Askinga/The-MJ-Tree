@@ -63,5 +63,10 @@ addLayer("bo", {
          effectDescription: "Different Rune Upgrade 4 is always unlocked",
        	 done() { return player.bo.points.gte(2) },
   	  },
+	  1: {
+     	 requirementDescription: "15 boosters",
+         effectDescription: "Automatically generate Different Runes",
+       	 done() { return player.bo.points.gte(15) },
+  	  },
 	},
 })
