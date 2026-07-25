@@ -16,6 +16,12 @@ addLayer("water", {
 	onPrestige(){
 		player.ice.points = new Decimal(0)
 	},
+	softcap(){ 
+		return new Decimal("e125") 
+	},
+	softcapPower(){
+        return new Decimal(0.375)
+	},
     color: "#4053ff",
     requires: new Decimal("e15"), // Can be a function that takes requirement increases into account
     resource: "water", // Name of prestige currency
@@ -96,6 +102,7 @@ addLayer("water", {
 			"main-display",
 			"prestige-button",
 			"resource-display",
+			["display-text", "Water containers start overfilling at 1e125 water, causing a softcap of ^0.375!"]
 			["buyables", ["1", "2"]],
 			"blank",
 			"upgrades",
