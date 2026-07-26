@@ -74,5 +74,11 @@ addLayer("bo", {
        	 done() { return player.bo.points.gte(24) },
 		 unlocked() { return player.senur.unlocked },
   	  },
+	  3: {
+     	 requirementDescription: "25 boosters",
+         effectDescription: "Keep Different Rune upgrades",
+       	 done() { return player.bo.points.gte(25) },
+		 unlocked() { return player.senur.unlocked },
+  	  },
 	},
 })
