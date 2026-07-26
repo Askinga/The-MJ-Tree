@@ -62,5 +62,11 @@ addLayer("senur", {
 			description: "x3 Different Runes.",
 			cost: new Decimal(2)
 		},
+		12: {
+			title: "Oh I get it now",
+			description: "+0.1 Booster base.",
+			cost: new Decimal(10),
+			unlocked(){ return hasUpgrade('senur', 11) },
+		},
 	},
 })
