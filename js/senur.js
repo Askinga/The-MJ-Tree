@@ -56,4 +56,11 @@ addLayer("senur", {
       return "which is boosting Different Runes by x" + format(layers.senur.effect())
     },
 	branches: ["dr"],
+	upgrades: {
+		11: {
+			title: "Why is it reversed?",
+			description: "x3 Different Runes.",
+			cost: new Decimal(2)
+		},
+	},
 })
