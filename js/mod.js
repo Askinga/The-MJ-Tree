@@ -113,6 +113,10 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
+	() => (!inChallenge('universes', 11)) ? "You are currently in Universe 1: Universe of Runes" : "",
+	"<br>",
+	() => (inChallenge('universes', 11)) ? "You are currently in Universe 2: Alternate Runes" : "",
+	"<br>",
 ]
 
 // Determines when the game "ends"
