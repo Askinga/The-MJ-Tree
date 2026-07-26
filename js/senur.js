@@ -50,6 +50,7 @@ addLayer("senur", {
     layerShown(){return ((hasUpgrade('dr', 23) || player.senur.unlocked) && inChallenge('universes', 11)) },
     effect(){
       let expo = new Decimal(0.5)
+	  if (hasUpgrade('senur', 14)) expo = expo.add(0.1)
       let eff = player.senur.points.add(1).pow(expo)
       return eff
     },
@@ -74,6 +75,12 @@ addLayer("senur", {
 			description: "x4 Яυnɘƨ.",
 			cost: new Decimal(30),
 			unlocked(){ return hasUpgrade('senur', 12) },
+		},
+		14: {
+			title: "Boosting the reversed.",
+			description: "+0.1 Яυnɘƨ effect exponent.",
+			cost: new Decimal(1000),
+			unlocked(){ return hasUpgrade('senur', 13) },
 		},
 	},
 })
