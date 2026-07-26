@@ -100,9 +100,15 @@ addLayer("dr", {
 		},
 		23: {
 			title: "The opposite way..?",
-			description: "ɿɘγɒl wɘn ɒ ʞɔolnU.",
+			description: ".ɿɘγɒl wɘn ɒ ʞɔolnU",
 			cost: new Decimal("1e40"),
 			unlocked(){ return hasUpgrade('water', 82) },
+		},
+		24: {
+			title: "Booster increase",
+			description: "Booster cost exponent is lower.",
+			cost: new Decimal("1e50"),
+			unlocked(){ return hasUpgrade('water', 83) },
 		},
 	},
 })
