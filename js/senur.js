@@ -37,6 +37,7 @@ addLayer("senur", {
     exponent: 0.24, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if (hasUpgrade('senur', 13)) mult = mult.times(4)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -67,6 +68,12 @@ addLayer("senur", {
 			description: "+0.1 Booster base.",
 			cost: new Decimal(10),
 			unlocked(){ return hasUpgrade('senur', 11) },
+		},
+		13: {
+			title: "Runes when reversed is senuR.",
+			description: "x4 Яυnɘƨ.",
+			cost: new Decimal(30),
+			unlocked(){ return hasUpgrade('senur', 12) },
 		},
 	},
 })
