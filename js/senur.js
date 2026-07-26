@@ -82,5 +82,13 @@ addLayer("senur", {
 			cost: new Decimal(1000),
 			unlocked(){ return hasUpgrade('senur', 13) },
 		},
+		15: {
+			title: "Points are now reversed.",
+			description: "Яυnɘƨ boost Points.",
+			cost: new Decimal(25000),
+			effect(){ return player.senur.points.add(1).pow(0.4) },
+			effectDisplay(){ return "x"+format(upgradeEffect('senur', 15)) },
+			unlocked(){ return hasUpgrade('senur', 14) },
+		},
 	},
 })
