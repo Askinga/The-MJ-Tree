@@ -50,6 +50,7 @@ addLayer("bo", {
     layerShown(){return ((hasUpgrade('dr', 22) || player.bo.unlocked) && inChallenge('universes', 11)) },
     effect(){
       let base = new Decimal(2)
+	  if (hasUpgrade('senur', 12)) base = base.add(0.1)
       let eff = new Decimal(base).pow(player.bo.points)
       return eff
     },
