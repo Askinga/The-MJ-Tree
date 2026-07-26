@@ -97,6 +97,7 @@ function getPointGen() {
 	if (hasUpgrade('dr', 14) && (inChallenge('universes', 11))) gain = gain.times(upgradeEffect('dr', 14))
 	if (hasUpgrade('dr', 21) && (inChallenge('universes', 11))) gain = gain.times(upgradeEffect('dr', 21))
 	if (inChallenge("universes", "11")) gain = gain.times(layers.bo.effect())
+	if (hasUpgrade('senur', 15) && (inChallenge('universes', 11))) gain = gain.times(upgradeEffect('senur', 15))
 	if (player.d.difficulty.eq(0)) gain = gain.pow(1.01)
 	return gain
 }
