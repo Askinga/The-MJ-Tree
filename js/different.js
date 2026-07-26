@@ -8,7 +8,7 @@ addLayer("dr", {
     }},
 	doReset(reset) {
         let keep = [];
-        if (! inChallenge("universes", 11)) keep.push("upgrades")
+        if (! inChallenge("universes", 11) || hasMilestone('bo', 3)) keep.push("upgrades")
         if (! inChallenge("universes", 11)) keep.push("points")
         if (! inChallenge("universes", 11)) keep.push("milestones")
         if (! inChallenge("universes", 11)) keep.push("buyables")
