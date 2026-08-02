@@ -43,6 +43,7 @@ addLayer("water", {
 		if (hasUpgrade('water', 73)) mult = mult.times(upgradeEffect('water', 73))
 		if (hasUpgrade('water', 75)) mult = mult.times(3)
 		if (hasMilestone('bo', 2)) mult = mult.times(layers.senur.effect()) 
+		if (hasUpgrade('water', 85)) mult = mult.times(1000)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -50,6 +51,7 @@ addLayer("water", {
 		exp = exp.times(buyableEffect('water', 14))
 		if (hasUpgrade('water', 64)) exp = exp.times(1.025)
 		if (hasUpgrade('water', 82)) exp = exp.times(1.05)
+		exp = exp.times(tmp.water.ocean4)
 		return exp
     },
     row: 6, // Row the layer is in on the tree (0 is the first row)
@@ -97,6 +99,13 @@ addLayer("water", {
 			return new Decimal(1)
 		}
 	},
+	ocean4(){
+		if (getBuyableAmount('water', 101).gte(3)) {
+			return player.water.total.add(1).log10().pow(0.35).div(100).add(1)
+		} else {
+			return new Decimal(1)
+		}
+	},
 	tabFormat: {
 		"Main": {
 		  content: [
@@ -125,6 +134,7 @@ addLayer("water", {
 			["display-text", function(){ return "Ocean boosts are based on total water<br><br><h3>Ocean Booster 1: +" + format(tmp.water.ocean1) + " Water effect exponent</h3>" }],
 			["display-text", function(){ if (getBuyableAmount('water', 101).gte(1)) return "<h3>Ocean Booster 2: ^" + format(tmp.water.ocean2) + " Ice</h3>" }],
 		    ["display-text", function(){ if (getBuyableAmount('water', 101).gte(2)) return "<h3>Ocean Booster 3: x" + format(tmp.water.ocean3) + " Different Runes, and keep Universes layer unlocked</h3>" }],
+			["display-text", function(){ if (getBuyableAmount('water', 101).gte(3)) return "<h3>Ocean Booster 4: ^" + format(tmp.water.ocean4) + " Water</h3>" }],
 			"blank",
 			["buyables", ["10"]],
 		  ],
@@ -477,6 +487,12 @@ addLayer("water", {
 			description: "'Gift to another universe' also boosts Яυnɘƨ.",
 			cost: new Decimal("1e150"),
 			unlocked(){ return hasUpgrade("dr", 24) },
+		},
+		85: {
+			title: "The final booster!",
+			description: "Congrats on getting Ocean Booster 4! As a reward, x1000 Water!",
+			cost: new Decimal("1e170"),
+			unlocked(){ return getBuyableAmount('water', 101).gte(3) },
 		},
 	},
 	buyables: {
