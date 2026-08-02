@@ -39,3 +39,20 @@ h1, h2, h3, b, input {
 	color: var(--points);
 	text-shadow: 0 0 10px var(--points);
 }
+
+.tm:not(.locked):not(.bought) {
+	background: rgb(255, 255, 255);
+	animation: truemeta 5s linear infinite;
+}
+
+@keyframes truemeta {
+	0% {
+		background: rgb(255, 255, 255);
+	}
+	50% {
+		background: rgb(175, 175, 175);
+	}
+	100% {
+		background: rgb(255, 255, 255);
+	}
+}
