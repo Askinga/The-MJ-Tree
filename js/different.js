@@ -110,5 +110,11 @@ addLayer("dr", {
 			cost: new Decimal("1e50"),
 			unlocked(){ return hasUpgrade('water', 83) },
 		},
+		25: {
+			title: "The end is near",
+			description: "Unlock the FINAL LAYER.",
+			cost: new Decimal("1e180"),
+			unlocked(){ return hasUpgrade('water', 85) },
+		},
 	},
 })
