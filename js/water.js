@@ -472,6 +472,12 @@ addLayer("water", {
 			cost: new Decimal("1e140"),
 			unlocked(){ return hasUpgrade("dr", 23) },
 		},
+		84: {
+			title: "Multiversal buyable upgrade",
+			description: "'Gift to another universe' also boosts Яυnɘƨ.",
+			cost: new Decimal("1e150"),
+			unlocked(){ return hasUpgrade("dr", 24) },
+		},
 	},
 	buyables: {
 	11: {
