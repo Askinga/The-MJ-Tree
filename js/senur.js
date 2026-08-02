@@ -38,6 +38,7 @@ addLayer("senur", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasUpgrade('senur', 13)) mult = mult.times(4)
+		if (hasUpgrade('water', 84)) mult = mult.times(buyableEffect('water', 31))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
