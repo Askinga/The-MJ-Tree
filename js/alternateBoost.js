@@ -87,7 +87,7 @@ addLayer("bo", {
   	  },
 	  4: {
      	 requirementDescription: "50 boosters",
-         effectDescription: "x5 Яυnɘƨ. I am felling generous.",
+         effectDescription: "x5 Яυnɘƨ. I am feeling generous.",
        	 done() { return player.bo.points.gte(50) },
 		 unlocked() { return player.senur.unlocked },
   	  },
