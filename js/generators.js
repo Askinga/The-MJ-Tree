@@ -46,6 +46,7 @@ addLayer("XP", {
 		if (hasMilestone('XP', 8)) mult = mult.times(20)
 		if (hasMilestone('XP', 11)) mult = mult.times(100)
 		mult = mult.times(layers.su.effect())
+		mult = mult.times(layers.tm.effect())
         return mult
     },
     tabFormat: [
