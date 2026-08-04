@@ -54,6 +54,7 @@ addLayer("l", {
 		mult = mult.times(layers.u.effect())
 		mult = mult.times(layers.e.effect())
 		mult = mult.times(layers.XP.effect())
+		mult = mult.times(layers.tm.effect())
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
