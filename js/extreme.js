@@ -62,6 +62,7 @@ addLayer("e", {
 		if (hasMilestone('XP', 9)) mult = mult.times(tmp.XP.boost5)
 		mult = mult.times(buyableEffect('e', 11))
 		mult = mult.times(layers.su.effect())
+		mult = mult.times(layers.tm.effect())
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
