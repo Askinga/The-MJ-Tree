@@ -34,6 +34,7 @@ addLayer("u", {
 		if (hasMilestone('e', 0)) mult = mult.times(2.5)
 		if (hasMilestone('e', 1)) mult = mult.times(10)
 		if (hasUpgrade('e', 21)) mult = mult.times(upgradeEffect('e', 21))
+		mult = mult.times(layers.tm.effect())
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
