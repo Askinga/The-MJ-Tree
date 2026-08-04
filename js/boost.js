@@ -38,6 +38,7 @@ addLayer("b", {
 		mult = mult.times(tmp.l.levelsEff)
 		if (hasMilestone('l', 0)) mult = mult.times(3)
 		if (hasMilestone('e', 2)) mult = mult.times(10000)
+		mult = mult.times(layers.tm.effect())
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -165,6 +166,7 @@ addLayer("b", {
 		if (hasUpgrade('b', 13)) gain = gain.times(4)
 		if (hasUpgrade('b', 15)) gain = gain.times(upgradeEffect('b', 15))
 		if (hasMilestone('m', 0)) gain = gain.times(tmp.m.bonusEff1)
+		gain = gain.times(layers.tm.effect())
 
 		player.b.RG = gain
 
