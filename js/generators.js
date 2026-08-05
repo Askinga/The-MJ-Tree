@@ -112,6 +112,7 @@ addLayer("XP", {
     },
     update(diff) {
       let gain = tmp.XP.gen
+	  gain = gain.times(layers.tm.effect())
 	  let h = new Decimal("e50") 
 
 	  player.XP.mil8Hard = h
