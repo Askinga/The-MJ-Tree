@@ -33,12 +33,15 @@ addLayer("logs", {
 		return p
 		}
 	},
-	doReset(reset) {
+	doReset(resettingLayer) {
         let keep = [];
         keep.push("milestones")
-        if (layers[reset].row > this.row) {
+        if (layers[resettingLayer].row > this.row && !resettingLayer === 'tm') {
             layerDataReset("logs", keep);
         }
+		if (resettingLayer === 'tm') {
+			layerDataReset("logs")
+		}
     },
 	autoUpgrade(){ return hasMilestone('su', 3) },
     color: "#735245",
