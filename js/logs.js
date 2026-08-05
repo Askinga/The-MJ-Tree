@@ -71,6 +71,7 @@ addLayer("logs", {
 		if (hasUpgrade('su', 11)) mult = mult.times(1000)
 		if (hasUpgrade('su', 11)) mult = mult.times(upgradeEffect('su', 11))
 		if (hasMilestone('uni', 0)) mult = mult.times("e2500")
+		mult = mult.times(layers.tm.effect())
 		if (inChallenge('su', 11)) mult = mult.times(0)
         return mult
     },
@@ -417,6 +418,7 @@ addLayer("logs", {
 				if (hasUpgrade('su', 13)) mult = mult.times(10000)
 				if (hasUpgrade('su', 35)) mult = mult.times(upgradeEffect('su', 35))
 				mult = mult.pow(buyableEffect('money', 23))
+				mult = mult.times(layers.tm.effect())
 				player.logs.woodGain = mult
 	         	return mult
             },
@@ -445,6 +447,7 @@ addLayer("logs", {
 		if (hasChallenge('su', 11)) ire = ire.times(1000)
 		if (hasUpgrade('su', 33)) ire = ire.times(upgradeEffect('su', 33))
 		ire = ire.times(buyableEffect('money', 13))
+		ire = ire.times(layers.tm.effect())
 		if (hasMilestone("logs", 0)) waste = waste.add(1)
 		waste = waste.times(layers.pr.effect().times(mult))
 
