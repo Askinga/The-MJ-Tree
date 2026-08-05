@@ -6,6 +6,7 @@ addLayer("ice", {
         unlocked: false,
 		points: new Decimal(0),
 		squareIce: new Decimal(0),
+		totalpoints: new Decimal(0),
     }},
 	passiveGeneration(){
 		let p = new Decimal(0)
@@ -99,12 +100,12 @@ addLayer("ice", {
 		},
 		13: {
 			title: "icicles",
-			description: "x2 Ice per triple log10 of Points past 8.",
+			description: "x2 Ice per triple log10 of total Points past 8.",
 			cost: new Decimal(7),
 			unlocked(){ return hasUpgrade('ice', 12) },
 			effect(){
-				if (player.points.add(1).log10().log10().log10().sub(8).floor().gte(1)) {
-				    return new Decimal(2).pow(player.points.add(1).log10().log10().log10().sub(8).floor()) 
+				if (player.ice.totalpoints.add(1).log10().log10().log10().sub(8).floor().gte(1)) {
+				    return new Decimal(2).pow(player.ice.totalpoints.add(1).log10().log10().log10().sub(8).floor()) 
 				}
 			    else {
 					return new Decimal(1)
@@ -295,4 +296,8 @@ addLayer("ice", {
 		},
     },
 	},
+	update(diff) {
+	if (player.points.gte(player.ice.totalpoints)) {
+	    player.ice.totalpoints = player.points
+	}},
 })
