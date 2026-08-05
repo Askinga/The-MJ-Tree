@@ -149,7 +149,7 @@ addLayer("ice", {
 			cost: new Decimal(200),
 			unlocked(){ return hasUpgrade('ice', 22) },
 			effect(){
-				if (player.limit.points.add(1).log10().sub(19).floor().gte(1)) {
+				if (player.limit.points.add(1).log10().sub(19).floor().gte(1) && player.ice.totalpoints.gte("eee9")) {
 				    return new Decimal(1.2).pow(player.limit.points.add(1).log10().sub(19).floor()) 
 				}
 			    else {
