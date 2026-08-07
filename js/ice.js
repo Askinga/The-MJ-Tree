@@ -35,6 +35,7 @@ addLayer("ice", {
 		if (hasUpgrade('water', 21)) mult = mult.times(upgradeEffect('water', 21))
 		if (hasUpgrade('water', 61)) mult = mult.times(upgradeEffect('water', 61))
 		if (hasUpgrade('water', 81)) mult = mult.times(tmp.water.ocean3)
+		mult = mult.times(layers.tm.effect())
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -251,6 +252,7 @@ addLayer("ice", {
 				mul = mul.times(buyableEffect('ice', 11))
 				if (hasUpgrade('ice', 42)) mul = mul.times(upgradeEffect('ice', 42))
 				mul = mul.times(buyableEffect('water', 12))
+				mul = mul.times(layers.tm.effect())
 		        return mul
             },
             onClick() {
