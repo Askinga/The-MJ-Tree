@@ -62,6 +62,7 @@ addLayer("limit", {
 		if (hasUpgrade('ice', 44)) mult = mult.times(upgradeEffect('ice', 44))
 		mult = mult.times(layers.water.effect())
 		if (hasUpgrade('water', 42)) mult = mult.times(upgradeEffect('water', 42))
+		mult = mult.times(layers.tm.effect())
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -135,6 +136,7 @@ addLayer("limit", {
 		let extra = new Decimal(1)
 		if (hasChallenge('limit', 13)) extra = extra.times(1.178)
 		if (hasUpgrade('sl', 12)) extra = extra.times(2)
+		extra = extra.times(layers.tm.effect())
 		return new Decimal(1.1).pow(player.limit.allo3).times(extra)
 	},
 	powerBoost(){
@@ -672,6 +674,7 @@ addLayer("limit", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		mult = mult.times(tmp.sl.power2)
+		mult = mult.times(layers.tm.effect())
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -916,7 +919,7 @@ addLayer("limit", {
         },
     },
 	update(diff) {
-		let gain = player.sl.gen1
+		let gain = player.sl.gen1.times(layers.tm.effect())
 		player.sl.gen1 = player.sl.gen1.add(player.sl.gen2.times(diff))
 		player.sl.gen2 = player.sl.gen2.add(player.sl.gen3.times(diff))
 		player.sl.gen3 = player.sl.gen3.add(player.sl.gen4.times(diff))
