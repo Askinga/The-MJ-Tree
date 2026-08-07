@@ -78,6 +78,7 @@ addLayer("su", {
 		mult = mult.times(buyableEffect('money', 22))
 		mult = mult.times(layers.uni.effect())
 		if (hasUpgrade('limit', 11)) mult = mult.times(10)
+		mult = mult.times(layers.tm.effect())
         return mult;
     },
     gainExp() { 
@@ -341,6 +342,7 @@ addLayer("su", {
 		if (hasUpgrade('su', 44)) timeG = timeG.times(1000000)
 		timeG = timeG.times(layers.uni.effect())
 		if (hasUpgrade('limit', 11)) timeG = timeG.times(10)
+		timeG = timeG.times(layers.tm.effect())
 		
         if (hasUpgrade('su', 25) && !(inChallenge('su', 11) || inChallenge('su', 12))) {
         player.su.timeGain = timeG
