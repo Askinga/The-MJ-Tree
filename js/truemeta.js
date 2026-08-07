@@ -50,7 +50,7 @@ addLayer("tm", {
 		"QoL Tree": {
 			content: [
 				["display-text", function(){ return "You have " + format(player.tm.tmpoints) + " True Meta Points to spend"}],
-				"prestige-button",
+				"blank",
 				"resource-display",
 				"clickables",
 				"blank",
