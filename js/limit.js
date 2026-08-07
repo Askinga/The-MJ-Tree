@@ -47,6 +47,7 @@ addLayer("limit", {
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
 	    if (hasUpgrade('tm', 11)) keep.push("upgrades");
+		if (hasUpgrade('tm', 11)) keep.push("challenges");
     
         // Stage 4, do the actual data resetautomate() {
         layerDataReset(this.layer, keep);
