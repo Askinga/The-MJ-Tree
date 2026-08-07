@@ -5,7 +5,11 @@ addLayer("tm", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+		tmpoints: new Decimal(0),
     }},
+	onPrestige(){
+	    player.tm.tmpoints = player.tm.tmpoints.add(1)
+	},
     color: "#ffffff",
     requires: new Decimal("eee100"), // Can be a function that takes requirement increases into account
     resource: "True Meta Runes", // Name of prestige currency
@@ -42,6 +46,15 @@ addLayer("tm", {
 				["infobox", "true meta reset"],
 			],
 		},
+		"QoL Tree": {
+			content: [
+				["display-text", function(){ return "You have " + format(player.tm.tmpoints) + " True Meta Points to spend"}],
+				"prestige-button",
+				"resource-display",
+				"blank",
+				"upgrades",
+			],
+		},
 	},
 	infoboxes: {
         "true meta reset": {
@@ -49,4 +62,14 @@ addLayer("tm", {
             body() { return "Congratulations, you officially beat Rune Tree! This layers resets EVERYTHING just like a hard reset, but you will gain a x10 multiplier to EVERY resource! You will also gain a True Meta Point, which you can spend to get QoL upgrades! It's worth it! (You will also keep the Auto Runes because well, the first layer is SO GRINDY!!!!!)" },
         },
     }, 
+	upgrades: {
+		11: {
+			title: "TM QoL 1",
+			description: "Keep Extreme Rune milestones and automate the entire Limit layer. (some can be toggled)",
+			cost: new Decimal(1),
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
+	},
 })
