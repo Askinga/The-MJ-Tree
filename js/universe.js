@@ -64,6 +64,7 @@ addLayer("uni", {
 		if (hasUpgrade('uni', 34)) mult = mult.times(10)
 		if (hasUpgrade('limit', 11)) mult = mult.times(10)
 		if (hasUpgrade('limit', 12)) mult = mult.times(200)
+		mult = mult.times(layers.tm.effect())
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -266,6 +267,7 @@ addLayer("uni", {
 	  let mult = new Decimal(1)
 	  if (hasUpgrade('uni', 25)) gain = gain.add(1)
 	  if (hasUpgrade('limit', 11)) mult = mult.times(10)
+	  mult = mult.times(layers.tm.effect())
 	  gain = gain.times(tmp.uni.Pb)
 	  gain = gain.times(mult)
 
