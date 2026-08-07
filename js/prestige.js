@@ -139,7 +139,7 @@ addLayer("p", {
 		    },
 	  },
 	  "Auto Runes": {
-		unlocked(){ return hasMilestone('s', 0) },
+		unlocked(){ return (hasMilestone('s', 0) || player.tm.unlocked) },
 		content: [
 			"main-display",
 			"prestige-button",
