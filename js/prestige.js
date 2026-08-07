@@ -607,10 +607,10 @@ addLayer("p", {
 	update(diff) {
 	    let ARC = new Decimal(2.5)
 
-		if (hasMilestone('s', 1)) ARC = ARC.sub(0.5)
-		if (hasMilestone('s', 3)) ARC = ARC.sub(0.5)
-		if (hasUpgrade('s', 15)) ARC = ARC.sub(0.5)
-		if (hasUpgrade('b', 11)) ARC = ARC.sub(1)
+		if (hasMilestone('s', 1) || player.tm.unlocked) ARC = ARC.sub(0.5)
+		if (hasMilestone('s', 3) || player.tm.unlocked) ARC = ARC.sub(0.5)
+		if (hasUpgrade('s', 15) || player.tm.unlocked) ARC = ARC.sub(0.5)
+		if (hasUpgrade('b', 11) || player.tm.unlocked) ARC = ARC.sub(1)
 		// In your update loop
 if (player.p.runeCooldown.gt(0)) {
     player.p.runeCooldown = player.p.runeCooldown.sub(diff); // diff = time since last tick
@@ -724,7 +724,7 @@ if (player.p.autoRC.gt(0) && hasMilestone('s', 0) && player.p.runeChoose.gt(0)) 
 		if (player.p.autoRC.lte(0)) {
 	player.p.autoRC = ARC
 				}
-		if (hasUpgrade('s', 15)) {
+		if (hasUpgrade('s', 15) || player.tm.unlocked) {
 			player.p.runeChoose = new Decimal(1)
 		}
 	},
