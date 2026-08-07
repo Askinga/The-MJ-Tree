@@ -37,6 +37,23 @@ addLayer("limit", {
 		if (hasUpgrade('water', 31)) p = p.times(100)
 		return p
 	},
+	doReset(limit) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[limit].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	    if (hasUpgrade('tm', 11)) keep.push("upgrades");
+    
+        // Stage 4, do the actual data resetautomate() {
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
     color: "#e841a0",
     autoPrestige(){ return player.limit.limitOff.eq(0) },
     requires(){
@@ -664,6 +681,23 @@ addLayer("limit", {
 		gen4: new Decimal(0),
 		powerg: new Decimal(0),
     }},
+	doReset(sl) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[sl].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	    if (hasUpgrade('tm', 11)) keep.push("upgrades");
+    
+        // Stage 4, do the actual data resetautomate() {
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
 	passiveGeneration(){
 		let p = new Decimal(0)
 		if (hasUpgrade('water', 31)) p = p.add(1)
