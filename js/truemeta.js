@@ -6,6 +6,7 @@ addLayer("tm", {
         unlocked: false,
 		points: new Decimal(0),
 		tmpoints: new Decimal(0),
+		lpow: new Decimal(0),
     }},
 	onPrestige(){
 	    player.tm.tmpoints = player.tm.tmpoints.add(1)
@@ -51,6 +52,7 @@ addLayer("tm", {
 				["display-text", function(){ return "You have " + format(player.tm.tmpoints) + " True Meta Points to spend"}],
 				"prestige-button",
 				"resource-display",
+				"clickables",
 				"blank",
 				"upgrades",
 			],
@@ -71,5 +73,19 @@ addLayer("tm", {
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
 		},
+	},
+	clickables: {
+    11: {
+		title: "Turn Auto Limit Power On",
+        canClick(){ return player.tm.lpow.eq(0) },
+		onClick(){ return player.tm.lpow = new Decimal(1) },
+		unlocked(){ return hasUpgrade('tm', 11) },
+    },
+	12: {
+		title: "Turn Auto Limit Power Off",
+        canClick(){ return player.tm.lpow.eq(1) },
+		onClick(){ return player.tm.lpow = new Decimal(0) },
+		unlocked(){ return hasUpgrade('tm', 11) },
+    },
 	},
 })
