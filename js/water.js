@@ -44,6 +44,7 @@ addLayer("water", {
 		if (hasUpgrade('water', 75)) mult = mult.times(3)
 		if (hasMilestone('bo', 2)) mult = mult.times(layers.senur.effect()) 
 		if (hasUpgrade('water', 85)) mult = mult.times(1000)
+		mult = mult.times(layers.tm.effect())
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -660,6 +661,7 @@ addLayer("water", {
 		if (hasUpgrade('water', 35)) gain = gain.add(1)
 		if (hasUpgrade('water', 41)) gain = gain.times(buyableEffect('water', 13))
 		if (hasUpgrade('water', 54)) gain = gain.times(10)
+		gain = gain.times(layers.tm.effect())
 		
         player.water.tankGain = gain
 		gain = gain.times(diff)
