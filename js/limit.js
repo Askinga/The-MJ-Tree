@@ -14,7 +14,15 @@ addLayer("limit", {
 		allo2: new Decimal(0),
 		allo3: new Decimal(0),
     }},
-	softcap(){ 
+	automate(){
+		if (hasUpgrade('tm', 11)) {
+		    if (canBuyBuyable("limit", 11)) setBuyableAmount("limit", 11, player.limit.points.max(2).div(2500).log(2).sub(1).root(1).floor().add(1))
+		}
+		if (player.tm.lpow.gte(1)) {
+			player.limit.power = new Decimal(player.limit.upgrades.length).add(tmp.limit.extra)
+		}
+	},
+ 	softcap(){ 
 		return new Decimal("e250") 
 	},
 	softcapPower(){
