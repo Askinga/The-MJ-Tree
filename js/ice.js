@@ -330,7 +330,7 @@ addLayer("ice", {
 				mult = mult.times(layers.tm.effect())
 		
 	if (hasUpgrade('tm', 22) && hasUpgrade('ice', 35)) {
-		player.ice.squareIce = player.ice.squareIce.add(mul.times(diff))
+		player.ice.squareIce = player.ice.squareIce.add(mult.times(diff))
 	}
 	if (player.points.gte(player.ice.totalpoints)) {
 	    player.ice.totalpoints = player.points
