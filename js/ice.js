@@ -323,11 +323,11 @@ addLayer("ice", {
     },
 	},
 	update(diff) {
-	let mul = new Decimal(1)
-				mul = mul.times(buyableEffect('ice', 11))
-				if (hasUpgrade('ice', 42)) mul = mul.times(upgradeEffect('ice', 42))
-				mul = mul.times(buyableEffect('water', 12))
-				mul = mul.times(layers.tm.effect())
+	let mult = new Decimal(1)
+				mult = mult.times(buyableEffect('ice', 11))
+				if (hasUpgrade('ice', 42)) mult = mult.times(upgradeEffect('ice', 42))
+				mult = mult.times(buyableEffect('water', 12))
+				mult = mult.times(layers.tm.effect())
 		
 	if (hasUpgrade('tm', 22) && hasUpgrade('ice', 35)) {
 		player.ice.squareIce = player.ice.squareIce.add(mul.times(diff))
