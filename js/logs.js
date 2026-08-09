@@ -440,6 +440,7 @@ addLayer("logs", {
 		let ire = new Decimal(player.logs.wood.add(1).log(10).div(50))
 		let mult = new Decimal(1)
 		mult = mult.times(tmp.limit.limitBoost)
+		mult = mult.times(layers.tm.effect())
 		if (hasUpgrade('logs', 32)) passive = passive.add(10)
 		if (hasUpgrade('su', 23)) ire = ire.times(5)
 		if (hasUpgrade('su', 23)) ire = ire.times(upgradeEffect('su', 23))
