@@ -36,10 +36,10 @@ addLayer("logs", {
 	doReset(resettingLayer) {
         let keep = [];
         keep.push("milestones")
-        if (layers[resettingLayer].row > this.row && !resettingLayer === 'tm') {
+        if (layers[resettingLayer].row > this.row && (!resettingLayer === 'tm' || hasUpgrade('tm', 31))) {
             layerDataReset("logs", keep);
         }
-		if (resettingLayer === 'tm') {
+		if (resettingLayer === 'tm' && !hasUpgrade('tm', 31)) {
 			layerDataReset("logs")
 		}
     },
