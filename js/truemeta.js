@@ -93,7 +93,7 @@ addLayer("tm", {
 		},
 		31: {
 			title: "TM QoL 4",
-			description: "Automate the entire Water layer.",
+			description: "Automate the entire Water layer and keep Log milestone 1.",
 			cost: new Decimal(2),
 			unlocked(){ return (hasUpgrade('tm', 21) && hasUpgrade('tm', 22)) },
 			currencyDisplayName: "True Meta Points",
