@@ -46,7 +46,6 @@ addLayer("limit", {
         
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
-	    if (hasUpgrade('tm', 11)) keep.push("upgrades");
 		if (hasUpgrade('tm', 11)) keep.push("challenges");
     
         // Stage 4, do the actual data resetautomate() {
@@ -55,6 +54,7 @@ addLayer("limit", {
         // Stage 5, add back in the specific subfeatures you saved earlier
         player[this.layer].upgrades.push(...keptUpgrades);
     },
+	autoUpgrade(){ return hasUpgrade('tm', 11) },
     color: "#e841a0",
     autoPrestige(){ return player.limit.limitOff.eq(0) },
     requires(){
@@ -691,7 +691,6 @@ addLayer("limit", {
         
         // Stage 3, track which main features you want to keep - milestones
         let keep = [];
-	    if (hasUpgrade('tm', 11)) keep.push("upgrades");
     
         // Stage 4, do the actual data resetautomate() {
         layerDataReset(this.layer, keep);
@@ -699,6 +698,7 @@ addLayer("limit", {
         // Stage 5, add back in the specific subfeatures you saved earlier
         player[this.layer].upgrades.push(...keptUpgrades);
     },
+	autoUpgrade(){ return hasUpgrade('tm', 11) },
 	passiveGeneration(){
 		let p = new Decimal(0)
 		if (hasUpgrade('water', 31)) p = p.add(1)
