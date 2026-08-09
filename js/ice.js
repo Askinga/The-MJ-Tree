@@ -25,6 +25,12 @@ addLayer("ice", {
         // Stage 5, add back in the specific subfeatures you saved earlier
         player[this.layer].upgrades.push(...keptUpgrades);
     },
+	automate(){
+		if (hasUpgrade('tm', 22)) {
+		    if (canBuyBuyable("ice", 11)) setBuyableAmount("ice", 11, player.ice.squraeIce.max(10).log(1.2).sub(2).root(1).floor().add(1))
+			if (canBuyBuyable("ice", 12)) setBuyableAmount("ice", 12, player.ice.squareIce.max(1000000).log(1.5).sub(1).root(1).floor().add(1))
+		}
+	},
 	passiveGeneration(){
 		let p = new Decimal(0)
 		if (hasUpgrade('water', 12) || hasUpgrade('tm', 22)) p = p.add(1)
