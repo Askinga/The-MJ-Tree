@@ -22,6 +22,25 @@ addLayer("water", {
 	softcapPower(){
         return new Decimal(0.375)
 	},
+	automate(){
+		if (hasUpgrade('tm', 31)) {
+		    if (canBuyBuyable("water", 11)) setBuyableAmount("water", 11, player.water.points.max(10000).log(10).sub(2).root(1).floor().add(1))
+			if (canBuyBuyable("water", 12)) setBuyableAmount("water", 12, player.water.points.max(100000000).log(6).sub(1).root(1).floor().add(1))
+			if (canBuyBuyable("water", 13)) setBuyableAmount("water", 13, player.water.tankWater.max(10).log(1.5).sub(1).root(1).floor().add(1))
+			if (canBuyBuyable("water", 14)) buyBuyable("water", 14)
+			if (canBuyBuyable("water", 21)) setBuyableAmount("water", 21, player.water.points.max("e10").log(2).sub(1).root(1).floor().add(1))
+			if (canBuyBuyable("water", 22)) setBuyableAmount("water", 22, player.water.points.max("e10").log(2).sub(1).root(1).floor().add(1))
+			if (canBuyBuyable("water", 23)) setBuyableAmount("water", 23, player.water.points.max("e10").log(2).sub(1).root(1).floor().add(1))
+			if (canBuyBuyable("water", 31)) setBuyableAmount("water", 31, player.water.points.max("e140").log(2).sub(1).root(1.25).floor().add(1))
+			if (canBuyBuyable("water", 101)) buyBuyable("water", 101)
+		}
+	},
+	passiveGeneration(){
+		let p = new Decimal(0)
+		if (hasUpgrade('tm', 31)) p = p.add(1)
+		return p
+	},
+	autoUpgrade(){ return hasUpgrade('tm', 31) },
     color: "#4053ff",
     requires: new Decimal("e15"), // Can be a function that takes requirement increases into account
     resource: "water", // Name of prestige currency
