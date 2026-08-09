@@ -67,7 +67,7 @@ addLayer("tm", {
 	upgrades: {
 		11: {
 			title: "TM QoL 1",
-			description: "Keep Extreme Rune milestones and automate the entire Limit layer. (some can be toggled)",
+			description: "Keep Extreme Rune milestones, keep Universal Rune Milestone 2s effect and automate the entire Limit layer. (some can be toggled)",
 			cost: new Decimal(1),
 			currencyDisplayName: "True Meta Points",
 			currencyInternalName: "tmpoints",
