@@ -8,11 +8,29 @@ addLayer("ice", {
 		squareIce: new Decimal(0),
 		totalpoints: new Decimal(0),
     }},
+	doReset(ice) {
+        // Stage 1, almost always needed, makes resetting this layer not delete your progress
+        if (layers[ice].row <= this.row) return;
+    
+        // Stage 2, track which specific subfeatures you want to keep, e.g. Upgrade 21, Milestones
+        let keptUpgrades = [];
+        
+        // Stage 3, track which main features you want to keep - milestones
+        let keep = [];
+	    
+    
+        // Stage 4, do the actual data resetautomate() {
+        layerDataReset(this.layer, keep);
+    
+        // Stage 5, add back in the specific subfeatures you saved earlier
+        player[this.layer].upgrades.push(...keptUpgrades);
+    },
 	passiveGeneration(){
 		let p = new Decimal(0)
-		if (hasUpgrade('water', 12)) p = p.add(1)
+		if (hasUpgrade('water', 12) || hasUpgrade('tm', 22)) p = p.add(1)
 		return p
 	},
+	autoUpgrade(){ return hasUpgrade('tm', 22) },
     color: "#7debff",
     requires: new Decimal("eee9"), // Can be a function that takes requirement increases into account
     resource: "ice", // Name of prestige currency
@@ -231,7 +249,7 @@ addLayer("ice", {
 		},
 		45: {
 			title: "melt the ice",
-			description: "Unlock the final layer before TRUE META",
+			description: "Unlock the final layer before ???? ????",
 			cost: new Decimal("1e15"),
 	    	unlocked(){ return hasUpgrade('ice', 44) },
 		},
@@ -299,6 +317,15 @@ addLayer("ice", {
     },
 	},
 	update(diff) {
+	let mul = new Decimal(1)
+				mul = mul.times(buyableEffect('ice', 11))
+				if (hasUpgrade('ice', 42)) mul = mul.times(upgradeEffect('ice', 42))
+				mul = mul.times(buyableEffect('water', 12))
+				mul = mul.times(layers.tm.effect())
+		
+	if (hasUpgrade('tm', 22) && hasUpgrade('ice', 35)) {
+		player.ice.squareIce = player.ice.squareIce.add(mul.times(diff))
+	}
 	if (player.points.gte(player.ice.totalpoints)) {
 	    player.ice.totalpoints = player.points
 	}},
