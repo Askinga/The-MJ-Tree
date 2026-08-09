@@ -73,6 +73,24 @@ addLayer("tm", {
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
 		},
+		21: {
+			title: "TM QoL 2",
+			description: "Keep Supreme Rune milestones",
+			cost: new Decimal(2),
+			unlocked(){ return hasUpgrade('tm', 11) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
+		22: {
+			title: "TM QoL 3",
+			description: "Automate the entire Ice layer.",
+			cost: new Decimal(1),
+			unlocked(){ return hasUpgrade('tm', 11) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
