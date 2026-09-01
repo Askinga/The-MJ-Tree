@@ -24,7 +24,7 @@ addLayer("A", {
     hotkeys: [
         {key: "a", description: "A: Reset for A", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true}
+    layerShown(){return true},
 	effect(){ return player.A.points.add(1).pow(0.5) },
 	effectDescription(){ return "boost points by x"+format(layers.A.effect()) },
 })
