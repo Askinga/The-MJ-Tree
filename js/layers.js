@@ -27,4 +27,11 @@ addLayer("A", {
     layerShown(){return true},
 	effect(){ return player.A.points.add(1).pow(0.5) },
 	effectDescription(){ return "boost points by x"+format(layers.A.effect()) },
+	upgrades: {
+		11: {
+			title: "A1",
+			description: "2x points.",
+			cost: new Decimal(3),
+		},
+	},
 })
