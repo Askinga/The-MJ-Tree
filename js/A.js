@@ -29,7 +29,7 @@ addLayer("A", {
     layerShown(){return true},
 	effect(){
 		let pow = new Decimal(0.5)
-		if (hasUpgrade('A', 14)) pow = pow.add(0.1)
+		if(hasUpgrade('A', 14)) pow = pow.add(0.1)
 		return player.A.points.add(1).pow(pow) 
 	},
 	effectDescription(){ return "boost points by x"+format(layers.A.effect()) },
@@ -53,17 +53,27 @@ addLayer("A", {
 		},
 		14: {
 			title: "A4",
-			description: "A eff exponent +0.1.",
+			description: "A eff exp +0.1.",
 			cost: new Decimal(600),
 			unlocked(){ return hasUpgrade('A', 13) },
 		},
 		15: {
 			title: "A5",
-			description: "lg(points) mults points.",
+			description: "lg(points) mults point/s.",
 			cost: new Decimal(1000),
 			unlocked(){ return hasUpgrade('A', 14) },
-			effect(){ return player.points.add(1).log10().add(1) },
+			effect(){
+				let pow = new Decimal(1)
+		        if(hasUpgrade('A', 21)) pow = pow.times(1.15)
+				return player.points.add(1).log10().add(1).pow(pow)
+			},
 			effectDisplay(){ return format(upgradeEffect('A', 15))+"x" },
+		},
+		21: {
+			title: "A6",
+			description: "A5 ^1.15.",
+			cost: new Decimal(1500),
+			unlocked(){ return hasUpgrade('A', 15) },
 		},
 	},
 })
