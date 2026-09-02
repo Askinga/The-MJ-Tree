@@ -27,7 +27,11 @@ addLayer("A", {
         {key: "a", description: "A: Reset for A", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
-	effect(){ return player.A.points.add(1).pow(0.5) },
+	effect(){
+		let pow = new Decimal(0.5)
+		if (hasUpgrade('A', 14)) pow = pow.add(0.1)
+		return player.A.points.add(1).pow(pow) 
+	},
 	effectDescription(){ return "boost points by x"+format(layers.A.effect()) },
 	upgrades: {
 		11: {
@@ -46,6 +50,12 @@ addLayer("A", {
 			description: "2x points and A.",
 			cost: new Decimal(60),
 			unlocked(){ return hasUpgrade('A', 12) },
+		},
+		14: {
+			title: "A4",
+			description: "A eff exponent +0.1.",
+			cost: new Decimal(600),
+			unlocked(){ return hasUpgrade('A', 13) },
 		},
 	},
 })
