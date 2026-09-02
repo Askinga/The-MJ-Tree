@@ -57,5 +57,13 @@ addLayer("A", {
 			cost: new Decimal(600),
 			unlocked(){ return hasUpgrade('A', 13) },
 		},
+		15: {
+			title: "A5",
+			description: "lg(points) mults points.",
+			cost: new Decimal(1000),
+			unlocked(){ return hasUpgrade('A', 14) },
+			effect(){ return player.points.add(1).log10().add(1) },
+			effectDisplay(){ return format(upgradeEffect('A', 15))+"x" },
+		},
 	},
 })
