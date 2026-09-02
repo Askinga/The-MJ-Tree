@@ -16,6 +16,7 @@ addLayer("A", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if(hasUpgrade('A', 12)) mult = mult.times(2)
+		if(hasUpgrade('A', 13)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -38,6 +39,13 @@ addLayer("A", {
 			title: "A2",
 			description: "2x A.",
 			cost: new Decimal(20),
+			unlocked(){ return hasUpgrade('A', 11) },
+		},
+		13: {
+			title: "A3",
+			description: "2x points and A.",
+			cost: new Decimal(60),
+			unlocked(){ return hasUpgrade('A', 12) },
 		},
 	},
 })
