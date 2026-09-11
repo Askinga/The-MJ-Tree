@@ -18,7 +18,7 @@ addLayer("dr", {
     },
 	passiveGeneration() {
 		let p = new Decimal(0)
-		if ((player.points.gt(0) && hasMilestone('bo', 1)) && inChallenge('universes', 11)) p = p.add(1)
+		if ((player.points.gt(0) && hasMilestone('bo', 1)) && (inChallenge('universes', 11) && !player.dr.points.gte("2^1024"))) p = p.add(1)
 		return p
 	},
     color: "#3acb02",
@@ -117,4 +117,8 @@ addLayer("dr", {
 			unlocked(){ return hasUpgrade('water', 85) },
 		},
 	},
+	update(diff) {
+		if (player.dr.points.gte("2^1024")) {
+			player.dr.points = new Decimal("2^1024")
+		},
 })
