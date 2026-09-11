@@ -69,11 +69,11 @@ addLayer("tm", {
 		},
 		"True Meta Power": {
 			content: [
-				["display-text", function(){ return "You have " + format(player.tm.tmPow) + " True Meta Power (" + format(player.tm.tmPowGain) + "/sec), which is boosting True Meta Runes by x" + format(tmp.tm.tmPow)}],
+				["display-text", function(){ return "You have " + format(player.tm.tmPow) + " True Meta Power (" + format(player.tm.tmPowGain) + "/sec), which is boosting True Meta Runes by x" + format(tmp.tm.tmPow) }],
 				"blank",
 				"resource-display",
 				"blank",
-				["display-text", function(){ return "Every True Meta Rune you get boosts True Meta Power by x1.1! Currently: x" + format
+				["display-text", function(){ return "Every True Meta Rune you get boosts True Meta Power by x1.10! Currently: x" + format(tmp.tm.tmPowBoost) }],
 			],
 		},
 	},
