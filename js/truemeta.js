@@ -68,6 +68,7 @@ addLayer("tm", {
 			],
 		},
 		"True Meta Power": {
+			unlocked() { return hasUpgrade('tm', 32) },
 			content: [
 				["display-text", function(){ return "You have " + format(player.tm.tmPow) + " True Meta Power (" + format(player.tm.tmPowGain) + "/sec), which is boosting True Meta Runes by x" + format(tmp.tm.tmPow) }],
 				"blank",
