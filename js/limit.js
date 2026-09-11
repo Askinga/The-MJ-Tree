@@ -13,6 +13,7 @@ addLayer("limit", {
 		allo1: new Decimal(0),
 		allo2: new Decimal(0),
 		allo3: new Decimal(0),
+		minL: new Decimal(0),
     }},
 	automate(){
 		if (hasUpgrade('tm', 11)) {
@@ -558,6 +559,12 @@ addLayer("limit", {
 			player.limit.allo1 = new Decimal(0)
 			player.limit.allo2 = new Decimal(0)
 			player.limit.allo3 = new Decimal(0)
+		}
+		if (hasUpgrade('tm', 32)) {
+			player.limit.minL = new Decimal(10)
+		}
+		if (player.limit.l.lt(player.limit.minL)) {
+			player.limit.l = player.limit.minL
 		}
 	},
 	bars: {
