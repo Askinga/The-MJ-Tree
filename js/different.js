@@ -120,5 +120,6 @@ addLayer("dr", {
 	update(diff) {
 		if (player.dr.points.gte("2^1024")) {
 			player.dr.points = new Decimal("2^1024")
-		},
+		}
+	},
 })
