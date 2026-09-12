@@ -13,6 +13,8 @@ addLayer("tm", {
 		tExpo: new Decimal(0),
 		tExpoGain: new Decimal(0),
 		autoTM: new Decimal(0),
+		Ts: new Decimal(0),
+		TsGain: new Decimal(0),
     }},
 	onPrestige(){
 	    player.tm.tmpoints = player.tm.tmpoints.add(1)
@@ -42,6 +44,7 @@ addLayer("tm", {
 	tmPowBase(){
 		let add = new Decimal(0)
 		if (hasUpgrade('tm', 52)) add = add.add(0.01)
+		add = add.add(tmp.tm.Ts)
 		return new Decimal(1.1).add(add)
 	},
 	tExpo() {
@@ -51,6 +54,12 @@ addLayer("tm", {
 		let expo = new Decimal(1)
 		if (hasUpgrade('tm', 62)) expo = expo.add(0.25)
 		return player.tm.tmPow.add(1).log10().add(1).pow(expo)
+	},
+	Ts(){
+		return player.tm.Ts.add(1).log10().add(1).pow(0.2).div(100).add(1)
+	},
+	TsBase(){
+		return player.tm.tmPow.add(1).log10().pow(0.6).div(1000000)
 	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -109,6 +118,18 @@ addLayer("tm", {
 				"resource-display",
 				"blank",
 				["display-text", function(){ return "True Exponential gain is based on your True Meta Power!" }],
+			],
+		},
+		"Ts": {
+			unlocked() { return hasUpgrade('tm', 71) },
+			content: [
+				"main-display",
+				"prestige-button",
+				["display-text", function(){ return "You have " + format(player.tm.Ts) + " Ts (" + format(player.tm.TsGain) + "/sec), which is boosting True Meta Power base by +" + format(tmp.tm.Ts) }],
+				"blank",
+				"resource-display",
+				"blank",
+				["display-text", function(){ return "Ts gain is also based on your True Meta Power." }],
 			],
 		},
 	},
@@ -226,6 +247,15 @@ addLayer("tm", {
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
 		},
+		71: {
+			title: "TM Features 2",
+			description: "Unlock Ts.",
+			cost: new Decimal(300),
+			unlocked(){ return (hasUpgrade('tm', 62)) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -256,16 +286,22 @@ addLayer("tm", {
 	update(diff) {
 		let gain = new Decimal(0)
 		let expoGain = new Decimal(0)
+		let Ts = new Decimal(0)
 		if (hasUpgrade('tm', 32)) gain = gain.add(1)
 		gain = gain.times(tmp.tm.tmPowBoost)
 		if (hasUpgrade('tm', 51)) expoGain = expoGain.add(1)
 		expoGain = expoGain.times(tmp.tm.tExpoBase)
+		if (hasUpgrade('tm', 71)) Ts = Ts.add(1)
+		Ts = Ts.times(TsBase)
 
 		player.tm.tmPowGain = gain
 		player.tm.tExpoGain = expoGain
+		player.tm.TsGain = Ts
 		gain = gain.times(diff)
 		expoGain = expoGain.times(diff)
+		Ts = Ts.times(diff)
 		player.tm.tmPow = player.tm.tmPow.add(gain)
 		player.tm.tExpo = player.tm.tExpo.add(expoGain)
+		player.tm.Ts = player.tm.Ts.add(Ts)
 	},
 })
