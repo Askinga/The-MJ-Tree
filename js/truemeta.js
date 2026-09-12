@@ -292,7 +292,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 51)) expoGain = expoGain.add(1)
 		expoGain = expoGain.times(tmp.tm.tExpoBase)
 		if (hasUpgrade('tm', 71)) Ts = Ts.add(1)
-		Ts = Ts.times(TsBase)
+		Ts = Ts.times(tmp.tm.TsBase)
 
 		player.tm.tmPowGain = gain
 		player.tm.tExpoGain = expoGain
