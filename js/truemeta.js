@@ -61,6 +61,9 @@ addLayer("tm", {
 	TsBase(){
 		return player.tm.tmPow.add(1).log10().pow(0.6).div(1000000)
 	},
+	Tsb1Base(){
+		return player.tm.Ts.add(1).log10().pow(1.1).add(1)
+	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "T", description: "Shift+T: Reset for True Meta Runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
@@ -128,6 +131,7 @@ addLayer("tm", {
 				["display-text", function(){ return "You have " + format(player.tm.Ts) + " Ts (" + format(player.tm.TsGain) + "/sec), which is boosting True Meta Power base by +" + format(tmp.tm.Ts) }],
 				"blank",
 				"resource-display",
+				"buyables",
 				"blank",
 				["display-text", function(){ return "Ts gain is also based on your True Meta Power." }],
 			],
@@ -293,6 +297,7 @@ addLayer("tm", {
 		expoGain = expoGain.times(tmp.tm.tExpoBase)
 		if (hasUpgrade('tm', 71)) Ts = Ts.add(1)
 		Ts = Ts.times(tmp.tm.TsBase)
+		Ts = Ts.times(buyableEffect('tm', 11))
 
 		player.tm.tmPowGain = gain
 		player.tm.tExpoGain = expoGain
@@ -303,5 +308,24 @@ addLayer("tm", {
 		player.tm.tmPow = player.tm.tmPow.add(gain)
 		player.tm.tExpo = player.tm.tExpo.add(expoGain)
 		player.tm.Ts = player.tm.Ts.add(Ts)
+	},
+	buyables: {
+	11: {
+		unlocked(){ return hasUpgrade('tm', 71) },
+		title: "Tsb1",
+        cost(x) { return new Decimal(1.5).add(x.div(100)).pow(x.pow(1.15)).times(0.01) },
+        display() { return "Ts gain x" + format(tmp.tm.Tsb1Base) + ".<br>Cost: " + format(this.cost()) + " Ts<br>Bought: " + format(getBuyableAmount('tm', 11)) + "<br>Effect: x" + format(buyableEffect('tm', 11)) + " Ts" },
+        canAfford() { return player.tm.Ts.gte(this.cost()) },
+        buy() {
+            player.tm.Ts = player.tm.Ts.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(tmp.tm.Tsb1Base)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
+	},
 	},
 })
