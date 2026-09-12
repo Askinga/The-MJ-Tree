@@ -48,7 +48,9 @@ addLayer("tm", {
 		return player.tm.tExpo.add(1).log10().pow(0.5).div(50).add(1)
 	},
 	tExpoBase(){
-		return player.tm.tmPow.add(1).log10().add(1)
+		let expo = new Decimal(1)
+		if (hasUpgrade('tm', 62)) expo = expo.add(0.25)
+		return player.tm.tmPow.add(1).log10().add(1).pow(expo)
 	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -210,6 +212,15 @@ addLayer("tm", {
 			title: "TM QoL 8",
 			description: "Unlock Auto True Meta Runes.",
 			cost: new Decimal(100),
+			unlocked(){ return (hasUpgrade('tm', 52)) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
+		62: {
+			title: "TM Upg 2",
+			description: "True Exponential base +^0.25.",
+			cost: new Decimal(200),
 			unlocked(){ return (hasUpgrade('tm', 52)) },
 			currencyDisplayName: "True Meta Points",
 			currencyInternalName: "tmpoints",
