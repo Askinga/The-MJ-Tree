@@ -74,6 +74,7 @@ addLayer("tm", {
 		"QoL Tree": {
 			content: [
 				"main-display",
+				"prestige-button",
 				["display-text", function(){ return "You have " + format(player.tm.tmpoints) + " True Meta Points to spend"}],
 				"blank",
 				"resource-display",
@@ -86,6 +87,7 @@ addLayer("tm", {
 			unlocked() { return hasUpgrade('tm', 32) },
 			content: [
 				"main-display",
+				"prestige-button",
 				["display-text", function(){ return "You have " + format(player.tm.tmPow) + " True Meta Power (" + format(player.tm.tmPowGain) + "/sec), which is boosting True Meta Runes by x" + format(tmp.tm.tmPow) }],
 				"blank",
 				"resource-display",
@@ -97,6 +99,7 @@ addLayer("tm", {
 			unlocked() { return hasUpgrade('tm', 51) },
 			content: [
 				"main-display",
+				"prestige-button",
 				["display-text", function(){ return "You have " + format(player.tm.tExpo) + " True Exponential (" + format(player.tm.tExpoGain) + "/sec), which is boosting True Meta Rune effect by ^" + format(tmp.tm.tExpo) }],
 				"blank",
 				"resource-display",
