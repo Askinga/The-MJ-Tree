@@ -56,7 +56,7 @@ addLayer("tm", {
 		return player.tm.tmPow.add(1).log10().add(1).pow(expo)
 	},
 	Ts(){
-		return player.tm.Ts.add(1).log10().add(1).pow(0.2).div(100).add(1)
+		return player.tm.Ts.add(1).log10().pow(0.2).div(100)
 	},
 	TsBase(){
 		return player.tm.tmPow.add(1).log10().pow(0.6).div(1000000)
