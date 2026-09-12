@@ -266,7 +266,7 @@ addLayer("pr", {
 		if (hasUpgrade('en', 102)) {
 			player.pr.points = player.points.log10().div("1e348").div(new Decimal(10).pow(player.pr.points.pow(tmp.pr.exponent))).add(1)
 		}
-		if (hasUpgrade('water', 43)) {
+		if (hasUpgrade('water', 43) || hasUpgrade('tm', 42)) {
 			player.pr.points = player.pr.soft
 		}
 	},
