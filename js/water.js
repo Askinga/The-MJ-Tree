@@ -107,7 +107,7 @@ addLayer("water", {
 	},
 	ocean2(){
 		if (getBuyableAmount('water', 101).gte(1)) {
-			return player.water.total.add(1).log10().pow(0.4).div(67).add(1)
+			return player.water.total.add(1).log10().pow(0.4).div(67).add(1).max(1.5)
 		} else {
 			return new Decimal(1)
 		}
@@ -121,7 +121,7 @@ addLayer("water", {
 	},
 	ocean4(){
 		if (getBuyableAmount('water', 101).gte(3)) {
-			return player.water.total.add(1).log10().pow(0.35).div(100).add(1)
+			return player.water.total.add(1).log10().pow(0.35).div(100).add(1).max(1.5)
 		} else {
 			return new Decimal(1)
 		}
@@ -583,12 +583,13 @@ addLayer("water", {
 			let expo = new Decimal(1)
 			return base1.pow(Decimal.pow(base2, expo))
 		},
+		purchaseLimit: 30
 	},
 	21: {
 		unlocked(){ return hasUpgrade('water', 35) },
 		title: "Tank X",
         cost(x) { return new Decimal(2).pow(x).times("e10") },
-        display() { return "Add 1 to Tank X per purchase<br>Cost: " + format(this.cost()) + " Water<br>Bought: " + format(getBuyableAmount('water', 21)) + "<br>Effect: +" + format(buyableEffect('water', 21)) + " Tank X" },
+        display() { return "Add 1 to Tank X per purchase<br>Cost: " + format(this.cost()) + " Water<br>Bought: " + format(getBuyableAmount('water', 21)) + "/30<br>Effect: +" + format(buyableEffect('water', 21)) + " Tank X" },
         canAfford() { return player.water.points.gte(this.cost()) },
         buy() {
             player.water.points = player.water.points.sub(this.cost())
