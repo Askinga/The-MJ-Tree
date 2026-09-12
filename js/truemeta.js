@@ -62,7 +62,7 @@ addLayer("tm", {
 		return player.tm.tmPow.add(1).log10().pow(0.6).div(1000000)
 	},
 	Tsb1Base(){
-		return player.tm.Ts.add(1).log10().pow(1.1).add(1)
+		return player.tm.Ts.add(1).log10().pow(0.65).add(1)
 	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
