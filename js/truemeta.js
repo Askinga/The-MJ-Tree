@@ -129,6 +129,15 @@ addLayer("tm", {
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
 		},
+		41: {
+			title: "TM QoL 5",
+			description: "Start with 150 Limit Resets.",
+			cost: new Decimal(5),
+			unlocked(){ return (hasUpgrade('tm', 31) && hasUpgrade('tm', 32)) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
