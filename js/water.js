@@ -106,8 +106,10 @@ addLayer("water", {
 		return player.water.total.add(1).log10().pow(0.5).div(50).times(add)
 	},
 	ocean2(){
-		if (getBuyableAmount('water', 101).gte(1)) {
-			return player.water.total.add(1).max(1.5).log10().pow(0.4).div(67).add(1)
+		if (getBuyableAmount('water', 101).gte(1) && !player.water.total.add(1).log10().pow(0.4).div(67).add(1).gte(1.5)) {
+			return player.water.total.add(1).log10().pow(0.4).div(67).add(1)
+		} else if (player.water.total.add(1).log10().pow(0.4).div(67).add(1).gte(1.5)) {
+			return new Decimal(1.5)
 		} else {
 			return new Decimal(1)
 		}
@@ -120,8 +122,10 @@ addLayer("water", {
 		}
 	},
 	ocean4(){
-		if (getBuyableAmount('water', 101).gte(3)) {
+		if (getBuyableAmount('water', 101).gte(3) && !player.water.total.add(1).max(1.5).log10().pow(0.35).div(100).add(1).gte(1.5)) {
 			return player.water.total.add(1).max(1.5).log10().pow(0.35).div(100).add(1)
+		} else if (player.water.total.add(1).max(1.5).log10().pow(0.35).div(100).add(1).gte(1.5)) {
+			return new Decimal(1.5)
 		} else {
 			return new Decimal(1)
 		}
