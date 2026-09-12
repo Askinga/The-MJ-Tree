@@ -12,10 +12,12 @@ addLayer("tm", {
 		total: new Decimal(0),
 		tExpo: new Decimal(0),
 		tExpoGain: new Decimal(0),
+		autoTM: new Decimal(0),
     }},
 	onPrestige(){
 	    player.tm.tmpoints = player.tm.tmpoints.add(1)
 	},
+	autoPrestige(){ return player.tm.autoTM.eq(1) },
     color: "#ffffff",
     requires: new Decimal("eee100"), // Can be a function that takes requirement increases into account
     resource: "True Meta Runes", // Name of prestige currency
@@ -204,6 +206,15 @@ addLayer("tm", {
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
 		},
+		61: {
+			title: "TM QoL 8",
+			description: "Unlock Auto True Meta Runes.",
+			cost: new Decimal(100),
+			unlocked(){ return (hasUpgrade('tm', 52)) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -217,6 +228,18 @@ addLayer("tm", {
         canClick(){ return player.tm.lpow.eq(1) },
 		onClick(){ return player.tm.lpow = new Decimal(0) },
 		unlocked(){ return hasUpgrade('tm', 11) },
+    },
+	21: {
+		title: "Turn Auto True Meta On",
+        canClick(){ return player.tm.autoTM.eq(0) },
+		onClick(){ return player.tm.autoTM = new Decimal(1) },
+		unlocked(){ return hasUpgrade('tm', 61) },
+    },
+	22: {
+		title: "Turn Auto True Meta Off",
+        canClick(){ return player.tm.autoTM.eq(1) },
+		onClick(){ return player.tm.autoTM = new Decimal(0) },
+		unlocked(){ return hasUpgrade('tm', 61) },
     },
 	},
 	update(diff) {
