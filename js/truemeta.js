@@ -138,6 +138,15 @@ addLayer("tm", {
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
 		},
+		42: {
+			title: "TM QoL 6",
+			description: "Power Rune automation is kept, bux max Strength Runes.",
+			cost: new Decimal(5),
+			unlocked(){ return (hasUpgrade('tm', 31) && hasUpgrade('tm', 32)) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
