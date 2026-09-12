@@ -34,7 +34,7 @@ addLayer("limit", {
 	},
 	passiveGeneration(){
 		let p = new Decimal(0)
-		if (hasUpgrade('sl', 22)) p = p.add(0.01)
+		if (hasUpgrade('sl', 22) || hasUpgrade('tm', 43)) p = p.add(0.01)
 		if (hasUpgrade('water', 31)) p = p.times(100)
 		return p
 	},
@@ -569,6 +569,9 @@ addLayer("limit", {
 		if (player.limit.l.lt(player.limit.minL)) {
 			player.limit.l = player.limit.minL
 		}
+		if (hasUpgrade('tm', 43)) {
+			player.limit.limitOff = new Decimal(1)
+		},
 	},
 	bars: {
     ao1: {
@@ -711,7 +714,7 @@ addLayer("limit", {
 	autoUpgrade(){ return hasUpgrade('tm', 11) },
 	passiveGeneration(){
 		let p = new Decimal(0)
-		if (hasUpgrade('water', 31)) p = p.add(1)
+		if (hasUpgrade('water', 31) || hasUpgrade('tm', 43)) p = p.add(1)
 		return p
 	},
 	onPrestige(){
