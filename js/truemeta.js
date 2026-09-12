@@ -260,6 +260,15 @@ addLayer("tm", {
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
 		},
+		72: {
+			title: "TM Upg 3",
+			description: "Ts gain x5.",
+			cost: new Decimal(200),
+			unlocked(){ return (hasUpgrade('tm', 71)) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -298,6 +307,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 71)) Ts = Ts.add(1)
 		Ts = Ts.times(tmp.tm.TsBase)
 		Ts = Ts.times(buyableEffect('tm', 11))
+		if (hasUpgrade('tm', 72)) Ts = Ts.times(5)
 
 		player.tm.tmPowGain = gain
 		player.tm.tExpoGain = expoGain
