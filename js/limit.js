@@ -571,7 +571,7 @@ addLayer("limit", {
 		}
 		if (hasUpgrade('tm', 43)) {
 			player.limit.limitOff = new Decimal(1)
-		},
+		}
 	},
 	bars: {
     ao1: {
