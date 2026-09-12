@@ -563,6 +563,9 @@ addLayer("limit", {
 		if (hasUpgrade('tm', 32)) {
 			player.limit.minL = new Decimal(10)
 		}
+		if (hasUpgrade('tm', 41)) {
+			player.limit.minL = new Decimal(150)
+		}
 		if (player.limit.l.lt(player.limit.minL)) {
 			player.limit.l = player.limit.minL
 		}
