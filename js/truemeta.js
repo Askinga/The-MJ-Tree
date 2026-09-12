@@ -30,7 +30,7 @@ addLayer("tm", {
         return new Decimal(1)
     },
 	tmPow() {
-		return player.tm.tmPow.add(1).log10().add(1).pow(0.4)
+		return player.tm.tmPow.add(1).log10().add(1).pow(0.6)
 	},
 	tmPowBoost(){
 		return new Decimal(1.1).pow(player.tm.total)
