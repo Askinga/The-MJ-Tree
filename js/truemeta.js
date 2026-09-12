@@ -323,7 +323,7 @@ addLayer("tm", {
 	11: {
 		unlocked(){ return hasUpgrade('tm', 71) },
 		title: "Tsb1",
-        cost(x) { return new Decimal(1.5).add(x.div(100)).pow(x.pow(1.15)).times(0.01) },
+        cost(x) { return new Decimal(1.5).add(x.div(7)).pow(x.pow(1.15)).times(0.01) },
         display() { return "Ts gain x" + format(tmp.tm.Tsb1Base) + ".<br>Cost: " + format(this.cost()) + " Ts<br>Bought: " + format(getBuyableAmount('tm', 11)) + "<br>Effect: x" + format(buyableEffect('tm', 11)) + " Ts" },
         canAfford() { return player.tm.Ts.gte(this.cost()) },
         buy() {
