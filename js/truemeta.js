@@ -35,7 +35,12 @@ addLayer("tm", {
 		return player.tm.tmPow.add(1).log10().add(1).pow(0.6)
 	},
 	tmPowBoost(){
-		return new Decimal(1.1).pow(player.tm.total)
+		return new Decimal(tmp.tm.tmPowBase).pow(player.tm.total)
+	},
+	tmPowBase(){
+		let add = new Decimal(0)
+		if (hasUpgrade('tm', 52)) add = add.add(0.01)
+		return new Decimal(1.1).add(add)
 	},
 	tExpo() {
 		return player.tm.tExpo.add(1).log10().pow(0.5).div(50).add(1)
@@ -85,7 +90,7 @@ addLayer("tm", {
 				"blank",
 				"resource-display",
 				"blank",
-				["display-text", function(){ return "Every True Meta Rune you get boosts True Meta Power by x1.10! Currently: x" + format(tmp.tm.tmPowBoost) }],
+				["display-text", function(){ return "Every True Meta Rune you get boosts True Meta Power by x" + format(tmp.tm.tmPowBase) + "! Currently: x" + format(tmp.tm.tmPowBoost) }],
 			],
 		},
 		"True Exponential": {
@@ -183,6 +188,15 @@ addLayer("tm", {
 			description: "Unlock True Exponential.",
 			cost: new Decimal(30),
 			unlocked(){ return (hasUpgrade('tm', 42)) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
+		52: {
+			title: "TM Upg 1",
+			description: "True Meta Power base +0.01.",
+			cost: new Decimal(50),
+			unlocked(){ return (hasUpgrade('tm', 51)) },
 			currencyDisplayName: "True Meta Points",
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
