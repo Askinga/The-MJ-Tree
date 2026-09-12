@@ -10,6 +10,8 @@ addLayer("tm", {
 		tmPow: new Decimal(0),
 		tmPowGain: new Decimal(0),
 		total: new Decimal(0),
+		tExpo: new Decimal(0),
+		tExpoGain: new Decimal(0),
     }},
 	onPrestige(){
 	    player.tm.tmpoints = player.tm.tmpoints.add(1)
@@ -35,6 +37,12 @@ addLayer("tm", {
 	tmPowBoost(){
 		return new Decimal(1.1).pow(player.tm.total)
 	},
+	tExpo() {
+		return player.tm.tExpo.add(1).log10().pow(0.5).div(50).add(1)
+	},
+	tExpoBase(){
+		return player.tm.tmPow.add(1).log10().add(1)
+	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "T", description: "Shift+T: Reset for True Meta Runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
@@ -42,7 +50,8 @@ addLayer("tm", {
     layerShown(){return (hasUpgrade('dr', 25) || player.tm.unlocked)},
    	branches: ["limit"],
     effect(){
-      return new Decimal(10).pow(player.tm.points)
+	  let expo = tmp.tm.tExpo
+      return (new Decimal(10).pow(player.tm.points)).pow(expo)
     },
     effectDescription(){
       return "which is boosting ALL Universe 1 currencies by x"+format(layers.tm.effect())
@@ -59,6 +68,7 @@ addLayer("tm", {
 		},
 		"QoL Tree": {
 			content: [
+				"main-display",
 				["display-text", function(){ return "You have " + format(player.tm.tmpoints) + " True Meta Points to spend"}],
 				"blank",
 				"resource-display",
@@ -70,11 +80,23 @@ addLayer("tm", {
 		"True Meta Power": {
 			unlocked() { return hasUpgrade('tm', 32) },
 			content: [
+				"main-display",
 				["display-text", function(){ return "You have " + format(player.tm.tmPow) + " True Meta Power (" + format(player.tm.tmPowGain) + "/sec), which is boosting True Meta Runes by x" + format(tmp.tm.tmPow) }],
 				"blank",
 				"resource-display",
 				"blank",
 				["display-text", function(){ return "Every True Meta Rune you get boosts True Meta Power by x1.10! Currently: x" + format(tmp.tm.tmPowBoost) }],
+			],
+		},
+		"True Exponential": {
+			unlocked() { return hasUpgrade('tm', 51) },
+			content: [
+				"main-display",
+				["display-text", function(){ return "You have " + format(player.tm.tExpo) + " True Exponential (" + format(player.tm.tExpoGain) + "/sec), which is boosting True Meta Rune effect by ^" + format(tmp.tm.tExpo) }],
+				"blank",
+				"resource-display",
+				"blank",
+				["display-text", function(){ return "True Exponential gain is based on your True Meta Power!" }],
 			],
 		},
 	},
@@ -156,6 +178,15 @@ addLayer("tm", {
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
 		},
+		51: {
+			title: "TM Features 1",
+			description: "Unlock True Exponential.",
+			cost: new Decimal(30),
+			unlocked(){ return (hasUpgrade('tm', 42)) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -173,11 +204,17 @@ addLayer("tm", {
 	},
 	update(diff) {
 		let gain = new Decimal(0)
+		let expoGain = new Decimal(0)
 		if (hasUpgrade('tm', 32)) gain = gain.add(1)
 		gain = gain.times(tmp.tm.tmPowBoost)
+		if (hasUpgrade('tm', 51)) expoGain = expoGain.add(1)
+		expoGain = expoGain.times(tmp.tm.tExpoBase)
 
 		player.tm.tmPowGain = gain
+		player.tm.tExpoGain = expoGain
 		gain = gain.times(diff)
+		expoGain = expoGain.times(diff)
 		player.tm.tmPow = player.tm.tmPow.add(gain)
+		player.tm.tExpo = player.tm.tExpo.add(expoGain)
 	},
 })
