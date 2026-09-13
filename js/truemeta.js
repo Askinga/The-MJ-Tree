@@ -59,10 +59,15 @@ addLayer("tm", {
 		return player.tm.Ts.add(1).log10().pow(0.2).div(100)
 	},
 	TsBase(){
-		return player.tm.tmPow.add(1).log10().pow(0.6).div(1000000)
+		let pow = new Decimal(1)
+		pow = pow.add(buyableEffect('tm', 12))
+		return player.tm.tmPow.add(1).pow(pow).log10().pow(0.6).div(1000000)
 	},
 	Tsb1Base(){
 		return player.tm.Ts.add(1).log10().pow(0.65).add(1)
+	},
+	Tsb2Base(){
+		return player.tm.Ts.add(1).div("e8").log10().pow(0.087).div(3)
 	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -269,6 +274,24 @@ addLayer("tm", {
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
 		},
+		73: {
+			title: "TM Upg 4",
+			description: "Ts gain x3.",
+			cost: new Decimal(250),
+			unlocked(){ return (hasUpgrade('tm', 72)) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
+		81: {
+			title: "TM Unlocks 1",
+			description: "Unlock a buyable.",
+			cost: new Decimal("e9"),
+			unlocked(){ return (hasUpgrade('tm', 73)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -308,7 +331,8 @@ addLayer("tm", {
 		Ts = Ts.times(tmp.tm.TsBase)
 		Ts = Ts.times(buyableEffect('tm', 11))
 		if (hasUpgrade('tm', 72)) Ts = Ts.times(5)
-
+	    if (hasUpgrade('tm', 73)) Ts = Ts.times(3)
+		
 		player.tm.tmPowGain = gain
 		player.tm.tExpoGain = expoGain
 		player.tm.TsGain = Ts
@@ -324,7 +348,7 @@ addLayer("tm", {
 		unlocked(){ return hasUpgrade('tm', 71) },
 		title: "Tsb1",
         cost(x) { return new Decimal(1.5).add(x.div(7)).pow(x.pow(1.15)).times(0.01) },
-        display() { return "Ts gain x" + format(tmp.tm.Tsb1Base) + ".<br>Cost: " + format(this.cost()) + " Ts<br>Bought: " + format(getBuyableAmount('tm', 11)) + "<br>Effect: x" + format(buyableEffect('tm', 11)) + " Ts" },
+        display() { return "Ts gain x" + format(tmp.tm.Tsb1Base) + ".<br>Cost: " + format(this.cost()) + " Ts<br>Bought: " + format(getBuyableAmount('tm', 11)) + "<br>Effect: x" + format(buyableEffect('tm', 11)) + "" },
         canAfford() { return player.tm.Ts.gte(this.cost()) },
         buy() {
             player.tm.Ts = player.tm.Ts.sub(this.cost())
@@ -335,6 +359,23 @@ addLayer("tm", {
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.pow(Decimal.pow(base2, expo))
+		},
+	},
+	12: {
+		unlocked(){ return hasUpgrade('tm', 81) },
+		title: "Tsb2",
+        cost(x) { return new Decimal(10).add(x).pow(x.pow(1.5)).times("e9") },
+        display() { return "Ts gain base ^" + format(tmp.tm.Tsb2Base) + ".<br>Cost: " + format(this.cost()) + " Ts<br>Bought: " + format(getBuyableAmount('tm', 12)) + "<br>Effect: ^" + format(buyableEffect('tm', 12)) + "" },
+        canAfford() { return player.tm.Ts.gte(this.cost()) },
+        buy() {
+            player.tm.Ts = player.tm.Ts.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(tmp.tm.Tsb2Base)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.times(Decimal.times(base2, expo))
 		},
 	},
 	},
