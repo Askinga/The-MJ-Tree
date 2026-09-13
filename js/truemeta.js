@@ -21,7 +21,7 @@ addLayer("tm", {
 	onPrestige(){
 	    player.tm.tmpoints = player.tm.tmpoints.add(player.tm.tmpointGain)
 		if (hasUpgrade('tm', 91)) {
-			if (new Decimal(Math.random).lte(tmp.tm.STMPch)) {
+			if (new Decimal(Math.random()).lte(tmp.tm.STMPch)) {
 				player.tm.STMP = player.tm.STMP.add(1)
 			}
 		}
@@ -82,7 +82,7 @@ addLayer("tm", {
 		return player.tm.STMP.div(100).add(1)
 	},
 	STMPch(){
-		let chance = new Decimal(0.05)
+		let chance = new Decimal(0.04)
 		return chance
 	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
