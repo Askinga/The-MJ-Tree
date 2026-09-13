@@ -53,6 +53,7 @@ addLayer("tm", {
 	tExpoBase(){
 		let expo = new Decimal(1)
 		if (hasUpgrade('tm', 62)) expo = expo.add(0.25)
+		if (hasUpgrade('tm', 82)) expo = expo.add(upgradeEffect('tm', 82))
 		return player.tm.tmPow.add(1).log10().add(1).pow(expo)
 	},
 	Ts(){
@@ -292,6 +293,17 @@ addLayer("tm", {
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
 		},
+		82: {
+			title: "TM Upg 5",
+			description: "Ts boosts True Exponential base.",
+			cost: new Decimal(500),
+			unlocked(){ return (hasUpgrade('tm', 81)) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+			effect(){ return plsyer.tm.Ts.add(1).log10().pow(0.33).div(15) },
+			effectDisplay(){ return "+^"+format(upgradeEffect('tm', 82)) },
+		},
 	},
 	clickables: {
     11: {
@@ -365,7 +377,7 @@ addLayer("tm", {
 		unlocked(){ return hasUpgrade('tm', 81) },
 		title: "Tsb2",
         cost(x) { return new Decimal(10).add(x).pow(x.pow(1.5)).times("e9") },
-        display() { return "Ts gain base ^" + format(tmp.tm.Tsb2Base) + ".<br>Cost: " + format(this.cost()) + " Ts<br>Bought: " + format(getBuyableAmount('tm', 12)) + "<br>Effect: ^" + format(buyableEffect('tm', 12)) + "" },
+        display() { return "Ts gain base +^" + format(tmp.tm.Tsb2Base) + ".<br>Cost: " + format(this.cost()) + " Ts<br>Bought: " + format(getBuyableAmount('tm', 12)) + "<br>Effect: +^" + format(buyableEffect('tm', 12)) + "" },
         canAfford() { return player.tm.Ts.gte(this.cost()) },
         buy() {
             player.tm.Ts = player.tm.Ts.sub(this.cost())
