@@ -301,7 +301,7 @@ addLayer("tm", {
 			currencyDisplayName: "True Meta Points",
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
-			effect(){ return plsyer.tm.Ts.add(1).log10().pow(0.33).div(15) },
+			effect(){ return player.tm.Ts.add(1).log10().pow(0.33).div(15) },
 			effectDisplay(){ return "+^"+format(upgradeEffect('tm', 82)) },
 		},
 	},
