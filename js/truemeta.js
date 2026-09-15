@@ -83,6 +83,7 @@ addLayer("tm", {
 	},
 	STMPch(){
 		let chance = new Decimal(0.04)
+		if (hasUpgrade('tm', 101)) chance = chance.add(0.01)
 		return chance
 	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
@@ -327,6 +328,15 @@ addLayer("tm", {
 			unlocked(){ return (hasUpgrade('tm', 82)) },
 			currencyDisplayName: "True Meta Points",
 			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
+		101: {
+			title: "TM Upg 6",
+			description: "Increase chance of getting a Super True Meta Point by +1%.",
+			cost: new Decimal(10),
+			unlocked(){ return (hasUpgrade('tm', 81)) },
+			currencyDisplayName: "Super True Meta Points",
+			currencyInternalName: "STMP",
 			currencyLayer: "tm",
 		},
 	},
