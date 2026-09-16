@@ -84,7 +84,7 @@ addLayer("tm", {
 	STMPch(){
 		let chance = new Decimal(0.04)
 		if (hasUpgrade('tm', 101)) chance = chance.add(0.01)
-		if (hasUpgrade('tm', 102)) chance = chance.add(upgradeEffect('tm', 102))
+		if (hasUpgrade('tm', 102)) chance = chance.add(upgradeEffect('tm', 102).div(100))
 		return chance
 	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
