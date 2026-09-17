@@ -26,6 +26,11 @@ addLayer("tm", {
 			}
 		}
 	},
+	passiveGeneration(){
+		let p = new Decimal(0)
+		if (hasUpgrade('tm', 111)) p = p.add(0.001)
+		return p
+	},
 	autoPrestige(){ return player.tm.autoTM.eq(1) },
     color: "#ffffff",
     requires: new Decimal("eee100"), // Can be a function that takes requirement increases into account
@@ -350,6 +355,15 @@ addLayer("tm", {
 			currencyLayer: "tm",
 			effect(){ return player.tm.tmpoints.add(1).log10().div(3) },
 			effectDisplay(){ return "+"+format(upgradeEffect('tm', 102))+"%" },
+		},
+		111: {
+			title: "TM Upg 8",
+			description: "Unlock Passive True Meta Runes (0.1%).",
+			cost: new Decimal(30),
+			unlocked(){ return (hasUpgrade('tm', 102)) },
+			currencyDisplayName: "Super True Meta Points",
+			currencyInternalName: "STMP",
+			currencyLayer: "tm",
 		},
 	},
 	clickables: {
