@@ -28,8 +28,9 @@ addLayer("tm", {
 	},
 	passiveGeneration(){
 		let p = new Decimal(0)
-		if (hasUpgrade('tm', 111)) p = p.add(0.001)
-		if (hasUpgrade('tm', 113)) p = p.times(2.5)
+		if (hasUpgrade('tm', 111)) p = new Decimal(0.001)
+		if (hasUpgrade('tm', 113)) p = new Decimal(0.025)
+		if (hasUpgrade('tm', 123)) p = new Decimal(0.04)
 		return p
 	},
 	autoPrestige(){ return player.tm.autoTM.eq(1) },
@@ -96,6 +97,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 101)) chance = chance.add(0.01)
 		if (hasUpgrade('tm', 102)) chance = chance.add(upgradeEffect('tm', 102).div(100))
 		if (hasUpgrade('tm', 122)) chance = chance.add(0.015)
+		if (hasUpgrade('tm', 123)) chance = chance.add(0.02)
 		return chance
 	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
@@ -405,6 +407,15 @@ addLayer("tm", {
 			description: "Super True Meta Point chance +1.5%.",
 			cost: new Decimal(700),
 			unlocked(){ return (hasUpgrade('tm', 121)) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
+		123: {
+			title: "TM Super Upg 2",
+			description: "Passive True Meta Runes is now 0.4% and Super True Meta Point chance +2%.",
+			cost: new Decimal(1000),
+			unlocked(){ return (hasUpgrade('tm', 122)) },
 			currencyDisplayName: "True Meta Points",
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
