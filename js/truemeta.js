@@ -471,7 +471,7 @@ addLayer("tm", {
 		unlocked(){ return hasUpgrade('tm', 112) },
 		title: "Tsb3",
         cost(x) { return new Decimal(10).add(x.times(2).pow(1.1)).pow(x.pow(1.35)).times(1e20) },
-        display() { return "True Meta Rune gain x" + format(tmp.tm.Tsb1Base) + ".<br>Cost: " + format(this.cost()) + " Ts<br>Bought: " + format(getBuyableAmount('tm', 13)) + "<br>Effect: x" + format(buyableEffect('tm', 13)) + "" },
+        display() { return "True Meta Rune gain x" + format(tmp.tm.Tsb3Base) + ".<br>Cost: " + format(this.cost()) + " Ts<br>Bought: " + format(getBuyableAmount('tm', 13)) + "<br>Effect: x" + format(buyableEffect('tm', 13)) + "" },
         canAfford() { return player.tm.Ts.gte(this.cost()) },
         buy() {
             player.tm.Ts = player.tm.Ts.sub(this.cost())
