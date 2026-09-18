@@ -43,6 +43,7 @@ addLayer("tm", {
         mult = new Decimal(1)
 		mult = mult.times(tmp.tm.tmPow)
 		mult = mult.times(tmp.tm.STMP)
+		mult = mult.times(buyableEffect('tm', 13))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -82,6 +83,9 @@ addLayer("tm", {
 	},
 	Tsb2Base(){
 		return player.tm.Ts.add(1).div("e8").log10().pow(0.087).div(3)
+	},
+	Tsb3Base(){
+		return player.tm.Ts.add(1).div("e20").log10().pow(0.012).div(10).add(1)
 	},
 	STMP() {
 		return player.tm.STMP.div(100).add(1)
@@ -365,6 +369,15 @@ addLayer("tm", {
 			currencyInternalName: "STMP",
 			currencyLayer: "tm",
 		},
+		112: {
+			title: "TM Unlocks 2",
+			description: "Unlock a buyable.",
+			cost: new Decimal("e20"),
+			unlocked(){ return (hasUpgrade('tm', 111)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -452,6 +465,23 @@ addLayer("tm", {
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.times(Decimal.times(base2, expo))
+		},
+	},
+	13: {
+		unlocked(){ return hasUpgrade('tm', 112) },
+		title: "Tsb3",
+        cost(x) { return new Decimal(10).add(x.times(2).pow(1.1)).pow(x.pow(1.35)).times(1e20) },
+        display() { return "True Meta Rune gain x" + format(tmp.tm.Tsb1Base) + ".<br>Cost: " + format(this.cost()) + " Ts<br>Bought: " + format(getBuyableAmount('tm', 13)) + "<br>Effect: x" + format(buyableEffect('tm', 13)) + "" },
+        canAfford() { return player.tm.Ts.gte(this.cost()) },
+        buy() {
+            player.tm.Ts = player.tm.Ts.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(tmp.tm.Tsb3Base)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
 		},
 	},
 	},
