@@ -29,6 +29,7 @@ addLayer("tm", {
 	passiveGeneration(){
 		let p = new Decimal(0)
 		if (hasUpgrade('tm', 111)) p = p.add(0.001)
+		if (hasUpgrade('tm', 113)) p = p.times(2.5)
 		return p
 	},
 	autoPrestige(){ return player.tm.autoTM.eq(1) },
@@ -378,6 +379,17 @@ addLayer("tm", {
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
 		},
+		113: {
+			title: "TM Super Upg 1",
+			description: "Passive True Meta Runes is now 0.25% and True Exponential boosts Ts.",
+			cost: new Decimal(1000),
+			unlocked(){ return (hasUpgrade('tm', 112)) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+			effect(){ return player.tm.tExpo.add(1).pow(0.08) },
+			effectDisplay(){ return "x"+format(upgradeEffect('tm', 113)) },
+		},
 	},
 	clickables: {
     11: {
@@ -420,6 +432,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 72)) Ts = Ts.times(5)
 	    if (hasUpgrade('tm', 73)) Ts = Ts.times(3)
 		tmP = tmP.times(tmp.tm.STMP)
+		if (hasUpgrade('tm', 113)) Ts = Ts.times(upgradeEffect('tm', 113))
 		
 		player.tm.tmpointGain = tmP
 		player.tm.tmPowGain = gain
