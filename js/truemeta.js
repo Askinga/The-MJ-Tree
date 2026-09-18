@@ -29,8 +29,8 @@ addLayer("tm", {
 	passiveGeneration(){
 		let p = new Decimal(0)
 		if (hasUpgrade('tm', 111)) p = new Decimal(0.001)
-		if (hasUpgrade('tm', 113)) p = new Decimal(0.025)
-		if (hasUpgrade('tm', 123)) p = new Decimal(0.04)
+		if (hasUpgrade('tm', 113)) p = new Decimal(0.0025)
+		if (hasUpgrade('tm', 123)) p = new Decimal(0.004)
 		return p
 	},
 	autoPrestige(){ return player.tm.autoTM.eq(1) },
