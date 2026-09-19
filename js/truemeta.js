@@ -442,6 +442,15 @@ addLayer("tm", {
 			effect(){ return player.tm.STMP.add(1) },
 			effectDisplay(){ return "x"+format(upgradeEffect('tm', 132)) },
 		},
+		133: {
+			title: "TM Super Upg 3",
+			description: "Ts gain ^1.2.",
+			cost: new Decimal("2e28"),
+			unlocked(){ return (hasUpgrade('tm', 132)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -488,6 +497,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 121)) Ts = Ts.times(10)
 		if (hasUpgrade('tm', 131)) Ts = Ts.times(upgradeEffect('tm', 131))
 		if (hasUpgrade('tm', 132)) Ts = Ts.times(upgradeEffect('tm', 132))
+		if (hasUpgrade('tm', 133)) Ts = Ts.pow(1.2)
 		
 		player.tm.tmpointGain = tmP
 		player.tm.tmPowGain = gain
