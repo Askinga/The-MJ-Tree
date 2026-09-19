@@ -431,6 +431,17 @@ addLayer("tm", {
 			effect(){ return player.tm.Ts.add(1).log10().add(1) },
 			effectDisplay(){ return "x"+format(upgradeEffect('tm', 131)) },
 		},
+		132: {
+			title: "TM Upg 12",
+			description: "Super True Meta Points boost Ts.",
+			cost: new Decimal(850),
+			unlocked(){ return (hasUpgrade('tm', 131)) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+			effect(){ return player.tm.STMP.add(1) },
+			effectDisplay(){ return "x"+format(upgradeEffect('tm', 132)) },
+		},
 	},
 	clickables: {
     11: {
@@ -476,6 +487,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 113)) Ts = Ts.times(upgradeEffect('tm', 113))
 		if (hasUpgrade('tm', 121)) Ts = Ts.times(10)
 		if (hasUpgrade('tm', 131)) Ts = Ts.times(upgradeEffect('tm', 131))
+		if (hasUpgrade('tm', 132)) Ts = Ts.times(upgradeEffect('tm', 132))
 		
 		player.tm.tmpointGain = tmP
 		player.tm.tmPowGain = gain
