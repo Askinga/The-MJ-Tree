@@ -84,10 +84,10 @@ addLayer("tm", {
 		return player.tm.Ts.add(1).log10().pow(0.65).add(1)
 	},
 	Tsb2Base(){
-		return player.tm.Ts.add(1).div("e8").log10().pow(0.087).div(3)
+		return player.tm.Ts.div("e8").add(1).log10().pow(0.087).div(3)
 	},
 	Tsb3Base(){
-		return player.tm.Ts.add(1).div("e20").log10().pow(0.012).div(10).add(1)
+		return player.tm.Ts.div("e20").add(1).log10().pow(0.012).div(10).add(1)
 	},
 	STMP() {
 		return player.tm.STMP.div(100).add(1)
