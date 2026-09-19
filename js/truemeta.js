@@ -78,7 +78,7 @@ addLayer("tm", {
 	TsBase(){
 		let pow = new Decimal(1)
 		pow = pow.add(buyableEffect('tm', 12))
-		return player.tm.tmPow.add(1).pow(pow).log10().pow(0.6).div(1000000)
+		return player.tm.tmPow.add(1).log10().pow(0.6).pow(pow).div(1000000)
 	},
 	Tsb1Base(){
 		return player.tm.Ts.add(1).log10().pow(0.65).add(1)
