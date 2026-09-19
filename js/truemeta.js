@@ -455,7 +455,7 @@ addLayer("tm", {
 			title: "TM Upg 13",
 			description: "Ts gain x1000.",
 			cost: new Decimal(1250),
-			unlocked(){ return (hasUpgrade('tm', 134)) },
+			unlocked(){ return (hasUpgrade('tm', 133)) },
 			currencyDisplayName: "True Meta Points",
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
