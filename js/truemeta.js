@@ -504,7 +504,7 @@ addLayer("tm", {
 	11: {
 		unlocked(){ return hasUpgrade('tm', 71) },
 		title: "Tsb1",
-        cost(x) { return new Decimal(1.5).add(x.div(7)).pow(x.pow(1.15)).times(0.01) },
+        cost(x) { return new Decimal(1.5).add(x.pow(1.4).div(4)).pow(x.pow(1.2)).times(0.01) },
         display() { return "Ts gain x" + format(tmp.tm.Tsb1Base) + ".<br>Cost: " + format(this.cost()) + " Ts<br>Bought: " + format(getBuyableAmount('tm', 11)) + "<br>Effect: x" + format(buyableEffect('tm', 11)) + "" },
         canAfford() { return player.tm.Ts.gte(this.cost()) },
         buy() {
@@ -521,7 +521,7 @@ addLayer("tm", {
 	12: {
 		unlocked(){ return hasUpgrade('tm', 81) },
 		title: "Tsb2",
-        cost(x) { return new Decimal(10).add(x).pow(x.pow(1.5)).times("e9") },
+        cost(x) { return new Decimal(10).add(x.pow(2)).pow(x.pow(2)).times("e9") },
         display() { return "Ts gain base +^" + format(tmp.tm.Tsb2Base) + ".<br>Cost: " + format(this.cost()) + " Ts<br>Bought: " + format(getBuyableAmount('tm', 12)) + "<br>Effect: +^" + format(buyableEffect('tm', 12)) + "" },
         canAfford() { return player.tm.Ts.gte(this.cost()) },
         buy() {
