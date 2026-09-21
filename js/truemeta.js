@@ -106,7 +106,7 @@ addLayer("tm", {
 		return chance
 	},
 	MTMP() {
-		return player.tm.STMP.div(100).add(1)
+		return player.tm.MTMP.div(100).add(1)
 	},
 	MTMPch(){
 		let chance = new Decimal(0.08)
