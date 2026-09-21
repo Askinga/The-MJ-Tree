@@ -17,12 +17,17 @@ addLayer("tm", {
 		TsGain: new Decimal(0),
 		STMP: new Decimal(0),
 		tmpointGain: new Decimal(0),
+		MTMP: new Decimal(0),
+		STMPGain: new Decimal(1),
     }},
 	onPrestige(){
 	    player.tm.tmpoints = player.tm.tmpoints.add(player.tm.tmpointGain)
 		if (hasUpgrade('tm', 91)) {
 			if (new Decimal(Math.random()).lte(tmp.tm.STMPch)) {
-				player.tm.STMP = player.tm.STMP.add(1)
+				player.tm.STMP = player.tm.STMP.add(player.tm.STMPGain)
+				if ((new Decimal(Math.random()).lte(tmp.tm.MTMPch)) && hasUpgrade('tm', 141)) {
+					player.tm.MTMP = player.tm.MTMP.add(1)
+				}
 			}
 		}
 	},
@@ -100,6 +105,13 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 123)) chance = chance.add(0.02)
 		return chance
 	},
+	MTMP() {
+		return player.tm.STMP.div(100).add(1)
+	},
+	MTMPch(){
+		let chance = new Decimal(0.08)
+		return chance
+	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "T", description: "Shift+T: Reset for True Meta Runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
@@ -129,6 +141,7 @@ addLayer("tm", {
 				"prestige-button",
 				["display-text", function(){ return "You have " + format(player.tm.tmpoints) + " True Meta Points to spend (+" + format(player.tm.tmpointGain) + ")" }],
 				["display-text", function(){ if (hasUpgrade('tm', 91)) return "You have " + format(player.tm.STMP) + " Super True Meta Points, boosting True Meta Runes and Points by x" + format(tmp.tm.STMP) + "<br>You have a " + format(tmp.tm.STMPch.times(100)) + "% chance of getting a Super True Meta Point on reset."}],
+				["display-text", function(){ if (hasUpgrade('tm', 141)) return "You have " + format(player.tm.MTMP) + " Mega True Meta Points, boosting Super True Meta Points by x" + format(tmp.tm.MTMP) + "<br>You have a " + format(tmp.tm.MTMPch.times(100)) + "% chance of getting a Mega True Meta Point every time you get a Super True Meta Point."}],
 				"blank",
 				"resource-display",
 				"clickables",
@@ -460,6 +473,15 @@ addLayer("tm", {
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
 		},
+		141: {
+			title: "TM Features 4",
+			description: "Unlock Mega True Meta Points.",
+			cost: new Decimal(2000),
+			unlocked(){ return (hasUpgrade('tm', 134)) },
+			currencyDisplayName: "True Meta Points",
+			currencyInternalName: "tmpoints",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -492,6 +514,7 @@ addLayer("tm", {
 		let expoGain = new Decimal(0)
 		let Ts = new Decimal(0)
 		let tmP = new Decimal(1)
+		let StmP = new Decimal(1)
 		if (hasUpgrade('tm', 32)) gain = gain.add(1)
 		gain = gain.times(tmp.tm.tmPowBoost)
 		if (hasUpgrade('tm', 51)) expoGain = expoGain.add(1)
@@ -502,6 +525,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 72)) Ts = Ts.times(5)
 	    if (hasUpgrade('tm', 73)) Ts = Ts.times(3)
 		tmP = tmP.times(tmp.tm.STMP)
+		StmP = StmP.times(tmp.tm.MTMP)
 		if (hasUpgrade('tm', 113)) Ts = Ts.times(upgradeEffect('tm', 113))
 		if (hasUpgrade('tm', 121)) Ts = Ts.times(10)
 		if (hasUpgrade('tm', 131)) Ts = Ts.times(upgradeEffect('tm', 131))
@@ -510,6 +534,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 133)) Ts = Ts.pow(1.2)
 		
 		player.tm.tmpointGain = tmP
+		player.tm.STMPGain = StmP
 		player.tm.tmPowGain = gain
 		player.tm.tExpoGain = expoGain
 		player.tm.TsGain = Ts
