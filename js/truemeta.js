@@ -139,8 +139,8 @@ addLayer("tm", {
 			content: [
 				"main-display",
 				"prestige-button",
-				["display-text", function(){ return "You have " + format(player.tm.tmpoints) + " True Meta Points to spend (+" + format(player.tm.tmpointGain) + ")" }],
-				["display-text", function(){ if (hasUpgrade('tm', 91)) return "You have " + format(player.tm.STMP) + " Super True Meta Points, boosting True Meta Runes and Points by x" + format(tmp.tm.STMP) + "(+" + format(player.tm.MTMP) + ")<br>You have a " + format(tmp.tm.STMPch.times(100)) + "% chance of getting a Super True Meta Point on reset."}],
+				["display-text", function(){ return "You have " + format(player.tm.tmpoints) + " True Meta Points to spend (+" + format(player.tm.tmpointGain) + ")<br>" }],
+				["display-text", function(){ if (hasUpgrade('tm', 91)) return "You have " + format(player.tm.STMP) + " Super True Meta Points, boosting True Meta Runes and Points by x" + format(tmp.tm.STMP) + "(+" + format(player.tm.MTMP) + ")<br>You have a " + format(tmp.tm.STMPch.times(100)) + "% chance of getting a Super True Meta Point on reset.<br>"}],
 				["display-text", function(){ if (hasUpgrade('tm', 141)) return "You have " + format(player.tm.MTMP) + " Mega True Meta Points, boosting Super True Meta Points by x" + format(tmp.tm.MTMP) + "<br>You have a " + format(tmp.tm.MTMPch.times(100)) + "% chance of getting a Mega True Meta Point every time you get a Super True Meta Point."}],
 				"blank",
 				"resource-display",
