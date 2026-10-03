@@ -36,6 +36,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 111)) p = new Decimal(0.001)
 		if (hasUpgrade('tm', 113)) p = new Decimal(0.0025)
 		if (hasUpgrade('tm', 123)) p = new Decimal(0.004)
+		if (hasUpgrade('tm', 151)) p = new Decimal(0.01)
 		return p
 	},
 	autoPrestige(){ return player.tm.autoTM.eq(1) },
@@ -519,6 +520,15 @@ addLayer("tm", {
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
 		},
+		151: {
+			title: "Ultimate TM 1",
+			description: "Passive True Meta Runes is now 1%, unlock Passive True Meta Points, and Ts exp +^0.05.",
+			cost: new Decimal("1e84"),
+			unlocked(){ return (hasUpgrade('tm', 144)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -552,6 +562,8 @@ addLayer("tm", {
 		let Ts = new Decimal(0)
 		let tmP = new Decimal(1)
 		let StmP = new Decimal(1)
+		let PTMP = new Decimal(0.01)
+		let Tspow = new Decimal(1)
 		if (hasUpgrade('tm', 32)) gain = gain.add(1)
 		gain = gain.times(tmp.tm.tmPowBoost)
 		if (hasUpgrade('tm', 51)) expoGain = expoGain.add(1)
@@ -570,7 +582,9 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 134)) Ts = Ts.times(1000)
 		if (hasUpgrade('tm', 142)) Ts = Ts.times(upgradeEffect('tm', 142))
 		if (hasUpgrade('tm', 143)) Ts = Ts.times(upgradeEffect('tm', 143))
-		if (hasUpgrade('tm', 133)) Ts = Ts.pow(1.2)
+		if (hasUpgrade('tm', 133)) Tspow = Tspow.add(0.2)
+		if (hasUpgrade('tm', 151)) Tspow = Tspow.add(0.05)
+		Ts = Ts.pow(Tspow)
 		
 		player.tm.tmpointGain = tmP
 		player.tm.STMPGain = StmP
@@ -583,6 +597,9 @@ addLayer("tm", {
 		player.tm.tmPow = player.tm.tmPow.add(gain)
 		player.tm.tExpo = player.tm.tExpo.add(expoGain)
 		player.tm.Ts = player.tm.Ts.add(Ts)
+		if (hasUpgrade('tm', 151)) {
+			player.tm.tmpoints = player.tm.tmpoints.add(tmP.times(diff).times(PTMP))
+		}
 	},
 	buyables: {
 	11: {
