@@ -443,7 +443,11 @@ addLayer("tm", {
 			currencyDisplayName: "True Meta Points",
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
-			effect(){ return player.tm.Ts.add(1).log10().add(1) },
+			effect(){ 
+				let pow = new Decimal(1)
+				if (hasUpgrade('tm', 144)) pow = pow.times(2)
+				return player.tm.Ts.add(1).log10().add(1).pow(pow)
+			},
 			effectDisplay(){ return "x"+format(upgradeEffect('tm', 131)) },
 		},
 		132: {
@@ -505,6 +509,15 @@ addLayer("tm", {
 			currencyLayer: "tm",
 			effect(){ return player.tm.tmpoints.add(1).pow(0.5) },
 			effectDisplay(){ return "x"+format(upgradeEffect('tm', 143)) },
+		},
+		144: {
+			title: "TM Super Upg 4",
+			description: "TM Upg 11 ^2.",
+			cost: new Decimal("e78"),
+			unlocked(){ return (hasUpgrade('tm', 143)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
 		},
 	},
 	clickables: {
