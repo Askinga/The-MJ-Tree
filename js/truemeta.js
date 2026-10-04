@@ -563,6 +563,7 @@ addLayer("tm", {
 			currencyLayer: "tm",
 			effect(){
 				let pow = new Decimal(1)
+				if (hasUpgrade('tm', 155)) pow = pow.add(0.5)
 				return player.tm.Tsi.add(1).pow(pow)
 			},
 			effectDisplay(){ return "x"+format(upgradeEffect('tm', 153)) },
@@ -572,6 +573,15 @@ addLayer("tm", {
 			description: "Unlock a buyable.",
 			cost: new Decimal("e124"),
 			unlocked(){ return (hasUpgrade('tm', 153)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+		},
+		155: {
+			title: "TM Upg 17",
+			description: "TM Upg 16 ^1.5.",
+			cost: new Decimal("e140"),
+			unlocked(){ return (hasUpgrade('tm', 154)) },
 			currencyDisplayName: "Ts",
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
