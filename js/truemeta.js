@@ -125,6 +125,9 @@ addLayer("tm", {
 		let chance = new Decimal(0.08)
 		return chance
 	},
+	tm18(){
+		return player.tm.Tsi.add(1).log10().pow(1.2)
+	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "T", description: "Shift+T: Reset for True Meta Runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
@@ -595,6 +598,17 @@ addLayer("tm", {
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
 		},
+		162: {
+			title: "TM Upg 18",
+			description() { function return "x2 Ts gain applied " + format(tmp.tm.tm18) + " times. Get more Tsi to apply more times." },
+			cost: new Decimal("2^555"),
+			unlocked(){ return (hasUpgrade('tm', 161)) },
+			effect(){ return new Decimal(2).pow(tmp.tm.tm18) },
+			effectDisplay() { return "x"+format(upgradeEffect('tm', 162)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -654,6 +668,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 142)) Ts = Ts.times(upgradeEffect('tm', 142))
 		if (hasUpgrade('tm', 143)) Ts = Ts.times(upgradeEffect('tm', 143))
 		if (hasUpgrade('tm', 153)) Ts = Ts.times(upgradeEffect('tm', 153))
+		if (hasUpgrade('tm', 162)) Ts = Ts.times(upgradeEffect('tm', 162))
 		if (hasUpgrade('tm', 133)) Tspow = Tspow.add(0.2)
 		if (hasUpgrade('tm', 151)) Tspow = Tspow.add(0.05)
 		Ts = Ts.pow(Tspow)
