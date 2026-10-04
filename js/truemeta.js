@@ -619,7 +619,7 @@ addLayer("tm", {
 		gain = gain.times(diff)
 		expoGain = expoGain.times(diff)
 		Ts = Ts.times(diff)
-		TsiG = TsiG.times(diff)
+		Tsi = Tsi.times(diff)
 		player.tm.tmPow = player.tm.tmPow.add(gain)
 		player.tm.tExpo = player.tm.tExpo.add(expoGain)
 		player.tm.Ts = player.tm.Ts.add(Ts)
