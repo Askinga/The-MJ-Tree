@@ -586,6 +586,15 @@ addLayer("tm", {
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
 		},
+		161: {
+			title: "TM Upg 17",
+			description: "Tsi gain x50.",
+			cost: new Decimal("2^512"),
+			unlocked(){ return (hasUpgrade('tm', 155)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -628,6 +637,7 @@ addLayer("tm", {
 		expoGain = expoGain.times(tmp.tm.tExpoBase)
 		if (hasUpgrade('tm', 71)) Ts = Ts.add(1)
 		if (hasUpgrade('tm', 152)) Tsi = Tsi.add(1)
+		if (hasUpgrade('tm', 161)) Tsi = Tsi.times(50)
 		Ts = Ts.times(tmp.tm.TsBase)
 		Ts = Ts.times(buyableEffect('tm', 11))
 		Tsi = Tsi.times(buyableEffect('tm', 21))
