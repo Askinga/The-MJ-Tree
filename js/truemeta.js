@@ -210,7 +210,7 @@ addLayer("tm", {
 	infoboxes: {
         "true meta reset": {
             title: "Welcome to True Meta!",
-            body() { return "Congratulations, you officially beat Rune Tree! This layers resets EVERYTHING just like a hard reset, but you will gain a x10 multiplier to EVERY resource! You will also gain a True Meta Point, which you can spend to get QoL upgrades! It's worth it! (You will also keep the Auto Runes because well, the first layer is SO GRINDY!!!!!)" },
+            body() { return "Congratulations, you officially beat Rune Tree! This layers resets EVERYTHING just like a hard reset, but you will gain a x10 multiplier to EVERY resource! You will also gain a True Meta Point, which you can spend to get QoL upgrades! It's worth it! (You will also keep the Auto Runes because well, the first layer is SO GRINDY!!!!!). You might want something else to play later on..." },
         },
     }, 
 	upgrades: {
