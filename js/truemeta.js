@@ -600,7 +600,7 @@ addLayer("tm", {
 		},
 		162: {
 			title: "TM Upg 18",
-			description() { function return "x2 Ts gain applied " + format(tmp.tm.tm18) + " times. Get more Tsi to apply more times." },
+			description() { function(){ return "x2 Ts gain applied " + format(tmp.tm.tm18) + " times. Get more Tsi to apply more times." }},
 			cost: new Decimal("2^555"),
 			unlocked(){ return (hasUpgrade('tm', 161)) },
 			effect(){ return new Decimal(2).pow(tmp.tm.tm18) },
