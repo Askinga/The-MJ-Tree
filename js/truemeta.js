@@ -104,6 +104,9 @@ addLayer("tm", {
 	Tsb3Base(){
 		return player.tm.Ts.div("e20").add(1).log10().pow(0.012).div(10).add(1)
 	},
+	Tsb4Base(){
+		return player.tm.Tsi.add(1).log10().pow(0.55).add(1)
+	},
 	STMP() {
 		return player.tm.STMP.div(100).add(1)
 	},
@@ -564,6 +567,15 @@ addLayer("tm", {
 			},
 			effectDisplay(){ return "x"+format(upgradeEffect('tm', 153)) },
 		},
+		154: {
+			title: "TM Features 6",
+			description: "Unlock a buyable.",
+			cost: new Decimal("e124"),
+			unlocked(){ return (hasUpgrade('tm', 153)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -690,6 +702,23 @@ addLayer("tm", {
         },
 		effect(x){
 			let base1 = new Decimal(tmp.tm.Tsb3Base)
+			let base2 = x
+			let expo = new Decimal(1)
+			return base1.pow(Decimal.pow(base2, expo))
+		},
+	},
+	21: {
+		unlocked(){ return hasUpgrade('tm', 154) },
+		title: "Tsb4",
+        cost(x) { return new Decimal(2).add(x.times(1.2).pow(1.3).div(6)).pow(x.pow(1.25)).times(1) },
+        display() { return "Tsi gain x" + format(tmp.tm.Tsb4Base) + ".<br>Cost: " + format(this.cost()) + " Tsi<br>Bought: " + format(getBuyableAmount('tm', 21)) + "<br>Effect: x" + format(buyableEffect('tm', 21)) + "" },
+        canAfford() { return player.tm.Tsi.gte(this.cost()) },
+        buy() {
+            player.tm.Tsi = player.tm.Tsi.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+		effect(x){
+			let base1 = new Decimal(tmp.tm.Tsb4Base)
 			let base2 = x
 			let expo = new Decimal(1)
 			return base1.pow(Decimal.pow(base2, expo))
