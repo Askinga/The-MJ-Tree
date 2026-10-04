@@ -192,7 +192,7 @@ addLayer("tm", {
 				"prestige-button",
 				["display-text", function(){ return "You have " + format(player.tm.Ts) + " Ts (" + format(player.tm.TsGain) + "/sec), which is boosting True Meta Power base by +" + format(tmp.tm.Ts) }],
 				"blank",
-				["display-text", function(){ return "You have " + format(player.tm.Tsi) + " Tsi (" + format(player.tm.TsiG) + "/sec), TM Upg 11 ^" + format(tmp.tm.Tsi) }],
+				["display-text", function(){ if (hasUpgrade('tm', 152)) return "You have " + format(player.tm.Tsi) + " Tsi (" + format(player.tm.TsiG) + "/sec), TM Upg 11 ^" + format(tmp.tm.Tsi) }],
 				"blank",
 				"resource-display",
 				"buyables",
@@ -585,7 +585,7 @@ addLayer("tm", {
 		let StmP = new Decimal(1)
 		let PTMP = new Decimal(0.01)
 		let Tspow = new Decimal(1)
-		let Tsi = new Decimal(0),
+		let Tsi = new Decimal(0)
 		if (hasUpgrade('tm', 32)) gain = gain.add(1)
 		gain = gain.times(tmp.tm.tmPowBoost)
 		if (hasUpgrade('tm', 51)) expoGain = expoGain.add(1)
