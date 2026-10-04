@@ -19,6 +19,8 @@ addLayer("tm", {
 		tmpointGain: new Decimal(0),
 		MTMP: new Decimal(0),
 		STMPGain: new Decimal(1),
+		Tsi: new Decimal(0),
+		TsiG: new Decimal(0),
     }},
 	onPrestige(){
 	    player.tm.tmpoints = player.tm.tmpoints.add(player.tm.tmpointGain)
@@ -81,10 +83,17 @@ addLayer("tm", {
 	Ts(){
 		return player.tm.Ts.add(1).log10().pow(0.2).div(100)
 	},
+	Tsi(){
+		return player.tm.Tsi.add(1).log10().pow(0.5).add(1)
+	},
 	TsBase(){
 		let pow = new Decimal(1)
 		pow = pow.add(buyableEffect('tm', 12))
 		return player.tm.tmPow.add(1).log10().pow(0.6).pow(pow).div(1000000)
+	},
+	TsiBase(){
+		let pow = new Decimal(1)
+		return player.tm.Ts.add(1).log10().pow(0.9).pow(pow).div(100)
 	},
 	Tsb1Base(){
 		return player.tm.Ts.add(1).log10().pow(0.65).add(1)
@@ -182,6 +191,8 @@ addLayer("tm", {
 				"main-display",
 				"prestige-button",
 				["display-text", function(){ return "You have " + format(player.tm.Ts) + " Ts (" + format(player.tm.TsGain) + "/sec), which is boosting True Meta Power base by +" + format(tmp.tm.Ts) }],
+				"blank",
+				["display-text", function(){ return "You have " + format(player.tm.Tsi) + " Tsi (" + format(player.tm.TsiG) + "/sec), TM Upg 11 ^" + format(tmp.tm.Tsi) }],
 				"blank",
 				"resource-display",
 				"buyables",
@@ -447,6 +458,7 @@ addLayer("tm", {
 			effect(){ 
 				let pow = new Decimal(1)
 				if (hasUpgrade('tm', 144)) pow = pow.times(2)
+				pow = pow.times(tmp.tm.Tsi)
 				return player.tm.Ts.add(1).log10().add(1).pow(pow)
 			},
 			effectDisplay(){ return "x"+format(upgradeEffect('tm', 131)) },
@@ -529,6 +541,15 @@ addLayer("tm", {
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
 		},
+		152: {
+			title: "TM Features 5",
+			description: "Unlock Tsi.",
+			cost: new Decimal("e90"),
+			unlocked(){ return (hasUpgrade('tm', 151)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -564,13 +585,16 @@ addLayer("tm", {
 		let StmP = new Decimal(1)
 		let PTMP = new Decimal(0.01)
 		let Tspow = new Decimal(1)
+		let Tsi = new Decimal(0),
 		if (hasUpgrade('tm', 32)) gain = gain.add(1)
 		gain = gain.times(tmp.tm.tmPowBoost)
 		if (hasUpgrade('tm', 51)) expoGain = expoGain.add(1)
 		expoGain = expoGain.times(tmp.tm.tExpoBase)
 		if (hasUpgrade('tm', 71)) Ts = Ts.add(1)
+		if (hasUpgrade('tm', 152)) Tsi = Tsi.add(1)
 		Ts = Ts.times(tmp.tm.TsBase)
 		Ts = Ts.times(buyableEffect('tm', 11))
+		Tsi = Tsi.times(tmp.tm.TsiBase)
 		if (hasUpgrade('tm', 72)) Ts = Ts.times(5)
 	    if (hasUpgrade('tm', 73)) Ts = Ts.times(3)
 		tmP = tmP.times(tmp.tm.STMP)
@@ -591,12 +615,15 @@ addLayer("tm", {
 		player.tm.tmPowGain = gain
 		player.tm.tExpoGain = expoGain
 		player.tm.TsGain = Ts
+		player.tm.TsiG = Tsi
 		gain = gain.times(diff)
 		expoGain = expoGain.times(diff)
 		Ts = Ts.times(diff)
+		TsiG = TsiG.times(diff)
 		player.tm.tmPow = player.tm.tmPow.add(gain)
 		player.tm.tExpo = player.tm.tExpo.add(expoGain)
 		player.tm.Ts = player.tm.Ts.add(Ts)
+		player.tm.Tsi = player.tm.Tsi.add(Tsi)
 		if (hasUpgrade('tm', 151)) {
 			player.tm.tmpoints = player.tm.tmpoints.add(tmP.times(diff).times(PTMP))
 		}
