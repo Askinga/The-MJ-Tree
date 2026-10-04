@@ -578,7 +578,7 @@ addLayer("tm", {
 			currencyLayer: "tm",
 		},
 		155: {
-			title: "TM Upg 17",
+			title: "TM Super Upg 5"",
 			description: "TM Upg 16 ^1.5.",
 			cost: new Decimal("e140"),
 			unlocked(){ return (hasUpgrade('tm', 154)) },
