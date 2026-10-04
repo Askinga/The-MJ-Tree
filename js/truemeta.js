@@ -620,6 +620,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 152)) Tsi = Tsi.add(1)
 		Ts = Ts.times(tmp.tm.TsBase)
 		Ts = Ts.times(buyableEffect('tm', 11))
+		Tsi = Tsi.times(buyableEffect('tm', 21))
 		Tsi = Tsi.times(tmp.tm.TsiBase)
 		if (hasUpgrade('tm', 72)) Ts = Ts.times(5)
 	    if (hasUpgrade('tm', 73)) Ts = Ts.times(3)
@@ -710,7 +711,7 @@ addLayer("tm", {
 	21: {
 		unlocked(){ return hasUpgrade('tm', 154) },
 		title: "Tsb4",
-        cost(x) { return new Decimal(2).add(x.times(1.2).pow(1.3).div(6)).pow(x.pow(1.25)).times(1) },
+        cost(x) { return new Decimal(2).add(x.times(1.2).pow(1.4).div(6)).pow(x.pow(1.275)).times(1) },
         display() { return "Tsi gain x" + format(tmp.tm.Tsb4Base) + ".<br>Cost: " + format(this.cost()) + " Tsi<br>Bought: " + format(getBuyableAmount('tm', 21)) + "<br>Effect: x" + format(buyableEffect('tm', 21)) + "" },
         canAfford() { return player.tm.Tsi.gte(this.cost()) },
         buy() {
