@@ -550,6 +550,20 @@ addLayer("tm", {
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
 		},
+		153: {
+			title: "TM Upg 16",
+			description: "Tsi boosts Ts.",
+			cost: new Decimal("e114"),
+			unlocked(){ return (hasUpgrade('tm', 152)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+			effect(){
+				let pow = new Decimal(1)
+				return player.tm.Tsi.add(1).pow(pow)
+			},
+			effectDisplay(){ return "x"+format(upgradeEffect('tm', 153)) },
+		},
 	},
 	clickables: {
     11: {
@@ -606,6 +620,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 134)) Ts = Ts.times(1000)
 		if (hasUpgrade('tm', 142)) Ts = Ts.times(upgradeEffect('tm', 142))
 		if (hasUpgrade('tm', 143)) Ts = Ts.times(upgradeEffect('tm', 143))
+		if (hasUpgrade('tm', 153)) Ts = Ts.times(upgradeEffect('tm', 153))
 		if (hasUpgrade('tm', 133)) Tspow = Tspow.add(0.2)
 		if (hasUpgrade('tm', 151)) Tspow = Tspow.add(0.05)
 		Ts = Ts.pow(Tspow)
