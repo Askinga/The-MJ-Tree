@@ -609,6 +609,15 @@ addLayer("tm", {
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
 		},
+		163: {
+			title: "TM Super Upg 6",
+			description: "Tsi gain ^1.3. Good luck getting me.",
+			cost: new Decimal("e200"),
+			unlocked(){ return (hasUpgrade('tm', 162)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -645,6 +654,7 @@ addLayer("tm", {
 		let PTMP = new Decimal(0.01)
 		let Tspow = new Decimal(1)
 		let Tsi = new Decimal(0)
+		Tsipow: new Decimal(1)
 		if (hasUpgrade('tm', 32)) gain = gain.add(1)
 		gain = gain.times(tmp.tm.tmPowBoost)
 		if (hasUpgrade('tm', 51)) expoGain = expoGain.add(1)
@@ -671,7 +681,9 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 162)) Ts = Ts.times(upgradeEffect('tm', 162))
 		if (hasUpgrade('tm', 133)) Tspow = Tspow.add(0.2)
 		if (hasUpgrade('tm', 151)) Tspow = Tspow.add(0.05)
+		if (hasUpgrade('tm', 163)) Tsipow = Tsipow.add(0.3)
 		Ts = Ts.pow(Tspow)
+		Tsi = Tsi.pow(Tsipow)
 		
 		player.tm.tmpointGain = tmP
 		player.tm.STMPGain = StmP
