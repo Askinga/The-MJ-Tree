@@ -128,6 +128,11 @@ addLayer("tm", {
 	tm18(){
 		return player.tm.Tsi.add(1).log10().pow(1.2)
 	},
+	tm18Base(){
+		let base = new Decimal(2)
+		if (hasUpgrade('tm', 164)) base = base.add(0.1)
+		return base
+	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "T", description: "Shift+T: Reset for True Meta Runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
@@ -600,10 +605,10 @@ addLayer("tm", {
 		},
 		162: {
 			title: "TM Upg 18",
-			description() { return "x2 Ts gain applied " + format(tmp.tm.tm18) + " times. Get more Tsi to apply more times." },
+			description() { return "x" + format(tmp.tm.tm18Base) + " Ts gain applied " + format(tmp.tm.tm18) + " times. Get more Tsi to apply more times." },
 			cost: new Decimal("2^555"),
 			unlocked(){ return (hasUpgrade('tm', 161)) },
-			effect(){ return new Decimal(2).pow(tmp.tm.tm18) },
+			effect(){ return new Decimal(tmp.tm.tm18Base).pow(tmp.tm.tm18) },
 			effectDisplay() { return "x"+format(upgradeEffect('tm', 162)) },
 			currencyDisplayName: "Ts",
 			currencyInternalName: "Ts",
@@ -614,6 +619,15 @@ addLayer("tm", {
 			description: "Tsi gain ^1.3. Good luck getting me.",
 			cost: new Decimal("e200"),
 			unlocked(){ return (hasUpgrade('tm', 162)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+		},
+		164: {
+			title: "TM Upg 19",
+			description: "TM Upg 18 base +0.1. Also, boost Tsi by the amount it applies.",
+			cost: new Decimal("e224"),
+			unlocked(){ return (hasUpgrade('tm', 163)) },
 			currencyDisplayName: "Ts",
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
