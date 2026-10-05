@@ -693,6 +693,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 143)) Ts = Ts.times(upgradeEffect('tm', 143))
 		if (hasUpgrade('tm', 153)) Ts = Ts.times(upgradeEffect('tm', 153))
 		if (hasUpgrade('tm', 162)) Ts = Ts.times(upgradeEffect('tm', 162))
+		if (hasUpgrade('tm', 164)) Tsi = Tsi.times(tmp.tm.tm18)
 		if (hasUpgrade('tm', 133)) Tspow = Tspow.add(0.2)
 		if (hasUpgrade('tm', 151)) Tspow = Tspow.add(0.05)
 		if (hasUpgrade('tm', 163)) Tsipow = Tsipow.add(0.3)
