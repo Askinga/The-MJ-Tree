@@ -654,7 +654,7 @@ addLayer("tm", {
 		let PTMP = new Decimal(0.01)
 		let Tspow = new Decimal(1)
 		let Tsi = new Decimal(0)
-		Tsipow: new Decimal(1)
+		let Tsipow = new Decimal(1)
 		if (hasUpgrade('tm', 32)) gain = gain.add(1)
 		gain = gain.times(tmp.tm.tmPowBoost)
 		if (hasUpgrade('tm', 51)) expoGain = expoGain.add(1)
