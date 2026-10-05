@@ -21,6 +21,7 @@ addLayer("tm", {
 		STMPGain: new Decimal(1),
 		Tsi: new Decimal(0),
 		TsiG: new Decimal(0),
+		Tsinf: new Decimal(0),
     }},
 	onPrestige(){
 	    player.tm.tmpoints = player.tm.tmpoints.add(player.tm.tmpointGain)
@@ -137,6 +138,12 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 164)) base = base.add(0.1)
 		return base
 	},
+	Tsinf(){
+		return player.tm.Ts.add(1).log(2).div(1024).floor()
+	},
+	Tsinfeff(){
+		return new Decimal(10).pow(player.tm.Tsinf)
+	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "T", description: "Shift+T: Reset for True Meta Runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
@@ -205,9 +212,11 @@ addLayer("tm", {
 			content: [
 				"main-display",
 				"prestige-button",
+				["display-text", function(){ if (hasUpgrade('tm', 171)) return "You have " + format(player.tm.Tsinf) + " Ts Infinities, which is boosting Tsi by x" + format(tmp.tm.Tsinfeff) + ". Each Ts Infinity requires 2^1024 more Ts than the previous." }],
+			    "blank",
 				["display-text", function(){ return "You have " + format(player.tm.Ts) + " Ts (" + format(player.tm.TsGain) + "/sec), which is boosting True Meta Power base by +" + format(tmp.tm.Ts) }],
 				"blank",
-				["display-text", function(){ if (hasUpgrade('tm', 152)) return "You have " + format(player.tm.Tsi) + " Tsi (" + format(player.tm.TsiG) + "/sec), TM Upg 11 ^" + format(tmp.tm.Tsi) }],
+				["display-text", function(){ if (hasUpgrade('tm', 152)) return "You have " + format(player.tm.Tsi) + " Tsi (" + format(player.tm.TsiG) + "/sec), which is boosting TM Upg 11 by ^" + format(tmp.tm.Tsi) }],
 				"blank",
 				"resource-display",
 				"buyables",
@@ -645,6 +654,15 @@ addLayer("tm", {
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
 		},
+		171: {
+			title: "TM MixUp 2 (finally)",
+			description: "Tsi gain ^1.1. Also, unlock Ts Infinities! To the infinity side!",
+			cost: new Decimal("e25"),
+			unlocked(){ return (hasUpgrade('tm', 165)) },
+			currencyDisplayName: "Tsi",
+			currencyInternalName: "Tsi",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -707,9 +725,11 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 153)) Ts = Ts.times(upgradeEffect('tm', 153))
 		if (hasUpgrade('tm', 162)) Ts = Ts.times(upgradeEffect('tm', 162))
 		if (hasUpgrade('tm', 164)) Tsi = Tsi.times(tmp.tm.tm18)
+		Tsi = Tsi.times(tmp.tm.Tsinf)
 		if (hasUpgrade('tm', 133)) Tspow = Tspow.add(0.2)
 		if (hasUpgrade('tm', 151)) Tspow = Tspow.add(0.05)
 		if (hasUpgrade('tm', 163)) Tsipow = Tsipow.add(0.3)
+		if (hasUpgrade('tm', 171)) Tsipow = Tsipow.times(1.1)
 		Ts = Ts.pow(Tspow)
 		Tsi = Tsi.pow(Tsipow)
 		
@@ -729,6 +749,9 @@ addLayer("tm", {
 		player.tm.Tsi = player.tm.Tsi.add(Tsi)
 		if (hasUpgrade('tm', 151)) {
 			player.tm.tmpoints = player.tm.tmpoints.add(tmP.times(diff).times(PTMP))
+		}
+		if (hasUpgrade('tm', 171)) {
+			player.tm.Tsinf = tmp.tm.Tsinf
 		}
 	},
 	buyables: {
