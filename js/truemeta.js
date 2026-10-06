@@ -95,6 +95,7 @@ addLayer("tm", {
 	TsiBase(){
 		let pow = new Decimal(1)
 		pow = pow.add(buyableEffect('tm', 22))
+		if (hasUpgrade('tm', 172)) pow = pow.add(0.5)
 		return player.tm.Ts.add(1).log10().pow(0.9).pow(pow).div(100)
 	},
 	Tsb1Base(){
@@ -663,6 +664,15 @@ addLayer("tm", {
 			currencyInternalName: "Tsi",
 			currencyLayer: "tm",
 		},
+		172: {
+			title: "TM Upg 19",
+			description: "Ts Infinities also boost Ts by ^2. Also, +^0.5 Tsi base.",
+			cost: new Decimal("e36"),
+			unlocked(){ return (hasUpgrade('tm', 171)) },
+			currencyDisplayName: "Tsi",
+			currencyInternalName: "Tsi",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -725,6 +735,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 153)) Ts = Ts.times(upgradeEffect('tm', 153))
 		if (hasUpgrade('tm', 162)) Ts = Ts.times(upgradeEffect('tm', 162))
 		if (hasUpgrade('tm', 164)) Tsi = Tsi.times(tmp.tm.tm18)
+		if (hasUpgrade('tm', 172)) Ts = Ts.times(tmp.tm.Tsinfeff.pow(2))
 		Tsi = Tsi.times(tmp.tm.Tsinfeff)
 		if (hasUpgrade('tm', 133)) Tspow = Tspow.add(0.2)
 		if (hasUpgrade('tm', 151)) Tspow = Tspow.add(0.05)
