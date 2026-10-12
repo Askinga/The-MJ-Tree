@@ -869,7 +869,11 @@ addLayer("tm", {
 		unlocked(){ return hasUpgrade('tm', 173) },
 		title: "Tsb6",
         cost(x) { return new Decimal(25).add(x.pow(2.25)).pow(x.pow(2.25)).times("e40") },
-        display() { return "Tsi eff exp +^" + format(tmp.tm.Tsb6Base) + ".<br>Cost: " + format(this.cost()) + " Tsi<br>Bought: " + format(getBuyableAmount('tm', 23)) + "<br>Effect: +^" + format(buyableEffect('tm', 23)) + "" },
+        display() { return `Tsi eff exp +^${format(tmp.tm.Tsb6Base)}.
+			Cost: ${format(this.cost())} Tsi
+			Bought: ${format(getBuyableAmount('tm', 23))} 
+			Effect: +^${format(buyableEffect('tm', 23))} ${buyableEffect('tm', 23).gte(1) ? "(Softcapped)"}`
+		},
         canAfford() { return player.tm.Tsi.gte(this.cost()) },
         buy() {
             player.tm.Tsi = player.tm.Tsi.sub(this.cost())
@@ -879,7 +883,9 @@ addLayer("tm", {
 			let base1 = new Decimal(tmp.tm.Tsb6Base)
 			let base2 = x
 			let expo = new Decimal(1)
-			return base1.times(Decimal.times(base2, expo))
+			let eff = base1.times(Decimal.times(base2, expo))
+			eff = softcap(eff, new Decimal(1), 0.1)
+			return eff
 		},
 	},
 	},
