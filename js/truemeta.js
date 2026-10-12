@@ -690,7 +690,7 @@ addLayer("tm", {
 		174: {
 			title: "TM Upg 21",
 			description: "Take some time... x1000 Tsi.",
-			cost: new Decimal("e495"),
+			cost: new Decimal("e500"),
 			unlocked(){ return (hasUpgrade('tm', 173)) },
 			currencyDisplayName: "Ts",
 			currencyInternalName: "Ts",
