@@ -86,7 +86,7 @@ addLayer("tm", {
 	},
 	Tsi(){
 		let pow = new Decimal(1)
-		pow = pow.add(buyableEffect('tm', 23)
+		pow = pow.add(buyableEffect('tm', 23))
 		return player.tm.Tsi.add(1).log10().pow(0.5).pow(pow).add(1)
 	},
 	TsBase(){
