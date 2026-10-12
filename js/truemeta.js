@@ -239,7 +239,7 @@ addLayer("tm", {
 				"blank",
 				"resource-display",
 				"blank",
-				["display-image", function(){if(player.tm.pots == "True Meta Boostey") return "https://github.com/Askinga/The-Modding-Tree/blob/Prestige-what/assets/pot1.png"}],
+				["display-image", function(){if(player.tm.pots == "True Meta Boostey") return "https://raw.githubusercontent.com/Askinga/The-MJ-Tree/refs/heads/Prestige-what/assets/pot1.png"}],
 				"blank",
 				["display-text", function(){ return "Select a potion:" }],
 				["drop-down", ["pots",function() {
