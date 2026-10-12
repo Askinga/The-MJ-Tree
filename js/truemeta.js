@@ -230,6 +230,27 @@ addLayer("tm", {
 				["display-text", function(){ return "Ts gain is also based on your True Meta Power." }],
 			],
 		},
+		"Potion Brewing": {
+			unlocked() { return hasUpgrade('tm', 175) },
+			content: [
+				"main-display",
+				"prestige-button",
+				["display-text", function(){ return "Welcome to the True Meta Apothecary."}],
+				"blank",
+				"resource-display",
+				"blank",
+				["display-image", function(){if(player.tm.pots == "True Meta Boostey") return "https://github.com/Askinga/The-Modding-Tree/blob/Prestige-what/assets/pot1.png"}],
+				"blank",
+				["display-text", function(){ return "Select a potion:" }],
+				["drop-down", ["pots",function() {
+					let available = []
+					available.push("True Meta Boostey")
+					if(!hasUpgrade("tm",175)) available = []
+					return available
+				}
+				],function(){if(!hasUpgrade("tm",175))return {"display":"none"}}],
+			],
+		},
 	},
 	infoboxes: {
         "true meta reset": {
@@ -692,6 +713,15 @@ addLayer("tm", {
 			description: "Take some time... x1000 Tsi.",
 			cost: new Decimal("e500"),
 			unlocked(){ return (hasUpgrade('tm', 173)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+		},
+		175: {
+			title: "TM Features 9",
+			description: "Time to brew! Unlock Potion Brewing tab.",
+			cost: new Decimal("e750"),
+			unlocked(){ return (hasUpgrade('tm', 174)) },
 			currencyDisplayName: "Ts",
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
