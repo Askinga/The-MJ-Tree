@@ -670,7 +670,7 @@ addLayer("tm", {
 			currencyLayer: "tm",
 		},
 		172: {
-			title: "TM Upg 19",
+			title: "TM Upg 20",
 			description: "Ts Infinities also boost Ts by ^2. Also, +^0.5 Tsi base.",
 			cost: new Decimal("e36"),
 			unlocked(){ return (hasUpgrade('tm', 171)) },
@@ -683,6 +683,15 @@ addLayer("tm", {
 			description: "Unlock a buyable.",
 			cost: new Decimal("e40"),
 			unlocked(){ return (hasUpgrade('tm', 172)) },
+			currencyDisplayName: "Tsi",
+			currencyInternalName: "Tsi",
+			currencyLayer: "tm",
+		},
+		174: {
+			title: "TM Upg 21",
+			description: "Take some time... x1000 Tsi.",
+			cost: new Decimal("e500"),
+			unlocked(){ return (hasUpgrade('tm', 173)) },
 			currencyDisplayName: "Tsi",
 			currencyInternalName: "Tsi",
 			currencyLayer: "tm",
@@ -731,6 +740,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 71)) Ts = Ts.add(1)
 		if (hasUpgrade('tm', 152)) Tsi = Tsi.add(1)
 		if (hasUpgrade('tm', 161)) Tsi = Tsi.times(50)
+		if (hasUpgrade('tm', 174)) Tsi = Tsi.times(1000)
 		Ts = Ts.times(tmp.tm.TsBase)
 		Ts = Ts.times(buyableEffect('tm', 11))
 		Tsi = Tsi.times(buyableEffect('tm', 21))
@@ -872,7 +882,7 @@ addLayer("tm", {
         display() { return `Tsi eff exp +^${format(tmp.tm.Tsb6Base)}.
 			Cost: ${format(this.cost())} Tsi
 			Bought: ${format(getBuyableAmount('tm', 23))} 
-			Effect: +^${format(buyableEffect('tm', 23))} ${buyableEffect('tm', 23).gte(1) ? "(Softcapped)"}`
+			Effect: +^${format(buyableEffect('tm', 23))} ${(buyableEffect('tm', 23)).gte(1) ? "(Softcapped)"}`
 		},
         canAfford() { return player.tm.Tsi.gte(this.cost()) },
         buy() {
