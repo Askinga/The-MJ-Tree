@@ -236,13 +236,16 @@ addLayer("tm", {
 				"main-display",
 				"prestige-button",
 				"blank",
+				["display-text", function(){ return "Welcome to the True Meta Apothecary." }],
+				"blank",
 				"resource-display",
 				"blank",
-				["display-text", function(){if(player.tm.pots == "True Meta Boostey") return "<h3>True Meta Boostey</h3>" else return "Welcome to the True Meta Apothecary."}],
+				["display-text", function(){if(player.tm.pots == "True Meta Boostey") return "<h3>True Meta Boostey</h3>"}],
 				"blank",
 				["display-image", function(){if(player.tm.pots == "True Meta Boostey") return "https://raw.githubusercontent.com/Askinga/The-MJ-Tree/refs/heads/Prestige-what/assets/pot1.png"}],
 				"blank",
 				["display-text", function(){if(player.tm.pots == "True Meta Boostey") return "Boosts True Meta Runes by x1.1 every time you level up this potion." }],
+				"blank",
 				["display-text", function(){ return "Select a potion:" }],
 				["drop-down", ["pots",function() {
 					let available = []
