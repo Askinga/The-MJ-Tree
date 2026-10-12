@@ -882,7 +882,7 @@ addLayer("tm", {
         display() { return `Tsi eff exp +^${format(tmp.tm.Tsb6Base)}.
 			Cost: ${format(this.cost())} Tsi
 			Bought: ${format(getBuyableAmount('tm', 23))} 
-			Effect: +^${format(buyableEffect('tm', 23))} ${(buyableEffect('tm', 23)).gte(1) ? "(Softcapped)"}`
+			Effect: +^${format(buyableEffect('tm', 23))} ${buyableEffect('tm', 23).gte(1) ? "(Softcapped)" : ""}`
 		},
         canAfford() { return player.tm.Tsi.gte(this.cost()) },
         buy() {
