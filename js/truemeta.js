@@ -22,6 +22,12 @@ addLayer("tm", {
 		Tsi: new Decimal(0),
 		TsiG: new Decimal(0),
 		Tsinf: new Decimal(0),
+		pot1req: new Decimal(0),
+		pot1time: new Decimal(0),
+		pot1tm: new Decimal(0),
+		pot1ts: new Decimal(0),
+		pot1lv: new Decimal(0),
+		brewspeed: new Decimal(0),
     }},
 	onPrestige(){
 	    player.tm.tmpoints = player.tm.tmpoints.add(player.tm.tmpointGain)
@@ -51,10 +57,11 @@ addLayer("tm", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1)
+        let mult = new Decimal(1)
 		mult = mult.times(tmp.tm.tmPow)
 		mult = mult.times(tmp.tm.STMP)
 		mult = mult.times(buyableEffect('tm', 13))
+		mult = mult.times(tmp.tm.pot1)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -150,6 +157,9 @@ addLayer("tm", {
 	Tsinfeff(){
 		return new Decimal(10).pow(player.tm.Tsinf)
 	},
+	pot1(){
+		return new Decimal(1.1).pow(player.tm.pot1lv)
+	},
     row: 7, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "T", description: "Shift+T: Reset for True Meta Runes (Uni. 1)", onPress(){if (canReset(this.layer) && !(inChallenge('universes', 11))) doReset(this.layer)}},
@@ -236,7 +246,7 @@ addLayer("tm", {
 				"main-display",
 				"prestige-button",
 				"blank",
-				["display-text", function(){ return "Welcome to the True Meta Apothecary." }],
+				["display-text", function(){ return "Welcome to the True Meta Apothecary. Select a potion to start brewing." }],
 				"blank",
 				"resource-display",
 				"blank",
@@ -244,11 +254,14 @@ addLayer("tm", {
 				"blank",
 				["display-image", function(){if(player.tm.pots == "True Meta Boostey") return "https://raw.githubusercontent.com/Askinga/The-MJ-Tree/refs/heads/Prestige-what/assets/pot1.png"}],
 				"blank",
-				["display-text", function(){if(player.tm.pots == "True Meta Boostey") return "Boosts True Meta Runes by x1.1 every time you level up this potion." }],
+				["display-text", function(){if(player.tm.pots == "True Meta Boostey") return "Boosts True Meta Runes by x1.1 every time you level up this potion. Currently: x" + format(tmp.tm.pot1) }],
 				"blank",
-				["display-text", function(){ return "Select a potion:" }],
+				["display-text", function(){if(player.tm.pots == "True Meta Boostey") return "Requirement: " + format(player.tm.pot1time) + "/" + format(player.tm.pot1req) + "brew time, " + format(player.tm.pot1tm) + " True Meta Runes, " + format(player.tm.pot1ts) + " Ts.<br>Level " + format(player.tm.pot1lv) }],
+				"blank",
+				["display-text", function(){ return "Brew Speed: " + format(player.tm.brewspeed) + "/sec<br>Select a potion:" }],
 				["drop-down", ["pots",function() {
 					let available = []
+					available.push("None")
 					available.push("True Meta Boostey")
 					if(!hasUpgrade("tm",175)) available = []
 					return available
@@ -768,6 +781,7 @@ addLayer("tm", {
 		let Tspow = new Decimal(1)
 		let Tsi = new Decimal(0)
 		let Tsipow = new Decimal(1)
+		let brewSpeed = new Decimal(1)
 		if (hasUpgrade('tm', 32)) gain = gain.add(1)
 		gain = gain.times(tmp.tm.tmPowBoost)
 		if (hasUpgrade('tm', 51)) expoGain = expoGain.add(1)
@@ -809,10 +823,12 @@ addLayer("tm", {
 		player.tm.tExpoGain = expoGain
 		player.tm.TsGain = Ts
 		player.tm.TsiG = Tsi
+		player.tm.brewspeed = brewSpeed
 		gain = gain.times(diff)
 		expoGain = expoGain.times(diff)
 		Ts = Ts.times(diff)
 		Tsi = Tsi.times(diff)
+		brewSpeed = brewSpeed.times(diff)
 		player.tm.tmPow = player.tm.tmPow.add(gain)
 		player.tm.tExpo = player.tm.tExpo.add(expoGain)
 		player.tm.Ts = player.tm.Ts.add(Ts)
@@ -822,6 +838,19 @@ addLayer("tm", {
 		}
 		if (hasUpgrade('tm', 171)) {
 			player.tm.Tsinf = tmp.tm.Tsinf
+		}
+		if (player.tm.pot == "True Meta Boostey") {
+			player.tm.pot1time = player.tm.pot1time.add(brewSpeed)
+		}
+		if ((player.tm.pot1time.gte(player.tm.pot1req)) && (player.tm.points.gte(player.tm.pot1tm)) && (player.tm.Ts.gte(player.tm.pot1ts))) {
+			player.tm.points = player.tm.points.sub(player.tm.pot1tm)
+			player.tm.Ts = player.tm.Ts.sub(player.tm.pot1ts)
+			player.tm.pot1time = new Decimal(0)
+		}
+		if (hasUpgrade('tm', 175)) {
+			player.tm.pot1req = (new Decimal(1.2).add(player.tm.pot1lv.div(10)).pow(player.tm.pot1lv))
+			player.tm.pot1tm = (new Decimal(1.1).add(player.tm.pot1lv.pow(1.2).div(10)).pow(player.tm.pot1lv.pow(1.1)).times("e13"))
+			player.tm.pot1ts = (new Decimal("e50").times(player.tm.pot1lv.pow(10)).pow(player.tm.pot1lv.pow(1.15)).times("e750"))
 		}
 	},
 	buyables: {
