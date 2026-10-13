@@ -839,6 +839,9 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 171)) {
 			player.tm.Tsinf = tmp.tm.Tsinf
 		}
+		if (player.tm.pot1time.gte(player.tm.pot1req)) {
+			player.tm.pot1time = player.tm.pot1req
+		},
 		if (player.tm.pots == "True Meta Boostey") {
 			player.tm.pot1time = player.tm.pot1time.add(brewSpeed)
 		}
@@ -850,7 +853,7 @@ addLayer("tm", {
 		}
 		if (hasUpgrade('tm', 175)) {
 			player.tm.pot1req = (new Decimal(1.2).add(player.tm.pot1lv.div(10)).pow(player.tm.pot1lv).times(10))
-			player.tm.pot1tm = (new Decimal(1.1).add(player.tm.pot1lv.pow(1.2).div(10)).pow(player.tm.pot1lv.pow(1.1)).times("e13"))
+			player.tm.pot1tm = (new Decimal(2).add(player.tm.pot1lv.pow(1.2).div(10)).pow(player.tm.pot1lv.pow(1.1)).times("e13"))
 			player.tm.pot1ts = (new Decimal("e50").times(player.tm.pot1lv.pow(10)).pow(player.tm.pot1lv.pow(1.15)).times("e750"))
 		}
 	},
