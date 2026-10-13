@@ -256,7 +256,7 @@ addLayer("tm", {
 				"blank",
 				["display-text", function(){if(player.tm.pots == "True Meta Boostey") return "Boosts True Meta Runes by x1.1 every time you level up this potion. Currently: x" + format(tmp.tm.pot1) }],
 				"blank",
-				["display-text", function(){if(player.tm.pots == "True Meta Boostey") return "Requirement: " + format(player.tm.pot1time) + "/" + format(player.tm.pot1req) + "brew time, " + format(player.tm.pot1tm) + " True Meta Runes, " + format(player.tm.pot1ts) + " Ts.<br>Level " + format(player.tm.pot1lv) }],
+				["display-text", function(){if(player.tm.pots == "True Meta Boostey") return "Requirement: " + format(player.tm.pot1time) + "/" + format(player.tm.pot1req) + " brew time, " + format(player.tm.pot1tm) + " True Meta Runes, " + format(player.tm.pot1ts) + " Ts.<br>Level " + format(player.tm.pot1lv) }],
 				"blank",
 				["display-text", function(){ return "Brew Speed: " + format(player.tm.brewspeed) + "/sec<br>Select a potion:" }],
 				["drop-down", ["pots",function() {
@@ -839,7 +839,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 171)) {
 			player.tm.Tsinf = tmp.tm.Tsinf
 		}
-		if (player.tm.pot == "True Meta Boostey") {
+		if (player.tm.pots == "True Meta Boostey") {
 			player.tm.pot1time = player.tm.pot1time.add(brewSpeed)
 		}
 		if ((player.tm.pot1time.gte(player.tm.pot1req)) && (player.tm.points.gte(player.tm.pot1tm)) && (player.tm.Ts.gte(player.tm.pot1ts))) {
@@ -848,7 +848,7 @@ addLayer("tm", {
 			player.tm.pot1time = new Decimal(0)
 		}
 		if (hasUpgrade('tm', 175)) {
-			player.tm.pot1req = (new Decimal(1.2).add(player.tm.pot1lv.div(10)).pow(player.tm.pot1lv))
+			player.tm.pot1req = (new Decimal(1.2).add(player.tm.pot1lv.div(10)).pow(player.tm.pot1lv).times(10))
 			player.tm.pot1tm = (new Decimal(1.1).add(player.tm.pot1lv.pow(1.2).div(10)).pow(player.tm.pot1lv.pow(1.1)).times("e13"))
 			player.tm.pot1ts = (new Decimal("e50").times(player.tm.pot1lv.pow(10)).pow(player.tm.pot1lv.pow(1.15)).times("e750"))
 		}
