@@ -841,7 +841,7 @@ addLayer("tm", {
 		}
 		if (player.tm.pot1time.gte(player.tm.pot1req)) {
 			player.tm.pot1time = player.tm.pot1req
-		},
+		}
 		if (player.tm.pots == "True Meta Boostey") {
 			player.tm.pot1time = player.tm.pot1time.add(brewSpeed)
 		}
