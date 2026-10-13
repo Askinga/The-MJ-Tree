@@ -846,6 +846,7 @@ addLayer("tm", {
 			player.tm.points = player.tm.points.sub(player.tm.pot1tm)
 			player.tm.Ts = player.tm.Ts.sub(player.tm.pot1ts)
 			player.tm.pot1time = new Decimal(0)
+			player.tm.pot1lv = player.tm.pot1lv.add(1)
 		}
 		if (hasUpgrade('tm', 175)) {
 			player.tm.pot1req = (new Decimal(1.2).add(player.tm.pot1lv.div(10)).pow(player.tm.pot1lv).times(10))
