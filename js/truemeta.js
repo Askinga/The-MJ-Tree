@@ -744,6 +744,15 @@ addLayer("tm", {
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
 		},
+		181: {
+			title: "TM Upg 22",
+			description: "Take some more time... x100 Tsi.",
+			cost: new Decimal("e825"),
+			unlocked(){ return (hasUpgrade('tm', 175)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -790,6 +799,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 152)) Tsi = Tsi.add(1)
 		if (hasUpgrade('tm', 161)) Tsi = Tsi.times(50)
 		if (hasUpgrade('tm', 174)) Tsi = Tsi.times(1000)
+		if (hasUpgrade('tm', 181)) Tsi = Tsi.times(100)
 		Ts = Ts.times(tmp.tm.TsBase)
 		Ts = Ts.times(buyableEffect('tm', 11))
 		Tsi = Tsi.times(buyableEffect('tm', 21))
@@ -842,7 +852,7 @@ addLayer("tm", {
 		if (player.tm.pot1time.gte(player.tm.pot1req)) {
 			player.tm.pot1time = player.tm.pot1req
 		}
-		if (player.tm.pots == "True Meta Boostey") {
+		if ((player.tm.pots == "True Meta Boostey") && !(player.tm.pot1time.gte(player.tm.pot1req))) {
 			player.tm.pot1time = player.tm.pot1time.add(brewSpeed)
 		}
 		if ((player.tm.pot1time.gte(player.tm.pot1req)) && (player.tm.points.gte(player.tm.pot1tm)) && (player.tm.Ts.gte(player.tm.pot1ts))) {
