@@ -775,6 +775,15 @@ addLayer("tm", {
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
 		},
+		184: {
+			title: "TM Upg 24",
+			description: "x88 Tsi. Also, x8 brew speed.",
+			cost: new Decimal("8"),
+			unlocked(){ return (hasUpgrade('tm', 183)) },
+			currencyDisplayName: "True Meta Boostey levels",
+			currencyInternalName: "pot1lv",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -822,6 +831,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 161)) Tsi = Tsi.times(50)
 		if (hasUpgrade('tm', 174)) Tsi = Tsi.times(1000)
 		if (hasUpgrade('tm', 181)) Tsi = Tsi.times(100)
+		if (hasUpgrade('tm', 184)) Tsi = Tsi.times(88)
 		Ts = Ts.times(tmp.tm.TsBase)
 		Ts = Ts.times(buyableEffect('tm', 11))
 		Tsi = Tsi.times(buyableEffect('tm', 21))
@@ -851,6 +861,7 @@ addLayer("tm", {
 		Ts = Ts.pow(Tspow)
 		Tsi = Tsi.pow(Tsipow)
 		if (hasUpgrade('tm', 182)) brewSpeed = brewSpeed.times(10)
+		if (hasUpgrade('tm', 184)) brewSpeed = brewSpeed.times(8)
 		
 		player.tm.tmpointGain = tmP
 		player.tm.STMPGain = StmP
