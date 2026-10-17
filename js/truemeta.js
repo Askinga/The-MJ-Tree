@@ -770,7 +770,7 @@ addLayer("tm", {
 			cost: new Decimal("e1200"),
 			unlocked(){ return (hasUpgrade('tm', 182)) },
 			effect(){ return tmp.tm.pot1.pow(4) },
-			effectDisplay(){ return "^"+format(upgradeEffect('tm', 183)) },
+			effectDisplay(){ return "x"+format(upgradeEffect('tm', 183)) },
 			currencyDisplayName: "Ts",
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
