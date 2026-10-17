@@ -449,6 +449,21 @@ addLayer("tm", {
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
 		},
+		92: {
+			title: "TM Upg 26",
+			description: "Potion Brew Speed and True Meta Power +^0.01 every Ts Infinity. (Softcap at 50)",
+			cost: new Decimal("8"),
+			unlocked(){ return (hasUpgrade('tm', 12)) },
+			effect(){ 
+				let eff = player.tm.Tsinf.div(100).add(1)
+				eff = softcap(eff, new Decimal("1.5"), 0.2)
+				return eff
+			},
+			effectDisplay(){ return "^"+format(upgradeEffect('tm', 92)) },
+			currencyDisplayName: "Ts Infinities",
+			currencyInternalName: "Tsinf",
+			currencyLayer: "tm",
+		},
 		101: {
 			title: "TM Upg 6",
 			description: "Increase chance of getting a Super True Meta Point by +1%.",
@@ -853,6 +868,7 @@ addLayer("tm", {
 		let brewSpeed = new Decimal(1)
 		if (hasUpgrade('tm', 32)) gain = gain.add(1)
 		gain = gain.times(tmp.tm.tmPowBoost)
+		if (hasUpgrade('tm', 92)) gain = gain.pow(upgradeEffect('tm', 92))
 		if (hasUpgrade('tm', 51)) expoGain = expoGain.add(1)
 		expoGain = expoGain.times(tmp.tm.tExpoBase)
 		if (hasUpgrade('tm', 71)) Ts = Ts.add(1)
@@ -895,6 +911,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 182)) brewSpeed = brewSpeed.times(10)
 		if (hasUpgrade('tm', 184)) brewSpeed = brewSpeed.times(8)
 		if (hasUpgrade('tm', 185)) brewSpeed = brewSpeed.times(upgradeEffect('tm', 185))
+		if (hasUpgrade('tm', 92)) brewSpeed = brewSpeed.pow(upgradeEffect('tm', 192))
 		
 		player.tm.tmpointGain = tmP
 		player.tm.STMPGain = StmP
