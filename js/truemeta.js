@@ -911,7 +911,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 182)) brewSpeed = brewSpeed.times(10)
 		if (hasUpgrade('tm', 184)) brewSpeed = brewSpeed.times(8)
 		if (hasUpgrade('tm', 185)) brewSpeed = brewSpeed.times(upgradeEffect('tm', 185))
-		if (hasUpgrade('tm', 92)) brewSpeed = brewSpeed.pow(upgradeEffect('tm', 192))
+		if (hasUpgrade('tm', 92)) brewSpeed = brewSpeed.pow(upgradeEffect('tm', 92))
 		
 		player.tm.tmpointGain = tmP
 		player.tm.STMPGain = StmP
