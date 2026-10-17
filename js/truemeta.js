@@ -764,6 +764,17 @@ addLayer("tm", {
 			currencyInternalName: "pot1lv",
 			currencyLayer: "tm",
 		},
+		183: {
+			title: "TM Upg 23",
+			description: "True Meta Boostey's effect ^4 boosts Tsi.",
+			cost: new Decimal("e1200"),
+			unlocked(){ return (hasUpgrade('tm', 182)) },
+			effect(){ return tmp.tm.pot1.pow(4) },
+			effectDisplay(){ return "^"+format(upgradeEffect('tm', 183)) },
+			currencyDisplayName: "Ts",
+			currencyInternalName: "Ts",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -831,6 +842,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 164)) Tsi = Tsi.times(tmp.tm.tm18)
 		if (hasUpgrade('tm', 172)) Ts = Ts.times(tmp.tm.Tsinfeff.pow(2))
 		Tsi = Tsi.times(tmp.tm.Tsinfeff)
+		if (hasUpgrade('tm', 183)) Tsi = Tsi.times(upgradeEffect('tm', 183))
 		if (hasUpgrade('tm', 133)) Tspow = Tspow.add(0.2)
 		if (hasUpgrade('tm', 151)) Tspow = Tspow.add(0.05)
 		if (hasUpgrade('tm', 182)) Tspow = Tspow.times(upgradeEffect('tm', 182))
