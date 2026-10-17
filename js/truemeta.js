@@ -753,6 +753,17 @@ addLayer("tm", {
 			currencyInternalName: "Ts",
 			currencyLayer: "tm",
 		},
+		182: {
+			title: "TM Super Upg 7",
+			description: "Power Ts gain based on True Meta Boostey levels. Also, x10 brew speed.",
+			cost: new Decimal("6"),
+			unlocked(){ return (hasUpgrade('tm', 181)) },
+			effect(){ return player.tm.pot1lv.pow(0.5).div(100).add(1) },
+			effectDisplay(){ return "^"+format(upgradeEffect('tm', 182)) },
+			currencyDisplayName: "True Meta Boostey levels",
+			currencyInternalName: "pot1lv",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -822,10 +833,12 @@ addLayer("tm", {
 		Tsi = Tsi.times(tmp.tm.Tsinfeff)
 		if (hasUpgrade('tm', 133)) Tspow = Tspow.add(0.2)
 		if (hasUpgrade('tm', 151)) Tspow = Tspow.add(0.05)
+		if (hasUpgrade('tm', 182)) Tspow = Tspow.add(upgradeEffect('tm', 182))
 		if (hasUpgrade('tm', 163)) Tsipow = Tsipow.add(0.3)
 		if (hasUpgrade('tm', 171)) Tsipow = Tsipow.times(1.1)
 		Ts = Ts.pow(Tspow)
 		Tsi = Tsi.pow(Tsipow)
+		if (hasUpgrade('tm', 182)) brewSpeed = brewSpeed.times(10)
 		
 		player.tm.tmpointGain = tmP
 		player.tm.STMPGain = StmP
