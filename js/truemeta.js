@@ -285,6 +285,15 @@ addLayer("tm", {
 			currencyInternalName: "tmpoints",
 			currencyLayer: "tm",
 		},
+		12: {
+			title: "Ultimate TM 2",
+			description: "True Meta Boostey's Time and True Meta requirement exp divisor +0.1 and x1000 Tsi.",
+			cost: new Decimal("ee22"),
+			unlocked(){ return hasUpgrade('tm', 186) },
+			currencyDisplayName: "True Meta Power",
+			currencyInternalName: "tmPow",
+			currencyLayer: "tm",
+		},
 		21: {
 			title: "TM QoL 2",
 			description: "Keep Supreme Rune milestones",
@@ -795,6 +804,15 @@ addLayer("tm", {
 			currencyInternalName: "pot1lv",
 			currencyLayer: "tm",
 		},
+		186: {
+			title: "TM Extension 1",
+			description: "Unlock a new upgrade at row 1. x222 Tsi.",
+			cost: new Decimal("ee21"),
+			unlocked(){ return (hasUpgrade('tm', 185)) },
+			currencyDisplayName: "True Meta Power",
+			currencyInternalName: "tmPow",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -843,6 +861,8 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 174)) Tsi = Tsi.times(1000)
 		if (hasUpgrade('tm', 181)) Tsi = Tsi.times(100)
 		if (hasUpgrade('tm', 184)) Tsi = Tsi.times(88)
+		if (hasUpgrade('tm', 186)) Tsi = Tsi.times(222)
+		if (hasUpgrade('tm', 12)) Tsi = Tsi.times(1000)
 		Ts = Ts.times(tmp.tm.TsBase)
 		Ts = Ts.times(buyableEffect('tm', 11))
 		Tsi = Tsi.times(buyableEffect('tm', 21))
@@ -911,8 +931,12 @@ addLayer("tm", {
 			player.tm.pot1lv = player.tm.pot1lv.add(1)
 		}
 		if (hasUpgrade('tm', 175)) {
-			player.tm.pot1req = (new Decimal(1.2).add(player.tm.pot1lv.div(10)).pow(player.tm.pot1lv).times(10))
-			player.tm.pot1tm = (new Decimal(2).add(player.tm.pot1lv.pow(1.2).div(10)).pow(player.tm.pot1lv.pow(1.1)).times("e13"))
+			let timeReduxExp = new Decimal(1)
+			let tmReduxExp = new Decimal(1)
+			if (hasUpgrade('tm', 12)) timeReduxExp = timeReduxExp.add(0.1)
+			if (hasUpgrade('tm', 12)) tmReduxExp = tmReduxExp.add(0.1)
+			player.tm.pot1req = (new Decimal(1.2).add(player.tm.pot1lv.div(10)).pow(player.tm.pot1lv.div(timeReduxExp)).times(10))
+			player.tm.pot1tm = (new Decimal(2).add(player.tm.pot1lv.pow(1.2).div(10)).pow(player.tm.pot1lv.div(tmReduxExp).pow(1.1)).times("e13"))
 			player.tm.pot1ts = (new Decimal("e50").times(player.tm.pot1lv.pow(10)).pow(player.tm.pot1lv.pow(1.15)).times("e750"))
 		}
 	},
