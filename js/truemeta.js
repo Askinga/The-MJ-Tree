@@ -784,6 +784,17 @@ addLayer("tm", {
 			currencyInternalName: "pot1lv",
 			currencyLayer: "tm",
 		},
+		185: {
+			title: "TM Upg 25",
+			description: "True Meta Runes boost brew speed and Tsi.",
+			cost: new Decimal("11"),
+			unlocked(){ return (hasUpgrade('tm', 184)) },
+			effect(){ return player.tm.points.add(1).pow(0.05) },
+			effectDisplay(){ return "x"+format(upgradeEffect('tm', 185)) },
+			currencyDisplayName: "True Meta Boostey levels",
+			currencyInternalName: "pot1lv",
+			currencyLayer: "tm",
+		},
 	},
 	clickables: {
     11: {
@@ -853,6 +864,7 @@ addLayer("tm", {
 		if (hasUpgrade('tm', 172)) Ts = Ts.times(tmp.tm.Tsinfeff.pow(2))
 		Tsi = Tsi.times(tmp.tm.Tsinfeff)
 		if (hasUpgrade('tm', 183)) Tsi = Tsi.times(upgradeEffect('tm', 183))
+		if (hasUpgrade('tm', 185)) Tsi = Tsi.times(upgradeEffect('tm', 185))
 		if (hasUpgrade('tm', 133)) Tspow = Tspow.add(0.2)
 		if (hasUpgrade('tm', 151)) Tspow = Tspow.add(0.05)
 		if (hasUpgrade('tm', 182)) Tspow = Tspow.times(upgradeEffect('tm', 182))
@@ -862,6 +874,7 @@ addLayer("tm", {
 		Tsi = Tsi.pow(Tsipow)
 		if (hasUpgrade('tm', 182)) brewSpeed = brewSpeed.times(10)
 		if (hasUpgrade('tm', 184)) brewSpeed = brewSpeed.times(8)
+		if (hasUpgrade('tm', 185)) brewSpeed = brewSpeed.times(upgradeEffect('tm', 185))
 		
 		player.tm.tmpointGain = tmP
 		player.tm.STMPGain = StmP
