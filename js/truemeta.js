@@ -833,7 +833,7 @@ addLayer("tm", {
 		Tsi = Tsi.times(tmp.tm.Tsinfeff)
 		if (hasUpgrade('tm', 133)) Tspow = Tspow.add(0.2)
 		if (hasUpgrade('tm', 151)) Tspow = Tspow.add(0.05)
-		if (hasUpgrade('tm', 182)) Tspow = Tspow.add(upgradeEffect('tm', 182))
+		if (hasUpgrade('tm', 182)) Tspow = Tspow.times(upgradeEffect('tm', 182))
 		if (hasUpgrade('tm', 163)) Tsipow = Tsipow.add(0.3)
 		if (hasUpgrade('tm', 171)) Tsipow = Tsipow.times(1.1)
 		Ts = Ts.pow(Tspow)
